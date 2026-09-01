@@ -1,0 +1,220 @@
+# Complete experiment ledger maintained by META.
+# META writes and audits it. Scientist may inspect it when the concise memory is insufficient,
+# ambiguous, or worth challenging; it is not required to scan the full ledger on every cold start.
+# Reviewers may read relevant entries and evidence when auditing completed research worlds.
+# Keep every meaningful experiment, including failed, negative, diagnostic, and exploratory work.
+# Exact evidence matters more than schema ceremony.
+experiments:
+
+  - id: E001
+
+    record: >
+      Exploratory historical target-encoding ranker evaluated on the deterministic 25% complete-user Medium slice (5,590 users / 31,536 rows). The Scientist hypothesized that leakage-safe historical target rates at item, author, duration, context, and user-content levels could cheaply capture substantial ranking signal. Four shrinkage/blend variants were tested: content-only reached GAUC 0.6472900, nDCG@5 0.5256474, and primary 0.5864687, while interactions (0.5813902), crosses (0.5836003), and personal variants (0.5800704) were worse. The hypothesis was weakened, especially the premise that sparse direct user-history target encodings would assist ranking.
+
+    primary_metric:
+      name: medium_public_primary
+      value: 0.5864687401259874
+
+    official_score: false
+    resulting_state: null
+
+    evidence:
+      - system/evidence/cycle1-medium.json
+      - research_record/reports/cycle-1.md
+
+  - id: E002
+
+    record: >
+      FM representation ablation on the deterministic 25% complete-user Medium slice. The Scientist compared the base 5-field FM against a 15-field rich FM (adding hour, weekday, video type/music/tag, active degree, and follow/fans/friend/register ranges) alongside isolated video and profile subsets. Base 5-field peaked at epoch 7 with GAUC 0.6669250, nDCG@5 0.5358402, and primary 0.6013826. Rich 15-field peaked at epoch 3 with GAUC 0.6694859, nDCG@5 0.5354874, and primary 0.6024866. Video-only peaked at epoch 7 with primary 0.6014388, and profile-only peaked at epoch 5 with primary 0.5991135. Neither subset alone explained the rich model's Medium peak. The rich configuration was selected for Full evaluation.
+
+    primary_metric:
+      name: medium_public_primary
+      value: 0.6024866104125977
+
+    official_score: false
+    resulting_state: null
+
+    evidence:
+      - system/evidence/cycle1-fm-video-medium.json
+      - system/evidence/cycle1-fm-profile-medium.json
+      - system/evidence/cycle1-fm-rich-full.json
+      - research_record/reports/cycle-1.md
+
+  - id: E003
+
+    record: >
+      Full evaluation of the rich 15-field FM (`system/fm_ranker.py`), trained on the 1,141,112-row historical standard training log with epoch 3 selected via the 25% complete-user Medium slice. Evaluated on all 124,909 public validation rows (22,377 users) using the organizer's unchanged evaluator. Produced GAUC 0.6671069860, nDCG@5 0.5361550450, and primary 0.6016310453. Against the published official validation baseline (0.6674 / 0.5357 / 0.6016), deltas are GAUC -0.0002930140, nDCG@5 +0.0004550450, and primary +0.0000310453. META independently reproduced the exact metrics from the implementation. This represents an effective tie with the official baseline and serves as the initial recoverable implementation.
+
+    primary_metric:
+      name: public_validation_primary
+      value: 0.6016310453414917
+
+    official_score: true
+    resulting_state: initial-rich-15-field-fm
+
+    evidence:
+      - system/evidence/cycle1-fm-rich-full.json
+      - research_record/reports/cycle-1.md
+
+  - id: E004
+
+    record: >
+      Hypothesis-driven ensemble blend between the rich FM and the content target encoder (`system/ensemble_ranker.py`). Both models' scores were standardized using only Medium predictions, and prespecified target-encoder blend weights in [0.0, 0.05, 0.1, 0.2, 0.3] were tested on Medium. Medium selection picked alpha = 0.0 (primary 0.6024866; 0.05 gave 0.6024814, with monotonic decline for larger weights). Consequent Full evaluation produced the identical rich FM primary score of 0.6016310453. The blend hypothesis was rejected and target encoding was discarded from the final recipe.
+
+    primary_metric:
+      name: public_validation_primary
+      value: 0.6016310453414917
+
+    official_score: true
+    resulting_state: initial-rich-15-field-fm
+
+    evidence:
+      - system/evidence/cycle1-ensemble-full.json
+      - research_record/reports/cycle-1.md
+
+  - id: E005
+
+    record: >
+      38-field comprehensive representation ablation on the deterministic 25% complete-user Medium slice (5,590 users / 31,536 rows). The Scientist evaluated expanding the FM representation from 15 fields to 38 fields (`rich_all`) by incorporating all 18 user demographic/preference one-hot features (`onehot_feat0`..`17`), user activity flags (`is_lowactive`, `is_live_streamer`, `is_video_author`), and video presentation aspect ratio. Seed 0 FM (k=16, lr=0.001, l2=1e-5) peaked at epoch 8 with Medium GAUC 0.6720485, nDCG@5 0.5353771, and primary 0.6037128 (improving over Cycle 1 15-field Medium primary 0.6024866). In contrast, explicit combinatorial crosses (`rich_cross`, dim 91,511) degraded Medium primary to 0.5996391 due to feature sparsity, and high-cardinality music_id (dim 49,749) reached only 0.6025280.
+
+    primary_metric:
+      name: medium_public_primary
+      value: 0.603712797164917
+
+    official_score: false
+    resulting_state: null
+
+    evidence:
+      - system/evidence/cycle2-fm-rich38-seed0-full.json
+      - research_record/reports/cycle-2.md
+
+  - id: E006
+
+    record: >
+      Exploration of alternative model architectures and inductive biases on the Medium slice. The Scientist evaluated tree-based GBDT (CatBoost, `system/catboost_ranker.py`) with native categorical features and PyTorch DeepFM / Multi-Task DeepFM with completion-rate and click auxiliary supervision (`system/deep_ranker.py`, `system/neural_ranker.py`). CatBoost reached Medium GAUC 0.6611881, nDCG@5 0.5315237, primary 0.5963559, struggling without dense latent embedding dot products. DeepFM achieved primary 0.6016–0.6018 at epoch 1–2 before rapidly overfitting in deep MLP layers. Embedding rank ablation on 38-field FM showed k=16 (0.6037128 at epoch 8) outperformed k=32 (0.6016157 at epoch 3). Low-rank regularized FM was retained.
+
+    primary_metric:
+      name: medium_public_primary
+      value: 0.603712797164917
+
+    official_score: false
+    resulting_state: null
+
+    evidence:
+      - system/catboost_ranker.py
+      - system/deep_ranker.py
+      - system/neural_ranker.py
+      - research_record/reports/cycle-2.md
+
+  - id: E007
+
+    record: >
+      Full evaluation of the single-seed 38-field rich FM (`system/fast_fm.py`, seed 0) trained on the 1,141,112-row historical standard training log with epoch 8 selected via the 25% complete-user Medium slice. Evaluated on all 124,909 public validation rows (22,377 users) using the organizer's unchanged evaluator. Produced GAUC 0.6694661378860474, nDCG@5 0.5367116928100586, and primary 0.603088915348053. Deltas against the published official validation baseline (0.6674 / 0.5357 / 0.6016) are GAUC +0.0020661379, nDCG@5 +0.0010116928, and primary +0.0014889153. Delta vs the initial 15-field implementation primary is +0.0014578700.
+
+    primary_metric:
+      name: public_validation_primary
+      value: 0.603088915348053
+
+    official_score: true
+    resulting_state: null
+
+    evidence:
+      - system/evidence/cycle2-fm-rich38-seed0-full.json
+      - research_record/reports/cycle-2.md
+
+  - id: E008
+
+    record: >
+      Full evaluation of the 5-seed 38-field rich FM ensemble (`system/ensemble_fm.py`, seeds 0, 1, 2, 3, 4 with per-seed Medium early stopping). Individual models selected epochs 8, 4, 7, 7, 10 on Medium. The 5-seed ensemble reached Medium GAUC 0.6709463, nDCG@5 0.5367206, primary 0.6038334. On the full 124,909 public validation rows (22,377 users), the ensemble achieved GAUC 0.6704182028770447, nDCG@5 0.537761926651001, and primary 0.6040900945663452. Deltas vs official baseline (0.6674 / 0.5357 / 0.6016) are GAUC +0.0030182029, nDCG@5 +0.0020619267, and primary +0.0024900946. Delta vs the initial 15-field implementation is +0.0024590492 (> epsilon = 0.002), successfully breaking the 0.6016 plateau and establishing the stronger ensemble baseline.
+
+    primary_metric:
+      name: public_validation_primary
+      value: 0.6040900945663452
+
+    official_score: true
+    resulting_state: five-seed-38-field-ensemble
+
+    evidence:
+      - system/evidence/cycle2-fm-rich38-ensemble5-full.json
+      - research_record/reports/cycle-2.md
+
+  - id: E009
+
+    record: >
+      Full evaluation of the 8-seed 38-field rich FM ensemble (`system/ensemble_fm.py`, seeds 0..7 with per-seed Medium early stopping). Individual models selected epochs 8, 4, 7, 7, 10, 7, 17, 12 on the deterministic 25% complete-user Medium slice (Medium ensemble primary 0.6041272). On the full 124,909 public validation rows (22,377 users), the 8-seed ensemble achieved GAUC 0.6712175607681274, nDCG@5 0.5376403331756592, and primary 0.6044289469718933. Deltas vs official published baseline (0.6674 / 0.5357 / 0.6016) are GAUC +0.0038175608, nDCG@5 +0.0019403332, and primary +0.0028289470. Delta vs the five-seed 38-field ensemble is primary +0.0003388524 (GAUC +0.0007993579, nDCG@5 -0.0001215935). Because this improvement is below the task epsilon = 0.002, the consecutive Full non-improving streak increments to 1 of 3. It became the stronger ensemble baseline.
+
+    primary_metric:
+      name: public_validation_primary
+      value: 0.6044289469718933
+
+    official_score: true
+    resulting_state: eight-seed-38-field-ensemble
+
+    evidence:
+      - system/evidence/cycle3-fm-rich38-ensemble8-full.json
+      - research_record/reports/cycle-3.md
+
+  - id: E010
+
+    record: >
+      Screening of enhanced 46-field FM representation on the deterministic 25% complete-user Medium partition (5,590 users / 31,536 rows). The Scientist added 8 leak-free user preference/affinity profiles (user's most watched tag, most frequent recommendation tab, historical activity/long-view rate bucket, interaction volume bucket) paired with explicit candidate match indicators (match_tag, match_tab), secondary video tag (tag2), and video upload age (date - upload_dt in days). Single-seed FM (seed 0, k=16, lr=0.001, l2=1e-5, dim 42,705) peaked at epoch 5 with Medium GAUC 0.6713531, nDCG@5 0.5367234, and primary 0.6040382, improving nDCG@5 by +0.00134 over the 38-field single-seed Medium baseline (0.5353771).
+
+    primary_metric:
+      name: medium_public_primary
+      value: 0.6040382480621338
+
+    official_score: false
+    resulting_state: null
+
+    evidence:
+      - research_record/reports/cycle-4.md
+
+  - id: E011
+
+    record: >
+      Exploration of alternative loss functions, field-weighting inductive biases, and over-expanded feature representations on the deterministic Medium partition. Field-weighted Factorization Machines (FwFM, learning a 46x46 symmetric matrix of field-pair interaction weights) peaked at epoch 6 with Medium GAUC 0.6714902, nDCG@5 0.5367911, and primary 0.6041407. Hybrid BCE + pairwise BPR ranking losses (alpha=0.2: primary 0.60221; alpha=0.5: primary 0.59966) underperformed pointwise BCE because unconstrained negative sampling across historical sessions disrupted session and context conditioning. An over-expanded 54-field representation adding redundant sparse historical item/author statistics reached Medium primary 0.60286, demonstrating that 46 fields was the optimal representation.
+
+    primary_metric:
+      name: medium_public_primary
+      value: 0.6041406512260437
+
+    official_score: false
+    resulting_state: null
+
+    evidence:
+      - system/fast_fwfm_ensemble.py
+      - research_record/reports/cycle-4.md
+
+  - id: E012
+
+    record: >
+      Full evaluation of the 4-seed 46-field Field-weighted FM (FwFM) ensemble (`system/fast_fwfm_ensemble.py`, seeds 0..3 with per-seed Medium early stopping). Evaluated on all 124,909 public validation rows (22,377 users) using the organizer's unchanged evaluator. Achieved GAUC 0.6724305009841919, nDCG@5 0.5385387539863586, and primary 0.6054846274852753. Deltas vs official published baseline (0.6674 / 0.5357 / 0.6016) are GAUC +0.0050305, nDCG@5 +0.0028388, and primary +0.0038846. Delta vs the eight-seed 38-field ensemble is primary +0.0010557 (< epsilon = 0.002).
+
+    primary_metric:
+      name: public_validation_primary
+      value: 0.6054846274852753
+
+    official_score: true
+    resulting_state: null
+
+    evidence:
+      - system/evidence/cycle4-fwfm-rich46-ensemble4-full.json
+      - research_record/reports/cycle-4.md
+
+  - id: E013
+
+    record: >
+      Full evaluation of the 8-seed 46-field FM ensemble (`system/ensemble_46.py`, seeds 0..7 with per-seed Medium early stopping). Individual models selected epochs 5, 4, 9, 3, 3, 7, 10, 9 on the deterministic 25% complete-user Medium partition (Medium ensemble primary 0.6057882). Evaluated on all 124,909 public validation rows (22,377 users) using the organizer's unchanged evaluator. Achieved GAUC 0.6728421449661255, nDCG@5 0.5390304327011108, and primary 0.6059362888336182. Deltas vs official published baseline (0.6674 / 0.5357 / 0.6016) are GAUC +0.0054421, nDCG@5 +0.0033304, and primary +0.0043363. Delta vs the eight-seed 38-field ensemble is primary +0.0015073 (GAUC +0.0016245, nDCG@5 +0.0013901). Because this gain is below task epsilon = 0.002, the consecutive Full non-improving counter reaches 3 of 3. This became the final Research Agent submission.
+
+    primary_metric:
+      name: public_validation_primary
+      value: 0.6059362888336182
+
+    official_score: true
+    resulting_state: research-agent-submission
+
+    evidence:
+      - system/evidence/cycle4-fm-rich46-ensemble8-full.json
+      - research_record/reports/cycle-4.md
+
+manual_interventions: []

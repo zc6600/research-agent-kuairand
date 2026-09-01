@@ -1,0 +1,43 @@
+id: research-agent-submission
+git_tag: state/research-agent-submission
+derived_from: prior 38-field ensemble implementation
+scientist_report: research_record/reports/cycle-4.md
+
+summary: >
+  8-seed ensemble of 46-field Factorization Machine rankers incorporating leak-free historical user preferences (top tag, top tab, long-view rate bucket, interaction volume bucket, real-time tag/tab matches), secondary video tags, upload age, and per-seed Medium early stopping.
+
+system:
+  data_scope: Curated KuaiRand-Pure development files under competition_data/data/; no hidden-test access.
+  model: 8-seed ensemble of Factorization Machines (rank k=16, lr=0.001, l2=1e-5, seeds 0..7) with 46 categorical fields (38 demographic/video baseline features + 8 leak-free user preference/affinity profiles and video metadata; total dimension 42,705).
+  training: Logistic loss with SGD and Adam on 1,141,112 historical training rows; per-seed checkpoint selected via deterministic BLAKE2b 25% complete-user Medium slice (5,590 users / 31,536 rows).
+  evaluation: Unchanged starter_kit/evaluate.py on the full 124,909 public-validation rows (22,377 users).
+
+performance:
+  validation:
+    GAUC: 0.6728421449661255
+    nDCG@5: 0.5390304327011108
+    primary: 0.6059362888336182
+    users: 22377
+    rows: 124909
+  baseline_delta:
+    GAUC: +0.0054421450
+    nDCG@5: +0.0033304327
+    primary: +0.0043362888
+  state_delta:
+    primary: +0.0015073419
+  evidence_ref: system/evidence/cycle4-fm-rich46-ensemble8-full.json
+
+implementation:
+  entrypoint: "uv run --with numpy python system/ensemble_46.py --seeds 0 1 2 3 4 5 6 7 --k 16 --lr 0.001 --l2 1e-5 --full --output system/evidence/cycle4-fm-rich46-ensemble8-full.json"
+  files:
+    - system/ensemble_46.py
+    - system/fast_fwfm_ensemble.py
+    - system/ensemble_fm.py
+    - system/fast_fm.py
+    - system/README.md
+    - system/catboost_ranker.py
+    - system/deep_ranker.py
+    - system/neural_ranker.py
+    - system/fm_ranker.py
+    - system/train_evaluate.py
+    - system/ensemble_ranker.py

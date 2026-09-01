@@ -1,0 +1,11 @@
+Starter Kit checker
+===================
+
+Command:
+uv run --python 3.12.11 --with numpy==2.5.2 python starter_kit/submit.py final/research-agent-test.csv --data_dir /absolute/path/to/KuaiRand-Pure/data --split test --check
+
+Result:
+✓ 格式与对齐校验通过：170,588 行，split=test
+
+Rows including header: 170589
+SHA-256: 982a4a2b51f2aeeaede6a023fe0792200ef3436afaa2ddf85b1a0ea2fa36dfc1  final/research-agent-test.csv

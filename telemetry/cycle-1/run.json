@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "run_id": "8b61e63ff45045ebbd28ac75cfbfb797",
+  "kind": "step",
+  "cli": "agy",
+  "model": null,
+  "meta_cli": "agy",
+  "meta_model": "gemini-3.7-flash",
+  "meta_effort": null,
+  "scientist_cli": "codex",
+  "scientist_model": "gpt-5.6-sol",
+  "scientist_effort": "medium",
+  "max_cycles": 1,
+  "started_at": "2026-08-30T15:38:53.442581+00:00",
+  "status": "closed",
+  "ended_at": "2026-08-30T15:51:00.494161+00:00",
+  "terminal_status": "budget_exhausted",
+  "exit_code": 0
+}

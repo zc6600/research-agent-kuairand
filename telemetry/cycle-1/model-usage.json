@@ -1,0 +1,32 @@
+{
+  "schema_version": 2,
+  "scope": "run_models",
+  "accounting_status": "measured",
+  "total": 2061744,
+  "models": [
+    {
+      "role": "meta",
+      "runner": "agy",
+      "model": "gemini-3.7-flash",
+      "accounting_status": "measured",
+      "input": 438553,
+      "output": 26372,
+      "reasoning": 12105,
+      "cache_read": 5101839,
+      "total": 464925
+    },
+    {
+      "role": "scientist",
+      "runner": "codex",
+      "model": "gpt-5.6-sol",
+      "accounting_status": "measured",
+      "input": 1579679,
+      "output": 17140,
+      "reasoning": 4810,
+      "cache_read": 1485312,
+      "cache_write": 0,
+      "total": 1596819
+    }
+  ],
+  "observed_at": "2026-08-30T15:51:00.492863+00:00"
+}
