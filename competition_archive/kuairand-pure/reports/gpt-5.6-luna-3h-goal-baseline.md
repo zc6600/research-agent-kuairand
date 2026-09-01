@@ -80,7 +80,8 @@ not consume the full allowance.
 
 The measured Codex usage snapshot reports 27,999,762 input tokens (including
 27,664,640 cache-read tokens), 69,812 output tokens, and 28,069,574 total
-tokens. For the comparison figure's non-cache convention:
+tokens. The comparison figure now uses the challenge-facing total, while the
+non-cache view remains available for audit:
 
 | Quantity | Tokens | Interpretation |
 |---|---:|---|
@@ -88,8 +89,8 @@ tokens. For the comparison figure's non-cache convention:
 | Cache-read input | 27,664,640 | Reported separately; excluded from the comparison axis |
 | Non-cache input | 335,122 | Input minus cache-read input |
 | Output | 69,812 | Includes the reported 29,416 reasoning tokens; do not add reasoning again |
-| **Non-cache input + output** | **404,934** | Figure/table comparison value |
-| Total including cache-read | 28,069,574 | Raw `total_tokens` snapshot |
+| Non-cache input + output | 404,934 | Supporting cache-efficiency view |
+| **Total including cache-read** | **28,069,574** | Figure/table comparison value and raw `total_tokens` snapshot |
 
 No currency cost or per-cycle token breakdown was recorded.
 

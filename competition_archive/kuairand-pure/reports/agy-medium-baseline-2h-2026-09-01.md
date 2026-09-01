@@ -14,6 +14,6 @@ and the compact score/token snapshot is
 
 The run used `gemini-3.7-flash` through AGY 1.1.22, with `medium` effort, and
 completed in 4,059.946 seconds. Its measured non-cache input + output was
-1,117,370 tokens; cache-read input was 7,447,606 tokens and is reported
-separately. The earlier `89fdbbf6...` attempt is not included because it was
+1,117,370 tokens; cache-read input was 7,447,606 tokens, giving **8,564,976
+total input + output tokens including cache-read**. The earlier `89fdbbf6...` attempt is not included because it was
 bound to AGY's global scratch workspace rather than the requested target.

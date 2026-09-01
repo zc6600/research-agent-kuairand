@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" role="img" aria-labelledby="title desc">
-  <title id="title">Public-validation Primary score versus measured non-cache LLM tokens</title>
-  <desc id="desc">Scatter plot comparing the gpt-5.6-luna direct baseline, the AGY gemini-3.7-flash direct baseline, the gemini-3.7-flash heterogeneous subagents, and the Research Agent submission. The Research Agent submission has the highest Primary score; direct controls use fewer tokens but are provisional.</desc>
+  <title id="title">Public-validation Primary score versus measured total LLM tokens</title>
+  <desc id="desc">Scatter plot comparing total input plus output tokens, including cache-read input, for the gpt-5.6-luna direct baseline, the AGY gemini-3.7-flash direct baseline, the gemini-3.7-flash-only Research Agent trajectory, the heterogeneous subagent run, and the Research Agent submission.</desc>
   <rect width="1000" height="620" fill="#ffffff"/>
   <text x="92" y="34" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="600" fill="#172033">Score versus measured LLM-token investment</text>
-  <text x="92" y="58" font-family="Inter, Arial, sans-serif" font-size="13" fill="#586174">Public validation; non-cache input + output; whole recorded agent system</text>
+  <text x="92" y="58" font-family="Inter, Arial, sans-serif" font-size="13" fill="#586174">Public validation; input + output including cache-read; whole recorded agent system</text>
 
   <rect x="92" y="82" width="840" height="420" fill="#fbfcfe" stroke="#cbd2dc"/>
 
@@ -17,46 +17,48 @@
 
   <g font-family="Inter, Arial, sans-serif" font-size="12" fill="#586174" stroke="#e1e5eb">
     <line x1="92" y1="82" x2="92" y2="502"/><text x="92" y="524" text-anchor="middle" stroke="none">0</text>
-    <line x1="302" y1="82" x2="302" y2="502"/><text x="302" y="524" text-anchor="middle" stroke="none">2</text>
-    <line x1="512" y1="82" x2="512" y2="502"/><text x="512" y="524" text-anchor="middle" stroke="none">4</text>
-    <line x1="722" y1="82" x2="722" y2="502"/><text x="722" y="524" text-anchor="middle" stroke="none">6</text>
-    <line x1="932" y1="82" x2="932" y2="502"/><text x="932" y="524" text-anchor="middle" stroke="none">8M</text>
+    <line x1="245" y1="82" x2="245" y2="502"/><text x="245" y="524" text-anchor="middle" stroke="none">10</text>
+    <line x1="397" y1="82" x2="397" y2="502"/><text x="397" y="524" text-anchor="middle" stroke="none">20</text>
+    <line x1="550" y1="82" x2="550" y2="502"/><text x="550" y="524" text-anchor="middle" stroke="none">30</text>
+    <line x1="703" y1="82" x2="703" y2="502"/><text x="703" y="524" text-anchor="middle" stroke="none">40</text>
+    <line x1="856" y1="82" x2="856" y2="502"/><text x="856" y="524" text-anchor="middle" stroke="none">50</text>
+    <line x1="932" y1="82" x2="932" y2="502"/><text x="932" y="524" text-anchor="middle" stroke="none">55M</text>
   </g>
 
   <line x1="92" y1="494" x2="932" y2="494" stroke="#8c95a5" stroke-width="1.5" stroke-dasharray="6 5"/>
   <text x="924" y="487" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="12" fill="#586174">Official reference 0.601600</text>
 
   <g font-family="Inter, Arial, sans-serif">
-    <circle cx="134" cy="265" r="8" fill="#ffffff" stroke="#4666a8" stroke-width="3"/>
-    <line x1="141" y1="258" x2="174" y2="197" stroke="#778196"/>
-    <text x="178" y="190" font-size="13" font-weight="600" fill="#172033">gpt-5.6-luna direct</text>
-    <text x="178" y="208" font-size="12" fill="#586174">0.405M · ≈0.6046 · provisional</text>
+    <circle cx="223" cy="267" r="8" fill="#ffffff" stroke="#4666a8" stroke-width="3"/>
+    <line x1="218" y1="259" x2="202" y2="207" stroke="#778196"/>
+    <text x="120" y="190" font-size="13" font-weight="600" fill="#172033">AGY gemini-3.7-flash direct</text>
+    <text x="120" y="208" font-size="12" fill="#586174">8.565M total · 0.604580 · artifact-backed</text>
 
-    <circle cx="209" cy="267" r="8" fill="#ffffff" stroke="#4666a8" stroke-width="3"/>
-    <line x1="215" y1="273" x2="282" y2="320" stroke="#778196"/>
-    <text x="286" y="320" font-size="13" font-weight="600" fill="#172033">AGY gemini-3.7-flash direct</text>
-    <text x="286" y="338" font-size="12" fill="#586174">1.117M · 0.604580 · artifact-backed</text>
+    <circle cx="521" cy="265" r="8" fill="#ffffff" stroke="#4666a8" stroke-width="3"/>
+    <line x1="521" y1="274" x2="506" y2="341" stroke="#778196"/>
+    <text x="380" y="360" font-size="13" font-weight="600" fill="#172033">gpt-5.6-luna direct</text>
+    <text x="380" y="378" font-size="12" fill="#586174">28.070M total · ≈0.6046 · provisional</text>
 
-    <circle cx="810" cy="163" r="10" fill="#2b8a67" stroke="#ffffff" stroke-width="2"/>
-    <line x1="802" y1="157" x2="744" y2="126" stroke="#778196"/>
-    <text x="738" y="119" text-anchor="end" font-size="13" font-weight="600" fill="#172033">Research Agent submission</text>
-    <text x="738" y="137" text-anchor="end" font-size="12" fill="#586174">6.834M · 0.605936 · verified</text>
+    <path d="M 697 244 l 9 9 l -9 9 l -9 -9 z" fill="#ffffff" stroke="#c56b2d" stroke-width="3"/>
+    <line x1="690" y1="246" x2="665" y2="207" stroke="#778196"/>
+    <text x="660" y="190" text-anchor="end" font-size="13" font-weight="600" fill="#172033">gemini-3.7-flash heterogeneous</text>
+    <text x="660" y="208" text-anchor="end" font-size="12" fill="#586174">39.607M total · ≈0.6047 · separate run</text>
 
-    <line x1="309" y1="220" x2="396" y2="220" stroke="#7a56a7" stroke-width="3"/>
-    <line x1="309" y1="214" x2="309" y2="226" stroke="#7a56a7" stroke-width="2"/>
-    <line x1="396" y1="214" x2="396" y2="226" stroke="#7a56a7" stroke-width="2"/>
-    <path d="M 353 210 l 10 18 h -20 z" fill="#ffffff" stroke="#7a56a7" stroke-width="3"/>
-    <line x1="363" y1="218" x2="431" y2="190" stroke="#778196"/>
-    <text x="437" y="187" font-size="13" font-weight="600" fill="#172033">gemini-3.7-flash-only RA · Cycle 2</text>
-    <text x="437" y="205" font-size="12" fill="#586174">2.071–2.899M · 0.6052 · E008</text>
+    <line x1="780" y1="220" x2="874" y2="220" stroke="#7a56a7" stroke-width="3"/>
+    <line x1="780" y1="214" x2="780" y2="226" stroke="#7a56a7" stroke-width="2"/>
+    <line x1="874" y1="214" x2="874" y2="226" stroke="#7a56a7" stroke-width="2"/>
+    <path d="M 827 210 l 10 18 h -20 z" fill="#ffffff" stroke="#7a56a7" stroke-width="3"/>
+    <line x1="827" y1="230" x2="827" y2="342" stroke="#778196"/>
+    <text x="875" y="360" text-anchor="end" font-size="13" font-weight="600" fill="#172033">gemini-3.7-flash-only RA · Cycle 2</text>
+    <text x="875" y="378" text-anchor="end" font-size="12" fill="#586174">45.044–51.174M total · 0.6052 · E008</text>
 
-    <path d="M 895 244 l 9 9 l -9 9 l -9 -9 z" fill="#ffffff" stroke="#c56b2d" stroke-width="3"/>
-    <line x1="886" y1="253" x2="826" y2="280" stroke="#778196"/>
-    <text x="820" y="282" text-anchor="end" font-size="13" font-weight="600" fill="#172033">gemini-3.7-flash heterogeneous</text>
-    <text x="820" y="300" text-anchor="end" font-size="12" fill="#586174">7.727M · ≈0.6047 · separate run</text>
+    <circle cx="829" cy="163" r="10" fill="#2b8a67" stroke="#ffffff" stroke-width="2"/>
+    <line x1="820" y1="157" x2="756" y2="126" stroke="#778196"/>
+    <text x="750" y="110" text-anchor="end" font-size="13" font-weight="600" fill="#172033">Research Agent submission</text>
+    <text x="750" y="128" text-anchor="end" font-size="12" fill="#586174">48.240M total · 0.605936 · verified</text>
   </g>
 
-  <text x="512" y="562" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#172033">Measured non-cache input + output tokens (millions)</text>
+  <text x="512" y="562" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#172033">Measured total input + output tokens, including cache-read (millions)</text>
   <text x="24" y="292" transform="rotate(-90 24 292)" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#172033">Public-validation Primary</text>
 
   <g transform="translate(92 590)" font-family="Inter, Arial, sans-serif" font-size="11" fill="#586174">

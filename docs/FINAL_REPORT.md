@@ -28,7 +28,7 @@ The canonical competition evidence is deliberately frozen at experiments E001–
 | Training/evaluation hardware | CPU NumPy; **0 GPU-hours** |
 | Final implementation runtime | **764.74 seconds** |
 | Retained E001–E013 agent runtime | **1h 55m 29s** across four cycle runs |
-| Measured LLM tokens | **6,833,808** non-cache input + output across E001–E013; cache-read input reported separately |
+| Measured LLM tokens | **48,240,128** total input + output across E001–E013, including cache-read input; **4,020,880** excluding cache-read |
 | Development hidden-test access | None; the retained research trajectory used public validation only |
 | Bonus benchmarks | Not attempted; no KuaiRand-1K or KuaiRand-27K bonus claim |
 | Final submission CSV | **170,588 rows; Starter Kit checker passed** ([artifact and checksum](../submission/research-agent-kuairand/final/submit-check.txt)) |
@@ -321,40 +321,47 @@ The five-seed 38-field FM improved over the initial rich FM by more than $\varep
 
 ### 5.3 Evidence-qualified agent-system comparison
 
-The controls are strong optimizers rather than straw men. To compare unlike
-runners without allowing cache behavior to dominate the resource axis, the
-figure uses one explicit accounting convention: measured **non-cache input +
-output tokens for the whole recorded agent system**. The official reference has
-no agent-token cost and is shown as a horizontal score reference.
+The controls are strong optimizers rather than straw men. The figure follows
+the challenge's resource-reporting language and uses measured **total input +
+output tokens for the whole recorded agent system, including cache-read
+input**. Reasoning tokens are a subset of output and are not added again. The
+official reference has no agent-token cost and is shown as a horizontal score
+reference.
 
-![Public-validation Primary versus measured non-cache LLM tokens](figures/token-score-comparison.svg)
+![Public-validation Primary versus measured total LLM tokens including cache-read input](figures/token-score-comparison.svg)
 
 *Figure 4. Outcome versus measured LLM-token investment. Shape and fill qualify
 the evidence; the plot is not a claim that all conditions used identical
 protocols or that the score differences are statistically significant.*
 [PNG export](figures/token-score-comparison.png)
 
-| Agent system | Non-cache input + output | Best public-validation Primary | Delta vs 0.6016 | Evidence status | Main search direction |
+| Agent system | Total input + output, including cache-read | Best public-validation Primary | Delta vs 0.6016 | Evidence status | Main search direction |
 |---|---:|---:|---:|---|---|
-| **`gpt-5.6-luna` 3h direct Goal baseline** | **404,934** | **approximately 0.6046** | **approximately +0.0030** | Provisional; measured telemetry, report/README score, terminal closed after `task_complete` | Six-field FM, positive weighting, and `tab×hour` |
-| **AGY `gemini-3.7-flash` 2h direct Goal baseline** | **1,117,370** | **0.6045803** | **+0.0029803** | Artifact-backed corrected rerun | AutoCrossNet, unified neural models, and five-model blend |
-| `gemini-3.7-flash`-only Research Agent trajectory, through Cycle 2 | 2,070,960–2,898,630* | 0.6052 | +0.0036 | Artifact-backed; online-history semantics noted | Seed-42 item-sequence DIN |
-| **Research Agent submitted implementation** | **6,833,808** | **0.6059363** | **+0.0043363** | **Verified retained result** | Multi-cycle representation and ensemble search |
-| `gemini-3.7-flash` heterogeneous subagents | 7,726,649 | approximately 0.6047 | approximately +0.0031 | Artifact-backed separate run | Parallel heterogeneous architecture search |
+| **AGY `gemini-3.7-flash` 2h direct Goal baseline** | **8,564,976** | **0.6045803** | **+0.0029803** | Artifact-backed corrected rerun | AutoCrossNet, unified neural models, and five-model blend |
+| **`gpt-5.6-luna` 3h direct Goal baseline** | **28,069,574** | **approximately 0.6046** | **approximately +0.0030** | Provisional; measured telemetry, report/README score, terminal closed after `task_complete` | Six-field FM, positive weighting, and `tab×hour` |
+| `gemini-3.7-flash` heterogeneous subagents | 39,607,277 | approximately 0.6047 | approximately +0.0031 | Artifact-backed separate run | Parallel heterogeneous architecture search |
+| `gemini-3.7-flash`-only Research Agent trajectory, through Cycle 2 | 45,043,916–51,173,911* | 0.6052 | +0.0036 | Artifact-backed; online-history semantics noted | Seed-42 item-sequence DIN |
+| **Research Agent submitted implementation** | **48,240,128** | **0.6059363** | **+0.0043363** | **Verified retained result** | Multi-cycle representation and ensemble search |
 
 \* The `gemini-3.7-flash`-only trajectory interval is not statistical uncertainty. It is an accounting bound:
-2,070,960 tokens are directly attributable through Cycle 2; 2,898,630 assigns
-the entire unsplittable Cycles 2–4 META aggregate to the Cycle-2 boundary.
+45,043,916 tokens are directly attributable through Cycle 2; 51,173,911 assigns
+the entire unsplittable Cycles 2–4 META aggregate, including its cache-read
+input, to the Cycle-2 boundary.
 
-For the `gpt-5.6-luna` 3h control, 404,934 is only the non-cache comparison
-value. The raw usage total is **28,069,574 tokens**, including **27,664,640
-cache-read tokens**; the raw input field is 27,999,762 and output is 69,812.
+Runner telemetry does not expose identical field semantics. AGY reports
+cache-read input separately from `input`, so total consumption adds it; Codex
+reports cache-read as a subset of `input`, so adding it again would double
+count. Applying that normalization gives the totals above. For reference, the
+corresponding non-cache values are 1,117,370 for the AGY direct run, 404,934
+for the Luna direct run, 7,726,649 for the heterogeneous run,
+2,070,960–2,898,630 for the Gemini-only Cycle-2 boundary, and 4,020,880 for the
+submitted Research Agent trajectory.
 
-The `gpt-5.6-luna` 3h direct baseline is the lowest-token strong optimizer in this
+The corrected AGY direct run is the lowest-total-token strong optimizer in this
 comparison. The `gemini-3.7-flash`-only Research Agent trajectory reached `0.6052` by Cycle 2
-with a bounded cumulative cost of 2.071M–2.899M measured tokens, while the submitted Research Agent implementation remains the
-highest-scoring verified result. The delegated `gemini-3.7-flash` search used slightly more
-measured non-cache tokens than the submitted implementation without surpassing its retained score. This
+with a bounded cumulative cost of 45.044M–51.174M total tokens, while the submitted Research Agent implementation remains the
+highest-scoring verified result. The heterogeneous delegated search used fewer
+total tokens than the submitted implementation without surpassing its retained score. This
 does **not** make the plot a token-efficiency frontier:
 there is one recorded run per condition, model and launcher protocols differ,
 and the direct controls retain unresolved audit qualifications.
@@ -416,13 +423,14 @@ where E008
 minutes after the resume began. The exact score, token interval, and protocol
 qualification are recorded in the [Cycle-2 E008 evidence snapshot](../competition_archive/kuairand-pure/evidence/gemini-3.7-flash-only-cycle2-e008.md).
 
-The Cycle-2 Scientist session recorded 802,865 non-cache input + output tokens.
-Adding the complete Cycle-1 system cost gives a directly attributable cumulative
-minimum of 2,070,960. The persistent META session spans Cycles 2–4 and exposes
-only one 827,670-token aggregate, so it cannot be split exactly at the Cycle-2
-boundary. Adding that entire META aggregate gives a conservative cumulative
-upper bound of 2,898,630; Figure 4 therefore draws a horizontal token interval
-rather than inventing a point estimate.
+The Cycle-2 Scientist session recorded 802,865 non-cache input + output tokens
+and 20,301,989 cache-read input tokens. Adding the complete Cycle-1 system cost
+gives a directly attributable total-token minimum of 45,043,916. The persistent
+META session spans Cycles 2–4 and exposes only one aggregate—827,670 non-cache
+tokens plus 5,302,325 cache-read tokens—so it cannot be split exactly at the
+Cycle-2 boundary. Adding that entire META aggregate gives a conservative
+total-token upper bound of 51,173,911; Figure 4 therefore draws a horizontal
+token interval rather than inventing a point estimate.
 
 The previously noted validation-label concern needs a narrower interpretation.
 The shared sequence builder does use earlier validation `is_click` and
@@ -492,18 +500,18 @@ correctness; unresolved protocol findings remain explicitly provisional.
 
 ### 6.3 Resource accounting
 
-The four retained Research Agent runs that produced cycles 1–4 and experiments E001–E013 recorded measured per-role model usage:
+The four retained Research Agent runs that produced cycles 1–4 and experiments E001–E013 recorded measured per-role model usage. The table normalizes runner semantics: AGY reports cache-read separately from `input`, while Codex includes cache-read inside `input`.
 
-| Role | Non-cache input | Output | Cache-read input | Non-cache input + output |
+| Role | Non-cache input | Cache-read input | Output | Total input + output including cache-read |
 |---|---:|---:|---:|---:|
-| META | 2,268,236 | 106,267 | 19,093,706 | 2,374,503 |
-| Scientist | 4,293,746 | 165,559 | 25,125,542 | 4,459,305 |
-| **Total** | **6,561,982** | **271,826** | **44,219,248** | **6,833,808** |
+| META | 2,268,236 | 19,093,706 | 106,267 | 21,468,209 |
+| Scientist | 1,480,818 | 25,125,542 | 165,559 | 26,771,919 |
+| **Total** | **3,749,054** | **44,219,248** | **271,826** | **48,240,128** |
 
 To avoid ambiguity, both accounting views are retained:
 
-- non-cache input + output: **6,833,808 tokens**;
-- input + output including cache-read input: **51,053,056 tokens**;
+- input + output including cache-read input: **48,240,128 tokens**;
+- non-cache input + output: **4,020,880 tokens**;
 - GPU training/evaluation: **0 GPU-hours**;
 - combined agent-run wall clock across cycles 1–4: **1h 55m 29s**;
 - final-implementation-producing cycle-4 agent run: **42m 52s**, terminal status `converged`, exit code 0;
@@ -513,8 +521,8 @@ The retained Research Agent trajectory was heterogeneous. `gemini-3.7-flash` was
 four cycles. Scientist used `gpt-5.6-sol` in cycle 1, `gemini-3.7-flash` in
 cycles 2 and 4, and `gpt-5.6-luna` in cycle 3. The separate `gemini-3.7-flash`-only trajectory used
 `gemini-3.7-flash` for both roles. Through the Cycle-2 comparison
-boundary it recorded **802,865** Scientist tokens in Cycle 2 and a bounded
-cumulative cost of **2,070,960–2,898,630** non-cache input + output tokens, as
+boundary it recorded **21,104,854** total Scientist tokens in Cycle 2 and a bounded
+cumulative cost of **45,043,916–51,173,911** total input + output tokens, as
 explained in §5.4.
 
 For the Problem 2 iteration accounting, the retained Research Agent run used
@@ -525,11 +533,10 @@ iterations. Seven of the 13 records were Full public-validation evaluations;
 the remaining records were Medium screens or diagnostics. The run stopped at
 the convergence rule, before either the 50-iteration or six-hour ceiling.
 
-The separate `gpt-5.6-luna` 3h direct Goal baseline recorded **335,122** non-cache
-input tokens and **69,812** output tokens, for **404,934** comparison tokens.
-Its raw snapshot is **28,069,574** input-plus-output tokens because
-**27,664,640** cache-read tokens are included in the input field and excluded
-from the comparison axis. The run used about **1h 55m 17s** of its configured
+The separate `gpt-5.6-luna` 3h direct Goal baseline recorded **28,069,574**
+total input-plus-output tokens, including **27,664,640** cache-read input
+tokens. Its non-cache input plus output was 404,934. The run used about
+**1h 55m 17s** of its configured
 three-hour budget before completing its substantive task; its score is
 therefore labeled provisional and its terminal closure after `task_complete`
 is documented in the archived
@@ -538,10 +545,10 @@ report.
 
 For comparison, the separate post-canonical heterogeneous `gemini-3.7-flash` subagent run
 recorded **2,274.269765 seconds (37m 54.27s)**. Its main-agent subtotal was
-**997,376** reported tokens, while the 32 native subagents contributed
-**6,729,273**, for **7,726,649** combined reported tokens. Combined
-cache-read context was **31,880,628**, giving **39,607,277** tokens when added
-to the combined reported total. It is a separate agent-system experiment and
+**997,376** non-cache tokens, while the 32 native subagents contributed
+**6,729,273**, for **7,726,649** combined non-cache tokens. Combined
+cache-read input was **31,880,628**, giving **39,607,277** total input + output
+tokens. It is a separate agent-system experiment and
 is therefore excluded from the retained E001–E013 resource total.
 
 The canonical retained run ids, in cycle order, are `8b61e63ff45045ebbd28ac75cfbfb797`, `c29e18119d2c4a62af97beeea1921eef`, `0cfba5632d3947859403e64171ed0340`, and `b53b3b2ffc574ad788f16caef003e3ed`. Sanitized lifecycle and measured usage files for all four runs are published under [`telemetry/`](../submission/research-agent-kuairand/telemetry/).
@@ -596,7 +603,7 @@ The public package maps the written description, code, iteration evidence, final
 
 | Deliverable | Current status | Required next evidence |
 |---|---|---|
-| Written project description | **Complete** | Adapt the opening sections to the Devpost text fields |
+| Written project description | **Complete** | Use the Devpost-ready [`project_story.md`](project_story.md) |
 | Public framework code | **Complete** | Use the public repository's `main` branch |
 | Canonical Research Agent project snapshot | **Complete** | [`submission/research-agent-kuairand/`](../submission/research-agent-kuairand/) |
 | Comprehensive README | **Complete** | Root README and package README include setup, reproduction, limitations, and evidence links |

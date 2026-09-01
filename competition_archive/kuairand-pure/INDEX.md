@@ -51,12 +51,13 @@ required for the public claim.
 
 ## Accounting convention
 
-Token comparisons use non-cache input + output. For the `gemini-3.7-flash`-only trajectory through Cycle 2, the
-directly attributable cumulative minimum is 2,070,960 tokens. The persistent
-META session spans Cycles 2–4 and has no per-cycle split, so assigning its entire
-827,670-token total gives a conservative upper bound of 2,898,630.
+Token comparisons use total input + output including cache-read input, matching
+the challenge's resource-reporting language. For the `gemini-3.7-flash`-only
+trajectory through Cycle 2, the directly attributable cumulative minimum is
+45,043,916 tokens. The persistent META session spans Cycles 2–4 and has no
+per-cycle split, so assigning its entire non-cache and cache-read usage gives a
+conservative upper bound of 51,173,911.
 
-The headline `gpt-5.6-luna` 3h baseline reports 335,122 non-cache input tokens plus
-69,812 output tokens, or **404,934** comparison tokens. Its raw input-plus-output
-snapshot is 28,069,574 because 27,664,640 cache-read tokens are reported inside
-the input field and excluded from the comparison axis.
+The headline `gpt-5.6-luna` 3h baseline reports **28,069,574** total
+input-plus-output tokens, including 27,664,640 cache-read input tokens. Its
+non-cache input plus output is 404,934.

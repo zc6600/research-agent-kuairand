@@ -30,17 +30,19 @@ generalization estimate.
 
 ## Token accounting
 
-The comparison axis is non-cache input plus output tokens:
+The comparison axis is total input plus output including cache-read input:
 
 | Boundary | Tokens | Meaning |
 |---|---:|---|
-| Cycle-1 system cost plus Cycle-2 Scientist | **2,070,960** | Directly attributable cumulative minimum through Cycle 2 |
-| Same boundary with unsplittable META aggregate included | **2,898,630** | Conservative upper bound; includes the complete 827,670-token META aggregate spanning Cycles 2–4 |
+| Cycle-1 system cost plus Cycle-2 Scientist | **45,043,916** | Directly attributable cumulative minimum through Cycle 2 |
+| Same boundary with unsplittable META aggregate included | **51,173,911** | Conservative upper bound; includes the complete META aggregate spanning Cycles 2–4 |
 
-The interval is an accounting bound, not uncertainty on the score. The Cycle-2
-Scientist session itself contributed **802,865** non-cache input + output tokens.
-The exact META slice at the Cycle-2 boundary was not recorded, so the figure
-uses the interval rather than inventing a point estimate.
+The interval is an accounting bound, not uncertainty on the score. Its
+supporting non-cache interval is 2,070,960–2,898,630. The Cycle-2 Scientist
+session itself contributed **802,865** non-cache input + output tokens and
+**20,301,989** cache-read input tokens. The exact META slice at the Cycle-2
+boundary was not recorded, so the figure uses the interval rather than
+inventing a point estimate.
 
 ## Protocol qualification
 

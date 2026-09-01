@@ -22,8 +22,8 @@ repository when their provenance is relevant.
 
 The retained run used 4 autonomous META–Scientist cycles out of the
 50-iteration cap, with 13 named E001–E013 experiments (7 Full evaluations),
-1h 55m 29s agent wall-clock, 6,833,808 non-cache input+output tokens, and
-0 GPU-hours.
+1h 55m 29s agent wall-clock, 48,240,128 total input+output tokens including
+cache-read input, and 0 GPU-hours.
 
 Start with `research-agent-kuairand/README.md`. For the complete project context,
 use the root README and `docs/FINAL_REPORT.md` in the public repository.

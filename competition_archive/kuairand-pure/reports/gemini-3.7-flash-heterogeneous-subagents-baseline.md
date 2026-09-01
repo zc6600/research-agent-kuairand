@@ -135,7 +135,8 @@ For the canonical clean heterogeneous run, the 32 native sessions are eight
 each of `variant-v1`, `variant-v2`, `variant-v3`, and `comparator`. Thus the
 previously reported `997,376` was the main-agent subtotal, not the experiment
 total. The corrected all-agent figure is `7,726,649` before cache-read context,
-or `39,607,277` when cache-read context is included.
+or `39,607,277` when cache-read context is included; the comparison figure uses
+the latter total-token value.
 
 The raw runner logs were stored under the child repository's private `.git/`
 metadata and are intentionally not part of the public archive. The public

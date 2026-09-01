@@ -6,6 +6,7 @@ This directory contains the deeper documentation behind the high-level [`Researc
 
 | If you want to understand... | Read |
 |---|---|
+| The concise Devpost-ready project story, stack, results, lessons, and team | [`project_story.md`](project_story.md) |
 | The problem, core insight, autonomous research trajectory, results, and competition narrative | [`FINAL_REPORT.md`](FINAL_REPORT.md) |
 | Scientist / META / Runtime ownership, memory semantics, State, Git, serial and parallel execution | [`ARCHITECTURE.md`](ARCHITECTURE.md) |
 | The reproducible Research Agent submission, prediction file, evaluator, and evidence bundle | [`../submission/research-agent-kuairand/`](../submission/research-agent-kuairand/) |
@@ -37,6 +38,7 @@ final report.
 ## Documentation boundaries
 
 - **README** — product-level mental model, quick start, and navigation.
+- **project_story.md** — concise Devpost-ready narrative and team summary.
 - **FINAL_REPORT** — competition/research narrative and evidence.
 - **ARCHITECTURE** — implementation truth: ownership, persistence, State, and execution semantics.
 - **reports/** — dated system and execution audits; useful evidence, but not normative architecture.

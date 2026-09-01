@@ -82,12 +82,15 @@ Across the four retained E001–E013 cycle runs:
 
 - agent-loop iterations: **4 autonomous cycles out of the 50-iteration cap**;
   the 13 named E001–E013 records are experiments nested within those cycles;
-- non-cache LLM input + output: 6,833,808 tokens;
+- total LLM input + output including cache-read input: **48,240,128 tokens**;
+- non-cache input + output: 4,020,880 tokens;
 - cache-read input: 44,219,248 tokens;
 - combined agent wall-clock: 1h 55m 29s;
 - training/evaluation GPU use: 0 GPU-hours.
 
-The telemetry `model` fields use the normalized agent-model labels
+AGY reports cache-read input separately from `input`, while Codex includes it
+inside `input`; the totals above normalize those runner-specific semantics
+without double-counting cache-read tokens. The telemetry `model` fields use the normalized agent-model labels
 `gemini-3.7-flash`, `gpt-5.6-sol`, and `gpt-5.6-luna`. The low-level `cli` and
 `runner` fields retain the historical launcher identifiers so the raw records
 remain reproducible.

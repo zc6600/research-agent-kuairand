@@ -13,6 +13,7 @@ control in the comparison table.
 | Actual wall-clock | 4,059.946s (67m39.9s) |
 | Measured non-cache tokens | 1,117,370 (1,051,695 input + 65,675 output) |
 | Cache-read tokens | 7,447,606 (reported separately) |
+| **Total input + output including cache-read** | **8,564,976** |
 | GPU-hours | 0 (Apple Silicon MPS was available; the run used the local target pipeline) |
 | Public-validation rows | 124,909 |
 | GAUC | 0.6714473005 |

@@ -19,7 +19,7 @@ Research Agent was evaluated end to end on Problem 2 using the required KuaiRand
 | Official five-field FM | 0.6674000 | 0.5357000 | 0.6016000 | — |
 | **Research Agent submission** | **0.6728421** | **0.5390304** | **0.6059363** | **+0.0043363** |
 
-The retained E001–E013 trajectory used **4 autonomous META–Scientist cycles out of the 50-iteration cap** (13 named experiments, including 7 Full evaluations), zero post-launch manual scientific interventions, and zero GPU-hours. Its four agent runs consumed 6,833,808 non-cache input + output tokens. The final 170,588-row test prediction file passes the unchanged Starter Kit alignment checker.
+The retained E001–E013 trajectory used **4 autonomous META–Scientist cycles out of the 50-iteration cap** (13 named experiments, including 7 Full evaluations), zero post-launch manual scientific interventions, and zero GPU-hours. Its four agent runs consumed **48,240,128 total input + output tokens including cache-read input** (4,020,880 excluding cache-read). The final 170,588-row test prediction file passes the unchanged Starter Kit alignment checker.
 
 - [Final technical report](docs/FINAL_REPORT.md)
 - [Public Research Agent code, evidence, iteration logs, telemetry, and checked output](submission/research-agent-kuairand/)
@@ -261,6 +261,7 @@ Start with [`docs/README.md`](docs/README.md) for the full map.
 
 | Topic | Document |
 |---|---|
+| Devpost-ready project narrative | [`docs/project_story.md`](docs/project_story.md) |
 | Why the system exists, competition story, results, limitations | [`docs/FINAL_REPORT.md`](docs/FINAL_REPORT.md) |
 | Ownership, memory semantics, State, Git, serial/parallel execution | [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) |
 | Competition baselines, archived research worlds, and failure analyses | [`competition_archive/kuairand-pure/`](competition_archive/kuairand-pure/INDEX.md) |

@@ -11,19 +11,20 @@ the task. The stronger result is that Research Agent produced the best retained
 public-validation checkpoint while preserving a substantially clearer boundary
 between a metric observation and a scientific claim.
 
-The comparison uses measured **non-cache input + output tokens**. Cache-read
-context is reported separately in the source ledgers because cache accounting
-differs across runners and would otherwise dominate the horizontal axis.
+The comparison uses measured **total input + output tokens including
+cache-read input**, matching the challenge's resource-reporting language.
+Runner-specific telemetry is normalized without double counting: AGY reports
+cache-read separately from `input`, while Codex includes it inside `input`.
 
-![Primary score versus measured non-cache LLM tokens](../../../docs/figures/token-score-comparison.svg)
+![Primary score versus measured total LLM tokens including cache-read input](../../../docs/figures/token-score-comparison.svg)
 
-| Agent system | Non-cache input + output | Best public-validation Primary | Evidence qualification |
+| Agent system | Total input + output, including cache-read | Best public-validation Primary | Evidence qualification |
 |---|---:|---:|---|
-| **`gpt-5.6-luna` 3h direct Goal baseline** | **404,934** | **approximately 0.6046** | Provisional: report/README score with measured Codex telemetry; terminal closed after `task_complete` |
-| **AGY `gemini-3.7-flash` 2h direct Goal baseline** | **1,117,370** | **0.6045803** | Artifact-backed corrected rerun; target binding and independent re-score documented |
-| `gemini-3.7-flash`-only Research Agent trajectory, through Cycle 2 | 2,070,960–2,898,630* | 0.6052 | Artifact-backed; online-history semantics noted |
-| Research Agent submission | 6,833,808 | **0.6059363** | Verified implementation, full ledger, reproduction result, and output check |
-| `gemini-3.7-flash` heterogeneous subagents | 7,726,649 | approximately 0.6047 | Artifact-backed separate run; not the submitted result |
+| **AGY `gemini-3.7-flash` 2h direct Goal baseline** | **8,564,976** | **0.6045803** | Artifact-backed corrected rerun; target binding and independent re-score documented |
+| **`gpt-5.6-luna` 3h direct Goal baseline** | **28,069,574** | **approximately 0.6046** | Provisional: report/README score with measured Codex telemetry; terminal closed after `task_complete` |
+| `gemini-3.7-flash` heterogeneous subagents | 39,607,277 | approximately 0.6047 | Artifact-backed separate run; not the submitted result |
+| `gemini-3.7-flash`-only Research Agent trajectory, through Cycle 2 | 45,043,916–51,173,911* | 0.6052 | Artifact-backed; online-history semantics noted |
+| Research Agent submission | 48,240,128 | **0.6059363** | Verified implementation, full ledger, reproduction result, and output check |
 
 \* The `gemini-3.7-flash`-only range is an accounting bound, not score uncertainty. Its META
 session spans Cycles 2–4 and exposes only one aggregate token total.
@@ -54,11 +55,12 @@ This supports two useful conclusions:
 
 The token plot therefore should not be presented as a conventional efficiency
 frontier. It is an outcome-versus-investment view with evidence qualification.
-The `gpt-5.6-luna` 3h direct baseline remains the lowest-token strong optimizer in this
-updated comparison; the corrected AGY run reaches `0.6045803` with a complete target-bound
-rerun; the `gemini-3.7-flash`-only Research Agent reaches a strong `0.6052` by Cycle 2; the Research Agent submission is the
-highest-scoring verified research result; heterogeneous delegation consumed
-slightly more measured tokens without surpassing the submitted result.
+The corrected AGY run is the lowest-total-token strong optimizer and reaches
+`0.6045803` with a complete target-bound rerun; the
+`gemini-3.7-flash`-only Research Agent reaches a strong `0.6052` by Cycle 2; the
+Research Agent submission is the highest-scoring verified research result;
+heterogeneous delegation consumed fewer total tokens than the submission
+without surpassing it.
 
 ## What score alone hides
 
@@ -78,11 +80,12 @@ The `gemini-3.7-flash`-only comparison is frozen after Cycle 2 and was run separ
 `gemini-3.7-flash` High for both META and Scientist. E008 trained a single Seed-42 DIN and
 reached GAUC `0.6725`, nDCG@5 `0.5380`, and Primary `0.6052` at 02:00:48
 Singapore time, about 14 minutes after the resume began. The Cycle-2 Scientist
-session used 802,865 non-cache tokens. Together with the complete Cycle-1 cost,
-2,070,960 tokens are directly attributable through Cycle 2. Because the
-persistent META session reports only one aggregate across Cycles 2–4, the exact
-Cycle-2 META slice is unavailable; assigning the entire 827,670-token aggregate
-produces a conservative upper bound of 2,898,630.
+session used 802,865 non-cache tokens and 20,301,989 cache-read tokens. Together
+with the complete Cycle-1 cost, 45,043,916 total tokens are directly
+attributable through Cycle 2. Because the persistent META session reports only
+one aggregate across Cycles 2–4, the exact Cycle-2 META slice is unavailable;
+assigning its entire 827,670 non-cache tokens and 5,302,325 cache-read tokens
+produces a conservative upper bound of 51,173,911.
 
 The shared validation sequence builder uses earlier validation labels when it
 constructs engaged/negative-history facets. E008, however, uses only the `vid`
@@ -141,10 +144,10 @@ changes under the same general framework.
 > highest verified public-validation checkpoint in our recorded comparison and
 > preserved the evidence required to inspect why it was retained.
 
-The `gpt-5.6-luna` 3h baseline's raw snapshot contains 28,069,574 total tokens,
-including 27,664,640 cache-read tokens. Under the figure's non-cache convention
-it contributes 335,122 input plus 69,812 output tokens, or 404,934 comparison
-tokens; reasoning tokens are a subset of output and are not added again. The
+The `gpt-5.6-luna` 3h baseline's comparison value is 28,069,574 total tokens,
+including 27,664,640 cache-read tokens. Its supporting non-cache view is
+335,122 input plus 69,812 output tokens, or 404,934; reasoning tokens are a
+subset of output and are not added again. The
 run's three-hour budget was not fully consumed: its measured wall time was about
 1h 55m, and the interactive terminal was closed after `task_complete`.
 

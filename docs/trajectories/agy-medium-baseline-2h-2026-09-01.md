@@ -58,11 +58,12 @@ multi-seed ensemble, and public-validation blend optimization.
 | Runner status | `closed` |
 | Terminal status | `completed` |
 | Exit code | `0` |
-| Measured total | **1,117,370 tokens** |
+| Total input + output including cache-read | **8,564,976 tokens** |
+| Non-cache input + output | 1,117,370 tokens |
 | Input | 1,051,695 |
 | Output | 65,675 |
 | Reasoning | 11,607 |
-| Cache read | 7,447,606 (reported separately; not included in total) |
+| Cache read | 7,447,606 |
 
 The 20,358-token workspace probe and the 946,615-token invalid-workspace
 attempt are separate invocations and are not included in the formal rerun
@@ -124,12 +125,12 @@ AutoCrossNet_seed2024     0.35
 - Focused runner, baseline, and usage tests passed (28 tests); the full
   research-agent suite had also passed earlier (187 tests).
 
-## Artifact links
+## Public evidence links
 
-- [`run.json`](../../projects/p0_baseline_antigravity_2h/.git/research-agent-baseline/a2723fa527c948eca931b9ac4dc9f784/run.json)
-- [`model-usage.json`](../../projects/p0_baseline_antigravity_2h/.git/research-agent-baseline/a2723fa527c948eca931b9ac4dc9f784/baseline/model-usage.json)
-- [`baseline.log`](../../projects/p0_baseline_antigravity_2h/.git/research-agent-baseline/a2723fa527c948eca931b9ac4dc9f784/baseline/baseline.log)
-- [`AGY raw log`](../../projects/p0_baseline_antigravity_2h/.git/agy-cli-corrected.log)
-- [`final submission`](../../projects/p0_baseline_antigravity_2h/outputs/submission_valid_best.csv)
-- [`summary metrics`](../../projects/p0_baseline_antigravity_2h/outputs/summary_metrics.json)
-- [`blend optimizer`](../../projects/p0_baseline_antigravity_2h/optimize_blend.py)
+- [Compact score and usage snapshot](../../competition_archive/kuairand-pure/evidence/agy-medium-baseline-2h-2026-09-01.md)
+- [Archived comparison report](../../competition_archive/kuairand-pure/reports/agy-medium-baseline-2h-2026-09-01.md)
+- [Competition evidence index](../../competition_archive/kuairand-pure/INDEX.md)
+
+The raw lifecycle JSON, full terminal log, generated submission, summary
+metrics, and blend optimizer remain local child-project artifacts and are not
+presented as public repository links.
