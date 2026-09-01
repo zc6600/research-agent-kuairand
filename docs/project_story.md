@@ -148,6 +148,10 @@ benchmark result.
 | **Final retained submission** | **0.6728421** | **0.5390304** | **0.6059363** |
 | Improvement | **+0.0054421** | **+0.0033304** | **+0.0043363** |
 
+> Research Agent achieved the highest verified public-validation score in our
+> recorded comparison, outperforming the direct use of general-purpose coding
+> agents such as Codex and AGY/Gemini.
+
 The retained trajectory reached this result through four autonomous
 META–Scientist cycles and 13 named experiments, with zero post-launch manual
 scientific interventions, 48,240,128 total input + output tokens including
