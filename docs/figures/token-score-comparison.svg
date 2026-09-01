@@ -28,9 +28,9 @@
 
   <g font-family="Inter, Arial, sans-serif">
     <circle cx="134" cy="265" r="8" fill="#ffffff" stroke="#4666a8" stroke-width="3"/>
-    <line x1="141" y1="258" x2="184" y2="211" stroke="#778196"/>
-    <text x="188" y="204" font-size="13" font-weight="600" fill="#172033">gpt-5.6-luna 3h direct</text>
-    <text x="188" y="222" font-size="12" fill="#586174">0.405M · ≈0.6046 · provisional</text>
+    <line x1="141" y1="258" x2="174" y2="197" stroke="#778196"/>
+    <text x="178" y="190" font-size="13" font-weight="600" fill="#172033">gpt-5.6-luna 3h direct</text>
+    <text x="178" y="208" font-size="12" fill="#586174">0.405M · ≈0.6046 · provisional</text>
 
     <circle cx="235" cy="275" r="8" fill="#ffffff" stroke="#4666a8" stroke-width="3"/>
     <line x1="241" y1="281" x2="282" y2="320" stroke="#778196"/>
