@@ -6,7 +6,7 @@
 
 Research Agent is a reusable agent Skill backed by a lightweight runtime framework for autonomous, evidence-driven machine-learning research. It separates a persistent research world from temporary Scientist reasoning trajectories so that verified progress, failed experiments, implementation state, and scientific intuition can survive without forcing every future Scientist to continue the same line of thought.
 
-On the required KuaiRand-Pure benchmark, the Research Agent submission reached public-validation **GAUC 0.6728421**, **nDCG@5 0.5390304**, and **primary 0.6059363**. This is an absolute **+0.0043363 primary** improvement over the published validation reference. A separate post-freeze offline audit of the final test predictions produced hidden/test **GAUC 0.6669537**, **nDCG@5 0.5324907**, and **primary 0.5997222**. The submitted implementation is a CPU NumPy recommender scorer: it ranks candidate videos for each user and interaction context by combining 38 baseline demographic/video/context fields with 8 leakage-safe historical preference, affinity, match, tag, and video-age fields, then averaging eight Factorization Machines.
+On the required KuaiRand-Pure benchmark, the Research Agent submission reached public-validation **GAUC 0.6728421**, **nDCG@5 0.5390304**, and **primary 0.6059363**. This is an absolute **+0.0043363 primary** improvement over the published validation reference. The submitted implementation is a CPU NumPy recommender scorer: it ranks candidate videos for each user and interaction context by combining 38 baseline demographic/video/context fields with 8 leakage-safe historical preference, affinity, match, tag, and video-age fields, then averaging eight Factorization Machines.
 
 The canonical competition evidence is deliberately frozen at experiments E001–E013 and the final Research Agent submission. The Parallel/Synthesis episode is also described below as a trajectory example of how independent research worlds can be reviewed and handed to a fresh Scientist.
 
@@ -16,15 +16,12 @@ The canonical competition evidence is deliberately frozen at experiments E001–
 |---|---|
 | Challenge | TikTok TechJam 2026, Problem 2 — Autonomous Machine Learning Research Agent for Recommender Systems |
 | Required benchmark | KuaiRand-Pure |
-| Final development checkpoint | Final Research Agent implementation, source commit `338afcfd433aad01b1af362155ea2a262c06791c` |
+| Final development checkpoint | Final Research Agent implementation, public repository commit `c73e7035bf4a51ebd73068dc148a3d07c5ccd592` |
 | Submitted agent | Research Agent |
 | Submitted implementation | Eight-seed, 46-field Factorization Machine ensemble, rank $k=16$ |
 | Public-validation result | GAUC **0.6728421**, nDCG@5 **0.5390304**, primary **0.6059363** |
-| Hidden/test result (post-freeze offline audit) | GAUC **0.6669537**, nDCG@5 **0.5324907**, primary **0.5997222** |
 | Published validation reference | GAUC 0.6674, nDCG@5 0.5357, primary 0.6016 |
-| Published hidden-test FM reference | GAUC 0.6610, nDCG@5 0.5282, primary 0.5946 |
 | Absolute delta | GAUC **+0.0054421**, nDCG@5 **+0.0033304**, primary **+0.0043363** |
-| Hidden/test delta vs published FM reference | GAUC **+0.0059537**, nDCG@5 **+0.0042907**, primary **+0.0051222** |
 | Convergence | Three consecutive Full evaluations without a primary improvement greater than $\varepsilon=0.002$ |
 | Agent iterations | **4 autonomous cycles / 50-iteration cap**; 13 retained named experiments, including 7 Full evaluations |
 | Manual scientific interventions after launch | **0** in the retained research record |
@@ -32,7 +29,7 @@ The canonical competition evidence is deliberately frozen at experiments E001–
 | Final implementation runtime | **764.74 seconds** |
 | Retained E001–E013 agent runtime | **1h 55m 29s** across four cycle runs |
 | Measured LLM tokens | **6,833,808** non-cache input + output across E001–E013; cache-read input reported separately |
-| Development hidden-test access | None; hidden/test labels were not used for research, tuning, checkpoint selection, or convergence |
+| Development hidden-test access | None; the retained research trajectory used public validation only |
 | Bonus benchmarks | Not attempted; no KuaiRand-1K or KuaiRand-27K bonus claim |
 | Final submission CSV | **170,588 rows; Starter Kit checker passed** ([artifact and checksum](../submission/research-agent-kuairand/final/submit-check.txt)) |
 
@@ -121,7 +118,7 @@ The organizer's `starter_kit/evaluate.py` was not modified.
 
 The retained Full validation set contains 124,909 rows and 22,377 users. The deterministic Medium screen contains 31,536 rows from 5,590 complete users and is used only for economical screening and per-seed checkpoint selection. Medium and Smoke results never increment or reset the Full convergence counter.
 
-No hidden-test file or hidden label was used during development, model selection, or convergence. After the submitted implementation and its final prediction file were frozen, a separate offline audit evaluated the 2022-04-29 to 2022-05-08 rows from the complete released standard log with the unchanged Starter Kit evaluator. This audit is reported as a post-freeze hidden/test result and was not a development signal.
+No hidden-test file or hidden label was used during development, model selection, or convergence. Hidden-test scoring remains organizer-controlled.
 
 ### 2.3 Official references
 
@@ -130,8 +127,6 @@ No hidden-test file or hidden label was used during development, model selection
 | Random | 0.4993 | 0.4675 | 0.4834 | Evaluator sanity check |
 | Item popularity | 0.6387 | 0.5227 | 0.5807 | Static control |
 | Official five-field FM | **0.6674** | **0.5357** | **0.6016** | Competition reference to beat |
-
-The published hidden-test FM reference is GAUC 0.6610, nDCG@5 0.5282, and primary 0.5946. The post-freeze audit scored **GAUC 0.6669537**, **nDCG@5 0.5324907**, and **primary 0.5997222**, exceeding that reference by **+0.0059537**, **+0.0042907**, and **+0.0051222**, respectively. This is an offline reconstruction using the released full log and the official evaluator, not a score returned by the organizer's private leaderboard.
 
 ### 2.4 Submission schema
 
@@ -149,7 +144,7 @@ uv run --python 3.12.11 --with numpy==2.5.2 \
   --data_dir /absolute/path/to/KuaiRand-Pure/data --split test --check
 ```
 
-The checked [`research-agent-test.csv`](../submission/research-agent-kuairand/final/research-agent-test.csv) contains 170,588 prediction rows. The preserved [checker output and SHA-256](../submission/research-agent-kuairand/final/submit-check.txt) confirm schema and row alignment. Test labels were not used for development, checkpoint selection, or convergence; they were used only in the post-freeze offline audit reported above.
+The checked [`research-agent-test.csv`](../submission/research-agent-kuairand/final/research-agent-test.csv) contains 170,588 prediction rows. The preserved [checker output and SHA-256](../submission/research-agent-kuairand/final/submit-check.txt) confirm schema and row alignment. The submission-generation path does not consume test labels.
 
 ---
 
@@ -276,7 +271,6 @@ The submitted implementation keeps the reliable pointwise logistic FM family and
 | Full evaluation | 124,909 rows, 22,377 users |
 | Full result | GAUC **0.6728421**, nDCG@5 **0.5390304**, primary **0.6059363** |
 | Full model runtime | **764.74 seconds** |
-| Post-freeze hidden/test audit | GAUC **0.6669537**, nDCG@5 **0.5324907**, primary **0.5997222** |
 
 The public reproduction command is:
 
@@ -317,7 +311,7 @@ The read-only dashboard presents the retained result without allowing presentati
 | Eight-seed 38-field FM | 0.6712176 | 0.5376403 | 0.6044289 | +0.0028289 | Stronger ensemble baseline |
 | **Research Agent submitted implementation: eight-seed 46-field FM** | **0.6728421** | **0.5390304** | **0.6059363** | **+0.0043363** | **Validation-best final checkpoint** |
 
-The submitted implementation improves both official component metrics rather than trading one against the other. It is selected from public validation only. The post-freeze offline hidden/test audit is reported separately and did not influence implementation selection or convergence.
+The submitted implementation improves both official component metrics rather than trading one against the other. It is selected from public validation only.
 
 ### 5.2 Convergence
 
@@ -338,6 +332,7 @@ no agent-token cost and is shown as a horizontal score reference.
 *Figure 4. Outcome versus measured LLM-token investment. Shape and fill qualify
 the evidence; the plot is not a claim that all conditions used identical
 protocols or that the score differences are statistically significant.*
+[PNG export](figures/token-score-comparison.png)
 
 | Agent system | Non-cache input + output | Best public-validation Primary | Delta vs 0.6016 | Evidence status | Main search direction |
 |---|---:|---:|---:|---|---|
@@ -560,10 +555,11 @@ evaluation, and evidence remained connected throughout the project:
 
 | Team member | Primary contribution |
 |---|---|
-| Member 1 | System direction, Research Agent architecture, competition framing, and integration |
-| Member 2 | KuaiRand-Pure data workflow, Starter Kit contract checks, metric verification, and submission alignment |
-| Member 3 | Feature/model/ensemble implementation support and experimental-evidence review |
-| Member 4 | Reproducibility, research records, telemetry, documentation, dashboard materials, and submission packaging |
+| **Chen Zhu — Team Lead** ([@zc18202534657](https://github.com/zc18202534657)) | Overall system direction, Research Agent architecture, competition framing, end-to-end integration, and final submission coordination |
+| **Zhou Ziyu** ([@zziyu-4104](https://github.com/zziyu-4104)) | Recommender modeling, feature and ensemble experimentation, and experimental-evidence review |
+| **Shilin Xu** ([@xushilin37](https://github.com/xushilin37)) | KuaiRand-Pure data workflow, Starter Kit contract checks, metric verification, and submission alignment |
+| **GE GAO** ([@gegao855](https://github.com/gegao855)) | Agent runtime engineering, execution reliability, testing, and integration support |
+| **Jiran Li** ([@jiran-li](https://github.com/jiran-li)) | Reproducibility, research records, telemetry, documentation, dashboard materials, and submission packaging |
 
 The division above concerns human development of the framework, benchmark setup,
 verification, and presentation. It does not change the autonomy accounting for the
@@ -588,7 +584,9 @@ KuaiRand-Pure determines the required primary score and was the only scored benc
 
 ### 7.4 Hidden-test reporting boundary
 
-The final Research Agent prediction file was audited after implementation freeze with the unchanged Starter Kit evaluator on the complete released test window. The audit produced **GAUC 0.6669537**, **nDCG@5 0.5324907**, and **primary 0.5997222**. It was not used for development, tuning, implementation selection, or convergence. Because this is an offline reconstruction from released data rather than an organizer leaderboard response, any private organizer score remains authoritative if the two differ.
+The repository publishes the format-checked final prediction artifact but does
+not claim an independently reconstructed hidden-test score. Organizer scoring
+remains authoritative.
 
 ---
 
@@ -599,7 +597,7 @@ The public package maps the written description, code, iteration evidence, final
 | Deliverable | Current status | Required next evidence |
 |---|---|---|
 | Written project description | **Complete** | Adapt the opening sections to the Devpost text fields |
-| Public framework code | **Complete** | Use the public `research_agent` branch |
+| Public framework code | **Complete** | Use the public repository's `main` branch |
 | Canonical Research Agent project snapshot | **Complete** | [`submission/research-agent-kuairand/`](../submission/research-agent-kuairand/) |
 | Comprehensive README | **Complete** | Root README and package README include setup, reproduction, limitations, and evidence links |
 | Run and iteration logs | **Complete** | Public E001–E013 ledger, code-diff references, reports, and recovery evidence |
@@ -608,7 +606,7 @@ The public package maps the written description, code, iteration evidence, final
 | Submission validation | **Complete** | Starter Kit `submit.py --check` passed; output and checksum are preserved |
 | Iteration count | **Complete** | 4 autonomous cycles / 50-iteration cap; E001–E013 experiment ledger |
 | Resource accounting | **Complete** | Four-cycle measured usage telemetry, environment pin, wall-clock, and GPU accounting |
-| Team contributions | **Complete** | Broad four-member responsibilities are documented in §6.4 and can be copied into Devpost |
+| Team contributions | **Complete** | Five named team members and their primary contributions are documented in §6.4 |
 
 ---
 
@@ -618,7 +616,7 @@ Research Agent treats autonomous ML research as a persistence problem as much as
 
 A persistent agent can remember useful science while becoming anchored to its own trajectory. A naive restart restores independence but discards progress. Research Agent separates those lifetimes: evidence, knowledge, implementation State, and fallible scientific intuition persist; Scientist cognition remains temporary and retains authority over what to test next.
 
-The KuaiRand-Pure run demonstrates that this design can support a complete autonomous research loop. The agent reproduced a valid baseline, explored multiple parts of the algorithmic stack, recovered from an execution error, preserved negative findings, converged under the Starter Kit rule, and delivered a public-validation primary **0.6059363**, an absolute **+0.0043363** over the official validation reference, with **zero post-launch manual scientific interventions** and **zero GPU-hours**. A separate post-freeze audit of the final test predictions yielded hidden/test primary **0.5997222**.
+The KuaiRand-Pure run demonstrates that this design can support a complete autonomous research loop. The agent reproduced a valid baseline, explored multiple parts of the algorithmic stack, recovered from an execution error, preserved negative findings, converged under the Starter Kit rule, and delivered a public-validation primary **0.6059363**, an absolute **+0.0043363** over the official validation reference, with **zero post-launch manual scientific interventions** and **zero GPU-hours**.
 
 The strongest claim is not that one architecture eliminates all research bias. It is that long-running machine research can preserve scientific progress without requiring one reasoning trajectory to remain alive forever.
 

@@ -133,11 +133,34 @@ The implementation-level ownership and artifact semantics are documented in [`do
 
 ## Quick start
 
-The launcher is self-contained through `uv`:
+Requirements:
+
+- Git and [`uv`](https://docs.astral.sh/uv/).
+- At least one supported agent CLI installed and authenticated: Codex, Gemini,
+  Claude, AGY, or OpenCode.
+
+For example, install Codex using the
+[official Codex CLI instructions](https://developers.openai.com/codex/cli),
+then run `codex` once and complete the offered sign-in flow:
 
 ```bash
-cd research_agent
+curl -fsSL https://chatgpt.com/codex/install.sh | sh
+codex
+```
+
+Clone the repository and prepare its pinned Python environment:
+
+```bash
+git clone https://github.com/zc6600/research-agent-kuairand.git
+cd research-agent-kuairand
+uv sync --locked --python 3.12
+```
+
+Run the launcher from the repository root:
+
+```bash
 ./scripts/research-agent --help
+./scripts/research-agent doctor
 ```
 
 Run one bounded autonomous research cycle on an existing target:
@@ -185,7 +208,6 @@ Research Agent includes a read-only local dashboard for presenting a project's
 research result and provenance:
 
 ```bash
-cd research_agent
 ./scripts/research-agent gui \
   --target /absolute/path/to/project
 ```
@@ -248,13 +270,13 @@ Trajectory analyses are intentionally post-hoc. They help us understand failure 
 
 ## Team contributions
 
-The team worked across overlapping areas rather than treating the project as four
-isolated components:
+The team worked across overlapping areas, with the following primary contributions:
 
-- **Member 1 — system direction and integration:** coordinated the Research Agent architecture, competition framing, and end-to-end integration.
-- **Member 2 — data and evaluation:** prepared the KuaiRand-Pure workflow, checked the Starter Kit contract, and verified metrics and submission alignment.
-- **Member 3 — modeling and experimentation:** supported feature, model, and ensemble implementation and reviewed the retained experimental evidence.
-- **Member 4 — reproducibility and presentation:** organized research records, telemetry, documentation, dashboard materials, and the public submission package.
+- **Chen Zhu — Team Lead ([@zc18202534657](https://github.com/zc18202534657)):** overall system direction, Research Agent architecture, competition framing, end-to-end integration, and final submission coordination.
+- **Zhou Ziyu ([@zziyu-4104](https://github.com/zziyu-4104)):** recommender modeling, feature and ensemble experimentation, and experimental-evidence review.
+- **Shilin Xu ([@xushilin37](https://github.com/xushilin37)):** KuaiRand-Pure data workflow, Starter Kit contract checks, metric verification, and submission alignment.
+- **GE GAO ([@gegao855](https://github.com/gegao855)):** agent runtime engineering, execution reliability, testing, and integration support.
+- **Jiran Li ([@jiran-li](https://github.com/jiran-li)):** reproducibility, research records, telemetry, documentation, dashboard materials, and submission packaging.
 
 These responsibilities describe human work on the framework, benchmark setup,
 verification, and submission. After the retained competition run was launched,

@@ -1,6 +1,6 @@
 # KuaiRand-Pure Research Agent submission
 
-This directory is the sanitized, public evidence package for the E001–E013 Research Agent trajectory described in [`../../docs/FINAL_REPORT.md`](../../docs/FINAL_REPORT.md). It contains the final submitted implementation and intentionally excludes raw datasets, caches, credentials, personal paths, and later local experiments.
+This directory is the sanitized, public evidence package for the E001–E013 Research Agent trajectory described in the [complete public report](https://github.com/zc6600/research-agent-kuairand/blob/main/docs/FINAL_REPORT.md). It contains the final submitted implementation and intentionally excludes raw datasets, caches, credentials, personal paths, and later local experiments.
 
 ## Verified result
 
@@ -9,7 +9,10 @@ This directory is the sanitized, public evidence package for the E001–E013 Res
 | Official five-field FM | 0.6674000 | 0.5357000 | 0.6016000 | — |
 | **Research Agent submission: eight-seed 46-field FM** | **0.6728421** | **0.5390304** | **0.6059363** | **+0.0043363** |
 
-Source commit for the submitted implementation: `338afcfd433aad01b1af362155ea2a262c06791c`.
+Public repository commit containing the submitted implementation:
+`c73e7035bf4a51ebd73068dc148a3d07c5ccd592`. The SHA-256 of
+`system/ensemble_46.py` is
+`c6fc9c91386012d437d18251d528d8aa7b13c10e8b1784bb5e117c6a2a304205`.
 
 The final prediction file contains 170,588 test rows and passed the organizer's unchanged Starter Kit alignment checker. No hidden-test metric was used for development or checkpoint selection.
 
