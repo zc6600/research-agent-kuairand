@@ -228,16 +228,6 @@ The long-term goal is a research system that gets better over time without
 requiring one agent to think forever—and without inheriting the search biases
 of any particular model family that thought along the way.
 
-## Team contributions
-
-| Team member | Primary contribution |
-|---|---|
-| **Chen Zhu — Team Lead** ([@zc18202534657](https://github.com/zc18202534657)) | Overall direction, architecture, competition framing, integration, and final submission coordination |
-| **Zhou Ziyu** ([@zziyu-4104](https://github.com/zziyu-4104)) | Recommender modeling, feature and ensemble experimentation, and evidence review |
-| **Shilin Xu** ([@xushilin37](https://github.com/xushilin37)) | KuaiRand-Pure data workflow, Starter Kit contract checks, metric verification, and submission alignment |
-| **GE GAO** ([@gegao855](https://github.com/gegao855)) | Runtime engineering, execution reliability, testing, and integration support |
-| **Jiran Li** ([@jiran-li](https://github.com/jiran-li)) | Reproducibility, research records, telemetry, documentation, dashboard materials, and packaging |
-
 ## Links
 
 - Repository: https://github.com/zc6600/research-agent-kuairand
