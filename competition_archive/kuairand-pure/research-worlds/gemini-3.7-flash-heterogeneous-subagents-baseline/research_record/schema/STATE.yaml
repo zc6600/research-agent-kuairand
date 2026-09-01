@@ -1,0 +1,29 @@
+# STATE.yaml 是 research record 的一部分，用于记录当前 materialized State 的语义信息。
+# 真正可复用、可比较、可重新取用的 State 只有 system/**。
+# 这个记录不是科研日记，也不记录 research trajectory、META worldview、下一步计划、
+# active bottleneck、convergence progress 或一次实验的资源消耗。
+# 创建 state/<id> 时，与该 State 对应的 STATE.yaml 记录和 system/** 一起提交并被冻结；
+# 后来对旧 State 获得的新实验事实写入 RESEARCH_RECORD，不回写历史 STATE.yaml。
+id: <state-id>
+git_tag: state/<state-id>
+derived_from: <state-id or null>
+
+summary: >
+  <用最少的语义描述这个版本的系统是什么>
+
+system:
+  <第一次实现需要完整描述，后续可以直接引用改进前版本，补充当前系统的重要事实。
+   例如数据、模型、训练方式、evaluation、当前能力。
+   内部结构由 Agent 根据项目自行组织。>
+
+performance:
+  <该 State 创建时已有证据支持的代表性 benchmark / metrics 摘要。
+   它帮助未来 Scientist 理解、比较和取用该 State，但不是第二份实验账本。
+   对非显然来源的数字注明 RESEARCH_RECORD 中的 experiment / diagnostic evidence_ref。
+   State 创建之后对该版本得到的新 performance 只追加到 RESEARCH_RECORD，不修改这里。>
+
+implementation:
+  <帮助 LLM 回到代码世界的语义索引。
+   可以记录关键文件、模块、入口、配置和复现该版本所需的实现事实。
+   不需要复制代码本身。真正可 materialize 的 State 固定为 system/**；
+   本字段只是 research record 中的语义说明，不再维护第二份 scope。>

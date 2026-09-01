@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
+SKILL_ROOT="$(cd "$SCRIPT_DIR/.." && pwd -P)"
+export PATH="$SCRIPT_DIR:$PATH"
+export RESEARCH_AGENT_STATE_TOOL="$SCRIPT_DIR/research-agent"
+export PYTHONPATH="$SKILL_ROOT/src${PYTHONPATH:+:$PYTHONPATH}"
+if [[ -z "${UV_CACHE_DIR:-}" ]]; then
+  export UV_CACHE_DIR="${RESEARCH_UV_CACHE_DIR:-$SKILL_ROOT/.uv-cache}"
+fi
+exec uv run --project "$SKILL_ROOT" python -m research_agent "$@"

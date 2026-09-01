@@ -1,0 +1,105 @@
+{
+  "variant": "v2",
+  "hypothesis": "Day-of-Week + Hour-of-Day Dual Context (12 fields in Log-Duration DCN-FM)",
+  "fields": [
+    "user_id",
+    "video_id",
+    "author_id",
+    "tab",
+    "dur_bucket",
+    "user_active_degree",
+    "follow_user_num_range",
+    "fans_user_num_range",
+    "friend_user_num_range",
+    "register_days_range",
+    "dow",
+    "hour"
+  ],
+  "hyperparameters": {
+    "k": 16,
+    "lr": 0.001,
+    "l2": 1e-06,
+    "max_epochs": 20,
+    "batch_size": 8192,
+    "patience": 4,
+    "seed": 0,
+    "num_log_bins": 20,
+    "num_fields": 12,
+    "cross_dim": 192
+  },
+  "best_epoch": 4,
+  "best_metrics": {
+    "GAUC": 0.6709856390953064,
+    "nDCG@5": 0.5376847982406616,
+    "primary": 0.6043351888656616,
+    "users": 22377.0,
+    "rows": 124909.0
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.5850767348493848,
+      "valid_gauc": 0.662926971912384,
+      "valid_ndcg5": 0.533883273601532,
+      "valid_primary": 0.598405122756958,
+      "epoch_time_sec": 4.873013019561768
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.5079262311969485,
+      "valid_gauc": 0.6678881049156189,
+      "valid_ndcg5": 0.5359665751457214,
+      "valid_primary": 0.6019273400306702,
+      "epoch_time_sec": 5.773990154266357
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.4996544544185911,
+      "valid_gauc": 0.6704353094100952,
+      "valid_ndcg5": 0.5373029708862305,
+      "valid_primary": 0.6038691401481628,
+      "epoch_time_sec": 6.162833213806152
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.49617146743195395,
+      "valid_gauc": 0.6709856390953064,
+      "valid_ndcg5": 0.5376847982406616,
+      "valid_primary": 0.6043351888656616,
+      "epoch_time_sec": 6.148354768753052
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.4919485764844077,
+      "valid_gauc": 0.6707686185836792,
+      "valid_ndcg5": 0.5374863743782043,
+      "valid_primary": 0.6041275262832642,
+      "epoch_time_sec": 6.1253252029418945
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.4864874671612467,
+      "valid_gauc": 0.6683717370033264,
+      "valid_ndcg5": 0.535933256149292,
+      "valid_primary": 0.6021524667739868,
+      "epoch_time_sec": 6.184674024581909
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.481003238260746,
+      "valid_gauc": 0.6627828478813171,
+      "valid_ndcg5": 0.5339308977127075,
+      "valid_primary": 0.5983568429946899,
+      "epoch_time_sec": 6.330323934555054
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.47460699741329465,
+      "valid_gauc": 0.6550489068031311,
+      "valid_ndcg5": 0.5303909778594971,
+      "valid_primary": 0.5927199125289917,
+      "epoch_time_sec": 6.0774431228637695
+    }
+  ],
+  "total_elapsed_time_sec": 47.67623519897461
+}

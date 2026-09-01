@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "record_type": "historical_parallel_synthesis",
+  "recorded_at": "2026-08-31",
+  "status": "reconstructed_and_safely_closed",
+  "parallel_id": "parallel-synthesis",
+  "project": "parallel-synthesis-kuairand-pure",
+  "target": "temporary parallel research world (removed before audit)",
+  "raw_artifacts": {
+    "available_now": false,
+    "historical_temp_worktree": "/var/folders/v7/2cm33p695kn20b7w63spx31m0000gn/T/research-agent-P8e1bd379-ufs24lap",
+    "historical_temp_worktree_present_now": false,
+    "parallel_result_json": "not_written_or_not_recovered",
+    "synthesis_final_review_normalized_json": "not_written_or_not_recovered",
+    "confidence_note": "Metrics and decisions were observed before cleanup; this durable record is reconstructed after cleanup."
+  },
+  "configuration": {
+    "meta_cli": "codex",
+    "scientist_cli": "agy",
+    "meta_model": "gpt-5.6-luna",
+    "scientist_model": "gemini-3.7-flash",
+    "meta_effort": "high",
+    "scientist_effort": "high",
+    "allow_edits": true,
+    "rounds": 1,
+    "branches": 3,
+    "keep": 1,
+    "parallelism": 3,
+    "synthesis": true,
+    "base_commit": "885ddb9b9a301712c9cfc6bed790073d1ece107e"
+  },
+  "branches": [
+    {
+      "branch_id": "r1b1",
+      "kind": "replica",
+      "status": "completed_rejected",
+      "decision": "rejected_as_redundant_and_weaker_evidence",
+      "metrics": {
+        "primary_approx": 0.6048
+      },
+      "candidate_commit": "7569ef62754a0470b7bed805318725317a995b2b"
+    },
+    {
+      "branch_id": "r1b2",
+      "kind": "replica",
+      "status": "completed_selected_primary",
+      "decision": "selected_by_first_luna_review",
+      "metrics": {
+        "GAUC": 0.672,
+        "nDCG@5": 0.5377,
+        "primary": 0.6048
+      },
+      "candidate_commit": "cee74a2a6a970919573988eee73d6ea83523fed5"
+    },
+    {
+      "branch_id": "r1b3",
+      "kind": "replica",
+      "status": "completed_reference_only",
+      "decision": "used_as_synthesis_reference",
+      "metrics": {
+        "primary_approx": 0.6039
+      },
+      "candidate_commit": "56f6f803aa40beaddcc79aedbeeb2290bc4cc1a3"
+    },
+    {
+      "branch_id": "s1",
+      "kind": "synthesis",
+      "status": "completed",
+      "decision": "synthesis_candidate_not_promoted",
+      "primary_branch": "r1b2",
+      "informed_by": ["r1b3"],
+      "metrics": {
+        "GAUC": 0.6726716756820679,
+        "nDCG@5": 0.5384355783462524,
+        "primary": 0.6055536270141602,
+        "users": 22377,
+        "rows": 124909,
+        "delta_gauc": 0.0052716756820679,
+        "delta_ndcg5": 0.0027355783462524,
+        "delta_primary": 0.0039536270141602
+      },
+      "candidate_commit": "a9610ef2d3476b42566ade4c604b64ec61ae51c9",
+      "system_state_dirty": false,
+      "candidate_state": {
+        "id": null,
+        "git_tag": null
+      }
+    }
+  ],
+  "primary_metric_formula": {
+    "expression": "(GAUC + nDCG@5) / 2",
+    "inputs": [
+      0.6726716756820679,
+      0.5384355783462524
+    ],
+    "exact": 0.6055536270141602,
+    "display_rounded_4dp": 0.6056
+  },
+  "synthesis_findings": {
+    "method": "six-field within-user pairwise BPR factorization machine",
+    "k": 32,
+    "seeds": 5,
+    "ensemble": "within-user rank normalization",
+    "submission_rows": 124909,
+    "reported_cpu_seconds": 12.1,
+    "negative_results": [
+      "Auxiliary click pairwise supervision degraded primary as click-loss weight increased.",
+      "Hard-negative ratio 0.8 degraded primary from approximately 0.6044 to 0.5945.",
+      "Listwise softmax underperformed the selected pairwise method."
+    ]
+  },
+  "terminal_state": {
+    "first_review": "completed",
+    "synthesis_check": "completed",
+    "synthesis_scientist": "completed",
+    "final_synthesis_review": "interrupted_before_result_write",
+    "runner_failure": "control_worktree_refresh_permission_denied_on_read_only_competition_files",
+    "promotion": "none",
+    "safe_shutdown": true
+  },
+  "resume": {
+    "direct_process_resume": false,
+    "research_context_resume": true,
+    "built_in_resume_scope": "serial META session from durable project state; not a cleaned parallel reviewer",
+    "current_mode": "reconstructable_not_directly_resumable",
+    "required_for_exact_continuation": [
+      "Restore the parallel research world or an external backup.",
+      "Verify candidate commit a9610ef2d3476b42566ade4c604b64ec61ae51c9 is reachable.",
+      "Restore the raw parallel artifacts and reviewer checkpoint if available."
+    ],
+    "fallback": "Create a new unused project and rerun from the recorded base/configuration, explicitly labeling it a rerun."
+  },
+  "resource_ledger": {
+    "goal": {
+      "tokensUsed": 2540720,
+      "timeUsedSeconds": 27984,
+      "time_human": "7h 46m 24s",
+      "scope": "whole Goal, not parallel-synthesis-only",
+      "status": "complete"
+    },
+    "parallel_synthesis": {
+      "per_call_breakdown": "unavailable_after_cleanup",
+      "reason": "Historical usage files were in the removed temporary runtime.",
+      "observed_first_outer_luna_reviewer_tokens": 132224,
+      "observed_token_scope": "single first-reviewer log only; not a parallel-synthesis total and not added to Goal aggregate"
+    }
+  },
+  "current_workspace_notes": [
+    "The temporary parallel directory and its runtime references were absent during the 2026-08-31 check.",
+    "An unrelated concurrent gemini-3.7-flash process was active and was not touched.",
+    "Pre-existing modification to research_agent/docs/FINAL_REPORT.md was preserved."
+  ],
+  "companion_markdown": "research_agent/docs/trajectories/parallel-synthesis.md"
+}

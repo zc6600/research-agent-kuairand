@@ -1,0 +1,21 @@
+{
+  "schema_version": 2,
+  "scope": "run_models",
+  "accounting_status": "measured",
+  "total": 28069574,
+  "models": [
+    {
+      "role": "baseline",
+      "runner": "codex",
+      "model": "gpt-5.6-luna",
+      "accounting_status": "measured",
+      "input": 27999762,
+      "output": 69812,
+      "reasoning": 29416,
+      "cache_read": 27664640,
+      "cache_write": 0,
+      "total": 28069574
+    }
+  ],
+  "observed_at": "2026-08-31T16:15:51.572411+00:00"
+}

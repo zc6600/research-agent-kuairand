@@ -1,0 +1,20 @@
+# BEGIN research-agent generated files
+.venv/
+.uv-cache/
+competition_data/
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# Mutable research memory lives in the current worktree, not in Git State history.
+research_record/RESEARCH_RECORD.yaml
+research_record/EXPLORE.md
+research_record/ENGINEERING.md
+research_record/KNOWLEDGE.md
+research_record/RESEARCH_INTUITION.md
+research_record/DO_BETTER.md
+research_record/logs/
+research_record/archive/
+# research_record/runtime/ has its own nested ignore rules.
+# research_record/STATE.yaml is intentionally NOT ignored: it accompanies State snapshots.
+# END research-agent generated files

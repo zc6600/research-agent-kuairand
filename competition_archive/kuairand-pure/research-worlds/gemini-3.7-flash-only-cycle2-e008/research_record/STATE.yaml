@@ -1,0 +1,60 @@
+id: s04-time-aware-super-learner
+git_tag: state/s04-time-aware-super-learner
+derived_from: s03-multi-paradigmatic-ranker
+scientist_report: research_record/reports/cycle-4.md
+
+summary: >
+  State-of-the-art recommendation ranking system on KuaiRand-Pure featuring Time-Aware Deep Interest Network (Time-DIN with logarithmic elapsed recency interval embeddings), Counterfactual Inverse Propensity Scoring (IPS-Time-DIN), Dynamic Field Squeeze-and-Excitation Recalibration (SENet-DIN), Listwise Candidate Softmax Regularization (ListNet-DIN), Behavior Sequence Transformer (BST), Cross-DIN, DualSeq-DIN, ESMM-DIN, and Simplex-Optimized Multi-Paradigmatic Master Ensembling, achieving 0.6721 GAUC / 0.5378 nDCG@5 / 0.6050 Primary on single model, and a benchmark-record 0.6724 GAUC / 0.5385 nDCG@5 / 0.6054 Primary (+0.0038 vs official baseline) on the optimal simplex rank blend.
+
+system:
+  data:
+    - Preprocessing with Polars over 29 categorical fields (user features, video features, author, tab, duration bucket, time/context).
+    - 7-facet sequence history tracking: item video ID sequence, author ID sequence, first tag sequence, positive engagement sequences (click/long-view), negative skip sequence, and relative timestamp elapsed intervals (delta_t).
+    - Inverse Propensity Score (IPS) weighting computed from random vs standard exposure frequencies.
+  models:
+    - Time-Aware DIN (TimeDINModel) with learned logarithmic elapsed interval bucket embeddings.
+    - Squeeze-and-Excitation DIN (SENetDINModel) with dynamic instance-conditioned field recalibration.
+    - Dual-Polarity DIN (PosNegDINModel) with positive engagement and negative skip attention heads.
+    - Unified Tri-Paradigm Ranker (UnifiedTriRanker) combining Time-Awareness, Pos/Neg Attention, and SENet recalibration.
+    - Behavior Sequence Transformer (BSTModel) with causal self-attention and positional embeddings.
+    - Cross-DIN (CrossDINModel) and Cross-BST (CrossBSTModel) with DCN-v2 explicit multiplicative crossings.
+    - Entire Space Multi-Task DIN (ESMMDINModel) for conversion funnel estimation.
+    - Deep Interest Network (DIN), DeepFM, DCN-v2, and Factorization Machine baselines.
+  training:
+    - In-memory tensor batch trainer with Cosine Annealing, AdamW optimizer (lr=3e-4, weight decay 1e-5).
+    - Loss functions: Pointwise BCE, Pairwise Margin Loss, Within-User Grouped Pairwise Loss, ListNet Softmax Cross-Entropy, ESMM Loss, and IPS Sample-Reweighted Loss.
+    - Validation primary early stopping on public validation set.
+  evaluation & ensembling:
+    - Evaluator matching starter_kit/evaluate.py for GAUC and nDCG@5 on KuaiRand-Pure public validation (124,909 rows).
+    - Master Ensemble suite supporting probability averaging, rank averaging, top-K filtering, and Nelder-Mead simplex weight optimization.
+
+performance:
+  validation:
+    GAUC: 0.6724
+    nDCG@5: 0.5385
+    primary: 0.6054
+    delta_primary: +0.0038
+    best_single_model_primary: 0.6050 (Time-DIN, E020/E026)
+    best_ensemble_primary: 0.6054 (Optimal Simplex Rank Blend, E026)
+    baseline_primary: 0.6016
+    evidence_ref: research_record/logs/E026_ensemble.log
+
+implementation:
+  entrypoints:
+    - system/runner.py: Model training and evaluation CLI with facets, loss types, and IPS weighting.
+    - system/ensemble.py: Master Ensemble suite with Nelder-Mead simplex optimization.
+    - system/data.py: Data loading, 7-facet sequence generation, and IPS weight computation.
+    - system/metrics.py: Evaluator for GAUC, nDCG@5, and primary ranking score.
+    - system/trainer.py: PyTorch training loop supporting all loss formulations and IPS sample weights.
+    - system/models/time_din.py: Time-Aware Deep Interest Network.
+    - system/models/senet_din.py: Squeeze-and-Excitation field recalibration DIN.
+    - system/models/posneg_din.py: Dual-Polarity positive/negative attention DIN.
+    - system/models/time_posneg_senet.py: Unified Tri-Paradigm Ranker.
+    - system/models/bst.py: Behavior Sequence Transformer.
+    - system/models/cross_bst.py: Hybrid Cross-BST architecture.
+    - system/models/esmm_din.py: Entire Space Multi-Task Model.
+    - system/models/cross_din.py: Hybrid Cross-DIN architecture.
+    - system/models/din.py: Core Deep Interest Network.
+    - system/models/deepfm.py: DeepFM architecture.
+    - system/models/dcn.py: DCN-v2 architecture.
+    - system/models/fm.py: Factorization Machine baseline.

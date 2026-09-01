@@ -1,0 +1,348 @@
+{
+  "schema_version": 1,
+  "benchmark_id": "codex-goal-2026-08-30-v1",
+  "kind": "agent_system_baseline",
+  "target": "direct-codex-goal-baseline",
+  "mode": "goal",
+  "runner": "codex",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "high-capacity setting",
+  "codex_cli_version": "0.151.0",
+  "codex_session_id": "01a05144-81a9-79e1-a4ab-29ecd23e287d",
+  "base_state": {
+    "tag": "clean public-validation baseline",
+    "commit": "c5a33f2",
+    "note": "The clean public-validation baseline was present at run start. Use a fresh checkout of this state for fair reruns."
+  },
+  "timestamps": {
+    "process_started_at": "2026-08-30T06:03:58.834Z",
+    "goal_submitted_at": "2026-08-30T06:04:33.214Z",
+    "goal_final_message_at": "2026-08-30T06:55:18.708Z",
+    "process_closed_at": "2026-08-30T07:01:53.407Z",
+    "process_wall_seconds": 3474.573,
+    "goal_to_final_seconds": 3045.494,
+    "goal_controller_time_used_seconds": 2920,
+    "goal_controller_status": "complete",
+    "agent_reported_experiment_time": "approximately 48m 40s plus final verification",
+    "recorded_active_tool_time": "approximately 29m"
+  },
+  "budget": {
+    "max_wall_minutes": 60,
+    "max_substantial_cycles": 12,
+    "max_individual_experiment_minutes": 15,
+    "completed_substantial_cycles": 11,
+    "stop_reason": "At least three consecutive meaningful full public-validation evaluations failed to improve primary by more than epsilon 0.002 after the best checkpoint; no external blocker.",
+    "wall_or_cycle_limit_reached": false
+  },
+  "boundary": {
+    "hidden_test_used": false,
+    "subagents_used": false,
+    "delegation_used": false,
+    "research_agent_invoked": false,
+    "meta_layer_used": false,
+    "scientist_layer_used": false,
+    "data_root": "competition_data/data",
+    "evaluator": "starter_kit/evaluate.py",
+    "label": "long_view",
+    "metrics": [
+      "GAUC",
+      "nDCG@5",
+      "primary"
+    ],
+    "primary_definition": "mean(GAUC, nDCG@5)",
+    "convergence_epsilon": 0.002
+  },
+  "launch": {
+    "command": "Codex CLI with the gpt-5.6-luna agent and a high-capacity reasoning setting in direct-codex-goal-baseline",
+    "transport": "interactive CLI with /goal over a terminal",
+    "sandbox": "workspace-write",
+    "approval": "never"
+  },
+  "evaluation": {
+    "split": "valid",
+    "training_data": "curated train rows only",
+    "selection_rule": "highest completed public-validation primary",
+    "published_validation": {
+      "GAUC": 0.6674,
+      "nDCG@5": 0.5357,
+      "primary": 0.6016
+    },
+    "published_hidden_test_context_only": {
+      "GAUC": 0.661,
+      "nDCG@5": 0.5282,
+      "primary": 0.5946
+    },
+    "popularity_public_control": {
+      "GAUC": 0.6387257649,
+      "nDCG@5": 0.5227180938,
+      "primary": 0.5807219293
+    },
+    "synthetic_smoke": {
+      "GAUC": 1.0,
+      "nDCG@5": 1.0,
+      "primary": 1.0,
+      "rows": 4,
+      "users": 2,
+      "task_score": false
+    }
+  },
+  "best_checkpoint": {
+    "features": "five official FM fields",
+    "pair_construction": "one same-user train negative per positive",
+    "factors": 8,
+    "learning_rate": 0.00025,
+    "epochs": 40,
+    "batch_size": 8192,
+    "patience": 4,
+    "seed": 0,
+    "command": ".venv/bin/python -m system.cli evaluate-fm-pairwise --data-dir competition_data/data --split valid",
+    "metrics": {
+      "GAUC": 0.6712470735,
+      "nDCG@5": 0.5376594671,
+      "primary": 0.6044532703
+    },
+    "delta_vs_published_validation": {
+      "GAUC": 0.0038470735,
+      "nDCG@5": 0.0019594671,
+      "primary": 0.0028532703
+    }
+  },
+  "experiments": [
+    {
+      "cycle": 1,
+      "variant": "official FM baseline checkpoint",
+      "GAUC": 0.6671326322,
+      "nDCG@5": 0.5358048805,
+      "primary": 0.6014687564,
+      "primary_delta_vs_published_validation": -0.0001312436,
+      "decision": "establish baseline; continue"
+    },
+    {
+      "cycle": 2,
+      "variant": "tab-rate blend diagnostic",
+      "GAUC": 0.6675545637,
+      "nDCG@5": 0.5360836719,
+      "primary": 0.6018191178,
+      "primary_delta_vs_published_validation": 0.0002191178,
+      "decision": "diagnostic only; not retained"
+    },
+    {
+      "cycle": 2,
+      "variant": "group-rank diagnostic (best recorded)",
+      "GAUC": null,
+      "nDCG@5": null,
+      "primary": 0.601705,
+      "primary_delta_vs_published_validation": 0.000105,
+      "decision": "not better than frontier"
+    },
+    {
+      "cycle": 3,
+      "variant": "pairwise FM, factors 16, learning rate 0.001",
+      "GAUC": 0.6702483708,
+      "nDCG@5": 0.5372679854,
+      "primary": 0.6037581781,
+      "primary_delta_vs_published_validation": 0.0021581781,
+      "decision": "retain pairwise direction"
+    },
+    {
+      "cycle": 4,
+      "variant": "pairwise, seed 1",
+      "GAUC": 0.669633961,
+      "nDCG@5": 0.5372469512,
+      "primary": 0.6034404561,
+      "primary_delta_vs_published_validation": 0.0018404561,
+      "decision": "seed stability check"
+    },
+    {
+      "cycle": 4,
+      "variant": "pairwise, seed 2",
+      "GAUC": 0.6695923645,
+      "nDCG@5": 0.537054974,
+      "primary": 0.6033236693,
+      "primary_delta_vs_published_validation": 0.0017236693,
+      "decision": "seed stability check"
+    },
+    {
+      "cycle": 5,
+      "variant": "pairwise, learning rate 0.0005",
+      "GAUC": 0.6704166044,
+      "nDCG@5": 0.5373013575,
+      "primary": 0.603858981,
+      "primary_delta_vs_published_validation": 0.002258981,
+      "decision": "small gain; continue tuning"
+    },
+    {
+      "cycle": 5,
+      "variant": "pairwise, learning rate 0.002",
+      "GAUC": 0.6688596654,
+      "nDCG@5": 0.5364221826,
+      "primary": 0.602640924,
+      "primary_delta_vs_published_validation": 0.001040924,
+      "decision": "reject higher learning rate"
+    },
+    {
+      "cycle": 6,
+      "variant": "two same-user negatives per positive",
+      "GAUC": 0.6702011069,
+      "nDCG@5": 0.5371198262,
+      "primary": 0.6036604666,
+      "primary_delta_vs_published_validation": 0.0020604666,
+      "decision": "reject; below frontier"
+    },
+    {
+      "cycle": 7,
+      "variant": "pairwise, factors 8",
+      "GAUC": 0.6710279481,
+      "nDCG@5": 0.5374375032,
+      "primary": 0.6042327257,
+      "primary_delta_vs_published_validation": 0.0026327257,
+      "decision": "retain; new frontier"
+    },
+    {
+      "cycle": 7,
+      "variant": "pairwise, factors 32",
+      "GAUC": 0.6696778442,
+      "nDCG@5": 0.5371252408,
+      "primary": 0.6034015425,
+      "primary_delta_vs_published_validation": 0.0018015425,
+      "decision": "reject"
+    },
+    {
+      "cycle": 8,
+      "variant": "pairwise, factors 8, learning rate 0.00025",
+      "GAUC": 0.6712470735,
+      "nDCG@5": 0.5376594671,
+      "primary": 0.6044532703,
+      "primary_delta_vs_published_validation": 0.0028532703,
+      "decision": "final best checkpoint"
+    },
+    {
+      "cycle": 8,
+      "variant": "pairwise, factors 8, learning rate 0.00075",
+      "GAUC": null,
+      "nDCG@5": null,
+      "primary": 0.6041803564,
+      "primary_delta_vs_published_validation": 0.0025803564,
+      "decision": "below best"
+    },
+    {
+      "cycle": 8,
+      "variant": "user-tab auxiliary blend",
+      "GAUC": 0.6704557381,
+      "nDCG@5": 0.5373354569,
+      "primary": 0.6038955975,
+      "primary_delta_vs_published_validation": 0.0022955975,
+      "decision": "reject"
+    },
+    {
+      "cycle": 8,
+      "variant": "video-tab auxiliary blend",
+      "GAUC": 0.6705311633,
+      "nDCG@5": 0.5369507543,
+      "primary": 0.6037409588,
+      "primary_delta_vs_published_validation": 0.0021409588,
+      "decision": "reject"
+    },
+    {
+      "cycle": 9,
+      "variant": "auxiliary is_click, weight 0.1",
+      "GAUC": 0.6706593093,
+      "nDCG@5": 0.5374222306,
+      "primary": 0.60404077,
+      "primary_delta_vs_published_validation": 0.00244077,
+      "decision": "below best"
+    },
+    {
+      "cycle": 10,
+      "variant": "hard-negative pool 1",
+      "GAUC": null,
+      "nDCG@5": null,
+      "primary": 0.5133061084,
+      "primary_delta_vs_published_validation": -0.0882938916,
+      "decision": "reject; diagnose"
+    },
+    {
+      "cycle": 10,
+      "variant": "hard-negative pool 5",
+      "GAUC": null,
+      "nDCG@5": null,
+      "primary": 0.5334015939,
+      "primary_delta_vs_published_validation": -0.0681984061,
+      "decision": "reject"
+    },
+    {
+      "cycle": 10,
+      "variant": "hard-negative pool 20",
+      "GAUC": null,
+      "nDCG@5": null,
+      "primary": 0.5935823444,
+      "primary_delta_vs_published_validation": -0.0080176556,
+      "decision": "reject"
+    },
+    {
+      "cycle": 10,
+      "variant": "hard-negative random control",
+      "GAUC": null,
+      "nDCG@5": null,
+      "primary": 0.6038737377,
+      "primary_delta_vs_published_validation": 0.0022737377,
+      "decision": "below best"
+    },
+    {
+      "cycle": 11,
+      "variant": "listwise softmax, learning rate 0.001",
+      "GAUC": 0.6471060952,
+      "nDCG@5": 0.5262492248,
+      "primary": 0.58667766,
+      "primary_delta_vs_published_validation": -0.01492234,
+      "decision": "reject"
+    },
+    {
+      "cycle": 11,
+      "variant": "listwise softmax, learning rate 0.005",
+      "GAUC": 0.6569370681,
+      "nDCG@5": 0.5299757502,
+      "primary": 0.5934564092,
+      "primary_delta_vs_published_validation": -0.0081435908,
+      "decision": "reject; stop convergence loop"
+    }
+  ],
+  "token_usage": {
+    "source": "Codex CLI final usage line and final session token_count snapshot",
+    "goal_controller_tokens_used": 271750,
+    "goal_controller_usage_note": "Structured /goal completion field; separate accounting snapshot from the final CLI usage line.",
+    "input_tokens_excluding_cache": 218767,
+    "cache_read_input_tokens": 10945536,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 56419,
+    "reasoning_output_tokens": 24747,
+    "reported_total_excluding_cache": 275186,
+    "raw_input_tokens_including_cache": 11164303,
+    "raw_total_tokens_including_cache": 11220722,
+    "per_cycle_breakdown_available": false,
+    "currency_cost_recorded": false
+  },
+  "verification": [
+    "5 API tests",
+    "Python compilation",
+    "synthetic smoke evaluation",
+    "CLI help and final default CLI",
+    "curated row-count and key checks",
+    "curated-only path guard",
+    "git diff --check",
+    "default pairwise CLI reproduced the best primary"
+  ],
+  "artifacts": {
+    "human_record": "baseline_runs/CODEX_GOAL_BENCHMARK.md",
+    "frozen_prompt": "baseline_runs/CODEX_GOAL_PROMPT.md",
+    "final_summary": "baseline_runs/FINAL.md",
+    "cycle_directory": "baseline_runs/",
+    "raw_session": "/Users/frank/.codex/sessions/2026/08/30/rollout-2026-08-30T14-03-59-01a05144-81a9-79e1-a4ab-29ecd23e287d.jsonl"
+  },
+  "comparison_notes": [
+    "Use a fresh checkout of the clean public-validation baseline at commit c5a33f2; do not give a rerun the post-run pairwise code or evidence.",
+    "Compare whole-run wall time and whole-run token usage for multi-agent systems; role-level token tables are secondary diagnostics.",
+    "Keep the curated public evaluator and hidden-test exclusion fixed.",
+    "The older one-shot codex exec artifact with 1,001,055 total tokens is not part of this Goal benchmark."
+  ]
+}

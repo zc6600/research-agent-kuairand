@@ -1,0 +1,14 @@
+Loaded 50 fields: dimension=42772
+--- Training 46-field seed 0 (k=16, lr=0.001, l2=1e-05) ---
+  Seed 0 Ep  1 | loss 0.5528 | Med GAUC 0.66625 nDCG@5 0.53339 primary 0.59982 | 9.7s
+  Seed 0 Ep  2 | loss 0.5022 | Med GAUC 0.66580 nDCG@5 0.53388 primary 0.59984 | 9.6s
+  Seed 0 Ep  3 | loss 0.4983 | Med GAUC 0.67178 nDCG@5 0.53585 primary 0.60382 | 9.6s
+  Seed 0 Ep  4 | loss 0.4967 | Med GAUC 0.66909 nDCG@5 0.53537 primary 0.60223 | 9.7s
+  Seed 0 Ep  5 | loss 0.4956 | Med GAUC 0.67089 nDCG@5 0.53637 primary 0.60363 | 9.8s
+  Seed 0 Ep  6 | loss 0.4947 | Med GAUC 0.67049 nDCG@5 0.53624 primary 0.60336 | 9.7s
+  Seed 0 Ep  7 | loss 0.4934 | Med GAUC 0.67033 nDCG@5 0.53558 primary 0.60296 | 9.7s
+  Seed 0 early stopped at epoch 7
+Seed 0 Medium Score: GAUC 0.67178 nDCG@5 0.53585 primary 0.60382
+
+=== Ensemble (1 seeds) Medium Score ===
+GAUC: 0.6717838, nDCG@5: 0.5358471, primary: 0.6038154

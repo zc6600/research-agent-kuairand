@@ -1,0 +1,112 @@
+{
+  "variant": "v2",
+  "hypothesis": "Inverse Propensity Scoring (IPS) Debiasing Loss on 10-Field Log-Duration DCN-FM",
+  "fields": [
+    "user_id",
+    "video_id",
+    "author_id",
+    "tab",
+    "dur_bucket",
+    "user_active_degree",
+    "follow_user_num_range",
+    "fans_user_num_range",
+    "friend_user_num_range",
+    "register_days_range"
+  ],
+  "hyperparameters": {
+    "k": 16,
+    "lr": 0.001,
+    "l2": 1e-06,
+    "max_epochs": 20,
+    "batch_size": 8192,
+    "patience": 4,
+    "seed": 0,
+    "num_log_bins": 20,
+    "ips_power": 0.2,
+    "clip_min": 0.5,
+    "clip_max": 2.0
+  },
+  "best_epoch": 5,
+  "best_metrics": {
+    "GAUC": 0.6710958480834961,
+    "nDCG@5": 0.53775554895401,
+    "primary": 0.6044256687164307,
+    "users": 22377.0,
+    "rows": 124909.0
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.5763496513877596,
+      "valid_gauc": 0.6631374955177307,
+      "valid_ndcg5": 0.5334839224815369,
+      "valid_primary": 0.5983107089996338,
+      "epoch_time_sec": 10.622111082077026
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.49480042287281584,
+      "valid_gauc": 0.6686112284660339,
+      "valid_ndcg5": 0.5359827280044556,
+      "valid_primary": 0.6022969484329224,
+      "epoch_time_sec": 13.813386917114258
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.48691631087235043,
+      "valid_gauc": 0.6698399782180786,
+      "valid_ndcg5": 0.5371443629264832,
+      "valid_primary": 0.6034921407699585,
+      "epoch_time_sec": 14.514981985092163
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.483850650702204,
+      "valid_gauc": 0.6703031063079834,
+      "valid_ndcg5": 0.5370491743087769,
+      "valid_primary": 0.6036761403083801,
+      "epoch_time_sec": 15.015518188476562
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.48062811664172583,
+      "valid_gauc": 0.6710958480834961,
+      "valid_ndcg5": 0.53775554895401,
+      "valid_primary": 0.6044256687164307,
+      "epoch_time_sec": 13.598960161209106
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.4760385768754142,
+      "valid_gauc": 0.6701454520225525,
+      "valid_ndcg5": 0.5368951559066772,
+      "valid_primary": 0.6035202741622925,
+      "epoch_time_sec": 9.487092018127441
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.47080641239881516,
+      "valid_gauc": 0.6680946350097656,
+      "valid_ndcg5": 0.5357736945152283,
+      "valid_primary": 0.6019341945648193,
+      "epoch_time_sec": 9.39926290512085
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.4660929364817483,
+      "valid_gauc": 0.6626230478286743,
+      "valid_ndcg5": 0.5332131385803223,
+      "valid_primary": 0.5979180932044983,
+      "epoch_time_sec": 9.12722897529602
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.46180723564965387,
+      "valid_gauc": 0.6575450897216797,
+      "valid_ndcg5": 0.5306033492088318,
+      "valid_primary": 0.5940742492675781,
+      "epoch_time_sec": 7.880163908004761
+    }
+  ],
+  "total_elapsed_time_sec": 103.46046996116638
+}

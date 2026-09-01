@@ -1,0 +1,111 @@
+{
+  "variant": "v3",
+  "hypothesis": "Coarse Daypart Context (11 fields: Morning, Afternoon, Evening, Night in Log-Duration DCN-FM)",
+  "fields": [
+    "user_id",
+    "video_id",
+    "author_id",
+    "tab",
+    "dur_bucket",
+    "user_active_degree",
+    "follow_user_num_range",
+    "fans_user_num_range",
+    "friend_user_num_range",
+    "register_days_range",
+    "daypart"
+  ],
+  "hyperparameters": {
+    "k": 16,
+    "lr": 0.001,
+    "l2": 1e-06,
+    "max_epochs": 20,
+    "batch_size": 8192,
+    "patience": 4,
+    "seed": 0,
+    "num_log_bins": 20,
+    "num_dayparts": 4
+  },
+  "best_epoch": 5,
+  "best_metrics": {
+    "GAUC": 0.670857310295105,
+    "nDCG@5": 0.5379652976989746,
+    "primary": 0.6044113039970398,
+    "users": 22377.0,
+    "rows": 124909.0
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.583918450985636,
+      "valid_gauc": 0.6636133790016174,
+      "valid_ndcg5": 0.5339950919151306,
+      "valid_primary": 0.598804235458374,
+      "epoch_time_sec": 5.973102807998657
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.5074615352920123,
+      "valid_gauc": 0.6690667867660522,
+      "valid_ndcg5": 0.5365557074546814,
+      "valid_primary": 0.6028112173080444,
+      "epoch_time_sec": 5.9846930503845215
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.5003515933241163,
+      "valid_gauc": 0.6703408360481262,
+      "valid_ndcg5": 0.5371204018592834,
+      "valid_primary": 0.6037306189537048,
+      "epoch_time_sec": 5.935242176055908
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.49782512124095646,
+      "valid_gauc": 0.6704654097557068,
+      "valid_ndcg5": 0.5374720096588135,
+      "valid_primary": 0.6039687395095825,
+      "epoch_time_sec": 5.863785982131958
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.49589415043592455,
+      "valid_gauc": 0.670857310295105,
+      "valid_ndcg5": 0.5379652976989746,
+      "valid_primary": 0.6044113039970398,
+      "epoch_time_sec": 6.03571891784668
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.4938400162117822,
+      "valid_gauc": 0.6704251170158386,
+      "valid_ndcg5": 0.5371068716049194,
+      "valid_primary": 0.6037659645080566,
+      "epoch_time_sec": 5.877835988998413
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.49138885246855873,
+      "valid_gauc": 0.6688911318778992,
+      "valid_ndcg5": 0.5367709994316101,
+      "valid_primary": 0.6028310656547546,
+      "epoch_time_sec": 5.48557186126709
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.48786336460283825,
+      "valid_gauc": 0.6676413416862488,
+      "valid_ndcg5": 0.5358622074127197,
+      "valid_primary": 0.6017518043518066,
+      "epoch_time_sec": 4.265697002410889
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.4828457985605512,
+      "valid_gauc": 0.6633764505386353,
+      "valid_ndcg5": 0.5336594581604004,
+      "valid_primary": 0.5985179543495178,
+      "epoch_time_sec": 3.811439037322998
+    }
+  ],
+  "total_elapsed_time_sec": 49.233367919921875
+}

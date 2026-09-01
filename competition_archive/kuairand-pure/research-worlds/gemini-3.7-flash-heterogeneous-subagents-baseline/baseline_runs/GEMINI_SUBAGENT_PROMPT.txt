@@ -1,0 +1,96 @@
+/goal Run a clean 12-round subagent-assisted gemini-3.7-flash research exploration for project gemini-3.7-flash-heterogeneous-subagents-2026-08-31.
+
+You are the main gemini-3.7-flash agent. This is an experiment of a delegated agent system,
+not the previous single-agent gemini-3.7-flash baseline. The user requires exactly 12
+substantial research rounds. For every round you must use four real gemini-3.7-flash-native
+subagent invocations: three independent implementation/testing candidates
+named `variant-v1`, `variant-v2`, and `variant-v3`, followed by one independent
+read-only `comparator`. Do not simulate these roles by writing reports yourself.
+
+The project is a KuaiRand recommendation task; GAUC, nDCG@5, and primary are
+the task-model control signals for this agent-system experiment.
+
+## Absolute workspace and data boundary
+
+Work only in this exact target project:
+/Users/frank/github_project/Good4AI-simplify-scientist-remote-run/research_agent/projects/gemini-3.7-flash-heterogeneous-subagents-2026-08-31
+
+gemini-3.7-flash native subagents may start in `/Users/frank/.gemini/antigravity-cli/scratch`
+instead of the target. Therefore every subagent prompt MUST include the exact
+absolute target path and exact absolute candidate directory. The subagent must
+verify `pwd`/the path first. Candidate work must be stored under the target's
+`baseline_runs/cycles/cycle-XX/vN/`; candidates may create standalone scripts
+there, but must not edit another candidate or the parent checkpoint directly.
+The parent agent integrates a selected candidate only after comparison.
+
+The only permitted data files are exactly:
+- `competition_data/data/log_standard_4_08_to_4_21_pure.csv`
+- `competition_data/data/log_public_4_22_to_4_28_pure.csv`
+- `competition_data/data/log_random_4_22_to_4_28_pure.csv`
+- `competition_data/data/user_features_pure.csv`
+- `competition_data/data/video_features_basic_pure.csv`
+
+Before round 1, verify this inventory and record it. Do not run curl, wget,
+git fetch, or any data/dependency download. Do not access full standard logs,
+hidden/test files, sibling projects, parent workspace, or any external copy of
+KuaiRand. There is no permitted test split in this run; do not report test
+metrics. If a subagent tries to download or access disallowed data, terminate
+that candidate task, mark it invalid, preserve the evidence, and continue the
+round using the remaining valid candidates.
+
+Read task.md, PERSONAL.md, AGENTS.md, official starter_kit, official evaluator,
+and current system. Do not invoke research-agent or META. Use the target's
+absolute `.venv/bin/python` or another already available local interpreter; do
+not install dependencies during the run.
+
+## Mandatory 12-round protocol
+
+Before round 1, establish the official starter public-validation control and a
+clean current-best checkpoint. For each round 01 through 12, follow exactly:
+
+1. Main states one concrete hypothesis, common command, time limit, and
+   acceptance criteria.
+2. Main spawns actual `variant-v1`, `variant-v2`, and `variant-v3` subagents.
+   Their prompts must contain the absolute target and candidate paths, the
+   allowed data inventory, the current-best metrics, and the round hypothesis.
+   Each must implement a real bounded candidate and test it. Run them in
+   parallel only when their directories and resources are isolated.
+3. Each candidate must leave evidence in the target at
+   `baseline_runs/cycles/cycle-XX/vN/`: implementation/diff, exact commands,
+   focused test output, public GAUC/nDCG@5/primary, elapsed time, data-boundary
+   check, leakage/split audit, and character/word/line counts. A failure is
+   recorded, not hidden. Candidate code and reports must be labeled exactly
+   `v1`, `v2`, or `v3`.
+4. Only after all three candidate reports are available, main spawns the actual
+   independent `comparator` subagent. It must be read-only with respect to the
+   parent checkpoint and write evidence in
+   `baseline_runs/cycles/cycle-XX/comparator/`. It compares all candidates to
+   the same control/current best and penalizes missing evidence or any data
+   boundary violation. It must not automatically merge anything.
+5. Main reads the comparator and decides what to keep. Main alone integrates,
+   rejects all, or documents a merge. Write
+   `baseline_runs/cycles/cycle-XX/decision.md` with selected version, exact
+   files/diff, metrics and deltas, tests, risks, and next hypothesis. Do not
+   claim an improvement without official public evaluator output.
+
+Every round is invalid unless the stream records all four actual subagent
+invocations and target evidence exists for v1/v2/v3/comparator/decision. If
+native delegation cannot write the target directly, copy only the candidate
+artifacts into the target while retaining their original isolated log paths.
+If delegation is unavailable, report a blocker rather than fabricating roles.
+
+## Usage and text accounting
+
+For every main-agent and subagent invocation preserve available stream/runtime
+telemetry: input_tokens, output_tokens, thinking_tokens, cache_read_tokens,
+total_tokens, duration_seconds, and num_turns. Use `unavailable` for absent
+fields, never zero or an estimate. Also record report character count,
+whitespace-delimited word count, and line count. Keep raw `stream-json` output
+under `.git/research-agent-baseline/` and make `baseline_runs/run_log.md` link
+to every cycle and summarize all usage totals and evidence-completeness checks.
+
+Use a hard outer timeout of two hours and complete all 12 rounds unless a
+genuine external blocker occurs. Do not stop after an early best score. Keep
+each candidate experiment bounded and run final unit tests plus compile checks.
+End with `<!-- GOAL_COMPLETE -->` only after the 12-round evidence audit and
+final verification.

@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "run_id": "202dc97296bc4b72ac0dbb0131215acb",
+  "kind": "baseline",
+  "control": "blank",
+  "mode": "goal",
+  "cli": "codex",
+  "model": "gpt-5.6-luna",
+  "target": "/Users/frank/github_project/Good4AI-simplify-scientist-remote-run/research_agent/projects/p0_baseline_codex_3h",
+  "started_at": "2026-08-31T14:20:34.371390+00:00",
+  "status": "closed",
+  "terminal_status": "interrupted",
+  "exit_code": 130,
+  "ended_at": "2026-08-31T16:15:51.574108+00:00"
+}

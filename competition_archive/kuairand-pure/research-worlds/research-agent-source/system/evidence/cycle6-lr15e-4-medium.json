@@ -1,0 +1,167 @@
+{
+  "dim": 42705,
+  "elapsed_seconds": 102.01705312728882,
+  "ensemble_full_score": null,
+  "ensemble_medium_score": {
+    "GAUC": 0.6707419753074646,
+    "nDCG@5": 0.5359994173049927,
+    "primary": 0.6033706665039062,
+    "rows": 31536,
+    "users": 5590
+  },
+  "experiment": "rich46_fm_ensemble",
+  "fields": [
+    "user_id",
+    "video_id",
+    "author_id",
+    "tab",
+    "dur_bucket",
+    "hour",
+    "weekday",
+    "video_type",
+    "upload_type",
+    "music_type",
+    "tag",
+    "aspect",
+    "active",
+    "is_lowactive",
+    "is_live_streamer",
+    "is_video_author",
+    "follow_range",
+    "fans_range",
+    "friend_range",
+    "register_range",
+    "onehot_0",
+    "onehot_1",
+    "onehot_2",
+    "onehot_3",
+    "onehot_4",
+    "onehot_5",
+    "onehot_6",
+    "onehot_7",
+    "onehot_8",
+    "onehot_9",
+    "onehot_10",
+    "onehot_11",
+    "onehot_12",
+    "onehot_13",
+    "onehot_14",
+    "onehot_15",
+    "onehot_16",
+    "onehot_17",
+    "tag2",
+    "video_age",
+    "u_top_tag",
+    "u_top_tab",
+    "u_rate_bucket",
+    "u_count_bucket",
+    "match_tag",
+    "match_tab"
+  ],
+  "individual_full_scores": null,
+  "individual_medium_scores": [
+    {
+      "GAUC": 0.6707419753074646,
+      "nDCG@5": 0.5359994173049927,
+      "primary": 0.6033706665039062,
+      "rows": 31536,
+      "seed": 0,
+      "users": 5590
+    }
+  ],
+  "k": 16,
+  "l2": 1e-05,
+  "lr": 0.0015,
+  "num_fields": 46,
+  "seed_details": [
+    {
+      "best_epoch": 3,
+      "best_medium": {
+        "GAUC": 0.6707419753074646,
+        "duration": 9.99400806427002,
+        "epoch": 3,
+        "loss": 0.49888437837362287,
+        "nDCG@5": 0.5359994173049927,
+        "primary": 0.6033706665039062,
+        "rows": 31536,
+        "users": 5590
+      },
+      "history": [
+        {
+          "GAUC": 0.6670568585395813,
+          "duration": 9.873592138290405,
+          "epoch": 1,
+          "loss": 0.5422755403178079,
+          "nDCG@5": 0.5339486002922058,
+          "primary": 0.6005027294158936,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.6659688949584961,
+          "duration": 9.874795198440552,
+          "epoch": 2,
+          "loss": 0.502015327342919,
+          "nDCG@5": 0.5337772965431213,
+          "primary": 0.5998730659484863,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.6707419753074646,
+          "duration": 9.99400806427002,
+          "epoch": 3,
+          "loss": 0.49888437837362287,
+          "nDCG@5": 0.5359994173049927,
+          "primary": 0.6033706665039062,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.6666015386581421,
+          "duration": 10.390788793563843,
+          "epoch": 4,
+          "loss": 0.4969213355864797,
+          "nDCG@5": 0.5346866250038147,
+          "primary": 0.6006441116333008,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.6704010963439941,
+          "duration": 10.131263971328735,
+          "epoch": 5,
+          "loss": 0.49510707961661476,
+          "nDCG@5": 0.5357253551483154,
+          "primary": 0.6030632257461548,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.6684284210205078,
+          "duration": 10.080824851989746,
+          "epoch": 6,
+          "loss": 0.4930221615093095,
+          "nDCG@5": 0.5343819260597229,
+          "primary": 0.601405143737793,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.6687260270118713,
+          "duration": 10.20534873008728,
+          "epoch": 7,
+          "loss": 0.490273172727653,
+          "nDCG@5": 0.5342044234275818,
+          "primary": 0.6014652252197266,
+          "rows": 31536,
+          "users": 5590
+        }
+      ],
+      "seed": 0
+    }
+  ],
+  "seeds": [
+    0
+  ]
+}

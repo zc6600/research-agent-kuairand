@@ -1,0 +1,6 @@
+Command:
+UV_CACHE_DIR=/private/tmp/research-agent-uv-cache uv run --with numpy python system/ensemble_46.py --seeds 0 --last-tag --output system/evidence/cycle10-last-tag-seed0-medium.json
+
+An initial attempt failed before data loading with NameError: name 'match_tag2' is not defined after the diagnostic option was replaced. The source was corrected and the same command was rerun successfully.
+
+Successful result: Medium primary 0.6044810.

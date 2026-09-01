@@ -1,0 +1,42 @@
+Loading data from /Users/frank/github_project/Good4AI-simplify-scientist-remote-run/research_agent/projects/p0_baseline_antigravity_subagents_clean_2026-08-31/competition_data/data ...
+Loaded splits: {'train': 1141112, 'valid': 124909} in 9.09s
+Computing Inverse Propensity Scoring (IPS) weights (power=0.2, clip=[0.5, 2.0])...
+IPS Weights computed on 7538 unique items across 1141112 training impressions in 2.90s:
+  Raw weights:     min=2.6276, max=16.2729, mean=4.9898
+  Clipped weights: min=0.5266, max=2.0000, mean=0.9985, std=0.2903
+Encoding features across 10 fields with 20 Logarithmic Duration Bins...
+Train log(1 + duration_ms) range: [0.0000, 13.9791]
+Created 19 internal cutoffs for 20 log duration bins:
+  Cutoffs: [0.699, 1.3979, 2.0969, 2.7958, 3.4948, 4.1937, 4.8927, 5.5916, 6.2906, 6.9895, 7.6885, 8.3875, 9.0864, 9.7854, 10.4843, 11.1833, 11.8822, 12.5812, 13.2801]
+Feature encoding complete. Total dimension: 40304 across 10 fields in 18.61s
+  Field  0 (user_id               ): 26211 distinct IDs (including UNK)
+  Field  1 (video_id              ): 7539 distinct IDs (including UNK)
+  Field  2 (author_id             ): 6483 distinct IDs (including UNK)
+  Field  3 (tab                   ): 16 distinct IDs (including UNK)
+  Field  4 (dur_bucket            ): 10 distinct IDs (including UNK)
+  Field  5 (user_active_degree    ): 10 distinct IDs (including UNK)
+  Field  6 (follow_user_num_range ): 9 distinct IDs (including UNK)
+  Field  7 (fans_user_num_range   ): 10 distinct IDs (including UNK)
+  Field  8 (friend_user_num_range ): 8 distinct IDs (including UNK)
+  Field  9 (register_days_range   ): 8 distinct IDs (including UNK)
+
+Initializing IPS DCN_FM model (dim=40304, fields=10, k=16, D=160, lr=0.001, l2=1e-06, seed=0)...
+
+Starting IPS DCN_FM training with sample-level debiasing loss (power=0.2, clip=[0.5, 2.0])...
+Epoch  1/20 | Train Loss: 0.5763 | Valid GAUC: 0.6631 | nDCG@5: 0.5335 | Primary: 0.5983 | Time: 10.62s
+Epoch  2/20 | Train Loss: 0.4948 | Valid GAUC: 0.6686 | nDCG@5: 0.5360 | Primary: 0.6023 | Time: 13.81s
+Epoch  3/20 | Train Loss: 0.4869 | Valid GAUC: 0.6698 | nDCG@5: 0.5371 | Primary: 0.6035 | Time: 14.51s
+Epoch  4/20 | Train Loss: 0.4839 | Valid GAUC: 0.6703 | nDCG@5: 0.5370 | Primary: 0.6037 | Time: 15.02s
+Epoch  5/20 | Train Loss: 0.4806 | Valid GAUC: 0.6711 | nDCG@5: 0.5378 | Primary: 0.6044 | Time: 13.60s
+Epoch  6/20 | Train Loss: 0.4760 | Valid GAUC: 0.6701 | nDCG@5: 0.5369 | Primary: 0.6035 | Time: 9.49s
+Epoch  7/20 | Train Loss: 0.4708 | Valid GAUC: 0.6681 | nDCG@5: 0.5358 | Primary: 0.6019 | Time: 9.40s
+Epoch  8/20 | Train Loss: 0.4661 | Valid GAUC: 0.6626 | nDCG@5: 0.5332 | Primary: 0.5979 | Time: 9.13s
+Epoch  9/20 | Train Loss: 0.4618 | Valid GAUC: 0.6575 | nDCG@5: 0.5306 | Primary: 0.5941 | Time: 7.88s
+Early stopping triggered at epoch 9 (best epoch: 5)
+
+Training completed in 103.46s.
+Best Validation Epoch: 5
+Best Validation GAUC:    0.6711
+Best Validation nDCG@5:  0.5378
+Best Validation Primary: 0.6044
+Saved results to /Users/frank/github_project/Good4AI-simplify-scientist-remote-run/research_agent/projects/p0_baseline_antigravity_subagents_clean_2026-08-31/baseline_runs/cycles/cycle-07/v2/results.json

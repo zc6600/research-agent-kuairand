@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research Agent"
+  short_description: "Supervise evidence-driven research projects"
+  default_prompt: "Use $research-agent to resolve whether I want direct external execution or the current agent as META, then perform the requested research transaction without adding an unintended META layer."

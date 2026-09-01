@@ -1,0 +1,209 @@
+{
+  "config": {
+    "content": {
+      "author": [
+        0.45,
+        50
+      ],
+      "duration": [
+        0.8,
+        300
+      ],
+      "hour": [
+        0.15,
+        500
+      ],
+      "item": [
+        1.0,
+        20
+      ],
+      "music_type": [
+        0.1,
+        500
+      ],
+      "tab": [
+        0.35,
+        300
+      ],
+      "tag": [
+        0.2,
+        100
+      ],
+      "video_type": [
+        0.15,
+        500
+      ]
+    },
+    "crosses": {
+      "author": [
+        0.25,
+        50
+      ],
+      "author_tab": [
+        0.2,
+        20
+      ],
+      "duration": [
+        0.65,
+        300
+      ],
+      "hour": [
+        0.1,
+        500
+      ],
+      "item": [
+        0.7,
+        20
+      ],
+      "item_tab": [
+        0.35,
+        10
+      ],
+      "tab": [
+        0.2,
+        300
+      ],
+      "tag": [
+        0.12,
+        100
+      ],
+      "user_author": [
+        0.6,
+        8
+      ],
+      "user_duration": [
+        0.7,
+        10
+      ],
+      "user_item": [
+        0.85,
+        4
+      ],
+      "user_tab": [
+        0.25,
+        12
+      ]
+    },
+    "interactions": {
+      "author": [
+        0.35,
+        50
+      ],
+      "duration": [
+        0.7,
+        300
+      ],
+      "hour": [
+        0.1,
+        500
+      ],
+      "item": [
+        0.85,
+        20
+      ],
+      "tab": [
+        0.25,
+        300
+      ],
+      "tag": [
+        0.15,
+        100
+      ],
+      "user_author": [
+        0.55,
+        8
+      ],
+      "user_duration": [
+        0.65,
+        10
+      ],
+      "user_item": [
+        0.8,
+        4
+      ],
+      "user_tab": [
+        0.25,
+        12
+      ]
+    },
+    "personal": {
+      "author": [
+        0.2,
+        50
+      ],
+      "duration": [
+        0.5,
+        300
+      ],
+      "hour": [
+        0.08,
+        500
+      ],
+      "item": [
+        0.55,
+        20
+      ],
+      "item_tab": [
+        0.3,
+        8
+      ],
+      "tab": [
+        0.15,
+        300
+      ],
+      "user_author": [
+        0.75,
+        6
+      ],
+      "user_duration": [
+        0.85,
+        8
+      ],
+      "user_item": [
+        1.1,
+        3
+      ],
+      "user_tab": [
+        0.35,
+        10
+      ]
+    }
+  },
+  "elapsed_seconds": 7.416546106338501,
+  "experiment": "historical_target_encoding_ranker",
+  "mode": "medium",
+  "results": {
+    "content": {
+      "GAUC": 0.6472900497272351,
+      "nDCG@5": 0.5256474305247397,
+      "primary": 0.5864687401259874,
+      "rows": 31536,
+      "users": 5590
+    },
+    "crosses": {
+      "GAUC": 0.6431836585295893,
+      "nDCG@5": 0.5240169010330895,
+      "primary": 0.5836002797813393,
+      "rows": 31536,
+      "users": 5590
+    },
+    "interactions": {
+      "GAUC": 0.6412374385124042,
+      "nDCG@5": 0.521543030127231,
+      "primary": 0.5813902343198176,
+      "rows": 31536,
+      "users": 5590
+    },
+    "personal": {
+      "GAUC": 0.6390212573423426,
+      "nDCG@5": 0.5211195583451457,
+      "primary": 0.5800704078437442,
+      "rows": 31536,
+      "users": 5590
+    }
+  },
+  "train_positive_rate": 0.33661989357749283,
+  "train_rows": 1141112,
+  "validation_selection": "stable blake2b 25% complete-user sample",
+  "variant": "all"
+}

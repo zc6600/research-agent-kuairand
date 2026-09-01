@@ -1,0 +1,103 @@
+{
+  "variant": "v1",
+  "hypothesis": "Hour-of-Day Contextual Conditioning (11 Fields in DCN-FM)",
+  "fields": [
+    "user_id",
+    "video_id",
+    "author_id",
+    "tab",
+    "dur_bucket",
+    "hour",
+    "user_active_degree",
+    "follow_user_num_range",
+    "fans_user_num_range",
+    "friend_user_num_range",
+    "register_days_range"
+  ],
+  "hyperparameters": {
+    "k": 16,
+    "lr": 0.001,
+    "l2": 1e-06,
+    "max_epochs": 20,
+    "batch_size": 8192,
+    "patience": 4,
+    "seed": 0,
+    "num_log_bins": 20,
+    "num_fields": 11
+  },
+  "best_epoch": 4,
+  "best_metrics": {
+    "GAUC": 0.6709211468696594,
+    "nDCG@5": 0.5378581881523132,
+    "primary": 0.6043896675109863,
+    "users": 22377.0,
+    "rows": 124909.0
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.5876512808459146,
+      "valid_gauc": 0.6625658869743347,
+      "valid_ndcg5": 0.5340203642845154,
+      "valid_primary": 0.598293125629425,
+      "epoch_time_sec": 5.757299900054932
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.5080020887511117,
+      "valid_gauc": 0.6680383682250977,
+      "valid_ndcg5": 0.5364456176757812,
+      "valid_primary": 0.6022419929504395,
+      "epoch_time_sec": 5.916479110717773
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.4998838286314692,
+      "valid_gauc": 0.6691699624061584,
+      "valid_ndcg5": 0.5371415615081787,
+      "valid_primary": 0.6031557321548462,
+      "epoch_time_sec": 6.028290033340454
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.4968062624335289,
+      "valid_gauc": 0.6709211468696594,
+      "valid_ndcg5": 0.5378581881523132,
+      "valid_primary": 0.6043896675109863,
+      "epoch_time_sec": 5.814672946929932
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.49365702228886743,
+      "valid_gauc": 0.6694667339324951,
+      "valid_ndcg5": 0.5375283360481262,
+      "valid_primary": 0.6034975051879883,
+      "epoch_time_sec": 5.9003801345825195
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.4890286373240607,
+      "valid_gauc": 0.6680314540863037,
+      "valid_ndcg5": 0.5364503264427185,
+      "valid_primary": 0.6022409200668335,
+      "epoch_time_sec": 5.874984979629517
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.4835906722715923,
+      "valid_gauc": 0.6633995771408081,
+      "valid_ndcg5": 0.5336541533470154,
+      "valid_primary": 0.5985268354415894,
+      "epoch_time_sec": 5.772925853729248
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.4777890948312623,
+      "valid_gauc": 0.6577333211898804,
+      "valid_ndcg5": 0.5310634970664978,
+      "valid_primary": 0.5943983793258667,
+      "epoch_time_sec": 4.971558094024658
+    }
+  ],
+  "total_elapsed_time_sec": 46.03685712814331
+}

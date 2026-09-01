@@ -1,0 +1,4 @@
+Command:
+UV_CACHE_DIR=/private/tmp/research-agent-uv-cache uv run --with numpy python system/ensemble_46.py --seeds 0 --match-tag2 --output system/evidence/cycle10-match-tag2-seed0-medium.json
+
+Result: completed successfully. Medium primary 0.6039356.

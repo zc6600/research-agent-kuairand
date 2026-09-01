@@ -1,0 +1,30 @@
+id: S001
+git_tag: state/S001
+derived_from: null
+
+summary: >
+  Minimal callable KuaiRand-Pure baseline interface for direct-codex-goal-baseline.
+
+system:
+  dataset: KuaiRand-Pure
+  task: within-user ranking over logged impressions
+  label: long_view
+  model: smoothed item long-view popularity baseline
+  evaluation: official starter_kit.evaluate GAUC and nDCG@5
+  data_policy: uses competition_data/data when present; smoke path uses synthetic rows only
+
+performance:
+  smoke:
+    GAUC: 1.0
+    nDCG@5: 1.0
+    primary: 1.0
+    users: 2
+    rows: 4
+    evidence_ref: python -m system.cli smoke
+
+implementation:
+  api: system/baseline_api.py
+  cli: system/cli.py
+  tests: system/tests/test_baseline_api.py
+  smoke_command: python -m system.cli smoke
+  unittest_command: python -m unittest discover -s system/tests -v

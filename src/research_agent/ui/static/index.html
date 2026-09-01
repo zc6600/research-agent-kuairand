@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Research Agent Dashboard</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="page-header">
+      <div class="brand-block">
+        <div class="header-eyebrow">Evidence-driven research</div>
+        <h1>Research Dashboard</h1>
+        <div id="header-subtitle" class="header-subtitle">Live view of the current research world</div>
+      </div>
+      <div class="project-chip" aria-label="Current project">
+        <span class="project-chip-icon" aria-hidden="true">◈</span>
+        <span id="project-menu-name">Project</span>
+        <span id="record-version-badge" class="project-chip-meta">record version —</span>
+      </div>
+    </header>
+
+    <section id="run-banner" class="overview-strip idle" aria-label="Research overview">
+      <div class="overview-item">
+        <div class="overview-icon tone-lilac" aria-hidden="true">◈</div>
+        <div>
+          <div class="overview-label">Project</div>
+          <div id="project" class="overview-value">—</div>
+          <div id="run-detail" class="overview-note">No active run</div>
+        </div>
+      </div>
+
+      <div class="overview-item">
+        <div class="overview-icon tone-green" aria-hidden="true">●</div>
+        <div>
+          <div class="overview-label">Status</div>
+          <div class="status-line">
+            <span id="live-dot" class="status-dot"></span>
+            <div id="status-value" class="overview-value">Idle</div>
+          </div>
+          <div id="connection-label" class="overview-note">Connecting…</div>
+        </div>
+      </div>
+
+      <div class="overview-item">
+        <div class="overview-icon tone-blue" aria-hidden="true">◷</div>
+        <div>
+          <div class="overview-label">Run Duration</div>
+          <div id="run-duration" class="overview-value">—</div>
+          <div id="run-duration-note" class="overview-note">Latest run elapsed</div>
+        </div>
+      </div>
+
+      <div class="overview-item">
+        <div class="overview-icon tone-blue" aria-hidden="true">↻</div>
+        <div>
+          <div class="overview-label">Research Cycle</div>
+          <div id="cycle" class="overview-value">—</div>
+          <div id="cycle-note" class="overview-note">State-backed research cycle</div>
+        </div>
+      </div>
+
+      <div class="overview-item">
+        <div class="overview-icon tone-violet" aria-hidden="true">S</div>
+        <div>
+          <div class="overview-label">State</div>
+          <div id="state" class="overview-value">—</div>
+          <div id="state-note" class="overview-note">Current system state</div>
+        </div>
+      </div>
+
+      <div class="overview-item">
+        <div class="overview-icon tone-green" aria-hidden="true">★</div>
+        <div>
+          <div class="overview-label">Official Frontier</div>
+          <div id="best-score" class="overview-value">—</div>
+          <div id="best-score-note" class="overview-note">No official score recorded</div>
+        </div>
+      </div>
+
+      <div class="overview-item token-overview">
+        <div class="overview-icon tone-blue" aria-hidden="true">T</div>
+        <div>
+          <div class="overview-label">Token Usage</div>
+          <div id="token-total" class="overview-value">—</div>
+          <div id="token-models" class="overview-note token-models">No measured usage</div>
+        </div>
+      </div>
+    </section>
+
+    <main class="dashboard">
+      <section class="primary-grid" aria-label="Current research picture">
+        <article class="card research-card record-card">
+          <div class="card-heading">
+            <span class="card-icon tone-lilac" aria-hidden="true">≡</span>
+            <span>Latest Research Record</span>
+          </div>
+          <div class="card-rule"></div>
+          <div id="focus-kind" class="entity-eyebrow">Latest record</div>
+          <div id="focus-id" class="entity-id">—</div>
+          <div id="focus" class="entity-copy muted">No research record recorded.</div>
+          <div id="hypothesis-block" class="legacy-thread" hidden>
+            <div class="meta-label">Latest hypothesis</div>
+            <div id="hypothesis-id" class="entity-id">—</div>
+            <div id="hypothesis" class="meta-copy muted">No hypothesis recorded.</div>
+          </div>
+        </article>
+
+        <article class="card research-card state-card">
+          <div class="card-heading">
+            <span class="card-icon tone-violet" aria-hidden="true">S</span>
+            <span>Current State</span>
+          </div>
+          <div class="card-rule"></div>
+          <div class="state-line">
+            <div id="current-state-id" class="entity-id">—</div>
+            <span id="current-state-tag" class="quiet-pill">not materialized</span>
+          </div>
+          <div id="state-summary" class="entity-copy muted">No materialized State recorded.</div>
+          <div id="state-provenance" class="state-provenance muted">State provenance is not available.</div>
+        </article>
+
+        <article class="card research-card evaluation-card">
+          <div class="card-heading">
+            <span class="card-icon tone-green" aria-hidden="true">△</span>
+            <span>Latest Evaluation</span>
+          </div>
+          <div class="card-rule"></div>
+          <div class="experiment-line">
+            <div id="experiment-id" class="entity-id">—</div>
+            <span id="experiment-status" class="quiet-pill">not recorded</span>
+          </div>
+          <div id="evaluation-facts" class="evaluation-facts">
+            <div class="evaluation-fact">
+              <div class="meta-label">Fidelity</div>
+              <div id="experiment-fidelity" class="fact-value muted">—</div>
+            </div>
+            <div class="evaluation-fact">
+              <div class="meta-label">Classification</div>
+              <div id="experiment-official" class="fact-value muted">—</div>
+            </div>
+            <div class="evaluation-fact">
+              <div class="meta-label">Resulting State</div>
+              <div id="experiment-state" class="fact-value muted">—</div>
+            </div>
+            <div class="evaluation-fact">
+              <div class="meta-label">Evidence</div>
+              <div id="experiment-evidence" class="fact-value muted">—</div>
+            </div>
+          </div>
+          <div id="experiment-placeholder" class="entity-copy muted">No evaluation details recorded.</div>
+          <div id="experiment-details" hidden>
+            <div id="experiment-result-row" class="meta-row" hidden>
+              <div class="meta-mark meta-next" aria-hidden="true">✓</div>
+              <div>
+                <div class="meta-label">Result</div>
+                <div id="experiment-result" class="meta-copy"></div>
+              </div>
+            </div>
+            <div id="experiment-metric-row" class="meta-row" hidden>
+              <div class="meta-mark" aria-hidden="true">#</div>
+              <div>
+                <div class="meta-label">Primary Metric</div>
+                <div id="experiment-metric" class="meta-copy"></div>
+              </div>
+            </div>
+            <div id="experiment-conclusion-row" class="meta-row" hidden>
+              <div class="meta-mark tone-violet" aria-hidden="true">→</div>
+              <div>
+                <div class="meta-label">Conclusion</div>
+                <div id="experiment-conclusion" class="meta-copy"></div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <article class="card final-result-card" aria-label="Retained validation result">
+        <div class="card-heading">
+          <span class="card-icon tone-green" aria-hidden="true">★</span>
+          <span>Retained Validation Result</span>
+        </div>
+        <div class="card-rule"></div>
+        <div class="result-header">
+          <div>
+            <div class="entity-eyebrow">Score-bearing checkpoint</div>
+            <div id="final-result-state" class="entity-id">—</div>
+          </div>
+          <span id="final-result-tag" class="quiet-pill">not recorded</span>
+        </div>
+        <div id="final-result-summary" class="result-summary muted">No retained validation result recorded.</div>
+        <div class="result-metrics">
+          <div class="result-metric">
+            <div class="meta-label">GAUC</div>
+            <div id="final-result-gauc" class="result-value muted">—</div>
+          </div>
+          <div class="result-metric">
+            <div class="meta-label">nDCG@5</div>
+            <div id="final-result-ndcg" class="result-value muted">—</div>
+          </div>
+          <div class="result-metric primary-result-metric">
+            <div class="meta-label">Primary</div>
+            <div id="final-result-primary" class="result-value muted">—</div>
+          </div>
+          <div class="result-metric">
+            <div class="meta-label">Delta vs baseline</div>
+            <div id="final-result-delta" class="result-value muted">—</div>
+          </div>
+        </div>
+        <div id="final-result-evidence" class="result-evidence muted">Evidence is not available.</div>
+      </article>
+
+      <section class="secondary-grid">
+        <article class="card intuition-card">
+          <div class="card-heading">
+            <span class="card-icon tone-blue" aria-hidden="true">✦</span>
+            <span>Research Intuition</span>
+          </div>
+          <div class="card-rule"></div>
+          <blockquote id="intuition" class="intuition-copy muted">No research intuition recorded yet.</blockquote>
+        </article>
+
+        <article class="card activity-card">
+          <div class="card-heading">
+            <span class="card-icon tone-blue" aria-hidden="true">◷</span>
+            <span>Recent Activity</span>
+          </div>
+          <div class="card-rule"></div>
+          <div id="events" class="activity-list">
+            <div class="empty-state">Waiting for research activity…</div>
+          </div>
+        </article>
+
+        <article class="card meta-card">
+          <div class="card-heading">
+            <span class="card-icon tone-violet" aria-hidden="true">◇</span>
+            <span id="summary-card-title">Run Summary</span>
+          </div>
+          <div class="card-rule"></div>
+
+          <div class="meta-row">
+            <div class="meta-mark meta-warning" aria-hidden="true">!</div>
+            <div>
+              <div class="meta-label">Concerns</div>
+              <ul id="concerns" class="meta-concerns"><li class="muted">No current concerns.</li></ul>
+            </div>
+          </div>
+
+          <div class="meta-row">
+            <div class="meta-mark" aria-hidden="true">≡</div>
+            <div>
+              <div class="meta-label">Summary</div>
+              <div id="summary" class="meta-copy muted">No run summary yet.</div>
+            </div>
+          </div>
+
+          <div class="meta-row">
+            <div class="meta-mark meta-next" aria-hidden="true">→</div>
+            <div>
+              <div class="meta-label">Next Action</div>
+              <div id="next-action" class="meta-copy muted">No next action recorded.</div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <article id="parallel-card" class="card parallel-card" hidden>
+        <div class="card-heading">
+          <span class="card-icon tone-blue" aria-hidden="true">⑂</span>
+          <span>Parallel Review</span>
+        </div>
+        <div class="card-rule"></div>
+        <div class="parallel-overview">
+          <div>
+            <div class="meta-label">Run</div>
+            <div id="parallel-id" class="entity-id">—</div>
+          </div>
+          <div>
+            <div class="meta-label">Rounds</div>
+            <div id="parallel-rounds" class="fact-value">—</div>
+          </div>
+          <div>
+            <div class="meta-label">Selected</div>
+            <div id="parallel-selected" class="fact-value">—</div>
+          </div>
+          <div>
+            <div class="meta-label">Synthesis</div>
+            <div id="parallel-synthesis" class="fact-value">—</div>
+          </div>
+        </div>
+        <div id="parallel-branches" class="branch-list">
+          <div class="empty-state">Waiting for branch results…</div>
+        </div>
+      </article>
+    </main>
+
+    <section class="raw-section">
+      <details>
+        <summary>
+          <span>Raw research artifacts</span>
+          <span class="raw-hint">read-only</span>
+        </summary>
+        <div class="raw-toolbar" id="raw-tabs"></div>
+        <div class="raw-path" id="raw-path">Select an artifact</div>
+        <pre id="raw-content">Open this panel to inspect the underlying research files.</pre>
+      </details>
+    </section>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://good4ai.dev/research-agent/cycle-result-v1.schema.json",
+  "title": "Research Agent Cycle Result",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["status", "summary", "next_action"],
+  "properties": {
+    "status": {
+      "enum": ["continue", "converged", "budget_exhausted", "needs_human", "failed"]
+    },
+    "summary": {"type": "string", "minLength": 1},
+    "next_action": {"type": "string", "minLength": 1}
+  }
+}

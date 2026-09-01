@@ -1,0 +1,171 @@
+{
+  "dim": 42772,
+  "elapsed_seconds": 94.61898994445801,
+  "ensemble_full_score": null,
+  "ensemble_medium_score": {
+    "GAUC": 0.6717838048934937,
+    "nDCG@5": 0.5358470678329468,
+    "primary": 0.6038154363632202,
+    "rows": 31536,
+    "users": 5590
+  },
+  "experiment": "rich46_fm_ensemble",
+  "fields": [
+    "user_id",
+    "video_id",
+    "author_id",
+    "tab",
+    "dur_bucket",
+    "hour",
+    "weekday",
+    "video_type",
+    "upload_type",
+    "music_type",
+    "tag",
+    "aspect",
+    "active",
+    "is_lowactive",
+    "is_live_streamer",
+    "is_video_author",
+    "follow_range",
+    "fans_range",
+    "friend_range",
+    "register_range",
+    "onehot_0",
+    "onehot_1",
+    "onehot_2",
+    "onehot_3",
+    "onehot_4",
+    "onehot_5",
+    "onehot_6",
+    "onehot_7",
+    "onehot_8",
+    "onehot_9",
+    "onehot_10",
+    "onehot_11",
+    "onehot_12",
+    "onehot_13",
+    "onehot_14",
+    "onehot_15",
+    "onehot_16",
+    "onehot_17",
+    "tag2",
+    "video_age",
+    "u_top_tag",
+    "u_top_tab",
+    "u_rate_bucket",
+    "u_count_bucket",
+    "match_tag",
+    "match_tab",
+    "u_last_tag",
+    "match_last_tag",
+    "u_last_tab",
+    "match_last_tab"
+  ],
+  "individual_full_scores": null,
+  "individual_medium_scores": [
+    {
+      "GAUC": 0.6717838048934937,
+      "nDCG@5": 0.5358470678329468,
+      "primary": 0.6038154363632202,
+      "rows": 31536,
+      "seed": 0,
+      "users": 5590
+    }
+  ],
+  "k": 16,
+  "l2": 1e-05,
+  "lr": 0.001,
+  "num_fields": 50,
+  "seed_details": [
+    {
+      "best_epoch": 3,
+      "best_medium": {
+        "GAUC": 0.6717838048934937,
+        "duration": 9.645762205123901,
+        "epoch": 3,
+        "loss": 0.498307227236884,
+        "nDCG@5": 0.5358470678329468,
+        "primary": 0.6038154363632202,
+        "rows": 31536,
+        "users": 5590
+      },
+      "history": [
+        {
+          "GAUC": 0.6662485599517822,
+          "duration": 9.724787950515747,
+          "epoch": 1,
+          "loss": 0.5528097323008946,
+          "nDCG@5": 0.533388078212738,
+          "primary": 0.5998183488845825,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.6658035516738892,
+          "duration": 9.648064136505127,
+          "epoch": 2,
+          "loss": 0.5021651338253702,
+          "nDCG@5": 0.5338826775550842,
+          "primary": 0.5998431444168091,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.6717838048934937,
+          "duration": 9.645762205123901,
+          "epoch": 3,
+          "loss": 0.498307227236884,
+          "nDCG@5": 0.5358470678329468,
+          "primary": 0.6038154363632202,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.669093132019043,
+          "duration": 9.688370943069458,
+          "epoch": 4,
+          "loss": 0.49667479715176993,
+          "nDCG@5": 0.5353736281394958,
+          "primary": 0.6022334098815918,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.6708899736404419,
+          "duration": 9.771133184432983,
+          "epoch": 5,
+          "loss": 0.49559575872761863,
+          "nDCG@5": 0.5363733172416687,
+          "primary": 0.6036316156387329,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.6704850792884827,
+          "duration": 9.686830759048462,
+          "epoch": 6,
+          "loss": 0.49470252586262564,
+          "nDCG@5": 0.5362354516983032,
+          "primary": 0.6033602952957153,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.6703339219093323,
+          "duration": 9.677327156066895,
+          "epoch": 7,
+          "loss": 0.49336404885564533,
+          "nDCG@5": 0.5355784296989441,
+          "primary": 0.6029561758041382,
+          "rows": 31536,
+          "users": 5590
+        }
+      ],
+      "seed": 0
+    }
+  ],
+  "seeds": [
+    0
+  ]
+}

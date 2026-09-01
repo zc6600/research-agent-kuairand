@@ -1,0 +1,97 @@
+{
+  "variant": "v3",
+  "hypothesis": "User Historical Dwell / Long-View Tendency Prior Field (11 fields in DCN-FM)",
+  "fields": [
+    "user_id",
+    "video_id",
+    "author_id",
+    "tab",
+    "dur_bucket",
+    "user_active_degree",
+    "follow_user_num_range",
+    "fans_user_num_range",
+    "friend_user_num_range",
+    "register_days_range",
+    "user_hist_rate_bin"
+  ],
+  "hyperparameters": {
+    "k": 16,
+    "lr": 0.001,
+    "l2": 1e-06,
+    "max_epochs": 20,
+    "batch_size": 8192,
+    "patience": 4,
+    "seed": 0,
+    "num_fields": 11,
+    "D": 176,
+    "num_log_bins": 20,
+    "num_user_rate_bins": 20
+  },
+  "best_epoch": 3,
+  "best_metrics": {
+    "GAUC": 0.669798731803894,
+    "nDCG@5": 0.5366585850715637,
+    "primary": 0.6032286882400513,
+    "users": 22377.0,
+    "rows": 124909.0
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.5655525584306036,
+      "valid_gauc": 0.6666089296340942,
+      "valid_ndcg5": 0.5349583029747009,
+      "valid_primary": 0.6007835865020752,
+      "epoch_time_sec": 13.216139078140259
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.5024222182376045,
+      "valid_gauc": 0.6697935461997986,
+      "valid_ndcg5": 0.5364416837692261,
+      "valid_primary": 0.6031175851821899,
+      "epoch_time_sec": 15.767920970916748
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.49780386707612445,
+      "valid_gauc": 0.669798731803894,
+      "valid_ndcg5": 0.5366585850715637,
+      "valid_primary": 0.6032286882400513,
+      "epoch_time_sec": 16.143622875213623
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.49449388959578106,
+      "valid_gauc": 0.6688386797904968,
+      "valid_ndcg5": 0.5363727807998657,
+      "valid_primary": 0.6026057004928589,
+      "epoch_time_sec": 14.52917194366455
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.4904871995959963,
+      "valid_gauc": 0.6686079502105713,
+      "valid_ndcg5": 0.5362086296081543,
+      "valid_primary": 0.6024082899093628,
+      "epoch_time_sec": 11.89217209815979
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.4843169938240732,
+      "valid_gauc": 0.6663947701454163,
+      "valid_ndcg5": 0.534317135810852,
+      "valid_primary": 0.6003559827804565,
+      "epoch_time_sec": 9.195207834243774
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.47607213173593793,
+      "valid_gauc": 0.658781886100769,
+      "valid_ndcg5": 0.5302205085754395,
+      "valid_primary": 0.5945011973381042,
+      "epoch_time_sec": 10.533647775650024
+    }
+  ],
+  "total_elapsed_time_sec": 91.2786660194397
+}

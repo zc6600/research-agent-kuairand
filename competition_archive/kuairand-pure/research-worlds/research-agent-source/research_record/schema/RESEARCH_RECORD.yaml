@@ -1,0 +1,37 @@
+# Complete experiment ledger maintained by META.
+# Keep every meaningful experiment, including failures and negative results.
+# The content is intentionally lightweight: one human-readable paragraph per experiment,
+# plus only the minimal machine-readable fields needed for provenance/UI.
+#
+# The paragraph should normally cover:
+# - hypothesis or exploratory question;
+# - what was changed/run and the important configuration;
+# - exact important results;
+# - interpretation and what the result does NOT establish.
+#
+# META must reconstruct entries from Scientist evidence/logs/source and must not invent
+# a hypothesis or causal interpretation after the fact.
+experiments:
+
+  - id: <experiment-id>
+
+    record: >
+      <一段完整的人话实验记录。说明这是 hypothesis-driven 还是 exploratory；
+       为什么值得尝试；实际做了什么；关键配置 / comparator / split / seed（相关时）；
+       精确的重要指标或失败现象；结果支持了什么、没有证明什么。>
+
+    primary_metric:
+      name: <任务 primary metric 名称；没有则 null>
+      value: <数值；没有则 null>
+
+    official_score: <true only when this primary_metric is directly comparable for the task's official development frontier; otherwise false>
+
+    resulting_state: <state-id or null>
+
+    evidence:
+      - <research_record/logs/... 或其他可审计 evidence path>
+
+manual_interventions: []
+
+  # - at: <experiment-id>
+  #   what: <人做了什么以及为什么需要人工介入>

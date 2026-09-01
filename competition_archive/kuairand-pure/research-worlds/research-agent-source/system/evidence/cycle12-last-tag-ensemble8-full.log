@@ -1,0 +1,123 @@
+Loaded 48 fields: dimension=42753
+--- Training 46-field seed 0 (k=16, lr=0.001, l2=1e-05) ---
+  Seed 0 Ep  1 | loss 0.5539 | Med GAUC 0.66633 nDCG@5 0.53307 primary 0.59970 | 10.0s
+  Seed 0 Ep  2 | loss 0.5023 | Med GAUC 0.66650 nDCG@5 0.53440 primary 0.60045 | 10.0s
+  Seed 0 Ep  3 | loss 0.4982 | Med GAUC 0.67250 nDCG@5 0.53646 primary 0.60448 | 9.4s
+  Seed 0 Ep  4 | loss 0.4965 | Med GAUC 0.66862 nDCG@5 0.53551 primary 0.60207 | 9.5s
+  Seed 0 Ep  5 | loss 0.4952 | Med GAUC 0.67018 nDCG@5 0.53600 primary 0.60309 | 9.8s
+  Seed 0 Ep  6 | loss 0.4942 | Med GAUC 0.67059 nDCG@5 0.53657 primary 0.60358 | 10.0s
+  Seed 0 Ep  7 | loss 0.4928 | Med GAUC 0.67090 nDCG@5 0.53538 primary 0.60314 | 10.0s
+  Seed 0 early stopped at epoch 7
+--- Training 46-field seed 1 (k=16, lr=0.001, l2=1e-05) ---
+  Seed 1 Ep  1 | loss 0.5525 | Med GAUC 0.66828 nDCG@5 0.53321 primary 0.60075 | 10.0s
+  Seed 1 Ep  2 | loss 0.5024 | Med GAUC 0.66912 nDCG@5 0.53396 primary 0.60154 | 10.1s
+  Seed 1 Ep  3 | loss 0.4985 | Med GAUC 0.67155 nDCG@5 0.53479 primary 0.60317 | 10.1s
+  Seed 1 Ep  4 | loss 0.4969 | Med GAUC 0.67163 nDCG@5 0.53675 primary 0.60419 | 10.1s
+  Seed 1 Ep  5 | loss 0.4958 | Med GAUC 0.66956 nDCG@5 0.53531 primary 0.60243 | 10.1s
+  Seed 1 Ep  6 | loss 0.4950 | Med GAUC 0.66962 nDCG@5 0.53532 primary 0.60247 | 10.1s
+  Seed 1 Ep  7 | loss 0.4937 | Med GAUC 0.66889 nDCG@5 0.53521 primary 0.60205 | 10.1s
+  Seed 1 Ep  8 | loss 0.4926 | Med GAUC 0.66977 nDCG@5 0.53590 primary 0.60284 | 9.6s
+  Seed 1 early stopped at epoch 8
+--- Training 46-field seed 2 (k=16, lr=0.001, l2=1e-05) ---
+  Seed 2 Ep  1 | loss 0.5529 | Med GAUC 0.66481 nDCG@5 0.53223 primary 0.59852 | 9.4s
+  Seed 2 Ep  2 | loss 0.5024 | Med GAUC 0.66671 nDCG@5 0.53382 primary 0.60026 | 9.4s
+  Seed 2 Ep  3 | loss 0.4984 | Med GAUC 0.66885 nDCG@5 0.53483 primary 0.60184 | 9.4s
+  Seed 2 Ep  4 | loss 0.4968 | Med GAUC 0.66644 nDCG@5 0.53464 primary 0.60054 | 9.4s
+  Seed 2 Ep  5 | loss 0.4954 | Med GAUC 0.66935 nDCG@5 0.53566 primary 0.60250 | 9.4s
+  Seed 2 Ep  6 | loss 0.4946 | Med GAUC 0.66875 nDCG@5 0.53534 primary 0.60205 | 9.4s
+  Seed 2 Ep  7 | loss 0.4935 | Med GAUC 0.67041 nDCG@5 0.53645 primary 0.60343 | 9.4s
+  Seed 2 Ep  8 | loss 0.4924 | Med GAUC 0.67035 nDCG@5 0.53530 primary 0.60283 | 9.4s
+  Seed 2 Ep  9 | loss 0.4912 | Med GAUC 0.67092 nDCG@5 0.53567 primary 0.60330 | 9.4s
+  Seed 2 Ep 10 | loss 0.4897 | Med GAUC 0.67097 nDCG@5 0.53609 primary 0.60353 | 9.4s
+  Seed 2 Ep 11 | loss 0.4879 | Med GAUC 0.67131 nDCG@5 0.53575 primary 0.60353 | 9.4s
+  Seed 2 Ep 12 | loss 0.4860 | Med GAUC 0.67079 nDCG@5 0.53647 primary 0.60363 | 9.4s
+  Seed 2 Ep 13 | loss 0.4838 | Med GAUC 0.66932 nDCG@5 0.53502 primary 0.60217 | 9.4s
+  Seed 2 Ep 14 | loss 0.4814 | Med GAUC 0.66668 nDCG@5 0.53539 primary 0.60104 | 9.4s
+  Seed 2 Ep 15 | loss 0.4791 | Med GAUC 0.66854 nDCG@5 0.53512 primary 0.60183 | 9.4s
+  Seed 2 Ep 16 | loss 0.4764 | Med GAUC 0.66751 nDCG@5 0.53506 primary 0.60128 | 9.4s
+  Seed 2 early stopped at epoch 16
+--- Training 46-field seed 3 (k=16, lr=0.001, l2=1e-05) ---
+  Seed 3 Ep  1 | loss 0.5521 | Med GAUC 0.66660 nDCG@5 0.53302 primary 0.59981 | 9.4s
+  Seed 3 Ep  2 | loss 0.5025 | Med GAUC 0.66707 nDCG@5 0.53211 primary 0.59959 | 9.4s
+  Seed 3 Ep  3 | loss 0.4985 | Med GAUC 0.67088 nDCG@5 0.53519 primary 0.60304 | 9.4s
+  Seed 3 Ep  4 | loss 0.4969 | Med GAUC 0.66988 nDCG@5 0.53494 primary 0.60241 | 9.4s
+  Seed 3 Ep  5 | loss 0.4961 | Med GAUC 0.66837 nDCG@5 0.53487 primary 0.60162 | 9.5s
+  Seed 3 Ep  6 | loss 0.4950 | Med GAUC 0.66997 nDCG@5 0.53611 primary 0.60304 | 9.4s
+  Seed 3 Ep  7 | loss 0.4939 | Med GAUC 0.66978 nDCG@5 0.53594 primary 0.60286 | 9.4s
+  Seed 3 early stopped at epoch 7
+--- Training 46-field seed 4 (k=16, lr=0.001, l2=1e-05) ---
+  Seed 4 Ep  1 | loss 0.5525 | Med GAUC 0.66789 nDCG@5 0.53361 primary 0.60075 | 9.4s
+  Seed 4 Ep  2 | loss 0.5021 | Med GAUC 0.66837 nDCG@5 0.53412 primary 0.60125 | 9.4s
+  Seed 4 Ep  3 | loss 0.4983 | Med GAUC 0.67167 nDCG@5 0.53554 primary 0.60361 | 9.7s
+  Seed 4 Ep  4 | loss 0.4963 | Med GAUC 0.66658 nDCG@5 0.53371 primary 0.60014 | 9.5s
+  Seed 4 Ep  5 | loss 0.4950 | Med GAUC 0.66822 nDCG@5 0.53490 primary 0.60156 | 9.5s
+  Seed 4 Ep  6 | loss 0.4938 | Med GAUC 0.66940 nDCG@5 0.53433 primary 0.60186 | 9.5s
+  Seed 4 Ep  7 | loss 0.4926 | Med GAUC 0.66596 nDCG@5 0.53450 primary 0.60023 | 9.4s
+  Seed 4 early stopped at epoch 7
+--- Training 46-field seed 5 (k=16, lr=0.001, l2=1e-05) ---
+  Seed 5 Ep  1 | loss 0.5527 | Med GAUC 0.66563 nDCG@5 0.53185 primary 0.59874 | 9.4s
+  Seed 5 Ep  2 | loss 0.5023 | Med GAUC 0.66743 nDCG@5 0.53321 primary 0.60032 | 9.4s
+  Seed 5 Ep  3 | loss 0.4983 | Med GAUC 0.66732 nDCG@5 0.53416 primary 0.60074 | 9.4s
+  Seed 5 Ep  4 | loss 0.4970 | Med GAUC 0.66900 nDCG@5 0.53514 primary 0.60207 | 9.4s
+  Seed 5 Ep  5 | loss 0.4957 | Med GAUC 0.67071 nDCG@5 0.53504 primary 0.60288 | 9.4s
+  Seed 5 Ep  6 | loss 0.4946 | Med GAUC 0.66882 nDCG@5 0.53476 primary 0.60179 | 9.4s
+  Seed 5 Ep  7 | loss 0.4936 | Med GAUC 0.67119 nDCG@5 0.53542 primary 0.60331 | 9.4s
+  Seed 5 Ep  8 | loss 0.4926 | Med GAUC 0.66799 nDCG@5 0.53461 primary 0.60130 | 9.5s
+  Seed 5 Ep  9 | loss 0.4914 | Med GAUC 0.66803 nDCG@5 0.53464 primary 0.60133 | 10.0s
+  Seed 5 Ep 10 | loss 0.4896 | Med GAUC 0.66939 nDCG@5 0.53471 primary 0.60205 | 10.1s
+  Seed 5 Ep 11 | loss 0.4880 | Med GAUC 0.66836 nDCG@5 0.53493 primary 0.60164 | 10.1s
+  Seed 5 early stopped at epoch 11
+--- Training 46-field seed 6 (k=16, lr=0.001, l2=1e-05) ---
+  Seed 6 Ep  1 | loss 0.5526 | Med GAUC 0.66596 nDCG@5 0.53278 primary 0.59937 | 10.1s
+  Seed 6 Ep  2 | loss 0.5020 | Med GAUC 0.66757 nDCG@5 0.53290 primary 0.60024 | 10.1s
+  Seed 6 Ep  3 | loss 0.4979 | Med GAUC 0.66952 nDCG@5 0.53458 primary 0.60205 | 9.9s
+  Seed 6 Ep  4 | loss 0.4961 | Med GAUC 0.67021 nDCG@5 0.53536 primary 0.60279 | 9.5s
+  Seed 6 Ep  5 | loss 0.4947 | Med GAUC 0.66905 nDCG@5 0.53615 primary 0.60260 | 9.7s
+  Seed 6 Ep  6 | loss 0.4934 | Med GAUC 0.67078 nDCG@5 0.53508 primary 0.60293 | 10.1s
+  Seed 6 Ep  7 | loss 0.4918 | Med GAUC 0.67075 nDCG@5 0.53541 primary 0.60308 | 10.2s
+  Seed 6 Ep  8 | loss 0.4903 | Med GAUC 0.66964 nDCG@5 0.53585 primary 0.60274 | 10.2s
+  Seed 6 Ep  9 | loss 0.4889 | Med GAUC 0.67050 nDCG@5 0.53590 primary 0.60320 | 10.2s
+  Seed 6 Ep 10 | loss 0.4872 | Med GAUC 0.67032 nDCG@5 0.53564 primary 0.60298 | 10.2s
+  Seed 6 Ep 11 | loss 0.4854 | Med GAUC 0.66930 nDCG@5 0.53474 primary 0.60202 | 10.1s
+  Seed 6 Ep 12 | loss 0.4834 | Med GAUC 0.67011 nDCG@5 0.53469 primary 0.60240 | 10.1s
+  Seed 6 Ep 13 | loss 0.4812 | Med GAUC 0.66915 nDCG@5 0.53533 primary 0.60224 | 10.0s
+  Seed 6 early stopped at epoch 13
+--- Training 46-field seed 7 (k=16, lr=0.001, l2=1e-05) ---
+  Seed 7 Ep  1 | loss 0.5536 | Med GAUC 0.66695 nDCG@5 0.53199 primary 0.59947 | 9.5s
+  Seed 7 Ep  2 | loss 0.5027 | Med GAUC 0.66822 nDCG@5 0.53420 primary 0.60121 | 9.4s
+  Seed 7 Ep  3 | loss 0.4984 | Med GAUC 0.67098 nDCG@5 0.53558 primary 0.60328 | 9.4s
+  Seed 7 Ep  4 | loss 0.4967 | Med GAUC 0.66843 nDCG@5 0.53420 primary 0.60131 | 9.6s
+  Seed 7 Ep  5 | loss 0.4955 | Med GAUC 0.66949 nDCG@5 0.53519 primary 0.60234 | 10.1s
+  Seed 7 Ep  6 | loss 0.4944 | Med GAUC 0.66946 nDCG@5 0.53535 primary 0.60240 | 10.1s
+  Seed 7 Ep  7 | loss 0.4935 | Med GAUC 0.67062 nDCG@5 0.53605 primary 0.60333 | 10.2s
+  Seed 7 Ep  8 | loss 0.4924 | Med GAUC 0.67015 nDCG@5 0.53619 primary 0.60317 | 10.2s
+  Seed 7 Ep  9 | loss 0.4912 | Med GAUC 0.67132 nDCG@5 0.53738 primary 0.60435 | 10.3s
+  Seed 7 Ep 10 | loss 0.4895 | Med GAUC 0.66926 nDCG@5 0.53616 primary 0.60271 | 10.1s
+  Seed 7 Ep 11 | loss 0.4880 | Med GAUC 0.66812 nDCG@5 0.53561 primary 0.60186 | 10.1s
+  Seed 7 Ep 12 | loss 0.4861 | Med GAUC 0.66883 nDCG@5 0.53671 primary 0.60277 | 10.2s
+  Seed 7 Ep 13 | loss 0.4840 | Med GAUC 0.66627 nDCG@5 0.53487 primary 0.60057 | 10.1s
+  Seed 7 early stopped at epoch 13
+Seed 0 Medium Score: GAUC 0.67250 nDCG@5 0.53646 primary 0.60448
+Seed 1 Medium Score: GAUC 0.67163 nDCG@5 0.53675 primary 0.60419
+Seed 2 Medium Score: GAUC 0.67079 nDCG@5 0.53647 primary 0.60363
+Seed 3 Medium Score: GAUC 0.67088 nDCG@5 0.53519 primary 0.60304
+Seed 4 Medium Score: GAUC 0.67167 nDCG@5 0.53554 primary 0.60361
+Seed 5 Medium Score: GAUC 0.67119 nDCG@5 0.53542 primary 0.60331
+Seed 6 Medium Score: GAUC 0.67050 nDCG@5 0.53590 primary 0.60320
+Seed 7 Medium Score: GAUC 0.67132 nDCG@5 0.53738 primary 0.60435
+
+=== Ensemble (8 seeds) Medium Score ===
+GAUC: 0.6724305, nDCG@5: 0.5365308, primary: 0.6044806
+Seed 0 Full Score: GAUC 0.6706104 nDCG@5 0.5378695 primary 0.6042399
+Seed 1 Full Score: GAUC 0.6715556 nDCG@5 0.5387858 primary 0.6051707
+Seed 2 Full Score: GAUC 0.6693233 nDCG@5 0.5368406 primary 0.6030819
+Seed 3 Full Score: GAUC 0.6703613 nDCG@5 0.5373334 primary 0.6038473
+Seed 4 Full Score: GAUC 0.6698972 nDCG@5 0.5368981 primary 0.6033977
+Seed 5 Full Score: GAUC 0.6707330 nDCG@5 0.5380021 primary 0.6043675
+Seed 6 Full Score: GAUC 0.6692768 nDCG@5 0.5370319 primary 0.6031544
+Seed 7 Full Score: GAUC 0.6709291 nDCG@5 0.5380429 primary 0.6044860
+
+=== Ensemble (8 seeds) Full Validation Score ===
+GAUC: 0.6717311, nDCG@5: 0.5382243, primary: 0.6049777
+Delta vs baseline: GAUC +0.0043311, nDCG@5 +0.0025243, primary +0.0033777
+Delta vs S003: GAUC +0.0005135, nDCG@5 +0.0005840, primary +0.0005488

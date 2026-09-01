@@ -1,0 +1,38 @@
+Loading data from /Users/frank/github_project/Good4AI-simplify-scientist-remote-run/research_agent/projects/p0_baseline_antigravity_subagents_clean_2026-08-31/competition_data/data ...
+Loaded splits: {'train': 1141112, 'valid': 124909} in 3.30s
+Encoding features across 10 fields with 20 Logarithmic Duration Bins...
+Train log(1 + duration_ms) range: [0.0000, 13.9791]
+Created 19 internal cutoffs for 20 log duration bins:
+  Cutoffs: [0.699, 1.3979, 2.0969, 2.7958, 3.4948, 4.1937, 4.8927, 5.5916, 6.2906, 6.9895, 7.6885, 8.3875, 9.0864, 9.7854, 10.4843, 11.1833, 11.8822, 12.5812, 13.2801]
+Feature encoding complete. Total dimension: 40304 across 10 fields in 6.14s
+  Field  0 (user_id               ): 26211 distinct IDs (including UNK)
+  Field  1 (video_id              ): 7539 distinct IDs (including UNK)
+  Field  2 (author_id             ): 6483 distinct IDs (including UNK)
+  Field  3 (tab                   ): 16 distinct IDs (including UNK)
+  Field  4 (dur_bucket            ): 10 distinct IDs (including UNK)
+  Field  5 (user_active_degree    ): 10 distinct IDs (including UNK)
+  Field  6 (follow_user_num_range ): 9 distinct IDs (including UNK)
+  Field  7 (fans_user_num_range   ): 10 distinct IDs (including UNK)
+  Field  8 (friend_user_num_range ): 8 distinct IDs (including UNK)
+  Field  9 (register_days_range   ): 8 distinct IDs (including UNK)
+
+Initializing Multi-Task DCN_FM model (dim=40304, fields=10, k=16, D=160, alpha=0.3, lr=0.001, l2=1e-06, seed=0)...
+
+Starting Multi-Task DCN_FM training with Like Auxiliary (alpha=0.3)...
+Epoch  1/20 | Train Tot: 0.6789 (Long: 0.5956, Like: 0.2778) | Valid GAUC: 0.6604 | nDCG@5: 0.5326 | Primary: 0.5965 | Time: 4.58s
+Epoch  2/20 | Train Tot: 0.5343 (Long: 0.5094, Like: 0.0830) | Valid GAUC: 0.6680 | nDCG@5: 0.5360 | Primary: 0.6020 | Time: 5.69s
+Epoch  3/20 | Train Tot: 0.5232 (Long: 0.5011, Like: 0.0738) | Valid GAUC: 0.6696 | nDCG@5: 0.5369 | Primary: 0.6033 | Time: 5.51s
+Epoch  4/20 | Train Tot: 0.5177 (Long: 0.4985, Like: 0.0637) | Valid GAUC: 0.6704 | nDCG@5: 0.5371 | Primary: 0.6038 | Time: 5.52s
+Epoch  5/20 | Train Tot: 0.5143 (Long: 0.4968, Like: 0.0584) | Valid GAUC: 0.6705 | nDCG@5: 0.5377 | Primary: 0.6041 | Time: 6.42s
+Epoch  6/20 | Train Tot: 0.5121 (Long: 0.4953, Like: 0.0562) | Valid GAUC: 0.6703 | nDCG@5: 0.5375 | Primary: 0.6039 | Time: 5.13s
+Epoch  7/20 | Train Tot: 0.5102 (Long: 0.4937, Like: 0.0548) | Valid GAUC: 0.6707 | nDCG@5: 0.5372 | Primary: 0.6039 | Time: 5.24s
+Epoch  8/20 | Train Tot: 0.5079 (Long: 0.4917, Like: 0.0538) | Valid GAUC: 0.6689 | nDCG@5: 0.5365 | Primary: 0.6027 | Time: 4.79s
+Epoch  9/20 | Train Tot: 0.5052 (Long: 0.4893, Like: 0.0532) | Valid GAUC: 0.6671 | nDCG@5: 0.5355 | Primary: 0.6013 | Time: 4.43s
+Early stopping triggered at epoch 9 (best epoch: 5)
+
+Training completed in 47.32s.
+Best Validation Epoch: 5
+Best Validation GAUC:    0.6705
+Best Validation nDCG@5:  0.5377
+Best Validation Primary: 0.6041
+Saved results to /Users/frank/github_project/Good4AI-simplify-scientist-remote-run/research_agent/projects/p0_baseline_antigravity_subagents_clean_2026-08-31/baseline_runs/cycles/cycle-06/v2/results.json

@@ -1,4 +1,30 @@
-competition_data/
-KuaiRand-Pure/
+.venv/
+.uv-cache/
 __pycache__/
 *.py[cod]
+*.swp
+.DS_Store
+CLAUDE.local.md
+dist/
+*.egg-info/
+
+# Local data and generated workspace outputs.
+data/
+datasets/
+checkpoints/
+outputs/
+/logs/
+archive/logs/
+
+# Each entry under projects/ is an independent local Git repository.
+projects/*/
+!projects/README.md
+
+# Successful-project snapshots are local working copies; the canonical public
+# deliverable lives under submission/.
+successful_projects/
+
+# competition_archive/kuairand-pure/research-worlds/ is intentionally included
+# in the competition evidence submission.
+# Local curated datasets inside those snapshots are not submission artifacts.
+competition_archive/kuairand-pure/research-worlds/*/competition_data/

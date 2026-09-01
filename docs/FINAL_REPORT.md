@@ -342,7 +342,7 @@ protocols or that the score differences are statistically significant.*
 | Agent system | Non-cache input + output | Best public-validation Primary | Delta vs 0.6016 | Evidence status | Main search direction |
 |---|---:|---:|---:|---|---|
 | **`gpt-5.6-luna` 3h direct Goal baseline** | **404,934** | **approximately 0.6046** | **approximately +0.0030** | Provisional; measured telemetry, report/README score, terminal closed after `task_complete` | Six-field FM, positive weighting, and `tab×hour` |
-| Direct `gemini-3.7-flash` Goal | 1,361,547 | approximately 0.60447 | approximately +0.00287 | Provisional | Deep interactions, auxiliary task, EMA |
+| **AGY `gemini-3.7-flash` 2h direct Goal baseline** | **1,117,370** | **0.6045803** | **+0.0029803** | Artifact-backed corrected rerun | AutoCrossNet, unified neural models, and five-model blend |
 | `gemini-3.7-flash`-only Research Agent trajectory, through Cycle 2 | 2,070,960–2,898,630* | 0.6052 | +0.0036 | Artifact-backed; online-history semantics noted | Seed-42 item-sequence DIN |
 | **Research Agent submitted implementation** | **6,833,808** | **0.6059363** | **+0.0043363** | **Verified retained result** | Multi-cycle representation and ensemble search |
 | `gemini-3.7-flash` heterogeneous subagents | 7,726,649 | approximately 0.6047 | approximately +0.0031 | Artifact-backed separate run | Parallel heterogeneous architecture search |
@@ -365,7 +365,8 @@ there is one recorded run per condition, model and launcher protocols differ,
 and the direct controls retain unresolved audit qualifications.
 
 The defensible quantitative statement is narrow. The submitted Research Agent implementation is approximately
-`+0.00134` above the `gpt-5.6-luna` 3h direct baseline, `+0.0007363` above the
+`+0.00134` above the `gpt-5.6-luna` 3h direct baseline, `+0.001356` above the
+corrected AGY 2h `gemini-3.7-flash` baseline, and `+0.0007363` above the
 Cycle-2 `gemini-3.7-flash`-only trajectory score,
 and approximately `+0.00124` above the heterogeneous-subagent
 `gemini-3.7-flash` result on the
@@ -374,7 +375,7 @@ that the submitted implementation connects its score to a reproducible implement
 ledger, raw evidence, an exact reproduction result, and a checked output file.
 Complete control provenance is archived in
 [`gpt-5.6-luna-3h-goal-baseline.md`](../competition_archive/kuairand-pure/reports/gpt-5.6-luna-3h-goal-baseline.md),
-[`direct-gemini-3.7-flash-goal-baseline.md`](../competition_archive/kuairand-pure/reports/direct-gemini-3.7-flash-goal-baseline.md), and
+[`agy-medium-baseline-2h-2026-09-01.md`](../competition_archive/kuairand-pure/reports/agy-medium-baseline-2h-2026-09-01.md), and
 [`gemini-3.7-flash-heterogeneous-subagents-baseline.md`](../competition_archive/kuairand-pure/reports/gemini-3.7-flash-heterogeneous-subagents-baseline.md).
 The synthesis and claim boundaries are in
 [`baseline-and-token-synthesis.md`](../competition_archive/kuairand-pure/reports/baseline-and-token-synthesis.md).

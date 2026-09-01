@@ -1,0 +1,191 @@
+{
+  "dim": 42771,
+  "elapsed_seconds": 128.01420331001282,
+  "ensemble_full_score": null,
+  "ensemble_medium_score": {
+    "GAUC": 0.6715183258056641,
+    "nDCG@5": 0.5371178388595581,
+    "primary": 0.6043180823326111,
+    "rows": 31536,
+    "users": 5590
+  },
+  "experiment": "rich46_fm_ensemble",
+  "fields": [
+    "user_id",
+    "video_id",
+    "author_id",
+    "tab",
+    "dur_bucket",
+    "hour",
+    "weekday",
+    "video_type",
+    "upload_type",
+    "music_type",
+    "tag",
+    "aspect",
+    "active",
+    "is_lowactive",
+    "is_live_streamer",
+    "is_video_author",
+    "follow_range",
+    "fans_range",
+    "friend_range",
+    "register_range",
+    "onehot_0",
+    "onehot_1",
+    "onehot_2",
+    "onehot_3",
+    "onehot_4",
+    "onehot_5",
+    "onehot_6",
+    "onehot_7",
+    "onehot_8",
+    "onehot_9",
+    "onehot_10",
+    "onehot_11",
+    "onehot_12",
+    "onehot_13",
+    "onehot_14",
+    "onehot_15",
+    "onehot_16",
+    "onehot_17",
+    "tag2",
+    "video_age",
+    "u_top_tag",
+    "u_top_tab",
+    "u_rate_bucket",
+    "u_count_bucket",
+    "match_tag",
+    "match_tab",
+    "u_second_tag",
+    "u_second_tab",
+    "match_second_tag",
+    "match_second_tab"
+  ],
+  "individual_full_scores": null,
+  "individual_medium_scores": [
+    {
+      "GAUC": 0.6715183258056641,
+      "nDCG@5": 0.5371178388595581,
+      "primary": 0.6043180823326111,
+      "rows": 31536,
+      "seed": 0,
+      "users": 5590
+    }
+  ],
+  "k": 16,
+  "l2": 1e-05,
+  "lr": 0.001,
+  "num_fields": 50,
+  "seed_details": [
+    {
+      "best_epoch": 5,
+      "best_medium": {
+        "GAUC": 0.6715183258056641,
+        "duration": 11.228133916854858,
+        "epoch": 5,
+        "loss": 0.494858555495739,
+        "nDCG@5": 0.5371178388595581,
+        "primary": 0.6043180823326111,
+        "rows": 31536,
+        "users": 5590
+      },
+      "history": [
+        {
+          "GAUC": 0.6677363514900208,
+          "duration": 10.726006031036377,
+          "epoch": 1,
+          "loss": 0.5524143755435944,
+          "nDCG@5": 0.5339081287384033,
+          "primary": 0.6008222103118896,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.6669944524765015,
+          "duration": 10.776136875152588,
+          "epoch": 2,
+          "loss": 0.5019221288817269,
+          "nDCG@5": 0.533552885055542,
+          "primary": 0.6002736687660217,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.6704103946685791,
+          "duration": 11.035282850265503,
+          "epoch": 3,
+          "loss": 0.4979062131472996,
+          "nDCG@5": 0.5352894067764282,
+          "primary": 0.6028499007225037,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.6677248477935791,
+          "duration": 11.283993005752563,
+          "epoch": 4,
+          "loss": 0.49612627093281064,
+          "nDCG@5": 0.535007119178772,
+          "primary": 0.6013659834861755,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.6715183258056641,
+          "duration": 11.228133916854858,
+          "epoch": 5,
+          "loss": 0.494858555495739,
+          "nDCG@5": 0.5371178388595581,
+          "primary": 0.6043180823326111,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.6702153086662292,
+          "duration": 11.182163000106812,
+          "epoch": 6,
+          "loss": 0.49376026051385064,
+          "nDCG@5": 0.5360928177833557,
+          "primary": 0.6031540632247925,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.6705156564712524,
+          "duration": 10.937178134918213,
+          "epoch": 7,
+          "loss": 0.4922724981393133,
+          "nDCG@5": 0.5348803400993347,
+          "primary": 0.6026979684829712,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.6705970168113708,
+          "duration": 10.947741985321045,
+          "epoch": 8,
+          "loss": 0.49072053262165616,
+          "nDCG@5": 0.5354365706443787,
+          "primary": 0.6030167937278748,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.6690647006034851,
+          "duration": 10.969019889831543,
+          "epoch": 9,
+          "loss": 0.4892306393810681,
+          "nDCG@5": 0.5337225198745728,
+          "primary": 0.6013935804367065,
+          "rows": 31536,
+          "users": 5590
+        }
+      ],
+      "seed": 0
+    }
+  ],
+  "seeds": [
+    0
+  ]
+}

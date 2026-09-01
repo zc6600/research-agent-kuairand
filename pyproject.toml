@@ -1,0 +1,53 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "good4ai-research-agent"
+version = "0.1.0"
+description = "Skill and standalone launcher for evidence-driven research agents"
+requires-python = ">=3.10"
+dependencies = ["PyYAML>=6.0,<7"]
+
+[project.scripts]
+research-agent = "research_agent.__main__:main"
+
+[dependency-groups]
+dev = [
+    "mypy>=1.10,<2",
+    "ruff>=0.11,<0.17",
+    "types-pyyaml>=6,<7",
+]
+
+[tool.mypy]
+python_version = "3.10"
+files = ["src/research_agent"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/research_agent"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"SKILL.md" = "research_agent/bundle/SKILL.md"
+"agents" = "research_agent/bundle/agents"
+"assets/project-template" = "research_agent/bundle/assets/project-template"
+"references" = "research_agent/bundle/references"
+"pyproject.toml" = "research_agent/bundle/pyproject.toml"
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "/README.md",
+  "/SKILL.md",
+  "/agents",
+  "/assets/project-template",
+  "/references",
+  "/src",
+  "/pyproject.toml",
+]

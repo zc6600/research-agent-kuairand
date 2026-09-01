@@ -1,0 +1,172 @@
+{
+  "dim": 42782,
+  "elapsed_seconds": 105.51210594177246,
+  "ensemble_full_score": null,
+  "ensemble_medium_score": {
+    "GAUC": 0.6703634858131409,
+    "nDCG@5": 0.5360332131385803,
+    "primary": 0.6031983494758606,
+    "rows": 31536,
+    "users": 5590
+  },
+  "experiment": "rich46_fm_ensemble",
+  "fields": [
+    "user_id",
+    "video_id",
+    "author_id",
+    "tab",
+    "dur_bucket",
+    "hour",
+    "weekday",
+    "video_type",
+    "upload_type",
+    "music_type",
+    "tag",
+    "aspect",
+    "active",
+    "is_lowactive",
+    "is_live_streamer",
+    "is_video_author",
+    "follow_range",
+    "fans_range",
+    "friend_range",
+    "register_range",
+    "onehot_0",
+    "onehot_1",
+    "onehot_2",
+    "onehot_3",
+    "onehot_4",
+    "onehot_5",
+    "onehot_6",
+    "onehot_7",
+    "onehot_8",
+    "onehot_9",
+    "onehot_10",
+    "onehot_11",
+    "onehot_12",
+    "onehot_13",
+    "onehot_14",
+    "onehot_15",
+    "onehot_16",
+    "onehot_17",
+    "tag2",
+    "video_age",
+    "u_top_tag",
+    "u_top_tab",
+    "u_rate_bucket",
+    "u_count_bucket",
+    "match_tag",
+    "match_tab",
+    "u_recent_top_tag",
+    "u_recent_top_tab",
+    "u_recent_rate_bucket",
+    "recent_match_tag",
+    "recent_match_tab"
+  ],
+  "individual_full_scores": null,
+  "individual_medium_scores": [
+    {
+      "GAUC": 0.6703634858131409,
+      "nDCG@5": 0.5360332131385803,
+      "primary": 0.6031983494758606,
+      "rows": 31536,
+      "seed": 0,
+      "users": 5590
+    }
+  ],
+  "k": 16,
+  "l2": 1e-05,
+  "lr": 0.001,
+  "num_fields": 51,
+  "seed_details": [
+    {
+      "best_epoch": 3,
+      "best_medium": {
+        "GAUC": 0.6703634858131409,
+        "duration": 10.804544925689697,
+        "epoch": 3,
+        "loss": 0.4980163844568389,
+        "nDCG@5": 0.5360332131385803,
+        "primary": 0.6031983494758606,
+        "rows": 31536,
+        "users": 5590
+      },
+      "history": [
+        {
+          "GAUC": 0.6664709448814392,
+          "duration": 10.733697891235352,
+          "epoch": 1,
+          "loss": 0.5512112204517637,
+          "nDCG@5": 0.5329468250274658,
+          "primary": 0.5997089147567749,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.6665357947349548,
+          "duration": 10.746596097946167,
+          "epoch": 2,
+          "loss": 0.50203980079719,
+          "nDCG@5": 0.5338557958602905,
+          "primary": 0.6001957654953003,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.6703634858131409,
+          "duration": 10.804544925689697,
+          "epoch": 3,
+          "loss": 0.4980163844568389,
+          "nDCG@5": 0.5360332131385803,
+          "primary": 0.6031983494758606,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.6659687757492065,
+          "duration": 10.683088064193726,
+          "epoch": 4,
+          "loss": 0.49599314033985137,
+          "nDCG@5": 0.5341882109642029,
+          "primary": 0.6000784635543823,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.6673699021339417,
+          "duration": 10.869659900665283,
+          "epoch": 5,
+          "loss": 0.4942753172346524,
+          "nDCG@5": 0.5353220105171204,
+          "primary": 0.601345956325531,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.6634947061538696,
+          "duration": 10.74747610092163,
+          "epoch": 6,
+          "loss": 0.492524291574955,
+          "nDCG@5": 0.5337508320808411,
+          "primary": 0.5986227989196777,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.6613042950630188,
+          "duration": 10.792196989059448,
+          "epoch": 7,
+          "loss": 0.4903477760297911,
+          "nDCG@5": 0.532628059387207,
+          "primary": 0.5969661474227905,
+          "rows": 31536,
+          "users": 5590
+        }
+      ],
+      "seed": 0
+    }
+  ],
+  "seeds": [
+    0
+  ]
+}

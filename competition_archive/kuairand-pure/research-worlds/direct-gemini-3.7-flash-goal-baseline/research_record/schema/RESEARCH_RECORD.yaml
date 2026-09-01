@@ -1,0 +1,192 @@
+# 活跃研究记忆：只保留 open 的 bottleneck（全文）和已关闭 bottleneck
+# 的压缩 closure。完整细节可移动到 research_record/archive/。
+# 本文件属于当前 mutable research memory，不依赖 Git 版本化。
+#
+# State id 标识 system/** 的系统版本，不是 research time。
+# bottleneck 的打开/关闭用 diagnostic / experiment evidence id 标识；
+# 具体证据在哪个 State 上产生，由 diagnostic / experiment 的 starting_state 记录。
+bottlenecks:
+
+  - id: <bottleneck-id>
+
+    description: >
+      <当前发现的问题是什么>
+
+    status: <forming | active | closed>
+
+    opened_by_evidence: <diagnostic-id | experiment-id | null>
+    # forming 时为 null；转为 active 时填写使该 bottleneck 成为 actionable 的 evidence。
+
+    formation:
+
+      observed_symptom: >
+        <在形成 bottleneck 时观察到的可复现症状、受影响指标或数据切片；
+         只写事实，不把猜测写成事实>
+
+      mechanism_analysis: >
+        <基于数据、模型和评价原理的分析：为什么该症状可能由这个
+         bottleneck 产生；明确哪些部分仍是假设>
+
+      diagnostic_experiments:
+
+        - id: <diagnostic-id>
+
+          starting_state: <state-id>
+
+          question: >
+            <这个诊断实验要区分哪些可能解释>
+
+          protocol: >
+            <数据来源 / split、control、fidelity、seed、预算和停止条件>
+
+          expected_result: >
+            <运行前预期看到什么，以及什么结果会支持或反驳该机制>
+
+          actual_result: >
+            <运行后实际观察到什么；失败或不确定也要记录>
+
+          interpretation: >
+            <结果对 bottleneck 形成的意义，以及还不能推出什么>
+
+          result_audit: >
+            <是否存在泄漏、指标伪影、随机性、proxy failure、控制不公平
+             或其他替代解释>
+
+          log: <research_record/logs/<diagnostic-id>.log 或 null>
+
+          resources:
+
+            llm_tokens: <未知则 null>
+
+            llm_tokens_scope: <scientist_session | meta_scientist_cycle | other | null>
+
+            llm_accounting_status: <measured | unavailable>
+
+            gpu_hours: <未知则 null>
+
+            wall_time_hours: <未知则 null>
+
+          resulting_state: <state-id or null>
+
+      competing_explanations:
+
+        - id: <candidate-id>
+
+          explanation: >
+            <另一个可能的 bottleneck 或机制>
+
+          evidence_for: >
+            <支持该解释的观测>
+
+          evidence_against: >
+            <反对该解释或尚未验证的部分>
+
+          status: <selected | deprioritized | unresolved>
+
+      selection_rationale: >
+        <为什么当前 bottleneck 比竞争解释更值得形成正式 hypothesis；
+         使用了哪些诊断结果>
+
+      falsifiers: >
+        <哪些后续结果会推翻或迫使重新定义这个 bottleneck>
+
+    closed_by_evidence: <diagnostic-id | experiment-id | null>
+
+    archive: <research_record/archive/<id>.yaml，关闭后填写；否则 null>
+
+    closure: >
+      <关闭时的语义总结（关闭后必填）：
+       学到了什么——未来假设必须尊重的科学结论继续保留在这里；
+       可复用工程事实迁移到 ENGINEERING，外部知识迁移到 KNOWLEDGE，并注明去向；
+       历史 State 在创建时已经冻结，后来发现的 performance、limitation、因果结论
+       或其他新证据都继续留在当前 RESEARCH_RECORD，不回写旧 STATE；
+       不要把 research trajectory 或实验日记压进 STATE；
+       为什么继续投入不再是高价值方向。>
+
+    hypotheses:
+
+      - id: <hypothesis-id>
+
+        description: >
+          <为什么这个 bottleneck 可能出现>
+
+        experiments:
+
+          - id: <experiment-id>
+
+            starting_state: <state-id>
+
+            protocol: >
+              <实验运行之前固定：数据 / split、control、fidelity、seed、预算、
+               stop condition，以及足以复现实验的 exact recipe。>
+
+            expected_result: >
+              <实验运行之前：
+               如果这个 hypothesis 是有解释力的，我们预期观察到什么？
+               什么结果会反驳或削弱这个 hypothesis？>
+
+            actual_result: >
+              <实验运行之后：
+               客观上真正发生了什么？>
+
+            evaluation:
+
+              status: <not_run | gate_failed | completed | failed>
+
+              fidelity: <smoke | medium | full | null>
+
+              split: <train_holdout | public_validation | other | null>
+
+              primary_metric:
+
+                name: <任务 primary metric 名称；未产生则 null>
+
+                value: <测量值；未产生则 null>
+
+              metrics: {}
+                # 只写本实验实际测量的指标，例如：
+                # gauc: 0.6674
+                # ndcg_at_5: 0.5357
+
+              compared_with_state: <state-id or null>
+
+              improvement_over_comparator: <primary delta；不可比较则 null>
+
+            events: >
+              <执行过程中的错误、超时、意外输入，
+               以及恢复 / 重试 / 绕过的方式；
+               没有则写 none。>
+
+            log: <research_record/logs/<experiment-id>.log，详尽日志落盘路径；无则 null>
+
+            resources:
+
+              llm_tokens: <runner finalized token total，未知则 null>
+
+              llm_tokens_scope: <scientist_session | meta_scientist_cycle | other | null>
+
+              llm_accounting_status: <measured | unavailable>
+
+              gpu_hours: <本次迭代训练+评估的 GPU 时间，未知则 null>
+
+            result_audit: >
+              <在接受结果之前进行审查。
+
+               是否存在 reward hacking、
+               evaluator / validation artifact、
+               leakage、偶然性、proxy failure 等？
+
+               即使结果是真的，
+               是否还有其他合理机制能够解释结果？>
+
+            conclusion: >
+              <综合 expected result、actual result 和 audit 后，
+               这个实验让我们对该 hypothesis 学到了什么？>
+
+            resulting_state: <state-id or null>
+
+manual_interventions: []
+
+  # 每次人工介入追加一条：
+  # - at: <experiment-id | diagnostic-id>
+  #   what: <人做了什么、为什么 agent 无法自行处理>

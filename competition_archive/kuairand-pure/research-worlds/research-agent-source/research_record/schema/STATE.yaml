@@ -1,0 +1,35 @@
+# STATE.yaml 是 research record 的一部分，由 META 在 Scientist session 结束后写入。
+# Scientist 读取它来理解当前 materialized State，但不得直接编辑、创建或重写它。
+# 真正可复用、可比较、可重新取用的 State 只有 system/**；system/** 的实现内容由 Scientist 创建或修改。
+# META 在 Scientist 的自由报告已经落盘后，基于实际 system/**、报告与 evidence 描述并 crystallize State。
+# META 可以把 Scientist 留下的 system/** 原样 stage/commit，但不得修改其中的实现内容。
+# 这个记录不是科研日记，也不记录 research trajectory、META worldview、下一步计划、
+# active bottleneck、convergence progress 或一次实验的资源消耗。
+# 创建 state/<id> 时，与该 State 对应的 STATE.yaml 记录和 system/** 一起提交并被冻结；
+# 后来对旧 State 获得的新实验事实写入 RESEARCH_RECORD，不回写历史 STATE.yaml。
+# scientist_report 指向产生该实现的 Scientist session 已经存在的自由报告。报告内容没有 schema；
+# 这个字段只是 provenance pointer，使未来 Scientist 进入该 State 时可以回查它如何产生。
+id: <state-id>
+git_tag: state/<state-id>
+derived_from: <state-id or null>
+scientist_report: research_record/reports/<session-report>.md
+
+summary: >
+  <用最少的语义描述这个版本的系统是什么>
+
+system:
+  <第一次 State 需要完整描述，后续可以引用改进前版本并补充当前系统的重要事实。
+   例如数据、模型、训练方式、evaluation、当前能力。
+   内部结构由 META 根据实际实现和 evidence 自行组织；不要替 Scientist 发明实现事实。>
+
+performance:
+  <该 State crystallize 时已有证据支持的代表性 benchmark / metrics 摘要。
+   它帮助未来 Scientist 理解、比较和取用该 State，但不是第二份实验账本。
+   对非显然来源的数字注明 RESEARCH_RECORD 中的 experiment / diagnostic evidence_ref。
+   State 创建之后对该版本得到的新 performance 只追加到 RESEARCH_RECORD，不修改这里。>
+
+implementation:
+  <帮助未来 Scientist 回到代码世界的语义索引。
+   可以记录关键文件、模块、入口、配置和复现该版本所需的实现事实。
+   不需要复制代码本身。真正可 materialize 的 State 固定为 system/**；
+   本字段只是 META 对该 State 的语义说明，不再维护第二份 scope。>

@@ -1,0 +1,5 @@
+{
+  "status": "interrupted",
+  "summary": "Blank-control goal runner did not complete successfully.",
+  "next_action": "Evaluate the resulting implementation with the same benchmark used for the Research Agent condition."
+}

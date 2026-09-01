@@ -1,0 +1,92 @@
+{
+  "variant": "v3",
+  "hypothesis": "High Capacity with Strong Regularization (k=64, L2=1e-5)",
+  "fields": [
+    "user_id",
+    "video_id",
+    "author_id",
+    "tab",
+    "dur_bucket",
+    "user_active_degree",
+    "follow_user_num_range",
+    "fans_user_num_range",
+    "friend_user_num_range",
+    "register_days_range"
+  ],
+  "hyperparameters": {
+    "k": 64,
+    "lr": 0.001,
+    "l2": 1e-05,
+    "max_epochs": 25,
+    "batch_size": 8192,
+    "patience": 4,
+    "seed": 0
+  },
+  "best_epoch": 3,
+  "best_metrics": {
+    "GAUC": 0.665931761264801,
+    "nDCG@5": 0.5348150730133057,
+    "primary": 0.600373387336731,
+    "users": 22377.0,
+    "rows": 124909.0
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.5868405095168523,
+      "valid_gauc": 0.6618521809577942,
+      "valid_ndcg5": 0.5335361957550049,
+      "valid_primary": 0.5976941585540771,
+      "epoch_time_sec": 8.355755090713501
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.5124805407864707,
+      "valid_gauc": 0.6653921008110046,
+      "valid_ndcg5": 0.5346935987472534,
+      "valid_primary": 0.6000428199768066,
+      "epoch_time_sec": 8.65010690689087
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.5015633067914418,
+      "valid_gauc": 0.665931761264801,
+      "valid_ndcg5": 0.5348150730133057,
+      "valid_primary": 0.600373387336731,
+      "epoch_time_sec": 8.427968978881836
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.49610241821834017,
+      "valid_gauc": 0.6641799211502075,
+      "valid_ndcg5": 0.534386396408081,
+      "valid_primary": 0.5992831587791443,
+      "epoch_time_sec": 8.391335010528564
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.49156448266335895,
+      "valid_gauc": 0.661346435546875,
+      "valid_ndcg5": 0.5332969427108765,
+      "valid_primary": 0.5973216891288757,
+      "epoch_time_sec": 8.473355054855347
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.4871128046086856,
+      "valid_gauc": 0.6606707572937012,
+      "valid_ndcg5": 0.5321658849716187,
+      "valid_primary": 0.5964183211326599,
+      "epoch_time_sec": 8.47485089302063
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.4826898864337376,
+      "valid_gauc": 0.6599546074867249,
+      "valid_ndcg5": 0.5317459106445312,
+      "valid_primary": 0.5958502292633057,
+      "epoch_time_sec": 8.030357122421265
+    }
+  ],
+  "total_elapsed_time_sec": 58.80730605125427
+}

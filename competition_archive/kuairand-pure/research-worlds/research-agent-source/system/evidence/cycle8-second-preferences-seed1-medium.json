@@ -1,0 +1,171 @@
+{
+  "dim": 42771,
+  "elapsed_seconds": 108.08953094482422,
+  "ensemble_full_score": null,
+  "ensemble_medium_score": {
+    "GAUC": 0.6708758473396301,
+    "nDCG@5": 0.5353916883468628,
+    "primary": 0.6031337976455688,
+    "rows": 31536,
+    "users": 5590
+  },
+  "experiment": "rich46_fm_ensemble",
+  "fields": [
+    "user_id",
+    "video_id",
+    "author_id",
+    "tab",
+    "dur_bucket",
+    "hour",
+    "weekday",
+    "video_type",
+    "upload_type",
+    "music_type",
+    "tag",
+    "aspect",
+    "active",
+    "is_lowactive",
+    "is_live_streamer",
+    "is_video_author",
+    "follow_range",
+    "fans_range",
+    "friend_range",
+    "register_range",
+    "onehot_0",
+    "onehot_1",
+    "onehot_2",
+    "onehot_3",
+    "onehot_4",
+    "onehot_5",
+    "onehot_6",
+    "onehot_7",
+    "onehot_8",
+    "onehot_9",
+    "onehot_10",
+    "onehot_11",
+    "onehot_12",
+    "onehot_13",
+    "onehot_14",
+    "onehot_15",
+    "onehot_16",
+    "onehot_17",
+    "tag2",
+    "video_age",
+    "u_top_tag",
+    "u_top_tab",
+    "u_rate_bucket",
+    "u_count_bucket",
+    "match_tag",
+    "match_tab",
+    "u_second_tag",
+    "u_second_tab",
+    "match_second_tag",
+    "match_second_tab"
+  ],
+  "individual_full_scores": null,
+  "individual_medium_scores": [
+    {
+      "GAUC": 0.6708758473396301,
+      "nDCG@5": 0.5353916883468628,
+      "primary": 0.6031337976455688,
+      "rows": 31536,
+      "seed": 1,
+      "users": 5590
+    }
+  ],
+  "k": 16,
+  "l2": 1e-05,
+  "lr": 0.001,
+  "num_fields": 50,
+  "seed_details": [
+    {
+      "best_epoch": 3,
+      "best_medium": {
+        "GAUC": 0.6708758473396301,
+        "duration": 10.858053922653198,
+        "epoch": 3,
+        "loss": 0.4980719317282949,
+        "nDCG@5": 0.5353916883468628,
+        "primary": 0.6031337976455688,
+        "rows": 31536,
+        "users": 5590
+      },
+      "history": [
+        {
+          "GAUC": 0.6683107614517212,
+          "duration": 11.04412293434143,
+          "epoch": 1,
+          "loss": 0.552068413581167,
+          "nDCG@5": 0.5331337451934814,
+          "primary": 0.6007222533226013,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.6696274876594543,
+          "duration": 11.011892080307007,
+          "epoch": 2,
+          "loss": 0.5019388946039336,
+          "nDCG@5": 0.5346139669418335,
+          "primary": 0.6021207571029663,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.6708758473396301,
+          "duration": 10.858053922653198,
+          "epoch": 3,
+          "loss": 0.4980719317282949,
+          "nDCG@5": 0.5353916883468628,
+          "primary": 0.6031337976455688,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.669711709022522,
+          "duration": 11.07713508605957,
+          "epoch": 4,
+          "loss": 0.49621818044355936,
+          "nDCG@5": 0.5357670783996582,
+          "primary": 0.6027393937110901,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.6670210361480713,
+          "duration": 10.846849203109741,
+          "epoch": 5,
+          "loss": 0.4948610552719661,
+          "nDCG@5": 0.534645676612854,
+          "primary": 0.6008333563804626,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.6695132851600647,
+          "duration": 11.068984985351562,
+          "epoch": 6,
+          "loss": 0.49367658942937853,
+          "nDCG@5": 0.5351940989494324,
+          "primary": 0.6023536920547485,
+          "rows": 31536,
+          "users": 5590
+        },
+        {
+          "GAUC": 0.6679828763008118,
+          "duration": 10.993651151657104,
+          "epoch": 7,
+          "loss": 0.49221480680363516,
+          "nDCG@5": 0.5356470942497253,
+          "primary": 0.6018149852752686,
+          "rows": 31536,
+          "users": 5590
+        }
+      ],
+      "seed": 1
+    }
+  ],
+  "seeds": [
+    1
+  ]
+}
