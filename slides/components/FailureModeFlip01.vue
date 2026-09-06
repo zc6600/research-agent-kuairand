@@ -18,27 +18,20 @@ const condenseCard = () => {
     isCondensed.value = true
   }, 360)
 }
-
-const resetInitial = (e: MouseEvent) => {
-  e.stopPropagation()
-  isCondensed.value = false
-  isFlipped.value = false
-}
 </script>
 
 <template>
-  <!-- Card in normal grid flow -->
   <div
     class="failure-mode failure-mode-closed failure-flip-card"
     :class="{ 'is-condensed-mode': isCondensed }"
     @click="openFlip"
   >
-    <!-- Default initial problem view -->
+    <!-- Initial problem card -->
     <template v-if="!isCondensed">
       <div class="failure-mode-head">
         <span class="failure-mode-number mono">01</span>
         <span class="failure-mode-label">CLOSED-WORLD WORKFLOW</span>
-        <span class="flip-icon-chip" title="点击卡片翻转解决方案"><i class="i-carbon:rotate-360"></i></span>
+        <span class="flip-icon-chip" title="Click to flip for solution"><i class="i-carbon:rotate-360"></i></span>
       </div>
       <div class="failure-mode-visual failure-graph" aria-label="A fixed workflow hits an error and stops">
         <div class="failure-graph-flow"><span>Observe</span><b>→</b><span>Hypothesize</span><b>→</b><span>Code</span><b>→</b><span>Evaluate</span></div>
@@ -49,7 +42,7 @@ const resetInitial = (e: MouseEvent) => {
       <div class="failure-mode-takeaway"><strong>Unexpected problems require developer intervention.</strong></div>
     </template>
 
-    <!-- Condensed solution view after flipping back -->
+    <!-- Condensed solution card -->
     <template v-else>
       <div class="failure-mode-head">
         <span class="failure-mode-number mono">01</span>
@@ -65,19 +58,15 @@ const resetInitial = (e: MouseEvent) => {
           <span class="condensed-pill active"><i class="i-carbon:checkmark-outline"></i> Runtime Tools</span>
         </div>
       </div>
-      <p class="failure-mode-explanation">Coding-agent harness acquires skills and modifies its environment dynamically.</p>
+      <p class="failure-mode-explanation">Coding-agent harness acquires skills and modifies environment dynamically.</p>
       <div class="failure-mode-takeaway condensed-takeaway">
         <span class="takeaway-check">✓</span>
         <strong>Unexpected errors become recoverable steps at runtime.</strong>
       </div>
-      <div class="reflip-bar mono" @click.stop="openFlip">
-        <span><i class="i-carbon:rotate-360"></i> 再次翻转查看方案详情</span>
-        <span class="revert-btn" title="恢复原始问题状态" @click.stop="resetInitial">重置</span>
-      </div>
     </template>
   </div>
 
-  <!-- 3D Flipped Card Back Overlay (Inside Slidev Layout) -->
+  <!-- Flipped card back overlay -->
   <div
     v-if="isFlipped"
     class="card-back-overlay"
@@ -85,7 +74,6 @@ const resetInitial = (e: MouseEvent) => {
     @click.self="condenseCard"
   >
     <div class="card-back-inner" :class="{ 'inner-closing': isClosing }">
-      <!-- Top header bar -->
       <div class="card-back-header">
         <div class="visual-kicker orange card-back-kicker">
           <span class="card-back-tag mono"><i class="i-carbon:rotate-360"></i> CARD 01 · REVERSE</span>
@@ -94,20 +82,17 @@ const resetInitial = (e: MouseEvent) => {
         </div>
         <button class="condense-top-btn mono" @click="condenseCard">
           <span class="check-mark">✓</span>
-          <span>浓缩放回卡槽</span>
+          <span>CONDENSE</span>
           <span class="i-carbon:minimize"></span>
         </button>
       </div>
 
-      <!-- Slogan from page 24 -->
       <div class="open-world-claim">
         <span class="claim-line">Research is an <span class="open-highlight orange-open">open-world</span> task.</span>
         <span class="claim-line claim-line-shift">We need an <span class="open-highlight blue-open">open-world</span> coding agent.</span>
       </div>
 
-      <!-- Dual comparison cards from page 24 -->
       <div class="compare-grid">
-        <!-- Left: Problem (LangGraph) -->
         <div class="compare-side failure-side">
           <div class="compare-kicker rose">LangGraph-style orchestration</div>
           <div class="compare-subtitle">predefined graph</div>
@@ -130,7 +115,6 @@ const resetInitial = (e: MouseEvent) => {
           <div class="compare-note">Capabilities are bounded by what developers anticipated.</div>
         </div>
 
-        <!-- Right: Solution (Coding-agent harness) -->
         <div class="compare-side recovery-side">
           <div class="compare-kicker blue">Coding-agent harness</div>
           <div class="compare-subtitle">open action space</div>
@@ -148,15 +132,6 @@ const resetInitial = (e: MouseEvent) => {
           </div>
           <div class="recovery-flow compact"><div class="recovery-sequence"><span>fail</span><b>→</b><span>inspect</span><b>→</b><span>learn</span><b>→</b><span>modify environment</span><b>→</b><span>retry</span></div><div class="recovery-caption">The agent can acquire the missing capability at runtime.</div></div>
         </div>
-      </div>
-
-      <!-- Bottom action bar -->
-      <div class="card-back-action-bar">
-        <button class="condense-main-btn mono" @click="condenseCard">
-          <span class="cta-check">✓</span>
-          <span>已了解方案 · 将解决方案浓缩放回 01 卡片</span>
-          <span class="i-carbon:arrow-right"></span>
-        </button>
       </div>
     </div>
   </div>
@@ -212,24 +187,17 @@ const resetInitial = (e: MouseEvent) => {
   justify-content: center;
   flex-shrink: 0;
   box-shadow: 0 2px 6px rgba(234, 88, 12, 0.35);
-  animation: badgePop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-@keyframes badgePop {
-  0% { transform: scale(0.6); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-/* Condensed card visual */
 .condensed-visual {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin: 8px 0 10px;
+  margin: 10px 0 12px;
   background: rgba(255, 247, 237, 0.6);
   border: 1px dashed rgba(234, 88, 12, 0.3);
   border-radius: 9px;
-  padding: 9px 11px;
+  padding: 10px 12px;
 }
 
 .condensed-flow {
@@ -293,29 +261,6 @@ const resetInitial = (e: MouseEvent) => {
   line-height: 1.1;
 }
 
-.reflip-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: auto;
-  padding-top: 6px;
-  border-top: 1px solid rgba(234, 88, 12, 0.15);
-  font-size: 10px;
-  color: #ea580c;
-}
-
-.revert-btn {
-  color: var(--muted);
-  padding: 1px 5px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.revert-btn:hover {
-  background: rgba(0, 0, 0, 0.06);
-  color: var(--ink);
-}
-
 /* Card Back Overlay Inside Slide */
 .card-back-overlay {
   position: absolute;
@@ -326,7 +271,7 @@ const resetInitial = (e: MouseEvent) => {
   z-index: 100;
   background: rgba(248, 250, 252, 0.95);
   backdrop-filter: blur(14px);
-  padding: 28px 44px 20px;
+  padding: 32px 48px 24px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -426,6 +371,7 @@ const resetInitial = (e: MouseEvent) => {
   border-radius: 8px;
   padding: 4px 11px;
   font-size: 11px;
+  letter-spacing: 0.5px;
   color: var(--body);
   cursor: pointer;
   transition: all 0.15s ease;
@@ -440,48 +386,5 @@ const resetInitial = (e: MouseEvent) => {
   background: #fff7ed;
   border-color: #ea580c;
   color: #ea580c;
-}
-
-.card-back-action-bar {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-  padding-top: 6px;
-}
-
-.condense-main-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #ea580c;
-  border: none;
-  border-radius: 999px;
-  padding: 6px 18px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-  color: #ffffff;
-  cursor: pointer;
-  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.3);
-  transition: all 0.2s ease;
-}
-
-.condense-main-btn:hover {
-  background: #c2410c;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(234, 88, 12, 0.4);
-}
-
-.condense-main-btn .cta-check {
-  background: #ffffff;
-  color: #ea580c;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 10px;
-  font-weight: 800;
 }
 </style>
