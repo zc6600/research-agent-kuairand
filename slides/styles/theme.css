@@ -2555,7 +2555,72 @@ html.print .slidev-layout.parallel-breadth-slide .parallel-world-ring {
 }
 
 .slidev-layout:has(.compare-grid) {
-  padding-top: 40px;
+  padding-top: 32px;
+}
+
+.slidev-layout:has(.card-back-shell) .card-back-shell {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.slidev-layout:has(.card-back-shell) .card-back-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.slidev-layout:has(.card-back-shell) .card-back-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 0;
+}
+
+.slidev-layout:has(.card-back-shell) .card-back-tag {
+  background: rgba(234, 88, 12, 0.1);
+  border: 1px solid rgba(234, 88, 12, 0.28);
+  border-radius: 999px;
+  color: #ea580c;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  padding: 2px 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.slidev-layout:has(.card-back-shell) .kicker-sep {
+  color: #fdba74;
+}
+
+.slidev-layout:has(.card-back-shell) .card-back-stamp {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--muted);
+  border: 1px dashed rgba(234, 88, 12, 0.35);
+  border-radius: 6px;
+  padding: 2px 8px;
+  background: rgba(255, 247, 237, 0.5);
+}
+
+.slidev-layout:has(.card-back-shell) .card-back-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 13px;
+  padding-top: 7px;
+  border-top: 1px dashed var(--line);
+  font-size: 10px;
+  letter-spacing: 0.8px;
+  color: var(--muted);
+}
+
+.slidev-layout:has(.card-back-shell) .card-back-footer-check {
+  color: #ea580c;
+  font-weight: 600;
 }
 
 .slidev-layout:has(.compare-grid) .visual-kicker {

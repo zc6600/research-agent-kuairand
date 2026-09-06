@@ -69,16 +69,7 @@ Open with the research job. The benchmark makes that job concrete; broader task 
 <div class="failure-modes-thesis">Three obstacles to sustained autonomous research.</div>
 
 <div class="failure-modes-grid">
-  <div class="failure-mode failure-mode-closed">
-    <div class="failure-mode-head"><span class="failure-mode-number mono">01</span><span class="failure-mode-label">CLOSED-WORLD WORKFLOW</span></div>
-    <div class="failure-mode-visual failure-graph" aria-label="A fixed workflow hits an error and stops">
-      <div class="failure-graph-flow"><span>Observe</span><b>→</b><span>Hypothesize</span><b>→</b><span>Code</span><b>→</b><span>Evaluate</span></div>
-      <div class="failure-graph-error"><span class="i-carbon:error-outline"></span><b>ERROR</b></div>
-      <div class="failure-graph-dead"><span>↓</span><strong>dead end</strong></div>
-    </div>
-    <p class="failure-mode-explanation">Predefined tools and recovery paths cannot handle the unexpected.</p>
-    <div class="failure-mode-takeaway"><strong>Unexpected problems require developer intervention.</strong></div>
-  </div>
+  <FailureModeFlip01 />
 
   <div class="failure-mode failure-mode-trajectory">
     <div class="failure-mode-head"><span class="failure-mode-number mono">02</span><span class="failure-mode-label">SINGLE TRAJECTORY</span></div>
@@ -913,48 +904,62 @@ Team names and responsibilities are drawn from the repository's documented team 
 
 <!-- class: recovery-compare-slide -->
 
-<div class="visual-kicker orange">APPENDIX / CAPABILITY RECOVERY</div>
-
-<div class="open-world-claim"><span class="claim-line">Research is an <span class="open-highlight orange-open">open-world</span> task.</span><span class="claim-line claim-line-shift">We need an <span class="open-highlight blue-open">open-world</span> coding agent.</span></div>
-
-<div class="compare-grid">
-  <div class="compare-side failure-side">
-    <div class="compare-kicker rose">LangGraph-style orchestration</div>
-    <div class="compare-subtitle">predefined graph</div>
-    <div class="static-graph">
-      <div class="graph-top"><span class="graph-icon rose i-carbon:flow-data"></span><span>fixed tool set</span></div>
-      <div class="graph-arrow">↓</div>
-      <div class="graph-tools">
-        <div class="graph-node"><span class="graph-node-icon rose i-carbon:tools"></span><span>Tool A</span></div>
-        <div class="graph-node"><span class="graph-node-icon rose i-carbon:tools"></span><span>Tool B</span></div>
-        <div class="graph-node"><span class="graph-node-icon rose i-carbon:tools"></span><span>Tool C</span></div>
-      </div>
+<div class="card-back-shell">
+  <div class="card-back-header">
+    <div class="visual-kicker orange card-back-kicker">
+      <span class="card-back-tag mono"><i class="i-carbon:rotate-360"></i> CARD 01 · REVERSE</span>
+      <span class="kicker-sep">/</span>
+      <span>CAPABILITY RECOVERY · SOLUTION</span>
     </div>
-    <div class="compare-failure">
-      <div class="failure-step"><span class="failure-icon rose i-carbon:error-outline"></span><span>API fails</span></div>
-      <div class="failure-arrow">↓</div>
-      <div class="failure-step muted"><span class="failure-icon i-carbon:stop-outline"></span><span>no recovery tool</span></div>
-      <div class="failure-arrow">↓</div>
-      <div class="dead-end"><span class="failure-icon rose i-carbon:error-outline"></span>DEAD END</div>
-    </div>
-    <div class="compare-note">Capabilities are bounded by what developers anticipated.</div>
+    <div class="card-back-stamp mono">REVERSE SIDE OF FAILURE MODE 01</div>
   </div>
-  <div class="compare-side recovery-side">
-    <div class="compare-kicker blue">Coding-agent harness</div>
-    <div class="compare-subtitle">open action space</div>
-    <div class="harness-diagram">
-      <div class="harness-computer"><span class="harness-icon blue i-carbon:laptop"></span><span>Computer</span></div>
-      <div class="harness-arrow">↓</div>
-      <div class="harness-paths">
-        <div class="harness-path"><div class="harness-node"><span class="harness-icon blue i-carbon:terminal"></span><span>shell</span></div><span class="harness-arrow">↓</span><div class="harness-node"><span class="harness-icon blue i-carbon:branch"></span><span>git</span></div></div>
-        <div class="harness-path"><div class="harness-node"><span class="harness-icon blue i-carbon:folder"></span><span>files</span></div><span class="harness-arrow">↓</span><div class="harness-node"><span class="harness-icon blue i-carbon:document"></span><span>docs</span></div></div>
-        <div class="harness-path"><div class="harness-node"><span class="harness-icon blue i-carbon:earth"></span><span>browser</span></div><span class="harness-arrow">↓</span><div class="harness-node"><span class="harness-icon blue i-carbon:package"></span><span>packages</span></div></div>
+
+  <div class="open-world-claim"><span class="claim-line">Research is an <span class="open-highlight orange-open">open-world</span> task.</span><span class="claim-line claim-line-shift">We need an <span class="open-highlight blue-open">open-world</span> coding agent.</span></div>
+
+  <div class="compare-grid">
+    <div class="compare-side failure-side">
+      <div class="compare-kicker rose">LangGraph-style orchestration</div>
+      <div class="compare-subtitle">predefined graph</div>
+      <div class="static-graph">
+        <div class="graph-top"><span class="graph-icon rose i-carbon:flow-data"></span><span>fixed tool set</span></div>
+        <div class="graph-arrow">↓</div>
+        <div class="graph-tools">
+          <div class="graph-node"><span class="graph-node-icon rose i-carbon:tools"></span><span>Tool A</span></div>
+          <div class="graph-node"><span class="graph-node-icon rose i-carbon:tools"></span><span>Tool B</span></div>
+          <div class="graph-node"><span class="graph-node-icon rose i-carbon:tools"></span><span>Tool C</span></div>
+        </div>
       </div>
-      <div class="agent-band"><div class="harness-node"><span class="harness-icon blue i-carbon:tools"></span><span>skills</span></div><div class="agent-core">agent</div><div class="harness-node"><span class="harness-icon blue i-carbon:api"></span><span>MCP</span></div></div>
-      <div class="harness-arrow">↓</div>
-      <div class="cli-api">CLI / API</div>
+      <div class="compare-failure">
+        <div class="failure-step"><span class="failure-icon rose i-carbon:error-outline"></span><span>API fails</span></div>
+        <div class="failure-arrow">↓</div>
+        <div class="failure-step muted"><span class="failure-icon i-carbon:stop-outline"></span><span>no recovery tool</span></div>
+        <div class="failure-arrow">↓</div>
+        <div class="dead-end"><span class="failure-icon rose i-carbon:error-outline"></span>DEAD END</div>
+      </div>
+      <div class="compare-note">Capabilities are bounded by what developers anticipated.</div>
     </div>
-    <div class="recovery-flow compact"><div class="recovery-sequence"><span>fail</span><b>→</b><span>inspect</span><b>→</b><span>learn</span><b>→</b><span>modify environment</span><b>→</b><span>retry</span></div><div class="recovery-caption">The agent can acquire the missing capability at runtime.</div></div>
+    <div class="compare-side recovery-side">
+      <div class="compare-kicker blue">Coding-agent harness</div>
+      <div class="compare-subtitle">open action space</div>
+      <div class="harness-diagram">
+        <div class="harness-computer"><span class="harness-icon blue i-carbon:laptop"></span><span>Computer</span></div>
+        <div class="harness-arrow">↓</div>
+        <div class="harness-paths">
+          <div class="harness-path"><div class="harness-node"><span class="harness-icon blue i-carbon:terminal"></span><span>shell</span></div><span class="harness-arrow">↓</span><div class="harness-node"><span class="harness-icon blue i-carbon:branch"></span><span>git</span></div></div>
+          <div class="harness-path"><div class="harness-node"><span class="harness-icon blue i-carbon:folder"></span><span>files</span></div><span class="harness-arrow">↓</span><div class="harness-node"><span class="harness-icon blue i-carbon:document"></span><span>docs</span></div></div>
+          <div class="harness-path"><div class="harness-node"><span class="harness-icon blue i-carbon:earth"></span><span>browser</span></div><span class="harness-arrow">↓</span><div class="harness-node"><span class="harness-icon blue i-carbon:package"></span><span>packages</span></div></div>
+        </div>
+        <div class="agent-band"><div class="harness-node"><span class="harness-icon blue i-carbon:tools"></span><span>skills</span></div><div class="agent-core">agent</div><div class="harness-node"><span class="harness-icon blue i-carbon:api"></span><span>MCP</span></div></div>
+        <div class="harness-arrow">↓</div>
+        <div class="cli-api">CLI / API</div>
+      </div>
+      <div class="recovery-flow compact"><div class="recovery-sequence"><span>fail</span><b>→</b><span>inspect</span><b>→</b><span>learn</span><b>→</b><span>modify environment</span><b>→</b><span>retry</span></div><div class="recovery-caption">The agent can acquire the missing capability at runtime.</div></div>
+    </div>
+  </div>
+
+  <div class="card-back-footer mono">
+    <span>CARD 01 : CLOSED-WORLD ➔ OPEN-WORLD RECOVERY</span>
+    <span class="card-back-footer-check">✓ RECOVERABLE AT RUNTIME</span>
   </div>
 </div>
 
