@@ -915,7 +915,7 @@ Team names and responsibilities are drawn from the repository's documented team 
 
 <div class="visual-kicker orange">APPENDIX / CAPABILITY RECOVERY</div>
 
-# The difference is not orchestration. It is recoverability.
+<div class="open-world-claim"><span class="claim-line">Research is an <span class="open-highlight orange-open">open-world</span> task.</span><span class="claim-line claim-line-shift">We need an <span class="open-highlight blue-open">open-world</span> coding agent.</span></div>
 
 <div class="compare-grid">
   <div class="compare-side failure-side">
