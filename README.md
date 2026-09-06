@@ -255,6 +255,16 @@ The competition runner supports role-specific options such as:
 
 Shared model/effort settings remain available as fallbacks.
 
+## Terminal deck
+
+The 24-slide SciOdyssey narrative also has a zero-dependency terminal edition:
+
+```bash
+node terminal/present.mjs
+```
+
+See [`terminal/README.md`](terminal/README.md) for keyboard controls, layout checks, and the terminal technology comparison.
+
 ## Documentation
 
 Start with [`docs/README.md`](docs/README.md) for the full map.

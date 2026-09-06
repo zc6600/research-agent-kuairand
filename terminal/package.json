@@ -1,0 +1,10 @@
+{
+  "name": "sciodyssey-terminal",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node present.mjs",
+    "list": "node present.mjs --list",
+    "check": "node present.mjs --check"
+  }
+}

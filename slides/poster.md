@@ -23,12 +23,15 @@ mdc: true
   </header>
   <main class="p-columns">
     <div class="p-left">
-      <section class="p-architecture">
-        <div class="p-kicker">01 / METHOD</div>
+      <section class="p-section p-problem">
+        <div class="p-kicker">01 / PROBLEM</div>
         <h2>Different lifetimes. Shared evidence.</h2>
         <p class="p-method-intro">Long-lived reasoning can anchor the search; rebuilding context is costly. SciOdyssey retains the world while reopening judgment with a fresh Scientist.</p>
         <div class="p-input"><strong>Research environment</strong><span>Task contract + research preferences<br />Data + evaluator + baseline · budget + permissions</span></div>
         <div class="p-down">↓</div>
+      </section>
+      <section class="p-section p-motivation">
+        <div class="p-kicker">02 / MOTIVATION</div>
         <div class="p-world">
           <h3><span class="i-carbon:earth"></span>Research world <small>PERSISTENT / ON DISK</small></h3>
           <div class="p-memory"><b>EVIDENCE</b><div><strong>Knowledge + experiment ledger</strong><span>Metrics, failures and original reports</span></div></div>
@@ -36,6 +39,9 @@ mdc: true
           <div class="p-memory"><b>CODE</b><div><strong>Retained implementation + State</strong><span>Recoverable version with evidence and provenance</span></div></div>
         </div>
         <div class="p-boundary"><span>↓</span><b>CONTEXT RESET</b><small>Inherit experience, not prior reasoning.</small></div>
+      </section>
+      <section class="p-section p-system">
+        <div class="p-kicker">03 / SYSTEM</div>
         <div class="p-agents">
           <div class="p-scientist">
             <h3><span class="i-carbon:chemistry"></span>Scientist</h3><div class="p-role">SCIENTIFIC JUDGMENT</div>
@@ -73,8 +79,8 @@ mdc: true
       </section>
     </div>
     <div class="p-right">
-      <section class="p-comparison">
-        <div class="p-kicker">02 / EVIDENCE</div>
+      <section class="p-section p-comparison p-evaluation">
+        <div class="p-kicker">05 / EVALUATION</div>
         <h2>Research outcomes, in context.</h2>
         <p class="p-chart-subtitle">KuaiRand-Pure · public validation · one recorded run per condition</p>
         <figure class="p-figure">
@@ -129,6 +135,9 @@ mdc: true
         <div class="p-proof">7 Full evaluations · 0 GPU-hours · 170,588 prediction rows<br />passed the unchanged Starter Kit alignment checker.</div>
         <div class="p-run-note">* After launch, in the retained submission record.</div>
         </div>
+      </section>
+      <section class="p-section p-insights-section">
+        <div class="p-kicker">06 / INSIGHTS</div>
         <div class="p-insights">
           <h3>Observed behavior, not just a score.</h3>
           <div class="p-observation-grid">
@@ -140,8 +149,8 @@ mdc: true
       </section>
     </div>
   </main>
-  <section class="p-entry" aria-label="End-to-end research workflow">
-    <div class="p-entry-heading"><div><div class="p-kicker">03 / YOUR RESEARCH WORKFLOW</div><h2>One agent. Any ML task. End to end.</h2></div><span>Autonomous by default. Supervisable by design.</span></div>
+  <section class="p-section p-entry p-experience" aria-label="End-to-end research workflow">
+    <div class="p-entry-heading"><div><div class="p-kicker">04 / EXPERIENCE</div><h2>One agent. Any ML task. End to end.</h2></div><span>Autonomous by default. Supervisable by design.</span></div>
     <div class="p-entry-grid">
       <div class="p-entry-context">
         <div class="p-entry-files">

@@ -1,0 +1,1279 @@
+/* Voyage Poster-inspired Theme for Slidev Presentations */
+/* Implements the complete Voyage editorial aesthetic across all slides: */
+/* Ivory paper texture, refined serif typography, ocean blue & terracotta rust palette, warm/cool panels */
+
+:root {
+  --voyage-paper: #fcfaf6;
+  --voyage-ink: #221a16;
+  --voyage-body: #3e4146;
+  --voyage-muted: #526574;
+  --voyage-blue: #00527b;
+  --voyage-rust: #b83212;
+  --voyage-blue-line: #69a0ba;
+  --voyage-rust-line: #bc7458;
+  --voyage-green: #1e6e58;
+  --voyage-purple: #4a386c;
+  --voyage-amber: #8a3b2b;
+  --voyage-card-bg: #fffefb;
+  --voyage-sans: 'Arial Narrow', Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --voyage-serif: 'Times New Roman', Times, 'Iowan Old Style', Georgia, serif;
+}
+
+/* ==========================================================================
+   GLOBAL SLIDE LAYOUT OVERRIDES (Every slide has .voyage-theme)
+   ========================================================================== */
+.slidev-layout.voyage-theme {
+  /* Override parent theme.css CSS variables locally */
+  --slidev-theme-primary: #00527b;
+  --ink: #221a16;
+  --body: #3e4146;
+  --muted: #526574;
+  --line: #dcd7ce;
+  --blue: #00527b;
+  --orange: #b83212;
+  --rose: #b83212;
+  --purple: #4a386c;
+  --aqua: #1e6e58;
+  --green: #1e6e58;
+  --paper: #fcfaf6;
+  --rust: #b83212;
+  --blue-line: #69a0ba;
+  --rust-line: #bc7458;
+
+  background-color: var(--voyage-paper) !important;
+  background-image:
+    radial-gradient(ellipse at 85% 5%, rgba(223, 178, 146, 0.22), transparent 45%),
+    radial-gradient(ellipse at 10% 90%, rgba(240, 206, 186, 0.25), transparent 40%),
+    url('/assets/ivory-paper.png') !important;
+  background-repeat: no-repeat, no-repeat, repeat !important;
+  background-size: auto, auto, 720px !important;
+  color: var(--voyage-body);
+  font-family: var(--voyage-sans);
+  font-size: 17px;
+  line-height: 1.4;
+  padding: 38px 56px 50px;
+  position: relative;
+}
+
+/* Typography across all slides */
+.slidev-layout.voyage-theme h1 {
+  font-family: var(--voyage-serif) !important;
+  font-size: 40px !important;
+  font-weight: 700 !important;
+  letter-spacing: -1.8px !important;
+  line-height: 1.12 !important;
+  color: var(--voyage-ink) !important;
+  margin: 14px 0 20px !important;
+}
+
+.slidev-layout.voyage-theme h2 {
+  font-family: var(--voyage-serif) !important;
+  font-size: 26px !important;
+  font-weight: 700 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.25 !important;
+  color: var(--voyage-ink) !important;
+}
+
+.slidev-layout.voyage-theme h3 {
+  font-family: var(--voyage-serif) !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.5px !important;
+  color: var(--voyage-ink) !important;
+}
+
+/* Kickers & Eyebrows */
+.slidev-layout.voyage-theme .visual-kicker {
+  font-family: var(--voyage-sans) !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 2.2px !important;
+  line-height: 1.2 !important;
+  text-transform: uppercase !important;
+  color: var(--voyage-rust) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.slidev-layout.voyage-theme .visual-kicker::after {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 2px;
+  background: currentColor;
+}
+
+.slidev-layout.voyage-theme .visual-kicker.blue {
+  color: var(--voyage-blue) !important;
+}
+
+.slidev-layout.voyage-theme .visual-kicker.orange {
+  color: var(--voyage-rust) !important;
+}
+
+.slidev-layout.voyage-theme .visual-kicker.green {
+  color: var(--voyage-green) !important;
+}
+
+.slidev-layout.voyage-theme .visual-kicker.purple {
+  color: var(--voyage-purple) !important;
+}
+
+.slidev-layout.voyage-theme .eyebrow {
+  color: var(--voyage-blue) !important;
+  font-size: 13px !important;
+  letter-spacing: 2.5px !important;
+  font-weight: 700 !important;
+}
+
+/* Lead & Body text */
+.slidev-layout.voyage-theme .lead {
+  font-size: 19px !important;
+  line-height: 1.45 !important;
+  color: var(--voyage-muted) !important;
+}
+
+.slidev-layout.voyage-theme .lead .blue {
+  color: var(--voyage-blue) !important;
+  font-weight: 600 !important;
+}
+
+.slidev-layout.voyage-theme .lead em {
+  color: var(--voyage-rust) !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+}
+
+/* Color helpers */
+.slidev-layout.voyage-theme .blue { color: var(--voyage-blue) !important; }
+.slidev-layout.voyage-theme .orange { color: var(--voyage-rust) !important; }
+.slidev-layout.voyage-theme .rose { color: var(--voyage-rust) !important; }
+.slidev-layout.voyage-theme .green { color: var(--voyage-green) !important; }
+.slidev-layout.voyage-theme .purple { color: var(--voyage-purple) !important; }
+.slidev-layout.voyage-theme .muted { color: var(--voyage-muted) !important; }
+
+/* Deck footer across all slides */
+.slidev-layout.voyage-theme .deck-footer {
+  display: flex !important;
+  justify-content: space-between !important;
+  position: absolute !important;
+  bottom: 14px !important;
+  left: 56px !important;
+  right: 56px !important;
+  font-size: 11px !important;
+  letter-spacing: 1.2px !important;
+  color: #797168 !important;
+  font-family: var(--voyage-sans) !important;
+}
+
+.slidev-layout.voyage-theme .deck-footer .footer-dim {
+  color: #a49d94 !important;
+}
+
+.slidev-layout.voyage-theme .bottom-note {
+  position: absolute !important;
+  bottom: 24px !important;
+  left: 56px !important;
+  right: 56px !important;
+  color: var(--voyage-muted) !important;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+  border-top: 1px solid #dcd7ce !important;
+  padding-top: 8px !important;
+}
+
+/* ==========================================================================
+   SLIDE 1: COVER SLIDE
+   ========================================================================== */
+.slidev-layout.cover.voyage-theme {
+  position: relative !important;
+  overflow: hidden !important;
+  padding: 44px 56px !important;
+}
+
+.slidev-layout.cover.voyage-theme .cover-art {
+  position: absolute !important;
+  right: -50px !important;
+  top: -20px !important;
+  left: auto !important;
+  width: 750px !important;
+  height: 580px !important;
+  object-fit: cover !important;
+  object-position: center 38% !important;
+  mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.3) 25%, #000 60%) !important;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.3) 25%, #000 60%) !important;
+  opacity: 0.95 !important;
+  z-index: 0 !important;
+}
+
+.slidev-layout.cover.voyage-theme .eyebrow {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 2.8px !important;
+  color: var(--voyage-blue) !important;
+  text-transform: uppercase !important;
+  display: block !important;
+  margin-top: 16px !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.slidev-layout.cover.voyage-theme .cover-title {
+  font-family: Arial, sans-serif !important;
+  font-size: 54px !important;
+  font-weight: 800 !important;
+  line-height: 0.95 !important;
+  letter-spacing: -3px !important;
+  color: var(--voyage-ink) !important;
+  margin: 18px 0 14px !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.slidev-layout.cover.voyage-theme .lead {
+  font-family: var(--voyage-serif) !important;
+  font-size: 32px !important;
+  font-weight: 700 !important;
+  line-height: 1.08 !important;
+  letter-spacing: -1.2px !important;
+  color: var(--voyage-ink) !important;
+  margin: 16px 0 !important;
+  max-width: 540px !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.slidev-layout.cover.voyage-theme .cover-meta {
+  display: flex !important;
+  align-items: center !important;
+  gap: 24px !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 2.2px !important;
+  color: #51473f !important;
+  position: relative !important;
+  padding-left: 36px !important;
+  margin-top: 24px !important;
+  z-index: 2 !important;
+}
+
+.slidev-layout.cover.voyage-theme .cover-meta::before {
+  content: '' !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 22px !important;
+  height: 2px !important;
+  background: var(--voyage-ink) !important;
+}
+
+.slidev-layout.cover.voyage-theme .cover-meta span + span::before {
+  content: '·';
+  display: inline-block;
+  margin-right: 24px;
+  color: #93867d;
+}
+
+.slidev-layout.cover.voyage-theme .narrative-route {
+  color: #7a6e65 !important;
+  font-size: 13px !important;
+  letter-spacing: 0.5px !important;
+  margin-top: 32px !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+/* ==========================================================================
+   SLIDES 2, 6, 14, 15, 23: ROLES & NARRATIVE ROLES (.roles, .role)
+   ========================================================================== */
+.slidev-layout.voyage-theme .roles {
+  margin-top: 24px !important;
+}
+
+.slidev-layout.voyage-theme .roles .role,
+.slidev-layout.voyage-theme .narrative-roles .role {
+  background: rgba(255, 254, 251, 0.85) !important;
+  border: 1px solid #dcd7ce !important;
+  border-left: 4px solid var(--voyage-blue) !important;
+  border-radius: 6px !important;
+  padding: 16px 22px !important;
+  margin-bottom: 12px !important;
+  box-shadow: 0 2px 8px rgba(34, 26, 22, 0.03) !important;
+}
+
+.slidev-layout.voyage-theme .roles .role:nth-child(2),
+.slidev-layout.voyage-theme .narrative-roles .role:nth-child(2) {
+  border-left-color: var(--voyage-rust) !important;
+}
+
+.slidev-layout.voyage-theme .roles .role:nth-child(3),
+.slidev-layout.voyage-theme .narrative-roles .role:nth-child(3) {
+  border-left-color: var(--voyage-green) !important;
+}
+
+.slidev-layout.voyage-theme .role strong {
+  font-family: var(--voyage-serif) !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  color: var(--voyage-blue) !important;
+}
+
+.slidev-layout.voyage-theme .role:nth-child(2) strong {
+  color: var(--voyage-rust) !important;
+}
+
+.slidev-layout.voyage-theme .role:nth-child(3) strong {
+  color: var(--voyage-green) !important;
+}
+
+.slidev-layout.voyage-theme .role span {
+  font-size: 18px !important;
+  color: var(--voyage-body) !important;
+}
+
+.slidev-layout.voyage-theme .role small {
+  color: var(--voyage-muted) !important;
+  font-size: 14px !important;
+}
+
+/* ==========================================================================
+   SLIDE 3: FAILURE MODES (.failure-modes-grid)
+   ========================================================================== */
+.slidev-layout.voyage-theme .failure-mode {
+  background: var(--voyage-card-bg) !important;
+  border: 1px solid #dcd7ce !important;
+  border-radius: 6px !important;
+  box-shadow: 0 2px 8px rgba(34, 26, 22, 0.04) !important;
+  padding: 18px 20px !important;
+}
+
+.slidev-layout.voyage-theme .failure-mode-closed {
+  border-top: 3px solid var(--voyage-rust) !important;
+}
+
+.slidev-layout.voyage-theme .failure-mode-trajectory {
+  border-top: 3px solid var(--voyage-blue) !important;
+}
+
+.slidev-layout.voyage-theme .failure-mode-tree {
+  border-top: 3px solid var(--voyage-purple) !important;
+}
+
+.slidev-layout.voyage-theme .failure-mode-number {
+  font-family: var(--voyage-serif) !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+}
+
+.slidev-layout.voyage-theme .failure-mode-closed .failure-mode-number {
+  color: var(--voyage-rust) !important;
+}
+
+.slidev-layout.voyage-theme .failure-mode-trajectory .failure-mode-number {
+  color: var(--voyage-blue) !important;
+}
+
+.slidev-layout.voyage-theme .failure-mode-tree .failure-mode-number {
+  color: var(--voyage-purple) !important;
+}
+
+.slidev-layout.voyage-theme .failure-mode-label {
+  font-family: var(--voyage-serif) !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.4px !important;
+  color: var(--voyage-ink) !important;
+}
+
+.slidev-layout.voyage-theme .failure-graph-error {
+  background: #fdf3f0 !important;
+  border: 1px solid #e6b9a1 !important;
+  color: var(--voyage-rust) !important;
+}
+
+.slidev-layout.voyage-theme .failure-basin-star {
+  color: var(--voyage-blue) !important;
+}
+
+.slidev-layout.voyage-theme .failure-basin-line i.current {
+  background: var(--voyage-blue) !important;
+  box-shadow: 0 0 0 3px rgba(0, 82, 123, 0.2) !important;
+}
+
+.slidev-layout.voyage-theme .failure-token-understand .failure-token-bar i {
+  background: var(--voyage-blue) !important;
+}
+
+.slidev-layout.voyage-theme .failure-token-edit .failure-token-bar i {
+  background: var(--voyage-blue-line) !important;
+}
+
+.slidev-layout.voyage-theme .failure-modes-bridge-tags {
+  display: flex !important;
+  gap: 10px !important;
+}
+
+.slidev-layout.voyage-theme .failure-modes-bridge-tags span:nth-child(1) {
+  border: 1px solid var(--voyage-rust-line) !important;
+  color: var(--voyage-rust) !important;
+  background: #fff8f5 !important;
+}
+
+.slidev-layout.voyage-theme .failure-modes-bridge-tags span:nth-child(2) {
+  border: 1px solid var(--voyage-blue-line) !important;
+  color: var(--voyage-blue) !important;
+  background: #f0f7fa !important;
+}
+
+.slidev-layout.voyage-theme .failure-modes-bridge-tags span:nth-child(3) {
+  border: 1px solid #5a7d6e !important;
+  color: var(--voyage-green) !important;
+  background: #f0f6f4 !important;
+}
+
+/* ==========================================================================
+   SLIDE 4: OPEN-WORLD RESEARCH (.open-world-claim, rails, LangGraph)
+   ========================================================================== */
+.slidev-layout.voyage-theme .claim h1,
+.slidev-layout.voyage-theme .open-world-claim h1,
+.slidev-layout:has(.open-world-claim) h1 {
+  font-family: var(--voyage-serif) !important;
+  font-size: 42px !important;
+  font-weight: 700 !important;
+  letter-spacing: -2px !important;
+  line-height: 1.15 !important;
+  color: var(--voyage-ink) !important;
+}
+
+.slidev-layout.voyage-theme .claim h1 span.orange,
+.slidev-layout.voyage-theme .open-world-claim h1 span.orange,
+.slidev-layout:has(.open-world-claim) h1 span.orange {
+  color: var(--voyage-rust) !important;
+}
+
+.slidev-layout.voyage-theme .claim h1 span.blue,
+.slidev-layout.voyage-theme .open-world-claim h1 span.blue,
+.slidev-layout:has(.open-world-claim) h1 span.blue {
+  color: var(--voyage-blue) !important;
+}
+
+.slidev-layout.voyage-theme .open-world-rail {
+  background: var(--voyage-card-bg) !important;
+  border: 1px solid #dcd7ce !important;
+  border-radius: 6px !important;
+  padding: 16px 18px !important;
+  box-shadow: 0 2px 8px rgba(34, 26, 22, 0.04) !important;
+}
+
+.slidev-layout.voyage-theme .open-world-rail-action {
+  border-top: 3px solid var(--voyage-blue) !important;
+}
+
+.slidev-layout.voyage-theme .open-world-rail-recovery {
+  border-top: 3px solid var(--voyage-rust) !important;
+}
+
+.slidev-layout.voyage-theme .open-world-rail-runtime {
+  border-top: 3px solid var(--voyage-green) !important;
+}
+
+.slidev-layout.voyage-theme .open-world-rail-head {
+  font-family: var(--voyage-serif) !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+}
+
+.slidev-layout.voyage-theme .open-world-rail-action .open-world-rail-head {
+  color: var(--voyage-blue) !important;
+}
+
+.slidev-layout.voyage-theme .open-world-rail-recovery .open-world-rail-head {
+  color: var(--voyage-rust) !important;
+}
+
+.slidev-layout.voyage-theme .open-world-rail-runtime .open-world-rail-head {
+  color: var(--voyage-green) !important;
+}
+
+.slidev-layout.voyage-theme .open-world-example {
+  background: rgba(255, 254, 251, 0.9) !important;
+  border: 1px solid #dcd7ce !important;
+  border-left: 3px solid var(--voyage-blue) !important;
+  border-radius: 6px !important;
+  padding: 12px 18px !important;
+}
+
+.slidev-layout.voyage-theme .open-world-example-title {
+  color: var(--voyage-blue) !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+
+/* ==========================================================================
+   SLIDE 5: TWO DIFFERENT LIFETIMES (.statement)
+   ========================================================================== */
+.slidev-layout.voyage-theme .statement {
+  font-family: var(--voyage-serif) !important;
+  font-size: 60px !important;
+  font-weight: 700 !important;
+  letter-spacing: -2.8px !important;
+  line-height: 1.15 !important;
+  color: var(--voyage-ink) !important;
+  margin-top: 60px !important;
+}
+
+.slidev-layout.voyage-theme .statement .blue {
+  color: var(--voyage-blue) !important;
+}
+
+.slidev-layout.voyage-theme .statement .orange {
+  color: var(--voyage-rust) !important;
+}
+
+/* ==========================================================================
+   SLIDE 7: PERSISTENCE BOUNDARY (.architecture-diagram)
+   ========================================================================== */
+.slidev-layout.voyage-theme .arch-area-title {
+  font-family: var(--voyage-sans) !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
+}
+
+.slidev-layout.voyage-theme .arch-environment .arch-area-title {
+  color: var(--voyage-blue) !important;
+}
+
+.slidev-layout.voyage-theme .arch-world .arch-area-title {
+  color: var(--voyage-green) !important;
+}
+
+.slidev-layout.voyage-theme .arch-scientist .arch-area-title {
+  color: var(--voyage-purple) !important;
+}
+
+.slidev-layout.voyage-theme .arch-meta .arch-area-title {
+  color: var(--voyage-rust) !important;
+}
+
+.slidev-layout.voyage-theme .arch-environment .arch-panel {
+  border: 1px solid var(--voyage-blue-line) !important;
+  background: #f2f8fa !important;
+}
+
+.slidev-layout.voyage-theme .arch-world .arch-panel {
+  border: 1px solid var(--voyage-rust-line) !important;
+  background: radial-gradient(ellipse at 85% 5%, #dfb29220, transparent 50%), #fffefb !important;
+}
+
+.slidev-layout.voyage-theme .arch-scientist .arch-panel {
+  border: 1px solid var(--voyage-blue-line) !important;
+  background: #f4f8fa !important;
+}
+
+.slidev-layout.voyage-theme .arch-meta .arch-panel {
+  border: 1px solid var(--voyage-rust-line) !important;
+  background: #fff9f6 !important;
+}
+
+.slidev-layout.voyage-theme .arch-card {
+  background: #ffffff !important;
+  border: 1px solid #dcd7ce !important;
+}
+
+.slidev-layout.voyage-theme .arch-hero-title {
+  font-family: var(--voyage-serif) !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.6px !important;
+}
+
+.slidev-layout.voyage-theme .arch-scientist .arch-hero-title {
+  color: var(--voyage-blue) !important;
+}
+
+.slidev-layout.voyage-theme .arch-meta .arch-hero-title {
+  color: var(--voyage-rust) !important;
+}
+
+.slidev-layout.voyage-theme .arch-meta .arch-hero-subtitle {
+  color: var(--voyage-rust) !important;
+}
+
+.slidev-layout.voyage-theme .arch-callout {
+  color: var(--voyage-rust) !important;
+  font-weight: 700 !important;
+}
+
+.slidev-layout.voyage-theme .arch-runtime-panel {
+  background: #f6f2eb !important;
+  border: 1px solid #dcd7ce !important;
+}
+
+.slidev-layout.voyage-theme .arch-runtime-title {
+  color: var(--voyage-ink) !important;
+  font-family: var(--voyage-serif) !important;
+  font-weight: 700 !important;
+}
+
+/* ==========================================================================
+   SLIDE 8 & 9: THE HANDOFF LOOP (.cycle-map, .handoff-stage)
+   ========================================================================== */
+.slidev-layout.voyage-theme .cycle-world-ring.world-ring-outer {
+  border-color: rgba(105, 160, 186, 0.4) !important;
+}
+
+.slidev-layout.voyage-theme .cycle-world-ring.world-ring-middle {
+  border-color: rgba(0, 82, 123, 0.5) !important;
+}
+
+.slidev-layout.voyage-theme .cycle-world-ring.world-ring-inner {
+  border-color: rgba(105, 160, 186, 0.6) !important;
+}
+
+.slidev-layout.voyage-theme .cycle-world-core {
+  background: var(--voyage-blue) !important;
+}
+
+.slidev-layout.voyage-theme .cycle-scientist-node .cycle-scientist-visual {
+  border-color: var(--voyage-blue) !important;
+  color: var(--voyage-blue) !important;
+}
+
+.slidev-layout.voyage-theme .cycle-evidence-node .cycle-evidence-visual {
+  border-color: var(--voyage-rust-line) !important;
+  background: #fffefb !important;
+}
+
+.slidev-layout.voyage-theme .cycle-meta-node .cycle-meta-visual {
+  border-color: var(--voyage-rust) !important;
+  color: var(--voyage-rust) !important;
+}
+
+.slidev-layout.voyage-theme .cycle-loop-label strong {
+  color: var(--voyage-rust) !important;
+}
+
+.slidev-layout.voyage-theme .cycle-explain-label.green {
+  color: var(--voyage-green) !important;
+}
+
+.slidev-layout.voyage-theme .cycle-explain-label.purple {
+  color: var(--voyage-purple) !important;
+}
+
+/* Static handoff stage */
+.slidev-layout.voyage-theme .handoff-world-card {
+  border-color: var(--voyage-blue-line) !important;
+  background: #f0f7fa !important;
+}
+
+.slidev-layout.voyage-theme .handoff-scientist-card {
+  border-color: var(--voyage-blue-line) !important;
+  background: #f4f8fa !important;
+}
+
+.slidev-layout.voyage-theme .handoff-evidence-card {
+  border-color: var(--voyage-rust-line) !important;
+  background: #fff8f5 !important;
+}
+
+.slidev-layout.voyage-theme .handoff-meta-card {
+  border-color: var(--voyage-rust-line) !important;
+  background: #fff5f0 !important;
+}
+
+.slidev-layout.voyage-theme .handoff-card strong {
+  font-family: var(--voyage-serif) !important;
+  font-size: 19px !important;
+}
+
+/* ==========================================================================
+   SLIDE 10: RESEARCH MEMORY (.memory)
+   ========================================================================== */
+.slidev-layout.voyage-theme .memory {
+  margin-top: 24px !important;
+}
+
+.slidev-layout.voyage-theme .memory pre {
+  background: var(--voyage-card-bg) !important;
+  border: 1px solid #dcd7ce !important;
+  border-left: 4px solid var(--voyage-blue) !important;
+  border-radius: 6px !important;
+  padding: 24px 28px !important;
+  box-shadow: 0 2px 8px rgba(34, 26, 22, 0.04) !important;
+  color: var(--voyage-ink) !important;
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+}
+
+.slidev-layout.voyage-theme .split h2 {
+  font-family: var(--voyage-serif) !important;
+  font-size: 34px !important;
+  font-weight: 700 !important;
+  color: var(--voyage-blue) !important;
+  letter-spacing: -1.2px !important;
+}
+
+/* ==========================================================================
+   SLIDE 11 & 12: PARALLEL EXPLORATION (.parallel-motion)
+   ========================================================================== */
+.slidev-layout.voyage-theme .parallel-progress-a {
+  stroke: var(--voyage-blue) !important;
+}
+
+.slidev-layout.voyage-theme .parallel-progress-b {
+  stroke: var(--voyage-rust) !important;
+}
+
+.slidev-layout.voyage-theme .parallel-progress-c {
+  stroke: var(--voyage-green) !important;
+}
+
+.slidev-layout.voyage-theme .parallel-card-a rect {
+  fill: #f0f7fa !important;
+  stroke: var(--voyage-blue-line) !important;
+}
+
+.slidev-layout.voyage-theme .parallel-card-b rect {
+  fill: #fff8f5 !important;
+  stroke: var(--voyage-rust-line) !important;
+}
+
+.slidev-layout.voyage-theme .parallel-card-c rect {
+  fill: #f0f6f4 !important;
+  stroke: #5a7d6e !important;
+}
+
+.slidev-layout.voyage-theme .parallel-card-a text.parallel-card-name {
+  fill: var(--voyage-blue) !important;
+}
+
+.slidev-layout.voyage-theme .parallel-card-b text.parallel-card-name {
+  fill: var(--voyage-rust) !important;
+}
+
+.slidev-layout.voyage-theme .parallel-card-c text.parallel-card-name {
+  fill: var(--voyage-green) !important;
+}
+
+.slidev-layout.voyage-theme .parallel-card-c text.parallel-card-branch {
+  fill: var(--voyage-green) !important;
+}
+
+.slidev-layout.voyage-theme .parallel-reviewer-ring {
+  stroke: var(--voyage-blue) !important;
+}
+
+.slidev-layout.voyage-theme .parallel-reviewer-check {
+  stroke: var(--voyage-blue) !important;
+}
+
+.slidev-layout.voyage-theme .parallel-reviewer-title {
+  font-family: var(--voyage-serif) !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  fill: var(--voyage-ink) !important;
+}
+
+/* ==========================================================================
+   SLIDE 13: DEFINE THE TASK (.entry-inputs)
+   ========================================================================== */
+.slidev-layout.voyage-theme .entry-inputs {
+  margin-top: 14px !important;
+  gap: 20px !important;
+}
+
+.slidev-layout.voyage-theme .entry-input {
+  background: var(--voyage-card-bg) !important;
+  border: 1px solid #dcd7ce !important;
+  border-radius: 6px !important;
+  padding: 16px 20px !important;
+  box-shadow: 0 2px 8px rgba(34, 26, 22, 0.04) !important;
+}
+
+.slidev-layout.voyage-theme .entry-input-task {
+  border-top: 3px solid var(--voyage-rust) !important;
+}
+
+.slidev-layout.voyage-theme .entry-input-personal {
+  border-top: 3px solid var(--voyage-blue) !important;
+}
+
+.slidev-layout.voyage-theme .entry-input-title {
+  font-family: var(--voyage-serif) !important;
+  font-size: 25px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.8px !important;
+  color: var(--voyage-ink) !important;
+  margin: 8px 0 4px !important;
+}
+
+.slidev-layout.voyage-theme .entry-input-task .entry-rule {
+  background: var(--voyage-rust) !important;
+}
+
+.slidev-layout.voyage-theme .entry-input-personal .entry-rule {
+  background: var(--voyage-blue) !important;
+}
+
+.slidev-layout.voyage-theme .entry-input-task .entry-example {
+  border-left: 3px solid var(--voyage-rust-line) !important;
+  background: #fff8f5 !important;
+  padding: 8px 12px !important;
+  margin-top: 10px !important;
+}
+
+.slidev-layout.voyage-theme .entry-input-personal .entry-example {
+  border-left: 3px solid var(--voyage-blue-line) !important;
+  background: #f0f7fa !important;
+  padding: 8px 12px !important;
+  margin-top: 10px !important;
+}
+
+.slidev-layout.voyage-theme .entry-input-task .entry-example-label {
+  color: var(--voyage-rust) !important;
+}
+
+.slidev-layout.voyage-theme .entry-input-personal .entry-example-label {
+  color: var(--voyage-blue) !important;
+}
+
+/* ==========================================================================
+   SLIDE 16 & 17: DASHBOARD CHECKPOINT (.checkpoint-motion)
+   ========================================================================== */
+.slidev-layout.voyage-theme .checkpoint-window {
+  background: var(--voyage-card-bg) !important;
+  border: 1px solid #c9d7de !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 16px rgba(0, 82, 123, 0.08) !important;
+}
+
+.slidev-layout.voyage-theme .checkpoint-windowbar {
+  background: #edf1f2 !important;
+  border-bottom: 1px solid #c9d7de !important;
+  color: var(--voyage-muted) !important;
+}
+
+.slidev-layout.voyage-theme .checkpoint-focus-box {
+  border: 2px solid var(--voyage-blue) !important;
+  background: rgba(0, 82, 123, 0.05) !important;
+}
+
+.slidev-layout.voyage-theme .checkpoint-focus-label {
+  background: var(--voyage-blue) !important;
+  color: #fff !important;
+  font-family: var(--voyage-sans) !important;
+  font-weight: 700 !important;
+}
+
+/* ==========================================================================
+   SLIDE 18: PUBLIC-VALIDATION RESULT (Big Number & Table)
+   ========================================================================== */
+.slidev-layout.voyage-theme .big-number {
+  font-family: var(--voyage-serif) !important;
+  font-size: 88px !important;
+  font-weight: 700 !important;
+  letter-spacing: -3.5px !important;
+  line-height: 0.95 !important;
+  color: var(--voyage-ink) !important;
+  margin: 12px 0 16px !important;
+}
+
+.slidev-layout.voyage-theme .delta .green {
+  color: var(--voyage-rust) !important;
+  font-weight: 700 !important;
+  font-size: 20px !important;
+}
+
+.slidev-layout.voyage-theme table {
+  background: var(--voyage-card-bg) !important;
+  border: 1px solid #dcd7ce !important;
+  border-radius: 6px !important;
+  box-shadow: 0 2px 8px rgba(34, 26, 22, 0.04) !important;
+  overflow: hidden !important;
+  font-size: 16px !important;
+  width: 100% !important;
+}
+
+.slidev-layout.voyage-theme thead th {
+  background: #ebe6df !important;
+  color: var(--voyage-muted) !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.2px !important;
+  border-bottom: 2px solid #cfc7bd !important;
+  padding: 10px 14px !important;
+}
+
+.slidev-layout.voyage-theme tbody td {
+  color: var(--voyage-ink) !important;
+  font-weight: 600 !important;
+  border-bottom: 1px solid #ece7df !important;
+  padding: 10px 14px !important;
+}
+
+.slidev-layout.voyage-theme tbody td.green {
+  color: var(--voyage-rust) !important;
+  font-weight: 700 !important;
+}
+
+.slidev-layout.voyage-theme tbody tr:last-child {
+  background: #efe4da !important;
+}
+
+.slidev-layout.voyage-theme tbody tr:last-child td:last-child {
+  color: var(--voyage-rust) !important;
+  font-weight: 700 !important;
+}
+
+/* ==========================================================================
+   SLIDE 19: AUTONOMY AND AUDITABILITY (.stats, 4, 13, 0)
+   ========================================================================== */
+.slidev-layout.voyage-theme .stats {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr !important;
+  gap: 20px !important;
+  margin-top: 28px !important;
+}
+
+.slidev-layout.voyage-theme .stats .rule {
+  background: var(--voyage-card-bg) !important;
+  border: 1px solid #dcd7ce !important;
+  border-top: 3px solid var(--voyage-blue) !important;
+  border-radius: 6px !important;
+  padding: 24px 22px !important;
+  box-shadow: 0 2px 8px rgba(34, 26, 22, 0.04) !important;
+}
+
+.slidev-layout.voyage-theme .stats > div:nth-child(2).rule {
+  border-top-color: var(--voyage-rust) !important;
+}
+
+.slidev-layout.voyage-theme .stats > div:nth-child(3).rule {
+  border-top-color: var(--voyage-green) !important;
+}
+
+.slidev-layout.voyage-theme .stats strong {
+  font-family: var(--voyage-serif) !important;
+  font-size: 84px !important;
+  font-weight: 700 !important;
+  letter-spacing: -3px !important;
+  line-height: 0.95 !important;
+  color: var(--voyage-blue) !important;
+  display: block !important;
+  margin-bottom: 8px !important;
+}
+
+.slidev-layout.voyage-theme .stats > div:nth-child(2) strong {
+  color: var(--voyage-rust) !important;
+}
+
+.slidev-layout.voyage-theme .stats > div:nth-child(3) strong {
+  color: var(--voyage-green) !important;
+}
+
+.slidev-layout.voyage-theme .stats p {
+  font-size: 19px !important;
+  font-weight: 600 !important;
+  color: var(--voyage-ink) !important;
+  margin: 6px 0 2px !important;
+}
+
+.slidev-layout.voyage-theme .stats small {
+  color: var(--voyage-muted) !important;
+  font-size: 14px !important;
+}
+
+/* ==========================================================================
+   SLIDE 20: RESOURCE ACCOUNTING (~)
+   ========================================================================== */
+.slidev-layout.voyage-theme .resource-hero {
+  background: var(--voyage-card-bg) !important;
+  border: 1px solid var(--voyage-rust-line) !important;
+  border-radius: 6px !important;
+  padding: 12px 20px !important;
+  box-shadow: 0 2px 8px rgba(34, 26, 22, 0.04) !important;
+  margin-bottom: 12px !important;
+  text-align: center !important;
+}
+
+.slidev-layout.voyage-theme .resource-hero-number {
+  font-family: var(--voyage-serif) !important;
+  font-size: 78px !important;
+  font-weight: 700 !important;
+  letter-spacing: -3px !important;
+  line-height: 0.95 !important;
+  color: var(--voyage-rust) !important;
+}
+
+.slidev-layout.voyage-theme .resource-hero-subtitle {
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  color: var(--voyage-ink) !important;
+  margin-top: 4px !important;
+}
+
+.slidev-layout.voyage-theme .resource-support {
+  gap: 14px !important;
+}
+
+.slidev-layout.voyage-theme .resource-support-item {
+  background: var(--voyage-card-bg) !important;
+  border: 1px solid #dcd7ce !important;
+  border-radius: 6px !important;
+  padding: 10px 14px !important;
+  box-shadow: 0 2px 8px rgba(34, 26, 22, 0.04) !important;
+}
+
+.slidev-layout.voyage-theme .resource-support-title {
+  font-family: var(--voyage-serif) !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: var(--voyage-ink) !important;
+  margin: 3px 0 !important;
+}
+
+.slidev-layout.voyage-theme .resource-support-label.blue {
+  color: var(--voyage-blue) !important;
+}
+
+.slidev-layout.voyage-theme .resource-support-label:not(.blue) {
+  color: var(--voyage-rust) !important;
+}
+
+.slidev-layout.voyage-theme .resource-conclusion {
+  margin-top: 10px !important;
+  font-size: 14px !important;
+  color: #526574 !important;
+}
+
+.slidev-layout.voyage-theme .resource-footnote {
+  bottom: 14px !important;
+  font-size: 11px !important;
+  color: var(--voyage-muted) !important;
+  border-top: 1px solid #dcd7ce !important;
+}
+
+/* ==========================================================================
+   SLIDE 21: DIRECT-AGENT COMPARISON (.token-chart)
+   ========================================================================== */
+.slidev-layout.voyage-theme .chart-paper {
+  fill: #fffefb !important;
+  stroke: #dcd7ce !important;
+  stroke-width: 1 !important;
+}
+
+.slidev-layout.voyage-theme .chart-plot {
+  fill: #fcfbf8 !important;
+  stroke: #dcd7ce !important;
+  stroke-width: 1 !important;
+}
+
+.slidev-layout.voyage-theme .chart-grid line {
+  stroke: #ece8df !important;
+}
+
+.slidev-layout.voyage-theme .chart-inline-title {
+  font-family: var(--voyage-serif) !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  fill: var(--voyage-ink) !important;
+}
+
+.slidev-layout.voyage-theme .chart-point-blue {
+  fill: var(--voyage-blue) !important;
+}
+
+.slidev-layout.voyage-theme .chart-point-orange {
+  fill: var(--voyage-rust) !important;
+}
+
+.slidev-layout.voyage-theme .chart-point-purple {
+  fill: var(--voyage-purple) !important;
+}
+
+.slidev-layout.voyage-theme .chart-point-green {
+  fill: var(--voyage-green) !important;
+}
+
+.slidev-layout.voyage-theme .chart-range {
+  stroke: var(--voyage-purple) !important;
+}
+
+.slidev-layout.voyage-theme .chart-label-retained {
+  fill: var(--voyage-green) !important;
+  font-weight: 700 !important;
+}
+
+/* ==========================================================================
+   SLIDE 22: INSIGHTS GRID (.insight-grid)
+   ========================================================================== */
+.slidev-layout.voyage-theme .insight-grid .insight-item {
+  background: var(--voyage-card-bg) !important;
+  border: 1px solid #dcd7ce !important;
+  border-radius: 6px !important;
+  padding: 18px 20px !important;
+  box-shadow: 0 2px 8px rgba(34, 26, 22, 0.04) !important;
+}
+
+.slidev-layout.voyage-theme .insight-index {
+  font-family: var(--voyage-serif) !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+}
+
+.slidev-layout.voyage-theme .insight-item:nth-child(1) .insight-index { color: var(--voyage-blue) !important; }
+.slidev-layout.voyage-theme .insight-item:nth-child(2) .insight-index { color: var(--voyage-rust) !important; }
+.slidev-layout.voyage-theme .insight-item:nth-child(3) .insight-index { color: var(--voyage-green) !important; }
+.slidev-layout.voyage-theme .insight-item:nth-child(4) .insight-index { color: var(--voyage-purple) !important; }
+
+.slidev-layout.voyage-theme .insight-item strong {
+  font-family: var(--voyage-serif) !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: var(--voyage-ink) !important;
+}
+
+.slidev-layout.voyage-theme .insight-numbers strong {
+  font-family: var(--voyage-serif) !important;
+  font-size: 28px !important;
+  font-weight: 700 !important;
+}
+
+/* ==========================================================================
+   SLIDE 24: ENGINEERING PRACTICE (.fieldnote-grid)
+   ========================================================================== */
+.slidev-layout.voyage-theme .fieldnote-card {
+  border-radius: 6px !important;
+  box-shadow: 0 2px 8px rgba(34, 26, 22, 0.04) !important;
+  padding: 20px 22px !important;
+}
+
+.slidev-layout.voyage-theme .fieldnote-card h2 {
+  font-family: var(--voyage-serif) !important;
+  font-size: 26px !important;
+  font-weight: 700 !important;
+  letter-spacing: -1px !important;
+  margin: 10px 0 14px !important;
+}
+
+.slidev-layout.voyage-theme .fieldnote-branches {
+  background: var(--voyage-card-bg) !important;
+  border: 1px solid #dcd7ce !important;
+  border-top: 3px solid var(--voyage-rust) !important;
+}
+
+.slidev-layout.voyage-theme .fieldnote-remote {
+  background: #f4f8fa !important;
+  border: 1px solid var(--voyage-blue-line) !important;
+  border-top: 3px solid var(--voyage-blue) !important;
+}
+
+.slidev-layout.voyage-theme .fieldnote-branches .fieldnote-number {
+  color: var(--voyage-rust) !important;
+}
+
+.slidev-layout.voyage-theme .fieldnote-remote .fieldnote-number {
+  color: var(--voyage-blue) !important;
+}
+
+.slidev-layout.voyage-theme .fieldnote-stamp {
+  border: 1px solid #dcd7ce !important;
+  background: rgba(255, 255, 255, 0.7) !important;
+  color: var(--voyage-muted) !important;
+}
+
+/* ==========================================================================
+   SLIDE 25: CLOSING SEARCH
+   ========================================================================== */
+.slidev-layout.voyage-theme .closing {
+  font-family: var(--voyage-serif) !important;
+  font-size: 50px !important;
+  font-weight: 700 !important;
+  letter-spacing: -2px !important;
+  line-height: 1.12 !important;
+  color: var(--voyage-ink) !important;
+  margin: 40px 0 28px !important;
+}
+
+.slidev-layout.voyage-theme .closing .green {
+  color: var(--voyage-green) !important;
+}
+
+.slidev-layout.voyage-theme .terminal {
+  background: var(--voyage-card-bg) !important;
+  border: 1px solid #a9c0cc !important;
+  border-radius: 6px !important;
+  box-shadow: 0 4px 14px rgba(34, 26, 22, 0.05) !important;
+}
+
+.slidev-layout.voyage-theme .terminal pre {
+  padding: 16px 20px !important;
+}
+
+/* ==========================================================================
+   SLIDE 26: TEAM SLIDE (.team-row, .team-avatar)
+   ========================================================================== */
+.slidev-layout.voyage-theme .team-avatar {
+  background: var(--voyage-card-bg) !important;
+  border: 1.5px solid var(--team-accent) !important;
+  color: var(--team-accent) !important;
+}
+
+.slidev-layout.voyage-theme .team-avatar span {
+  font-family: var(--voyage-sans) !important;
+  font-weight: 700 !important;
+}
+
+.slidev-layout.voyage-theme .team-name {
+  font-family: var(--voyage-serif) !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: var(--voyage-ink) !important;
+}
+
+.slidev-layout.voyage-theme .team-thread {
+  background: #dcd7ce !important;
+}
+
+/* ==========================================================================
+   SLIDE 27: CAPABILITY RECOVERY (.compare-grid)
+   ========================================================================== */
+.slidev-layout.voyage-theme .compare-side.failure-side {
+  background: #fff8f5 !important;
+  border: 1px solid var(--voyage-rust-line) !important;
+  border-radius: 6px !important;
+  padding: 20px !important;
+}
+
+.slidev-layout.voyage-theme .compare-side.success-side,
+.slidev-layout.voyage-theme .compare-side:not(.failure-side) {
+  background: #f0f7fa !important;
+  border: 1px solid var(--voyage-blue-line) !important;
+  border-radius: 6px !important;
+  padding: 20px !important;
+}
+
+.slidev-layout.voyage-theme .compare-subtitle {
+  font-family: var(--voyage-serif) !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  color: var(--voyage-ink) !important;
+}
+
+.slidev-layout.voyage-theme .compare-kicker.rose {
+  color: var(--voyage-rust) !important;
+}
+
+.slidev-layout.voyage-theme .compare-kicker.blue {
+  color: var(--voyage-blue) !important;
+}
+
+.slidev-layout.voyage-theme .compare-failure strong {
+  color: var(--voyage-rust) !important;
+}

@@ -10,7 +10,11 @@ Independent A0 portrait poster following the supplied WeChat reference: warm ivo
 
 Content and data: `../../poster.md`, `../../../docs/ARCHITECTURE.md` and `../../../docs/FINAL_REPORT.md` §§3–5. The comparison chart preserves the measured token counts, score qualifiers and accounting interval from the existing poster. It does not imply causality or statistical significance.
 
-Typography: Arial for body text and Georgia for editorial headings; Menlo for the example input. PDF text and the comparison chart remain vector content. The hero is a generated editorial illustration, not a photograph of an actual research event. It was created with the built-in image generation tool. The exact prompt is stored in `assets/prompt.txt`.
+Typography: Times New Roman for the narrow editorial headings, Arial for the wordmark, Arial Narrow for compact body copy and labels, SignPainter for the handwritten signature, and Menlo for the example input. PDF text and the comparison chart remain vector content.
+
+The revised composition matches the reference's header and section proportions, including the globe vignette, handwritten signature, blue/red line icons, subtle paper texture and white result inset. The header, globe and paper are generated illustrations made with the built-in image tool. The revised prompts are in `assets/prompts-v2.txt`; `assets/prompt.txt` records the first draft. Carbon icons come from the existing `@iconify-json/carbon` dependency (IBM, Apache-2.0).
+
+The scatter plot uses the unchanged measured token counts and public-validation scores, with a tighter plotting area to match the reference. The Cycle-2 token interval is an accounting bound, and the Codex point remains provisional. “Any ML task” expresses the interface's intended scope, not evidence of validation across tasks.
 
 This poster does not replace the original poster or the presentation variants.
 

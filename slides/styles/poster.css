@@ -5,7 +5,7 @@
 .poster-page .p-kicker,.poster-page .p-role,.poster-page .p-memory b,.poster-page .p-boundary b { font-family:'Fira Code','Menlo',monospace; }
 .poster-page .p-kicker { font-size:14px; line-height:1.4; letter-spacing:1.2px; color:var(--p-muted); }
 .poster-page .p-header { position:relative; isolation:isolate; padding-bottom:25px; border-bottom:1px solid var(--p-line); flex-shrink:0; }
-.poster-page .p-art { position:absolute; z-index:-1; right:-70px; top:-48px; width:620px; height:325px; object-fit:cover; opacity:.29; mask-image:linear-gradient(90deg,transparent,#000 72%); }
+.poster-page .p-art { position:absolute; z-index:-1; right:-70px; top:-48px; width:620px; height:325px; object-fit:cover; opacity:.42; mask-image:linear-gradient(90deg,transparent,#000 72%); }
 .poster-page h1 { font-size:74px; font-weight:400; line-height:1; letter-spacing:-3.5px; color:var(--p-ink); margin:17px 0 9px; }
 .poster-page h1 span,.poster-page .p-thesis span { color:var(--p-blue); }
 .poster-page .p-subtitle { font-size:23px; line-height:1.35; color:var(--p-muted); }
@@ -138,3 +138,49 @@
 .poster-page .p-team { font-size:16px; margin-top:4px; line-height:1.4; }
 .poster-page .p-source { font-size:12px; color:var(--p-muted); margin-top:5px; line-height:1.4; }
 body:has(.poster-page) .deck-footer { display:none; }
+
+/* Bold preview: keep the existing hierarchy while making the poster easier to read at distance. */
+.poster-page { font-weight:500; }
+.poster-page h1,
+.poster-page h2,
+.poster-page .p-entry-heading h2 { font-weight:500; }
+.poster-page h3,
+.poster-page strong { font-weight:600; }
+.poster-page .p-score-table th,
+.poster-page .p-score-table td { font-weight:500; }
+
+/* Six-part narrative framing shared with the main deck. */
+.poster-page .p-left,
+.poster-page .p-right { display:flex; flex-direction:column; gap:6px; min-width:0; }
+.poster-page .p-columns { margin-top:18px; }
+.poster-page .p-section { border:1px solid #dfe3e7; border-radius:4px; padding:6px 9px 7px; }
+.poster-page .p-section > .p-kicker { margin-bottom:2px; }
+.poster-page .p-section > h2 { margin-top:3px; }
+.poster-page .p-problem { border-top:2px solid var(--p-orange); }
+.poster-page .p-motivation { border-top:2px solid var(--p-blue); }
+.poster-page .p-system { border-top:2px solid var(--p-purple); }
+.poster-page .p-experience { border-top:2px solid var(--p-blue); }
+.poster-page .p-evaluation { border-top:2px solid var(--p-orange); }
+.poster-page .p-insights-section { border-top:2px solid var(--p-rose); }
+.poster-page .p-problem .p-method-intro { margin-top:6px; }
+.poster-page .p-problem .p-input { margin-top:10px; }
+.poster-page .p-problem .p-down { line-height:18px; }
+.poster-page .p-motivation .p-world { margin-top:3px; }
+.poster-page .p-system .p-handoff { margin-top:6px; }
+.poster-page .p-system .p-runtime { margin-top:6px; }
+.poster-page .p-system .p-parallel { margin-top:10px; }
+.poster-page .p-system .p-parallel p { font-size:16px; line-height:1.35; margin-top:5px; }
+.poster-page .p-system .p-parallel small { font-size:13px; line-height:1.3; margin-top:3px; }
+.poster-page .p-evaluation .p-figure { margin-top:7px; }
+.poster-page .p-evaluation .p-chart { height:450px; }
+.poster-page .p-evaluation .p-chart-note { font-size:13px; line-height:1.35; margin-top:10px; }
+.poster-page .p-evaluation .p-results { padding-top:14px; margin-top:15px; }
+.poster-page .p-insights-section .p-insights { margin-top:4px; padding-top:7px; }
+.poster-page .p-insights-section .p-limit { margin-top:7px; }
+.poster-page .p-entry { margin-top:6px; padding:5px 8px 4px; }
+.poster-page .p-entry-grid { margin-top:6px; }
+.poster-page .p-entry-path { margin-top:7px; }
+.poster-page .p-entry-prompt { padding:6px 10px; }
+.poster-page .p-footer { margin-top:7px; padding-top:6px; }
+.poster-page .p-team { font-size:14px; margin-top:2px; }
+.poster-page .p-source { font-size:10px; margin-top:2px; line-height:1.2; }

@@ -43,6 +43,23 @@ npm run export
 
 使用本地系统字体，不依赖在线字体服务。尊重系统减少动态效果设置。
 
+## PPT 演示版本
+
+- `slides.md`：原版主线演示 PPT（现代简洁科技风），配套 `SciOdyssey-main.pdf`。
+- `slides-voyage.md`：**新版本 Voyage 航海典藏风格 PPT**，继承海报 `05-voyage` 的象牙质感纸张底纹（Ivory Paper）、复古衬线大标题（Times New Roman）、海洋深蓝与赤陶赭石撞色（Blue & Rust）、以及手绘风主视觉封面。
+  - 本地预览：`npm run voyage:dev`（访问 http://localhost:3032 ）
+  - 导出 PDF：`npm run voyage:export`（生成 `SciOdyssey-voyage.pdf`）
+- `slides-3d.md`：**新版本 3D 空间交互风格 PPT（Spatial 3D Edition）**，在深空暗色科技底色上，全方位引入交互式 WebGL/Three.js 3D 场景与 CSS 3D 景深架构，配套 `SciOdyssey-3d.pdf`。
+  - 核心 3D 视觉元素：
+    - `<SpatialGlobe3D />`：3D 全息研究世界粒子天球与多层轨道环
+    - `<Landscape3D />`：3D 动态假说地势曲面，直观展示局部陷阱与自主多盆地跃迁轨迹
+    - `<ArchitectureStack3D />`：3D 爆炸式立体分层架构（科学家机群 / 纯证据边界 / 持久世界）
+    - `<HypothesisGraph3D />`：3D 假说星系空间分支网络，动态修剪失败假说与强化优胜轨迹
+    - `<PrismChart3D />`：3D 发光立体棱镜对比柱状图（KuaiRand AUC / GAUC / 冷启动）
+    - `<Card3D />`：支持鼠标悬停 3D 倾斜、景深视差（Parallax）与动态光斑的科技卡片
+  - 本地预览：`npm run 3d:dev`（访问 http://localhost:3033 ）
+  - 导出 PDF：`npm run 3d:export`（生成 `SciOdyssey-3d.pdf`）
+
 ## Poster 版本
 
 - `poster.md`：原版，保留不变。

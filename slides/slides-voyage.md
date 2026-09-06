@@ -1,8 +1,8 @@
 ---
 theme: default
-title: "SciOdyssey: Long-Horizon Autonomous ML Research Agent"
+title: "SciOdyssey: Long-Horizon Autonomous ML Research Agent (Voyage Edition)"
 info: |
-  A technical introduction to Research Agent. Sources: README.md, docs/FINAL_REPORT.md, and docs/ARCHITECTURE.md.
+  A technical presentation of SciOdyssey in the Voyage Editorial Style.
 author: Research Agent
 colorSchema: light
 aspectRatio: 16/9
@@ -11,15 +11,18 @@ transition: fade
 drawings:
   persist: false
 fonts:
-  sans: Nunito
+  sans: 'Arial Narrow'
+  serif: 'Times New Roman'
   mono: Fira Code
   provider: none
 mdc: true
+defaults:
+  class: voyage-theme
 ---
 
 <div class="eyebrow">AUTONOMOUS ML RESEARCH / TECHJAM 2026</div>
 
-<img class="cover-art" src="/assets/research-world-cover.png" alt="" aria-hidden="true">
+<img class="cover-art" src="/assets/research-voyage-v2.png" alt="" aria-hidden="true">
 
 <div class="hero cover-title"><span>SciOdyssey:</span><span>Long-Horizon Autonomous</span><span>ML Research Agent</span></div>
 
@@ -283,7 +286,7 @@ Scientific authority is separate from persistence authority. META does not choos
 -->
 
 ---
-class: handoff-loop-slide
+class: handoff-loop-slide voyage-theme
 clicks: 4
 transition: fade
 ---
@@ -295,19 +298,19 @@ transition: fade
 <div class="cycle-map">
   <svg class="cycle-map-lines" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true">
     <defs>
-      <marker id="cycle-arrow-neutral" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#c8d0d9" /></marker>
-      <marker id="cycle-arrow-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#38bdf8" /></marker>
-      <marker id="cycle-arrow-purple" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#a66cff" /></marker>
-      <marker id="cycle-arrow-rose" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#ff5c78" /></marker>
+      <marker id="cycle-arrow-neutral" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#687986" /></marker>
+      <marker id="cycle-arrow-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#00527b" /></marker>
+      <marker id="cycle-arrow-purple" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#4a386c" /></marker>
+      <marker id="cycle-arrow-rose" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#b83212" /></marker>
     </defs>
     <path d="M126 146 C210 146 235 58 318 58" fill="none" stroke="#cfd6de" stroke-width="2" marker-end="url(#cycle-arrow-neutral)" />
     <path d="M382 58 C480 58 510 146 604 146" fill="none" stroke="#cfd6de" stroke-width="2" marker-end="url(#cycle-arrow-neutral)" />
     <path d="M674 146 C760 146 790 58 872 58" fill="none" stroke="#cfd6de" stroke-width="2" marker-end="url(#cycle-arrow-neutral)" />
-    <path d="M904 93 C956 120 930 222 720 236 C470 250 185 234 128 174" fill="none" stroke="#ff5c78" stroke-opacity=".2" stroke-width="2" marker-end="url(#cycle-arrow-rose)" />
-    <path v-click="1" class="cycle-path-progress cycle-path-blue" d="M126 146 C210 146 235 58 318 58" fill="none" stroke="#38bdf8" stroke-width="3" pathLength="1" marker-end="url(#cycle-arrow-blue)" />
-    <path v-click="2" class="cycle-path-progress cycle-path-orange" d="M382 58 C480 58 510 146 604 146" fill="none" stroke="#ff873f" stroke-width="3" pathLength="1" marker-end="url(#cycle-arrow-neutral)" />
-    <path v-click="3" class="cycle-path-progress cycle-path-purple" d="M674 146 C760 146 790 58 872 58" fill="none" stroke="#a66cff" stroke-width="3" pathLength="1" marker-end="url(#cycle-arrow-neutral)" />
-    <path v-click="4" class="cycle-path-progress cycle-path-rose" d="M904 93 C956 120 930 222 720 236 C470 250 185 234 128 174" fill="none" stroke="#ff5c78" stroke-width="3" pathLength="1" marker-end="url(#cycle-arrow-rose)" />
+    <path d="M904 93 C956 120 930 222 720 236 C470 250 185 234 128 174" fill="none" stroke="#b83212" stroke-opacity=".25" stroke-width="2" marker-end="url(#cycle-arrow-rose)" />
+    <path v-click="1" class="cycle-path-progress cycle-path-blue" d="M126 146 C210 146 235 58 318 58" fill="none" stroke="#00527b" stroke-width="3" pathLength="1" marker-end="url(#cycle-arrow-blue)" />
+    <path v-click="2" class="cycle-path-progress cycle-path-orange" d="M382 58 C480 58 510 146 604 146" fill="none" stroke="#b83212" stroke-width="3" pathLength="1" marker-end="url(#cycle-arrow-neutral)" />
+    <path v-click="3" class="cycle-path-progress cycle-path-purple" d="M674 146 C760 146 790 58 872 58" fill="none" stroke="#4a386c" stroke-width="3" pathLength="1" marker-end="url(#cycle-arrow-neutral)" />
+    <path v-click="4" class="cycle-path-progress cycle-path-rose" d="M904 93 C956 120 930 222 720 236 C470 250 185 234 128 174" fill="none" stroke="#b83212" stroke-width="3" pathLength="1" marker-end="url(#cycle-arrow-rose)" />
   </svg>
   <div class="cycle-node cycle-world-node">
     <div class="cycle-node-visual cycle-world-visual" aria-hidden="true"><span class="cycle-world-ring world-ring-outer"></span><span class="cycle-world-ring world-ring-middle"></span><span class="cycle-world-ring world-ring-inner"></span><span class="cycle-world-core"></span><i class="cycle-particle particle-blue"></i><i class="cycle-particle particle-orange"></i><i class="cycle-particle particle-purple"></i></div>
@@ -364,7 +367,7 @@ The tree shows information categories, not a literal directory layout. State ide
 -->
 
 ---
-class: parallel-breadth-slide
+class: parallel-breadth-slide voyage-theme
 clicks: 1
 transition: slide-left | slide-right
 ---
@@ -520,7 +523,7 @@ Use the concrete recovery incident to connect the open-world motivation with obs
 -->
 
 ---
-class: checkpoint-slide
+class: checkpoint-slide voyage-theme
 clicks: 1
 transition: fade
 ---
