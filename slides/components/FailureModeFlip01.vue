@@ -18,6 +18,13 @@ const condenseCard = () => {
     isCondensed.value = true
   }, 360)
 }
+
+const resetInitial = (e?: MouseEvent) => {
+  if (e) e.stopPropagation()
+  isClosing.value = false
+  isFlipped.value = false
+  isCondensed.value = false
+}
 </script>
 
 <template>
@@ -47,7 +54,10 @@ const condenseCard = () => {
       <div class="failure-mode-head">
         <span class="failure-mode-number mono">01</span>
         <span class="failure-mode-label">OPEN-WORLD RECOVERY</span>
-        <span class="orange-check-badge mono">✓</span>
+        <button class="orange-check-badge mono" title="Click to reset" @click.stop="resetInitial">
+          <span class="badge-check">✓</span>
+          <span class="badge-reset"><i class="i-carbon:undo"></i></span>
+        </button>
       </div>
       <div class="failure-mode-visual condensed-visual" aria-label="Open-world agent recovers from unexpected errors at runtime">
         <div class="condensed-flow">
@@ -80,11 +90,17 @@ const condenseCard = () => {
           <span class="kicker-sep">/</span>
           <span>CAPABILITY RECOVERY · SOLUTION</span>
         </div>
-        <button class="condense-top-btn mono" @click="condenseCard">
-          <span class="check-mark">✓</span>
-          <span>CONDENSE</span>
-          <span class="i-carbon:minimize"></span>
-        </button>
+        <div class="header-actions">
+          <button class="reset-top-btn mono" title="Reset to initial problem" @click="resetInitial">
+            <i class="i-carbon:undo"></i>
+            <span>RESET</span>
+          </button>
+          <button class="condense-top-btn mono" @click="condenseCard">
+            <span class="check-mark">✓</span>
+            <span>CONDENSE</span>
+            <span class="i-carbon:minimize"></span>
+          </button>
+        </div>
       </div>
 
       <div class="open-world-claim">
@@ -175,18 +191,46 @@ const condenseCard = () => {
 
 .orange-check-badge {
   background: #ea580c;
+  border: none;
   border-radius: 50%;
   color: #ffffff;
-  width: 17px;
-  height: 17px;
-  font-size: 11px;
-  font-weight: 800;
+  width: 18px;
+  height: 18px;
   margin-left: auto;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  cursor: pointer;
   box-shadow: 0 2px 6px rgba(234, 88, 12, 0.35);
+  transition: all 0.2s ease;
+}
+
+.orange-check-badge:hover {
+  background: #c2410c;
+  transform: scale(1.18);
+  box-shadow: 0 3px 8px rgba(234, 88, 12, 0.45);
+}
+
+.badge-check {
+  font-size: 11px;
+  font-weight: 800;
+  display: block;
+}
+
+.badge-reset {
+  display: none;
+  font-size: 10px;
+}
+
+.orange-check-badge:hover .badge-check {
+  display: none;
+}
+
+.orange-check-badge:hover .badge-reset {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .condensed-visual {
@@ -360,6 +404,33 @@ const condenseCard = () => {
 
 .kicker-sep {
   color: #fdba74;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.reset-top-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.reset-top-btn:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: var(--ink);
 }
 
 .condense-top-btn {
