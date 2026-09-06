@@ -92,7 +92,7 @@ Open with the research job. The benchmark makes that job concrete; broader task 
   </div>
 
   <div class="failure-mode failure-mode-tree">
-    <div class="failure-mode-head"><span class="failure-mode-number mono">03</span><span class="failure-mode-label">CONTEXT COST</span></div>
+    <div class="failure-mode-head"><span class="failure-mode-number mono">03</span><span class="failure-mode-label">TREE SEARCH</span></div>
     <div class="failure-mode-visual failure-tree-token-cost" aria-label="Understanding a file costs far more tokens than changing it, so the agent rereads context">
       <div class="failure-token-row failure-token-understand">
         <span class="failure-token-label mono">UNDERSTAND</span>
@@ -107,7 +107,7 @@ Open with the research job. The benchmark makes that job concrete; broader task 
       <div class="failure-reread-loop mono"><span>read context</span><b>→</b><span>edit</span><b>→</b><span>re-read</span></div>
     </div>
     <p class="failure-mode-explanation">Reconstructing file context costs far more tokens than the edit itself.</p>
-    <div class="failure-mode-takeaway"><strong>Repeated reading becomes the bottleneck.</strong></div>
+    <div class="failure-mode-takeaway"><strong>Context cost forces repeated reading.</strong></div>
   </div>
 </div>
 
