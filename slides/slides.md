@@ -17,17 +17,19 @@ fonts:
 mdc: true
 ---
 
+<KeynoteMotion />
+
 <div class="eyebrow">AUTONOMOUS ML RESEARCH / TECHJAM 2026</div>
 
 <img class="cover-art" src="/assets/research-world-cover.png" alt="" aria-hidden="true">
 
-<div class="hero cover-title"><span>SciOdyssey:</span><span>Long-Horizon Autonomous</span><span>ML Research Agent</span></div>
+<div class="hero cover-title"><span class="product-name">SciOdyssey</span><span class="product-description">Long-Horizon Autonomous<br>ML Research Agent</span></div>
 
-<div class="lead">Autonomous ML discovery through <span class="blue">pure evidence.</span></div>
+<div class="lead">A persistent research world. A fresh Scientist every cycle.</div>
 
 <div class="cover-meta mono"><span>PERSISTENT WORLD</span><span>FRESH SCIENTIST</span><span>EVIDENCE FIRST</span></div>
 
-<div class="narrative-route">Problem → Motivation → System → Experience → Evaluation → Insights</div>
+<div class="narrative-route">Problem → System → Experience → Evaluation → Insights</div>
 
 <!--
 A lightweight framework for long-running ML research. Its central design gives the research world and the researcher different lifetimes.
@@ -38,6 +40,8 @@ A lightweight framework for long-running ML research. Its central design gives t
 ---
 
 <div class="visual-kicker orange">01 / PROBLEM · THE RESEARCH TASK</div>
+
+<KeynoteMotion />
 
 # Can an agent carry a research task to completion?
 
@@ -64,49 +68,11 @@ Open with the research job. The benchmark makes that job concrete; broader task 
 
 <div class="visual-kicker orange failure-modes-kicker">01 / PROBLEM · FAILURE MODES</div>
 
-# Why Current Research Agents Fall Short
+<KeynoteMotion />
 
-<div class="failure-modes-thesis">Three obstacles to sustained autonomous research.</div>
+# Why research agents fall short
 
-<div class="failure-modes-grid">
-  <FailureModeFlip01 />
-
-  <div class="failure-mode failure-mode-trajectory">
-    <div class="failure-mode-head"><span class="failure-mode-number mono">02</span><span class="failure-mode-label">SINGLE TRAJECTORY</span></div>
-    <div class="failure-mode-visual failure-basin" aria-label="A long-lived agent remains in one research basin">
-      <div class="failure-basin-star">★ <small>better idea</small></div>
-      <div class="failure-basin-line"><i></i><i></i><i></i><i class="current"></i><i></i><i></i></div>
-      <div class="failure-basin-caption mono">same basin</div>
-    </div>
-    <p class="failure-mode-explanation">A long-lived context carries yesterday's momentum into today's search.</p>
-    <div class="failure-mode-takeaway"><strong>More iterations <span>≠</span> more exploration.</strong></div>
-  </div>
-
-  <div class="failure-mode failure-mode-tree">
-    <div class="failure-mode-head"><span class="failure-mode-number mono">03</span><span class="failure-mode-label">TREE SEARCH</span></div>
-    <div class="failure-mode-visual failure-tree-token-cost" aria-label="Understanding a file costs far more tokens than changing it, so the agent rereads context">
-      <div class="failure-token-row failure-token-understand">
-        <span class="failure-token-label mono">UNDERSTAND</span>
-        <span class="failure-token-bar"><i></i></span>
-        <strong>≫</strong>
-      </div>
-      <div class="failure-token-row failure-token-edit">
-        <span class="failure-token-label mono">EDIT</span>
-        <span class="failure-token-bar"><i></i></span>
-        <span></span>
-      </div>
-      <div class="failure-reread-loop mono"><span>read context</span><b>→</b><span>edit</span><b>→</b><span>re-read</span></div>
-    </div>
-    <p class="failure-mode-explanation">Reconstructing file context costs far more tokens than the edit itself.</p>
-    <div class="failure-mode-takeaway"><strong>Context cost forces repeated reading.</strong></div>
-  </div>
-</div>
-
-<div class="failure-modes-bridge">
-  <div class="failure-modes-bridge-label mono">DESIGN RESPONSE</div>
-  <div class="failure-modes-bridge-copy">Research is open-world, non-linear, and exploratory.</div>
-  <div class="failure-modes-bridge-tags"><span>ADAPT</span><span>DIVERSIFY</span><span>LEARN</span></div>
-</div>
+<ProblemInsights />
 
 <!--
 This is a synthesis of the design pressures observed in the project, not a universal claim about all research agents.
@@ -114,101 +80,25 @@ This is a synthesis of the design pressures observed in the project, not a unive
 - ../README.md — Why fresh Scientists?, Architecture, and Parallel breadth
 - ../docs/project_story.md — Inspiration and Challenges
 - ../docs/FINAL_REPORT.md — sections 1, 3.4–3.5, and 4.2
+- ../competition_archive/kuairand-pure/reports/direct-codex-goal-baseline.md — local refinement trajectory
+- ../competition_archive/kuairand-pure/reports/direct-gemini-3.7-flash-goal-baseline.md — mechanism-pivot trajectory
 
-This slide frames a real-environment cost model: understanding a file requires reconstructing surrounding context, while the edit itself can be small. Repeated tool calls or handoffs force the agent to pay that reading cost again. The comparison is conceptual, not a measured token ratio.
+The Tree Search card opens an embedded reverse page using the project-shaped one-edit AGY replication recorded in `../docs/experiments/one-edit-telemetry.md`: a read-only arm used 340,087 inclusive tokens and a write-only arm used 42,377, an 8.03:1 ratio. The reverse page's TOKEN ABLATION projects eight children from those measured arms: rereading for every child costs 3,059,712 inclusive tokens, while reading once and repeating only the edits costs 679,103, a 4.51:1 ratio. The read arm made ten `view_file` calls over selected KuaiRand project context; the write arm made one line mutation with the exact target supplied in its prompt. The two arms were separate sessions with the same model and effort. Inclusive totals add AGY's separately reported cache-read input. The eight-child comparison is arithmetic based on the measured arms, not another delegated run or a main-agent proxy.
+Card 02 is a qualitative, descriptive comparison of two recorded single-agent trajectories. Its back face shows how a previous pattern can shape the next experiment.
+Card 02 reverse is multi-page: page 1 covers search momentum; page 2 covers Gemini's audited scientific-validity failures; page 3 follows 02 / SYSTEM · THE HANDOFF LOOP with four click-reveal steps. The findings are branch-level and do not invalidate every final Gemini result.
+- ../competition_archive/kuairand-pure/reports/baseline-protocol-audit.md — sections 5 and 6, Gemini target-statistics leakage and cross-user BPR
+- ../docs/FINAL_REPORT.md — sections 3.1–3.3, serial loop and selective persistence
 -->
 
 ---
 
-<!-- class: open-world-slide -->
+<div class="visual-kicker">02 / SYSTEM · DESIGN</div>
 
-<div class="visual-kicker blue">02 / MOTIVATION · OPEN-WORLD RESEARCH</div>
+<KeynoteMotion />
 
-<div class="open-world-claim"><span class="claim-line">Research is an <span class="open-highlight orange-open">open-world</span> task.</span><span class="claim-line claim-line-shift">We need an <span class="open-highlight blue-open">open-world</span> coding agent.</span></div>
+# A system for sustained research
 
-<div class="capability-rails">
-  <div class="capability-rail blue-rail">
-    <div class="rail-heading"><span class="rail-number blue">01</span><span class="capability-title blue">OPEN ACTION SPACE</span></div>
-    <div class="icon-row">
-      <div class="icon-item"><span class="capability-icon blue i-carbon:terminal"></span><span>Shell</span></div>
-      <div class="icon-item"><span class="capability-icon blue i-carbon:folder"></span><span>Files</span></div>
-      <div class="icon-item"><span class="capability-icon blue i-carbon:earth"></span><span>Browser</span></div>
-      <div class="icon-item"><span class="capability-icon blue i-carbon:branch"></span><span>Git</span></div>
-    </div>
-    <div class="capability-foot">Use what exists</div>
-  </div>
-  <div class="capability-rail orange-rail">
-    <div class="rail-heading"><span class="rail-number orange">02</span><span class="capability-title orange">SELF-RECOVERY</span></div>
-    <div class="icon-row">
-      <div class="icon-item"><span class="capability-icon orange i-carbon:error-outline"></span><span>Read errors</span></div>
-      <div class="icon-item"><span class="capability-icon orange i-carbon:book"></span><span>Inspect docs</span></div>
-      <div class="icon-item"><span class="capability-icon orange i-carbon:code"></span><span>Inspect source</span></div>
-      <div class="icon-item"><span class="capability-icon orange i-carbon:package"></span><span>Install packages</span></div>
-    </div>
-    <div class="capability-foot">Fix what breaks</div>
-  </div>
-  <div class="capability-rail rose-rail">
-    <div class="rail-heading"><span class="rail-number rose">03</span><span class="capability-title rose">RUNTIME EXTENSION</span></div>
-    <div class="icon-row">
-      <div class="icon-item"><span class="capability-icon rose i-carbon:api"></span><span>MCP</span></div>
-      <div class="icon-item"><span class="capability-icon rose i-carbon:tools"></span><span>Skills</span></div>
-      <div class="icon-item"><span class="capability-icon rose i-carbon:terminal"></span><span>CLI</span></div>
-      <div class="icon-item"><span class="capability-icon rose i-carbon:package"></span><span>Packages</span></div>
-    </div>
-    <div class="capability-foot">Add what's missing</div>
-  </div>
-</div>
-
-<div class="open-world-line"><div class="open-world-line-label mono">WORKFLOW EXAMPLE · LANGGRAPH</div><div class="open-world-line-strong"><span class="blue">LangGraph</span> makes a known workflow explicit as nodes + edges.</div><div class="open-world-line-detail">Missing capability? Leave the graph <span class="blue">→</span> inspect <span class="blue">→</span> extend <span class="blue">→</span> retry</div></div>
-
-<!--
-The open-world framing and capability taxonomy are adapted from the user's supplied talk-track. LangGraph is used as a concrete workflow example: its documentation distinguishes predetermined workflows from dynamic agents and models workflows with state, nodes, and edges.
-[Sources]
-- https://docs.langchain.com/oss/python/langgraph/workflows-agents — workflows vs. agents
-- https://docs.langchain.com/oss/python/langgraph/graph-api — state, nodes, and edges
--->
-
----
-
-<div class="visual-kicker green">02 / MOTIVATION · TWO DIFFERENT LIFETIMES</div>
-
-<div class="statement"><p>Preserve the<br><span class="green">research world.</span></p><p style="margin-top: 17px">Reset the researcher.</p></div>
-
-<div class="bottom-note lead">Pass evidence, failures, and code to a fresh Scientist.</div>
-
-<!--
-A fresh Scientist inherits externalized experience without continuing its predecessor's unfinished reasoning. Resets happen at trajectory boundaries; productive inquiry can continue within a trajectory.
-[Sources]
-- ../README.md — central thesis and design principles
--->
-
----
-
-<div class="visual-kicker blue">03 / SYSTEM · RESPONSIBILITIES</div>
-
-# Two scientific roles. One safe runtime.
-
-<div class="roles">
-  <div class="role"><strong class="green">Scientist</strong><span>Hypothesize · code · test · interpret</span><small>One trajectory</small></div>
-  <div class="role"><strong>META</strong><span>Audit · preserve · hand off</span><small>Across trajectories</small></div>
-  <div class="role"><strong>Runtime</strong><span>Isolation · cancellation · invariants</span><small>System lifetime</small></div>
-</div>
-
-<div class="bottom-note note">The Scientist chooses the science. META maintains the world. Runtime enforces mechanics, not scientific judgment.</div>
-
-<!--
-Scientific authority is separate from persistence authority. META does not choose the next hypothesis, model, feature, or experiment.
-[Sources]
-- ../README.md — Architecture
-- ../docs/ARCHITECTURE.md
--->
-
----
-
-<div class="visual-kicker">03 / SYSTEM · PERSISTENCE BOUNDARY</div>
-
-# The persistence boundary is explicit.
-
+<InsightArchitecture>
 <div class="architecture-diagram" aria-label="Research Agent system architecture">
   <div class="architecture-main">
     <div class="arch-column arch-environment">
@@ -257,7 +147,7 @@ Scientific authority is separate from persistence authority. META does not choos
   <div class="architecture-handoff"><span></span><strong>Selective persistence / trajectory handoff</strong><span></span></div>
   <div class="architecture-handoff-sub">audit → scope → preserve</div>
   <div class="runtime-band">
-    <strong class="runtime-title">Runtime — deterministic mechanics</strong>
+    <strong class="runtime-title">Coding-agent harness + runtime</strong>
     <div class="runtime-items">
       <div><span class="runtime-icon orange i-carbon:workspace"></span><span>Workspace<br>isolation</span></div>
       <div><span class="runtime-icon orange i-carbon:play"></span><span>Runner +<br>evaluator</span></div>
@@ -267,10 +157,17 @@ Scientific authority is separate from persistence authority. META does not choos
     </div>
   </div>
 </div>
+</InsightArchitecture>
 <!--
 [Sources]
 - ../docs/system.png — project architecture figure
 - ../docs/project_story.md — How we built it
+- ../docs/ARCHITECTURE.md — scientific authority, persistence authority, and runtime mechanics
+
+The preceding cards motivate this design: adaptive tools inform the coding-agent harness,
+fresh reasoning informs Scientist resets, claim auditing informs META, and reusable context
+informs the persistent Research World. Runtime still owns deterministic mechanics.
+The transition is a design explanation, not experimental proof of causal attribution.
 -->
 
 ---
@@ -279,7 +176,9 @@ clicks: 4
 transition: fade
 ---
 
-<div class="visual-kicker orange">03 / SYSTEM · THE HANDOFF LOOP</div>
+<div class="visual-kicker orange">02 / SYSTEM · THE HANDOFF LOOP</div>
+
+<KeynoteMotion />
 
 # Each cycle leaves a world to build on.
 
@@ -333,7 +232,9 @@ The serial loop is the core protocol. State crystallization is optional; a hando
 
 ---
 
-<div class="visual-kicker green">03 / SYSTEM · RESEARCH MEMORY</div>
+<div class="visual-kicker green">02 / SYSTEM · RESEARCH MEMORY</div>
+
+<KeynoteMotion />
 
 # Keep facts distinct from intuition.
 
@@ -360,7 +261,9 @@ clicks: 1
 transition: slide-left | slide-right
 ---
 
-<div class="visual-kicker blue">03 / SYSTEM · PARALLEL EXPLORATION</div>
+<div class="visual-kicker blue">02 / SYSTEM · PARALLEL EXPLORATION</div>
+
+<KeynoteMotion />
 
 # One starting point. Independent answers.
 
@@ -423,7 +326,9 @@ Parallel breadth is a framework capability, not the claimed cause of the final b
 
 ---
 
-<div class="visual-kicker orange entry-page-kicker">04 / EXPERIENCE · DEFINE THE TASK</div>
+<div class="visual-kicker orange entry-page-kicker">03 / EXPERIENCE · DEFINE THE TASK</div>
+
+<KeynoteMotion />
 
 # Start with the task and working constraints.
 
@@ -465,7 +370,9 @@ This entry-point framing is grounded in the repository's general-purpose coding-
 
 ---
 
-<div class="visual-kicker orange">04 / EXPERIENCE · THE RESEARCH TRAJECTORY</div>
+<div class="visual-kicker orange">03 / EXPERIENCE · THE RESEARCH TRAJECTORY</div>
+
+<KeynoteMotion />
 
 # Evidence changed the next experiment.
 
@@ -489,7 +396,9 @@ This is the canonical submission trajectory, distinct from the later RA-only Cyc
 
 ---
 
-<div class="visual-kicker orange">04 / EXPERIENCE · RECOVERY IN THE RUN</div>
+<div class="visual-kicker orange">03 / EXPERIENCE · RECOVERY IN THE RUN</div>
+
+<KeynoteMotion />
 
 # An evaluation failure became a recoverable step.
 
@@ -516,7 +425,9 @@ clicks: 1
 transition: fade
 ---
 
-<div class="visual-kicker purple">04 / EXPERIENCE · INSPECT THE RESULT</div>
+<div class="visual-kicker purple">03 / EXPERIENCE · INSPECT THE RESULT</div>
+
+<KeynoteMotion />
 
 # A retained state keeps the evidence inspectable.
 
@@ -550,7 +461,9 @@ transition: fade
 
 ---
 
-<div class="visual-kicker orange">05 / EVALUATION · PUBLIC-VALIDATION RESULT</div>
+<div class="visual-kicker orange">04 / EVALUATION · PUBLIC-VALIDATION RESULT</div>
+
+<KeynoteMotion />
 
 # Autonomous research. Measured gains.
 
@@ -570,7 +483,9 @@ These are validation scores, not hidden-test results or a competition placement.
 
 ---
 
-<div class="visual-kicker blue">05 / EVALUATION · AUTONOMY AND AUDITABILITY</div>
+<div class="visual-kicker blue">04 / EVALUATION · AUTONOMY AND AUDITABILITY</div>
+
+<KeynoteMotion />
 
 # An audit trail from experiment to output.
 
@@ -591,7 +506,9 @@ Zero manual scientific interventions applies after launch in the retained run, n
 
 ---
 
-<div class="visual-kicker orange resources-page-kicker">05 / EVALUATION · RESOURCE ACCOUNTING</div>
+<div class="visual-kicker orange resources-page-kicker">04 / EVALUATION · RESOURCE ACCOUNTING</div>
+
+<KeynoteMotion />
 
 # Resource use is part of the evidence.
 
@@ -630,7 +547,9 @@ This page frames resource usage as supporting evidence, not as a claim that cost
 
 ---
 
-<div class="visual-kicker orange">05 / EVALUATION · DIRECT-AGENT COMPARISON</div>
+<div class="visual-kicker orange">04 / EVALUATION · DIRECT-AGENT COMPARISON</div>
+
+<KeynoteMotion />
 
 # Compare scores alongside their evidence.
 
@@ -733,7 +652,9 @@ This page frames resource usage as supporting evidence, not as a claim that cost
 
 <!-- class: insight-slide -->
 
-<div class="visual-kicker purple">06 / INSIGHTS · WHAT THE RUN TAUGHT US</div>
+<div class="visual-kicker purple">05 / INSIGHTS · WHAT THE RUN TAUGHT US</div>
+
+<KeynoteMotion />
 
 # The run taught us more than the final score.
 
@@ -772,7 +693,9 @@ This section synthesizes the model-diversity, scientific-validity, recovery, par
 
 ---
 
-<div class="visual-kicker purple">06 / INSIGHTS · LIMITS AND NEXT EXPERIMENTS</div>
+<div class="visual-kicker purple">05 / INSIGHTS · LIMITS AND NEXT EXPERIMENTS</div>
+
+<KeynoteMotion />
 
 # Reproducible evidence. Open questions.
 
@@ -794,7 +717,9 @@ Next questions are proposed directions based on documented limitations, not comp
 
 <!-- class: agentic-swe-fieldnote-slide -->
 
-<div class="visual-kicker orange">06 / INSIGHTS · ENGINEERING PRACTICE</div>
+<div class="visual-kicker orange">05 / INSIGHTS · ENGINEERING PRACTICE</div>
+
+<KeynoteMotion />
 
 <div class="fieldnote-title-row"><h1>A clean repo. A continuous agent.</h1><span class="fieldnote-stamp mono">FIELD NOTE / 01</span></div>
 
@@ -831,7 +756,9 @@ This engineering field note distills the user's Agentic SWE workflow suggestion 
 
 ---
 
-<div class="visual-kicker blue">06 / INSIGHTS · KEEP EXPERIENCE, REOPEN SEARCH</div>
+<div class="visual-kicker blue">05 / INSIGHTS · KEEP EXPERIENCE, REOPEN SEARCH</div>
+
+<KeynoteMotion />
 
 <div class="closing">Keep the experience.<br><span class="green">Reopen the search.</span></div>
 
@@ -845,6 +772,56 @@ This engineering field note distills the user's Agentic SWE workflow suggestion 
 Prerequisites are in the repository Quick start: Git, uv, the Python environment, and an installed, authenticated agent CLI. Replace target with a real research project path. The command is display text and does not execute.
 [Sources]
 - ../README.md — Quick start
+-->
+
+---
+
+<!-- class: open-world-slide -->
+
+<div class="visual-kicker blue">APPENDIX / OPEN-WORLD RESEARCH</div>
+
+<div class="open-world-claim"><span class="claim-line">Research is an <span class="open-highlight orange-open">open-world</span> task.</span><span class="claim-line claim-line-shift">We need an <span class="open-highlight blue-open">open-world</span> coding agent.</span></div>
+
+<div class="capability-rails">
+  <div class="capability-rail blue-rail">
+    <div class="rail-heading"><span class="rail-number blue">01</span><span class="capability-title blue">OPEN ACTION SPACE</span></div>
+    <div class="icon-row">
+      <div class="icon-item"><span class="capability-icon blue i-carbon:terminal"></span><span>Shell</span></div>
+      <div class="icon-item"><span class="capability-icon blue i-carbon:folder"></span><span>Files</span></div>
+      <div class="icon-item"><span class="capability-icon blue i-carbon:earth"></span><span>Browser</span></div>
+      <div class="icon-item"><span class="capability-icon blue i-carbon:branch"></span><span>Git</span></div>
+    </div>
+    <div class="capability-foot">Use what exists</div>
+  </div>
+  <div class="capability-rail orange-rail">
+    <div class="rail-heading"><span class="rail-number orange">02</span><span class="capability-title orange">SELF-RECOVERY</span></div>
+    <div class="icon-row">
+      <div class="icon-item"><span class="capability-icon orange i-carbon:error-outline"></span><span>Read errors</span></div>
+      <div class="icon-item"><span class="capability-icon orange i-carbon:book"></span><span>Inspect docs</span></div>
+      <div class="icon-item"><span class="capability-icon orange i-carbon:code"></span><span>Inspect source</span></div>
+      <div class="icon-item"><span class="capability-icon orange i-carbon:package"></span><span>Install packages</span></div>
+    </div>
+    <div class="capability-foot">Fix what breaks</div>
+  </div>
+  <div class="capability-rail rose-rail">
+    <div class="rail-heading"><span class="rail-number rose">03</span><span class="capability-title rose">RUNTIME EXTENSION</span></div>
+    <div class="icon-row">
+      <div class="icon-item"><span class="capability-icon rose i-carbon:api"></span><span>MCP</span></div>
+      <div class="icon-item"><span class="capability-icon rose i-carbon:tools"></span><span>Skills</span></div>
+      <div class="icon-item"><span class="capability-icon rose i-carbon:terminal"></span><span>CLI</span></div>
+      <div class="icon-item"><span class="capability-icon rose i-carbon:package"></span><span>Packages</span></div>
+    </div>
+    <div class="capability-foot">Add what's missing</div>
+  </div>
+</div>
+
+<div class="open-world-line"><div class="open-world-line-label mono">WORKFLOW EXAMPLE · LANGGRAPH</div><div class="open-world-line-strong"><span class="blue">LangGraph</span> makes a known workflow explicit as nodes + edges.</div><div class="open-world-line-detail">Missing capability? Leave the graph <span class="blue">→</span> inspect <span class="blue">→</span> extend <span class="blue">→</span> retry</div></div>
+
+<!--
+The open-world framing and capability taxonomy are adapted from the user's supplied talk-track. LangGraph is used as a concrete workflow example: its documentation distinguishes predetermined workflows from dynamic agents and models workflows with state, nodes, and edges.
+[Sources]
+- https://docs.langchain.com/oss/python/langgraph/workflows-agents — workflows vs. agents
+- https://docs.langchain.com/oss/python/langgraph/graph-api — state, nodes, and edges
 -->
 
 ---
@@ -949,7 +926,13 @@ Team names and responsibilities are drawn from the repository's documented team 
           <div class="harness-path"><div class="harness-node"><span class="harness-icon blue i-carbon:folder"></span><span>files</span></div><span class="harness-arrow">↓</span><div class="harness-node"><span class="harness-icon blue i-carbon:document"></span><span>docs</span></div></div>
           <div class="harness-path"><div class="harness-node"><span class="harness-icon blue i-carbon:earth"></span><span>browser</span></div><span class="harness-arrow">↓</span><div class="harness-node"><span class="harness-icon blue i-carbon:package"></span><span>packages</span></div></div>
         </div>
-        <div class="agent-band"><div class="harness-node"><span class="harness-icon blue i-carbon:tools"></span><span>skills</span></div><div class="agent-core">agent</div><div class="harness-node"><span class="harness-icon blue i-carbon:api"></span><span>MCP</span></div></div>
+        <div class="agent-band">
+          <div class="agent-branch agent-branch-skills"><span class="harness-icon blue i-carbon:tools"></span><span class="agent-branch-copy"><strong>skills</strong></span></div>
+          <span class="agent-connector" aria-hidden="true">→</span>
+          <div class="agent-core"><span class="agent-core-mark" aria-hidden="true"></span><span class="agent-core-copy"><strong>agent</strong></span></div>
+          <span class="agent-connector" aria-hidden="true">←</span>
+          <div class="agent-branch agent-branch-mcp"><span class="harness-icon blue i-carbon:api"></span><span class="agent-branch-copy"><strong>MCP</strong></span></div>
+        </div>
         <div class="harness-arrow">↓</div>
         <div class="cli-api">CLI / API</div>
       </div>

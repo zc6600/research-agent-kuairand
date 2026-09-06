@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue"
 
+const emit = defineEmits<{ insight: [earned: boolean] }>()
+
 const isFlipped = ref(false)
 const isCondensed = ref(false)
 const isClosing = ref(false)
@@ -16,6 +18,7 @@ const condenseCard = () => {
     isFlipped.value = false
     isClosing.value = false
     isCondensed.value = true
+    emit('insight', true)
   }, 360)
 }
 
@@ -24,6 +27,7 @@ const resetInitial = (e?: MouseEvent) => {
   isClosing.value = false
   isFlipped.value = false
   isCondensed.value = false
+  emit('insight', false)
 }
 </script>
 
@@ -37,7 +41,7 @@ const resetInitial = (e?: MouseEvent) => {
     <template v-if="!isCondensed">
       <div class="failure-mode-head">
         <span class="failure-mode-number mono">01</span>
-        <span class="failure-mode-label">CLOSED-WORLD WORKFLOW</span>
+        <span class="failure-mode-label">WORKFLOW</span>
         <span class="flip-icon-chip" title="Click to flip for solution"><i class="i-carbon:rotate-360"></i></span>
       </div>
       <div class="failure-mode-visual failure-graph" aria-label="A fixed workflow hits an error and stops">
@@ -45,15 +49,15 @@ const resetInitial = (e?: MouseEvent) => {
         <div class="failure-graph-error"><span class="i-carbon:error-outline"></span><b>ERROR</b></div>
         <div class="failure-graph-dead"><span>↓</span><strong>dead end</strong></div>
       </div>
-      <p class="failure-mode-explanation">Predefined tools and recovery paths cannot handle the unexpected.</p>
-      <div class="failure-mode-takeaway"><strong>Unexpected problems require developer intervention.</strong></div>
+      <p class="failure-mode-explanation">Fixed recovery paths</p>
+      <div class="failure-mode-takeaway"><strong>Unexpected errors need human help.</strong></div>
     </template>
 
     <!-- Condensed solution card -->
     <template v-else>
       <div class="failure-mode-head">
         <span class="failure-mode-number mono">01</span>
-        <span class="failure-mode-label">OPEN-WORLD RECOVERY</span>
+        <span class="failure-mode-label">WORKFLOW</span>
         <button class="orange-check-badge mono" title="Click to reset" @click.stop="resetInitial">
           <span class="badge-check">✓</span>
           <span class="badge-reset"><i class="i-carbon:undo"></i></span>
@@ -68,10 +72,14 @@ const resetInitial = (e?: MouseEvent) => {
           <span class="condensed-pill active"><i class="i-carbon:checkmark-outline"></i> Runtime Tools</span>
         </div>
       </div>
-      <p class="failure-mode-explanation">Coding-agent harness acquires skills and modifies environment dynamically.</p>
+      <p class="failure-mode-explanation">Acquire missing tools at runtime.</p>
       <div class="failure-mode-takeaway condensed-takeaway">
         <span class="takeaway-check">✓</span>
-        <strong>Unexpected errors become recoverable steps at runtime.</strong>
+        <strong>Resume after unexpected errors.</strong>
+      </div>
+      <div class="failure-mode-takeaway condensed-takeaway">
+        <span class="takeaway-check">✓</span>
+        <strong>Extend with Skills &amp; MCP.</strong>
       </div>
     </template>
   </div>
@@ -88,7 +96,7 @@ const resetInitial = (e?: MouseEvent) => {
         <div class="visual-kicker orange card-back-kicker">
           <span class="card-back-tag mono"><i class="i-carbon:rotate-360"></i> CARD 01 · REVERSE</span>
           <span class="kicker-sep">/</span>
-          <span>CAPABILITY RECOVERY · SOLUTION</span>
+          <span>WORKFLOW</span>
         </div>
         <div class="header-actions">
           <button class="reset-top-btn mono" title="Reset to initial problem" @click="resetInitial">
@@ -103,15 +111,11 @@ const resetInitial = (e?: MouseEvent) => {
         </div>
       </div>
 
-      <div class="open-world-claim">
-        <span class="claim-line">Research is an <span class="open-highlight orange-open">open-world</span> task.</span>
-        <span class="claim-line claim-line-shift">We need an <span class="open-highlight blue-open">open-world</span> coding agent.</span>
-      </div>
+      <h2 class="workflow-reverse-title">Recovering beyond the <strong>workflow</strong></h2>
 
       <div class="compare-grid">
         <div class="compare-side failure-side">
-          <div class="compare-kicker rose">LangGraph-style orchestration</div>
-          <div class="compare-subtitle">predefined graph</div>
+          <div class="compare-kicker rose">Predefined workflow</div>
           <div class="static-graph">
             <div class="graph-top"><span class="graph-icon rose i-carbon:flow-data"></span><span>fixed tool set</span></div>
             <div class="graph-arrow">↓</div>
@@ -128,12 +132,11 @@ const resetInitial = (e?: MouseEvent) => {
             <div class="failure-arrow">↓</div>
             <div class="dead-end"><span class="failure-icon rose i-carbon:error-outline"></span>DEAD END</div>
           </div>
-          <div class="compare-note">Capabilities are bounded by what developers anticipated.</div>
+          <div class="compare-note">Missing tool. Run stops.</div>
         </div>
 
         <div class="compare-side recovery-side">
           <div class="compare-kicker blue">Coding-agent harness</div>
-          <div class="compare-subtitle">open action space</div>
           <div class="harness-diagram">
             <div class="harness-computer"><span class="harness-icon blue i-carbon:laptop"></span><span>Computer</span></div>
             <div class="harness-arrow">↓</div>
@@ -142,11 +145,26 @@ const resetInitial = (e?: MouseEvent) => {
               <div class="harness-path"><div class="harness-node"><span class="harness-icon blue i-carbon:folder"></span><span>files</span></div><span class="harness-arrow">↓</span><div class="harness-node"><span class="harness-icon blue i-carbon:document"></span><span>docs</span></div></div>
               <div class="harness-path"><div class="harness-node"><span class="harness-icon blue i-carbon:earth"></span><span>browser</span></div><span class="harness-arrow">↓</span><div class="harness-node"><span class="harness-icon blue i-carbon:package"></span><span>packages</span></div></div>
             </div>
-            <div class="agent-band"><div class="harness-node"><span class="harness-icon blue i-carbon:tools"></span><span>skills</span></div><div class="agent-core">agent</div><div class="harness-node"><span class="harness-icon blue i-carbon:api"></span><span>MCP</span></div></div>
+            <div class="agent-band">
+              <div class="agent-branch agent-branch-skills">
+                <span class="harness-icon blue i-carbon:tools"></span>
+                <span class="agent-branch-copy"><strong>skills</strong></span>
+              </div>
+              <span class="agent-connector" aria-hidden="true">→</span>
+              <div class="agent-core">
+                <span class="agent-core-mark" aria-hidden="true"></span>
+                <span class="agent-core-copy"><strong>agent</strong></span>
+              </div>
+              <span class="agent-connector" aria-hidden="true">←</span>
+              <div class="agent-branch agent-branch-mcp">
+                <span class="harness-icon blue i-carbon:api"></span>
+                <span class="agent-branch-copy"><strong>MCP</strong></span>
+              </div>
+            </div>
             <div class="harness-arrow">↓</div>
             <div class="cli-api">CLI / API</div>
           </div>
-          <div class="recovery-flow compact"><div class="recovery-sequence"><span>fail</span><b>→</b><span>inspect</span><b>→</b><span>learn</span><b>→</b><span>modify environment</span><b>→</b><span>retry</span></div><div class="recovery-caption">The agent can acquire the missing capability at runtime.</div></div>
+          <div class="recovery-flow compact"><div class="recovery-sequence"><span>inspect</span><b>→</b><span>acquire tools</span><b>→</b><span>retry</span></div><div class="recovery-caption">Acquire tools. Resume research.</div></div>
         </div>
       </div>
     </div>
@@ -154,6 +172,73 @@ const resetInitial = (e?: MouseEvent) => {
 </template>
 
 <style scoped>
+.workflow-reverse-title {
+  color: var(--ink);
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  margin: 24px 0 18px;
+}
+
+.workflow-reverse-title strong { color: var(--orange); font-weight: 500; }
+
+.card-back-inner .compare-grid { flex: 1; min-height: 0; }
+.card-back-inner .compare-side { display: flex; flex-direction: column; }
+.card-back-inner .compare-kicker {
+  font-family: inherit;
+  font-size: 21px;
+  font-weight: 500;
+  letter-spacing: -.3px;
+}
+.card-back-inner .compare-note,
+.card-back-inner .recovery-flow { margin-top: auto; }
+.card-back-inner .compare-note,
+.card-back-inner .recovery-caption { font-size: 16px; }
+
+.card-back-inner .recovery-side .compare-kicker {
+  font-size: 19px;
+  line-height: 1.2;
+}
+
+.card-back-inner .recovery-side .harness-diagram {
+  margin-top: 20px;
+  padding-bottom: 18px;
+}
+
+.card-back-inner .recovery-side .harness-paths {
+  gap: 16px;
+  margin-top: 5px;
+}
+
+.card-back-inner .recovery-side .harness-path {
+  gap: 8px;
+}
+
+.card-back-inner .recovery-side .agent-band {
+  gap: 8px;
+  grid-template-columns: minmax(0, 1fr) 18px minmax(96px, 1.1fr) 18px minmax(0, 1fr);
+  margin-top: 22px;
+}
+
+.card-back-inner .recovery-side .agent-branch {
+  gap: 8px;
+  padding: 2px 0;
+  white-space: nowrap;
+}
+
+.card-back-inner .recovery-side .agent-core {
+  box-sizing: border-box;
+  min-height: 38px;
+  min-width: 0;
+  padding: 6px 8px;
+  width: 100%;
+}
+
+.card-back-inner .recovery-side .agent-band + .harness-arrow {
+  margin: 9px 0 5px;
+}
+
 .failure-flip-card {
   cursor: pointer;
   position: relative;

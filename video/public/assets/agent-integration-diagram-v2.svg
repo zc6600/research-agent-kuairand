@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1278" height="472" viewBox="0 0 1278 472" role="img" aria-labelledby="title desc">
+  <title id="title">Agent integration diagram</title>
+  <desc id="desc">Shell, files and browser connect through git, docs and packages to skills, an agent and MCP, then expose a CLI and API.</desc>
+
+  <defs>
+    <filter id="card-shadow" x="-20%" y="-30%" width="140%" height="170%">
+      <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#0f172a" flood-opacity=".08" />
+    </filter>
+    <marker id="arrow-blue" markerWidth="9" markerHeight="9" refX="7.2" refY="4.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M1 1 L8 4.5 L1 8" fill="none" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+    </marker>
+    <marker id="arrow-muted" markerWidth="9" markerHeight="9" refX="7.2" refY="4.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M1 1 L8 4.5 L1 8" fill="none" stroke="#b8bdc6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+    </marker>
+    <style>
+      .label { fill: #262a33; font-family: Arial, Helvetica, sans-serif; font-size: 38px; font-weight: 500; letter-spacing: -.6px; }
+      .node-label { fill: #262a33; font-family: Arial, Helvetica, sans-serif; font-size: 25px; font-weight: 600; letter-spacing: -.2px; }
+      .node-label.agent { fill: #1476b5; }
+      .output-label { fill: #727780; font-family: Menlo, Consolas, monospace; font-size: 31px; font-weight: 500; letter-spacing: -.7px; }
+      .icon { fill: none; stroke: #38bdf8; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+      .icon-muted { fill: none; stroke: #c0c4ca; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+      .node-card { fill: #ffffff; stroke: #dce4eb; stroke-width: 1.3; }
+      .node-card.agent { fill: #f2fbff; stroke: #38bdf8; stroke-width: 1.7; }
+      .node-icon-shell { fill: #f6fcff; stroke: #bfe9fb; stroke-width: 1; }
+    </style>
+  </defs>
+
+  <rect width="1278" height="472" fill="#ffffff" />
+
+  <!-- Existing input surfaces. -->
+  <g transform="translate(165 14)">
+    <rect class="icon" x="2" y="1" width="39" height="39" rx="2" />
+    <path class="icon" d="M10 25 L16 19 L22 25 M16 19 L16 31" />
+    <text class="label" x="64" y="32">shell</text>
+  </g>
+  <g transform="translate(559 14)">
+    <path class="icon" d="M2 10 V40 H48 V10 H23 L15 2 H2 Z" />
+    <text class="label" x="68" y="32">files</text>
+  </g>
+  <g transform="translate(915 10)">
+    <circle class="icon" cx="25" cy="25" r="22" />
+    <path class="icon" d="M5 25 H45 M25 3 C18 11 18 39 25 47 M25 3 C32 11 32 39 25 47 M9 12 C18 17 32 17 41 12 M9 38 C18 33 32 33 41 38" />
+    <text class="label" x="68" y="36">browser</text>
+  </g>
+
+  <!-- Vertical handoff connectors. -->
+  <g class="icon-muted" marker-end="url(#arrow-muted)">
+    <path d="M240 92 V126" />
+    <path d="M637 92 V126" />
+    <path d="M1022 92 V126" />
+  </g>
+
+  <!-- Intermediate surfaces. -->
+  <g transform="translate(185 162)">
+    <path class="icon" d="M9 28 C9 20 16 14 24 14 C32 14 39 20 39 28 M24 14 V6 M24 6 L19 11 M24 6 L29 11" />
+    <circle class="icon" cx="9" cy="28" r="5" />
+    <circle class="icon" cx="39" cy="28" r="5" />
+    <text class="label" x="66" y="35">git</text>
+  </g>
+  <g transform="translate(563 162)">
+    <path class="icon" d="M3 2 H23 L34 13 V45 H3 Z M23 2 V13 H34 M10 24 H27 M10 32 H27" />
+    <text class="label" x="67" y="35">docs</text>
+  </g>
+  <g transform="translate(909 162)">
+    <path class="icon" d="M3 25 H47 M25 4 V31 M25 4 L17 12 M25 4 L33 12 M8 25 V43 H42 V25" />
+    <text class="label" x="64" y="35">packages</text>
+  </g>
+
+  <!-- Tooling strip: matching cards make skills and MCP feel like peers of the agent. -->
+  <g filter="url(#card-shadow)">
+    <rect class="node-card" x="58" y="236" width="282" height="92" rx="18" />
+    <rect class="node-card agent" x="498" y="228" width="282" height="108" rx="20" />
+    <rect class="node-card" x="938" y="236" width="282" height="92" rx="18" />
+  </g>
+
+  <!-- Skills icon and label. -->
+  <g transform="translate(82 255)">
+    <circle class="node-icon-shell" cx="27" cy="27" r="27" />
+    <path class="icon" d="M18 37 L33 22 M29 20 L34 15 L40 21 L35 26 M17 38 L13 42 M13 42 L9 38 M13 42 L17 46" />
+    <text class="node-label" x="69" y="28">skills</text>
+    <text x="69" y="53" fill="#8b929b" font-family="Menlo, Consolas, monospace" font-size="12" letter-spacing=".4px">instructions</text>
+  </g>
+
+  <!-- Agent hub. -->
+  <g transform="translate(522 248)">
+    <circle cx="29" cy="29" r="29" fill="#dff5ff" stroke="#9cdef7" stroke-width="1" />
+    <path class="icon" d="M29 15 V43 M15 29 H43" />
+    <circle cx="29" cy="29" r="7" fill="#38bdf8" />
+    <text class="node-label agent" x="78" y="31">agent</text>
+    <text x="78" y="57" fill="#6b8594" font-family="Menlo, Consolas, monospace" font-size="12" letter-spacing=".4px">reasoning hub</text>
+  </g>
+
+  <!-- MCP icon and label. -->
+  <g transform="translate(962 255)">
+    <circle class="node-icon-shell" cx="27" cy="27" r="27" />
+    <path class="icon" d="M27 27 L15 17 M27 27 L39 17 M27 27 L27 41" />
+    <circle class="icon" cx="27" cy="27" r="6" />
+    <circle class="icon" cx="14" cy="16" r="5" />
+    <circle class="icon" cx="40" cy="16" r="5" />
+    <circle class="icon" cx="27" cy="42" r="5" />
+    <text class="node-label" x="69" y="28">MCP</text>
+    <text x="69" y="53" fill="#8b929b" font-family="Menlo, Consolas, monospace" font-size="12" letter-spacing=".4px">tool servers</text>
+  </g>
+
+  <!-- Clear bidirectional relationship with the central hub. -->
+  <g fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round">
+    <path d="M340 282 H472" marker-end="url(#arrow-blue)" />
+    <path d="M938 282 H806" marker-end="url(#arrow-blue)" />
+  </g>
+  <g fill="#ffffff" stroke="#bfe9fb" stroke-width="1">
+    <circle cx="378" cy="282" r="4" />
+    <circle cx="900" cy="282" r="4" />
+  </g>
+
+  <!-- Agent output surface. -->
+  <path d="M639 336 V383" fill="none" stroke="#b8bdc6" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-muted)" />
+  <text class="output-label" x="639" y="420" text-anchor="middle">CLI / API</text>
+
+  <path d="M58 468 H1220" fill="none" stroke="#e4e7ea" stroke-width="2" />
+</svg>

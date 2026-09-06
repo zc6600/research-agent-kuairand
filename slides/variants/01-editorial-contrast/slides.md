@@ -775,7 +775,13 @@ This appendix synthesizes the model-diversity, scientific-validity, recovery, pa
         <div class="harness-path"><div class="harness-node"><span class="harness-icon blue i-carbon:folder"></span><span>files</span></div><span class="harness-arrow">↓</span><div class="harness-node"><span class="harness-icon blue i-carbon:document"></span><span>docs</span></div></div>
         <div class="harness-path"><div class="harness-node"><span class="harness-icon blue i-carbon:earth"></span><span>browser</span></div><span class="harness-arrow">↓</span><div class="harness-node"><span class="harness-icon blue i-carbon:package"></span><span>packages</span></div></div>
       </div>
-      <div class="agent-band"><div class="harness-node"><span class="harness-icon blue i-carbon:tools"></span><span>skills</span></div><div class="agent-core">agent</div><div class="harness-node"><span class="harness-icon blue i-carbon:api"></span><span>MCP</span></div></div>
+      <div class="agent-band">
+        <div class="agent-branch agent-branch-skills"><span class="harness-icon blue i-carbon:tools"></span><span class="agent-branch-copy"><strong>skills</strong></span></div>
+        <span class="agent-connector" aria-hidden="true">→</span>
+        <div class="agent-core"><span class="agent-core-mark" aria-hidden="true"></span><span class="agent-core-copy"><strong>agent</strong></span></div>
+        <span class="agent-connector" aria-hidden="true">←</span>
+        <div class="agent-branch agent-branch-mcp"><span class="harness-icon blue i-carbon:api"></span><span class="agent-branch-copy"><strong>MCP</strong></span></div>
+      </div>
       <div class="harness-arrow">↓</div>
       <div class="cli-api">CLI / API</div>
     </div>

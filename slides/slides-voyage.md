@@ -94,24 +94,7 @@ Open with the research job. The benchmark makes that job concrete; broader task 
     <div class="failure-mode-takeaway"><strong>More iterations <span>≠</span> more exploration.</strong></div>
   </div>
 
-  <div class="failure-mode failure-mode-tree">
-    <div class="failure-mode-head"><span class="failure-mode-number mono">03</span><span class="failure-mode-label">TREE SEARCH</span></div>
-    <div class="failure-mode-visual failure-tree-token-cost" aria-label="Understanding a file costs far more tokens than changing it, so the agent rereads context">
-      <div class="failure-token-row failure-token-understand">
-        <span class="failure-token-label mono">UNDERSTAND</span>
-        <span class="failure-token-bar"><i></i></span>
-        <strong>≫</strong>
-      </div>
-      <div class="failure-token-row failure-token-edit">
-        <span class="failure-token-label mono">EDIT</span>
-        <span class="failure-token-bar"><i></i></span>
-        <span></span>
-      </div>
-      <div class="failure-reread-loop mono"><span>read context</span><b>→</b><span>edit</span><b>→</b><span>re-read</span></div>
-    </div>
-    <p class="failure-mode-explanation">Reconstructing file context costs far more tokens than the edit itself.</p>
-    <div class="failure-mode-takeaway"><strong>Context cost forces repeated reading.</strong></div>
-  </div>
+  <TreeSearchFlip />
 </div>
 
 <div class="failure-modes-bridge">
@@ -127,7 +110,7 @@ This is a synthesis of the design pressures observed in the project, not a unive
 - ../docs/project_story.md — Inspiration and Challenges
 - ../docs/FINAL_REPORT.md — sections 1, 3.4–3.5, and 4.2
 
-This slide frames a real-environment cost model: understanding a file requires reconstructing surrounding context, while the edit itself can be small. Repeated tool calls or handoffs force the agent to pay that reading cost again. The comparison is conceptual, not a measured token ratio.
+The Tree Search card opens an embedded reverse page using the project-shaped one-edit AGY replication recorded in `../docs/experiments/one-edit-telemetry.md`: a read-only arm used 340,087 inclusive tokens and a write-only arm used 42,377, an 8.03:1 ratio. The reverse page's TOKEN ABLATION projects eight children from those measured arms: rereading for every child costs 3,059,712 inclusive tokens, while reading once and repeating only the edits costs 679,103, a 4.51:1 ratio. The read arm made ten `view_file` calls over selected KuaiRand project context; the write arm made one line mutation with the exact target supplied in its prompt. The two arms were separate sessions with the same model and effort. Inclusive totals add AGY's separately reported cache-read input. The eight-child comparison is arithmetic based on the measured arms, not another delegated run or a main-agent proxy.
 -->
 
 ---
@@ -953,7 +936,13 @@ Team names and responsibilities are drawn from the repository's documented team 
         <div class="harness-path"><div class="harness-node"><span class="harness-icon blue i-carbon:folder"></span><span>files</span></div><span class="harness-arrow">↓</span><div class="harness-node"><span class="harness-icon blue i-carbon:document"></span><span>docs</span></div></div>
         <div class="harness-path"><div class="harness-node"><span class="harness-icon blue i-carbon:earth"></span><span>browser</span></div><span class="harness-arrow">↓</span><div class="harness-node"><span class="harness-icon blue i-carbon:package"></span><span>packages</span></div></div>
       </div>
-      <div class="agent-band"><div class="harness-node"><span class="harness-icon blue i-carbon:tools"></span><span>skills</span></div><div class="agent-core">agent</div><div class="harness-node"><span class="harness-icon blue i-carbon:api"></span><span>MCP</span></div></div>
+      <div class="agent-band">
+        <div class="agent-branch agent-branch-skills"><span class="harness-icon blue i-carbon:tools"></span><span class="agent-branch-copy"><strong>skills</strong></span></div>
+        <span class="agent-connector" aria-hidden="true">→</span>
+        <div class="agent-core"><span class="agent-core-mark" aria-hidden="true"></span><span class="agent-core-copy"><strong>agent</strong></span></div>
+        <span class="agent-connector" aria-hidden="true">←</span>
+        <div class="agent-branch agent-branch-mcp"><span class="harness-icon blue i-carbon:api"></span><span class="agent-branch-copy"><strong>MCP</strong></span></div>
+      </div>
       <div class="harness-arrow">↓</div>
       <div class="cli-api">CLI / API</div>
     </div>
