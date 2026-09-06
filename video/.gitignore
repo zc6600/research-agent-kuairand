@@ -1,0 +1,5 @@
+node_modules/
+build/
+out/films/
+out/**/*.png
+.DS_Store

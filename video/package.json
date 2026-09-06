@@ -1,0 +1,29 @@
+{
+  "name": "sciodyssey-product-film",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "remotion studio src/index.ts",
+    "build": "remotion bundle src/index.ts",
+    "render": "remotion render src/index.ts SciOdysseyFilm out/films/sciodyssey-film.mp4",
+    "render:ux": "remotion render src/index.ts SciOdysseyUXFilm out/films/sciodyssey-ux-film.mp4",
+    "render:ux-workflow": "remotion render src/index.ts SciOdysseyUXWorkflowFilm out/films/sciodyssey-ux-workflow-film.mp4",
+    "render:keynote": "remotion render src/index.ts SciOdysseyKeynoteFilm out/films/sciodyssey-keynote-film.mp4",
+    "render:product": "remotion render src/index.ts SciOdysseyProductFilm out/films/sciodyssey-product-film.mp4",
+    "render:product-v2": "remotion render src/index.ts SciOdysseyProductFilmV2 out/films/sciodyssey-product-film-v2.mp4",
+    "audio:keynote": "node scripts/create-keynote-audio.mjs",
+    "render:still": "remotion still src/index.ts SciOdysseyFilm out/previews/launch/preview.png --frame=0"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.521",
+    "@remotion/player": "4.0.521",
+    "remotion": "4.0.521",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.10",
+    "@types/react-dom": "19.1.7",
+    "typescript": "5.9.2"
+  }
+}

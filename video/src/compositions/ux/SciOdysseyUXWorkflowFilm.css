@@ -1,0 +1,152 @@
+/* UX workflow cut — terminal-first product story, layered onto the same light editorial system. */
+.ops-frame { position: relative; overflow: hidden; background: var(--paper); color: var(--body); }
+.ops-frame::after { content: ''; position: absolute; inset: 0; pointer-events: none; border: 1px solid rgba(17,18,23,.025); }
+.ops-mark { position: absolute; z-index: 30; top: 50px; left: 88px; display: flex; align-items: center; gap: 9px; font-family: 'SFMono-Regular', 'Menlo', monospace; font-size: 11px; letter-spacing: 2.1px; }
+.ops-mark-dot { width: 7px; height: 7px; border-radius: 50%; }
+.ops-fine-label { font-family: 'SFMono-Regular', 'Menlo', monospace; font-size: 11px; letter-spacing: 2.1px; line-height: 1.25; text-transform: uppercase; }
+.ops-hero-line { color: var(--ink); font-size: 76px; font-weight: 400; line-height: 1.01; letter-spacing: -4.5px; }
+.ops-muted { color: var(--muted); }
+.ops-blue { color: #1476b5; }
+.ops-rose { color: var(--rose); }
+.ops-green-dot, .ops-orange-dot, .ops-rose-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; }
+.ops-green-dot { background: var(--green); }
+.ops-orange-dot { background: var(--orange); }
+.ops-rose-dot { background: var(--rose); }
+
+/* The opener carries the same research-world motif as the existing UX cut. */
+.ops-opening-art, .ops-closing-art { position: absolute; inset: -35px; width: calc(100% + 70px); height: calc(100% + 70px); object-fit: cover; pointer-events: none; }
+.ops-opening-field, .ops-closing-field { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.ops-opening-field path, .ops-closing-field path { vector-effect: non-scaling-stroke; }
+.ops-opening-copy { position: absolute; z-index: 4; top: 310px; left: 155px; width: 760px; }
+.ops-opening-copy .ops-hero-line { margin-top: 28px; }
+.ops-opening-copy p { margin: 28px 0 0; color: var(--body); font-size: 22px; line-height: 1.45; }
+.ops-opening-world { position: absolute; z-index: 3; top: 260px; right: 185px; width: 350px; text-align: center; }
+.ops-opening-world .ops-orbit { margin: 0 auto; }
+.ops-opening-world .ops-fine-label { margin-top: 16px; }
+.ops-opening-rail { position: absolute; z-index: 4; right: 185px; bottom: 114px; display: flex; gap: 18px; color: var(--muted); font-family: 'SFMono-Regular', 'Menlo', monospace; font-size: 11px; letter-spacing: 1.4px; }
+.ops-opening-rail i { color: var(--line); font-style: normal; }
+
+/* A terminal and a context card make the skill feel installed in a real coding agent. */
+.ops-skill-copy { position: absolute; z-index: 4; top: 286px; left: 155px; width: 540px; }
+.ops-skill-copy .ops-hero-line { margin-top: 28px; }
+.ops-skill-copy p { margin: 28px 0 0; color: var(--body); font-size: 20px; line-height: 1.48; }
+.ops-terminal { position: absolute; z-index: 4; overflow: hidden; border: 1px solid #dce0e6; border-radius: 13px; background: rgba(255,255,255,.94); box-shadow: 0 24px 70px rgba(17,18,23,.07); font-family: 'SFMono-Regular', 'Menlo', monospace; }
+.ops-terminal-top { display: flex; align-items: center; gap: 10px; height: 48px; padding: 0 18px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 11px; letter-spacing: .4px; }
+.ops-terminal-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); box-shadow: 12px 0 0 #d6dae1, 24px 0 0 #d6dae1; margin-right: 22px; }
+.ops-terminal-menu { margin-left: auto; color: #bdc1c9; letter-spacing: 3px; }
+.ops-terminal-body { padding: 20px 20px 23px; }
+.ops-terminal-line { display: flex; min-height: 29px; align-items: baseline; white-space: pre; font-size: 14px; line-height: 1.55; }
+.ops-terminal-caret { width: 18px; color: var(--blue); }
+.ops-terminal-line.is-active .ops-terminal-text { font-weight: 600; }
+.ops-terminal-text { display: inline-block; }
+.ops-skill-terminal { left: 155px; top: 635px; width: 680px; }
+.ops-agent-context { position: absolute; z-index: 5; top: 190px; right: 155px; width: 680px; min-height: 465px; padding: 25px 28px 23px; border: 1px solid #cfbff4; border-radius: 15px; background: rgba(255,255,255,.95); box-shadow: 0 24px 70px rgba(17,18,23,.065); }
+.ops-agent-header { display: flex; align-items: center; gap: 12px; }
+.ops-agent-icon { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 10px; color: var(--purple); background: #f3effb; font-size: 19px; }
+.ops-agent-header strong { display: block; color: var(--ink); font-size: 19px; font-weight: 600; }
+.ops-agent-header small { display: block; margin-top: 4px; color: var(--muted); font-family: 'SFMono-Regular', 'Menlo', monospace; font-size: 9px; letter-spacing: 1.1px; }
+.ops-agent-live { margin-left: auto; padding: 7px 11px; border-radius: 999px; color: var(--green); background: #edf8f0; font-family: 'SFMono-Regular', 'Menlo', monospace; font-size: 10px; letter-spacing: 1px; }
+.ops-context-rule { height: 1px; margin: 23px 0 18px; background: var(--line); }
+.ops-context-file { display: grid; grid-template-columns: 25px 1fr auto; gap: 9px; align-items: baseline; }
+.ops-context-file-main { color: var(--purple); }
+.ops-file-icon { font-size: 18px; }
+.ops-context-file strong { color: var(--ink); font-family: 'SFMono-Regular', 'Menlo', monospace; font-size: 17px; font-weight: 600; }
+.ops-context-file small { color: var(--muted); font-family: 'SFMono-Regular', 'Menlo', monospace; font-size: 10px; letter-spacing: .8px; }
+.ops-context-tree { margin: 22px 0 24px 9px; padding-left: 17px; border-left: 1px solid #ded6f5; color: var(--body); font-family: 'SFMono-Regular', 'Menlo', monospace; font-size: 13px; line-height: 2.05; }
+.ops-context-tree span { margin-right: 11px; color: var(--purple); }
+.ops-context-note { padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+.ops-context-note .ops-green-dot { margin-right: 9px; }
+.ops-context-note i { margin: 0 8px; color: var(--line); font-style: normal; }
+.ops-skill-link { position: absolute; z-index: 5; left: 850px; top: 685px; display: flex; align-items: center; gap: 10px; color: var(--purple); font-family: 'SFMono-Regular', 'Menlo', monospace; font-size: 10px; letter-spacing: 1px; }
+.ops-skill-link span { width: 44px; height: 1px; background: #cfbff4; }
+
+/* Step / run / resume are one clean decision rail, not three slides. */
+.ops-choice-copy { position: absolute; z-index: 3; top: 295px; left: 155px; width: 510px; }
+.ops-choice-copy .ops-hero-line { margin-top: 28px; }
+.ops-choice-copy p { margin: 29px 0 0; color: var(--body); font-size: 20px; line-height: 1.5; }
+.ops-modes { position: absolute; z-index: 3; top: 225px; right: 130px; width: 930px; }
+.ops-mode-row { display: grid; grid-template-columns: 13px 1fr auto; gap: 15px; align-items: center; min-height: 105px; margin-bottom: 15px; padding: 18px 22px; border: 1px solid; border-radius: 11px; background: rgba(255,255,255,.9); }
+.ops-mode-row.is-active { box-shadow: 0 16px 35px rgba(17,18,23,.06); }
+.ops-mode-signal { width: 8px; height: 8px; border-radius: 50%; }
+.ops-mode-main code { display: block; font-family: 'SFMono-Regular', 'Menlo', monospace; font-size: 21px; font-weight: 500; letter-spacing: .2px; }
+.ops-mode-main small { display: block; margin-top: 7px; color: var(--muted); font-size: 14px; }
+.ops-mode-output { color: var(--muted); font-family: 'SFMono-Regular', 'Menlo', monospace; font-size: 10px; letter-spacing: .8px; }
+.ops-mode-command { margin-top: 25px; padding: 18px 21px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); color: var(--body); font-family: 'SFMono-Regular', 'Menlo', monospace; font-size: 14px; }
+.ops-prompt { margin-right: 10px; color: var(--muted); }
+.ops-choice-bottom { position: absolute; z-index: 3; left: 155px; bottom: 118px; color: var(--muted); font-family: 'SFMono-Regular', 'Menlo', monospace; font-size: 10px; letter-spacing: .7px; }
+.ops-choice-bottom .ops-green-dot { margin-right: 9px; }
+
+/* Parallel is a single camera move from one world into three isolated worktrees. */
+.ops-parallel-copy { position: absolute; z-index: 5; top: 285px; left: 155px; width: 500px; }
+.ops-parallel-copy .ops-hero-line { margin-top: 28px; }
+.ops-parallel-copy p { margin: 28px 0 0; color: var(--body); font-size: 20px; line-height: 1.5; }
+.ops-parallel-terminal { left: 155px; top: 644px; width: 620px; }
+.ops-parallel-map { position: absolute; z-index: 2; top: 170px; right: 90px; width: 1040px; height: 690px; }
+.ops-parallel-map svg { position: absolute; inset: 75px 0 0; width: 100%; height: 500px; }
+.ops-parallel-origin { position: absolute; z-index: 4; top: 282px; left: 0; width: 205px; text-align: center; }
+.ops-parallel-origin .ops-orbit { margin: 0 auto; }
+.ops-parallel-origin > span { display: block; margin-top: 13px; color: var(--body); font-family: 'SFMono-Regular', 'Menlo', monospace; font-size: 10px; letter-spacing: .7px; }
+.ops-branch-list { position: absolute; z-index: 5; top: 120px; right: 0; display: flex; flex-direction: column; gap: 28px; width: 360px; }
+.ops-branch-card { display: grid; grid-template-columns: 48px 1fr auto; gap: 13px; align-items: center; min-height: 82px; padding: 14px 15px; border: 1px solid; border-radius: 10px; background: rgba(255,255,255,.93); box-shadow: 0 14px 30px rgba(17,18,23,.035); }
+.ops-branch-badge { display: flex; align-items: center; justify-content: center; width: 42px; height: 28px; border: 1px solid; border-radius: 999px; font-family: 'SFMono-Regular', 'Menlo', monospace; font-size: 10px; }
+.ops-branch-card strong { display: block; color: var(--ink); font-size: 15px; font-weight: 600; }
+.ops-branch-card small { display: block; margin-top: 5px; color: var(--muted); font-size: 12px; }
+.ops-branch-status { font-family: 'SFMono-Regular', 'Menlo', monospace; font-size: 9px; letter-spacing: .8px; text-transform: uppercase; }
+.ops-reviewer { position: absolute; z-index: 6; right: 22px; bottom: 20px; display: grid; grid-template-columns: 32px 1fr auto; gap: 10px; align-items: center; width: 440px; padding: 14px 16px; border: 1px solid #d1c3f0; border-radius: 10px; background: rgba(255,255,255,.95); box-shadow: 0 18px 38px rgba(17,18,23,.05); }
+.ops-reviewer-icon { display: inline-flex; align-items: center; justify-content: center; width: 29px; height: 29px; border-radius: 8px; color: var(--purple); background: #f3effb; font-size: 19px; }
+.ops-reviewer strong { display: block; color: var(--ink); font-size: 14px; font-weight: 600; }
+.ops-reviewer small { display: block; margin-top: 4px; color: var(--muted); font-size: 11px; }
+.ops-reviewer b { color: var(--purple); font-family: 'SFMono-Regular', 'Menlo', monospace; font-size: 12px; font-weight: 500; }
+.ops-parallel-note { position: absolute; z-index: 5; left: 155px; bottom: 116px; color: var(--muted); font-family: 'SFMono-Regular', 'Menlo', monospace; font-size: 10px; letter-spacing: .6px; }
+.ops-parallel-note .ops-orange-dot { margin-right: 9px; }
+
+/* The real dashboard screenshots are treated as product footage and revealed in layers. */
+.ops-dashboard-copy { position: absolute; z-index: 5; top: 278px; left: 155px; width: 470px; }
+.ops-dashboard-copy .ops-hero-line { margin-top: 28px; }
+.ops-dashboard-copy p { margin: 28px 0 0; color: var(--body); font-size: 20px; line-height: 1.48; }
+.ops-dashboard-command { margin-top: 38px; padding: 15px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); color: var(--body); font-family: 'SFMono-Regular', 'Menlo', monospace; font-size: 12px; }
+.ops-dashboard-window { position: absolute; z-index: 3; overflow: hidden; border: 1px solid #dce0e6; border-radius: 14px; background: #fff; box-shadow: 0 26px 70px rgba(17,18,23,.09); }
+.ops-dashboard-bar { position: relative; z-index: 2; display: flex; align-items: center; gap: 11px; height: 42px; padding: 0 15px; border-bottom: 1px solid #e6e8ec; background: #fafbfc; color: var(--muted); font-family: 'SFMono-Regular', 'Menlo', monospace; font-size: 10px; letter-spacing: .4px; }
+.ops-dashboard-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 12px 0 0 #d6dae1, 24px 0 0 #d6dae1; margin-right: 22px; }
+.ops-dashboard-live { margin-left: auto; color: var(--green); letter-spacing: .7px; text-transform: uppercase; }
+.ops-dashboard-overview { top: 125px; right: 92px; width: 1080px; height: 650px; }
+.ops-dashboard-validation { z-index: 4; top: 335px; right: 140px; width: 760px; height: 435px; }
+.ops-dashboard-callout { position: absolute; z-index: 7; right: 175px; bottom: 108px; display: flex; align-items: center; gap: 8px; padding: 12px 15px; border: 1px solid #b9dfc1; border-radius: 999px; background: rgba(255,255,255,.96); color: var(--muted); font-family: 'SFMono-Regular', 'Menlo', monospace; font-size: 10px; letter-spacing: .2px; box-shadow: 0 12px 30px rgba(17,18,23,.05); }
+.ops-dashboard-callout b { color: var(--ink); font-weight: 500; }
+.ops-dashboard-callout i { color: var(--line); font-style: normal; }
+
+/* Human-in-the-loop is expressed as an explicit choice over retained worlds. */
+.ops-human-copy { position: absolute; z-index: 5; top: 290px; left: 155px; width: 520px; }
+.ops-human-copy .ops-hero-line { margin-top: 28px; }
+.ops-human-copy p { margin: 28px 0 0; color: var(--body); font-size: 20px; line-height: 1.5; }
+.ops-human-review { position: absolute; z-index: 3; top: 155px; right: 125px; width: 890px; min-height: 530px; padding: 26px 28px 24px; border: 1px solid #e0d8e8; border-radius: 15px; background: rgba(255,255,255,.96); box-shadow: 0 26px 70px rgba(17,18,23,.075); }
+.ops-review-head { display: flex; align-items: center; gap: 12px; }
+.ops-review-head strong { display: block; color: var(--ink); font-size: 19px; font-weight: 600; }
+.ops-review-head small { display: block; margin-top: 4px; color: var(--muted); font-family: 'SFMono-Regular', 'Menlo', monospace; font-size: 9px; letter-spacing: .8px; }
+.ops-needs-human { margin-left: auto; padding: 8px 12px; border-radius: 999px; color: var(--rose); background: #fff0f3; font-family: 'SFMono-Regular', 'Menlo', monospace; font-size: 10px; letter-spacing: .8px; }
+.ops-review-rule { height: 1px; margin: 23px 0 7px; background: var(--line); }
+.ops-review-branch { display: grid; grid-template-columns: 17px 65px 1fr 75px; gap: 12px; align-items: center; min-height: 74px; border-bottom: 1px solid var(--line); color: var(--body); }
+.ops-review-radio { width: 12px; height: 12px; border: 1px solid; border-radius: 50%; }
+.ops-review-branch b { color: var(--ink); font-family: 'SFMono-Regular', 'Menlo', monospace; font-size: 12px; font-weight: 500; }
+.ops-review-branch small { color: var(--muted); font-size: 13px; }
+.ops-review-score { color: var(--muted); font-family: 'SFMono-Regular', 'Menlo', monospace; font-size: 14px; text-align: right; }
+.ops-review-branch.selected .ops-review-score { color: var(--purple); }
+.ops-review-actions { display: flex; align-items: center; gap: 12px; margin-top: 23px; color: var(--muted); font-family: 'SFMono-Regular', 'Menlo', monospace; font-size: 10px; letter-spacing: .8px; text-transform: uppercase; }
+.ops-review-actions span { padding: 10px 13px; border: 1px solid var(--line); border-radius: 999px; }
+.ops-review-actions b { margin-left: auto; padding: 11px 15px; border: 1px solid #cfbff4; border-radius: 999px; color: var(--purple); background: #faf8ff; font-weight: 500; }
+.ops-human-cursor { position: absolute; z-index: 7; width: 80px; color: var(--rose); font-family: 'SFMono-Regular', 'Menlo', monospace; font-size: 9px; letter-spacing: .5px; pointer-events: none; }
+.ops-human-cursor span { display: block; width: 0; height: 0; border-top: 15px solid var(--rose); border-right: 9px solid transparent; transform: rotate(-18deg); filter: drop-shadow(0 4px 5px rgba(167,107,123,.25)); }
+.ops-human-cursor small { display: block; margin: 1px 0 0 13px; }
+.ops-promote-command { position: absolute; z-index: 6; left: 155px; bottom: 128px; width: 760px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--body); font-family: 'SFMono-Regular', 'Menlo', monospace; font-size: 13px; }
+.ops-human-foot { position: absolute; z-index: 6; left: 155px; bottom: 92px; color: var(--muted); font-family: 'SFMono-Regular', 'Menlo', monospace; font-size: 10px; letter-spacing: .5px; }
+.ops-human-foot .ops-rose-dot { margin-right: 9px; }
+
+/* The final frame resolves all operating modes back into one persistent world. */
+.ops-closing-field path { stroke-width: 2.4; }
+.ops-closing-copy { position: absolute; z-index: 4; top: 320px; left: 155px; width: 850px; }
+.ops-closing-copy .ops-hero-line { margin-top: 28px; }
+.ops-closing-copy p { margin: 30px 0 0; color: var(--body); font-size: 22px; line-height: 1.45; }
+.ops-closing-rail { position: absolute; z-index: 5; left: 155px; bottom: 114px; display: flex; gap: 18px; color: var(--muted); font-family: 'SFMono-Regular', 'Menlo', monospace; font-size: 10px; letter-spacing: 1.25px; }
+.ops-closing-rail i { color: var(--line); font-style: normal; }
+.ops-closing-proof { position: absolute; z-index: 5; right: 165px; bottom: 110px; display: flex; align-items: center; gap: 9px; color: var(--muted); font-family: 'SFMono-Regular', 'Menlo', monospace; font-size: 10px; letter-spacing: .45px; }
+.ops-closing-proof b { color: var(--green); font-weight: 500; }
