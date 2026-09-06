@@ -1684,30 +1684,31 @@ html.print .slidev-layout.parallel-breadth-slide .parallel-world-ring {
 }
 
 .slidev-layout .arch-environment .arch-panel {
-  background: #fbfdff;
+  background: #ffffff;
   border-color: #b8d7ff;
   justify-content: center;
 }
 
 .slidev-layout .arch-world .arch-panel {
-  background: #fbfffc;
+  background: #ffffff;
   border-color: #9ed5b1;
   justify-content: center;
   padding: 10px;
 }
 
 .slidev-layout .arch-scientist .arch-panel {
-  background: #fdfbff;
+  background: #ffffff;
   border-color: #c9b7f5;
 }
 
 .slidev-layout .arch-meta .arch-panel {
-  background: #fffafa;
+  background: #ffffff;
   border-color: #ffb4b4;
 }
 
 .slidev-layout .arch-card {
   align-items: center;
+  background: #ffffff;
   border: 1px solid var(--line);
   border-radius: 8px;
   box-sizing: border-box;
@@ -1792,7 +1793,7 @@ html.print .slidev-layout.parallel-breadth-slide .parallel-world-ring {
 }
 
 .slidev-layout .arch-persist {
-  background: #f1fbf3;
+  background: #ffffff;
   border: 1px solid #b9dfc1;
   border-radius: 7px;
   color: #16803b;
@@ -1812,6 +1813,7 @@ html.print .slidev-layout.parallel-breadth-slide .parallel-world-ring {
 
 .slidev-layout .arch-reset {
   align-self: center;
+  background: #ffffff;
   border: 1px solid #c9d1df;
   border-radius: 9px;
   box-sizing: border-box;
@@ -1908,7 +1910,7 @@ html.print .slidev-layout.parallel-breadth-slide .parallel-world-ring {
 }
 
 .slidev-layout .purple-callout {
-  background: #faf6ff;
+  background: #ffffff;
   border-color: #cdbdf2;
   color: #5532bd;
 }
@@ -1939,7 +1941,7 @@ html.print .slidev-layout.parallel-breadth-slide .parallel-world-ring {
 }
 
 .slidev-layout .runtime-band {
-  background: #fffaf5;
+  background: #ffffff;
   border: 1px solid #ffd8b1;
   border-radius: 10px;
   margin-top: 5px;
@@ -1963,6 +1965,7 @@ html.print .slidev-layout.parallel-breadth-slide .parallel-world-ring {
 
 .slidev-layout .runtime-items > div {
   align-items: center;
+  background: #ffffff;
   border: 1px solid #ffdec2;
   border-radius: 7px;
   color: var(--body);
