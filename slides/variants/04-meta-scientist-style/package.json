@@ -1,0 +1,15 @@
+{
+  "name": "sciodyssey-meta-scientist-style",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "slidev --port 3034",
+    "build": "slidev build --base ./",
+    "export": "slidev export --wait 2500 --output SciOdyssey-meta-scientist-style.pdf"
+  },
+  "devDependencies": {
+    "@slidev/cli": "^52.19.1",
+    "@slidev/theme-default": "^0.25.0",
+    "playwright-chromium": "^1.55.0"
+  }
+}
