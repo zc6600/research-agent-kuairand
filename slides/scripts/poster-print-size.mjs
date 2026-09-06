@@ -2,7 +2,8 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { PDFDocument } from 'pdf-lib';
 
-const file = new URL('../SciOdyssey-poster.pdf', import.meta.url);
+const outputName = process.argv[2] ?? 'SciOdyssey-poster.pdf';
+const file = new URL(`../${outputName}`, import.meta.url);
 const pdf = await PDFDocument.load(await readFile(file));
 if (pdf.getPageCount() !== 1) throw new Error('The poster must contain exactly one page.');
 const page = pdf.getPage(0);
@@ -16,4 +17,4 @@ const check = await PDFDocument.load(await readFile(file));
 const size = check.getPage(0).getSize();
 if (Math.abs(size.width - width) > .01 || Math.abs(size.height - height) > .01)
   throw new Error('Unexpected print dimensions.');
-console.log('Verified: one page, A0 portrait (841 × 1189 mm), vector text and diagrams.');
+console.log(`Verified: ${outputName} · one page, A0 portrait (841 × 1189 mm), vector text and diagrams.`);

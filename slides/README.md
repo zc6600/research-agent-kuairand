@@ -43,4 +43,19 @@ npm run export
 
 使用本地系统字体，不依赖在线字体服务。尊重系统减少动态效果设置。
 
+## Poster 版本
+
+- `poster.md`：原版，保留不变。
+- `poster-editorial.md`：方法结构优先，强化研究世界、角色和交接关系。
+- `poster-evidence.md`：证据优先，强化验证图表、分数表和实验记录。
+- `poster-type.md`：字体实验版，标题使用本地衬线字体，标签与命令使用本地等宽字体。
+
+导出 3 个新版本：
+
+```bash
+npm run poster:variants
+```
+
+输出分别为 `SciOdyssey-poster-editorial.pdf`、`SciOdyssey-poster-evidence.pdf` 和 `SciOdyssey-poster-type.pdf`。
+
 框架用法参考 [Slidev 官方文档](https://sli.dev/guide/)；构建和导出参数参考 [CLI 文档](https://sli.dev/builtin/cli)。

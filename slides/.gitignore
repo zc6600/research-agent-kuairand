@@ -1,4 +1,5 @@
 node_modules
 dist/
+poster-previews/
 .slidev/
 research-agent.pdf

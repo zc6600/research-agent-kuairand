@@ -1,0 +1,305 @@
+/* Poster alternatives. The original poster.md stays on poster.css only. */
+
+.slidev-layout.poster-page.poster-editorial {
+  --p-ink: #17202a;
+  --p-body: #3f4853;
+  --p-muted: #737c86;
+  --p-line: #dce1e5;
+  --p-blue: #197fa8;
+  --p-purple: #8060bd;
+  --p-orange: #c66a2f;
+  --p-rose: #d44d67;
+  background: #fcfbf8;
+}
+
+.poster-editorial .p-header {
+  border-bottom: 3px solid var(--p-ink);
+  padding-bottom: 22px;
+}
+
+.poster-editorial .p-header::after,
+.poster-evidence .p-header::after,
+.poster-type .p-header::after {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-family: 'Fira Code', 'Menlo', monospace;
+  font-size: 11px;
+  letter-spacing: 1.2px;
+  color: var(--p-muted);
+}
+
+.poster-editorial .p-header::after { content: '01 / METHOD FIRST'; }
+.poster-evidence .p-header::after { content: '02 / EVIDENCE FIRST'; }
+.poster-type .p-header::after { content: '03 / TYPE STUDY'; }
+
+.poster-editorial .p-art {
+  opacity: .18;
+  filter: saturate(.55) contrast(1.08);
+}
+
+.poster-editorial .p-thesis {
+  max-width: 850px;
+  font-size: 29px;
+}
+
+.poster-editorial .p-columns {
+  gap: 46px;
+}
+
+.poster-editorial .p-columns::before {
+  left: 643px;
+  background: #b8c2c9;
+}
+
+.poster-editorial .p-left .p-kicker { color: var(--p-blue); }
+.poster-editorial .p-right .p-kicker { color: var(--p-orange); }
+
+.poster-editorial .p-input,
+.poster-editorial .p-runtime {
+  border-width: 2px;
+}
+
+.poster-editorial .p-world {
+  border-left-width: 5px;
+  background: linear-gradient(90deg, #f1f7f8, #fcfbf8);
+}
+
+.poster-editorial .p-memory {
+  grid-template-columns: 92px 1fr;
+}
+
+.poster-editorial .p-agents {
+  border-top: 1px solid var(--p-line);
+  padding-top: 15px;
+}
+
+.poster-editorial .p-handoff {
+  border-top: 1px solid #e8cfd5;
+  border-bottom: 1px solid #e8cfd5;
+}
+
+.poster-editorial .p-parallel {
+  border-top: 3px solid var(--p-ink);
+}
+
+.poster-editorial .p-right {
+  border-top: 1px solid var(--p-line);
+  padding-top: 1px;
+}
+
+.poster-editorial .p-results {
+  border-top: 3px solid var(--p-ink);
+}
+
+.poster-editorial .p-entry {
+  border-top: 3px solid var(--p-ink);
+}
+
+.slidev-layout.poster-page.poster-evidence {
+  --p-ink: #102235;
+  --p-body: #3d4d5e;
+  --p-muted: #6e7d8e;
+  --p-line: #d7e0e8;
+  --p-blue: #147eab;
+  --p-purple: #765bb1;
+  --p-orange: #d36d2f;
+  --p-rose: #d44e6b;
+  background: #f7fafc;
+}
+
+.poster-evidence .p-header {
+  background: #102235;
+  border-bottom: 0;
+  padding: 12px 24px 17px;
+  margin: -44px -70px 0;
+}
+
+.poster-evidence .p-header .p-kicker,
+.poster-evidence .p-header .p-subtitle,
+.poster-evidence .p-header .p-thesis,
+.poster-evidence .p-header h1 {
+  position: relative;
+  z-index: 1;
+  color: #f7fafc !important;
+}
+
+.poster-evidence .p-header .p-subtitle { color: #c2d0dc !important; }
+
+.poster-evidence .p-header h1 span,
+.poster-evidence .p-header .p-thesis span {
+  color: #79d6f3;
+}
+
+.poster-evidence .p-header::after { color: #9bb0c4; right: 24px; top: 12px; }
+
+.poster-evidence .p-art {
+  right: -70px;
+  top: -48px;
+  opacity: .32;
+  filter: saturate(1.15) brightness(.82);
+}
+
+.poster-evidence .p-columns {
+  margin-top: 30px;
+}
+
+.poster-evidence .p-columns::before {
+  background: #c8d5e0;
+}
+
+.poster-evidence .p-right {
+  background: #edf4f8;
+  border: 1px solid #d7e3eb;
+  border-top: 7px solid var(--p-orange);
+  padding: 6px 0 0;
+}
+
+.poster-evidence .p-right > * {
+  margin-left: 18px;
+  margin-right: 18px;
+}
+
+.poster-evidence .p-right .p-chart,
+.poster-evidence .p-right .p-figure {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.poster-evidence .p-right .p-kicker,
+.poster-evidence .p-right h2,
+.poster-evidence .p-right .p-chart-subtitle {
+  margin-left: 18px;
+}
+
+.poster-evidence .p-figure {
+  background: #fafdff;
+  border-top: 1px solid #d7e3eb;
+  border-bottom: 1px solid #d7e3eb;
+  padding: 0;
+}
+
+.poster-evidence .p-results {
+  background: #fff;
+  border: 1px solid #d7e3eb;
+  border-top: 6px solid #19a681;
+  padding: 10px 18px 8px;
+}
+
+.poster-evidence .p-score-table .p-primary {
+  background: #e8f8f2;
+}
+
+.poster-evidence .p-run-strip {
+  border-top: 1px solid var(--p-line);
+}
+
+.poster-evidence .p-insights {
+  background: #fff;
+  border: 1px solid #d7e3eb;
+  padding: 8px 18px 6px;
+  margin-top: 12px;
+}
+
+.poster-evidence .p-limit {
+  background: #fff;
+  padding: 6px 12px;
+  border: 1px solid #d7e3eb;
+  border-left: 4px solid var(--p-purple);
+  margin-top: 8px;
+}
+
+.poster-evidence .p-entry {
+  border-top: 3px solid var(--p-ink);
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+.poster-evidence .p-footer {
+  border-top-color: #b9cad7;
+}
+
+.slidev-layout.poster-page.poster-type {
+  --p-ink: #202027;
+  --p-body: #474650;
+  --p-muted: #777581;
+  --p-line: #dedde2;
+  --p-blue: #367aa4;
+  --p-purple: #7a5c9f;
+  --p-orange: #b87341;
+  --p-rose: #b85b73;
+  background: #fffdf9;
+  font-family: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, 'Times New Roman', serif;
+}
+
+.poster-type { font-weight: 500; }
+
+.poster-type h1,
+.poster-type h2,
+.poster-type .p-entry-heading h2 { font-weight: 500; }
+
+.poster-type h3,
+.poster-type strong { font-weight: 600; }
+
+.poster-type .p-score-table th,
+.poster-type .p-score-table td { font-weight: 500; }
+
+.poster-type .p-header::after { color: #8b8992; }
+
+.poster-type h1,
+.poster-type h2,
+.poster-type h3,
+.poster-type .p-thesis,
+.poster-type .p-entry-heading > span,
+.poster-type .p-footer a,
+.poster-type .p-team {
+  font-family: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, 'Times New Roman', serif;
+}
+
+.poster-type .p-kicker,
+.poster-type .p-role,
+.poster-type .p-memory b,
+.poster-type .p-boundary b,
+.poster-type .p-entry-files code,
+.poster-type .p-entry-bar small,
+.poster-type .p-entry-prompt {
+  font-family: 'SF Mono', 'Roboto Mono', 'Menlo', monospace;
+}
+
+.poster-type .p-chart text {
+  font-family: 'SF Mono', 'Roboto Mono', 'Menlo', monospace;
+}
+
+.poster-type h1 {
+  font-size: 80px;
+  letter-spacing: -2.6px;
+}
+
+.poster-type .p-subtitle {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: .15px;
+}
+
+.poster-type .p-thesis {
+  font-size: 31px;
+  letter-spacing: -.35px;
+}
+
+.poster-type .p-world {
+  background: linear-gradient(90deg, #f8f5ed, #fffdf9);
+  border-left-color: var(--p-purple);
+}
+
+.poster-type .p-runtime {
+  background: #fbf5ef;
+}
+
+.poster-type .p-entry-terminal {
+  border-radius: 0;
+  border-color: #c9c5cb;
+}
+
+.poster-type .p-footer a {
+  font-family: 'SF Mono', 'Roboto Mono', 'Menlo', monospace;
+  font-size: 15px;
+}
