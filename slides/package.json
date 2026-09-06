@@ -1,0 +1,18 @@
+{
+  "name": "research-agent-slides",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "slidev --port 3030",
+    "build": "slidev build --base ./",
+    "export": "slidev export --dark --wait 3500 --output research-agent.pdf",
+    "poster:dev": "slidev poster.md --port 3031",
+    "poster:export": "slidev export poster.md --wait 1800 --output SciOdyssey-poster.pdf && node scripts/poster-print-size.mjs",
+    "poster:png": "npm run poster:export && gs -q -dSAFER -dBATCH -dNOPAUSE -dTextAlphaBits=4 -dGraphicsAlphaBits=4 -sDEVICE=png16m -r96 -sOutputFile=SciOdyssey-poster.png SciOdyssey-poster.pdf"
+  },
+  "devDependencies": {
+    "@slidev/cli": "^52.19.1",
+    "@slidev/theme-default": "^0.25.0",
+    "playwright-chromium": "^1.55.0"
+  }
+}

@@ -1,0 +1,2814 @@
+:root {
+  --slidev-theme-primary: #38bdf8;
+  --ink: #111217;
+  --body: #33343a;
+  --muted: #7d7d82;
+  --line: #e6e6e8;
+  --blue: #38bdf8;
+  --orange: #ff873f;
+  --rose: #ff5c78;
+  --purple: #a66cff;
+  --aqua: #20d9a0;
+}
+
+.slidev-layout {
+  background: #fff;
+  color: var(--body);
+  font-family: 'Avenir Next', 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  padding: 42px 56px 56px;
+  position: relative;
+}
+
+.slidev-layout h1 {
+  color: var(--ink);
+  font-size: 39px;
+  font-weight: 400;
+  line-height: 1.22;
+  letter-spacing: -1.6px;
+  margin: 20px 0 25px;
+}
+
+.slidev-layout.default .eyebrow { display: none; }
+.slidev-layout.default h1 { margin-top: 0; }
+
+.slidev-layout h2 {
+  color: var(--ink);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.slidev-layout p { line-height: 1.6; }
+.slidev-layout .eyebrow {
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 1.8px;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.slidev-layout .mono,
+.slidev-layout pre,
+.terminal pre {
+  font-family: 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+}
+
+.slidev-layout .green,
+.slidev-layout .blue { color: var(--blue); }
+.slidev-layout .orange { color: var(--orange); }
+.slidev-layout .rose { color: var(--rose); }
+.slidev-layout .purple { color: var(--purple); }
+.slidev-layout .muted { color: var(--muted); }
+
+.slidev-layout .lead {
+  color: var(--muted);
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.slidev-layout .hero {
+  color: var(--ink);
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -3px;
+  margin: 72px 0 20px;
+}
+
+.slidev-layout .hero span { display: inline; }
+.slidev-layout .cursor { display: none; }
+
+.slidev-layout.cover { overflow: hidden; }
+.slidev-layout.cover > div.my-auto { position: static !important; }
+.slidev-layout.cover > .my-auto > :not(.cover-art) { position: relative; z-index: 1; }
+.slidev-layout.cover .cover-art {
+  inset: 0;
+  height: 100%;
+  object-fit: cover;
+  opacity: .62;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  z-index: 0;
+}
+
+.slidev-layout.cover > :not(.cover-art) { position: relative; z-index: 1; }
+
+.slidev-layout .cover-meta {
+  color: var(--muted);
+  display: flex;
+  font-family: inherit;
+  font-size: 13px;
+  gap: 32px;
+  letter-spacing: .4px;
+  margin-top: 35px;
+}
+
+.slidev-layout.cover .cover-title {
+  font-size: 47px;
+  letter-spacing: -2.6px;
+  line-height: 1.03;
+  margin: 58px 0 18px;
+  max-width: 650px;
+}
+
+.slidev-layout.cover .cover-title span { display: block; }
+
+.slidev-layout .statement {
+  color: var(--ink);
+  font-size: 58px;
+  font-weight: 400;
+  letter-spacing: -2.8px;
+  line-height: 1.17;
+  margin-top: 72px;
+}
+
+.slidev-layout .statement p { margin: 0; line-height: inherit; }
+.slidev-layout .note { color: var(--muted); font-size: 14px; line-height: 1.6; }
+.slidev-layout .bottom-note { bottom: 62px; left: 56px; right: 56px; position: absolute; }
+
+.slidev-layout .split {
+  display: grid;
+  gap: 58px;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 31px;
+}
+
+.slidev-layout .split h2 { margin: 12px 0 10px; }
+.slidev-layout .split p { color: var(--muted); font-size: 18px; margin: 0; }
+.slidev-layout .index {
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 16px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.slidev-layout .rule {
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+
+.slidev-layout .split .rule { border-top: 0; padding-top: 0; }
+.slidev-layout .split > div:nth-child(1) .index { color: var(--orange); }
+.slidev-layout .split > div:nth-child(2) .index { color: var(--rose); }
+.slidev-layout .roles { margin-top: 28px; }
+
+.slidev-layout .role {
+  align-items: center;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 170px 1fr 150px;
+  padding: 20px 0;
+}
+
+.slidev-layout .role strong {
+  color: var(--blue);
+  font-family: inherit;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.slidev-layout .role:nth-child(2) strong { color: var(--orange); }
+.slidev-layout .role:nth-child(3) strong { color: var(--rose); }
+.slidev-layout .role span { color: var(--body); font-size: 19px; }
+.slidev-layout .role small { color: var(--muted); font-size: 14px; text-align: right; }
+
+.slidev-layout .sequence {
+  align-items: center;
+  display: flex;
+  font-family: inherit;
+  font-size: 21px;
+  justify-content: space-between;
+  margin: 58px 0 38px;
+}
+
+.slidev-layout .sequence b { color: #bcbcc1; font-weight: 400; }
+.slidev-layout .sequence em { color: var(--blue); font-style: normal; }
+
+/* Static handoff-loop reconstruction of the stronger video frame. */
+.slidev-layout:has(.handoff-stage) h1 {
+  margin-bottom: 0;
+}
+
+.slidev-layout:has(.handoff-stage) .handoff-stage {
+  align-items: center;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 34px 1fr 34px 1fr 34px 1fr;
+  height: 300px;
+  margin-top: 29px;
+  position: relative;
+}
+
+.slidev-layout:has(.handoff-stage) .handoff-return-lines {
+  height: 100%;
+  inset: 0;
+  overflow: visible;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  z-index: 0;
+}
+
+.slidev-layout:has(.handoff-stage) .handoff-card {
+  align-items: center;
+  background: rgba(255, 255, 255, .94);
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 154px;
+  justify-content: center;
+  min-width: 0;
+  padding: 17px 10px;
+  position: relative;
+  text-align: center;
+  z-index: 1;
+}
+
+.slidev-layout:has(.handoff-stage) .handoff-world-card { border-color: #b8d7ff; }
+.slidev-layout:has(.handoff-stage) .handoff-scientist-card { border-color: #c9b7f5; }
+.slidev-layout:has(.handoff-stage) .handoff-evidence-card { border-color: #ffd8b1; }
+.slidev-layout:has(.handoff-stage) .handoff-meta-card { border-color: #ffb4b4; }
+
+.slidev-layout:has(.handoff-stage) .handoff-card strong {
+  color: var(--ink);
+  display: block;
+  font-family: 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 1.2px;
+  line-height: 1.2;
+}
+
+.slidev-layout:has(.handoff-stage) .handoff-card small {
+  color: var(--muted);
+  display: block;
+  font-size: 11px;
+  line-height: 1.25;
+  margin-top: 7px;
+}
+
+.slidev-layout:has(.handoff-stage) .handoff-stage-arrow {
+  align-self: center;
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 1;
+  position: relative;
+  text-align: center;
+  z-index: 2;
+}
+
+.slidev-layout:has(.handoff-stage) .handoff-world-glyph {
+  height: 64px;
+  margin-bottom: 7px;
+  position: relative;
+  width: 64px;
+}
+
+.slidev-layout:has(.handoff-stage) .handoff-world-ring {
+  border: 1px solid;
+  border-radius: 50%;
+  inset: 0;
+  position: absolute;
+}
+
+.slidev-layout:has(.handoff-stage) .handoff-world-ring.ring-outer {
+  border-color: rgba(32, 217, 160, .5);
+}
+
+.slidev-layout:has(.handoff-stage) .handoff-world-ring.ring-middle {
+  border-color: rgba(56, 189, 248, .5);
+  inset: 10px;
+}
+
+.slidev-layout:has(.handoff-stage) .handoff-world-ring.ring-inner {
+  border-color: rgba(32, 217, 160, .4);
+  inset: 20px;
+}
+
+.slidev-layout:has(.handoff-stage) .handoff-world-core {
+  background: rgba(56, 189, 248, .14);
+  border: 1px solid var(--blue);
+  clip-path: polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0 50%);
+  height: 24px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(30deg);
+  width: 24px;
+}
+
+.slidev-layout:has(.handoff-stage) .world-particle {
+  border-radius: 50%;
+  height: 6px;
+  position: absolute;
+  width: 6px;
+}
+
+.slidev-layout:has(.handoff-stage) .particle-blue { background: var(--blue); left: 17%; top: 12%; }
+.slidev-layout:has(.handoff-stage) .particle-orange { background: var(--orange); right: 8%; top: 52%; }
+.slidev-layout:has(.handoff-stage) .particle-purple { background: var(--purple); bottom: 8%; left: 46%; }
+
+.slidev-layout:has(.handoff-stage) .handoff-card-icon {
+  align-self: center;
+  display: block;
+  flex: none;
+  font-size: 42px;
+  margin-bottom: 9px;
+}
+
+.slidev-layout:has(.handoff-stage) .handoff-evidence-pills {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin-bottom: 17px;
+  min-height: 35px;
+}
+
+.slidev-layout:has(.handoff-stage) .handoff-pill {
+  border: 1px solid;
+  border-radius: 999px;
+  font-family: 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  font-size: 8px;
+  letter-spacing: .45px;
+  padding: 4px 5px;
+  white-space: nowrap;
+}
+
+.slidev-layout:has(.handoff-stage) .blue-pill { border-color: #b8d7ff; color: var(--blue); }
+.slidev-layout:has(.handoff-stage) .orange-pill { border-color: #ffd8b1; color: var(--orange); }
+.slidev-layout:has(.handoff-stage) .green-pill { border-color: #b9dfc1; color: var(--green); }
+
+.slidev-layout:has(.handoff-stage) .handoff-meta-mark {
+  align-items: center;
+  border: 2px solid var(--rose);
+  border-radius: 50%;
+  color: var(--rose);
+  display: flex;
+  font-size: 22px;
+  height: 44px;
+  justify-content: center;
+  line-height: 1;
+  margin-bottom: 9px;
+  width: 44px;
+}
+
+.slidev-layout:has(.handoff-stage) .handoff-return-label {
+  bottom: 0;
+  left: 50%;
+  position: absolute;
+  text-align: center;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.slidev-layout:has(.handoff-stage) .handoff-return-label strong {
+  color: var(--rose);
+  display: block;
+  font-family: 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.1px;
+  line-height: 1.2;
+}
+
+.slidev-layout:has(.handoff-stage) .handoff-return-label small {
+  color: var(--muted);
+  display: block;
+  font-size: 11px;
+  line-height: 1.2;
+  margin-top: 7px;
+}
+
+/* A lighter, more editorial cycle composition for the handoff story. */
+.slidev-layout:has(.cycle-map) h1 {
+  margin-bottom: 0;
+}
+
+.slidev-layout:has(.cycle-map) .cycle-map {
+  height: 300px;
+  margin-top: 20px;
+  position: relative;
+}
+
+.slidev-layout:has(.cycle-map) .cycle-map-lines {
+  height: 100%;
+  inset: 0;
+  overflow: visible;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  z-index: 0;
+}
+
+.slidev-layout:has(.cycle-map) .cycle-node {
+  position: absolute;
+  text-align: center;
+  transform: translateX(-50%);
+  width: 176px;
+  z-index: 1;
+}
+
+.slidev-layout:has(.cycle-map) .cycle-world-node,
+.slidev-layout:has(.cycle-map) .cycle-evidence-node {
+  top: 111px;
+}
+
+.slidev-layout:has(.cycle-map) .cycle-scientist-node,
+.slidev-layout:has(.cycle-map) .cycle-meta-node {
+  top: 23px;
+}
+
+.slidev-layout:has(.cycle-map) .cycle-world-node { left: 9.6%; }
+.slidev-layout:has(.cycle-map) .cycle-scientist-node { left: 35%; }
+.slidev-layout:has(.cycle-map) .cycle-evidence-node { left: 64%; }
+.slidev-layout:has(.cycle-map) .cycle-meta-node { left: 90.4%; }
+
+.slidev-layout:has(.cycle-map) .cycle-node-visual {
+  align-items: center;
+  display: flex;
+  height: 70px;
+  justify-content: center;
+  margin: 0 auto 9px;
+  position: relative;
+  width: 70px;
+}
+
+.slidev-layout:has(.cycle-map) .cycle-scientist-visual {
+  background: #fdfbff;
+  border: 1px solid #c9b7f5;
+  border-radius: 50%;
+}
+
+.slidev-layout:has(.cycle-map) .cycle-node-icon {
+  display: block;
+  font-size: 39px;
+}
+
+.slidev-layout:has(.cycle-map) .cycle-meta-visual {
+  border: 2px solid var(--rose);
+  border-radius: 50%;
+  color: var(--rose);
+  font-size: 28px;
+  line-height: 1;
+}
+
+.slidev-layout:has(.cycle-map) .cycle-evidence-visual {
+  align-items: stretch;
+  background: #fffaf5;
+  border: 1px solid #ffd8b1;
+  border-radius: 12px;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px 9px;
+  width: 92px;
+}
+
+.slidev-layout:has(.cycle-map) .evidence-line {
+  align-items: center;
+  color: var(--muted);
+  display: flex;
+  font-family: 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  font-size: 8px;
+  gap: 6px;
+  letter-spacing: .15px;
+  line-height: 1.1;
+  text-align: left;
+}
+
+.slidev-layout:has(.cycle-map) .evidence-line i {
+  border-radius: 50%;
+  display: block;
+  flex: none;
+  height: 6px;
+  width: 6px;
+}
+
+.slidev-layout:has(.cycle-map) .blue-dot { background: var(--blue); }
+.slidev-layout:has(.cycle-map) .orange-dot { background: var(--orange); }
+.slidev-layout:has(.cycle-map) .green-dot { background: var(--green); }
+
+.slidev-layout:has(.cycle-map) .cycle-world-ring {
+  border: 1px solid;
+  border-radius: 50%;
+  inset: 0;
+  position: absolute;
+}
+
+.slidev-layout:has(.cycle-map) .world-ring-outer { border-color: rgba(32, 217, 160, .55); }
+.slidev-layout:has(.cycle-map) .world-ring-middle { border-color: rgba(56, 189, 248, .5); inset: 10px; }
+.slidev-layout:has(.cycle-map) .world-ring-inner { border-color: rgba(32, 217, 160, .45); inset: 20px; }
+
+.slidev-layout:has(.cycle-map) .cycle-world-core {
+  background: rgba(56, 189, 248, .14);
+  border: 1px solid var(--blue);
+  clip-path: polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0 50%);
+  height: 24px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(30deg);
+  width: 24px;
+}
+
+.slidev-layout:has(.cycle-map) .cycle-particle {
+  border-radius: 50%;
+  height: 6px;
+  position: absolute;
+  width: 6px;
+}
+
+.slidev-layout:has(.cycle-map) .particle-blue { background: var(--blue); left: 17%; top: 12%; }
+.slidev-layout:has(.cycle-map) .particle-orange { background: var(--orange); right: 8%; top: 52%; }
+.slidev-layout:has(.cycle-map) .particle-purple { background: var(--purple); bottom: 8%; left: 46%; }
+
+.slidev-layout:has(.cycle-map) .cycle-node strong {
+  color: var(--ink);
+  display: block;
+  font-family: 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 1.3px;
+  line-height: 1.2;
+}
+
+.slidev-layout:has(.cycle-map) .cycle-node small {
+  color: var(--muted);
+  display: block;
+  font-size: 11px;
+  line-height: 1.25;
+  margin-top: 7px;
+  white-space: nowrap;
+}
+
+.slidev-layout:has(.cycle-map) .cycle-loop-label {
+  bottom: 0;
+  left: 50%;
+  position: absolute;
+  text-align: center;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.slidev-layout:has(.cycle-map) .cycle-loop-label strong {
+  color: var(--rose);
+  display: block;
+  font-family: 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.1px;
+  line-height: 1.2;
+}
+
+.slidev-layout:has(.cycle-map) .cycle-loop-label small {
+  color: var(--muted);
+  display: block;
+  font-size: 11px;
+  line-height: 1.2;
+  margin-top: 7px;
+}
+
+.slidev-layout:has(.cycle-map) .cycle-explain {
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 44px;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 9px;
+  padding-top: 11px;
+}
+
+.slidev-layout:has(.cycle-map) .cycle-explain-item {
+  align-items: baseline;
+  display: flex;
+  gap: 13px;
+  min-width: 0;
+}
+
+.slidev-layout:has(.cycle-map) .cycle-explain-label {
+  flex: none;
+  font-family: 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.1px;
+}
+
+.slidev-layout:has(.cycle-map) .cycle-explain-label.green { color: #16803b; }
+.slidev-layout:has(.cycle-map) .cycle-explain-label.purple { color: var(--purple); }
+
+.slidev-layout:has(.cycle-map) .cycle-explain-item > span:last-child {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.25;
+}
+
+.slidev-layout:has(.cycle-map) .cycle-path-progress {
+  fill: none;
+  opacity: 0;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: opacity .24s ease, stroke-dashoffset .72s cubic-bezier(.22, 1, .36, 1);
+}
+
+.slidev-layout:has(.cycle-map) .cycle-path-progress:not(.slidev-vclick-hidden) {
+  opacity: .9;
+  stroke-dashoffset: 0;
+}
+
+.slidev-layout:has(.cycle-map) .cycle-node.slidev-vclick-target,
+.slidev-layout:has(.cycle-map) .cycle-loop-label.slidev-vclick-target,
+.slidev-layout:has(.cycle-map) .cycle-explain.slidev-vclick-target {
+  transition: opacity .52s ease, translate .52s cubic-bezier(.22, 1, .36, 1);
+}
+
+.slidev-layout:has(.cycle-map) .cycle-node.slidev-vclick-hidden,
+.slidev-layout:has(.cycle-map) .cycle-loop-label.slidev-vclick-hidden,
+.slidev-layout:has(.cycle-map) .cycle-explain.slidev-vclick-hidden {
+  translate: 0 14px;
+}
+
+/* The parallel scene follows the keynote's single origin → independent rails → review rhythm. */
+.slidev-layout:has(.parallel-motion) h1 {
+  margin-bottom: 0;
+}
+
+.slidev-layout:has(.parallel-motion) .parallel-motion {
+  height: 276px;
+  margin-top: 18px;
+  position: relative;
+}
+
+.slidev-layout:has(.parallel-motion) .parallel-motion svg {
+  display: block;
+  height: 276px;
+  overflow: visible;
+  width: 100%;
+}
+
+.slidev-layout:has(.parallel-motion) .parallel-branch-base {
+  fill: none;
+  stroke: #e6e6e8;
+  stroke-linecap: round;
+  stroke-width: 2;
+}
+
+.slidev-layout:has(.parallel-motion) .parallel-branch-progress,
+.slidev-layout:has(.parallel-motion) .parallel-merge-progress {
+  fill: none;
+  opacity: 0;
+  stroke: var(--blue);
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  stroke-width: 3;
+  transition: opacity .24s ease, stroke-dashoffset .72s cubic-bezier(.22, 1, .36, 1);
+}
+
+.slidev-layout:has(.parallel-motion) .parallel-progress-a {
+  stroke: #2fb3e8;
+}
+
+.slidev-layout:has(.parallel-motion) .parallel-progress-b {
+  stroke: #9568f3;
+}
+
+.slidev-layout:has(.parallel-motion) .parallel-progress-c {
+  stroke: #22ad70;
+}
+
+.slidev-layout:has(.parallel-motion) .parallel-merge-progress {
+  stroke: var(--blue);
+}
+
+.slidev-layout:has(.parallel-motion) .parallel-branch-progress.slidev-vclick-target:not(.slidev-vclick-hidden),
+.slidev-layout:has(.parallel-motion) .parallel-merge-progress.slidev-vclick-target:not(.slidev-vclick-hidden) {
+  opacity: .9;
+  stroke-dashoffset: 0;
+}
+
+@keyframes parallel-rail-draw {
+  0% { opacity: 0; stroke-dashoffset: 1; }
+  18% { opacity: .9; }
+  100% { opacity: .9; stroke-dashoffset: 0; }
+}
+
+@keyframes parallel-card-in {
+  0% { opacity: 0; rotate: calc(var(--parallel-card-tilt, 0deg) - 1deg); translate: 0 12px; }
+  70% { opacity: 1; rotate: calc(var(--parallel-card-tilt, 0deg) + .2deg); translate: 0 -2px; }
+  100% { opacity: 1; rotate: var(--parallel-card-tilt, 0deg); translate: 0 0; }
+}
+
+@keyframes parallel-card-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -1.5px; }
+}
+
+@keyframes parallel-world-pulse {
+  0%, 100% { opacity: .18; scale: .82; }
+  50% { opacity: .42; scale: 1.08; }
+}
+
+@keyframes parallel-flow-pulse {
+  0%, 14% { opacity: 0; }
+  26%, 70% { opacity: .86; }
+  86%, 100% { opacity: 0; }
+}
+
+.slidev-layout.parallel-breadth-slide .parallel-auto-rail {
+  animation: parallel-rail-draw .78s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+.slidev-layout.parallel-breadth-slide .parallel-progress-a {
+  animation-delay: .22s;
+}
+
+.slidev-layout.parallel-breadth-slide .parallel-progress-b {
+  animation-delay: 1.16s;
+}
+
+.slidev-layout.parallel-breadth-slide .parallel-progress-c {
+  animation-delay: 2.10s;
+}
+
+.slidev-layout.parallel-breadth-slide .parallel-auto-card {
+  animation: parallel-card-in .52s cubic-bezier(.22, 1, .36, 1) both, parallel-card-float 4.8s ease-in-out 3.65s infinite;
+}
+
+.slidev-layout.parallel-breadth-slide .parallel-auto-card-a {
+  animation-delay: .42s, 3.65s;
+}
+
+.slidev-layout.parallel-breadth-slide .parallel-auto-card-b {
+  animation-delay: 1.36s, 3.65s;
+}
+
+.slidev-layout.parallel-breadth-slide .parallel-auto-card-c {
+  animation-delay: 2.30s, 3.65s;
+}
+
+.slidev-layout.parallel-breadth-slide .parallel-flow-dot {
+  animation: parallel-flow-pulse 2.8s ease-in-out infinite;
+  pointer-events: none;
+  stroke: #fff;
+  stroke-width: 1.5;
+}
+
+.slidev-layout.parallel-breadth-slide .parallel-flow-dot-a {
+  fill: #2fb3e8;
+  animation-delay: 1.05s;
+}
+
+.slidev-layout.parallel-breadth-slide .parallel-flow-dot-b {
+  fill: #9568f3;
+  animation-delay: 1.40s;
+}
+
+.slidev-layout.parallel-breadth-slide .parallel-flow-dot-c {
+  fill: #22ad70;
+  animation-delay: 1.75s;
+}
+
+.slidev-layout.parallel-breadth-slide .parallel-world-ring {
+  animation: parallel-world-pulse 3.2s ease-in-out infinite;
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 1.5;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* Static exports keep the completed branch set visible while live slides retain the timed reveal. */
+html.print .slidev-layout.parallel-breadth-slide .parallel-auto-rail {
+  animation: none;
+  opacity: .9;
+  stroke-dashoffset: 0;
+}
+
+html.print .slidev-layout.parallel-breadth-slide .parallel-auto-card {
+  animation: none;
+  opacity: 1;
+  rotate: var(--parallel-card-tilt, 0deg);
+  translate: 0 0;
+}
+
+html.print .slidev-layout.parallel-breadth-slide .parallel-world-ring {
+  animation: none;
+  opacity: .28;
+  scale: 1;
+}
+
+.slidev-layout:has(.parallel-motion) .parallel-world-dot {
+  fill: var(--blue);
+}
+
+.slidev-layout:has(.parallel-motion) .parallel-world-label {
+  fill: var(--muted);
+  font-size: 16px;
+}
+
+.slidev-layout:has(.parallel-motion) .parallel-card.slidev-vclick-target,
+.slidev-layout:has(.parallel-motion) .parallel-reviewer.slidev-vclick-target {
+  transition: opacity .48s ease, translate .48s cubic-bezier(.22, 1, .36, 1);
+}
+
+.slidev-layout:has(.parallel-motion) .parallel-card.slidev-vclick-hidden,
+.slidev-layout:has(.parallel-motion) .parallel-reviewer.slidev-vclick-hidden {
+  translate: 0 10px;
+}
+
+.slidev-layout:has(.parallel-motion) .parallel-card rect {
+  fill: var(--parallel-card-fill, rgba(255, 255, 255, .96));
+  stroke: var(--parallel-card-stroke, #e2e5e8);
+  stroke-width: 1.7;
+}
+
+.slidev-layout:has(.parallel-motion) .parallel-card-dot {
+  fill: var(--parallel-card-color, var(--blue));
+  stroke: #fff;
+  stroke-width: 2;
+}
+
+.slidev-layout:has(.parallel-motion) .parallel-card-name {
+  fill: var(--ink);
+  font-size: 20px;
+}
+
+.slidev-layout:has(.parallel-motion) .parallel-card-branch {
+  fill: var(--parallel-card-color, var(--blue));
+  font-family: 'Fira Code', 'SFMono-Regular', Consolas, monospace;
+  font-size: 18px;
+}
+
+.slidev-layout:has(.parallel-motion) .parallel-card-a {
+  --parallel-card-color: #2fb3e8;
+  --parallel-card-fill: rgba(232, 247, 253, .96);
+  --parallel-card-stroke: #9bdcf3;
+  --parallel-card-tilt: -.6deg;
+}
+
+.slidev-layout:has(.parallel-motion) .parallel-card-b {
+  --parallel-card-color: #9568f3;
+  --parallel-card-fill: rgba(246, 241, 255, .96);
+  --parallel-card-stroke: #cbb8fb;
+  --parallel-card-tilt: .5deg;
+}
+
+.slidev-layout:has(.parallel-motion) .parallel-card-c {
+  --parallel-card-color: #22ad70;
+  --parallel-card-fill: rgba(237, 250, 244, .96);
+  --parallel-card-stroke: #9ddbbd;
+  --parallel-card-tilt: -.4deg;
+}
+
+.slidev-layout:has(.parallel-motion) .parallel-reviewer circle:first-child {
+  fill: var(--blue);
+}
+
+.slidev-layout:has(.parallel-motion) .parallel-reviewer circle:nth-child(2) {
+  fill: none;
+  stroke: #38bdf8;
+  stroke-opacity: .45;
+  stroke-width: 2;
+}
+
+.slidev-layout:has(.parallel-motion) .parallel-reviewer text {
+  fill: var(--blue);
+  font-size: 18px;
+}
+
+.slidev-layout:has(.parallel-motion) .parallel-takeaway {
+  min-height: 31px;
+}
+
+.slidev-layout:has(.parallel-motion) .parallel-takeaway span {
+  display: block;
+}
+
+.slidev-layout:has(.parallel-motion) .parallel-takeaway span.slidev-vclick-target {
+  transition: opacity .42s ease, translate .42s cubic-bezier(.22, 1, .36, 1);
+}
+
+.slidev-layout:has(.parallel-motion) .parallel-takeaway span.slidev-vclick-hidden {
+  translate: 0 10px;
+}
+
+/* The evidence slide uses the same fixed window → checkpoint focus as the film. */
+.slidev-layout:has(.checkpoint-motion) h1 {
+  margin-bottom: 0;
+}
+
+.slidev-layout:has(.checkpoint-motion) .checkpoint-motion {
+  margin-top: 15px;
+}
+
+.slidev-layout:has(.checkpoint-motion) .checkpoint-window {
+  background: #fff;
+  border: 1px solid #e1e4e8;
+  border-radius: 16px;
+  box-shadow: 0 18px 45px rgba(22, 34, 48, .08), 0 2px 8px rgba(22, 34, 48, .03);
+  height: 302px;
+  overflow: hidden;
+  position: relative;
+}
+
+.slidev-layout:has(.checkpoint-motion) .checkpoint-windowbar {
+  align-items: center;
+  background: #fafbfc;
+  border-bottom: 1px solid #eceef0;
+  color: #7d8189;
+  display: flex;
+  font-size: 12px;
+  height: 34px;
+  justify-content: center;
+  letter-spacing: .2px;
+  position: relative;
+}
+
+.slidev-layout:has(.checkpoint-motion) .checkpoint-windowbar::before {
+  border: 1px solid #cbd0d5;
+  border-radius: 50%;
+  box-shadow: 18px 0 0 -1px #fafbfc, 18px 0 0 0 #cbd0d5, 36px 0 0 -1px #fafbfc, 36px 0 0 0 #cbd0d5;
+  content: '';
+  height: 8px;
+  left: 18px;
+  position: absolute;
+  top: 12px;
+  width: 8px;
+}
+
+.slidev-layout:has(.checkpoint-motion) .checkpoint-windowbar span:last-child {
+  font-family: 'Fira Code', 'SFMono-Regular', Consolas, monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  position: absolute;
+  right: 18px;
+}
+
+.slidev-layout:has(.checkpoint-motion) .checkpoint-viewport {
+  background: #fbfcfd;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  top: 34px;
+}
+
+.slidev-layout:has(.checkpoint-motion) .checkpoint-zoom {
+  align-items: flex-start;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  transform-origin: 50% 43%;
+  width: 100%;
+  will-change: transform;
+}
+
+.slidev-layout:has(.checkpoint-motion) .checkpoint-zoom img {
+  display: block;
+  height: auto;
+  max-width: none;
+  width: 100%;
+}
+
+.slidev-layout:has(.checkpoint-motion) .checkpoint-focus-box {
+  border: 2px solid #20d9a0;
+  border-radius: 10px;
+  box-shadow: 0 0 0 5px rgba(32, 217, 160, .12);
+  height: 74px;
+  left: 12%;
+  position: absolute;
+  top: 29%;
+  width: 27%;
+}
+
+.slidev-layout:has(.checkpoint-motion) .checkpoint-focus-box.slidev-vclick-target,
+.slidev-layout:has(.checkpoint-motion) .checkpoint-focus-label.slidev-vclick-target {
+  transition: opacity .46s ease, scale .52s cubic-bezier(.22, 1, .36, 1), translate .52s cubic-bezier(.22, 1, .36, 1);
+}
+
+.slidev-layout:has(.checkpoint-motion) .checkpoint-focus-box.slidev-vclick-hidden,
+.slidev-layout:has(.checkpoint-motion) .checkpoint-focus-label.slidev-vclick-hidden {
+  scale: .92;
+  translate: 0 10px;
+}
+
+.slidev-layout:has(.checkpoint-motion) .checkpoint-focus-label {
+  background: #effbf6;
+  border: 1px solid #b9dfd0;
+  border-radius: 6px;
+  color: #16803b;
+  font-family: 'Fira Code', 'SFMono-Regular', Consolas, monospace;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .45px;
+  line-height: 1;
+  left: 12%;
+  padding: 4px 8px;
+  position: absolute;
+  top: 29%;
+  transform: translateY(-100%);
+  white-space: nowrap;
+  z-index: 2;
+}
+
+/* Keep the focus annotation attached to the evidence row without covering its text. */
+.slidev-layout:has(.checkpoint-motion) .checkpoint-focus-box {
+  z-index: 1;
+}
+
+/* Retained evidence stays readable while the checkpoint marker arrives. */
+.slidev-layout:has(.checkpoint-motion) .checkpoint-caption span.slidev-vclick-target {
+  transition: opacity .42s ease, translate .42s cubic-bezier(.22, 1, .36, 1);
+}
+
+.slidev-layout:has(.checkpoint-motion) .checkpoint-caption span.slidev-vclick-hidden {
+  translate: 0 8px;
+}
+
+/* The rest of the dashboard remains at presentation scale. */
+.slidev-layout:has(.checkpoint-motion) .checkpoint-caption {
+  color: var(--muted);
+  font-size: 13px;
+  height: 19px;
+  margin-top: 8px;
+  position: relative;
+  text-align: center;
+}
+
+/* The visual caption sits below the single checkpoint cue. */
+.slidev-layout:has(.checkpoint-motion) .visual-caption {
+  margin-top: 4px;
+}
+
+.slidev-layout .memory { display: grid; gap: 58px; grid-template-columns: 1fr 1fr; margin-top: 33px; }
+
+.slidev-layout .memory pre {
+  background: transparent;
+  color: var(--body);
+  font-size: 18px;
+  line-height: 1.8;
+  padding: 0;
+}
+
+.slidev-layout .memory h2 { color: var(--blue); font-size: 26px; margin: 2px 0 16px; }
+.slidev-layout .memory p { color: var(--muted); font-size: 19px; }
+.slidev-layout .branches { background: transparent; color: var(--body); font-size: 21px; line-height: 1.75; margin: 30px 0 25px; padding: 0; }
+.slidev-layout .score { display: grid; gap: 58px; grid-template-columns: 1.14fr 1fr; margin-top: 30px; }
+.slidev-layout .big-number { color: var(--blue); font-size: 74px; font-weight: 400; letter-spacing: -4px; line-height: 1.1; }
+.slidev-layout .delta { font-size: 19px; margin-top: 16px; }
+.slidev-layout table { border-collapse: collapse; font-size: 16px; width: 100%; }
+.slidev-layout th { color: var(--muted); font-size: 13px; font-weight: 400; }
+.slidev-layout td, .slidev-layout th { border-bottom: 1px solid var(--line); padding: 13px 0; text-align: right; }
+.slidev-layout td:first-child, .slidev-layout th:first-child { text-align: left; }
+.slidev-layout .stats { display: grid; gap: 28px; grid-template-columns: repeat(3, 1fr); margin-top: 44px; }
+.slidev-layout .stats .rule { border-top: 0; padding-top: 0; }
+.slidev-layout .stats strong { color: var(--blue); font-size: 76px; font-weight: 400; letter-spacing: -4px; line-height: 1.05; }
+.slidev-layout .stats .rule:nth-child(2) strong { color: var(--orange); }
+.slidev-layout .stats .rule:nth-child(3) strong { color: var(--rose); }
+.slidev-layout .stats p { color: var(--body); font-size: 19px; margin-top: 14px; }
+.slidev-layout .stats small { color: var(--muted); font-size: 13px; }
+
+.slidev-layout .terminal {
+  border-bottom: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+  margin-top: 28px;
+  padding: 20px 0;
+}
+
+.slidev-layout .terminal pre { background: transparent; color: var(--body); font-size: 17px; line-height: 1.8; padding: 0; white-space: pre-wrap; }
+.slidev-layout .closing { color: var(--ink); font-size: 60px; font-weight: 400; letter-spacing: -3px; line-height: 1.14; margin: 65px 0 27px; }
+.slidev-layout a { color: var(--blue); border: none; text-decoration: none; }
+
+.slidev-layout .visual-kicker {
+  color: var(--muted);
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  line-height: 1.2;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.slidev-layout .visual-kicker.orange { color: var(--orange); }
+.slidev-layout .visual-kicker.purple { color: var(--purple); }
+.slidev-layout .visual-kicker.blue { color: var(--blue); }
+.slidev-layout .visual-kicker.green { color: #16803b; }
+.slidev-layout .visual-kicker.rose { color: var(--rose); }
+/* Chapter kickers follow the page-12 reference color; semantic colors stay in the content. */
+.slidev-layout .visual-kicker,
+.slidev-layout .visual-kicker.orange,
+.slidev-layout .visual-kicker.purple,
+.slidev-layout .visual-kicker.blue,
+.slidev-layout .visual-kicker.green,
+.slidev-layout .visual-kicker.rose { color: var(--orange); }
+.slidev-layout .visual-frame {
+  align-items: center;
+  display: flex;
+  height: 370px;
+  justify-content: center;
+  margin-top: 15px;
+  width: 100%;
+}
+
+.slidev-layout .visual-frame img {
+  display: block;
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.slidev-layout .architecture-labels {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  height: 18px;
+  line-height: 1.25;
+  margin: 13px 0 0 14%;
+  position: relative;
+  width: 72%;
+}
+
+.slidev-layout .architecture-labels span {
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.slidev-layout .architecture-labels span:nth-child(1) { color: var(--blue); left: 2%; }
+.slidev-layout .architecture-labels span:nth-child(2) { color: #16803b; left: 24.1%; }
+.slidev-layout .architecture-labels span:nth-child(3) { color: var(--purple); left: 55.8%; }
+.slidev-layout .architecture-labels span:nth-child(4) { color: #ef3434; left: 79%; }
+
+.slidev-layout .architecture-crop {
+  height: 350px;
+  margin-top: 12px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.slidev-layout .architecture-crop img {
+  clip-path: inset(0 3px 0 3px);
+  display: block;
+  height: auto;
+  left: 14%;
+  max-width: none;
+  position: absolute;
+  top: -95px;
+  width: 72%;
+}
+
+.slidev-layout .visual-caption {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.35;
+  margin-top: 8px;
+}
+
+/* Inline reconstruction of the evidence chart: exact project data, deck-native typography. */
+.slidev-layout:has(.token-chart) .token-chart-wrap {
+  align-items: center;
+  display: flex;
+  height: 390px;
+  justify-content: center;
+  margin-top: 7px;
+  width: 100%;
+}
+
+.slidev-layout:has(.token-chart) .token-chart {
+  display: block;
+  height: 100%;
+  max-width: 100%;
+  overflow: visible;
+  width: 100%;
+}
+
+.slidev-layout:has(.token-chart) .chart-paper { fill: #fff; }
+.slidev-layout:has(.token-chart) .chart-plot { fill: #fbfcfd; stroke: #e4e8ec; stroke-width: 1; }
+.slidev-layout:has(.token-chart) .chart-grid line { stroke: #e3e7eb; stroke-width: 1; }
+.slidev-layout:has(.token-chart) .chart-inline-title,
+.slidev-layout:has(.token-chart) .chart-label-main,
+.slidev-layout:has(.token-chart) .chart-axis-title { fill: var(--ink); }
+.slidev-layout:has(.token-chart) .chart-inline-title { font-size: 17px; font-weight: 600; }
+.slidev-layout:has(.token-chart) .chart-inline-subtitle { fill: var(--muted); font-size: 12px; }
+.slidev-layout:has(.token-chart) .chart-y-labels text,
+.slidev-layout:has(.token-chart) .chart-axis-labels > text:not(.chart-axis-title),
+.slidev-layout:has(.token-chart) .chart-legend text { fill: var(--muted); font-size: 12px; }
+.slidev-layout:has(.token-chart) .chart-axis-title { font-size: 13px; }
+.slidev-layout:has(.token-chart) .chart-reference { stroke: #b9c1ca; stroke-dasharray: 7 6; stroke-width: 1.5; }
+.slidev-layout:has(.token-chart) .chart-reference-label { fill: #8a929b; font-size: 12px; }
+.slidev-layout:has(.token-chart) .chart-leaders line { stroke: #aeb7c1; stroke-width: 1; }
+.slidev-layout:has(.token-chart) .chart-point { stroke: #fff; stroke-width: 3; }
+.slidev-layout:has(.token-chart) .chart-point-blue { fill: #5d7fbd; }
+.slidev-layout:has(.token-chart) .chart-point-orange { fill: var(--orange); }
+.slidev-layout:has(.token-chart) .chart-point-purple { fill: var(--purple); }
+.slidev-layout:has(.token-chart) .chart-point-green { fill: #16803b; }
+.slidev-layout:has(.token-chart) .chart-range { fill: none; stroke: var(--purple); stroke-width: 3; }
+.slidev-layout:has(.token-chart) .chart-label-main { font-size: 13px; font-weight: 600; }
+.slidev-layout:has(.token-chart) .chart-label-sub { fill: var(--body); font-size: 11px; }
+.slidev-layout:has(.token-chart) .chart-label-meta { fill: var(--muted); font-size: 10px; }
+.slidev-layout:has(.token-chart) .chart-label-center { text-anchor: middle; }
+.slidev-layout:has(.token-chart) .chart-label-right { text-anchor: end; }
+.slidev-layout:has(.token-chart) .chart-label-retained { fill: #16803b; }
+.slidev-layout:has(.token-chart) .chart-legend .chart-point { stroke-width: 2; }
+.slidev-layout:has(.token-chart) .token-chart-wrap + .visual-caption { margin-top: 1px; }
+
+/* Team slide: a staggered, flat composition with circular monogram avatars. */
+.slidev-layout:has(.team-page-kicker) h1 { margin-bottom: 0; }
+
+.slidev-layout:has(.team-page-kicker) .team-intro {
+  align-items: center;
+  display: flex;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.slidev-layout:has(.team-page-kicker) .team-intro-line {
+  background: var(--line);
+  flex: 1;
+  height: 1px;
+}
+
+.slidev-layout:has(.team-page-kicker) .team-intro-text {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 1.1px;
+  white-space: nowrap;
+}
+
+.slidev-layout:has(.team-page-kicker) .team-stage {
+  margin-top: 21px;
+  position: relative;
+}
+
+.slidev-layout:has(.team-page-kicker) .team-thread {
+  background: var(--line);
+  height: 1px;
+  left: 8%;
+  position: absolute;
+  right: 8%;
+  top: 47px;
+}
+
+.slidev-layout:has(.team-page-kicker) .team-row {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  position: relative;
+}
+
+.slidev-layout:has(.team-page-kicker) .team-member {
+  min-width: 0;
+  padding-top: 0;
+  position: relative;
+  text-align: center;
+  z-index: 1;
+}
+
+.slidev-layout:has(.team-page-kicker) .team-member-1 { padding-top: 14px; }
+.slidev-layout:has(.team-page-kicker) .team-member-2 { padding-top: 0; }
+.slidev-layout:has(.team-page-kicker) .team-member-3 { padding-top: 24px; }
+.slidev-layout:has(.team-page-kicker) .team-member-4 { padding-top: 4px; }
+.slidev-layout:has(.team-page-kicker) .team-member-5 { padding-top: 17px; }
+
+.slidev-layout:has(.team-page-kicker) .team-avatar {
+  align-items: center;
+  background: #fff;
+  border: 1.5px solid var(--team-accent);
+  border-radius: 50%;
+  color: var(--team-accent);
+  display: flex;
+  height: 78px;
+  justify-content: center;
+  margin: 0 auto;
+  position: relative;
+  width: 78px;
+}
+
+.slidev-layout:has(.team-page-kicker) .team-avatar::before {
+  border: 1px solid var(--team-accent);
+  border-radius: 50%;
+  content: '';
+  inset: 7px;
+  opacity: .18;
+  position: absolute;
+}
+
+.slidev-layout:has(.team-page-kicker) .team-avatar::after {
+  background: var(--team-accent);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  content: '';
+  height: 7px;
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  width: 7px;
+}
+
+.slidev-layout:has(.team-page-kicker) .team-avatar span {
+  font-size: 23px;
+  font-weight: 500;
+  letter-spacing: -1px;
+  position: relative;
+}
+
+.slidev-layout:has(.team-page-kicker) .team-name {
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.2;
+  margin-top: 12px;
+  white-space: nowrap;
+}
+
+.slidev-layout:has(.team-page-kicker) .team-role {
+  color: var(--team-accent);
+  font-size: 9px;
+  letter-spacing: .8px;
+  line-height: 1.25;
+  margin-top: 7px;
+  min-height: 23px;
+}
+
+.slidev-layout:has(.team-page-kicker) .team-contribution {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.35;
+  margin: 8px auto 0;
+  max-width: 145px;
+}
+
+.slidev-layout:has(.team-page-kicker) .team-footer {
+  align-items: center;
+  border-top: 1px solid var(--line);
+  color: var(--body);
+  display: flex;
+  font-size: 15px;
+  justify-content: space-between;
+  margin-top: 26px;
+  padding-top: 11px;
+}
+
+.slidev-layout:has(.team-page-kicker) .team-footer-label {
+  color: var(--orange);
+  font-size: 11px;
+  letter-spacing: 1.2px;
+}
+
+.slidev-layout:has(.entry-page-kicker) h1 {
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.slidev-layout:has(.entry-page-kicker) .entry-lede {
+  color: var(--body);
+  font-size: 18px;
+  line-height: 1.35;
+  margin-top: 12px;
+}
+
+.slidev-layout:has(.entry-page-kicker) .entry-inputs {
+  display: grid;
+  gap: 78px;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 74px;
+}
+
+.slidev-layout:has(.entry-page-kicker) .entry-input {
+  border-top: 1px solid var(--line);
+  min-width: 0;
+  padding-top: 13px;
+}
+
+.slidev-layout:has(.entry-page-kicker) .entry-file {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+}
+
+.slidev-layout:has(.entry-page-kicker) .entry-file-mark {
+  color: var(--orange);
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.slidev-layout:has(.entry-page-kicker) .entry-file-name {
+  color: var(--ink);
+  font-size: 18px;
+  letter-spacing: -.3px;
+}
+
+.slidev-layout:has(.entry-page-kicker) .entry-rule {
+  background: var(--line);
+  height: 1px;
+  margin-top: 13px;
+  width: 28px;
+}
+
+.slidev-layout:has(.entry-page-kicker) .entry-input-title {
+  color: var(--ink);
+  font-size: 27px;
+  line-height: 1.2;
+  margin-top: 13px;
+}
+
+.slidev-layout:has(.entry-page-kicker) .entry-input-detail {
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: .25px;
+  line-height: 1.35;
+  margin-top: 10px;
+}
+
+.slidev-layout:has(.entry-page-kicker) .entry-example {
+  border-left: 2px solid #f5d7c8;
+  margin-top: 24px;
+  padding-left: 13px;
+}
+
+.slidev-layout:has(.entry-page-kicker) .entry-example-label {
+  color: var(--orange);
+  font-size: 10px;
+  letter-spacing: 1.2px;
+}
+
+.slidev-layout:has(.entry-page-kicker) .entry-example-text {
+  color: var(--body);
+  font-size: 15px;
+  line-height: 1.35;
+  margin-top: 7px;
+}
+
+.slidev-layout:has(.entry-page-kicker) .entry-example-meta {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: .2px;
+  line-height: 1.35;
+  margin-top: 6px;
+}
+
+.slidev-layout:has(.entry-page-kicker) .entry-input-personal .entry-file-mark { color: var(--blue); }
+.slidev-layout:has(.entry-page-kicker) .entry-input-personal .entry-rule { background: var(--blue); }
+.slidev-layout:has(.entry-page-kicker) .entry-input-personal .entry-example { border-left-color: #c9e7f2; }
+.slidev-layout:has(.entry-page-kicker) .entry-input-personal .entry-example-label { color: var(--blue); }
+
+.slidev-layout:has(.entry-page-kicker) .entry-footer {
+  border-top: 1px solid var(--line);
+  bottom: 55px;
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 500;
+  left: 56px;
+  line-height: 1.3;
+  padding-top: 13px;
+  position: absolute;
+  right: 56px;
+  text-align: center;
+}
+
+/* Resource evidence page: one dominant number, two quiet supporting facts. */
+.slidev-layout:has(.resources-page-kicker) h1 {
+  margin-bottom: 0;
+}
+
+.slidev-layout:has(.resources-page-kicker) .resources-page-kicker {
+  margin-bottom: 10px;
+}
+
+.slidev-layout:has(.resources-page-kicker) .resources-thesis {
+  color: var(--body);
+  font-size: 17px;
+  line-height: 1.3;
+  margin-top: 8px;
+}
+
+.slidev-layout:has(.resources-page-kicker) .resource-hero {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 23px;
+  text-align: center;
+}
+
+.slidev-layout:has(.resources-page-kicker) .resource-hero-number {
+  color: var(--orange);
+  font-size: 80px;
+  font-weight: 500;
+  letter-spacing: -4px;
+  line-height: .88;
+}
+
+.slidev-layout:has(.resources-page-kicker) .resource-hero-subtitle {
+  color: var(--body);
+  font-size: 18px;
+  line-height: 1.25;
+  margin-top: 13px;
+}
+
+.slidev-layout:has(.resources-page-kicker) .resource-hero-detail {
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: .45px;
+  line-height: 1.2;
+  margin-top: 8px;
+}
+
+.slidev-layout:has(.resources-page-kicker) .resource-support {
+  display: grid;
+  gap: 58px;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 27px;
+}
+
+.slidev-layout:has(.resources-page-kicker) .resource-support-item {
+  border-top: 1px solid var(--line);
+  min-width: 0;
+  padding-top: 10px;
+}
+
+.slidev-layout:has(.resources-page-kicker) .resource-support-label {
+  font-family: 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1.4px;
+  line-height: 1.2;
+}
+
+.slidev-layout:has(.resources-page-kicker) .resource-support-label.blue { color: var(--blue); }
+.slidev-layout:has(.resources-page-kicker) .resource-support-label.purple { color: var(--purple); }
+
+.slidev-layout:has(.resources-page-kicker) .resource-support-title {
+  color: var(--ink);
+  font-size: 20px;
+  line-height: 1.2;
+  margin-top: 9px;
+}
+
+.slidev-layout:has(.resources-page-kicker) .resource-support-detail {
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.35;
+  margin-top: 7px;
+  max-width: 360px;
+}
+
+.slidev-layout:has(.resources-page-kicker) .resource-conclusion {
+  color: #5d6672;
+  font-size: 15px;
+  line-height: 1.25;
+  margin-top: 22px;
+  text-align: center;
+}
+
+.slidev-layout:has(.resources-page-kicker) .resource-footnote {
+  border-top: 1px solid #f0f0f1;
+  bottom: 28px;
+  color: var(--muted);
+  font-size: 9.5px;
+  left: 56px;
+  line-height: 1.35;
+  padding-top: 8px;
+  position: absolute;
+  right: 56px;
+  text-align: center;
+}
+
+/* HTML reconstruction of the system diagram, keeping labels readable and independently aligned. */
+.slidev-layout .architecture-diagram {
+  margin-top: 7px;
+}
+
+.slidev-layout .architecture-diagram + .visual-caption {
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.slidev-layout .architecture-main {
+  align-items: stretch;
+  display: grid;
+  gap: 7px;
+  grid-template-columns: 1.02fr 24px 1.45fr 70px 1.17fr 24px 1.17fr;
+}
+
+.slidev-layout .arch-column {
+  min-width: 0;
+}
+
+.slidev-layout .arch-area-title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 7px;
+  white-space: nowrap;
+}
+
+.slidev-layout .arch-environment .arch-area-title { color: var(--blue); }
+.slidev-layout .arch-world .arch-area-title { color: #16803b; }
+.slidev-layout .arch-scientist .arch-area-title { color: var(--purple); }
+.slidev-layout .arch-meta .arch-area-title { color: #ef3434; }
+
+.slidev-layout .arch-panel {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 255px;
+  min-width: 0;
+  padding: 8px;
+}
+
+.slidev-layout .arch-environment .arch-panel {
+  background: #fbfdff;
+  border-color: #b8d7ff;
+  justify-content: center;
+}
+
+.slidev-layout .arch-world .arch-panel {
+  background: #fbfffc;
+  border-color: #9ed5b1;
+  justify-content: center;
+  padding: 10px;
+}
+
+.slidev-layout .arch-scientist .arch-panel {
+  background: #fdfbff;
+  border-color: #c9b7f5;
+}
+
+.slidev-layout .arch-meta .arch-panel {
+  background: #fffafa;
+  border-color: #ffb4b4;
+}
+
+.slidev-layout .arch-card {
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-sizing: border-box;
+  display: flex;
+  gap: 7px;
+  min-height: 29px;
+  padding: 4px 5px;
+}
+
+.slidev-layout .arch-card + .arch-card { margin-top: 4px; }
+
+.slidev-layout .arch-environment .arch-card { border-color: #d2e3fb; }
+.slidev-layout .arch-world .arch-card { border-color: #cce8d3; }
+
+.slidev-layout .arch-icon,
+.slidev-layout .arch-hero-icon,
+.slidev-layout .runtime-icon {
+  display: inline-block;
+  flex: none;
+}
+
+.slidev-layout .arch-icon { font-size: 20px; }
+
+.slidev-layout .arch-card strong {
+  color: var(--ink);
+  display: block;
+  font-size: 10.5px;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.slidev-layout .arch-environment .arch-card strong {
+  color: #5d6672;
+  font-weight: 500;
+}
+
+.slidev-layout .arch-card small {
+  color: var(--muted);
+  display: block;
+  font-size: 8.5px;
+  line-height: 1.15;
+  margin-top: 2px;
+}
+
+.slidev-layout .world-lane {
+  border-bottom: 1px solid #d6ebdb;
+  padding: 7px 0 8px;
+}
+
+.slidev-layout .world-lane:first-child { padding-top: 0; }
+.slidev-layout .world-lane:nth-child(3) { border-bottom: 0; }
+
+.slidev-layout .world-lane-label {
+  color: #16803b;
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: .15px;
+  line-height: 1.15;
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.slidev-layout .world-items {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.slidev-layout .world-item {
+  align-items: center;
+  color: var(--body);
+  display: flex;
+  font-size: 10.5px;
+  gap: 6px;
+  line-height: 1.15;
+  min-width: 0;
+}
+
+.slidev-layout .world-item strong {
+  color: #5d6672;
+  font-weight: 500;
+}
+
+.slidev-layout .arch-persist {
+  background: #f1fbf3;
+  border: 1px solid #b9dfc1;
+  border-radius: 7px;
+  color: #16803b;
+  font-size: 10px;
+  line-height: 1.15;
+  margin-top: 4px;
+  padding: 4px;
+  text-align: center;
+}
+
+.slidev-layout .arch-arrow {
+  align-self: center;
+  font-size: 23px;
+  line-height: 1;
+  text-align: center;
+}
+
+.slidev-layout .arch-reset {
+  align-self: center;
+  border: 1px solid #c9d1df;
+  border-radius: 9px;
+  box-sizing: border-box;
+  color: #25324d;
+  display: flex;
+  flex-direction: column;
+  height: 145px;
+  justify-content: center;
+  padding: 8px 5px;
+  text-align: center;
+}
+
+.slidev-layout .arch-reset-icon {
+  align-self: center;
+  color: #25324d;
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+
+.slidev-layout .arch-reset strong {
+  font-size: 11px;
+  line-height: 1.15;
+}
+
+.slidev-layout .arch-reset small {
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.25;
+  margin-top: 8px;
+}
+
+.slidev-layout .arch-hero-icon {
+  align-self: center;
+  font-size: 33px;
+  margin-top: 2px;
+}
+
+.slidev-layout .arch-hero-title {
+  color: var(--ink);
+  font-size: 19px;
+  line-height: 1.15;
+  margin-top: 4px;
+  text-align: center;
+}
+
+.slidev-layout .arch-hero-subtitle {
+  color: var(--purple);
+  font-size: 9.5px;
+  line-height: 1.2;
+  margin-top: 3px;
+  text-align: center;
+}
+
+.slidev-layout .arch-meta .arch-hero-subtitle { color: #ef3434; }
+
+.slidev-layout .arch-divider {
+  border-top: 1px solid #dfd5f8;
+  margin: 7px 0 2px;
+}
+
+.slidev-layout .arch-meta .arch-divider { border-color: #ffd2d2; }
+
+.slidev-layout .arch-list {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0 3px 0 14px;
+}
+
+.slidev-layout .arch-list li {
+  color: var(--body);
+  font-size: 10.5px;
+  line-height: 1.25;
+  margin: 5px 0;
+  position: relative;
+}
+
+.slidev-layout .arch-list li::before {
+  content: '•';
+  left: -12px;
+  position: absolute;
+}
+
+.slidev-layout .purple-list li::before { color: var(--purple); }
+.slidev-layout .rose-list li::before { color: #ef3434; }
+
+.slidev-layout .arch-callout {
+  border: 1px solid;
+  border-radius: 7px;
+  font-size: 9.5px;
+  line-height: 1.25;
+  margin-top: auto;
+  padding: 5px 4px;
+  text-align: center;
+}
+
+.slidev-layout .purple-callout {
+  background: #faf6ff;
+  border-color: #cdbdf2;
+  color: #5532bd;
+}
+
+.slidev-layout .architecture-handoff {
+  align-items: center;
+  color: #ef3434;
+  display: flex;
+  font-size: 11px;
+  gap: 9px;
+  line-height: 1.2;
+  margin: 6px 10% 0;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.slidev-layout .architecture-handoff span {
+  border-top: 1px solid #ef3434;
+  flex: 1;
+}
+
+.slidev-layout .architecture-handoff-sub {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.2;
+  margin-top: 2px;
+  text-align: center;
+}
+
+.slidev-layout .runtime-band {
+  background: #fffaf5;
+  border: 1px solid #ffd8b1;
+  border-radius: 10px;
+  margin-top: 5px;
+  padding: 5px 9px 6px;
+}
+
+.slidev-layout .runtime-title {
+  color: #d86d00;
+  display: block;
+  font-size: 12px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.slidev-layout .runtime-items {
+  display: grid;
+  gap: 7px;
+  grid-template-columns: repeat(5, 1fr);
+  margin-top: 4px;
+}
+
+.slidev-layout .runtime-items > div {
+  align-items: center;
+  border: 1px solid #ffdec2;
+  border-radius: 7px;
+  color: var(--body);
+  display: flex;
+  font-size: 9.5px;
+  gap: 6px;
+  justify-content: center;
+  line-height: 1.15;
+  min-height: 29px;
+  padding: 3px 4px;
+}
+
+.slidev-layout .runtime-icon { font-size: 20px; }
+
+.slidev-layout .open-world-claim {
+  color: var(--ink);
+  font-size: 43px;
+  font-weight: 400;
+  letter-spacing: -2.2px;
+  line-height: 1.16;
+  margin: 29px 0 39px;
+}
+
+.slidev-layout .capability-grid {
+  display: grid;
+  gap: 42px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.slidev-layout .capability-block {
+  border-top: 1px solid var(--line);
+  padding-top: 17px;
+}
+
+.slidev-layout .capability-title,
+.slidev-layout .compare-kicker {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.slidev-layout .capability-items {
+  color: var(--body);
+  display: grid;
+  font-size: 18px;
+  gap: 8px 18px;
+  grid-template-columns: repeat(2, 1fr);
+  line-height: 1.35;
+  margin: 21px 0 22px;
+}
+
+.slidev-layout .capability-items span::before {
+  color: #bcbcc1;
+  content: '·';
+  margin-right: 8px;
+}
+
+.slidev-layout .capability-foot {
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 16px;
+  padding-top: 13px;
+}
+
+.slidev-layout .open-world-line {
+  border-bottom: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+  margin-top: 32px;
+  padding: 12px 0 11px;
+}
+
+.slidev-layout .open-world-line-strong {
+  color: var(--body);
+  font-size: 21px;
+  line-height: 1.35;
+}
+
+.slidev-layout .open-world-line-detail {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.35;
+  margin-top: 5px;
+}
+
+.slidev-layout .compare-grid {
+  display: grid;
+  gap: 0;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 29px;
+}
+
+.slidev-layout .compare-side {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.slidev-layout .failure-side { padding-right: 42px; }
+.slidev-layout .compare-side + .compare-side {
+  border-left: 1px solid var(--line);
+  padding-left: 42px;
+}
+
+.slidev-layout .compare-kicker { color: var(--muted); }
+.slidev-layout .failure-side .compare-kicker { color: var(--rose); }
+.slidev-layout .recovery-side .compare-kicker { color: var(--blue); }
+
+.slidev-layout .compare-subtitle {
+  color: var(--ink);
+  font-size: 23px;
+  line-height: 1.35;
+  margin-top: 9px;
+}
+
+.slidev-layout .compare-diagram,
+.slidev-layout .compare-flow {
+  background: transparent;
+  color: var(--body);
+  font-family: 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  font-size: 14px;
+  line-height: 1.42;
+  margin: 20px 0 0;
+  overflow: visible;
+  padding: 0;
+  white-space: pre;
+}
+
+.slidev-layout .compare-failure,
+.slidev-layout .recovery-flow {
+  border-top: 1px solid var(--line);
+  margin-top: 18px;
+  padding-top: 15px;
+}
+
+.slidev-layout .compare-flow {
+  color: var(--muted);
+  margin-top: 0;
+}
+
+.slidev-layout .dead-end {
+  color: var(--rose);
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  margin-top: 1px;
+}
+
+.slidev-layout .compare-note {
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+  margin-top: 19px;
+  padding-top: 13px;
+}
+
+.slidev-layout .recovery-caption {
+  color: var(--blue);
+  font-size: 17px;
+  line-height: 1.45;
+  margin-top: 15px;
+  max-width: 330px;
+}
+
+.slidev-layout .recovery-side .compare-diagram {
+  font-size: 12.2px;
+  line-height: 1.25;
+}
+
+.slidev-layout .recovery-flow.compact .compare-flow {
+  color: var(--body);
+  font-size: 12.5px;
+  letter-spacing: -.3px;
+  white-space: nowrap;
+}
+
+.slidev-layout .recovery-flow.compact .recovery-caption {
+  font-size: 13px;
+  line-height: 1.35;
+  margin-top: 11px;
+  max-width: none;
+  white-space: nowrap;
+}
+
+/* Icon-led concept diagrams for the open-world agent section. */
+.slidev-layout .capability-rails {
+  display: grid;
+  gap: 42px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 32px;
+}
+
+.slidev-layout .capability-rail {
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  padding-top: 16px;
+}
+
+.slidev-layout .rail-heading {
+  align-items: baseline;
+  display: flex;
+  gap: 14px;
+}
+
+.slidev-layout .rail-number {
+  font-family: 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.slidev-layout .icon-row {
+  display: grid;
+  flex: 1;
+  gap: 17px 20px;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 23px 0 20px;
+}
+
+.slidev-layout .icon-item {
+  align-items: center;
+  color: var(--body);
+  display: flex;
+  font-size: 16px;
+  gap: 9px;
+  line-height: 1.25;
+  min-width: 0;
+}
+
+.slidev-layout .capability-icon,
+.slidev-layout .graph-icon,
+.slidev-layout .graph-node-icon,
+.slidev-layout .harness-icon,
+.slidev-layout .failure-icon,
+.slidev-layout .agent-icon {
+  display: inline-block;
+  flex: none;
+}
+
+.slidev-layout .capability-icon { font-size: 23px; }
+.slidev-layout .capability-rail .capability-foot { font-size: 15px; }
+
+.slidev-layout .static-graph {
+  margin-top: 23px;
+}
+
+.slidev-layout .graph-top {
+  align-items: center;
+  color: var(--muted);
+  display: flex;
+  font-size: 16px;
+  gap: 9px;
+  justify-content: center;
+}
+
+.slidev-layout .graph-icon { font-size: 22px; }
+.slidev-layout .graph-arrow,
+.slidev-layout .harness-arrow {
+  color: #bcbcc1;
+  font-size: 22px;
+  line-height: 1;
+  margin: 8px 0;
+  text-align: center;
+}
+
+.slidev-layout .graph-tools {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(3, 1fr);
+  position: relative;
+}
+
+.slidev-layout .graph-tools::before {
+  border-top: 1px solid var(--line);
+  content: '';
+  left: 16.7%;
+  position: absolute;
+  right: 16.7%;
+  top: -8px;
+}
+
+.slidev-layout .graph-node {
+  align-items: center;
+  color: var(--body);
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  gap: 7px;
+  justify-content: center;
+  position: relative;
+}
+
+.slidev-layout .graph-node::before {
+  border-left: 1px solid var(--line);
+  content: '';
+  height: 8px;
+  position: absolute;
+  top: -8px;
+}
+
+.slidev-layout .graph-node-icon { font-size: 23px; }
+
+.slidev-layout .failure-step {
+  align-items: center;
+  color: var(--body);
+  display: flex;
+  font-size: 17px;
+  gap: 10px;
+  line-height: 1.3;
+}
+
+.slidev-layout .failure-step.muted { color: var(--muted); }
+.slidev-layout .failure-icon { font-size: 19px; }
+
+.slidev-layout .failure-arrow {
+  color: #bcbcc1;
+  font-size: 17px;
+  line-height: 1;
+  margin: 3px 0 3px 5px;
+}
+
+.slidev-layout .dead-end {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+}
+
+.slidev-layout .compare-failure {
+  padding-top: 10px;
+}
+
+.slidev-layout .compare-failure .dead-end {
+  font-size: 22px;
+  line-height: 1.15;
+}
+
+.slidev-layout .compare-note {
+  font-size: 13px;
+  line-height: 1.35;
+  margin-top: 12px;
+  padding-top: 9px;
+}
+
+.slidev-layout .failure-side > .compare-note,
+.slidev-layout .recovery-side > .recovery-flow {
+  margin-top: auto;
+}
+
+.slidev-layout .harness-diagram {
+  margin-top: 21px;
+}
+
+.slidev-layout .harness-computer {
+  align-items: center;
+  color: var(--body);
+  display: flex;
+  font-size: 17px;
+  gap: 9px;
+  justify-content: center;
+}
+
+.slidev-layout .harness-icon { font-size: 23px; }
+.slidev-layout .harness-arrow { font-size: 19px; margin: 6px 0; }
+
+.slidev-layout .harness-paths {
+  display: grid;
+  gap: 13px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.slidev-layout .harness-path {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.slidev-layout .harness-node {
+  align-items: center;
+  color: var(--body);
+  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+  gap: 5px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.slidev-layout .harness-path .harness-node,
+.slidev-layout .agent-band .harness-node {
+  flex-direction: row;
+  gap: 7px;
+}
+
+.slidev-layout .harness-path .harness-node {
+  font-size: 14px;
+}
+
+.slidev-layout .harness-path .harness-icon { font-size: 20px; }
+.slidev-layout .harness-path .harness-arrow { font-size: 16px; margin: 1px 0; }
+.slidev-layout .agent-band {
+  align-items: center;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 10px auto 0;
+  width: 92%;
+}
+
+.slidev-layout .agent-core {
+  align-items: center;
+  border-bottom: 2px solid var(--blue);
+  color: var(--blue);
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  gap: 4px;
+  padding-bottom: 6px;
+  position: relative;
+  text-align: center;
+}
+
+.slidev-layout .agent-core::before,
+.slidev-layout .agent-core::after {
+  color: var(--blue);
+  font-size: 17px;
+  position: absolute;
+  top: 18px;
+}
+
+.slidev-layout .agent-core::before { content: '←'; left: -20px; }
+.slidev-layout .agent-core::after { content: '→'; right: -20px; }
+.slidev-layout .agent-icon { font-size: 23px; }
+
+.slidev-layout .cli-api {
+  color: var(--muted);
+  font-family: 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  font-size: 14px;
+  text-align: center;
+}
+
+.slidev-layout .recovery-sequence {
+  align-items: center;
+  color: var(--body);
+  display: flex;
+  font-family: 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  font-size: 12.5px;
+  gap: 7px;
+  justify-content: space-between;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.slidev-layout .recovery-sequence b {
+  color: var(--blue);
+  font-weight: 400;
+}
+
+/* Compact the two open-world slides so the idea leads and the diagrams support it. */
+.slidev-layout:has(.open-world-claim) .visual-kicker {
+  margin-bottom: 8px;
+}
+
+.slidev-layout:has(.open-world-claim) .open-world-claim {
+  color: var(--ink);
+  font-size: 37px;
+  line-height: 1.08;
+  margin: 17px 0 25px;
+}
+
+.slidev-layout:has(.open-world-claim) .claim-line {
+  color: var(--ink);
+  display: block;
+  white-space: nowrap;
+}
+
+.slidev-layout:has(.open-world-claim) .claim-line-shift {
+  margin-left: 30px;
+}
+
+.slidev-layout:has(.open-world-claim) .open-highlight {
+  display: inline-block;
+  font-weight: 500;
+  letter-spacing: -1.8px;
+}
+
+.slidev-layout:has(.open-world-claim) .orange-open {
+  color: var(--orange);
+}
+
+.slidev-layout:has(.open-world-claim) .blue-open {
+  color: var(--blue);
+}
+
+.slidev-layout:has(.open-world-claim) .capability-rails {
+  gap: 32px;
+  margin-top: 22px;
+}
+
+.slidev-layout:has(.open-world-claim) .capability-rail {
+  padding-top: 12px;
+}
+
+.slidev-layout:has(.open-world-claim) .rail-heading {
+  gap: 10px;
+}
+
+.slidev-layout:has(.open-world-claim) .capability-title {
+  font-size: 13px;
+}
+
+.slidev-layout:has(.open-world-claim) .icon-row {
+  gap: 11px 14px;
+  margin: 16px 0 14px;
+}
+
+.slidev-layout:has(.open-world-claim) .icon-item {
+  font-size: 14px;
+  gap: 7px;
+  line-height: 1.2;
+}
+
+.slidev-layout:has(.open-world-claim) .capability-icon {
+  font-size: 20px;
+}
+
+.slidev-layout:has(.open-world-claim) .capability-rail .capability-foot {
+  color: var(--body);
+  font-size: 14px;
+  font-weight: 500;
+  padding-top: 9px;
+}
+
+.slidev-layout:has(.open-world-claim) .blue-rail .capability-foot { color: var(--blue); }
+.slidev-layout:has(.open-world-claim) .orange-rail .capability-foot { color: var(--orange); }
+.slidev-layout:has(.open-world-claim) .rose-rail .capability-foot {
+  color: var(--rose);
+  font-weight: 600;
+}
+
+.slidev-layout:has(.open-world-claim) .open-world-line {
+  margin-top: 23px;
+  padding: 11px 0 10px;
+}
+
+.slidev-layout:has(.open-world-claim) .open-world-line-label {
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.slidev-layout:has(.open-world-claim) .open-world-line-strong {
+  color: var(--ink);
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+.slidev-layout:has(.open-world-claim) .open-world-line-detail {
+  font-family: 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+.slidev-layout:has(.compare-grid) .visual-kicker {
+  margin-bottom: 7px;
+}
+
+.slidev-layout:has(.compare-grid) h1 {
+  font-size: 36px;
+  letter-spacing: -1.4px;
+  line-height: 1.12;
+  margin: 8px 0 17px;
+}
+
+.slidev-layout:has(.compare-grid) .compare-grid {
+  margin-top: 6px;
+}
+
+.slidev-layout:has(.compare-grid) .compare-subtitle {
+  font-size: 20px;
+  margin-top: 5px;
+}
+
+.slidev-layout:has(.compare-grid) .static-graph {
+  margin-top: 16px;
+}
+
+.slidev-layout:has(.compare-grid) .graph-arrow,
+.slidev-layout:has(.compare-grid) .harness-arrow {
+  margin: 5px 0;
+}
+
+.slidev-layout:has(.compare-grid) .compare-failure {
+  margin-top: 13px;
+  padding-top: 9px;
+}
+
+.slidev-layout:has(.compare-grid) .harness-diagram {
+  margin-top: 15px;
+}
+
+/* Model diversity: a flat role map plus a qualified evidence strip. */
+.slidev-layout:has(.diversity-layout) .visual-kicker {
+  margin-bottom: 7px;
+}
+
+.slidev-layout:has(.diversity-layout) h1 {
+  font-size: 38px;
+  letter-spacing: -1.6px;
+  margin: 7px 0 8px;
+}
+
+.slidev-layout:has(.diversity-layout) .diversity-lede {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.35;
+  margin-bottom: 20px;
+}
+
+.slidev-layout:has(.diversity-layout) .diversity-layout {
+  display: grid;
+  gap: 50px;
+  grid-template-columns: 1.13fr 1fr;
+}
+
+.slidev-layout:has(.diversity-layout) .diversity-section-label {
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 1.3px;
+  line-height: 1.2;
+  margin-bottom: 11px;
+}
+
+.slidev-layout:has(.diversity-layout) .diversity-assignment-head,
+.slidev-layout:has(.diversity-layout) .diversity-assignment-row {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 96px 54px 1fr 112px;
+  min-width: 0;
+}
+
+.slidev-layout:has(.diversity-layout) .diversity-assignment-head {
+  border-bottom: 1px solid var(--line);
+  color: #a0a2a8;
+  font-size: 10px;
+  letter-spacing: 1px;
+  padding-bottom: 7px;
+}
+
+.slidev-layout:has(.diversity-layout) .diversity-assignment-row {
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 13px;
+  min-height: 39px;
+}
+
+.slidev-layout:has(.diversity-layout) .diversity-assignment-row strong {
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.slidev-layout:has(.diversity-layout) .diversity-assignment-row span:nth-child(2) {
+  color: var(--body);
+  font-family: 'Fira Code', 'SFMono-Regular', Consolas, monospace;
+  font-size: 12px;
+}
+
+.slidev-layout:has(.diversity-layout) .diversity-assignment-row span:nth-child(3) {
+  color: var(--blue);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.slidev-layout:has(.diversity-layout) .diversity-meta-row strong,
+.slidev-layout:has(.diversity-layout) .diversity-meta-row span:nth-child(3) {
+  color: var(--orange);
+}
+
+.slidev-layout:has(.diversity-layout) .diversity-assignment-row small {
+  color: var(--muted);
+  font-size: 11px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.slidev-layout:has(.diversity-layout) .diversity-assignment-note {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+  margin-top: 14px;
+  max-width: 500px;
+}
+
+.slidev-layout:has(.diversity-layout) .diversity-reading-row {
+  align-items: start;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 15px;
+  grid-template-columns: 30px 1fr;
+  padding: 11px 0 10px;
+}
+
+.slidev-layout:has(.diversity-layout) .diversity-index {
+  font-family: 'Fira Code', 'SFMono-Regular', Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.slidev-layout:has(.diversity-layout) .diversity-reading-row strong {
+  color: var(--ink);
+  display: block;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.slidev-layout:has(.diversity-layout) .diversity-reading-row p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.35;
+  margin: 5px 0 0;
+}
+
+.slidev-layout:has(.diversity-layout) .diversity-evidence {
+  align-items: center;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 22px;
+  grid-template-columns: 1fr 1fr 1.25fr;
+  margin-top: 18px;
+  padding-top: 13px;
+}
+
+.slidev-layout:has(.diversity-layout) .diversity-evidence-item {
+  align-items: baseline;
+  display: flex;
+  gap: 10px;
+  min-width: 0;
+}
+
+.slidev-layout:has(.diversity-layout) .diversity-evidence-number {
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: -1.2px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.slidev-layout:has(.diversity-layout) .diversity-evidence-label {
+  color: var(--body);
+  font-size: 9px;
+  letter-spacing: .9px;
+  line-height: 1.2;
+}
+
+.slidev-layout:has(.diversity-layout) .diversity-evidence-item small {
+  color: var(--muted);
+  display: block;
+  font-size: 10px;
+  line-height: 1.25;
+  margin-top: 4px;
+}
+
+.slidev-layout:has(.diversity-layout) .diversity-evidence-note {
+  border-left: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.35;
+  padding-left: 18px;
+}
+
+.slidev-layout:has(.diversity-layout) .diversity-evidence-note .mono {
+  color: var(--rose);
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+/* Appendix insight page: report synthesis with an explicit evidence boundary. */
+.slidev-layout:has(.insight-grid) .visual-kicker {
+  margin-bottom: 7px;
+}
+
+.slidev-layout:has(.insight-grid) h1 {
+  font-size: 36px;
+  letter-spacing: -1.5px;
+  margin: 7px 0 7px;
+}
+
+.slidev-layout:has(.insight-grid) .insight-lede {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.35;
+  margin-bottom: 17px;
+}
+
+.slidev-layout:has(.insight-grid) .insight-grid {
+  column-gap: 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 0;
+}
+
+.slidev-layout:has(.insight-grid) .insight-item {
+  align-items: start;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 13px;
+  grid-template-columns: 30px 1fr;
+  min-width: 0;
+  padding: 12px 0 11px;
+}
+
+.slidev-layout:has(.insight-grid) .insight-index {
+  font-family: 'Fira Code', 'SFMono-Regular', Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.25;
+}
+
+.slidev-layout:has(.insight-grid) .insight-item:nth-child(1) .insight-index { color: var(--blue); }
+.slidev-layout:has(.insight-grid) .insight-item:nth-child(2) .insight-index { color: var(--orange); }
+.slidev-layout:has(.insight-grid) .insight-item:nth-child(3) .insight-index { color: var(--rose); }
+.slidev-layout:has(.insight-grid) .insight-item:nth-child(4) .insight-index { color: var(--purple); }
+
+.slidev-layout:has(.insight-grid) .insight-item strong {
+  color: var(--ink);
+  display: block;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.slidev-layout:has(.insight-grid) .insight-item p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.38;
+  margin: 6px 0 0;
+}
+
+.slidev-layout:has(.insight-grid) .insight-item p .mono {
+  color: var(--body);
+  font-size: 12px;
+}
+
+.slidev-layout:has(.insight-grid) .insight-bottom {
+  align-items: center;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 32px;
+  grid-template-columns: 1.35fr 1fr;
+  margin-top: 1px;
+  padding-top: 12px;
+}
+
+.slidev-layout:has(.insight-grid) .insight-boundary-label {
+  color: var(--rose);
+  font-size: 9px;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  margin-bottom: 5px;
+}
+
+.slidev-layout:has(.insight-grid) .insight-boundary-copy {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.slidev-layout:has(.insight-grid) .insight-boundary-copy strong {
+  color: var(--body);
+  font-weight: 500;
+}
+
+.slidev-layout:has(.insight-grid) .insight-stats {
+  align-items: baseline;
+  display: flex;
+  gap: 20px;
+  justify-content: flex-end;
+}
+
+.slidev-layout:has(.insight-grid) .insight-stat {
+  align-items: baseline;
+  display: flex;
+  gap: 7px;
+  min-width: 0;
+}
+
+.slidev-layout:has(.insight-grid) .insight-stat strong {
+  font-size: 25px;
+  font-weight: 400;
+  letter-spacing: -1.2px;
+  line-height: 1;
+}
+
+.slidev-layout:has(.insight-grid) .insight-stat small {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.deck-footer { display: none; }
+.footer-dim { color: var(--muted); }
+
+@media (max-width: 900px) {
+  .slidev-layout .hero { font-size: 54px; }
+  .slidev-layout .statement, .slidev-layout .closing { font-size: 49px; }
+  .slidev-layout .role { grid-template-columns: 140px 1fr 120px; }
+}

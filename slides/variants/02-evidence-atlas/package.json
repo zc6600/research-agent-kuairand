@@ -1,0 +1,15 @@
+{
+  "name": "research-agent-slides",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "slidev --port 3030",
+    "build": "slidev build --base ./",
+    "export": "slidev export --dark --wait 3500 --output research-agent.pdf"
+  },
+  "devDependencies": {
+    "@slidev/cli": "^52.19.1",
+    "@slidev/theme-default": "^0.25.0",
+    "playwright-chromium": "^1.55.0"
+  }
+}
