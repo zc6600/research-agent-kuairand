@@ -87,20 +87,27 @@ Open with the research job. The benchmark makes that job concrete; broader task 
       <div class="failure-basin-line"><i></i><i></i><i></i><i class="current"></i><i></i><i></i></div>
       <div class="failure-basin-caption mono">same basin</div>
     </div>
-    <p class="failure-mode-explanation">A long-lived context carries yesterday's commitment into today's search.</p>
+    <p class="failure-mode-explanation">A long-lived context carries yesterday's momentum into today's search.</p>
     <div class="failure-mode-takeaway"><strong>More iterations <span>≠</span> more exploration.</strong></div>
   </div>
 
   <div class="failure-mode failure-mode-tree">
-    <div class="failure-mode-head"><span class="failure-mode-number mono">03</span><span class="failure-mode-label">TREE SEARCH</span></div>
-    <div class="failure-mode-visual failure-tree" aria-label="Searching a repository tree creates a high context understanding cost">
-      <div class="failure-tree-root mono">repo/</div>
-      <div class="failure-tree-branches mono"><span>src/</span><span>docs/</span><span class="active">config/</span></div>
-      <div class="failure-tree-flow mono"><span>read</span><b>→</b><span>interpret</span><b>→</b><span>retain</span></div>
-      <div class="failure-tree-cost mono">context cost <strong>↑</strong></div>
+    <div class="failure-mode-head"><span class="failure-mode-number mono">03</span><span class="failure-mode-label">CONTEXT COST</span></div>
+    <div class="failure-mode-visual failure-tree-token-cost" aria-label="Understanding a file costs far more tokens than changing it, so the agent rereads context">
+      <div class="failure-token-row failure-token-understand">
+        <span class="failure-token-label mono">UNDERSTAND</span>
+        <span class="failure-token-bar"><i></i></span>
+        <strong>≫</strong>
+      </div>
+      <div class="failure-token-row failure-token-edit">
+        <span class="failure-token-label mono">EDIT</span>
+        <span class="failure-token-bar"><i></i></span>
+        <span></span>
+      </div>
+      <div class="failure-reread-loop mono"><span>read context</span><b>→</b><span>edit</span><b>→</b><span>re-read</span></div>
     </div>
-    <p class="failure-mode-explanation">Searching files is cheap. Understanding their context is expensive.</p>
-    <div class="failure-mode-takeaway"><strong>Context understanding becomes the bottleneck.</strong></div>
+    <p class="failure-mode-explanation">Reconstructing file context costs far more tokens than the edit itself.</p>
+    <div class="failure-mode-takeaway"><strong>Repeated reading becomes the bottleneck.</strong></div>
   </div>
 </div>
 
@@ -116,6 +123,8 @@ This is a synthesis of the design pressures observed in the project, not a unive
 - ../README.md — Why fresh Scientists?, Architecture, and Parallel breadth
 - ../docs/project_story.md — Inspiration and Challenges
 - ../docs/FINAL_REPORT.md — sections 1, 3.4–3.5, and 4.2
+
+This slide frames a real-environment cost model: understanding a file requires reconstructing surrounding context, while the edit itself can be small. Repeated tool calls or handoffs force the agent to pay that reading cost again. The comparison is conceptual, not a measured token ratio.
 -->
 
 ---
@@ -159,10 +168,13 @@ This is a synthesis of the design pressures observed in the project, not a unive
   </div>
 </div>
 
-<div class="open-world-line"><div class="open-world-line-strong">We chose a coding agent—not a predefined workflow around known tools.</div><div class="open-world-line-detail">Missing capability <span class="blue">→</span> inspect <span class="blue">→</span> extend environment <span class="blue">→</span> retry</div></div>
+<div class="open-world-line"><div class="open-world-line-label mono">WORKFLOW EXAMPLE · LANGGRAPH</div><div class="open-world-line-strong"><span class="blue">LangGraph</span> makes a known workflow explicit as nodes + edges.</div><div class="open-world-line-detail">Missing capability? Leave the graph <span class="blue">→</span> inspect <span class="blue">→</span> extend <span class="blue">→</span> retry</div></div>
 
 <!--
-The open-world framing and capability taxonomy are adapted from the user's supplied talk-track.
+The open-world framing and capability taxonomy are adapted from the user's supplied talk-track. LangGraph is used as a concrete workflow example: its documentation distinguishes predetermined workflows from dynamic agents and models workflows with state, nodes, and edges.
+[Sources]
+- https://docs.langchain.com/oss/python/langgraph/workflows-agents — workflows vs. agents
+- https://docs.langchain.com/oss/python/langgraph/graph-api — state, nodes, and edges
 -->
 
 ---
