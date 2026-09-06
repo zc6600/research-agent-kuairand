@@ -27,6 +27,8 @@ mdc: true
 
 <div class="cover-meta mono"><span>PERSISTENT WORLD</span><span>FRESH SCIENTIST</span><span>EVIDENCE FIRST</span></div>
 
+<div class="narrative-route">Problem → Motivation → System → Experience → Evaluation → Insights</div>
+
 <!--
 A lightweight framework for long-running ML research. Its central design gives the research world and the researcher different lifetimes.
 [Sources]
@@ -35,55 +37,36 @@ A lightweight framework for long-running ML research. Its central design gives t
 
 ---
 
-<div class="visual-kicker orange entry-page-kicker">01 / THE ENTRY POINT</div>
+<div class="visual-kicker orange">01 / PROBLEM · THE RESEARCH TASK</div>
 
-# One Agent. Any ML Task. End to End.
+# Can an agent carry a research task to completion?
 
-<div class="entry-lede">A general-purpose research agent that runs the entire research loop autonomously.</div>
+<div class="lead">Turn a task contract into a tested model, a reproducible implementation, and evidence another researcher can inspect.</div>
 
-<div class="entry-inputs">
-  <div class="entry-input entry-input-task">
-    <div class="entry-file"><span class="entry-file-mark mono">01</span><span class="entry-file-name mono">task.md</span></div>
-    <div class="entry-rule"></div>
-    <div class="entry-input-title">What to solve.</div>
-    <div class="entry-input-detail mono">Objectives · constraints · evaluation</div>
-    <div class="entry-example">
-      <div class="entry-example-label mono">EXAMPLE</div>
-      <div class="entry-example-text">Rank short videos for each user and interaction context.</div>
-      <div class="entry-example-meta mono">KuaiRand-Pure · long_view · GAUC + nDCG@5</div>
-    </div>
-  </div>
-  <div class="entry-input entry-input-personal">
-    <div class="entry-file"><span class="entry-file-mark mono">02</span><span class="entry-file-name mono">PERSONAL.md</span></div>
-    <div class="entry-rule"></div>
-    <div class="entry-input-title">How you want it solved.</div>
-    <div class="entry-input-detail mono">Preferences · research style · priorities</div>
-    <div class="entry-example">
-      <div class="entry-example-label mono">EXAMPLE</div>
-      <div class="entry-example-text">Run on macOS / Apple Silicon with uv.</div>
-      <div class="entry-example-meta mono">≤ 15 min / experiment · never print credentials</div>
-    </div>
-  </div>
+<div class="roles narrative-roles">
+  <div class="role"><strong>Explore</strong><span>Choose hypotheses, write code, and run experiments.</span><small>Scientific judgment</small></div>
+  <div class="role"><strong>Recover</strong><span>Handle failures and revise unsuccessful ideas.</span><small>Long-running work</small></div>
+  <div class="role"><strong>Deliver</strong><span>Retain a valid model and the evidence behind it.</span><small>Verifiable progress</small></div>
 </div>
 
-<div class="entry-footer">Autonomous by default. Supervisable by design.</div>
+<div class="bottom-note note">Our test case: short-video ranking on KuaiRand-Pure, with a fixed evaluator and public-validation boundary.</div>
 
 <!--
-This entry-point framing is grounded in the repository's general-purpose coding-agent interface, task contract, and bounded autonomous cycle.
+Open with the research job. The benchmark makes that job concrete; broader task generality remains unproven.
 [Sources]
-- ../README.md — What it does, Quick start, and autonomous research loop
-- ../docs/project_story.md — What it does and How we built it
+- ../README.md — introduction and TikTok TechJam 2026 result
+- ../competitions/kuairand/task.md — challenge target and optimization objective
 -->
 
 ---
 
 <!-- class: failure-modes-slide -->
 
-<div class="visual-kicker orange failure-modes-kicker">02 / WHY CURRENT RESEARCH AGENTS FALL SHORT</div>
+<div class="visual-kicker orange failure-modes-kicker">01 / PROBLEM · FAILURE MODES</div>
 
 # Why Current Research Agents Fall Short
 
-<div class="failure-modes-thesis">Three failure modes of workflow-first research agents.</div>
+<div class="failure-modes-thesis">Three obstacles to sustained autonomous research.</div>
 
 <div class="failure-modes-grid">
   <div class="failure-mode failure-mode-closed">
@@ -137,44 +120,9 @@ This is a synthesis of the design pressures observed in the project, not a unive
 
 ---
 
-<div class="visual-kicker green">03 / THE CORE IDEA</div>
-
-<div class="statement"><p>Preserve the<br><span class="green">research world.</span></p><p style="margin-top: 17px">Reset the researcher.</p></div>
-
-<div class="bottom-note lead">Pass evidence, failures, and code to a fresh Scientist.</div>
-
-<!--
-A fresh Scientist inherits externalized experience without continuing its predecessor's unfinished reasoning. Resets happen at trajectory boundaries; productive inquiry can continue within a trajectory.
-[Sources]
-- ../README.md — central thesis and design principles
--->
-
----
-
-<div class="visual-kicker blue">04 / SEPARATION OF RESPONSIBILITIES</div>
-
-# Two scientific roles. One safe runtime.
-
-<div class="roles">
-  <div class="role"><strong class="green">Scientist</strong><span>Hypothesize · code · test · interpret</span><small>One trajectory</small></div>
-  <div class="role"><strong>META</strong><span>Audit · preserve · hand off</span><small>Across trajectories</small></div>
-  <div class="role"><strong>Runtime</strong><span>Isolation · cancellation · invariants</span><small>System lifetime</small></div>
-</div>
-
-<div class="bottom-note note">The Scientist chooses the science. META maintains the world. Runtime enforces mechanics, not scientific judgment.</div>
-
-<!--
-Scientific authority is separate from persistence authority. META does not choose the next hypothesis, model, feature, or experiment.
-[Sources]
-- ../README.md — Architecture
-- ../docs/ARCHITECTURE.md
--->
-
----
-
 <!-- class: open-world-slide -->
 
-<div class="visual-kicker blue">05 / OPEN-WORLD CAPABILITY</div>
+<div class="visual-kicker blue">02 / MOTIVATION · OPEN-WORLD RESEARCH</div>
 
 <div class="open-world-claim"><span class="claim-line">Research is an <span class="open-highlight orange-open">open-world</span> task.</span><span class="claim-line claim-line-shift">We need an <span class="open-highlight blue-open">open-world</span> coding agent.</span></div>
 
@@ -219,7 +167,42 @@ The open-world framing and capability taxonomy are adapted from the user's suppl
 
 ---
 
-<div class="visual-kicker">06 / SYSTEM DESIGN · PERSISTENCE BOUNDARY</div>
+<div class="visual-kicker green">02 / MOTIVATION · TWO DIFFERENT LIFETIMES</div>
+
+<div class="statement"><p>Preserve the<br><span class="green">research world.</span></p><p style="margin-top: 17px">Reset the researcher.</p></div>
+
+<div class="bottom-note lead">Pass evidence, failures, and code to a fresh Scientist.</div>
+
+<!--
+A fresh Scientist inherits externalized experience without continuing its predecessor's unfinished reasoning. Resets happen at trajectory boundaries; productive inquiry can continue within a trajectory.
+[Sources]
+- ../README.md — central thesis and design principles
+-->
+
+---
+
+<div class="visual-kicker blue">03 / SYSTEM · RESPONSIBILITIES</div>
+
+# Two scientific roles. One safe runtime.
+
+<div class="roles">
+  <div class="role"><strong class="green">Scientist</strong><span>Hypothesize · code · test · interpret</span><small>One trajectory</small></div>
+  <div class="role"><strong>META</strong><span>Audit · preserve · hand off</span><small>Across trajectories</small></div>
+  <div class="role"><strong>Runtime</strong><span>Isolation · cancellation · invariants</span><small>System lifetime</small></div>
+</div>
+
+<div class="bottom-note note">The Scientist chooses the science. META maintains the world. Runtime enforces mechanics, not scientific judgment.</div>
+
+<!--
+Scientific authority is separate from persistence authority. META does not choose the next hypothesis, model, feature, or experiment.
+[Sources]
+- ../README.md — Architecture
+- ../docs/ARCHITECTURE.md
+-->
+
+---
+
+<div class="visual-kicker">03 / SYSTEM · PERSISTENCE BOUNDARY</div>
 
 # The persistence boundary is explicit.
 
@@ -293,7 +276,7 @@ clicks: 4
 transition: fade
 ---
 
-<div class="visual-kicker orange">07 / THE HANDOFF LOOP</div>
+<div class="visual-kicker orange">03 / SYSTEM · THE HANDOFF LOOP</div>
 
 # Each cycle leaves a world to build on.
 
@@ -347,7 +330,7 @@ The serial loop is the core protocol. State crystallization is optional; a hando
 
 ---
 
-<div class="visual-kicker green">08 / MEMORY ON DISK</div>
+<div class="visual-kicker green">03 / SYSTEM · RESEARCH MEMORY</div>
 
 # Keep facts distinct from intuition.
 
@@ -374,7 +357,7 @@ clicks: 1
 transition: slide-left | slide-right
 ---
 
-<div class="visual-kicker blue">09 / PARALLEL BREADTH</div>
+<div class="visual-kicker blue">03 / SYSTEM · PARALLEL EXPLORATION</div>
 
 # One starting point. Independent answers.
 
@@ -437,7 +420,134 @@ Parallel breadth is a framework capability, not the claimed cause of the final b
 
 ---
 
-<div class="visual-kicker orange">10 / KUAIRAND-PURE · PUBLIC VALIDATION</div>
+<div class="visual-kicker orange entry-page-kicker">04 / EXPERIENCE · DEFINE THE TASK</div>
+
+# Start with the task and working constraints.
+
+<div class="entry-lede">The operator defines the objective and constraints; the agent chooses and executes the experiments.</div>
+
+<div class="entry-inputs">
+  <div class="entry-input entry-input-task">
+    <div class="entry-file"><span class="entry-file-mark mono">01</span><span class="entry-file-name mono">task.md</span></div>
+    <div class="entry-rule"></div>
+    <div class="entry-input-title">What to solve.</div>
+    <div class="entry-input-detail mono">Objectives · constraints · evaluation</div>
+    <div class="entry-example">
+      <div class="entry-example-label mono">EXAMPLE</div>
+      <div class="entry-example-text">Rank short videos for each user and interaction context.</div>
+      <div class="entry-example-meta mono">KuaiRand-Pure · long_view · GAUC + nDCG@5</div>
+    </div>
+  </div>
+  <div class="entry-input entry-input-personal">
+    <div class="entry-file"><span class="entry-file-mark mono">02</span><span class="entry-file-name mono">PERSONAL.md</span></div>
+    <div class="entry-rule"></div>
+    <div class="entry-input-title">How you want it solved.</div>
+    <div class="entry-input-detail mono">Preferences · research style · priorities</div>
+    <div class="entry-example">
+      <div class="entry-example-label mono">EXAMPLE</div>
+      <div class="entry-example-text">Run on macOS / Apple Silicon with uv.</div>
+      <div class="entry-example-meta mono">≤ 15 min / experiment · never print credentials</div>
+    </div>
+  </div>
+</div>
+
+<div class="entry-footer">Autonomous by default. Supervisable by design.</div>
+
+<!--
+This entry-point framing is grounded in the repository's general-purpose coding-agent interface, task contract, and bounded autonomous cycle.
+[Sources]
+- ../README.md — What it does, Quick start, and autonomous research loop
+- ../docs/project_story.md — What it does and How we built it
+-->
+
+---
+
+<div class="visual-kicker orange">04 / EXPERIENCE · THE RESEARCH TRAJECTORY</div>
+
+# Evidence changed the next experiment.
+
+<div class="lead">E001–E013: reject weak ideas, improve representations, then test ensembles.</div>
+
+<div class="roles narrative-roles">
+  <div class="role"><strong>E001</strong><span>Screen historical target encodings; reject weak variants.</span><small>Medium screening</small></div>
+  <div class="role"><strong>E003</strong><span>Establish a valid rich-FM checkpoint.</span><small>Full · 0.6016310</small></div>
+  <div class="role"><strong>E008</strong><span>Retain a five-seed, 38-field FM ensemble.</span><small>Full · 0.6040901</small></div>
+  <div class="role"><strong>E013</strong><span>Select the eight-seed, 46-field FM ensemble.</span><small>Full · 0.6059363</small></div>
+</div>
+
+<div class="bottom-note note">These are milestones within four autonomous cycles. Medium screens ideas; Full evaluations support retained score claims.</div>
+
+<!--
+This is the canonical submission trajectory, distinct from the later RA-only Cycle-2 E008 DIN experiment.
+[Sources]
+- ../docs/FINAL_REPORT.md — section 4.1, retained experiment trajectory
+- ../submission/research-agent-kuairand/research_record/RESEARCH_RECORD.yaml
+-->
+
+---
+
+<div class="visual-kicker orange">04 / EXPERIENCE · RECOVERY IN THE RUN</div>
+
+# An evaluation failure became a recoverable step.
+
+<div class="lead">Cycle 1 completed training and evaluation, then failed while writing the evidence file.</div>
+
+<div class="roles narrative-roles">
+  <div class="role"><strong>Failure</strong><span>NumPy float32 values broke JSON serialization.</span><small>Evidence writer</small></div>
+  <div class="role"><strong>Repair</strong><span>The Scientist converted scalars and reran.</span><small>Agent-authored fix</small></div>
+  <div class="role"><strong>Retain</strong><span>Printed measurements and saved evidence survived.</span><small>Auditable recovery</small></div>
+</div>
+
+<div class="bottom-note note">No human selected this repair or edited the code. This is one observed recovery case, not a guarantee for every failure.</div>
+
+<!--
+Use the concrete recovery incident to connect the open-world motivation with observed behavior.
+[Sources]
+- ../docs/FINAL_REPORT.md — section 4.2, autonomous recovery
+- ../submission/research-agent-kuairand/research_record/reports/cycle-1.md
+-->
+
+---
+class: checkpoint-slide
+clicks: 1
+transition: fade
+---
+
+<div class="visual-kicker purple">04 / EXPERIENCE · INSPECT THE RESULT</div>
+
+# A retained state keeps the evidence inspectable.
+
+<div class="checkpoint-motion">
+  <div class="checkpoint-window">
+    <div class="checkpoint-windowbar"><span>Research Dashboard</span><span>RECORDED VALIDATION</span></div>
+    <div class="checkpoint-viewport">
+      <div
+        v-motion
+        :initial="{ scale: 0.72, x: 0, y: 0 }"
+        :enter="{ scale: 0.72, x: 0, y: 0 }"
+        :click-1="{ scale: 0.82, x: 0, y: -10 }"
+        class="checkpoint-zoom"
+      >
+        <img src="/assets/dashboard-result.png" alt="Research dashboard showing the retained validation result, metrics, and evidence path">
+      </div>
+      <div v-click="1" class="checkpoint-focus-box" aria-hidden="true"></div>
+      <div v-click="1" class="checkpoint-focus-label">S004 · RETAINED STATE</div>
+    </div>
+  </div>
+  <div class="checkpoint-caption"><span v-click="1">Inspect the retained state and the evidence behind it.</span></div>
+</div>
+
+<div class="visual-caption">Retained validation checkpoint · evidence path · reproducible implementation.</div>
+
+<!--
+[Sources]
+- ../docs/dashboard/2.png — retained validation result dashboard
+- ../docs/project_story.md — Accomplishments that we're proud of
+-->
+
+---
+
+<div class="visual-kicker orange">05 / EVALUATION · PUBLIC-VALIDATION RESULT</div>
 
 # Autonomous research. Measured gains.
 
@@ -457,11 +567,32 @@ These are validation scores, not hidden-test results or a competition placement.
 
 ---
 
-<div class="visual-kicker orange resources-page-kicker">11 / RESOURCES</div>
+<div class="visual-kicker blue">05 / EVALUATION · AUTONOMY AND AUDITABILITY</div>
 
-# We are NOT tokenmaxxing.
+# An audit trail from experiment to output.
 
-<div class="resources-thesis">Better research decisions, not more resources.</div>
+<div class="stats">
+  <div class="rule"><strong>4</strong><p>Autonomous cycles</p><small>Within a 50-iteration cap</small></div>
+  <div class="rule"><strong>13</strong><p>Named experiments</p><small>E001–E013 · 7 Full evaluations</small></div>
+  <div class="rule"><strong>0</strong><p>Manual scientific interventions</p><small>After launch · 0 GPU-hours</small></div>
+</div>
+
+<div class="bottom-note note">170,588 prediction rows passed the unchanged Starter Kit alignment checker.<br>LLM tokens: 48.24M including cache reads; 4.02M excluding cache reads.</div>
+
+<!--
+Zero manual scientific interventions applies after launch in the retained run, not to building the framework or setting up the benchmark. Total tokens: 48,240,128; excluding cache reads: 4,020,880. Zero GPU-hours does not mean zero LLM cost.
+[Sources]
+- ../docs/FINAL_REPORT.md — Submission Snapshot
+- ../submission/research-agent-kuairand/final/submit-check.txt
+-->
+
+---
+
+<div class="visual-kicker orange resources-page-kicker">05 / EVALUATION · RESOURCE ACCOUNTING</div>
+
+# Resource use is part of the evidence.
+
+<div class="resources-thesis">Project-level subscription estimate, with run-level telemetry reported separately.</div>
 
 <div class="resource-hero">
   <div class="resource-hero-number">~$10</div>
@@ -482,7 +613,7 @@ These are validation scores, not hidden-test results or a competition placement.
   </div>
 </div>
 
-<div class="resource-conclusion">Performance came from the research loop — not a bigger budget.</div>
+<div class="resource-conclusion">The recorded runs used CPU training; LLM usage remains a separate cost.</div>
 
 <div class="resource-footnote">~$10 is the estimated subscription-equivalent usage across the entire project, including coding, debugging and all experiments — not cost per experiment.</div>
 
@@ -496,9 +627,9 @@ This page frames resource usage as supporting evidence, not as a claim that cost
 
 ---
 
-<div class="visual-kicker orange">12 / PUBLIC VALIDATION / EVIDENCE TRACE</div>
+<div class="visual-kicker orange">05 / EVALUATION · DIRECT-AGENT COMPARISON</div>
 
-# The result stays connected to the evidence.
+# Compare scores alongside their evidence.
 
 <div class="token-chart-wrap">
 <svg class="token-chart" viewBox="0 0 1000 620" role="img" aria-labelledby="token-chart-title token-chart-desc">
@@ -586,7 +717,7 @@ This page frames resource usage as supporting evidence, not as a claim that cost
 </svg>
 </div>
 
-<div class="visual-caption">Measured token investment, public-validation score, and the verified retained result.</div>
+<div class="visual-caption">Runs differ in model, budget, and evidence quality; this is not a controlled causal comparison.</div>
 
 <!--
 [Sources]
@@ -597,66 +728,48 @@ This page frames resource usage as supporting evidence, not as a claim that cost
 
 ---
 
-<div class="visual-kicker blue">13 / AUTONOMY WITH AN AUDIT TRAIL</div>
+<!-- class: insight-slide -->
 
-# An audit trail from experiment to output.
+<div class="visual-kicker purple">06 / INSIGHTS · WHAT THE RUN TAUGHT US</div>
 
-<div class="stats">
-  <div class="rule"><strong>4</strong><p>Autonomous cycles</p><small>Within a 50-iteration cap</small></div>
-  <div class="rule"><strong>13</strong><p>Named experiments</p><small>E001–E013 · 7 Full evaluations</small></div>
-  <div class="rule"><strong>0</strong><p>Manual scientific interventions</p><small>After launch · 0 GPU-hours</small></div>
-</div>
+# The run taught us more than the final score.
 
-<div class="bottom-note note">170,588 prediction rows passed the unchanged Starter Kit alignment checker.<br>LLM tokens: 48.24M including cache reads; 4.02M excluding cache reads.</div>
+<div class="insight-lede">What survived the experiments — and what remains unsettled.</div>
 
-<!--
-Zero manual scientific interventions applies after launch in the retained run, not to building the framework or setting up the benchmark. Total tokens: 48,240,128; excluding cache reads: 4,020,880. Zero GPU-hours does not mean zero LLM cost.
-[Sources]
-- ../docs/FINAL_REPORT.md — Submission Snapshot
-- ../submission/research-agent-kuairand/final/submit-check.txt
--->
-
----
-class: checkpoint-slide
-clicks: 1
-transition: fade
----
-
-<div class="visual-kicker purple">14 / RETAINED CHECKPOINT</div>
-
-# A retained state keeps the evidence inspectable.
-
-<div class="checkpoint-motion">
-  <div class="checkpoint-window">
-    <div class="checkpoint-windowbar"><span>Research Dashboard</span><span>RECORDED VALIDATION</span></div>
-    <div class="checkpoint-viewport">
-      <div
-        v-motion
-        :initial="{ scale: 0.72, x: 0, y: 0 }"
-        :enter="{ scale: 0.72, x: 0, y: 0 }"
-        :click-1="{ scale: 0.82, x: 0, y: -10 }"
-        class="checkpoint-zoom"
-      >
-        <img src="/assets/dashboard-result.png" alt="Research dashboard showing the retained validation result, metrics, and evidence path">
-      </div>
-      <div v-click="1" class="checkpoint-focus-box" aria-hidden="true"></div>
-      <div v-click="1" class="checkpoint-focus-label">S004 · RETAINED STATE</div>
-    </div>
+<div class="insight-grid">
+  <div class="insight-item">
+    <span class="insight-index blue">01</span>
+    <div><strong>Diversity is a prior.</strong><p>Keep <span class="mono">gemini-3.7-flash</span> as META while Scientist rotates across <span class="mono">gpt-5.6-sol</span>, <span class="mono">gemini-3.7-flash</span>, and <span class="mono">gpt-5.6-luna</span>. This widens priors; it does not prove the gain.</p></div>
   </div>
-  <div class="checkpoint-caption"><span v-click="1">Inspect the retained state and the evidence behind it.</span></div>
+  <div class="insight-item">
+    <span class="insight-index orange">02</span>
+    <div><strong>A score is not a claim.</strong><p>Audits found leakage and sampling mismatches in competing experiments. META can scope evidence; it is not a formal verifier.</p></div>
+  </div>
+  <div class="insight-item">
+    <span class="insight-index rose">03</span>
+    <div><strong>Failure can be evidence.</strong><p>After evaluation, NumPy <span class="mono">float32</span> values broke serialization. The Scientist fixed the writer, reran, and kept the measurements.</p></div>
+  </div>
+  <div class="insight-item">
+    <span class="insight-index purple">04</span>
+    <div><strong>Reset ≠ no anchor.</strong><p>Fresh cognition reopens the search, but shared summaries can still omit context or anchor future work. Share evidence later than cognition.</p></div>
+  </div>
 </div>
 
-<div class="visual-caption">Retained validation checkpoint · evidence path · reproducible implementation.</div>
+<div class="insight-bottom">
+  <div class="insight-boundary"><div class="insight-boundary-label mono">OBSERVED, NOT PROVEN</div><div class="insight-boundary-copy">Parallel/Synthesis reached public-validation Primary <strong>0.6055536</strong>; the canonical E001–E013 frontier remains <strong>0.6059363</strong>.</div></div>
+  <div class="insight-stats"><div class="insight-stat"><strong class="blue">4</strong><small>cycles</small></div><div class="insight-stat"><strong class="orange">0</strong><small>post-launch interventions</small></div><div class="insight-stat"><strong class="rose">0</strong><small>GPU-hours</small></div></div>
+</div>
 
 <!--
+This section synthesizes the model-diversity, scientific-validity, recovery, parallel-search, and selective-persistence observations from the final report. The Parallel/Synthesis score is an observed public-validation result, not part of the canonical E001–E013 frontier.
 [Sources]
-- ../docs/dashboard/2.png — retained validation result dashboard
-- ../docs/project_story.md — Accomplishments that we're proud of
+- ../docs/FINAL_REPORT.md — sections 3.4–3.5, 4.2, 5.4–5.5, 6.1–6.3, and 7.1–7.2
+- ../competition_archive/kuairand-pure/analysis/scientific-validity-failure.md — audit findings
 -->
 
 ---
 
-<div class="visual-kicker purple">15 / EVIDENCE BOUNDARY</div>
+<div class="visual-kicker purple">06 / INSIGHTS · LIMITS AND NEXT EXPERIMENTS</div>
 
 # Reproducible evidence. Open questions.
 
@@ -676,7 +789,64 @@ Next questions are proposed directions based on documented limitations, not comp
 
 ---
 
-<div class="visual-kicker orange team-page-kicker">16 / THE TEAM</div>
+<!-- class: agentic-swe-fieldnote-slide -->
+
+<div class="visual-kicker orange">06 / INSIGHTS · ENGINEERING PRACTICE</div>
+
+<div class="fieldnote-title-row"><h1>A clean repo. A continuous agent.</h1><span class="fieldnote-stamp mono">FIELD NOTE / 01</span></div>
+
+<div class="fieldnote-lede">Engineering practices to apply next: isolate parallel changes and make unattended work reviewable.</div>
+
+<div class="fieldnote-grid">
+  <div class="fieldnote-card fieldnote-branches">
+    <div class="fieldnote-card-head"><span class="fieldnote-number mono">01</span><span class="fieldnote-kicker mono">MANY AGENTS</span><span class="fieldnote-card-icon orange i-carbon:branch"></span></div>
+    <h2>Give every agent a branch.</h2>
+    <div class="fieldnote-branch-flow">
+      <div class="fieldnote-branch-source"><strong class="mono">main</strong><small>clean trunk</small></div>
+      <div class="fieldnote-branch-list"><span><i></i>agent A / branch</span><span><i></i>agent B / branch</span><span><i></i>agent C / branch</span></div>
+      <div class="fieldnote-branch-merge"><strong>review</strong><small>→ merge</small></div>
+    </div>
+    <p>Let agents work independently. Conflicts stay local, and the main branch stays clean.</p>
+  </div>
+  <div class="fieldnote-card fieldnote-remote">
+    <div class="fieldnote-card-head"><span class="fieldnote-number mono">02</span><span class="fieldnote-kicker mono">NO QUOTA / NO LAPTOP</span><span class="fieldnote-card-icon blue i-carbon:cloud-upload"></span></div>
+    <h2>Leave the next move in GitHub.</h2>
+    <div class="fieldnote-remote-flow">
+      <div class="fieldnote-remote-step"><span class="mono">01</span><strong>Issue / prompt</strong><small>inject the task</small></div><span class="fieldnote-flow-arrow">→</span>
+      <div class="fieldnote-remote-step"><span class="mono">02</span><strong>GitHub Action</strong><small>run the agent</small></div><span class="fieldnote-flow-arrow">→</span>
+      <div class="fieldnote-remote-step"><span class="mono">03</span><strong>Commit</strong><small>review the change</small></div>
+    </div>
+    <p>Connect the agent to GitHub Actions. It can code and commit while you are offline; review before merging.</p>
+  </div>
+</div>
+
+<div class="fieldnote-footer"><span class="fieldnote-footer-label mono">PROPOSED PRACTICE</span><span>Workflow guidance; GitHub continuation is not a benchmarked system feature.</span></div>
+
+<!--
+This engineering field note distills the user's Agentic SWE workflow suggestion into two operational patterns: branch isolation for parallel agents, and GitHub-based continuation for unattended work. It is guidance, not a feature claim of the research system.
+-->
+
+---
+
+<div class="visual-kicker blue">06 / INSIGHTS · KEEP EXPERIENCE, REOPEN SEARCH</div>
+
+<div class="closing">Keep the experience.<br><span class="green">Reopen the search.</span></div>
+
+<div class="terminal"><pre><span class="muted"># From the configured repo, run one autonomous cycle</span>
+<span class="green">$</span> ./scripts/research-agent step --cli codex \
+    --target /absolute/path/to/project --allow-edits</pre></div>
+
+<div class="note" style="margin-top: 21px"><a href="https://github.com/zc6600/research-agent-kuairand" target="_blank">github.com/zc6600/research-agent-kuairand ↗</a><br>Code · Technical report · Experiment ledger · Checked output</div>
+
+<!--
+Prerequisites are in the repository Quick start: Git, uv, the Python environment, and an installed, authenticated agent CLI. Replace target with a real research project path. The command is display text and does not execute.
+[Sources]
+- ../README.md — Quick start
+-->
+
+---
+
+<div class="visual-kicker orange team-page-kicker">APPENDIX / THE TEAM</div>
 
 # Five people. One autonomous research loop.
 
@@ -725,65 +895,6 @@ Team names and responsibilities are drawn from the repository's documented team 
 [Sources]
 - ../README.md — Team contributions
 - ../docs/FINAL_REPORT.md — section 6.4, Team contributions
--->
-
----
-
-<div class="visual-kicker blue">17 / START A FRESH TRAJECTORY</div>
-
-<div class="closing">Keep the experience.<br><span class="green">Reopen the search.</span></div>
-
-<div class="terminal"><pre><span class="muted"># From the configured repo, run one autonomous cycle</span>
-<span class="green">$</span> ./scripts/research-agent step --cli codex \
-    --target /absolute/path/to/project --allow-edits</pre></div>
-
-<div class="note" style="margin-top: 21px"><a href="https://github.com/zc6600/research-agent-kuairand" target="_blank">github.com/zc6600/research-agent-kuairand ↗</a><br>Code · Technical report · Experiment ledger · Checked output</div>
-
-<!--
-Prerequisites are in the repository Quick start: Git, uv, the Python environment, and an installed, authenticated agent CLI. Replace target with a real research project path. The command is display text and does not execute.
-[Sources]
-- ../README.md — Quick start
--->
-
----
-
-<!-- class: insight-slide -->
-
-<div class="visual-kicker purple">APPENDIX / INSIGHTS FROM THE RUN</div>
-
-# The run taught us more than the final score.
-
-<div class="insight-lede">What survived the experiments — and what remains unsettled.</div>
-
-<div class="insight-grid">
-  <div class="insight-item">
-    <span class="insight-index blue">01</span>
-    <div><strong>Diversity is a prior.</strong><p>Keep <span class="mono">gemini-3.7-flash</span> as META while Scientist rotates across <span class="mono">gpt-5.6-sol</span>, <span class="mono">gemini-3.7-flash</span>, and <span class="mono">gpt-5.6-luna</span>. This widens priors; it does not prove the gain.</p></div>
-  </div>
-  <div class="insight-item">
-    <span class="insight-index orange">02</span>
-    <div><strong>A score is not a claim.</strong><p>Audits found leakage and sampling mismatches in competing experiments. META can scope evidence; it is not a formal verifier.</p></div>
-  </div>
-  <div class="insight-item">
-    <span class="insight-index rose">03</span>
-    <div><strong>Failure can be evidence.</strong><p>After evaluation, NumPy <span class="mono">float32</span> values broke serialization. The Scientist fixed the writer, reran, and kept the measurements.</p></div>
-  </div>
-  <div class="insight-item">
-    <span class="insight-index purple">04</span>
-    <div><strong>Reset ≠ no anchor.</strong><p>Fresh cognition reopens the search, but shared summaries can still omit context or anchor future work. Share evidence later than cognition.</p></div>
-  </div>
-</div>
-
-<div class="insight-bottom">
-  <div class="insight-boundary"><div class="insight-boundary-label mono">OBSERVED, NOT PROVEN</div><div class="insight-boundary-copy">Parallel/Synthesis reached public-validation Primary <strong>0.6055536</strong>; the canonical E001–E013 frontier remains <strong>0.6059363</strong>.</div></div>
-  <div class="insight-stats"><div class="insight-stat"><strong class="blue">4</strong><small>cycles</small></div><div class="insight-stat"><strong class="orange">0</strong><small>post-launch interventions</small></div><div class="insight-stat"><strong class="rose">0</strong><small>GPU-hours</small></div></div>
-</div>
-
-<!--
-This appendix synthesizes the model-diversity, scientific-validity, recovery, parallel-search, and selective-persistence observations from the final report. The Parallel/Synthesis score is an observed public-validation result, not part of the canonical E001–E013 frontier.
-[Sources]
-- ../docs/FINAL_REPORT.md — sections 3.4–3.5, 4.2, 5.4–5.5, 6.1–6.3, and 7.1–7.2
-- ../competition_archive/kuairand-pure/analysis/scientific-validity-failure.md — audit findings
 -->
 
 ---
@@ -837,43 +948,4 @@ This appendix synthesizes the model-diversity, scientific-validity, recovery, pa
 
 <!--
 The comparison describes two capability models: a bounded predefined graph and a coding-agent harness that can inspect, modify its environment, and retry.
--->
-
----
-
-<!-- class: agentic-swe-fieldnote-slide -->
-
-<div class="visual-kicker orange">APPENDIX / AGENTIC SWE FIELD NOTE</div>
-
-<div class="fieldnote-title-row"><h1>A clean repo. A continuous agent.</h1><span class="fieldnote-stamp mono">FIELD NOTE / 01</span></div>
-
-<div class="fieldnote-lede">Two practical patterns for keeping autonomous work moving — across branches and across time.</div>
-
-<div class="fieldnote-grid">
-  <div class="fieldnote-card fieldnote-branches">
-    <div class="fieldnote-card-head"><span class="fieldnote-number mono">01</span><span class="fieldnote-kicker mono">MANY AGENTS</span><span class="fieldnote-card-icon orange i-carbon:branch"></span></div>
-    <h2>Give every agent a branch.</h2>
-    <div class="fieldnote-branch-flow">
-      <div class="fieldnote-branch-source"><strong class="mono">main</strong><small>clean trunk</small></div>
-      <div class="fieldnote-branch-list"><span><i></i>agent A / branch</span><span><i></i>agent B / branch</span><span><i></i>agent C / branch</span></div>
-      <div class="fieldnote-branch-merge"><strong>review</strong><small>→ merge</small></div>
-    </div>
-    <p>Let agents work independently. Conflicts stay local, and the main branch stays clean.</p>
-  </div>
-  <div class="fieldnote-card fieldnote-remote">
-    <div class="fieldnote-card-head"><span class="fieldnote-number mono">02</span><span class="fieldnote-kicker mono">NO QUOTA / NO LAPTOP</span><span class="fieldnote-card-icon blue i-carbon:cloud-upload"></span></div>
-    <h2>Leave the next move in GitHub.</h2>
-    <div class="fieldnote-remote-flow">
-      <div class="fieldnote-remote-step"><span class="mono">01</span><strong>Issue / prompt</strong><small>inject the task</small></div><span class="fieldnote-flow-arrow">→</span>
-      <div class="fieldnote-remote-step"><span class="mono">02</span><strong>GitHub Action</strong><small>run the agent</small></div><span class="fieldnote-flow-arrow">→</span>
-      <div class="fieldnote-remote-step"><span class="mono">03</span><strong>Commit</strong><small>review the change</small></div>
-    </div>
-    <p>Connect the agent to GitHub Actions. It can code and commit while you are offline; review before merging.</p>
-  </div>
-</div>
-
-<div class="fieldnote-footer"><span class="fieldnote-footer-label mono">GUARDRAIL</span><span><strong>New branch.</strong> Review in steps. Merge only what you can explain.</span></div>
-
-<!--
-This appendix field note distills the user's Agentic SWE workflow suggestion into two operational patterns: branch isolation for parallel agents, and GitHub-based continuation for unattended work. It is guidance, not a feature claim of the research system.
 -->

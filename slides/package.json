@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "slidev --port 3030",
     "build": "slidev build --base ./",
-    "export": "slidev export --dark --wait 3500 --output research-agent.pdf",
+    "export": "slidev export --wait 3500 --output SciOdyssey-main.pdf",
     "poster:dev": "slidev poster.md --port 3031",
     "poster:export": "slidev export poster.md --wait 1800 --output SciOdyssey-poster.pdf && node scripts/poster-print-size.mjs",
     "poster:png": "npm run poster:export && gs -q -dSAFER -dBATCH -dNOPAUSE -dTextAlphaBits=4 -dGraphicsAlphaBits=4 -sDEVICE=png16m -r96 -sOutputFile=SciOdyssey-poster.png SciOdyssey-poster.pdf"

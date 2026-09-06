@@ -11,6 +11,22 @@
   --aqua: #20d9a0;
 }
 
+.slidev-layout .narrative-route {
+  color: var(--body);
+  font-size: 14px;
+  margin-top: 30px;
+}
+
+.slidev-layout .narrative-roles .role {
+  grid-template-columns: 118px 1fr 172px;
+  column-gap: 12px;
+  padding: 12px 0;
+}
+
+.slidev-layout .narrative-roles .role span {
+  font-size: 18px;
+}
+
 .slidev-layout {
   background: #fff;
   color: var(--body);
@@ -635,14 +651,14 @@
 }
 
 .slidev-layout:has(.parallel-motion) .parallel-motion {
-  height: 292px;
+  height: 250px;
   margin-top: 18px;
   position: relative;
 }
 
 .slidev-layout:has(.parallel-motion) .parallel-motion svg {
   display: block;
-  height: 292px;
+  height: 250px;
   overflow: visible;
   width: 100%;
 }
@@ -904,6 +920,10 @@ html.print .slidev-layout.parallel-breadth-slide .parallel-world-ring {
 
 .slidev-layout:has(.parallel-motion) .parallel-takeaway {
   min-height: 31px;
+  display: flex;
+  gap: 24px;
+  margin-top: 14px;
+  padding-top: 14px;
 }
 
 .slidev-layout:has(.parallel-motion) .parallel-takeaway span {
@@ -1195,7 +1215,7 @@ html.print .slidev-layout.parallel-breadth-slide .parallel-world-ring {
 .slidev-layout:has(.token-chart) .token-chart-wrap {
   align-items: center;
   display: flex;
-  height: 390px;
+  height: 350px;
   justify-content: center;
   margin-top: 7px;
   width: 100%;
@@ -1220,7 +1240,7 @@ html.print .slidev-layout.parallel-breadth-slide .parallel-world-ring {
 .slidev-layout:has(.token-chart) .chart-y-labels text,
 .slidev-layout:has(.token-chart) .chart-axis-labels > text:not(.chart-axis-title),
 .slidev-layout:has(.token-chart) .chart-legend text { fill: var(--muted); font-size: 12px; }
-.slidev-layout:has(.token-chart) .chart-axis-title { font-size: 13px; }
+.slidev-layout:has(.token-chart) .chart-axis-title { font-size: 13px; text-anchor: middle; }
 .slidev-layout:has(.token-chart) .chart-reference { stroke: #b9c1ca; stroke-dasharray: 7 6; stroke-width: 1.5; }
 .slidev-layout:has(.token-chart) .chart-reference-label { fill: #8a929b; font-size: 12px; }
 .slidev-layout:has(.token-chart) .chart-leaders line { stroke: #aeb7c1; stroke-width: 1; }
