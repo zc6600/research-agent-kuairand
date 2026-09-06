@@ -9,8 +9,8 @@ aspectRatio: 16/9
 canvasWidth: 980
 transition: fade
 fonts:
-  sans: Avenir Next
-  mono: Fira Code
+  sans: Helvetica Neue
+  mono: SF Mono
   provider: none
 mdc: true
 ---
