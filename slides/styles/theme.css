@@ -2554,38 +2554,158 @@ html.print .slidev-layout.parallel-breadth-slide .parallel-world-ring {
   margin-top: 8px;
 }
 
-.slidev-layout:has(.compare-grid) .visual-kicker {
-  margin-bottom: 7px;
+.slidev-layout:has(.compare-grid) {
+  padding-top: 40px;
 }
 
-.slidev-layout:has(.compare-grid) h1 {
-  font-size: 36px;
-  letter-spacing: -1.4px;
-  line-height: 1.12;
-  margin: 8px 0 17px;
+.slidev-layout:has(.compare-grid) .visual-kicker {
+  margin-bottom: 6px;
+}
+
+.slidev-layout:has(.compare-grid) .open-world-claim {
+  color: var(--ink);
+  font-size: 28px;
+  letter-spacing: -1.2px;
+  line-height: 1.14;
+  margin: 8px 0 16px;
+}
+
+.slidev-layout:has(.compare-grid) .claim-line-shift {
+  margin-left: 24px;
 }
 
 .slidev-layout:has(.compare-grid) .compare-grid {
+  gap: 22px;
   margin-top: 6px;
 }
 
+.slidev-layout:has(.compare-grid) .compare-side {
+  padding: 15px 20px 14px;
+}
+
+.slidev-layout:has(.compare-grid) .compare-kicker {
+  font-size: 11px;
+  letter-spacing: 1.1px;
+}
+
 .slidev-layout:has(.compare-grid) .compare-subtitle {
-  font-size: 20px;
-  margin-top: 5px;
+  font-size: 19px;
+  line-height: 1.25;
+  margin-top: 4px;
 }
 
 .slidev-layout:has(.compare-grid) .static-graph {
-  margin-top: 16px;
+  margin-top: 12px;
+}
+
+.slidev-layout:has(.compare-grid) .graph-top {
+  font-size: 14.5px;
+  gap: 7px;
+}
+
+.slidev-layout:has(.compare-grid) .graph-icon {
+  font-size: 19px;
 }
 
 .slidev-layout:has(.compare-grid) .graph-arrow,
 .slidev-layout:has(.compare-grid) .harness-arrow {
-  margin: 5px 0;
+  font-size: 17px;
+  margin: 4px 0;
+}
+
+.slidev-layout:has(.compare-grid) .graph-tools {
+  gap: 14px;
+}
+
+.slidev-layout:has(.compare-grid) .graph-node {
+  font-size: 13.5px;
+  gap: 5px;
+}
+
+.slidev-layout:has(.compare-grid) .graph-node-icon {
+  font-size: 19px;
 }
 
 .slidev-layout:has(.compare-grid) .compare-failure {
-  margin-top: 13px;
+  margin-top: 12px;
   padding-top: 9px;
+}
+
+.slidev-layout:has(.compare-grid) .failure-step {
+  font-size: 13.5px;
+  gap: 7px;
+}
+
+.slidev-layout:has(.compare-grid) .failure-icon {
+  font-size: 17px;
+}
+
+.slidev-layout:has(.compare-grid) .dead-end {
+  font-size: 21px;
+  letter-spacing: 1.2px;
+  margin-top: 2px;
+}
+
+.slidev-layout:has(.compare-grid) .compare-note {
+  font-size: 12.5px;
+  line-height: 1.4;
+  margin-top: 11px;
+  padding-top: 8px;
+}
+
+.slidev-layout:has(.compare-grid) .harness-diagram {
+  margin-top: 12px;
+}
+
+.slidev-layout:has(.compare-grid) .harness-computer {
+  font-size: 15.5px;
+  gap: 7px;
+}
+
+.slidev-layout:has(.compare-grid) .harness-icon {
+  font-size: 19px;
+}
+
+.slidev-layout:has(.compare-grid) .harness-paths {
+  gap: 10px;
+}
+
+.slidev-layout:has(.compare-grid) .harness-path .harness-node {
+  font-size: 13.5px;
+  gap: 5px;
+}
+
+.slidev-layout:has(.compare-grid) .agent-band {
+  margin-top: 3px;
+}
+
+.slidev-layout:has(.compare-grid) .agent-band .harness-node {
+  font-size: 13.5px;
+}
+
+.slidev-layout:has(.compare-grid) .agent-core {
+  font-size: 13.5px;
+  padding: 3px 12px;
+}
+
+.slidev-layout:has(.compare-grid) .cli-api {
+  font-size: 11.5px;
+  margin-top: 2px;
+}
+
+.slidev-layout:has(.compare-grid) .recovery-flow {
+  margin-top: 12px;
+  padding-top: 9px;
+}
+
+.slidev-layout:has(.compare-grid) .recovery-sequence {
+  font-size: 11.5px;
+}
+
+.slidev-layout:has(.compare-grid) .recovery-caption {
+  font-size: 12.5px;
+  line-height: 1.35;
+  margin-top: 6px;
 }
 
 /* Appendix field note: practical Agentic SWE patterns, kept in the deck's shared visual system. */
