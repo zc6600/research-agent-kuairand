@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "slidev --port 3030",
     "build": "slidev build --base ./",
+    "postbuild": "rm -f dist/_redirects",
     "export": "slidev export --wait 3500 --output SciOdyssey-main.pdf",
     "voyage:dev": "slidev slides-voyage.md --port 3032",
     "voyage:export": "slidev export slides-voyage.md --wait 3500 --output SciOdyssey-voyage.pdf",
