@@ -3,15 +3,14 @@ import { computed, ref } from 'vue'
 
 type EvidenceCard = {
   id: string
-  number: string
   claim: string
-  kicker: string
   accent: string
   rotate: number
   x: number
   y: number
   scale: number
   depth: number
+  detailKicker: string
   detailTitle: string
   detailCopy: string
   detailMeta: string
@@ -22,75 +21,70 @@ const selectedId = ref<string | null>(null)
 const cards: EvidenceCard[] = [
   {
     id: 'validity',
-    number: '04',
     claim: 'The output survived the boundary.',
-    kicker: 'VALID ARTIFACT',
     accent: 'var(--orange)',
-    rotate: -14,
+    rotate: -15,
     x: 0,
-    y: 64,
-    scale: .96,
+    y: 68,
+    scale: .95,
     depth: 1,
+    detailKicker: '04 / VALID ARTIFACT',
     detailTitle: 'The delivered file passed the unchanged Starter Kit alignment checker.',
     detailCopy: 'The final predictions were checked against the original evaluator boundary: 170,588 prediction rows aligned and passed the submission checker.',
     detailMeta: '170,588 checked predictions · unchanged checker · organizer-controlled hidden test',
   },
   {
     id: 'trajectory',
-    number: '02',
     claim: 'The search sustained itself.',
-    kicker: 'RESEARCH LOOP',
     accent: 'var(--blue)',
     rotate: -7,
-    x: 112,
-    y: 30,
+    x: 122,
+    y: 35,
     scale: 1,
     depth: 3,
+    detailKicker: '02 / RESEARCH LOOP',
     detailTitle: 'The score came from a trajectory, not a single lucky edit.',
     detailCopy: 'Seven Full public-validation evaluations were retained across four autonomous cycles, from a validated baseline to a 46-field, 8-seed FM ensemble.',
     detailMeta: '4 cycles · 13 named experiments · E003–E013 retained frontier',
   },
   {
     id: 'result',
-    number: '01',
     claim: 'The model improved.',
-    kicker: 'PUBLIC VALIDATION',
     accent: 'var(--green)',
     rotate: 0,
-    x: 226,
+    x: 248,
     y: 4,
-    scale: 1.07,
+    scale: 1.08,
     depth: 6,
+    detailKicker: '01 / PUBLIC VALIDATION',
     detailTitle: 'A retained checkpoint beat the official FM reference.',
     detailCopy: 'The final E013 checkpoint reached 0.6059363 Primary on public validation, an absolute improvement of +0.0043363 over the official five-field FM reference.',
     detailMeta: '0.6016000 → 0.6059363 · GAUC 0.6728421 · nDCG@5 0.5390304',
   },
   {
     id: 'autonomy',
-    number: '03',
-    claim: 'It ran without scientific intervention.',
-    kicker: 'AUTONOMY',
+    claim: 'The run stayed autonomous.',
     accent: 'var(--purple)',
     rotate: 7,
-    x: 340,
-    y: 31,
+    x: 374,
+    y: 36,
     scale: 1,
     depth: 4,
+    detailKicker: '03 / AUTONOMY',
     detailTitle: 'After launch, the research loop kept control of the scientific moves.',
     detailCopy: 'The retained run completed four autonomous cycles with zero manual scientific interventions after launch. Humans built the framework; the run carried the research decisions.',
     detailMeta: '0 manual scientific interventions · 0 GPU-hours · CPU / NumPy training',
   },
   {
     id: 'evidence',
-    number: '05',
     claim: 'The evidence stayed inspectable.',
-    kicker: 'AUDIT TRAIL',
     accent: 'var(--rose)',
-    rotate: 14,
-    x: 452,
-    y: 65,
-    scale: .96,
+    rotate: 15,
+    x: 496,
+    y: 68,
+    scale: .95,
     depth: 2,
+    detailKicker: '05 / AUDIT TRAIL',
     detailTitle: 'The final answer remained tied to experiments, reports, and retained state.',
     detailCopy: 'SciOdyssey did not only return a score. It left a research record: named experiments, cycle reports, retained implementation state, and scoped claims.',
     detailMeta: 'experiment → report → retained State · claim ↔ evidence audit',
@@ -113,7 +107,7 @@ function closeCard() {
     <header class="claim-header" :class="{ dimmed: selected }">
       <div class="claim-section-kicker mono">04 / EVALUATION</div>
       <div class="claim-label mono">CLAIM</div>
-      <h1>Can an agent carry a research task to completion?</h1>
+      <h1>An agent carried a research task to completion.</h1>
       <div class="claim-boundary mono"><span>KUAIRAND-PURE</span><span>FIXED EVALUATOR</span><span>PUBLIC VALIDATION</span></div>
     </header>
 
@@ -123,7 +117,7 @@ function closeCard() {
       <small class="mono">CLICK A CARD TO INSPECT</small>
     </aside>
 
-    <div class="evidence-hand" :class="{ inspecting: selected }" aria-label="A right-side fanned hand of slim evidence cards">
+    <div class="evidence-hand" :class="{ inspecting: selected }" aria-label="A right-side fanned hand of claim-only evidence cards">
       <button
         v-for="card in cards"
         :key="card.id"
@@ -139,47 +133,45 @@ function closeCard() {
           '--depth': card.depth,
         }"
         type="button"
+        :aria-label="`Inspect evidence: ${card.claim}`"
         @click.stop="openCard(card.id)"
       >
-        <span class="card-topline"><span class="card-number mono">{{ card.number }}</span><span class="card-kicker mono">{{ card.kicker }}</span></span>
         <strong>{{ card.claim }}</strong>
 
         <span class="card-visual result-visual" v-if="card.id === 'result'">
-          <svg viewBox="0 0 150 118" aria-hidden="true">
-            <line x1="10" y1="85" x2="140" y2="85" class="mini-baseline" />
-            <polyline points="12,84 32,84 53,72 77,59 101,55 123,39 140,30" class="mini-line" />
-            <circle cx="140" cy="30" r="5" class="mini-final" />
-            <text x="11" y="108">0.6016</text><text x="140" y="21" text-anchor="end">0.605936</text>
+          <svg viewBox="0 0 150 128" aria-hidden="true">
+            <line x1="12" y1="93" x2="138" y2="93" class="mini-baseline" />
+            <polyline points="12,91 35,91 55,78 80,63 103,56 124,41 138,34" class="mini-line" />
+            <circle cx="138" cy="34" r="6" class="mini-final" />
           </svg>
         </span>
 
         <span class="card-visual trajectory-visual" v-else-if="card.id === 'trajectory'">
-          <span class="cycle-row"><i>C1</i><b></b><i>C2</i><b></b><i>C3</i><b></b><i>C4</i></span>
-          <span class="cycle-count"><b>13</b><small>experiments</small></span>
+          <span class="cycle-row"><i></i><b></b><i></i><b></b><i></i><b></b><i></i></span>
+          <span class="tiny-path"><em></em><em></em><em></em></span>
         </span>
 
         <span class="card-visual autonomy-visual" v-else-if="card.id === 'autonomy'">
-          <span class="zero">0</span>
-          <span class="zero-caption">manual scientific interventions</span>
+          <span class="quiet-zero"></span>
+          <span class="orbit-ring ring-a"></span>
+          <span class="orbit-ring ring-b"></span>
         </span>
 
         <span class="card-visual validity-visual" v-else-if="card.id === 'validity'">
           <span class="receipt-check">✓</span>
-          <span><b>170,588</b><small>checked rows</small></span>
+          <span class="receipt-lines"><i></i><i></i><i></i></span>
         </span>
 
         <span class="card-visual evidence-visual" v-else>
-          <span>experiment</span><b>→</b><span>report</span><b>→</b><span>State</span>
+          <span></span><b></b><span></span><b></b><span></span>
         </span>
-
-        <span class="card-footer mono">OPEN ↗</span>
       </button>
     </div>
 
     <div v-if="selected" class="inspection-layer" @click.self="closeCard">
       <article class="inspection-card" :class="`inspect-${selected.id}`" :style="{ '--accent': selected.accent }">
         <button class="inspection-close mono" type="button" @click.stop="closeCard">← BACK TO HAND</button>
-        <div class="inspection-kicker mono">{{ selected.number }} / {{ selected.kicker }}</div>
+        <div class="inspection-kicker mono">{{ selected.detailKicker }}</div>
         <h2>{{ selected.claim }}</h2>
         <p>{{ selected.detailTitle }}</p>
 
@@ -235,7 +227,7 @@ function closeCard() {
 .claim-verdict-eval::before {
   content: "";
   position: absolute;
-  inset: 88px 0 8px 29%;
+  inset: 86px 0 8px 28%;
   background:
     radial-gradient(circle at 78% 30%, color-mix(in srgb, var(--green) 11%, transparent), transparent 30%),
     radial-gradient(circle at 48% 76%, color-mix(in srgb, var(--blue) 7%, transparent), transparent 38%);
@@ -258,10 +250,7 @@ function closeCard() {
 }
 .claim-section-kicker,
 .claim-label,
-.card-number,
-.card-kicker,
 .inspection-kicker,
-.card-footer,
 .claim-boundary,
 .claim-note small {
   font-size: 10px;
@@ -273,7 +262,7 @@ function closeCard() {
 .claim-label { margin-top: 22px; color: var(--orange); }
 .claim-header h1 {
   margin: 9px 0 0;
-  max-width: 805px;
+  max-width: 790px;
   font-size: 50px;
   line-height: .98;
   letter-spacing: -2.55px;
@@ -328,10 +317,10 @@ function closeCard() {
 .evidence-hand {
   position: absolute;
   z-index: 4;
-  right: -2px;
-  top: 154px;
-  width: 638px;
-  height: 405px;
+  right: -10px;
+  top: 148px;
+  width: 684px;
+  height: 412px;
   perspective: 1400px;
   transition: opacity .42s ease, transform .42s cubic-bezier(.22,1,.36,1);
 }
@@ -340,8 +329,8 @@ function closeCard() {
   position: absolute;
   left: 48px;
   right: 6px;
-  bottom: -9px;
-  height: 72px;
+  bottom: -8px;
+  height: 74px;
   border-radius: 999px;
   background: radial-gradient(ellipse at center, rgba(34, 47, 61, .16), transparent 68%);
   transform: rotate(-1deg);
@@ -354,19 +343,19 @@ function closeCard() {
   z-index: var(--depth);
   left: var(--x);
   top: var(--y);
-  width: 166px;
-  height: 370px;
+  width: 178px;
+  height: 388px;
   border: 0;
-  border-radius: 22px;
+  border-radius: 24px;
   background:
-    linear-gradient(180deg, rgba(255,255,255,.99), rgba(250,251,252,.95)),
-    radial-gradient(circle at 70% 20%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 43%);
-  box-shadow: 0 22px 54px rgba(27, 39, 52, .15), 0 1px 0 rgba(255,255,255,.92) inset;
-  transform: translateY(12px) rotate(var(--rotate)) scale(var(--scale));
+    linear-gradient(180deg, rgba(255,255,255,.985), rgba(250,251,252,.94)),
+    radial-gradient(circle at 68% 18%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 42%);
+  box-shadow: 0 20px 52px rgba(27, 39, 52, .14), 0 1px 0 rgba(255,255,255,.9) inset;
+  transform: translateY(14px) rotate(var(--rotate)) scale(var(--scale));
   transform-origin: 50% 116%;
   color: var(--ink);
   text-align: left;
-  padding: 19px 16px 16px;
+  padding: 24px 18px 18px;
   cursor: pointer;
   transition: transform .42s cubic-bezier(.22,1,.36,1), box-shadow .42s ease, opacity .35s ease, filter .35s ease;
 }
@@ -378,58 +367,79 @@ function closeCard() {
   border: 1px solid color-mix(in srgb, var(--accent) 34%, var(--line));
   pointer-events: none;
 }
+.evidence-card::after {
+  content: "";
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 21px;
+  height: 2px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 60%, transparent), transparent);
+  opacity: .85;
+}
 .evidence-card:hover,
 .evidence-card:focus-visible {
-  transform: translateY(-12px) rotate(calc(var(--rotate) * .42)) scale(calc(var(--scale) + .035));
-  box-shadow: 0 34px 72px rgba(27, 39, 52, .2), 0 1px 0 rgba(255,255,255,.96) inset;
+  transform: translateY(-8px) rotate(calc(var(--rotate) * .48)) scale(calc(var(--scale) + .035));
+  box-shadow: 0 30px 64px rgba(27, 39, 52, .2), 0 1px 0 rgba(255,255,255,.96) inset;
   outline: none;
   z-index: 30;
 }
 .evidence-card.muted { opacity: .25; filter: grayscale(.28); }
 .evidence-card.active { z-index: 35; }
-.card-result {
-  box-shadow: 0 30px 76px rgba(27, 39, 52, .19), 0 1px 0 rgba(255,255,255,.96) inset;
-}
-
-.card-topline { display: flex; align-items: center; justify-content: space-between; gap: 7px; }
-.card-number { color: var(--accent); }
-.card-kicker { color: #9aa0a6; font-size: 7.6px; letter-spacing: .82px; text-align: right; }
 .evidence-card > strong {
   display: block;
-  margin-top: 20px;
-  width: 132px;
-  font-size: 20px;
-  line-height: 1.06;
-  letter-spacing: -.68px;
-  font-weight: 790;
+  width: 137px;
+  color: #30343a;
+  font-size: 25px;
+  line-height: 1.05;
+  letter-spacing: -1.05px;
+  font-weight: 805;
 }
-.card-result > strong { font-size: 22px; }
-.card-visual { display: block; position: absolute; left: 16px; right: 16px; bottom: 49px; height: 137px; }
-.card-footer { position: absolute; left: 16px; bottom: 19px; color: color-mix(in srgb, var(--accent) 68%, #8f969b); font-size: 8px; letter-spacing: .9px; }
+.card-result > strong { font-size: 28px; letter-spacing: -1.25px; }
+.card-visual {
+  display: block;
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 53px;
+  height: 124px;
+}
 
 .result-visual svg { width: 100%; height: 100%; overflow: visible; }
-.result-visual text { fill: #9099a0; font-size: 9px; font-family: 'Nunito', sans-serif; font-weight: 750; }
 .mini-baseline { stroke: #d7dde1; stroke-width: 1; stroke-dasharray: 3 4; }
-.mini-line { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
-.mini-final { fill: var(--accent); stroke: white; stroke-width: 2; }
-.trajectory-visual { display: grid; align-content: center; gap: 16px; }
-.cycle-row { display: grid; grid-template-columns: 1fr; gap: 5px; color: #6e7780; font-size: 9px; font-weight: 850; }
-.cycle-row i { display: grid; place-items: center; width: 31px; height: 24px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 10%, white); color: var(--accent); font-style: normal; }
-.cycle-row b { display: block; width: 1px; height: 8px; margin-left: 15px; background: color-mix(in srgb, var(--accent) 35%, #dce1e5); }
-.cycle-count b { display: block; color: var(--accent); font-size: 39px; line-height: .9; letter-spacing: -1.5px; }
-.cycle-count small { display: block; margin-top: 4px; color: #8d969d; font-size: 9px; }
-.autonomy-visual { display: grid; align-content: center; }
-.zero { color: var(--accent); font-size: 92px; line-height: .78; letter-spacing: -6px; font-weight: 720; }
-.zero-caption { color: #8d969d; font-size: 10px; line-height: 1.25; width: 116px; }
-.validity-visual { display: grid; align-content: center; gap: 12px; }
-.receipt-check { display: grid; place-items: center; width: 49px; height: 49px; border-radius: 50%; background: color-mix(in srgb, var(--accent) 11%, white); color: var(--accent); font-size: 25px; font-weight: 900; }
-.validity-visual b { display: block; color: var(--accent); font-size: 25px; letter-spacing: -1px; line-height: 1; }
-.validity-visual small { display: block; margin-top: 5px; color: #8d969d; font-size: 9px; }
-.evidence-visual { display: grid; gap: 7px; color: #7e8790; font-size: 8.7px; font-weight: 800; }
-.evidence-visual span { display: grid; place-items: center; min-height: 29px; border-radius: 10px; background: color-mix(in srgb, var(--accent) 8%, white); }
-.evidence-visual b { justify-self: center; color: var(--accent); transform: rotate(90deg); }
+.mini-line { fill: none; stroke: var(--accent); stroke-width: 3.6; stroke-linecap: round; stroke-linejoin: round; }
+.mini-final { fill: var(--accent); stroke: white; stroke-width: 2.3; }
+.trajectory-visual { display: grid; align-content: center; justify-items: center; gap: 16px; }
+.cycle-row { display: grid; grid-template-columns: 1fr; gap: 6px; }
+.cycle-row i { display: block; width: 34px; height: 23px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 12%, white); }
+.cycle-row b { display: block; width: 1px; height: 9px; margin-left: 17px; background: color-mix(in srgb, var(--accent) 35%, #dce1e5); }
+.tiny-path { position: relative; width: 78px; height: 18px; }
+.tiny-path::before { content: ""; position: absolute; left: 0; right: 0; top: 9px; height: 2px; border-radius: 99px; background: color-mix(in srgb, var(--accent) 28%, #dce1e5); }
+.tiny-path em { position: absolute; top: 5px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); opacity: .7; }
+.tiny-path em:nth-child(1) { left: 0; }
+.tiny-path em:nth-child(2) { left: 34px; }
+.tiny-path em:nth-child(3) { right: 0; }
+.autonomy-visual { display: grid; place-items: center; }
+.quiet-zero {
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  border: 7px solid color-mix(in srgb, var(--accent) 70%, white);
+  box-shadow: inset 0 0 0 16px rgba(255,255,255,.8), 0 0 0 1px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+.orbit-ring { position: absolute; border: 1px solid color-mix(in srgb, var(--accent) 23%, transparent); border-radius: 50%; }
+.ring-a { width: 126px; height: 66px; transform: rotate(-18deg); }
+.ring-b { width: 116px; height: 58px; transform: rotate(26deg); }
+.validity-visual { display: grid; place-items: center; gap: 14px; }
+.receipt-check { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: color-mix(in srgb, var(--accent) 12%, white); color: var(--accent); font-size: 29px; font-weight: 900; }
+.receipt-lines { width: 100px; }
+.receipt-lines i { display: block; height: 7px; margin-top: 7px; border-radius: 99px; background: color-mix(in srgb, var(--accent) 11%, #e9edf0); }
+.evidence-visual { display: grid; grid-template-columns: 1fr; justify-items: center; gap: 7px; }
+.evidence-visual span { width: 92px; height: 27px; border-radius: 12px; background: color-mix(in srgb, var(--accent) 9%, white); }
+.evidence-visual b { width: 2px; height: 14px; border-radius: 9px; background: color-mix(in srgb, var(--accent) 34%, #d6dde2); }
 
-:deep(.slidev-vclick-hidden) { opacity: 0; transform: translateY(46px) rotate(var(--rotate)) scale(.88); }
+:deep(.slidev-vclick-hidden) { opacity: 0; transform: translateY(38px) rotate(var(--rotate)) scale(.9); }
 
 .inspection-layer {
   position: absolute;
