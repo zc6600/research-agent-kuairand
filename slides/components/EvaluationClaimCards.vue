@@ -21,10 +21,10 @@ const selectedId = ref<string | null>(null)
 
 const cards: Card[] = [
   { id: 'validity', no: '04', kicker: 'VALID ARTIFACT', claim: 'The output passed the boundary.', accent: 'var(--orange)', rotate: -15, x: 0, y: 72, scale: .96, z: 1, title: 'The delivered file passed the unchanged Starter Kit alignment checker.', detail: 'The final predictions were checked against the original evaluator boundary: 170,588 prediction rows aligned and passed the submission checker.', meta: '170,588 checked predictions · unchanged checker · organizer-controlled hidden test' },
-  { id: 'trajectory', no: '02', kicker: 'RESEARCH LOOP', claim: 'The search sustained itself.', accent: 'var(--blue)', rotate: -7, x: 118, y: 38, scale: 1, z: 3, title: 'The score came from a trajectory, not a single lucky edit.', detail: 'Seven Full public-validation evaluations were retained across four autonomous cycles, from a validated baseline to a 46-field, 8-seed FM ensemble.', meta: '4 cycles · 13 named experiments · E003–E013 retained frontier' },
-  { id: 'result', no: '01', kicker: 'PUBLIC VALIDATION', claim: 'The model improved.', accent: 'var(--green)', rotate: 0, x: 238, y: 8, scale: 1.08, z: 6, title: 'A retained checkpoint beat the official FM reference.', detail: 'The final E013 checkpoint reached 0.6059363 Primary on public validation, an absolute improvement of +0.0043363 over the official five-field FM reference.', meta: '0.6016000 → 0.6059363 · GAUC 0.6728421 · nDCG@5 0.5390304' },
-  { id: 'autonomy', no: '03', kicker: 'AUTONOMY', claim: 'The run stayed autonomous.', accent: 'var(--purple)', rotate: 7, x: 358, y: 39, scale: 1, z: 4, title: 'After launch, the research loop kept control of the scientific moves.', detail: 'The retained run completed four autonomous cycles with zero manual scientific interventions after launch. Humans built the framework; the run carried the research decisions.', meta: '0 manual scientific interventions · 0 GPU-hours · CPU / NumPy training' },
-  { id: 'evidence', no: '05', kicker: 'AUDIT TRAIL', claim: 'The evidence stayed inspectable.', accent: 'var(--rose)', rotate: 15, x: 476, y: 73, scale: .96, z: 2, title: 'The final answer remained tied to experiments, reports, and retained state.', detail: 'SciOdyssey did not only return a score. It left a research record: named experiments, cycle reports, retained implementation state, and scoped claims.', meta: 'experiment → report → retained State · claim ↔ evidence audit' },
+  { id: 'trajectory', no: '02', kicker: 'RESEARCH LOOP', claim: 'The search sustained itself.', accent: 'var(--blue)', rotate: -7, x: 112, y: 38, scale: 1, z: 3, title: 'The score came from a trajectory, not a single lucky edit.', detail: 'Seven Full public-validation evaluations were retained across four autonomous cycles, from a validated baseline to a 46-field, 8-seed FM ensemble.', meta: '4 cycles · 13 named experiments · E003–E013 retained frontier' },
+  { id: 'result', no: '01', kicker: 'PUBLIC VALIDATION', claim: 'The model improved.', accent: 'var(--green)', rotate: 0, x: 226, y: 8, scale: 1.1, z: 8, title: 'A retained checkpoint beat the official FM reference.', detail: 'The final E013 checkpoint reached 0.6059363 Primary on public validation, an absolute improvement of +0.0043363 over the official five-field FM reference.', meta: '0.6016000 → 0.6059363 · GAUC 0.6728421 · nDCG@5 0.5390304' },
+  { id: 'autonomy', no: '03', kicker: 'AUTONOMY', claim: 'The run stayed autonomous.', accent: 'var(--purple)', rotate: 7, x: 340, y: 39, scale: 1, z: 4, title: 'After launch, the research loop kept control of the scientific moves.', detail: 'The retained run completed four autonomous cycles with zero manual scientific interventions after launch. Humans built the framework; the run carried the research decisions.', meta: '0 manual scientific interventions · 0 GPU-hours · CPU / NumPy training' },
+  { id: 'evidence', no: '05', kicker: 'AUDIT TRAIL', claim: 'The evidence stayed inspectable.', accent: 'var(--rose)', rotate: 15, x: 452, y: 73, scale: .96, z: 2, title: 'The final answer remained tied to experiments, reports, and retained state.', detail: 'SciOdyssey did not only return a score. It left a research record: named experiments, cycle reports, retained implementation state, and scoped claims.', meta: 'experiment → report → retained State · claim ↔ evidence audit' },
 ]
 
 const selected = computed(() => cards.find(card => card.id === selectedId.value) ?? null)
@@ -86,10 +86,10 @@ const closeCard = () => { selectedId.value = null }
 .eval-claim-cards::before {
   content: "";
   position: absolute;
-  inset: 88px 0 8px 29%;
+  inset: 88px 0 8px 24%;
   background:
-    radial-gradient(circle at 78% 30%, color-mix(in srgb, var(--green) 9%, transparent), transparent 30%),
-    radial-gradient(circle at 48% 76%, color-mix(in srgb, var(--blue) 6%, transparent), transparent 38%);
+    radial-gradient(circle at 70% 30%, color-mix(in srgb, var(--green) 9%, transparent), transparent 30%),
+    radial-gradient(circle at 42% 76%, color-mix(in srgb, var(--blue) 6%, transparent), transparent 38%);
   pointer-events: none;
 }
 
@@ -145,7 +145,7 @@ const closeCard = () => { selectedId.value = null }
 .evidence-hand {
   position: absolute;
   z-index: 4;
-  right: -10px;
+  right: 40px;
   top: 146px;
   width: 666px;
   height: 414px;
@@ -155,8 +155,8 @@ const closeCard = () => { selectedId.value = null }
 .evidence-hand::after {
   content: "";
   position: absolute;
-  left: 42px;
-  right: 10px;
+  left: 36px;
+  right: 22px;
   bottom: -10px;
   height: 74px;
   border-radius: 999px;
@@ -176,7 +176,7 @@ const closeCard = () => { selectedId.value = null }
   border: 0;
   border-radius: 22px;
   background:
-    linear-gradient(180deg, rgba(255,255,255,.99), rgba(250,251,252,.95)),
+    linear-gradient(180deg, rgba(255,255,255,1), rgba(250,251,252,.99)),
     radial-gradient(circle at 72% 18%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 45%);
   box-shadow: 0 22px 54px rgba(27, 39, 52, .14), 0 1px 0 rgba(255,255,255,.92) inset;
   transform: translateY(12px) rotate(var(--rotate)) scale(var(--scale));
@@ -202,7 +202,13 @@ const closeCard = () => { selectedId.value = null }
   outline: none;
   z-index: 30;
 }
-.card-result { box-shadow: 0 30px 76px rgba(27, 39, 52, .18), 0 1px 0 rgba(255,255,255,.96) inset; }
+.card-result {
+  background: #fff;
+  box-shadow: 0 34px 84px rgba(27, 39, 52, .23), 0 0 0 1px rgba(255,255,255,.98) inset;
+}
+.card-result::before {
+  border-color: color-mix(in srgb, var(--green) 44%, #dce3e8);
+}
 
 .card-meta { display: flex; align-items: center; justify-content: space-between; gap: 7px; }
 .card-no { color: var(--accent); }
