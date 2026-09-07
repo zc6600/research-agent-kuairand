@@ -338,7 +338,7 @@ const resetInitial = (event?: MouseEvent) => {
   color: var(--ink);
   letter-spacing: -0.5px;
   line-height: 1.15;
-  margin: 3px 0 0;
+  margin: 26px 0 0;
 }
 .ts-parallel-claim strong { color: var(--blue); font-weight: 600; }
 .ts-parallel-svg-wrap { flex: 1; min-height: 0; position: relative; }
