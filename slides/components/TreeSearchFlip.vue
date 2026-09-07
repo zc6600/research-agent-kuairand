@@ -211,9 +211,8 @@ const resetInitial = (event?: MouseEvent) => {
               <span>One starting point. <strong>Independent answers.</strong></span>
             </div>
 
-            <div class="ts-parallel-svg-wrap" aria-label="One research world branches into three independent scientists and reconverges at a reviewer">
-              <svg viewBox="0 0 1000 390" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="ts-parallel-title">
-                <title id="ts-parallel-title">One research world, three isolated scientist worktrees, one reviewer</title>
+            <div class="ts-parallel-svg-wrap">
+              <svg viewBox="0 0 1000 390" preserveAspectRatio="xMidYMid meet" role="img" aria-label="One research world, three isolated scientist worktrees, one reviewer">
                 <defs>
                   <marker id="ts-arrow-a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="#2fb3e8" /></marker>
                   <marker id="ts-arrow-b" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="#ff873f" /></marker>
