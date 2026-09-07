@@ -1,53 +1,84 @@
 <template>
-  <section class="claim-verdict-eval" aria-label="Evaluation claim and verdict">
+  <section class="claim-verdict-eval" aria-label="Evaluation claim and evidence verdict">
     <div class="claim-copy">
       <div class="claim-section-kicker mono">04 / EVALUATION</div>
       <div class="claim-label mono">CLAIM</div>
-      <h1>Can an agent carry a research task to completion?</h1>
-      <p class="claim-scope">On KuaiRand-Pure, under a fixed evaluator and public-validation boundary.</p>
-      <div class="claim-criteria" aria-label="Completion criteria">
-        <span>Research autonomously</span>
-        <span>Produce a valid artifact</span>
-        <span>Improve the measured objective</span>
-      </div>
+      <h1>An agent can carry a research task to completion.</h1>
+      <p class="claim-scope">A tested model, a retained implementation, and inspectable evidence — without scientific intervention after launch.</p>
+      <div class="claim-boundary mono">KUAIRAND-PURE · FIXED EVALUATOR · PUBLIC VALIDATION</div>
     </div>
 
-    <div class="verdict-rail" aria-hidden="true">
-      <span class="rail-dot rail-dot-top"></span>
-      <span class="rail-line"></span>
-      <span class="rail-dot rail-dot-bottom"></span>
+    <div class="verdict-field">
+      <div v-click class="verdict-anchor">
+        <span class="verdict-label mono">VERDICT</span>
+        <strong>Supported</strong>
+        <small class="mono">IN THIS RUN</small>
+      </div>
+
+      <div v-click class="score-island">
+        <span class="island-label mono">RETAINED PRIMARY</span>
+        <strong>0.6059363</strong>
+        <small><b>+0.0043363</b> vs official FM</small>
+      </div>
+
+      <div v-click class="trajectory-island">
+        <div class="trajectory-head">
+          <span class="island-label mono">RESEARCH TRAJECTORY</span>
+          <span class="trajectory-range mono">E003 → E013</span>
+        </div>
+        <svg viewBox="0 0 500 205" role="img" aria-label="Public-validation Primary score rises from 0.601631 at E003 to 0.6059363 at E013">
+          <defs>
+            <linearGradient id="verdictFade" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="var(--blue)" stop-opacity=".25" />
+              <stop offset="1" stop-color="var(--green)" stop-opacity=".95" />
+            </linearGradient>
+          </defs>
+          <line x1="18" y1="152" x2="482" y2="152" class="baseline" />
+          <text x="18" y="171" class="baseline-label">official FM · 0.601600</text>
+          <polyline class="trajectory-glow" points="22,151 84,151 166,112 240,85 320,75 404,47 474,34" />
+          <polyline class="trajectory-line" points="22,151 84,151 166,112 240,85 320,75 404,47 474,34" />
+          <g class="trajectory-points">
+            <circle cx="22" cy="151" r="4" /><circle cx="84" cy="151" r="4" /><circle cx="166" cy="112" r="4" />
+            <circle cx="240" cy="85" r="4" /><circle cx="320" cy="75" r="4" /><circle cx="404" cy="47" r="4" />
+            <circle class="final-point" cx="474" cy="34" r="7" />
+          </g>
+          <text x="22" y="194" text-anchor="middle" class="axis-label">C1</text>
+          <text x="204" y="194" text-anchor="middle" class="axis-label">C2</text>
+          <text x="320" y="194" text-anchor="middle" class="axis-label">C3</text>
+          <text x="444" y="194" text-anchor="middle" class="axis-label">C4</text>
+          <path d="M474 34 L474 13 L415 13" class="final-leader" />
+          <text x="409" y="16" text-anchor="end" class="final-label">final retained</text>
+        </svg>
+      </div>
+
+      <div v-click class="metric-island cycles-island">
+        <span class="metric-value blue">4</span>
+        <span class="metric-copy"><b>autonomous cycles</b><small>within a 50-iteration cap</small></span>
+      </div>
+
+      <div v-click class="metric-island experiments-island">
+        <span class="metric-value orange">13</span>
+        <span class="metric-copy"><b>named experiments</b><small>7 full evaluations</small></span>
+      </div>
+
+      <div v-click class="metric-island intervention-island">
+        <span class="metric-value purple">0</span>
+        <span class="metric-copy"><b>manual scientific interventions</b><small>after launch</small></span>
+      </div>
+
+      <div v-click class="validity-island">
+        <span class="validity-mark">✓</span>
+        <div><strong>170,588</strong><small>prediction rows passed the unchanged Starter Kit alignment checker</small></div>
+      </div>
+
+      <div class="field-orbit orbit-a" aria-hidden="true"></div>
+      <div class="field-orbit orbit-b" aria-hidden="true"></div>
+      <div class="field-dot dot-a" aria-hidden="true"></div>
+      <div class="field-dot dot-b" aria-hidden="true"></div>
+      <div class="field-dot dot-c" aria-hidden="true"></div>
     </div>
 
-    <div class="verdict-area">
-      <div v-click class="verdict-panel">
-        <div class="verdict-label mono">VERDICT</div>
-        <div class="verdict-word">Supported</div>
-        <div class="verdict-scope mono">in this run</div>
-      </div>
-
-      <div v-click class="score-proof">
-        <div class="score-proof-kicker mono">RETAINED PUBLIC VALIDATION / PRIMARY</div>
-        <div class="score-proof-number">0.6059363</div>
-        <div class="score-proof-delta"><strong>+0.0043363</strong> vs official FM reference</div>
-      </div>
-
-      <div class="evidence-strip">
-        <div v-click class="evidence-item evidence-result">
-          <span class="evidence-index mono">01</span>
-          <div><strong>Result</strong><small>0.6016000 → 0.6059363</small></div>
-        </div>
-        <div v-click class="evidence-item evidence-autonomy">
-          <span class="evidence-index mono">02</span>
-          <div><strong>Autonomy</strong><small>4 cycles · 13 experiments · 0 interventions</small></div>
-        </div>
-        <div v-click class="evidence-item evidence-validity">
-          <span class="evidence-index mono">03</span>
-          <div><strong>Validity</strong><small>170,588 predictions · unchanged checker</small></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="claim-verdict-foot mono">Public validation only · hidden-test scoring is organizer-controlled</div>
+    <div class="claim-verdict-foot mono">PUBLIC VALIDATION ONLY · HIDDEN-TEST SCORING IS ORGANIZER-CONTROLLED</div>
   </section>
 </template>
 
@@ -55,248 +86,250 @@
 .claim-verdict-eval {
   position: relative;
   min-height: 560px;
-  padding: 10px 20px 0;
+  padding: 0;
   color: var(--ink);
   overflow: hidden;
 }
 
-.claim-verdict-eval::before {
-  content: "";
-  position: absolute;
-  inset: 42px 43% 38px 50px;
-  border-radius: 999px;
-  background: radial-gradient(circle at 18% 18%, color-mix(in srgb, var(--green) 10%, transparent), transparent 62%);
-  opacity: .75;
-  pointer-events: none;
-}
-
 .claim-copy {
   position: absolute;
-  z-index: 2;
-  left: 54px;
-  top: 62px;
-  width: 405px;
+  z-index: 5;
+  left: 48px;
+  top: 42px;
+  width: 350px;
 }
 
-.claim-section-kicker {
-  color: var(--green);
-  font-size: 12px;
-  letter-spacing: 1.35px;
-  font-weight: 800;
-  text-transform: uppercase;
-}
-
+.claim-section-kicker,
 .claim-label,
 .verdict-label,
-.score-proof-kicker {
-  color: var(--muted);
-  font-size: 11px;
-  letter-spacing: 1.55px;
-  font-weight: 800;
+.island-label {
+  font-size: 10px;
+  letter-spacing: 1.45px;
+  font-weight: 850;
   text-transform: uppercase;
 }
 
-.claim-label {
-  margin-top: 70px;
-  color: var(--orange);
-}
+.claim-section-kicker { color: var(--green); }
+.claim-label { margin-top: 78px; color: var(--orange); }
 
 .claim-copy h1 {
-  margin: 18px 0 0;
-  max-width: 390px;
-  font-size: 47px;
-  line-height: .98;
-  letter-spacing: -2.1px;
-  font-weight: 780;
+  margin: 16px 0 0;
+  max-width: 345px;
+  font-size: 45px;
+  line-height: .99;
+  letter-spacing: -2px;
+  font-weight: 790;
 }
 
 .claim-scope {
-  margin: 30px 0 0;
-  width: 340px;
+  margin: 27px 0 0;
+  width: 315px;
   color: var(--muted);
-  font-size: 18px;
-  line-height: 1.45;
+  font-size: 16px;
+  line-height: 1.48;
 }
 
-.claim-criteria {
-  display: grid;
-  gap: 11px;
+.claim-boundary {
   margin-top: 34px;
-  width: 330px;
+  width: 300px;
+  color: #9aa0a6;
+  font-size: 9px;
+  line-height: 1.55;
+  letter-spacing: .85px;
 }
 
-.claim-criteria span {
-  position: relative;
-  padding-left: 22px;
-  color: var(--ink);
-  font-size: 15px;
-  font-weight: 700;
-}
-
-.claim-criteria span::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: .68em;
-  width: 9px;
-  height: 2px;
-  border-radius: 10px;
-  background: var(--green);
-}
-
-.verdict-rail {
-  position: absolute;
-  z-index: 1;
-  left: 485px;
-  top: 120px;
-  width: 54px;
-  height: 356px;
-}
-
-.rail-line {
-  position: absolute;
-  left: 26px;
-  top: 14px;
-  width: 1px;
-  height: 328px;
-  background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--green) 55%, transparent), transparent);
-}
-
-.rail-dot {
-  position: absolute;
-  left: 21px;
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  border: 1px solid color-mix(in srgb, var(--green) 68%, transparent);
-  background: white;
-  box-shadow: 0 0 0 7px color-mix(in srgb, var(--green) 10%, transparent);
-}
-
-.rail-dot-top { top: 0; }
-.rail-dot-bottom { bottom: 0; }
-
-.verdict-area {
+.verdict-field {
   position: absolute;
   z-index: 2;
-  top: 72px;
-  right: 48px;
-  width: 405px;
+  top: 28px;
+  right: 22px;
+  width: 555px;
+  height: 505px;
 }
 
-.verdict-panel {
-  padding-top: 40px;
+.verdict-field::before {
+  content: "";
+  position: absolute;
+  inset: 48px 28px 34px 18px;
+  border-radius: 48% 52% 58% 42% / 48% 42% 58% 52%;
+  background:
+    radial-gradient(circle at 68% 18%, color-mix(in srgb, var(--green) 9%, transparent), transparent 34%),
+    radial-gradient(circle at 38% 58%, color-mix(in srgb, var(--blue) 6%, transparent), transparent 42%);
+  pointer-events: none;
 }
 
-.verdict-word {
-  margin-top: 13px;
-  color: var(--green);
-  font-size: 70px;
-  line-height: .92;
-  letter-spacing: -3.5px;
-  font-weight: 760;
-  text-transform: none;
+.verdict-anchor {
+  position: absolute;
+  z-index: 4;
+  left: 24px;
+  top: 16px;
 }
 
-.verdict-scope {
-  margin-top: 12px;
-  color: var(--muted);
-  font-size: 12px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-}
-
-.score-proof {
-  margin-top: 36px;
-  padding-top: 28px;
-  border-top: 1px solid var(--line);
-}
-
-.score-proof-number {
-  margin-top: 10px;
+.verdict-label { color: var(--green); }
+.verdict-anchor strong {
+  display: block;
+  margin-top: 6px;
   color: var(--ink);
-  font-size: 61px;
+  font-size: 40px;
   line-height: 1;
-  letter-spacing: -3.7px;
-  font-weight: 660;
+  letter-spacing: -1.9px;
+  font-weight: 760;
+}
+.verdict-anchor small {
+  display: block;
+  margin-top: 7px;
+  color: #9aa0a6;
+  font-size: 9px;
+  letter-spacing: 1.1px;
+}
+
+.score-island {
+  position: absolute;
+  z-index: 5;
+  right: 8px;
+  top: 28px;
+  width: 285px;
+  text-align: right;
+}
+
+.score-island .island-label { color: #8f969b; }
+.score-island strong {
+  display: block;
+  margin-top: 7px;
+  color: var(--green);
+  font-size: 61px;
+  line-height: .94;
+  letter-spacing: -4px;
+  font-weight: 690;
   font-variant-numeric: tabular-nums;
 }
-
-.score-proof-delta {
-  margin-top: 12px;
+.score-island small {
+  display: block;
+  margin-top: 8px;
   color: var(--muted);
-  font-size: 15px;
-}
-
-.score-proof-delta strong {
-  color: var(--green);
-}
-
-.evidence-strip {
-  display: grid;
-  gap: 10px;
-  margin-top: 30px;
-}
-
-.evidence-item {
-  display: grid;
-  grid-template-columns: 34px 1fr;
-  align-items: center;
-  min-height: 48px;
-  padding: 10px 0;
-  border-top: 1px solid color-mix(in srgb, var(--line) 72%, transparent);
-}
-
-.evidence-index {
-  color: var(--green);
   font-size: 12px;
+}
+.score-island b { color: #16803b; }
+
+.trajectory-island {
+  position: absolute;
+  z-index: 3;
+  left: 30px;
+  top: 130px;
+  width: 495px;
+  height: 214px;
+}
+.trajectory-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 0 7px 0 5px;
+}
+.trajectory-head .island-label { color: var(--blue); }
+.trajectory-range { color: #a1a6aa; font-size: 9px; letter-spacing: .7px; }
+.trajectory-island svg { display: block; width: 100%; height: 192px; margin-top: 5px; overflow: visible; }
+.trajectory-island svg text { font-family: 'Nunito', sans-serif; }
+.baseline { stroke: #c8d1d6; stroke-width: 1; stroke-dasharray: 4 5; }
+.baseline-label { fill: #93a0a7; font-size: 9px; }
+.trajectory-glow { fill: none; stroke: url(#verdictFade); stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; opacity: .09; }
+.trajectory-line { fill: none; stroke: url(#verdictFade); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.trajectory-points circle { fill: white; stroke: var(--blue); stroke-width: 2; }
+.trajectory-points .final-point { fill: var(--green); stroke: white; stroke-width: 2.5; filter: drop-shadow(0 2px 5px rgba(22,128,59,.18)); }
+.axis-label { fill: #9aa4aa; font-size: 9px; font-weight: 800; letter-spacing: .7px; }
+.final-leader { fill: none; stroke: var(--green); stroke-width: 1.1; }
+.final-label { fill: #16803b; font-size: 9px; font-weight: 750; }
+
+.metric-island {
+  position: absolute;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 160px;
+}
+.metric-value {
+  font-size: 38px;
+  line-height: .86;
+  letter-spacing: -2px;
+  font-weight: 760;
+  font-variant-numeric: tabular-nums;
+}
+.metric-copy b,
+.metric-copy small { display: block; }
+.metric-copy b { color: var(--ink); font-size: 11px; line-height: 1.15; }
+.metric-copy small { margin-top: 4px; color: #9aa0a6; font-size: 9px; }
+.cycles-island { left: 26px; bottom: 84px; }
+.experiments-island { left: 212px; bottom: 45px; }
+.intervention-island { right: 7px; bottom: 105px; width: 188px; }
+
+.validity-island {
+  position: absolute;
+  z-index: 6;
+  right: 6px;
+  bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 230px;
+  padding-top: 8px;
+  border-top: 1px solid color-mix(in srgb, var(--green) 24%, var(--line));
+}
+.validity-mark {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--green) 10%, white);
+  color: #16803b;
+  font-size: 13px;
   font-weight: 900;
 }
+.validity-island strong { display: block; color: #16803b; font-size: 18px; line-height: 1; }
+.validity-island small { display: block; margin-top: 3px; color: #8f969b; font-size: 8.6px; line-height: 1.25; }
 
-.evidence-item strong {
-  display: block;
-  font-size: 15px;
-  line-height: 1.15;
+.field-orbit {
+  position: absolute;
+  z-index: 1;
+  border: 1px solid color-mix(in srgb, var(--blue) 12%, transparent);
+  border-radius: 50%;
+  pointer-events: none;
 }
-
-.evidence-item small {
-  display: block;
-  margin-top: 5px;
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.35;
-}
-
-.evidence-result .evidence-index { color: var(--green); }
-.evidence-autonomy .evidence-index { color: var(--blue); }
-.evidence-validity .evidence-index { color: var(--purple); }
+.orbit-a { left: 92px; top: 113px; width: 350px; height: 255px; transform: rotate(-8deg); }
+.orbit-b { right: 58px; top: 172px; width: 260px; height: 205px; border-color: color-mix(in srgb, var(--green) 12%, transparent); transform: rotate(12deg); }
+.field-dot { position: absolute; z-index: 2; width: 5px; height: 5px; border-radius: 50%; opacity: .6; }
+.dot-a { left: 6px; top: 262px; background: var(--blue); }
+.dot-b { right: 30px; top: 232px; background: var(--green); }
+.dot-c { left: 320px; bottom: 7px; background: var(--orange); }
 
 .claim-verdict-foot {
   position: absolute;
-  left: 54px;
-  bottom: 18px;
-  color: var(--muted);
-  font-size: 10px;
-  letter-spacing: .75px;
-  text-transform: uppercase;
+  left: 48px;
+  bottom: 17px;
+  color: #a0a5aa;
+  font-size: 8.5px;
+  letter-spacing: .82px;
 }
 
 :deep(.slidev-vclick-hidden) {
   opacity: 0;
-  transform: translateX(20px);
+  transform: translateY(12px) scale(.985);
 }
 
-.verdict-panel,
-.score-proof,
-.evidence-item {
-  transition: opacity .55s ease, transform .55s cubic-bezier(.22,1,.36,1);
+.verdict-anchor,
+.score-island,
+.trajectory-island,
+.metric-island,
+.validity-island {
+  transition: opacity .52s ease, transform .6s cubic-bezier(.22,1,.36,1);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .verdict-panel,
-  .score-proof,
-  .evidence-item {
-    transition: none;
-  }
+  .verdict-anchor,
+  .score-island,
+  .trajectory-island,
+  .metric-island,
+  .validity-island { transition: none; }
 }
 </style>
