@@ -1,0 +1,337 @@
+<script setup lang="ts">
+import { computed, ref } from 'vue'
+
+type Card = {
+  id: string
+  no: string
+  kicker: string
+  claim: string
+  accent: string
+  rotate: number
+  x: number
+  y: number
+  scale: number
+  z: number
+  title: string
+  detail: string
+  meta: string
+}
+
+const selectedId = ref<string | null>(null)
+
+const cards: Card[] = [
+  { id: 'validity', no: '04', kicker: 'VALID ARTIFACT', claim: 'The output passed the boundary.', accent: 'var(--orange)', rotate: -15, x: 0, y: 72, scale: .96, z: 1, title: 'The delivered file passed the unchanged Starter Kit alignment checker.', detail: 'The final predictions were checked against the original evaluator boundary: 170,588 prediction rows aligned and passed the submission checker.', meta: '170,588 checked predictions · unchanged checker · organizer-controlled hidden test' },
+  { id: 'trajectory', no: '02', kicker: 'RESEARCH LOOP', claim: 'The search sustained itself.', accent: 'var(--blue)', rotate: -7, x: 118, y: 38, scale: 1, z: 3, title: 'The score came from a trajectory, not a single lucky edit.', detail: 'Seven Full public-validation evaluations were retained across four autonomous cycles, from a validated baseline to a 46-field, 8-seed FM ensemble.', meta: '4 cycles · 13 named experiments · E003–E013 retained frontier' },
+  { id: 'result', no: '01', kicker: 'PUBLIC VALIDATION', claim: 'The model improved.', accent: 'var(--green)', rotate: 0, x: 238, y: 8, scale: 1.08, z: 6, title: 'A retained checkpoint beat the official FM reference.', detail: 'The final E013 checkpoint reached 0.6059363 Primary on public validation, an absolute improvement of +0.0043363 over the official five-field FM reference.', meta: '0.6016000 → 0.6059363 · GAUC 0.6728421 · nDCG@5 0.5390304' },
+  { id: 'autonomy', no: '03', kicker: 'AUTONOMY', claim: 'The run stayed autonomous.', accent: 'var(--purple)', rotate: 7, x: 358, y: 39, scale: 1, z: 4, title: 'After launch, the research loop kept control of the scientific moves.', detail: 'The retained run completed four autonomous cycles with zero manual scientific interventions after launch. Humans built the framework; the run carried the research decisions.', meta: '0 manual scientific interventions · 0 GPU-hours · CPU / NumPy training' },
+  { id: 'evidence', no: '05', kicker: 'AUDIT TRAIL', claim: 'The evidence stayed inspectable.', accent: 'var(--rose)', rotate: 15, x: 476, y: 73, scale: .96, z: 2, title: 'The final answer remained tied to experiments, reports, and retained state.', detail: 'SciOdyssey did not only return a score. It left a research record: named experiments, cycle reports, retained implementation state, and scoped claims.', meta: 'experiment → report → retained State · claim ↔ evidence audit' },
+]
+
+const selected = computed(() => cards.find(card => card.id === selectedId.value) ?? null)
+const openCard = (id: string) => { selectedId.value = id }
+const closeCard = () => { selectedId.value = null }
+</script>
+
+<template>
+  <section class="eval-claim-cards" aria-label="Evaluation evidence cards">
+    <header class="claim-header" :class="{ dimmed: selected }">
+      <div class="section-kicker mono">04 / EVALUATION</div>
+      <div class="claim-label mono">CLAIM</div>
+      <h1>An agent can carry a research task to completion.</h1>
+      <div class="claim-boundary mono"><span>KUAIRAND-PURE</span><span>FIXED EVALUATOR</span><span>PUBLIC VALIDATION</span></div>
+    </header>
+
+    <div class="evidence-hand" :class="{ inspecting: selected }">
+      <button
+        v-for="card in cards"
+        :key="card.id"
+        v-click
+        type="button"
+        class="evidence-card"
+        :class="[`card-${card.id}`]"
+        :style="{ '--accent': card.accent, '--rotate': `${card.rotate}deg`, '--x': `${card.x}px`, '--y': `${card.y}px`, '--scale': card.scale, '--z': card.z }"
+        @click.stop="openCard(card.id)"
+      >
+        <span class="card-meta"><span class="card-no mono">{{ card.no }}</span><span class="card-kicker mono">{{ card.kicker }}</span></span>
+        <strong>{{ card.claim }}</strong>
+        <span class="card-rule" aria-hidden="true"></span>
+        <span class="card-footer mono">OPEN EVIDENCE</span>
+      </button>
+    </div>
+
+    <div v-if="selected" class="inspection-layer" @click.self="closeCard">
+      <article class="inspection-card" :style="{ '--accent': selected.accent }">
+        <button class="inspection-close mono" type="button" @click.stop="closeCard">BACK TO HAND</button>
+        <div class="inspection-kicker mono">{{ selected.no }} / {{ selected.kicker }}</div>
+        <h2>{{ selected.claim }}</h2>
+        <p>{{ selected.title }}</p>
+        <div class="inspection-copy">{{ selected.detail }}</div>
+        <div class="inspection-meta mono">{{ selected.meta }}</div>
+      </article>
+    </div>
+
+    <div class="claim-foot mono">PUBLIC VALIDATION ONLY · HIDDEN-TEST SCORING IS ORGANIZER-CONTROLLED</div>
+  </section>
+</template>
+
+<style scoped>
+.eval-claim-cards {
+  position: relative;
+  min-height: 560px;
+  padding: 0;
+  color: var(--ink);
+  overflow: hidden;
+}
+
+.eval-claim-cards::before {
+  content: "";
+  position: absolute;
+  inset: 88px 0 8px 29%;
+  background:
+    radial-gradient(circle at 78% 30%, color-mix(in srgb, var(--green) 9%, transparent), transparent 30%),
+    radial-gradient(circle at 48% 76%, color-mix(in srgb, var(--blue) 6%, transparent), transparent 38%);
+  pointer-events: none;
+}
+
+.claim-header {
+  position: absolute;
+  z-index: 8;
+  left: 48px;
+  top: 34px;
+  right: 42px;
+  transition: opacity .42s ease, transform .48s cubic-bezier(.22,1,.36,1);
+}
+.claim-header.dimmed { opacity: .16; transform: translateY(-4px); }
+
+.section-kicker,
+.claim-label,
+.claim-boundary,
+.card-no,
+.card-kicker,
+.card-footer,
+.inspection-kicker {
+  font-size: 10px;
+  letter-spacing: 1.35px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+.section-kicker { color: var(--green); }
+.claim-label { margin-top: 20px; color: var(--orange); }
+.claim-header h1 {
+  margin: 9px 0 0;
+  max-width: 760px;
+  font-size: 40px;
+  line-height: 1.04;
+  letter-spacing: -1.8px;
+  font-weight: 740;
+}
+.claim-boundary {
+  display: flex;
+  gap: 15px;
+  margin-top: 13px;
+  color: #9aa0a6;
+  font-size: 8.8px;
+}
+.claim-boundary span + span::before {
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  margin: 0 13px 2px 0;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--green) 56%, #bac2c8);
+}
+
+.evidence-hand {
+  position: absolute;
+  z-index: 4;
+  right: -10px;
+  top: 146px;
+  width: 666px;
+  height: 414px;
+  perspective: 1400px;
+  transition: opacity .42s ease, transform .42s cubic-bezier(.22,1,.36,1);
+}
+.evidence-hand::after {
+  content: "";
+  position: absolute;
+  left: 42px;
+  right: 10px;
+  bottom: -10px;
+  height: 74px;
+  border-radius: 999px;
+  background: radial-gradient(ellipse at center, rgba(34, 47, 61, .15), transparent 68%);
+  transform: rotate(-1deg);
+  pointer-events: none;
+}
+.evidence-hand.inspecting { opacity: .18; transform: translateX(18px) scale(.95); pointer-events: none; }
+
+.evidence-card {
+  position: absolute;
+  z-index: var(--z);
+  left: var(--x);
+  top: var(--y);
+  width: 174px;
+  height: 378px;
+  border: 0;
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.99), rgba(250,251,252,.95)),
+    radial-gradient(circle at 72% 18%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 45%);
+  box-shadow: 0 22px 54px rgba(27, 39, 52, .14), 0 1px 0 rgba(255,255,255,.92) inset;
+  transform: translateY(12px) rotate(var(--rotate)) scale(var(--scale));
+  transform-origin: 50% 116%;
+  color: var(--ink);
+  text-align: left;
+  padding: 22px 18px 18px;
+  cursor: pointer;
+  transition: transform .42s cubic-bezier(.22,1,.36,1), box-shadow .42s ease, opacity .35s ease, filter .35s ease;
+}
+.evidence-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line));
+  pointer-events: none;
+}
+.evidence-card:hover,
+.evidence-card:focus-visible {
+  transform: translateY(-12px) rotate(calc(var(--rotate) * .42)) scale(calc(var(--scale) + .035));
+  box-shadow: 0 34px 72px rgba(27, 39, 52, .19), 0 1px 0 rgba(255,255,255,.96) inset;
+  outline: none;
+  z-index: 30;
+}
+.card-result { box-shadow: 0 30px 76px rgba(27, 39, 52, .18), 0 1px 0 rgba(255,255,255,.96) inset; }
+
+.card-meta { display: flex; align-items: center; justify-content: space-between; gap: 7px; }
+.card-no { color: var(--accent); }
+.card-kicker { color: #9aa0a6; font-size: 7.4px; letter-spacing: .78px; text-align: right; }
+.evidence-card strong {
+  display: block;
+  margin-top: 48px;
+  width: 132px;
+  font-size: 24px;
+  line-height: 1.04;
+  letter-spacing: -.85px;
+  font-weight: 790;
+}
+.card-result strong { font-size: 26px; }
+.card-rule {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 56px;
+  height: 2px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  opacity: .58;
+}
+.card-footer {
+  position: absolute;
+  left: 18px;
+  bottom: 24px;
+  color: color-mix(in srgb, var(--accent) 64%, #8f969b);
+  font-size: 8px;
+  letter-spacing: .9px;
+}
+
+:deep(.slidev-vclick-hidden) { opacity: 0; transform: translateY(46px) rotate(var(--rotate)) scale(.88); }
+
+.inspection-layer {
+  position: absolute;
+  z-index: 20;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(255,255,255,.62);
+  backdrop-filter: blur(6px);
+}
+.inspection-card {
+  position: relative;
+  width: 705px;
+  height: 466px;
+  border-radius: 30px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.98), rgba(250,251,252,.95)),
+    radial-gradient(circle at 74% 26%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 38%);
+  box-shadow: 0 34px 90px rgba(24, 35, 47, .18);
+  padding: 34px 38px;
+  overflow: hidden;
+  animation: inspectIn .28s cubic-bezier(.22,1,.36,1) both;
+}
+.inspection-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid color-mix(in srgb, var(--accent) 34%, var(--line));
+  pointer-events: none;
+}
+@keyframes inspectIn {
+  from { opacity: 0; transform: translateY(18px) scale(.965) rotate(-1.5deg); }
+  to { opacity: 1; transform: translateY(0) scale(1) rotate(0); }
+}
+.inspection-close {
+  position: absolute;
+  right: 30px;
+  top: 25px;
+  border: 0;
+  background: transparent;
+  color: #8b939a;
+  font-size: 9px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+.inspection-kicker { color: var(--accent); }
+.inspection-card h2 {
+  margin: 18px 0 0;
+  width: 390px;
+  font-size: 39px;
+  line-height: 1.02;
+  letter-spacing: -1.75px;
+  font-weight: 790;
+}
+.inspection-card p {
+  margin: 18px 0 0;
+  width: 410px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.45;
+}
+.inspection-copy {
+  position: absolute;
+  left: 38px;
+  right: 330px;
+  bottom: 78px;
+  color: #6f7780;
+  font-size: 14px;
+  line-height: 1.45;
+}
+.inspection-meta {
+  position: absolute;
+  left: 38px;
+  right: 38px;
+  bottom: 33px;
+  padding-top: 13px;
+  border-top: 1px solid color-mix(in srgb, var(--accent) 22%, var(--line));
+  color: #89919a;
+  font-size: 9px;
+  letter-spacing: .8px;
+}
+.claim-foot {
+  position: absolute;
+  left: 48px;
+  bottom: 17px;
+  color: #a0a5aa;
+  font-size: 8.5px;
+  letter-spacing: .82px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .claim-header,
+  .evidence-hand,
+  .evidence-card { transition: none; }
+  .inspection-card { animation: none; }
+}
+</style>
