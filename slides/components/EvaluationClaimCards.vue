@@ -37,7 +37,7 @@ const closeCard = () => { selectedId.value = null }
     <header class="claim-header" :class="{ dimmed: selected }">
       <div class="section-kicker mono">04 / EVALUATION</div>
       <div class="claim-label mono">CLAIM</div>
-      <h1>An agent can carry a research task to completion.</h1>
+      <h1>Our agent can carry a research task to completion.</h1>
       <div class="claim-boundary mono"><span>KUAIRAND-PURE</span><span>FIXED EVALUATOR</span><span>PUBLIC VALIDATION</span></div>
     </header>
 
@@ -119,11 +119,11 @@ const closeCard = () => { selectedId.value = null }
 .claim-label { margin-top: 20px; color: var(--orange); }
 .claim-header h1 {
   margin: 9px 0 0;
-  max-width: 760px;
-  font-size: 40px;
-  line-height: 1.04;
-  letter-spacing: -1.8px;
-  font-weight: 740;
+  max-width: 720px;
+  font-size: 34px;
+  line-height: 1.06;
+  letter-spacing: -1.2px;
+  font-weight: 730;
 }
 .claim-boundary {
   display: flex;
