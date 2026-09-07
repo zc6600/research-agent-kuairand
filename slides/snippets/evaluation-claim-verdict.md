@@ -1,8 +1,8 @@
-<EvaluationClaimVerdict />
+<EvaluationClaimCards />
 
 <!--
-04 / EVALUATION opens as a claim-verdict page before the existing detailed evidence slides.
-The layout follows the product-film proof composition: left-side narrative claim, right-side verdict and evidence object.
+04 / EVALUATION opens as a claim-card page before the existing detailed evidence slides.
+The layout keeps the claim as a statement and presents the run evidence as a fanned hand of clickable claim cards.
 [Sources]
 - ../docs/FINAL_REPORT.md — Submission Snapshot and section 2
 - ../submission/research-agent-kuairand/final/submit-check.txt
