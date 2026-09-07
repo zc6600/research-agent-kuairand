@@ -1120,6 +1120,9 @@ html.print .slidev-layout.parallel-breadth-slide .parallel-world-ring {
 .slidev-layout .memory p { color: var(--muted); font-size: 19px; }
 .slidev-layout .branches { background: transparent; color: var(--body); font-size: 21px; line-height: 1.75; margin: 30px 0 25px; padding: 0; }
 .slidev-layout .score { display: grid; gap: 58px; grid-template-columns: 1.14fr 1fr; margin-top: 30px; }
+.slidev-layout .score.score-trio { display: grid; gap: 28px; grid-template-columns: 1.25fr 0.95fr 1.15fr; align-items: center; margin-top: 24px; }
+.slidev-layout .score.score-trio .big-number { font-size: 58px; letter-spacing: -1px; }
+.slidev-layout .score.score-trio .delta { font-size: 16px; margin-top: 10px; white-space: nowrap; }
 .slidev-layout .big-number { color: var(--blue); font-size: 74px; font-weight: 750; letter-spacing: -1.5px; line-height: 1.1; }
 .slidev-layout .delta { font-size: 19px; font-weight: 600; margin-top: 16px; }
 .slidev-layout table { border-collapse: collapse; font-size: 16px; width: 100%; }

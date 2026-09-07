@@ -17,15 +17,13 @@ fonts:
 mdc: true
 ---
 
-<KeynoteMotion />
-
 <div class="eyebrow">AUTONOMOUS ML RESEARCH / TECHJAM 2026</div>
 
 <img class="cover-art" src="/assets/research-world-cover.png" alt="" aria-hidden="true">
 
-<div class="hero cover-title"><span class="product-name">SciOdyssey</span><span class="product-description">Long-Horizon Autonomous<br>ML Research Agent</span></div>
+<div class="hero cover-title"><span>SciOdyssey:</span><span>Long-Horizon Autonomous</span><span>ML Research Agent</span></div>
 
-<div class="lead">A persistent research world. A fresh Scientist every cycle.</div>
+<div class="lead">Autonomous ML discovery through <span class="blue">pure evidence.</span></div>
 
 <div class="cover-meta mono"><span>PERSISTENT WORLD</span><span>FRESH SCIENTIST</span><span>EVIDENCE FIRST</span></div>
 
@@ -40,8 +38,6 @@ A lightweight framework for long-running ML research. Its central design gives t
 ---
 
 <div class="visual-kicker orange">01 / PROBLEM · THE RESEARCH TASK</div>
-
-<KeynoteMotion />
 
 # Can an agent carry a research task to completion?
 
@@ -68,8 +64,6 @@ Open with the research job. The benchmark makes that job concrete; broader task 
 
 <div class="visual-kicker orange failure-modes-kicker">01 / PROBLEM · FAILURE MODES</div>
 
-<KeynoteMotion />
-
 # Why research agents fall short
 
 <ProblemInsights />
@@ -93,8 +87,6 @@ Card 02 reverse is multi-page: page 1 covers search momentum; page 2 covers Gemi
 ---
 
 <div class="visual-kicker">02 / SYSTEM · DESIGN</div>
-
-<KeynoteMotion />
 
 # A system for sustained research
 
@@ -172,150 +164,54 @@ The transition is a design explanation, not experimental proof of causal attribu
 
 ---
 
-<div class="visual-kicker orange entry-page-kicker">03 / EXPERIENCE · DEFINE THE TASK</div>
-
-<KeynoteMotion />
-
-# Start with the task and working constraints.
-
-<div class="entry-lede">The operator defines the objective and constraints; the agent chooses and executes the experiments.</div>
-
-<div class="entry-inputs">
-  <div class="entry-input entry-input-task">
-    <div class="entry-file"><span class="entry-file-mark mono">01</span><span class="entry-file-name mono">task.md</span></div>
-    <div class="entry-rule"></div>
-    <div class="entry-input-title">What to solve.</div>
-    <div class="entry-input-detail mono">Objectives · constraints · evaluation</div>
-    <div class="entry-example">
-      <div class="entry-example-label mono">EXAMPLE</div>
-      <div class="entry-example-text">Rank short videos for each user and interaction context.</div>
-      <div class="entry-example-meta mono">KuaiRand-Pure · long_view · GAUC + nDCG@5</div>
-    </div>
-  </div>
-  <div class="entry-input entry-input-personal">
-    <div class="entry-file"><span class="entry-file-mark mono">02</span><span class="entry-file-name mono">PERSONAL.md</span></div>
-    <div class="entry-rule"></div>
-    <div class="entry-input-title">How you want it solved.</div>
-    <div class="entry-input-detail mono">Preferences · research style · priorities</div>
-    <div class="entry-example">
-      <div class="entry-example-label mono">EXAMPLE</div>
-      <div class="entry-example-text">Run on macOS / Apple Silicon with uv.</div>
-      <div class="entry-example-meta mono">≤ 15 min / experiment · never print credentials</div>
-    </div>
-  </div>
-</div>
-
-<div class="entry-footer">Autonomous by default. Supervisable by design.</div>
+<ExperienceJourney />
 
 <!--
-This entry-point framing is grounded in the repository's general-purpose coding-agent interface, task contract, and bounded autonomous cycle.
-[Sources]
-- ../README.md — What it does, Quick start, and autonomous research loop
-- ../docs/project_story.md — What it does and How we built it
--->
-
----
-
-<div class="visual-kicker orange">03 / EXPERIENCE · THE RESEARCH TRAJECTORY</div>
-
-<KeynoteMotion />
-
-# Evidence changed the next experiment.
-
-<div class="lead">E001–E013: reject weak ideas, improve representations, then test ensembles.</div>
-
-<div class="roles narrative-roles">
-  <div class="role"><strong>E001</strong><span>Screen historical target encodings; reject weak variants.</span><small>Medium screening</small></div>
-  <div class="role"><strong>E003</strong><span>Establish a valid rich-FM checkpoint.</span><small>Full · 0.6016310</small></div>
-  <div class="role"><strong>E008</strong><span>Retain a five-seed, 38-field FM ensemble.</span><small>Full · 0.6040901</small></div>
-  <div class="role"><strong>E013</strong><span>Select the eight-seed, 46-field FM ensemble.</span><small>Full · 0.6059363</small></div>
-</div>
-
-<div class="bottom-note note">These are milestones within four autonomous cycles. Medium screens ideas; Full evaluations support retained score claims.</div>
-
-<!--
-This is the canonical submission trajectory, distinct from the later RA-only Cycle-2 E008 DIN experiment.
-[Sources]
-- ../docs/FINAL_REPORT.md — section 4.1, retained experiment trajectory
-- ../submission/research-agent-kuairand/research_record/RESEARCH_RECORD.yaml
--->
-
----
-
-<div class="visual-kicker orange">03 / EXPERIENCE · RECOVERY IN THE RUN</div>
-
-<KeynoteMotion />
-
-# An evaluation failure became a recoverable step.
-
-<div class="lead">Cycle 1 completed training and evaluation, then failed while writing the evidence file.</div>
-
-<div class="roles narrative-roles">
-  <div class="role"><strong>Failure</strong><span>NumPy float32 values broke JSON serialization.</span><small>Evidence writer</small></div>
-  <div class="role"><strong>Repair</strong><span>The Scientist converted scalars and reran.</span><small>Agent-authored fix</small></div>
-  <div class="role"><strong>Retain</strong><span>Printed measurements and saved evidence survived.</span><small>Auditable recovery</small></div>
-</div>
-
-<div class="bottom-note note">No human selected this repair or edited the code. This is one observed recovery case, not a guarantee for every failure.</div>
-
-<!--
-Use the concrete recovery incident to connect the open-world motivation with observed behavior.
-[Sources]
-- ../docs/FINAL_REPORT.md — section 4.2, autonomous recovery
-- ../submission/research-agent-kuairand/research_record/reports/cycle-1.md
--->
-
----
-class: checkpoint-slide
-clicks: 1
-transition: fade
----
-
-<div class="visual-kicker purple">03 / EXPERIENCE · INSPECT THE RESULT</div>
-
-<KeynoteMotion />
-
-# A retained state keeps the evidence inspectable.
-
-<div class="checkpoint-motion">
-  <div class="checkpoint-window">
-    <div class="checkpoint-windowbar"><span>Research Dashboard</span><span>RECORDED VALIDATION</span></div>
-    <div class="checkpoint-viewport">
-      <div
-        v-motion
-        :initial="{ scale: 0.72, x: 0, y: 0 }"
-        :enter="{ scale: 0.72, x: 0, y: 0 }"
-        :click-1="{ scale: 0.82, x: 0, y: -10 }"
-        class="checkpoint-zoom"
-      >
-        <img src="/assets/dashboard-result.png" alt="Research dashboard showing the retained validation result, metrics, and evidence path">
-      </div>
-      <div v-click="1" class="checkpoint-focus-box" aria-hidden="true"></div>
-      <div v-click="1" class="checkpoint-focus-label">S004 · RETAINED STATE</div>
-    </div>
-  </div>
-  <div class="checkpoint-caption"><span v-click="1">Inspect the retained state and the evidence behind it.</span></div>
-</div>
-
-<div class="visual-caption">Retained validation checkpoint · evidence path · reproducible implementation.</div>
-
-<!--
-[Sources]
-- ../docs/dashboard/2.png — retained validation result dashboard
-- ../docs/project_story.md — Accomplishments that we're proud of
+03 / UX opens with “SciOdyssey — A research layer over your agent harness.”
+After expansion, a compact “Works with” row identifies Codex, Claude Code,
+OpenCode, Antigravity, and Trae as supported agents; the outer card has no icons.
+Six acts autoplay: edit task.md and PERSONAL.md, step, run, parallel, dashboard, skill.
+Playback is an illustrative walkthrough rendered with native Vue/HTML/SVG elements.
+Only command entry has a Terminal frame; execution uses animated research diagrams.
+Theme wording: ../terminal/deck.mjs and slides-voyage.md.
+Each act first explains its purpose with a Keynote-style headline, then demonstrates
+the operation: Make it yours / One step / Let it run / Now, explore wider /
+See what stays / Already in your workflow.
+The approximately 127-second sequence opens embedded in the chapter card, expands,
+then closes on the same product introduction before retracting into the card.
+Hover over the lower right of the demo for pause and replay.
+The outro holds with an explicit Continue to Evaluation action; re-entry replays the chapter.
+Command semantics and working constraints: ../README.md, ../PERSONAL.md.
+Motion reference: ../video/src/compositions/keynote/scenes/TerminalJourney.tsx.
+Skill scene reference: ../video/src/compositions/keynote/scenes/AgentJourney.tsx.
+Parallel review does not automatically adopt a branch; adoption requires parallel-promote.
 -->
 
 ---
 
 <div class="visual-kicker orange">04 / EVALUATION · PUBLIC-VALIDATION RESULT</div>
 
-<KeynoteMotion />
-
 # Autonomous research. Measured gains.
 
-<div class="score">
-  <div><div class="mono muted" style="font-size: 13px">PRIMARY / RESEARCH AGENT</div><div class="big-number">0.6059363</div><div class="delta"><span class="green">+0.0043363</span> <span class="muted">absolute improvement</span></div></div>
-  <div><table><thead><tr><th>METRIC</th><th>Official FM</th><th>Ours</th></tr></thead><tbody><tr><td>GAUC</td><td>0.6674000</td><td class="green">0.6728421</td></tr><tr><td>nDCG@5</td><td>0.5357000</td><td class="green">0.5390304</td></tr><tr><td>Primary</td><td>0.6016000</td><td class="green">0.6059363</td></tr></tbody></table></div>
+<div class="score score-trio">
+  <div>
+    <div class="mono muted" style="font-size: 13px">PRIMARY / RESEARCH AGENT</div>
+    <div class="big-number">0.6059363</div>
+    <div class="delta"><span class="green">+0.0043363</span> <span class="muted">absolute improvement</span></div>
+  </div>
+  <EvaluationScoreBars />
+  <div>
+    <table>
+      <thead>
+        <tr><th>METRIC</th><th>Official FM</th><th>Ours</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>GAUC</td><td>0.6674000</td><td class="green">0.6728421</td></tr>
+        <tr><td>nDCG@5</td><td>0.5357000</td><td class="green">0.5390304</td></tr>
+        <tr><td>Primary</td><td>0.6016000</td><td class="green">0.6059363</td></tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <div class="bottom-note note">Primary = mean(GAUC, nDCG@5). Public validation only; hidden-test scoring is organizer-controlled.<br>Final recipe: 46 categorical features × 8-seed FM ensemble · NumPy / CPU</div>
@@ -329,9 +225,24 @@ These are validation scores, not hidden-test results or a competition placement.
 
 ---
 
-<div class="visual-kicker blue">04 / EVALUATION · AUTONOMY AND AUDITABILITY</div>
+<div class="visual-kicker green">04 / EVALUATION · THE RETAINED TRAJECTORY</div>
 
-<KeynoteMotion />
+# The score was the end of a trajectory.
+
+<EvaluationTrajectory />
+
+<!--
+E003–E013 plot the seven Full public-validation evaluations; the remaining named experiments are Medium screens or diagnostics and are grouped in the cycle cards.
+The final checkpoint is E013: an 8-seed, 46-field FM ensemble with 46 leak-free fields, the unchanged evaluator, and a 0.6059363 Primary score.
+[Sources]
+- ../submission/research-agent-kuairand/research_record/RESEARCH_RECORD.yaml — E001–E013 ledger
+- ../docs/FINAL_REPORT.md — section 4.1 and Submission Snapshot
+- ../submission/research-agent-kuairand/research_record/reports/cycle-4.md — E013 final run
+-->
+
+---
+
+<div class="visual-kicker blue">04 / EVALUATION · AUTONOMY AND AUDITABILITY</div>
 
 # An audit trail from experiment to output.
 
@@ -353,8 +264,6 @@ Zero manual scientific interventions applies after launch in the retained run, n
 ---
 
 <div class="visual-kicker orange resources-page-kicker">04 / EVALUATION · RESOURCE ACCOUNTING</div>
-
-<KeynoteMotion />
 
 # Resource use is part of the evidence.
 
@@ -394,8 +303,6 @@ This page frames resource usage as supporting evidence, not as a claim that cost
 ---
 
 <div class="visual-kicker orange">04 / EVALUATION · DIRECT-AGENT COMPARISON</div>
-
-<KeynoteMotion />
 
 # Compare scores alongside their evidence.
 
@@ -500,8 +407,6 @@ This page frames resource usage as supporting evidence, not as a claim that cost
 
 <div class="visual-kicker purple">05 / INSIGHTS · WHAT THE RUN TAUGHT US</div>
 
-<KeynoteMotion />
-
 # The run taught us more than the final score.
 
 <div class="insight-lede">What survived the experiments — and what remains unsettled.</div>
@@ -541,8 +446,6 @@ This section synthesizes the model-diversity, scientific-validity, recovery, par
 
 <div class="visual-kicker purple">05 / INSIGHTS · LIMITS AND NEXT EXPERIMENTS</div>
 
-<KeynoteMotion />
-
 # Reproducible evidence. Open questions.
 
 <div class="roles">
@@ -564,8 +467,6 @@ Next questions are proposed directions based on documented limitations, not comp
 <!-- class: agentic-swe-fieldnote-slide -->
 
 <div class="visual-kicker orange">05 / INSIGHTS · ENGINEERING PRACTICE</div>
-
-<KeynoteMotion />
 
 <div class="fieldnote-title-row"><h1>A clean repo. A continuous agent.</h1><span class="fieldnote-stamp mono">FIELD NOTE / 01</span></div>
 
@@ -603,8 +504,6 @@ This engineering field note distills the user's Agentic SWE workflow suggestion 
 ---
 
 <div class="visual-kicker blue">05 / INSIGHTS · KEEP EXPERIENCE, REOPEN SEARCH</div>
-
-<KeynoteMotion />
 
 <div class="closing">Keep the experience.<br><span class="green">Reopen the search.</span></div>
 

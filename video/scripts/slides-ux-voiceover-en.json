@@ -1,0 +1,122 @@
+{
+  "duration": 127.2,
+  "model": "gpt-4o-mini-tts",
+  "voice": "marin",
+  "instructions": "Speak in clear, natural English for a thoughtful product walkthrough. Calm, confident, conversational; no advertising voice. Keep a steady, concise pace, with brief pauses at sentence boundaries. Read only the provided text. Pronounce SciOdyssey as sigh odyssey. Pronounce research-agent as research agent. Do not add introductions or closing remarks.",
+  "cues": [
+    {
+      "id": "01",
+      "start": 0.8,
+      "end": 8.5,
+      "text": "SciOdyssey. A research layer over your agent harness. Your tools. One persistent research world."
+    },
+    {
+      "id": "02",
+      "start": 9.4,
+      "end": 12.2,
+      "text": "Start with your research question."
+    },
+    {
+      "id": "03",
+      "start": 13.7,
+      "end": 19.8,
+      "text": "Define the objective and how success will be measured."
+    },
+    {
+      "id": "04",
+      "start": 20.7,
+      "end": 27.8,
+      "text": "Then set your working preferences: the environment, experiment budget, and boundaries."
+    },
+    {
+      "id": "05",
+      "start": 29.2,
+      "end": 32.2,
+      "text": "One step. Then, review."
+    },
+    {
+      "id": "06",
+      "start": 33.3,
+      "end": 43.7,
+      "text": "Run one research cycle with step. The Scientist investigates. Evidence is recorded. And control returns to you."
+    },
+    {
+      "id": "07",
+      "start": 45,
+      "end": 48,
+      "text": "Or, let it run."
+    },
+    {
+      "id": "08",
+      "start": 49.1,
+      "end": 61.5,
+      "text": "Set a cycle budget. A fresh Scientist continues the work each round, while the project carries the task, memory, and evidence forward."
+    },
+    {
+      "id": "09",
+      "start": 62.8,
+      "end": 65.6,
+      "text": "Now, explore wider."
+    },
+    {
+      "id": "10",
+      "start": 66.9,
+      "end": 73.2,
+      "text": "Use parallel to explore different directions in independent worktrees."
+    },
+    {
+      "id": "11",
+      "start": 74,
+      "end": 81.3,
+      "text": "A Reviewer compares the evidence. Choosing a branch to adopt remains an explicit decision."
+    },
+    {
+      "id": "12",
+      "start": 82.6,
+      "end": 85.5,
+      "text": "See what stays."
+    },
+    {
+      "id": "13",
+      "start": 86.7,
+      "end": 91,
+      "text": "Open the dashboard to inspect the retained result."
+    },
+    {
+      "id": "14",
+      "start": 91.7,
+      "end": 101,
+      "text": "See the score, the implementation state, and the evidence behind it. Then decide what comes next."
+    },
+    {
+      "id": "15",
+      "start": 102.4,
+      "end": 105.4,
+      "text": "Already in your workflow."
+    },
+    {
+      "id": "16",
+      "start": 106.5,
+      "end": 109.8,
+      "text": "Use the research-agent skill."
+    },
+    {
+      "id": "17",
+      "start": 110.1,
+      "end": 114,
+      "text": "Explore in parallel. Let me review what to keep."
+    },
+    {
+      "id": "18",
+      "start": 114.5,
+      "end": 119.2,
+      "text": "Research workflow, connected. Task, memory, and evidence stay with the project."
+    },
+    {
+      "id": "19",
+      "start": 120.3,
+      "end": 126,
+      "text": "SciOdyssey. Let research run. Make it yours."
+    }
+  ]
+}
