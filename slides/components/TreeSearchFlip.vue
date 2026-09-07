@@ -340,7 +340,7 @@ const resetInitial = (event?: MouseEvent) => {
   line-height: 1.15;
   margin: 26px 0 0;
 }
-.ts-parallel-claim strong { color: var(--blue); font-weight: 600; }
+.ts-parallel-claim strong { color: var(--blue); font-weight: 500; }
 .ts-parallel-svg-wrap { flex: 1; min-height: 0; position: relative; }
 .ts-parallel-svg-wrap svg { display: block; position: absolute; inset: 0; width: 100%; height: 100%; }
 .ts-stage-label {
