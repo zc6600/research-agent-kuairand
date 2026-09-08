@@ -30,7 +30,7 @@ jobs:
         run: |
           nohup npm run dev > /tmp/slidev.log 2>&1 &
           for i in {1..60}; do
-            if curl -fsS http://127.0.0.1:3030/ >/dev/null; then exit 0; fi
+            if curl -fsS http://localhost:3030/ >/dev/null; then exit 0; fi
             sleep 2
           done
           cat /tmp/slidev.log
@@ -50,7 +50,7 @@ jobs:
             recordVideo: {dir: 'recordings', size: {width: 1920, height: 1080}},
           });
           const page = await context.newPage();
-          await page.goto('http://127.0.0.1:3030/5', {waitUntil: 'networkidle'});
+          await page.goto('http://localhost:3030/5', {waitUntil: 'networkidle'});
           await page.waitForTimeout(129000);
           await context.close();
           await browser.close();
