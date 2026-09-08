@@ -386,24 +386,6 @@ This engineering field note distills the user's Agentic SWE workflow suggestion 
 
 ---
 
-<div class="visual-kicker blue">05 / INSIGHTS · KEEP EXPERIENCE, REOPEN SEARCH</div>
-
-<div class="closing">Keep the experience.<br><span class="green">Reopen the search.</span></div>
-
-<div class="terminal"><pre><span class="muted"># From the configured repo, run one autonomous cycle</span>
-<span class="green">$</span> ./scripts/research-agent step --cli codex \
-    --target /absolute/path/to/project --allow-edits</pre></div>
-
-<div class="note" style="margin-top: 21px"><a href="https://github.com/zc6600/research-agent-kuairand" target="_blank">github.com/zc6600/research-agent-kuairand ↗</a><br>Code · Technical report · Experiment ledger · Checked output</div>
-
-<!--
-Prerequisites are in the repository Quick start: Git, uv, the Python environment, and an installed, authenticated agent CLI. Replace target with a real research project path. The command is display text and does not execute.
-[Sources]
-- ../README.md — Quick start
--->
-
----
-
 <!-- class: open-world-slide -->
 
 <div class="visual-kicker blue">APPENDIX / OPEN-WORLD RESEARCH</div>
