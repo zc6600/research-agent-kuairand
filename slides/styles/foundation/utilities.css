@@ -1,7 +1,7 @@
 .slidev-layout .mono,
 .slidev-layout pre,
 .terminal pre {
-  font-family: 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  font-family: var(--deck-mono);
 }
 
 .slidev-layout .green { color: var(--green); }

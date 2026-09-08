@@ -306,7 +306,7 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-.experience-journey { --ux-ink: #20242b; --ux-muted: #7b828d; --ux-blue: #298bb6; --ux-line: #e5e9ee; --ux-font: 'Avenir Next', 'Helvetica Neue', Arial, sans-serif; position: absolute; inset: 0; color: var(--ux-ink); overflow: hidden; font-family: var(--ux-font); font-weight: 400; -webkit-font-smoothing: antialiased; background: radial-gradient(ellipse at 12% 0%, #e4effb, transparent 66%), radial-gradient(ellipse at 100% 100%, #fcf4e5, transparent 60%), #fafbfd; }
+.experience-journey { --ux-ink: #20242b; --ux-muted: #7b828d; --ux-blue: #298bb6; --ux-line: #e5e9ee; --ux-font: var(--demo-sans); position: absolute; inset: 0; color: var(--ux-ink); overflow: hidden; font-family: var(--ux-font); font-weight: 400; -webkit-font-smoothing: antialiased; background: radial-gradient(ellipse at 12% 0%, #e4effb, transparent 66%), radial-gradient(ellipse at 100% 100%, #fcf4e5, transparent 60%), #fafbfd; }
 .experience-journey *, .experience-journey *::before, .experience-journey *::after { box-sizing: border-box; }
 .experience-journey::before { content: ''; position: absolute; inset: 0; background: #fcfdfe; opacity: var(--immersion); }
 .chapter-card { position: absolute; top: 40px; left: 56px; right: 56px; text-align: center; }

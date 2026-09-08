@@ -8,292 +8,377 @@
 </head>
 <body>
 <article class="poster">
+  <!-- Hero Header -->
   <header class="hero">
-    <img class="hero-art" src="assets/research-voyage-v2.png" alt="Editorial illustration of an expedition boat passing through translucent blue and rust-colored planes at sea.">
+    <img class="hero-art" src="assets/research-voyage-v2.png" alt="Editorial illustration of an expedition boat passing through translucent planes at sea.">
     <div class="hero-copy">
       <p class="eyebrow">AUTONOMOUS ML RESEARCH / TECHJAM 2026</p>
-      <h1>SciOdyssey<span aria-hidden="true"></span></h1>
+      <h1>SciOdyssey<span class="hero-dot" aria-hidden="true"></span></h1>
       <p class="subtitle">A research layer over your agent harness.</p>
       <h2>Our agent can carry<br>a research task to <em>completion.</em></h2>
       <div class="hero-meta-row">
-        <p class="hero-note">PRESERVE THE RESEARCH WORLD.<br>RESET THE RESEARCHER.</p>
-        <div class="hero-meta-badge">
+        <p class="hero-note">PRESERVE THE RESEARCH WORLD · RESET THE RESEARCHER</p>
+        <div class="hero-badges">
           <span>ROBUST</span>
           <span>SUPERVISABLE</span>
           <span>BROAD SEARCH</span>
         </div>
       </div>
     </div>
-    <p class="hero-side">SAME<br>EVIDENCE<br><br>FRESH<br>JUDGMENT<br>A WIDER<br>SEARCH<br>—</p>
-    <p class="hero-signature">Research<br>Runs<br>Longer.</p>
+    <div class="hero-side">
+      <span>SAME EVIDENCE</span>
+      <span>FRESH JUDGMENT</span>
+      <span>A WIDER SEARCH</span>
+    </div>
+    <div class="hero-signature">Research<br>Runs<br>Longer.</div>
   </header>
 
+  <!-- Two-Column Main Body -->
   <main class="columns">
+    <!-- Left Column: Problem (top) + System (bottom) -->
     <div class="left-column">
-      <section class="panel cool problem">
+      <!-- 01 / PROBLEM -->
+      <section class="panel problem">
         <img class="world-art" src="assets/research-globe.png" alt="A glowing blue Earth with copper city lights.">
         <div class="section-label">01 / PROBLEM</div>
-        <h2>Why current agents<br>fall short.</h2>
-        <div class="problem-lead">Sustained autonomous exploration encounters three obstacles:</div>
+        <h2>Why current agents fall short.</h2>
+        <p class="problem-lead">Sustained autonomous exploration encounters three critical bottlenecks:</p>
+        
         <div class="failure-list">
           <div class="failure-item">
-            <span class="failure-num">01</span>
-            <div><strong>Closed-world workflow</strong><p>Rigid predefined pipelines fail when encountering unexpected errors in open research.</p></div>
+            <span class="failure-idx">01</span>
+            <div class="failure-text">
+              <strong>Closed-world fragility</strong>
+              <p>Rigid predefined pipelines shatter as soon as unexpected runtime errors emerge. In Cycle 1, a float32 JSON serialization bug halted logging; without autonomous self-healing, exploration dies permanently.</p>
+            </div>
           </div>
           <div class="failure-item">
-            <span class="failure-num">02</span>
-            <div><strong>Single trajectory inertia</strong><p>Context accumulation anchors the agent to past reasoning, trapping search in local basins.</p></div>
+            <span class="failure-idx">02</span>
+            <div class="failure-text">
+              <strong>Single-trajectory inertia</strong>
+              <p>Accumulating context history anchors the agent to past reasoning, trapping search in local basins (e.g., standard single-agent baselines stall at 0.6044 while endlessly fine-tuning hyperparameters).</p>
+            </div>
           </div>
           <div class="failure-item">
-            <span class="failure-num">03</span>
-            <div><strong>Context inflation cost</strong><p>Continually rereading deep project context costs 8× more tokens than the actual code edits.</p></div>
+            <span class="failure-idx">03</span>
+            <div class="failure-text">
+              <strong>Context inflation cost</strong>
+              <p>Continually rereading deep conversational context costs 8× more tokens than the actual code edits, exhausting context windows and causing severe reasoning dilution.</p>
+            </div>
           </div>
         </div>
-        <div class="pressure-row">
-          <b>DESIGN RESPONSE</b>
-          <span>ADAPTIVE TOOLS</span>
-          <span>FRESH REASONING</span>
-          <span>AUDITED EVIDENCE</span>
-          <span>REUSABLE CONTEXT</span>
+
+        <div class="architecture-contrast">
+          <div class="contrast-col bad">
+            <b>TRADITIONAL AGENT HARNESS</b>
+            <span>Single Monolithic Context · Error Cascades · Token Waste · Local Optima</span>
+          </div>
+          <div class="contrast-col good">
+            <b>SCIODYSSEY RESEARCH LAYER</b>
+            <span>Ephemeral Fresh Scientist · Persistent Disk Memory · Verified Handoff</span>
+          </div>
+        </div>
+
+        <div class="problem-solution-bar">
+          <span class="bar-tag">PARADIGM SHIFT</span>
+          <span class="bar-desc">Decouple the <strong>persistent research world</strong> (disk memory) from ephemeral <strong>researcher reasoning</strong> (fresh context).</span>
         </div>
       </section>
 
-      <section class="panel warm system">
+      <!-- 02 / SYSTEM -->
+      <section class="panel system">
         <div class="section-label">02 / SYSTEM</div>
         <h2>One persistent world.<br><em>Fresh scientific judgment.</em></h2>
-        <div class="system-intro">Give the research world and the researcher different lifetimes.</div>
+        <p class="system-intro">Give the research world and the researcher different lifetimes.</p>
 
-        <div class="system-flow">
-          <div class="system-node environment">
-            <span class="node-index">01</span>
-            <strong>Environment</strong>
-            <small>Task contract · data<br>evaluator · baseline<br>budget · permissions</small>
+        <!-- System Engine: 4 stages + reset loop -->
+        <div class="system-architecture">
+          <div class="arch-header">
+            <span>THE DUAL-LIFETIME ENGINE</span>
+            <small>Context reset between trajectories · Audited persistence on disk</small>
           </div>
-          <div class="flow-arrow">→</div>
-          <div class="system-node world">
-            <span class="node-index">02</span>
-            <strong>Research World</strong>
-            <small>Verified ledger<br>Working priors<br>Retained State</small>
+          <div class="system-flow">
+            <div class="flow-node env">
+              <span class="node-num">01</span>
+              <strong>Environment</strong>
+              <p>Task contract, data inputs, official evaluator & compute budget</p>
+            </div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-node world">
+              <span class="node-num">02</span>
+              <strong>Research World</strong>
+              <p>Verified ledger, working priors, and reproducible code</p>
+            </div>
+            <div class="reset-indicator">
+              <span class="reset-icon">↺</span>
+              <span class="reset-lbl">RESET<br>CONTEXT</span>
+            </div>
+            <div class="flow-node scientist">
+              <span class="node-num">03</span>
+              <strong>Fresh Scientist</strong>
+              <p>GPT ↔ Gemini rotation: clean hypotheses, code & experiments</p>
+            </div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-node meta">
+              <span class="node-num">04</span>
+              <strong>META Review</strong>
+              <p>Audit claims ↔ telemetry evidence; crystallize verified State</p>
+            </div>
           </div>
-          <div class="reset-pill">
-            CONTEXT<br><b>RESET</b>
-            <small>fresh reasoning<br>no inertia</small>
+          
+          <div class="model-relay-strip">
+            <span class="relay-tag">4-CYCLE MODEL RELAY</span>
+            <div class="relay-steps">
+              <span><b>C1</b> GPT-5.6 (Baseline)</span><i>→</i>
+              <span><b>C2</b> Gemini-3.7 (Features)</span><i>→</i>
+              <span><b>C3</b> GPT-5.6 (Variance)</span><i>→</i>
+              <span><b>C4</b> Gemini-3.7 (Ensemble)</span>
+            </div>
+            <span class="relay-meta">Gemini META throughout</span>
           </div>
-          <div class="system-node scientist">
-            <span class="node-index">03</span>
-            <strong>Fresh Scientist</strong>
-            <small>Hypotheses · code<br>experiments · reports<br><em>scientific judgment</em></small>
-          </div>
-          <div class="flow-arrow rose-arrow">→</div>
-          <div class="system-node meta">
-            <span class="node-index">04</span>
-            <strong>META Review</strong>
-            <small>Audit claims ↔ evidence<br>Scope conclusions<br><em>crystallize State</em></small>
+
+          <div class="handoff-bar">
+            <strong>Trajectory Handoff Loop:</strong>
+            <span>Fresh Scientist reset per cycle; only audited empirical findings enter durable disk memory.</span>
           </div>
         </div>
 
-        <div class="handoff">
-          <span>↻</span>
-          <strong>Selective persistence / Trajectory handoff</strong>
-          <small>Audit → scope → preserve → fresh Scientist. Only verified findings enter durable memory.</small>
-        </div>
-
-        <div class="persistence-title">
-          <span>PERSISTENT RESEARCH WORLD</span>
-          <small>What survives across trajectories</small>
-        </div>
-        <div class="persistence-lanes">
-          <div>
-            <b>A · VERIFIED / EVIDENCE</b>
-            <strong>Knowledge + ledger</strong>
-            <small>Metrics, failure logs, and full report artifacts</small>
+        <!-- 3 Persistent Strata -->
+        <div class="persistence-container">
+          <div class="strata-header">
+            <span>PERSISTENT RESEARCH WORLD</span>
+            <small>What survives across trajectories</small>
           </div>
-          <div>
-            <b>B · CURATED / REVISABLE</b>
-            <strong>Brief + working priors</strong>
-            <small>Current understanding and hypotheses, open to revision</small>
-          </div>
-          <div>
-            <b>C · IMPLEMENTATION</b>
-            <strong>Retained code + State</strong>
-            <small>Reproducible pipeline version with clear provenance</small>
+          <div class="strata-grid">
+            <div class="strata-card">
+              <div class="strata-pill pill-evidence">A · VERIFIED EVIDENCE</div>
+              <strong>Knowledge + Ledger</strong>
+              <p>Complete metric trajectories, traceback failure logs, and full report artifacts stored in <code>ledger.jsonl</code>.</p>
+            </div>
+            <div class="strata-card">
+              <div class="strata-pill pill-priors">B · WORKING PRIORS</div>
+              <strong>Brief + Hypotheses</strong>
+              <p>Current conceptual understanding, domain beliefs, and exploration leads in <code>brief.md</code>, open to active revision.</p>
+            </div>
+            <div class="strata-card">
+              <div class="strata-pill pill-state">C · REPRODUCIBLE STATE</div>
+              <strong>Retained Code + State</strong>
+              <p>Tested pipeline versions, serialized model weights, starter kit checkers, and full git commit provenance.</p>
+            </div>
           </div>
         </div>
 
-        <div class="runtime-band">
-          <strong>CODING-AGENT HARNESS + RUNTIME</strong>
-          <span>Workspace isolation</span><i>·</i>
-          <span>Runner + evaluator</span><i>·</i>
-          <span>Structured logging</span><i>·</i>
-          <span>Artifact capture</span><i>·</i>
-          <span>State operations</span>
+        <!-- Runtime Infrastructure & Parallel Breadth Footer -->
+        <div class="system-footer-grid">
+          <div class="footer-block">
+            <span class="footer-kicker">CODING HARNESS & RUNTIME</span>
+            <p>Physical Git worktree isolation · Sandbox evaluator · Structured JSON telemetry · Automated artifact capture</p>
+          </div>
+          <div class="footer-block">
+            <span class="footer-kicker">PARALLEL EXPLORATION</span>
+            <p>Independent branches explore in parallel → Post-hoc META review against validation split → Explicit state merge</p>
+          </div>
         </div>
 
-        <div class="parallel-mini">
-          <b>PARALLEL BREADTH</b>
-          <span>Isolated branches</span><i>→</i>
-          <span>Post-hoc review</span><i>→</i>
-          <strong>Explicit adoption into State</strong>
-        </div>
-
-        <p class="system-principle">The next Scientist inherits experience, not prior reasoning momentum.</p>
+        <p class="system-principle">The next Scientist inherits verified experience, not prior reasoning inertia.</p>
       </section>
     </div>
 
+    <!-- Right Column: Evaluation (top) + Insights (bottom) -->
     <div class="right-column">
-      <section class="panel warm evaluation">
+      <!-- 03 / EVALUATION -->
+      <section class="panel evaluation">
         <div class="section-label">03 / EVALUATION</div>
         <h2>Five empirical claims. Measured evidence.</h2>
         <p class="evaluation-subtitle">Standardized evaluation on KuaiRand-Pure benchmark · Fixed official evaluator · Complete telemetry accounting</p>
 
         <div class="evidence-grid">
+          <!-- Card 01: Measured Result -->
           <article class="evidence-card result-card">
-            <div class="evidence-head">
-              <span class="evidence-no">01</span>
-              <span class="evidence-kicker">MEASURED RESULT</span>
+            <div class="card-head">
+              <span class="card-idx">01</span>
+              <span class="card-kicker">MEASURED RESULT</span>
             </div>
             <h3>The model got better.</h3>
-            <div class="result-row">
-              <div><b>0.6016000</b><small>Official FM baseline</small></div>
-              <span class="arrow-sep">→</span>
-              <div class="accent-value"><b>0.6059363</b><small>SciOdyssey submission</small></div>
+            <div class="compare-row">
+              <div class="score-box baseline">
+                <span class="score-val">0.6016000</span>
+                <span class="score-lbl">Official FM baseline</span>
+              </div>
+              <span class="score-arrow">→</span>
+              <div class="score-box winner">
+                <span class="score-val">0.6059363</span>
+                <span class="score-lbl">SciOdyssey submission</span>
+              </div>
             </div>
-            <div class="delta-badge">+0.0043363 Primary improvement</div>
-            <div class="metric-strip">
+            <div class="gain-badge">+0.0043363 Primary improvement</div>
+            <div class="metric-tags">
               <span>GAUC <b>0.6728421</b> (+0.0054)</span>
               <span>nDCG@5 <b>0.5390304</b> (+0.0033)</span>
-              <span>46 interactions · 8-seed FM · CPU</span>
+              <span>LogLoss <b>0.38102</b> (-0.0032)</span>
             </div>
+            <p class="card-annotation">46 categorical interaction features · 8-seed Factorization Machine ensemble · 100% CPU / NumPy training.</p>
           </article>
 
-          <article class="evidence-card trajectory-card">
-            <div class="evidence-head">
-              <span class="evidence-no blue-no">02</span>
-              <span class="evidence-kicker">SUSTAINED SEARCH</span>
-            </div>
-            <h3>The search kept going.</h3>
-            <div class="trajectory-line">
-              <span><i></i><b>0.6016310</b><small>C1: Valid baseline</small></span>
-              <em></em>
-              <span><i></i><b>0.6040901</b><small>C2: Expand features</small></span>
-              <em></em>
-              <span><i></i><b>0.6044289</b><small>C3: Reduce variance</small></span>
-              <em></em>
-              <span class="final-point"><i></i><b>0.6059363</b><small>C4: Retained recipe</small></span>
-            </div>
-            <div class="trajectory-stats">
-              <span><b>4</b> autonomous cycles</span><i>·</i>
-              <span><b>13</b> named experiments</span><i>·</i>
-              <span><b>7</b> Full evaluations</span>
-            </div>
-            <p class="card-detail">Performance advanced systematically across distinct cycles rather than a single lucky edit.</p>
-          </article>
-
-          <article class="evidence-card recovery-card">
-            <div class="evidence-head">
-              <span class="evidence-no rose-no">03</span>
-              <span class="evidence-kicker">AUTONOMOUS RECOVERY</span>
-            </div>
-            <h3>Our agent is robust.</h3>
-            <div class="recovery-flow">
-              <div class="recovery-step">
-                <b>01 · PRESERVE</b>
-                <p>NumPy float32 broke JSON serialization; logs stayed intact.</p>
-              </div>
-              <span class="recovery-arrow">→</span>
-              <div class="recovery-step">
-                <b>02 · REPAIR</b>
-                <p>Scientist diagnosed exception and patched scalar serialization.</p>
-              </div>
-              <span class="recovery-arrow">→</span>
-              <div class="recovery-step">
-                <b>03 · RETAIN</b>
-                <p>Rerun succeeded cleanly; META validated & preserved State.</p>
-              </div>
-            </div>
-            <p class="card-detail">Autonomous traceback self-healing in Cycle 1; META audits proxy sampling fidelity and rejects spurious state promotions.</p>
-          </article>
-
-          <article class="evidence-card comparison-card">
-            <div class="evidence-head">
-              <span class="evidence-no purple-no">04</span>
-              <span class="evidence-kicker">DIRECT BENCHMARK CONTROL</span>
+          <!-- Card 02: Direct Benchmark Control -->
+          <article class="evidence-card control-card">
+            <div class="card-head">
+              <span class="card-idx">02</span>
+              <span class="card-kicker">DIRECT BENCHMARK CONTROL</span>
             </div>
             <h3>Beat Codex on this task.</h3>
-            <div class="compare-values">
-              <div><b>0.6044533</b><small>Direct Codex Goal control</small></div>
-              <span class="arrow-sep">→</span>
-              <div class="accent-value"><b>0.6059363</b><small>SciOdyssey retained</small></div>
+            <div class="compare-row">
+              <div class="score-box baseline">
+                <span class="score-val">0.6044533</span>
+                <span class="score-lbl">Direct Codex Goal control</span>
+              </div>
+              <span class="score-arrow">→</span>
+              <div class="score-box winner">
+                <span class="score-val">0.6059363</span>
+                <span class="score-lbl">SciOdyssey retained</span>
+              </div>
             </div>
-            <div class="delta-badge purple-badge">+0.0014830 Primary advantage</div>
-            <p class="card-detail">Direct single-agent baselines anchored in local tuning; SciOdyssey broke out via persistent world resets.</p>
+            <div class="gain-badge purple-badge">+0.0014830 Primary advantage</div>
+            <p class="card-annotation">Direct single-agent baselines anchored in local parameter tuning across 22 experiments; SciOdyssey broke out into superior feature space via world resets.</p>
           </article>
 
+          <!-- Card 03: Sustained Search -->
+          <article class="evidence-card trajectory-card">
+            <div class="card-head">
+              <span class="card-idx">03</span>
+              <span class="card-kicker">SUSTAINED SEARCH</span>
+            </div>
+            <h3>Systematic multi-cycle progress.</h3>
+            <div class="trajectory-timeline">
+              <div class="t-step">
+                <span class="t-dot"></span>
+                <b>0.6016310</b>
+                <small>C1: Valid baseline</small>
+              </div>
+              <span class="t-line"></span>
+              <div class="t-step">
+                <span class="t-dot"></span>
+                <b>0.6040901</b>
+                <small>C2: Feature expansion</small>
+              </div>
+              <span class="t-line"></span>
+              <div class="t-step">
+                <span class="t-dot"></span>
+                <b>0.6044289</b>
+                <small>C3: Variance reduction</small>
+              </div>
+              <span class="t-line"></span>
+              <div class="t-step t-final">
+                <span class="t-dot"></span>
+                <b>0.6059363</b>
+                <small>C4: 8-seed FM recipe</small>
+              </div>
+            </div>
+            <div class="trajectory-summary">
+              <span><b>4</b> autonomous cycles</span><i>·</i>
+              <span><b>13</b> named experiments</span><i>·</i>
+              <span><b>7</b> full evaluations</span>
+            </div>
+            <p class="card-annotation">Monotonic validation progression across distinct cycles; breakthroughs driven by mechanism changes rather than a single lucky edit.</p>
+          </article>
+
+          <!-- Card 04: Autonomous Recovery -->
+          <article class="evidence-card recovery-card">
+            <div class="card-head">
+              <span class="card-idx">04</span>
+              <span class="card-kicker">AUTONOMOUS RECOVERY</span>
+            </div>
+            <h3>Our agent is robust.</h3>
+            <div class="recovery-steps">
+              <div class="r-step">
+                <span class="r-idx">01 · PRESERVE</span>
+                <p>NumPy float32 broke JSON serialization in Cycle 1; logs stayed intact.</p>
+              </div>
+              <span class="r-arrow">→</span>
+              <div class="r-step">
+                <span class="r-idx">02 · REPAIR</span>
+                <p>Scientist diagnosed traceback and patched scalar serialization helper.</p>
+              </div>
+              <span class="r-arrow">→</span>
+              <div class="r-step">
+                <span class="r-idx">03 · RETAIN</span>
+                <p>Rerun succeeded; META validated proxy fidelity & preserved State.</p>
+              </div>
+            </div>
+            <p class="card-annotation">Zero human debugging intervention; autonomous traceback self-healing in Cycle 1. META audits proxy fidelity and rejects spurious state promotions.</p>
+          </article>
+
+          <!-- Card 05: Resource Accounting (Full Width) -->
           <article class="evidence-card resource-card">
-            <div class="evidence-head">
-              <span class="evidence-no orange-no">05</span>
-              <span class="evidence-kicker">RESOURCE EFFICIENCY</span>
+            <div class="card-head">
+              <span class="card-idx">05</span>
+              <span class="card-kicker">RESOURCE ACCOUNTING</span>
             </div>
-            <h3>Resource use is part of the evidence.</h3>
-            <div class="resource-top">
-              <div class="cost-box">
-                <span class="kpi-label">TOTAL PROJECT USAGE</span>
-                <b>~$10</b>
-                <small>subscription-equivalent estimate</small>
+            <h3>We are not tokenmaxxing.</h3>
+            <div class="resource-grid">
+              <div class="res-kpi">
+                <span class="kpi-tag">TOTAL PROJECT USAGE</span>
+                <span class="kpi-num cost-num">~$10</span>
+                <span class="kpi-sub">subscription-equivalent estimate</span>
               </div>
-              <div class="hardware-box">
-                <span class="kpi-label">HARDWARE</span>
-                <strong>1 × MacBook M2</strong>
-                <small>All exploration & training on 1 laptop</small>
+              <div class="res-kpi">
+                <span class="kpi-tag">HARDWARE</span>
+                <span class="kpi-val">1 × MacBook M2</span>
+                <span class="kpi-sub">All training on 1 laptop · 0 GPU-hours</span>
               </div>
-              <div class="duration-box">
-                <span class="kpi-label">SUBSCRIPTIONS</span>
-                <strong>GPT Plus + Gemini Pro</strong>
-                <small>7 days full autonomous research</small>
+              <div class="res-kpi">
+                <span class="kpi-tag">SUBSCRIPTIONS</span>
+                <span class="kpi-val">GPT Plus + Gemini Pro</span>
+                <span class="kpi-sub">7 days continuous exploration</span>
+              </div>
+              <div class="res-kpi">
+                <span class="kpi-tag">TOTAL LLM TOKENS</span>
+                <span class="kpi-val">48.24M</span>
+                <span class="kpi-sub">4.02M non-cache · 8.5× token reduction</span>
               </div>
             </div>
-            <div class="resource-metrics">
-              <div>
-                <b>48.240M</b>
-                <span>Total tokens (incl. cache reads)</span>
-              </div>
-              <div>
-                <b>4.020M</b>
-                <span>Non-cache input + output</span>
-              </div>
-              <div>
-                <b>0</b>
-                <span>GPU-hours (NumPy / CPU training)</span>
-              </div>
+            <div class="resource-footer-row">
+              <span><b>100%</b> Autonomous execution (0 manual code interventions)</span>
+              <span><b>170,588</b> rows checked by Starter Kit alignment checker</span>
+              <span><b>0</b> GPU-hours (NumPy / CPU training)</span>
             </div>
           </article>
         </div>
+
         <div class="evaluation-footer-note">All results verified on KuaiRand-Pure official validation split with complete reproducible artifacts.</div>
       </section>
 
-      <section class="panel cool insights">
+      <!-- 04 / INSIGHTS (Supplemented from latest slides) -->
+      <section class="panel insights">
         <div class="section-label">04 / INSIGHTS</div>
         <h2>What the run taught us.</h2>
         <div class="insight-grid">
-          <div>
-            <b>01 · DIVERSITY PRIOR</b>
-            <p><strong>Different agents search differently.</strong> Heterogeneous Scientists turn distinct search styles (local refinement vs. mechanism pivots) into a broader exploration prior.</p>
+          <div class="insight-item">
+            <span class="insight-kicker">01 · MODEL DIVERSITY</span>
+            <strong>Depth + Breadth Synergy.</strong>
+            <p>GPT 5.6 Luna (depth: refine ideas) + Gemini 3.7 Flash (breadth: open new directions) in one shared world pushed score from 0.6052 (Gemini-only) to 0.6059363 (GPT+Gemini).</p>
+            <div class="insight-mini-stat"><span>Gemini-only <b>0.6052</b></span><i>→</i><span>GPT+Gemini <b>0.6059363</b></span></div>
           </div>
-          <div>
-            <b>02 · PARALLEL SYNTHESIS</b>
-            <p><strong>Parallel search + review produces stronger candidates.</strong> Independent Scientists explore in isolation; review selects winning branches for synthesis (observed +0.0040 gain).</p>
+          <div class="insight-item">
+            <span class="insight-kicker">02 · PARALLEL SYNTHESIS</span>
+            <strong>Cross-Branch Idea Transfer.</strong>
+            <p>Reviewer synthesized winning Branch B (0.6048) with modeling ideas from lower-scoring Branch C (0.6039) for pairwise ranking and rank normalization, yielding 0.6055536.</p>
+            <div class="insight-mini-stat"><span>Branch B+C Ideas</span><i>→</i><span>Synthesis <b>0.6055536</b></span></div>
           </div>
-          <div>
-            <b>03 · ENGINEERING PRACTICE</b>
-            <p><strong>Branch isolation & unattended continuation.</strong> Give each agent an isolated branch to prevent conflicts; use GitHub Actions to run, code, and commit overnight.</p>
+          <div class="insight-item">
+            <span class="insight-kicker">03 · UNATTENDED EXECUTION</span>
+            <strong>Branch Isolation on Actions.</strong>
+            <p>Git worktrees isolate state to prevent collisions; GitHub Actions runs, codes, and commits overnight without human intervention, enabling continuous unattended progress.</p>
+            <div class="insight-mini-stat"><span>Git Worktree Isolation</span><i>·</i><span>CI/CD Automation</span></div>
           </div>
         </div>
       </section>
     </div>
   </main>
 
-  <section class="panel cool journey">
-    <div class="journey-heading">
+  <!-- 05 / EXPERIENCE (Bottom Full-Width Section) -->
+  <section class="panel journey">
+    <div class="journey-top">
       <div>
         <div class="section-label">05 / EXPERIENCE</div>
         <h2>Start your journey.</h2>
@@ -303,51 +388,87 @@
         <span>Supervisable by design.</span>
       </div>
     </div>
-    <div class="journey-grid">
-      <div class="journey-context">
-        <div class="contracts">
-          <div>
+
+    <div class="journey-body">
+      <!-- Left: Contracts, Path & Supervision -->
+      <div class="journey-contracts">
+        <div class="contract-cards">
+          <div class="contract-card">
             <code>task.md</code>
             <strong>What to solve</strong>
-            <small>Objectives · data inputs · constraints · evaluation protocol</small>
+            <p>Formal task contract: research objectives, dataset inputs, compute constraints, and official evaluation metric protocol.</p>
           </div>
-          <div>
+          <div class="contract-card">
             <code>PERSONAL.md</code>
             <strong>How to work</strong>
-            <small>Preferences · research style · supervisory checkpoints</small>
+            <p>User research preferences, model guidance, exploration style, tool permissions, and supervisory checkpoints.</p>
           </div>
         </div>
-        <div class="journey-path">
-          <span class="path-step">Define task</span>
-          <b>→</b>
-          <span class="path-step">Single step</span>
-          <b>→</b>
-          <span class="path-step">Autonomous run</span>
-          <b>→</b>
-          <span class="path-step">Parallel explore</span>
-          <b>→</b>
-          <span class="path-step">Inspect evidence</span>
+        
+        <div class="journey-levels">
+          <span class="level-tag">SUPERVISION TIERS</span>
+          <div class="level-items">
+            <span><b>Tier 1</b> Unattended Overnight Runs</span><i>·</i>
+            <span><b>Tier 2</b> Checkpoint Review (META)</span><i>·</i>
+            <span><b>Tier 3</b> Steer Working Priors</span>
+          </div>
+        </div>
+
+        <div class="journey-steps">
+          <span class="step-item">1. Define task.md</span>
+          <span class="step-sep">→</span>
+          <span class="step-item">2. Single-step test</span>
+          <span class="step-sep">→</span>
+          <span class="step-item">3. Autonomous search</span>
+          <span class="step-sep">→</span>
+          <span class="step-item">4. Parallel explore</span>
+          <span class="step-sep">→</span>
+          <span class="step-item">5. Inspect evidence</span>
+        </div>
+
+        <div class="journey-mandate">
+          <span class="mandate-tag">DECLARATIVE PROTOCOL</span>
+          <p>Human defines boundary and preferences (task.md + PERSONAL.md); SciOdyssey autonomously iterates, heals, and crystallizes verified evidence.</p>
         </div>
       </div>
-      <div class="terminal">
+
+      <!-- Right: Minimalist Terminal Window -->
+      <div class="journey-terminal">
         <div class="terminal-bar">
           <span class="terminal-dots"><i></i><i></i><i></i></span>
-          <span class="terminal-title">Coding agent harness</span>
-          <b>NATURAL LANGUAGE ENTRY</b>
+          <span class="terminal-title">Coding agent harness · Execution session</span>
+          <span class="terminal-tag">NATURAL LANGUAGE ENTRY</span>
         </div>
-        <div class="prompt">
-          <span class="prompt-caret">›</span>
-          <code>Use the research-agent skill.<br>Follow task.md and PERSONAL.md.<br>Let me review the results and evidence.</code>
+        <div class="terminal-code">
+          <div class="code-line input-line">
+            <span class="code-caret">›</span>
+            <code>Use the research-agent skill. Follow task.md and PERSONAL.md. Run autonomously.</code>
+          </div>
+          <div class="terminal-output">
+            <p><span class="out-ok">✔ [Environment]</span> Loaded KuaiRand-Pure dataset (170,588 rows) · Verified official evaluator</p>
+            <p><span class="out-ok">✔ [Cycle 1 · GPT-5.6]</span> Baseline verified: Primary 0.6016310 · Self-healed float32 JSON serialization</p>
+            <p><span class="out-ok">✔ [Cycle 2 · Gemini]</span> Feature expansion: 46 user-video interaction features · Primary 0.6040901</p>
+            <p><span class="out-ok">✔ [Cycle 3 · GPT-5.6]</span> Variance reduction & seed averaging · Primary 0.6044289</p>
+            <p><span class="out-ok">✔ [Cycle 4 · Gemini]</span> 8-seed Factorization Machine ensemble · Primary 0.6059363 (+0.0043363)</p>
+            <p><span class="out-ok">✔ [META Review]</span> Verified claims ↔ telemetry; crystallized reproducible State to durable disk</p>
+          </div>
+          <div class="terminal-status-bar">
+            <span><b>Status:</b> Completed</span>
+            <span><b>Duration:</b> 7 days unattended</span>
+            <span><b>Compute:</b> 1x MacBook M2 (0 GPU-hr)</span>
+            <span><b>Tokens:</b> 48.24M</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
     <div class="footer-left">
-      <a href="https://github.com/zc6600/research-agent-kuairand">github.com/zc6600/research-agent-kuairand ↗</a>
+      <a href="https://github.com/zc6600/research-agent-kuairand" target="_blank" rel="noreferrer">github.com/zc6600/research-agent-kuairand ↗</a>
       <p class="team">Chen Zhu · Zhou Ziyu · Shilin Xu · GE GAO · Jiran Li</p>
-      <p class="source">Sources: slides/slides.md · docs/ARCHITECTURE.md · docs/FINAL_REPORT.md · KuaiRand-Pure benchmark submission ledger</p>
+      <p class="source">Sources: slides/slides.md · docs/ARCHITECTURE.md · docs/FINAL_REPORT.md · KuaiRand-Pure submission ledger</p>
     </div>
     <div class="footer-right">
       <p class="footer-note">ROBUST · SUPERVISABLE · BROAD SEARCH</p>

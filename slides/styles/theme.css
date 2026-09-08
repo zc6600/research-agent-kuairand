@@ -2,6 +2,9 @@
 
 :root {
   --slidev-theme-primary: #38bdf8;
+  --deck-sans: 'Nunito', ui-rounded, 'SF Pro Rounded', 'Arial Rounded MT Bold', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --deck-mono: 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  --demo-sans: 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
   --ink: #111217;
   --body: #33343a;
   --muted: #7d7d82;
@@ -166,7 +169,7 @@
 .slidev-layout {
   background: linear-gradient(135deg, #dbeafe 0%, #ffffff 50%, #fef3c7 100%);
   color: var(--body);
-  font-family: 'Nunito', ui-rounded, 'SF Pro Rounded', 'Arial Rounded MT Bold', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: var(--deck-sans);
   font-weight: 500;
   padding: 42px 56px 56px;
   position: relative;
@@ -209,7 +212,7 @@
 .slidev-layout .mono,
 .slidev-layout pre,
 .terminal pre {
-  font-family: 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  font-family: var(--deck-mono);
 }
 
 .slidev-layout .green,

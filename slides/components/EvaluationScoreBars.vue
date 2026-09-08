@@ -92,7 +92,7 @@ const groundY = 115
   justify-content: center;
   gap: 14px;
   font-size: 11px;
-  font-family: 'Nunito', sans-serif;
+  font-family: var(--deck-sans);
   color: var(--muted, #7d7d82);
   margin-bottom: 6px;
   width: 100%;
@@ -128,28 +128,28 @@ const groundY = 115
 }
 
 .txt-base {
-  font-family: 'Fira Code', monospace;
+  font-family: var(--deck-mono);
   font-size: 8.5px;
   fill: #8e95a0;
   font-weight: 500;
 }
 
 .txt-ours {
-  font-family: 'Fira Code', monospace;
+  font-family: var(--deck-mono);
   font-size: 9px;
   fill: #0284c7;
   font-weight: 700;
 }
 
 .txt-delta {
-  font-family: 'Fira Code', monospace;
+  font-family: var(--deck-mono);
   font-size: 8px;
   fill: #16803b;
   font-weight: 700;
 }
 
 .txt-name {
-  font-family: 'Nunito', sans-serif;
+  font-family: var(--deck-sans);
   font-size: 11px;
   font-weight: 700;
   fill: var(--ink, #111217);

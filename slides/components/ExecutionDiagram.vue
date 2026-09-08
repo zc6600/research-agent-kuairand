@@ -84,7 +84,7 @@ const cycleActive = (index: number) => {
 <style scoped>
 .execution-diagram { margin-top: 23px; }
 svg { display: block; width: 868px; height: 240px; overflow: visible; }
-svg text { font-family: var(--ux-font, 'Avenir Next', 'Helvetica Neue', Arial, sans-serif); font-size: 14px; fill: #43505c; }
+svg text { font-family: var(--deck-sans); font-size: 14px; fill: #43505c; }
 svg .node-label { font-size: 20px; font-weight: 500; letter-spacing: -.5px; }
 svg .run-node-label { font-size: 18px; font-weight: 500; }
 svg .node-detail { font-size: 12px; fill: #8b97a4; }
@@ -99,10 +99,10 @@ svg .run-flow-note { font-size: 11px; fill: #8794a2; }
 .dashboard-window { width: 740px; border: 1px solid #dce2ea; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 28px #23354c0d; background: #fff; will-change: opacity, transform; }
 .dashboard-bar { height: 34px; display: flex; align-items: center; gap: 10px; padding: 0 14px; background: #f4f6f9; border-bottom: 1px solid #e4e8ef; }
 .dashboard-dot { width: 8px; height: 8px; border-radius: 50%; background: #20b68d; flex-shrink: 0; }
-.dashboard-title { font: 11px 'Nunito', sans-serif; color: #3d4755; flex: 1; }
+.dashboard-title { font: 11px var(--deck-sans); color: #3d4755; flex: 1; }
 .dashboard-live { font: 10px ui-monospace, monospace; color: #20b68d; border: 1px solid #20b68d44; border-radius: 4px; padding: 2px 6px; }
 .dashboard-img { display: block; width: 100%; height: 190px; object-fit: cover; object-position: center top; }
-.dashboard-caption { font: 12px 'Nunito', sans-serif; color: #698075; display: flex; align-items: center; gap: 6px; }
+.dashboard-caption { font: 12px var(--deck-sans); color: #698075; display: flex; align-items: center; gap: 6px; }
 .dashboard-check { color: #20b68d; font-weight: 800; }
 .dashboard-caption strong { color: #269b7d; }
 </style>

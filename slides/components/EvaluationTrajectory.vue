@@ -139,7 +139,7 @@ onBeforeUnmount(clearTimers)
 .trajectory-final-score strong { display: block; color: var(--blue); font-size: 29px; line-height: 1; letter-spacing: -.8px; margin-top: 2px; }
 .trajectory-final-score small { color: #16803b; font-size: 10px; }
 .trajectory-chart { display: block; width: 100%; height: 195px; margin-top: 2px; overflow: visible; }
-.trajectory-chart text { font-family: 'Nunito', sans-serif; }
+.trajectory-chart text { font-family: var(--deck-sans); }
 .trajectory-axis { stroke: #e6e6e8; stroke-width: 1; }
 .trajectory-baseline { stroke: #b9c8d0; stroke-width: 1; stroke-dasharray: 4 5; }
 .trajectory-baseline-label { fill: #82929b; font-size: 10px; }
@@ -174,7 +174,7 @@ onBeforeUnmount(clearTimers)
 .trajectory-cycle-score b { color: #3d4755; font-size: 12px; }
 .trajectory-cycle.is-aqua .trajectory-cycle-score b { color: #16803b; }
 .trajectory-foot { display: flex; align-items: center; gap: 18px; border-top: 1px solid #e6e6e8; margin-top: 4px; padding-top: 5px; color: #8a949a; font-size: 10px; }
-.trajectory-foot code { color: #536d78; font-family: 'Fira Code', monospace; font-size: 9px; }
+.trajectory-foot code { color: #536d78; font-family: var(--deck-mono); font-size: 9px; }
 .trajectory-foot span:nth-child(2) { margin-left: auto; }
 .trajectory-replay { border: 0; background: transparent; color: #7d7d82; cursor: pointer; font: inherit; padding: 0 2px; }
 .trajectory-replay:disabled { opacity: .35; cursor: default; }

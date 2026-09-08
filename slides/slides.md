@@ -411,30 +411,29 @@ This page frames resource usage as supporting evidence, not as a claim that cost
 
 ---
 
-<!-- class: insight-slide -->
-
-<div class="visual-kicker purple">05 / INSIGHTS · WHAT THE RUN TAUGHT US</div>
-
-# The run taught us more than the final score.
-
-<div class="insight-lede">Two ways to widen the search without losing evidence.</div>
-
-<div class="insight-grid">
-  <div class="insight-item">
-    <span class="insight-index blue">01</span>
-    <div><strong>Different agents search differently.</strong><p>Recorded runs took different routes: local refinement, mechanism pivots, and broader search. Heterogeneous Scientists turn those search styles into a broader exploration prior.</p></div>
-  </div>
-  <div class="insight-item">
-    <span class="insight-index orange">02</span>
-    <div><strong>Parallel search + review can produce a stronger candidate.</strong><p>Independent Scientists explore without a shared live context. Review selects a branch, then a fresh Scientist synthesizes the evidence. One observed run moved from ≈0.6015 to 0.6055536 Primary.</p></div>
-  </div>
-</div>
+<ModelRotationInsight />
 
 <!--
+Sources: docs/project_story.md — What we learned; docs/FINAL_REPORT.md §§2, 5.3, 6.
+Observed tendencies specifically concern GPT 5.6 Luna and Gemini 3.7 Flash, not universal model capabilities.
+The diagrams are conceptual depth/breadth search structures, not measured trajectories.
+The retained run used GPT Sol, Gemini, GPT Luna, Gemini as Scientists, with Gemini META throughout.
+The Gemini-only comparator is Cycle 2 DIN; the retained mixed run is four-cycle eight-seed FM.
+These runs differ in model, recipe and stopping boundary; model rotation was not isolated in an ablation.
+-->
+
+---
+
+<ParallelResearchInsight />
+
+<!--
+The parallel record was reconstructed after the temporary worktree was removed; it is separate from the final submission. The single-model DIN comparator assumes online impression history, and models, recipes, and cycle boundaries differ.
 This section distills two process observations from the final report: heterogeneous agents bring different search styles, and independent Parallel search followed by review can produce a stronger candidate. The Parallel/Synthesis score is an observed public-validation result, not part of the canonical E001–E013 frontier. Its improvement followed concrete modeling changes, so the run does not isolate parallelism as the cause.
 [Sources]
 - ../docs/FINAL_REPORT.md — sections 3.4–3.5, 4.2, 5.5, and 7.1–7.2
-- ../docs/trajectories/parallel-synthesis.md — independent search, review, synthesis, and observed Primary 0.6055536270
+- ../docs/trajectories/parallel-synthesis.md and ../docs/reports/parallel-synthesis-record.json — branch decisions and reconstructed metrics.
+- ../docs/FINAL_REPORT.md §§2, 5.3, 6 — four-cycle model assignments and comparison qualifications.
+- ../competition_archive/kuairand-pure/research-worlds/research-agent-source/system/evidence/cycle4-fm-rich46-ensemble8-full.json — raw retained Full result, Primary 0.6059362888336182.
 -->
 
 ---

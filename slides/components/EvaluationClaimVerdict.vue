@@ -449,7 +449,7 @@ function closeCard() {
 .inspect-baseline { stroke: #d2dade; stroke-dasharray: 4 5; }
 .inspect-line { fill: none; stroke: var(--accent); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
 .inspect-final { fill: var(--accent); stroke: white; stroke-width: 3; }
-.inspection-result text { fill: #8e979f; font: 800 13px 'Nunito', sans-serif; }
+.inspection-result text { fill: #8e979f; font: 800 13px var(--deck-sans); }
 .score-before span,
 .score-after span { display: block; color: #9aa0a6; font-size: 9px; letter-spacing: 1px; }
 .score-before b { color: #7a838a; font-size: 23px; }
