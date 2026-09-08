@@ -24,6 +24,7 @@ jobs:
         working-directory: slides
         run: |
           npm ci
+          npm install --no-save playwright-chromium
           npx playwright install chromium --with-deps
       - name: Start Slidev
         working-directory: slides
@@ -40,7 +41,7 @@ jobs:
         env:
           CLEAR_AUDIO_PAGE: https://www.aidocmaker.com/g0/audio?name=d1740c00b70a45dd93616c4150529f95
         run: |
-          cat > /tmp/render.mjs <<'NODE'
+          cat > render.mjs <<'NODE'
           import { chromium } from 'playwright-chromium';
           import fs from 'node:fs';
 
@@ -63,13 +64,14 @@ jobs:
             if (ct.startsWith('audio/') || /\.mp3($|\?)/i.test(r.url())) audioCandidates.push(r.url());
           });
           await p2.goto(process.env.CLEAR_AUDIO_PAGE, {waitUntil: 'domcontentloaded'});
-          await p2.waitForTimeout(5000);
+          await p2.waitForTimeout(7000);
           const domSrc = await p2.evaluate(() => {
             const a = document.querySelector('audio');
             const s = document.querySelector('audio source');
             return a?.currentSrc || a?.src || s?.src || null;
           });
           if (domSrc) audioCandidates.push(domSrc);
+          console.log('audio candidates', audioCandidates);
           const src = audioCandidates.find(Boolean);
           if (!src) throw new Error('Could not resolve hosted Clear voice audio URL');
           const resp = await fetch(src);
@@ -78,7 +80,7 @@ jobs:
           fs.writeFileSync('resolved-audio-url.txt', src + '\n');
           await b2.close();
           NODE
-          node /tmp/render.mjs
+          node render.mjs
       - name: Align Clear narration to the 19 subtitle cues and mux
         working-directory: slides
         run: |
