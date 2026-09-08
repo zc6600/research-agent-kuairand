@@ -23,7 +23,7 @@ SciOdyssey，为你的编程智能体，加上一层研究能力。
 
 ## 02 · 定义任务｜00:09.0–00:28.8
 
-画面：Make it yours. → 编辑 task.md → 编辑 PERSONAL.md。
+画面：Start your journey. → 编辑 task.md → 编辑 PERSONAL.md。
 
 **00:09.4–00:12.0**
 

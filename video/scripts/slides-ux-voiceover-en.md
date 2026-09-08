@@ -78,7 +78,7 @@ Research workflow, connected. Task, memory, and evidence stay with the project.
 
 ### 02:00.3–02:06.0
 
-SciOdyssey. Let research run. Make it yours.
+SciOdyssey. Let research run. Start your journey.
 
 ## 生成 AI 配音
 
