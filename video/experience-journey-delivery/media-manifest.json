@@ -1,0 +1,40 @@
+{
+  "folder": "video/experience-journey-delivery",
+  "animation": {
+    "source": "slides/components/ExperienceJourney.vue",
+    "deck": "slides/slides.md",
+    "duration_seconds": 127.2,
+    "built_in_subtitles": true
+  },
+  "voice": {
+    "provider": "Speechify",
+    "voice": "Gwyneth Paltrow",
+    "locale": "en-US",
+    "speed": 1.0
+  },
+  "media": [
+    {
+      "file": "SciOdyssey_ExperienceJourney_HTML_Gwyneth_Final_1080p.mp4",
+      "role": "final_video",
+      "duration_seconds": 127.2,
+      "resolution": "1920x1080",
+      "fps": 30,
+      "video_codec": "H.264",
+      "audio_codec": "AAC",
+      "sha256": "2af83d8f8854266ce660107c83600fb97964d054308ddc21e61d36c31e998010"
+    },
+    {
+      "file": "SciOdyssey.m4a",
+      "role": "uploaded_source_narration",
+      "duration_seconds": 98.453333,
+      "sha256": "4b4ed4efb6b34fee6814f093a381953902e1e2891204b999d070a1c5e0375f7a"
+    },
+    {
+      "file": "SciOdyssey_ExperienceJourney_aligned_voice.wav",
+      "role": "cue_aligned_audio_master",
+      "duration_seconds": 127.2,
+      "sha256": "b8d8e1a3567581269b73905c40d072c296bff190b3c799bb8ed5c3567af60844"
+    }
+  ],
+  "quality_policy": "Preserve final video bytes when archiving. Do not transcode merely for upload. For remuxing, use -c:v copy."
+}
