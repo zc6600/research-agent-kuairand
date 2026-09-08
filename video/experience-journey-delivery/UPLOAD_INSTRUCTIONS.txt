@@ -1,0 +1,19 @@
+SciOdyssey GitHub media upload bundle
+
+Target repository:
+https://github.com/zc6600/research-agent-kuairand
+
+Target folder:
+video/experience-journey-delivery/
+
+Upload these three files directly into that folder:
+1. SciOdyssey.m4a
+2. SciOdyssey_ExperienceJourney_aligned_voice.wav
+3. SciOdyssey_ExperienceJourney_HTML_Gwyneth_Final_1080p.mp4
+
+Important:
+- Do NOT re-encode the MP4.
+- Do NOT convert the WAV or M4A.
+- The ZIP uses STORE mode; files are included byte-for-byte.
+- index.html already points to:
+  SciOdyssey_ExperienceJourney_HTML_Gwyneth_Final_1080p.mp4
