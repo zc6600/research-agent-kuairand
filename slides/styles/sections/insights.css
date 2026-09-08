@@ -1,0 +1,161 @@
+/* Insights: model diversity framing
+   Keeps the existing markdown slide structure, but turns the section into a
+   two-panel whiteboard: architecture depth first, model-prior rotation second. */
+
+.slidev-layout.insight-slide {
+  overflow: hidden;
+}
+
+.slidev-layout.insight-slide .visual-kicker {
+  margin-bottom: 10px;
+}
+
+.slidev-layout.insight-slide h1 {
+  margin: 0;
+  max-width: 780px;
+  font-size: 0;
+  line-height: 0;
+}
+
+.slidev-layout.insight-slide h1::after {
+  content: "Architecture gives depth. Model diversity gives breadth.";
+  display: block;
+  color: var(--ink);
+  font-size: 47px;
+  font-weight: 800;
+  letter-spacing: -1.7px;
+  line-height: 1.05;
+}
+
+.slidev-layout.insight-slide .insight-lede {
+  margin-top: 16px;
+  max-width: 760px;
+  color: transparent;
+  font-size: 0;
+  line-height: 0;
+}
+
+.slidev-layout.insight-slide .insight-lede::after {
+  content: "The meta-scientist layer already works with one model; the best observed run came from rotating GPT and Gemini Scientists.";
+  display: block;
+  color: var(--muted);
+  font-size: 18px;
+  font-weight: 650;
+  letter-spacing: -.1px;
+  line-height: 1.45;
+}
+
+.slidev-layout.insight-slide .insight-grid {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 48px;
+  position: relative;
+}
+
+.slidev-layout.insight-slide .insight-grid::before {
+  content: "";
+  position: absolute;
+  left: calc(50% - 1px);
+  top: 34px;
+  bottom: 74px;
+  width: 2px;
+  border-radius: 99px;
+  background: linear-gradient(180deg, rgba(166,108,255,.08), rgba(166,108,255,.42), rgba(166,108,255,.08));
+}
+
+.slidev-layout.insight-slide .insight-grid::after {
+  content: "Reset the context. Rotate the prior.";
+  position: absolute;
+  left: 50%;
+  bottom: -54px;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 760px;
+  padding: 13px 24px 12px;
+  border: 1px solid rgba(166,108,255,.28);
+  border-radius: 999px;
+  background: rgba(255,255,255,.82);
+  box-shadow: 0 16px 38px rgba(23,27,32,.08);
+  color: var(--purple);
+  font-size: 25px;
+  font-weight: 850;
+  letter-spacing: -.8px;
+  line-height: 1;
+  text-align: center;
+}
+
+.slidev-layout.insight-slide .insight-item {
+  min-height: 244px;
+  position: relative;
+  padding: 28px 28px 32px;
+  border: 1px solid rgba(23,27,32,.1);
+  border-radius: 30px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.94), rgba(250,251,252,.9)),
+    radial-gradient(circle at 86% 16%, rgba(166,108,255,.13), transparent 38%);
+  box-shadow: 0 24px 58px rgba(24,35,47,.1);
+}
+
+.slidev-layout.insight-slide .insight-item:nth-child(1) {
+  transform: rotate(-1.2deg);
+}
+
+.slidev-layout.insight-slide .insight-item:nth-child(2) {
+  transform: rotate(1deg) translateY(14px);
+}
+
+.slidev-layout.insight-slide .insight-index {
+  display: block;
+  margin-bottom: 24px;
+  font-size: 42px;
+  font-weight: 850;
+  letter-spacing: -1.3px;
+  line-height: .9;
+}
+
+.slidev-layout.insight-slide .insight-item div > strong,
+.slidev-layout.insight-slide .insight-item div > p {
+  display: none;
+}
+
+.slidev-layout.insight-slide .insight-item div::before {
+  display: block;
+  color: var(--ink);
+  font-size: 26px;
+  font-weight: 820;
+  letter-spacing: -.9px;
+  line-height: 1.12;
+}
+
+.slidev-layout.insight-slide .insight-item div::after {
+  display: block;
+  margin-top: 16px;
+  color: #5f6670;
+  font-size: 15px;
+  font-weight: 560;
+  line-height: 1.47;
+}
+
+.slidev-layout.insight-slide .insight-item:nth-child(1) div::before {
+  content: "Meta-scientist works with one model.";
+}
+
+.slidev-layout.insight-slide .insight-item:nth-child(1) div::after {
+  content: "Single-model meta-scientist trajectories already reached the 0.605 range. The architecture itself creates depth before we add model diversity.";
+}
+
+.slidev-layout.insight-slide .insight-item:nth-child(2) div::before {
+  content: "The best run rotated Scientists.";
+}
+
+.slidev-layout.insight-slide .insight-item:nth-child(2) div::after {
+  content: "Fresh Scientist trajectories alternated GPT and Gemini. That may reopen different parts of the hypothesis space, but we treat it as an observed tendency, not a controlled ablation.";
+}
+
+@media print {
+  .slidev-layout.insight-slide .insight-item {
+    box-shadow: none;
+    transform: none !important;
+  }
+}
