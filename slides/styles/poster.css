@@ -266,13 +266,18 @@ body:has(.poster-page) .deck-footer { display:none; }
 /* Use the full A0 canvas so the exported poster reads as a poster, not a short page at the top. */
 .poster-page .p-columns { flex:1 1 auto; min-height:0; align-items:stretch; }
 .poster-page .p-left,
-.poster-page .p-right { justify-content:space-between; }
+.poster-page .p-right { justify-content:flex-start; }
 .poster-page .p-left > .p-section,
-.poster-page .p-right > .p-section { display:flex; flex-direction:column; }
-.poster-page .p-left > .p-section { flex:1 1 0; }
-.poster-page .p-right > .p-section { flex:1 1 0; }
+.poster-page .p-right > .p-section { display:flex; flex-direction:column; flex:0 0 auto; }
+.poster-page .p-left > .p-problem { min-height:430px; }
+.poster-page .p-left > .p-motivation { min-height:410px; }
+.poster-page .p-left > .p-system { min-height:410px; }
+.poster-page .p-right > .p-evaluation { min-height:430px; }
+.poster-page .p-right > .p-results-panel { min-height:290px; }
+.poster-page .p-right > .p-insights-section { min-height:300px; }
 .poster-page .p-left > .p-section + .p-section,
 .poster-page .p-right > .p-section + .p-section { margin-top:6px; }
 .poster-page .p-problem .failure-bridge,
 .poster-page .p-system .p-parallel-line,
 .poster-page .p-insights-section .p-limit { margin-top:auto; }
+.poster-page .p-header::after { content:''; position:absolute; z-index:-1; right:-70px; top:-48px; width:620px; height:325px; background:url('../public/assets/research-world-cover.png') center/cover no-repeat; opacity:.42; -webkit-mask-image:linear-gradient(90deg,transparent,#000 72%); mask-image:linear-gradient(90deg,transparent,#000 72%); }

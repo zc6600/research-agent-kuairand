@@ -15,7 +15,6 @@ mdc: true
 ---
 <div class="poster-shell">
   <header class="p-header">
-    <img class="p-art" src="../../public/assets/research-world-cover.png" alt="" aria-hidden="true" />
     <div class="p-kicker">AUTONOMOUS ML RESEARCH / TECHJAM 2026</div>
     <h1>SciOdyssey<span>.</span></h1>
     <div class="p-subtitle">Autonomous ML Research Agent</div>
@@ -142,7 +141,7 @@ mdc: true
         <div class="p-insights">
           <h3>Observed behavior, not just a score.</h3>
           <div class="p-observation-grid">
-            <div class="p-observation p-recovery"><strong>Recovery</strong><span>After evaluation, NumPy float32 values broke serialization. The Scientist repaired the writer and retained the evidence.</span></div>
+            <div class="p-observation p-recovery"><strong>Recovery</strong><span>After evaluation, NumPy float32 values broke serialization. The Scientist repaired the writer; META retained the evidence for the next trajectory.</span></div>
             <div class="p-observation p-audit"><strong>Audit</strong><span>Reviews found leakage and sampling mismatches. META scopes evidence; it is not a formal verifier.</span></div>
           </div>
         </div>
