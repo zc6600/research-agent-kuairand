@@ -1,20 +1,25 @@
 <script setup lang="ts">
-import { ref } from "vue"
+import { onUnmounted, ref } from "vue"
+import { useTalkSteps } from '../composables/useTalkSteps'
 
 const emit = defineEmits<{ insight: [earned: boolean] }>()
 
 const isFlipped = ref(false)
 const isCondensed = ref(false)
 const isClosing = ref(false)
+let closeTimer: ReturnType<typeof setTimeout> | undefined
+onUnmounted(() => clearTimeout(closeTimer))
 
 const openFlip = () => {
+  clearTimeout(closeTimer)
   isFlipped.value = true
   isClosing.value = false
 }
 
 const condenseCard = () => {
   isClosing.value = true
-  setTimeout(() => {
+  clearTimeout(closeTimer)
+  closeTimer = setTimeout(() => {
     isFlipped.value = false
     isClosing.value = false
     isCondensed.value = true
@@ -29,6 +34,13 @@ const resetInitial = (e?: MouseEvent) => {
   isCondensed.value = false
   emit('insight', false)
 }
+useTalkSteps(14, step => {
+  clearTimeout(closeTimer)
+  isClosing.value = false
+  isFlipped.value = step === 1
+  isCondensed.value = step >= 2
+  emit('insight', isCondensed.value)
+})
 </script>
 
 <template>

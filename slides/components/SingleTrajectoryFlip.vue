@@ -1,17 +1,21 @@
 <script setup lang="ts">
-import { ref } from "vue"
+import { onUnmounted, ref } from "vue"
+import { useTalkSteps } from '../composables/useTalkSteps'
 
 const emit = defineEmits<{ insight: [earned: boolean] }>()
 
 const isFlipped = ref(false)
 const isCondensed = ref(false)
 const isClosing = ref(false)
+let closeTimer: ReturnType<typeof setTimeout> | undefined
+onUnmounted(() => clearTimeout(closeTimer))
 const reversePage = ref(0)
 const reversePageCount = 3
 const handoffClick = ref(0)
 const handoffClickCount = 4
 
 const openFlip = () => {
+  clearTimeout(closeTimer)
   isFlipped.value = true
   isClosing.value = false
   reversePage.value = 0
@@ -20,7 +24,8 @@ const openFlip = () => {
 
 const condenseCard = () => {
   isClosing.value = true
-  setTimeout(() => {
+  clearTimeout(closeTimer)
+  closeTimer = setTimeout(() => {
     isFlipped.value = false
     isClosing.value = false
     isCondensed.value = true
@@ -59,6 +64,15 @@ const resetInitial = (event?: MouseEvent) => {
   reversePage.value = 0
   handoffClick.value = 0
 }
+useTalkSteps(14, step => {
+  clearTimeout(closeTimer)
+  isClosing.value = false
+  isFlipped.value = step >= 3 && step <= 9
+  isCondensed.value = step >= 10
+  reversePage.value = step <= 3 ? 0 : step === 4 ? 1 : 2
+  handoffClick.value = Math.max(0, Math.min(4, step - 5))
+  emit('insight', isCondensed.value)
+})
 </script>
 
 <template>
@@ -890,7 +904,7 @@ const resetInitial = (event?: MouseEvent) => {
   font-size: 9px;
 }
 
-.back-node-start { left: 2%; top: 76px; }
+.back-node-start { height: 64px; left: 0; top: 68px; width: 64px; }
 .back-node-core { background: #fff8f1; border-color: var(--orange); box-shadow: 0 0 0 5px rgba(255, 135, 63, .1); height: 68px; left: 19%; top: 61px; width: 68px; }
 .back-node-rank { left: 40%; top: 39px; }
 .back-node-lr { left: 54%; top: 78px; }

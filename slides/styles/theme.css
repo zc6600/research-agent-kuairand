@@ -140,6 +140,112 @@
   margin-top: 35px;
 }
 
+.slidev-layout:has(.toc-track) .visual-kicker {
+  margin-bottom: 8px;
+}
+
+.slidev-layout .toc-heading {
+  align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
+}
+
+.slidev-layout .toc-heading h1 {
+  font-size: 51px;
+  letter-spacing: -1px;
+  line-height: 1.05;
+  margin: 0 0 11px;
+}
+
+.slidev-layout .toc-intro {
+  color: var(--muted);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.slidev-layout .toc-track {
+  display: grid;
+  gap: 27px;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 68px;
+  position: relative;
+}
+
+.slidev-layout .toc-track-line {
+  border-top: 2px solid rgba(17, 18, 23, .14);
+  left: 2px;
+  position: absolute;
+  right: 2px;
+  top: 49px;
+}
+
+.slidev-layout .toc-step {
+  --toc-accent: var(--blue);
+  min-height: 245px;
+  padding-top: 87px;
+  position: relative;
+}
+
+.slidev-layout .toc-step-orange { --toc-accent: var(--orange); }
+.slidev-layout .toc-step-purple { --toc-accent: var(--purple); }
+.slidev-layout .toc-step-green { --toc-accent: #16803b; }
+
+.slidev-layout .toc-step-marker {
+  height: 70px;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+.slidev-layout .toc-step-number {
+  color: var(--toc-accent);
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+
+.slidev-layout .toc-step-dot {
+  background: var(--toc-accent);
+  border: 3px solid rgba(255, 255, 255, .88);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, .75);
+  height: 16px;
+  left: 4px;
+  position: absolute;
+  top: 42px;
+  width: 16px;
+  z-index: 1;
+}
+
+.slidev-layout .toc-step-label {
+  color: var(--toc-accent);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+
+.slidev-layout .toc-step strong {
+  color: var(--ink);
+  display: block;
+  font-size: 22px;
+  font-weight: 750;
+  line-height: 1.18;
+  max-width: 195px;
+}
+
+.slidev-layout .toc-step > span:last-child {
+  color: var(--muted);
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.45;
+  margin-top: 15px;
+  max-width: 195px;
+}
+
 .slidev-layout.cover .cover-title {
   font-size: 47px;
   font-weight: 800;

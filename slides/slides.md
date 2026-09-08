@@ -35,6 +35,51 @@ A lightweight framework for long-running ML research. Its central design gives t
 
 ---
 
+<!-- class: toc-slide -->
+
+<div class="visual-kicker orange">ROADMAP / TALK ORDER</div>
+
+<div class="toc-heading">
+  <div>
+    <h1>The run, in four moves</h1>
+    <div class="toc-intro">A single route from the problem to the proof.</div>
+  </div>
+</div>
+
+<div class="toc-track" aria-label="Talk order">
+  <div class="toc-track-line" aria-hidden="true"></div>
+  <div class="toc-step toc-step-blue">
+    <div class="toc-step-marker"><span class="toc-step-number mono">01</span><span class="toc-step-dot"></span></div>
+    <div class="toc-step-label mono">PROBLEM</div>
+    <strong>Why current agents fail</strong>
+    <span>Set the task and its failure modes.</span>
+  </div>
+  <div class="toc-step toc-step-orange">
+    <div class="toc-step-marker"><span class="toc-step-number mono">02</span><span class="toc-step-dot"></span></div>
+    <div class="toc-step-label mono">SYSTEM</div>
+    <strong>A system for sustained research</strong>
+    <span>Keep experience while resetting the scientist.</span>
+  </div>
+  <div class="toc-step toc-step-purple">
+    <div class="toc-step-marker"><span class="toc-step-number mono">03</span><span class="toc-step-dot"></span></div>
+    <div class="toc-step-label mono">USER EXPERIENCE</div>
+    <strong>Run the research journey</strong>
+    <span>Move from task contract to retained state.</span>
+  </div>
+  <div class="toc-step toc-step-green">
+    <div class="toc-step-marker"><span class="toc-step-number mono">04</span><span class="toc-step-dot"></span></div>
+    <div class="toc-step-label mono">EVALUATION</div>
+    <strong>From claim to evidence</strong>
+    <span>Measure what survives the run.</span>
+  </div>
+</div>
+
+<!--
+The directory follows the live talk order. Experience is narrated/played back; the remaining sections advance with the normal next-slide action.
+-->
+
+---
+
 <div class="visual-kicker orange">01 / PROBLEM · THE RESEARCH TASK</div>
 
 # Can an agent carry a research task to completion?

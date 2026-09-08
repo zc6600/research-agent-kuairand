@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, ref } from 'vue'
 import EvaluationCardBody from './EvaluationCardBody.vue'
+import { useTalkSteps } from '../composables/useTalkSteps'
 
 type Card = {
   id: string
@@ -29,6 +30,9 @@ const cards: Card[] = [
 ]
 
 const selected = computed(() => cards.find(card => card.id === selectedId.value) ?? null)
+const talkStep = useTalkSteps(cards.length * 2, step => {
+  selectedId.value = step > 0 && step % 2 === 0 ? cards[step / 2 - 1].id : null
+})
 const dialog = ref<HTMLElement | null>(null)
 let trigger: HTMLElement | null = null
 const openCard = async (id: string) => {
@@ -42,7 +46,7 @@ const closeCard = () => {
   trigger?.focus()
 }
 const handleKey = (event: KeyboardEvent) => {
-  event.stopPropagation()
+  if (event.key === 'Escape' || event.key === 'Tab') event.stopPropagation()
   if (event.key === 'Escape') { event.preventDefault(); closeCard() }
   if (event.key === 'Tab') {
     const controls = Array.from(dialog.value?.querySelectorAll<HTMLElement>('button:not(:disabled), [tabindex="0"], a[href]') ?? [])
@@ -64,9 +68,9 @@ const handleKey = (event: KeyboardEvent) => {
 
     <div class="evidence-hand" :class="{ inspecting: selected }">
       <button
-        v-for="card in cards"
+        v-for="(card, index) in cards"
         :key="card.id"
-        v-click
+        v-show="talkStep >= index * 2 + 1"
         type="button"
         class="evidence-card"
         :class="[`card-${card.id}`]"

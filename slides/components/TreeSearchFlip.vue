@@ -1,17 +1,21 @@
 <script setup lang="ts">
-import { ref } from "vue"
+import { onUnmounted, ref } from "vue"
+import { useTalkSteps } from '../composables/useTalkSteps'
 
 const emit = defineEmits<{ insight: [earned: boolean] }>()
 
 const isFlipped = ref(false)
 const isCondensed = ref(false)
 const isClosing = ref(false)
+let closeTimer: ReturnType<typeof setTimeout> | undefined
+onUnmounted(() => clearTimeout(closeTimer))
 const reversePage = ref(0)
 const reversePageCount = 2
 const parallelClick = ref(0)
 const parallelClickCount = 1
 
 const openFlip = () => {
+  clearTimeout(closeTimer)
   isFlipped.value = true
   isClosing.value = false
   reversePage.value = 0
@@ -20,7 +24,8 @@ const openFlip = () => {
 
 const condenseCard = () => {
   isClosing.value = true
-  setTimeout(() => {
+  clearTimeout(closeTimer)
+  closeTimer = setTimeout(() => {
     isFlipped.value = false
     isClosing.value = false
     isCondensed.value = true
@@ -59,6 +64,15 @@ const resetInitial = (event?: MouseEvent) => {
   reversePage.value = 0
   parallelClick.value = 0
 }
+useTalkSteps(14, step => {
+  clearTimeout(closeTimer)
+  isClosing.value = false
+  isFlipped.value = step >= 11 && step <= 13
+  isCondensed.value = step >= 14
+  reversePage.value = step <= 11 ? 0 : 1
+  parallelClick.value = step >= 13 ? 1 : 0
+  emit('insight', isCondensed.value)
+})
 </script>
 
 <template>
