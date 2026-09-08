@@ -1,0 +1,12 @@
+.slidev-layout .mono,
+.slidev-layout pre,
+.terminal pre {
+  font-family: 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+}
+
+.slidev-layout .green { color: var(--green); }
+.slidev-layout .blue { color: var(--blue); }
+.slidev-layout .orange { color: var(--orange); }
+.slidev-layout .rose { color: var(--rose); }
+.slidev-layout .purple { color: var(--purple); }
+.slidev-layout .muted { color: var(--muted); }
