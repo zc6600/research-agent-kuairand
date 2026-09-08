@@ -39,15 +39,11 @@ A lightweight framework for long-running ML research. Its central design gives t
 
 # Can an agent carry a research task to completion?
 
-<div class="lead">Turn a task contract into a tested model, a reproducible implementation, and evidence another researcher can inspect.</div>
-
 <div class="roles narrative-roles">
   <div class="role"><strong>Explore</strong><span>Choose hypotheses, write code, and run experiments.</span><small>Scientific judgment</small></div>
   <div class="role"><strong>Recover</strong><span>Handle failures and revise unsuccessful ideas.</span><small>Long-running work</small></div>
   <div class="role"><strong>Deliver</strong><span>Retain a valid model and the evidence behind it.</span><small>Verifiable progress</small></div>
 </div>
-
-<div class="bottom-note note">Our test case: short-video ranking on KuaiRand-Pure, with a fixed evaluator and public-validation boundary.</div>
 
 <!--
 Open with the research job. The benchmark makes that job concrete; broader task generality remains unproven.
@@ -62,7 +58,7 @@ Open with the research job. The benchmark makes that job concrete; broader task 
 
 <div class="visual-kicker orange failure-modes-kicker">01 / PROBLEM · FAILURE MODES</div>
 
-# Why research agents fall short
+# Why current agents fail
 
 <ProblemInsights />
 
