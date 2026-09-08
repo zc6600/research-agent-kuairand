@@ -51,10 +51,6 @@ const subtitleCues: SubtitleCue[] = [
   { id: '18', start: 114500, end: 119200, text: 'Research workflow, connected. Task, memory, and evidence stay with the project.' },
   { id: '19', start: 120300, end: 126000, text: 'SciOdyssey. Let research run. Start your journey.' },
 ]
-const subtitle = computed(() => {
-  if (staticView.value || reduced.value) return null
-  return subtitleCues.find(cue => elapsed.value >= cue.start && elapsed.value < cue.end) ?? null
-})
 const showingPurpose = computed(() => !staticView.value && !reduced.value && actTime.value < purposeDuration)
 const purposeStyle = computed(() => ({
   opacity: easeInOut(actTime.value / 700) * (1 - easeInOut((actTime.value - 3100) / 700)),
@@ -67,6 +63,10 @@ const easeInOut = (value: number) => {
 const expansion = computed(() => {
   if (reduced.value || staticView.value) return 1
   return easeInOut((elapsed.value - 2400) / 1800) * (1 - easeInOut((elapsed.value - outroStart - 4600) / 2100))
+})
+const subtitle = computed(() => {
+  if (staticView.value || reduced.value || elapsed.value < 4200) return null
+  return subtitleCues.find(cue => elapsed.value >= cue.start && elapsed.value < cue.end) ?? null
 })
 const isOutro = computed(() => elapsed.value >= outroStart)
 const isBrand = computed(() => !staticView.value && (elapsed.value < introDuration || isOutro.value))
@@ -425,9 +425,9 @@ onUnmounted(() => {
 .chapter-exit .continue-button { font-weight: 600; color: #3f4e5c; }
 .continue-button span { margin-left: 12px; color: #be814c; }
 .is-outro .journey-controls { right: 50%; transform: translateX(50%); }
-.journey-subtitle { position: absolute; z-index: 11; left: 56px; right: 220px; bottom: 45px; max-width: 780px; margin: 0 auto; padding: 7px 16px; border: 1px solid rgba(190, 204, 214, .84); border-radius: 9px; background: rgba(255, 255, 255, .9); box-shadow: 0 8px 22px rgba(35, 53, 76, .08); color: #56616c; text-align: center; font-size: 13px; line-height: 1.35; letter-spacing: -.1px; pointer-events: none; }
+.journey-subtitle { position: absolute; z-index: 11; left: 50%; bottom: 40px; width: min(780px, calc(100% - 112px)); margin: 0; padding: 9px 20px; border: 1px solid rgba(190, 204, 214, .84); border-radius: 9px; background: rgba(255, 255, 255, .94); box-shadow: 0 8px 22px rgba(35, 53, 76, .08); color: #111217; text-align: center; font-size: 17px; line-height: 1.35; letter-spacing: -.15px; white-space: normal; overflow-wrap: anywhere; transform: translateX(-50%); pointer-events: none; }
 .subtitle-fade-enter-active, .subtitle-fade-leave-active { transition: opacity .18s ease, transform .18s ease; }
-.subtitle-fade-enter-from, .subtitle-fade-leave-to { opacity: 0; transform: translateY(5px); }
+.subtitle-fade-enter-from, .subtitle-fade-leave-to { opacity: 0; transform: translateX(-50%) translateY(5px); }
 .film-progress { position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: #e9eff4; }
 .film-progress span { display: block; width: 100%; height: 100%; transform-origin: left; background: #8cbbcf; }
 .scene-enter-active, .scene-leave-active { transition: opacity .4s, transform .4s cubic-bezier(.2,.7,.2,1); }
