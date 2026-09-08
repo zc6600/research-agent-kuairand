@@ -24,11 +24,30 @@ mdc: true
   <main class="p-columns">
     <div class="p-left">
       <section class="p-section p-problem">
-        <div class="p-kicker">01 / PROBLEM</div>
-        <h2>Different lifetimes. Shared evidence.</h2>
-        <p class="p-method-intro">Long-lived reasoning can anchor the search; rebuilding context is costly. SciOdyssey retains the world while reopening judgment with a fresh Scientist.</p>
-        <div class="p-input"><strong>Research environment</strong><span>Task contract + research preferences<br />Data + evaluator + baseline · budget + permissions</span></div>
-        <div class="p-down">↓</div>
+        <div class="p-kicker">01 / PROBLEM · FAILURE MODES</div>
+        <h2>Why current research agents fall short.</h2>
+        <p class="p-method-intro">Three obstacles to sustained autonomous research.</p>
+        <div class="failure-grid">
+          <article class="failure-card failure-closed">
+            <div class="failure-head"><b>01</b><span>CLOSED-WORLD WORKFLOW</span></div>
+            <div class="failure-visual"><span>Observe</span><span>Hypothesize</span><span>Code</span><span>Evaluate</span><em>× ERROR</em><small>dead end</small></div>
+            <p>Predefined tools and rigid paths cannot handle the unexpected.</p>
+            <strong>Unexpected problems require developer intervention.</strong>
+          </article>
+          <article class="failure-card failure-trajectory">
+            <div class="failure-head"><b>02</b><span>SINGLE TRAJECTORY</span></div>
+            <div class="failure-visual basin"><span>◆</span><i></i><i></i><i></i><small>same basin</small></div>
+            <p>A long-lived context carries yesterday's momentum into today's search.</p>
+            <strong>More iterations ≠ more exploration.</strong>
+          </article>
+          <article class="failure-card failure-tree">
+            <div class="failure-head"><b>03</b><span>TREE SEARCH</span></div>
+            <div class="failure-visual tree"><span>UNDERSTAND</span><b>→</b><span>EDIT</span><b>→</b><span>READ CONTEXT</span><b>→</b><small>repeat</small></div>
+            <p>Reconstructing file context costs far more tokens than the edit itself.</p>
+            <strong>Context cost forces repeated reading.</strong>
+          </article>
+        </div>
+        <div class="failure-bridge"><b>DESIGN RESPONSE</b><span>Research is open-world, non-linear, and exploratory.</span><i>ADAPT</i><i>DIVERSIFY</i><i>LEARN</i></div>
       </section>
       <section class="p-section p-motivation">
         <div class="p-kicker">02 / MOTIVATION</div>
@@ -42,40 +61,19 @@ mdc: true
       </section>
       <section class="p-section p-system">
         <div class="p-kicker">03 / SYSTEM</div>
-        <div class="p-agents">
-          <div class="p-scientist">
-            <h3><span class="i-carbon:chemistry"></span>Scientist</h3><div class="p-role">SCIENTIFIC JUDGMENT</div>
-            <ul><li>Read the research world</li><li>Form hypotheses</li><li>Code, train and evaluate</li><li>Interpret + report evidence</li></ul>
-            <div class="p-role-note">Chooses the science<br />within one trajectory.</div>
-          </div>
-          <div class="p-meta">
-            <h3><span class="i-carbon:security"></span>META</h3><div class="p-role">PERSISTENCE AUTHORITY</div>
-            <ul><li>Audit claims ↔ evidence</li><li>Scope conclusions</li><li>Curate shared memory</li><li>Preserve optional State</li></ul>
-            <div class="p-role-note">Maintains what survives<br />across trajectories.</div>
-          </div>
-          <div class="p-agent-arrow" aria-label="Scientist reports to META">→</div>
+        <h2>One world. Two scientific roles.</h2>
+        <div class="architecture-mini">
+          <div class="architecture-node environment"><b>ENVIRONMENT</b><span>Task contract<br />Curated data + evaluation<br />Starter baseline<br />Budget + permissions</span></div>
+          <i aria-hidden="true">→</i>
+          <div class="architecture-node world"><b>RESEARCH WORLD</b><span>Verified evidence<br />Knowledge ledger<br />Research brief<br />Implementation + State</span></div>
+          <div class="architecture-reset"><b>CONTEXT<br />RESET</b><span>inherit experience,<br />not prior reasoning</span></div>
+          <div class="architecture-node scientist"><b>FRESH SCIENTIST</b><span>reads world<br />forms hypotheses<br />runs experiments<br />reports evidence</span></div>
+          <i aria-hidden="true">→</i>
+          <div class="architecture-node meta"><b>META REVIEW</b><span>audits claims<br />scopes conclusions<br />curates memory<br />preserves optional State</span></div>
         </div>
-        <div class="p-handoff"><span>↻</span><strong>Audit → scope → preserve → fresh Scientist</strong></div>
-        <div class="p-runtime"><strong>Runtime / deterministic mechanics</strong><span>Isolation · cancellation · runner + evaluator<br />Logging · artifact capture · State operations</span></div>
-        <div class="p-parallel">
-          <h3>One world. Several independent searches.</h3>
-          <div class="p-parallel-map" role="img" aria-label="One research world branches into three isolated Scientist trajectories, followed by post-hoc review and explicit adoption.">
-            <svg aria-hidden="true" viewBox="0 0 620 116" preserveAspectRatio="none">
-              <path d="M28 58 C92 58 92 18 143 18 H297 C337 18 337 58 382 58" />
-              <path d="M28 58 H382" />
-              <path d="M28 58 C92 58 92 98 143 98 H297 C337 98 337 58 382 58" />
-              <path class="p-parallel-review-line" d="M395 58 H477 M469 51 l8 7 -8 7" />
-            </svg>
-            <div class="p-parallel-origin"><i></i><span>Same world</span></div>
-            <div class="p-parallel-scientist p-parallel-a">Scientist A</div>
-            <div class="p-parallel-scientist p-parallel-b">Scientist B</div>
-            <div class="p-parallel-scientist p-parallel-c">Scientist C</div>
-            <div class="p-parallel-reviewer"><i></i><span>Reviewer</span></div>
-            <div class="p-parallel-adopt">Explicit<br />adoption</div>
-          </div>
-          <p>Isolated worktrees, then post-hoc review. Optional synthesis keeps one implementation parent and reference evidence; code and memory are not auto-merged.</p>
-          <small>Framework capability, not an isolated cause of benchmark gain.</small>
-        </div>
+        <div class="p-handoff"><span>↻</span><div><strong>Selective persistence / trajectory handoff</strong><small>Audit → scope → preserve → fresh Scientist</small></div></div>
+        <div class="p-runtime"><strong>Runtime / deterministic mechanics</strong><span>Workspace isolation · runner + evaluator · logging · artifact capture · State operations</span></div>
+        <div class="p-parallel-line"><b>PARALLEL BREADTH</b><span>isolated branches</span><i>→</i><span>post-hoc review</span><i>→</i><strong>explicit adoption</strong></div>
       </section>
     </div>
     <div class="p-right">
@@ -120,6 +118,9 @@ mdc: true
           </svg>
         </figure>
         <div class="p-chart-note">* Codex is provisional. Gemini = gemini-3.7-flash. The Cycle-2 interval is a token-accounting bound. Models and protocols differ: no causal, significance or token-efficiency claim is made.</div>
+      </section>
+      <section class="p-section p-results-panel">
+        <div class="p-kicker">06 / VERIFIED SUBMISSION · PUBLIC VALIDATION</div>
         <div class="p-results">
         <h3>Verified submission · public validation</h3>
         <table class="p-score-table">
@@ -137,7 +138,7 @@ mdc: true
         </div>
       </section>
       <section class="p-section p-insights-section">
-        <div class="p-kicker">06 / INSIGHTS</div>
+        <div class="p-kicker">07 / INSIGHTS</div>
         <div class="p-insights">
           <h3>Observed behavior, not just a score.</h3>
           <div class="p-observation-grid">
@@ -150,7 +151,7 @@ mdc: true
     </div>
   </main>
   <section class="p-section p-entry p-experience" aria-label="End-to-end research workflow">
-    <div class="p-entry-heading"><div><div class="p-kicker">04 / EXPERIENCE</div><h2>One agent. Any ML task. End to end.</h2></div><span>Autonomous by default. Supervisable by design.</span></div>
+    <div class="p-entry-heading"><div><div class="p-kicker">04 / EXPERIENCE</div><h2>Start your journey.</h2></div><span>Autonomous by default. Supervisable by design.</span></div>
     <div class="p-entry-grid">
       <div class="p-entry-context">
         <div class="p-entry-files">
@@ -161,7 +162,7 @@ mdc: true
       </div>
       <div class="p-entry-terminal" aria-label="Illustrative natural-language input in a coding agent; not an executed command">
         <div class="p-entry-bar"><span class="p-window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>Coding agent</span><small>EXAMPLE INPUT</small></div>
-        <div class="p-entry-prompt"><span class="p-prompt-mark" aria-hidden="true">›</span><div>Use the research-agent skill for task.md.<br />Follow PERSONAL.md. Run autonomously.<br />Let me review the results and evidence.<span class="p-caret" aria-hidden="true"></span></div></div>
+        <div class="p-entry-prompt"><span class="p-prompt-mark" aria-hidden="true">›</span><div>Use the research-agent skill.<br />Follow task.md and PERSONAL.md.<br />Let me review the results and evidence.<span class="p-caret" aria-hidden="true"></span></div></div>
       </div>
     </div>
   </section>

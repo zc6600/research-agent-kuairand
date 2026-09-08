@@ -184,3 +184,95 @@ body:has(.poster-page) .deck-footer { display:none; }
 .poster-page .p-footer { margin-top:7px; padding-top:6px; }
 .poster-page .p-team { font-size:14px; margin-top:2px; }
 .poster-page .p-source { font-size:10px; margin-top:2px; line-height:1.2; }
+
+/* Poster panels rebuilt from the latest deck's problem, system and validation pages. */
+.poster-page .p-problem h2 { max-width:520px; }
+.poster-page .failure-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:7px; margin-top:7px; }
+.poster-page .failure-card { min-width:0; padding:6px 7px 7px; border:1px solid var(--p-line); border-top:3px solid var(--p-orange); border-radius:4px; background:#fffdfb; }
+.poster-page .failure-card.failure-trajectory { border-top-color:var(--p-blue); background:#fbfdff; }
+.poster-page .failure-card.failure-tree { border-top-color:var(--p-rose); background:#fffafb; }
+.poster-page .failure-head { display:flex; align-items:center; gap:4px; min-height:19px; font-family:'Fira Code','Menlo',monospace; font-size:8px; line-height:1.15; letter-spacing:.15px; white-space:nowrap; }
+.poster-page .failure-head b { color:var(--p-orange); font-size:9px; }
+.poster-page .failure-trajectory .failure-head b { color:#1fa9e4; }
+.poster-page .failure-tree .failure-head b { color:var(--p-rose); }
+.poster-page .failure-visual { position:relative; display:flex; align-items:flex-start; flex-wrap:wrap; gap:3px; min-height:67px; margin-top:5px; color:#707783; font-size:7px; line-height:1.15; }
+.poster-page .failure-visual > span { display:inline-flex; align-items:center; min-height:16px; padding:2px 3px; border:1px solid #e3e7eb; border-radius:2px; background:#fff; }
+.poster-page .failure-visual em { flex-basis:100%; margin-top:4px; color:var(--p-orange); font-family:'Fira Code','Menlo',monospace; font-style:normal; font-size:8px; }
+.poster-page .failure-visual small { display:block; flex-basis:100%; margin-top:1px; font-size:8px; color:#7f858e; }
+.poster-page .failure-visual.basin { display:flex; align-items:center; justify-content:center; gap:7px; min-height:67px; padding-top:1px; }
+.poster-page .failure-visual.basin > span { border:0; padding:0; color:#2da9e0; font-size:25px; line-height:1; background:none; }
+.poster-page .failure-visual.basin i { width:8px; height:8px; border:1px solid #b8c4cf; border-radius:50%; background:#fff; }
+.poster-page .failure-visual.basin i:nth-of-type(2) { border-color:#2da9e0; background:#2da9e0; }
+.poster-page .failure-visual.basin small { position:absolute; left:0; right:0; bottom:0; text-align:center; color:#69727d; }
+.poster-page .failure-visual.tree { display:grid; grid-template-columns:auto 1fr auto 1fr auto; align-content:start; align-items:center; column-gap:3px; row-gap:6px; min-height:67px; padding-top:3px; }
+.poster-page .failure-visual.tree > span { min-height:0; padding:0; border:0; border-radius:0; background:none; font-family:'Fira Code','Menlo',monospace; font-size:6.5px; white-space:nowrap; }
+.poster-page .failure-visual.tree > b { color:#c7a0ae; font-size:9px; font-weight:500; }
+.poster-page .failure-visual.tree small { grid-column:1 / -1; margin-top:2px; text-align:center; }
+.poster-page .failure-card p { min-height:35px; margin:3px 0 0; font-size:9px; line-height:1.25; color:#626976; }
+.poster-page .failure-card > strong { display:block; margin-top:5px; padding-top:5px; border-top:1px solid #f0e2d8; font-size:8px; line-height:1.25; color:#30343b; }
+.poster-page .failure-trajectory > strong { border-color:#dceef7; }
+.poster-page .failure-tree > strong { border-color:#f5dce3; }
+.poster-page .failure-bridge { display:flex; align-items:center; gap:7px; margin-top:7px; padding-top:6px; border-top:1px solid var(--p-line); color:#6c727b; font-size:9px; line-height:1.2; }
+.poster-page .failure-bridge b { margin-right:auto; color:#cc7544; font-family:'Fira Code','Menlo',monospace; font-size:7px; letter-spacing:.45px; white-space:nowrap; }
+.poster-page .failure-bridge span { margin-right:4px; }
+.poster-page .failure-bridge i { padding:2px 5px; border:1px solid currentColor; border-radius:8px; color:#ff873f; font-family:'Fira Code','Menlo',monospace; font-size:7px; font-style:normal; letter-spacing:.35px; }
+.poster-page .failure-bridge i:nth-last-child(2) { color:#2da9e0; }
+.poster-page .failure-bridge i:last-child { color:#a66cff; }
+
+.poster-page .p-system h2 { margin-top:3px; }
+.poster-page .architecture-mini { display:grid; grid-template-columns:minmax(0,1fr) 14px minmax(0,1fr) 58px minmax(0,1fr) 14px minmax(0,1fr); gap:4px; align-items:stretch; margin-top:7px; }
+.poster-page .architecture-node { min-width:0; min-height:82px; padding:6px 5px; border:1px solid var(--p-line); border-top:3px solid var(--p-blue); border-radius:4px; background:#fff; }
+.poster-page .architecture-node.world { border-top-color:#42b991; background:#fbfffd; }
+.poster-page .architecture-node.scientist { border-top-color:var(--p-purple); background:#fdfbff; }
+.poster-page .architecture-node.meta { border-top-color:var(--p-rose); background:#fffafb; }
+.poster-page .architecture-node b { display:block; font-family:'Fira Code','Menlo',monospace; font-size:7px; line-height:1.2; letter-spacing:.15px; color:#4f8eac; }
+.poster-page .architecture-node.world b { color:#2d9b77; }
+.poster-page .architecture-node.scientist b { color:#9163c8; }
+.poster-page .architecture-node.meta b { color:#d35b77; }
+.poster-page .architecture-node span { display:block; margin-top:4px; font-size:8px; line-height:1.32; color:#69727d; }
+.poster-page .architecture-mini > i { align-self:center; color:#8c98a3; font-size:16px; font-style:normal; text-align:center; }
+.poster-page .architecture-reset { align-self:center; padding:3px 2px; color:#69717c; text-align:center; }
+.poster-page .architecture-reset b { display:block; font-family:'Fira Code','Menlo',monospace; font-size:7px; line-height:1.1; color:#78818c; }
+.poster-page .architecture-reset span { display:block; margin-top:3px; font-size:6.5px; line-height:1.2; }
+.poster-page .p-system .p-handoff { display:flex; align-items:center; gap:6px; padding:5px 0 4px; margin-top:6px; border-top:1px dashed #dfd2ef; color:#9669c9; }
+.poster-page .p-system .p-handoff > span { font-size:21px; }
+.poster-page .p-system .p-handoff > div { display:flex; flex-direction:column; gap:1px; }
+.poster-page .p-system .p-handoff strong { font-size:9px; line-height:1.2; color:#7853a8; }
+.poster-page .p-system .p-handoff small { font-size:8px; line-height:1.2; color:#777f8a; }
+.poster-page .p-system .p-runtime { margin-top:4px; padding:5px 7px; }
+.poster-page .p-system .p-runtime strong { font-size:9px; line-height:1.2; }
+.poster-page .p-system .p-runtime span { font-size:8px; line-height:1.25; margin-top:2px; }
+.poster-page .p-parallel-line { display:flex; align-items:center; gap:5px; margin-top:6px; padding-top:5px; border-top:1px solid var(--p-line); font-size:8px; line-height:1.2; color:#6e7580; }
+.poster-page .p-parallel-line b { color:#8b62c3; font-family:'Fira Code','Menlo',monospace; font-size:7px; letter-spacing:.3px; }
+.poster-page .p-parallel-line i { color:#a9b0ba; font-style:normal; }
+.poster-page .p-parallel-line strong { color:#8b62c3; font-size:8px; }
+
+.poster-page .p-evaluation .p-chart { height:300px; }
+.poster-page .p-evaluation .p-chart-note { font-size:9px; line-height:1.3; margin-top:4px; }
+.poster-page .p-right .p-results-panel { border-top:2px solid #20aa85; }
+.poster-page .p-results-panel > .p-kicker { color:#209b79; }
+.poster-page .p-results-panel .p-results { padding-top:0; margin-top:2px; border-top:0; }
+.poster-page .p-results-panel .p-results h3 { font-size:17px; line-height:1.2; }
+.poster-page .p-results-panel .p-score-table { margin-top:5px; font-size:10px; line-height:1.25; }
+.poster-page .p-results-panel .p-score-table th,.poster-page .p-results-panel .p-score-table td { padding:4px 0; }
+.poster-page .p-results-panel .p-score-table thead th { font-size:8px; padding-bottom:3px; }
+.poster-page .p-results-panel .p-model { font-size:8px; line-height:1.3; margin-top:5px; }
+.poster-page .p-results-panel .p-run-strip { gap:7px; padding-top:6px; margin-top:6px; border-top:1px solid var(--p-line); }
+.poster-page .p-results-panel .p-run-strip strong { font-size:20px; }
+.poster-page .p-results-panel .p-run-strip span { font-size:8px; line-height:1.2; }
+.poster-page .p-results-panel .p-proof { font-size:9px; line-height:1.25; margin-top:5px; }
+.poster-page .p-results-panel .p-run-note { font-size:7px; line-height:1.25; margin-top:3px; }
+
+/* Use the full A0 canvas so the exported poster reads as a poster, not a short page at the top. */
+.poster-page .p-columns { flex:1 1 auto; min-height:0; align-items:stretch; }
+.poster-page .p-left,
+.poster-page .p-right { justify-content:space-between; }
+.poster-page .p-left > .p-section,
+.poster-page .p-right > .p-section { display:flex; flex-direction:column; }
+.poster-page .p-left > .p-section { flex:1 1 0; }
+.poster-page .p-right > .p-section { flex:1 1 0; }
+.poster-page .p-left > .p-section + .p-section,
+.poster-page .p-right > .p-section + .p-section { margin-top:6px; }
+.poster-page .p-problem .failure-bridge,
+.poster-page .p-system .p-parallel-line,
+.poster-page .p-insights-section .p-limit { margin-top:auto; }

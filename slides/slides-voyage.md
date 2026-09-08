@@ -732,24 +732,16 @@ This page frames resource usage as supporting evidence, not as a claim that cost
 
 # The run taught us more than the final score.
 
-<div class="insight-lede">What survived the experiments — and what remains unsettled.</div>
+<div class="insight-lede">Two ways to widen the search without losing evidence.</div>
 
 <div class="insight-grid">
   <div class="insight-item">
     <span class="insight-index blue">01</span>
-    <div><strong>Diversity is a prior.</strong><p>Keep <span class="mono">gemini-3.7-flash</span> as META while Scientist rotates across <span class="mono">gpt-5.6-sol</span>, <span class="mono">gemini-3.7-flash</span>, and <span class="mono">gpt-5.6-luna</span>. This widens priors; it does not prove the gain.</p></div>
+    <div><strong>Different agents search differently.</strong><p>Recorded runs took different routes: local refinement, mechanism pivots, and broader search. Heterogeneous Scientists turn those search styles into a diversity prior. Diversity is a research resource, not a guarantee.</p></div>
   </div>
   <div class="insight-item">
     <span class="insight-index orange">02</span>
-    <div><strong>A score is not a claim.</strong><p>Audits found leakage and sampling mismatches in competing experiments. META can scope evidence; it is not a formal verifier.</p></div>
-  </div>
-  <div class="insight-item">
-    <span class="insight-index rose">03</span>
-    <div><strong>Failure can be evidence.</strong><p>After evaluation, NumPy <span class="mono">float32</span> values broke serialization. The Scientist fixed the writer, reran, and kept the measurements.</p></div>
-  </div>
-  <div class="insight-item">
-    <span class="insight-index purple">04</span>
-    <div><strong>Reset ≠ no anchor.</strong><p>Fresh cognition reopens the search, but shared summaries can still omit context or anchor future work. Share evidence later than cognition.</p></div>
+    <div><strong>Parallel search + review can produce a stronger candidate.</strong><p>Independent Scientists explore without a shared live context. Review selects a branch, then a fresh Scientist synthesizes the evidence. One observed run moved from ≈0.6015 to 0.6055536 Primary. The run shows a promising pattern, but it does not isolate parallelism as the cause.</p></div>
   </div>
 </div>
 
@@ -759,10 +751,10 @@ This page frames resource usage as supporting evidence, not as a claim that cost
 </div>
 
 <!--
-This section synthesizes the model-diversity, scientific-validity, recovery, parallel-search, and selective-persistence observations from the final report. The Parallel/Synthesis score is an observed public-validation result, not part of the canonical E001–E013 frontier.
+This section distills two process observations from the final report: heterogeneous agents bring different search styles, and independent Parallel search followed by review can produce a stronger candidate. The Parallel/Synthesis score is an observed public-validation result, not part of the canonical E001–E013 frontier. Its improvement followed concrete modeling changes, so the run does not isolate parallelism as the cause.
 [Sources]
-- ../docs/FINAL_REPORT.md — sections 3.4–3.5, 4.2, 5.4–5.5, 6.1–6.3, and 7.1–7.2
-- ../competition_archive/kuairand-pure/analysis/scientific-validity-failure.md — audit findings
+- ../docs/FINAL_REPORT.md — sections 3.4–3.5, 4.2, 5.5, and 7.1–7.2
+- ../docs/trajectories/parallel-synthesis.md — independent search, review, synthesis, and observed Primary 0.6055536270
 -->
 
 ---

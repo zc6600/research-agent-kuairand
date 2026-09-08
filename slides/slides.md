@@ -80,19 +80,63 @@ The directory follows the live talk order. Experience is narrated/played back; t
 
 ---
 
+<!-- class: research-task-slide -->
+
 <div class="visual-kicker orange">01 / PROBLEM · THE RESEARCH TASK</div>
 
-# Can an agent carry a research task to completion?
+# Automating ML experimentation
 
-<div class="roles narrative-roles">
-  <div class="role"><strong>Explore</strong><span>Choose hypotheses, write code, and run experiments.</span><small>Scientific judgment</small></div>
-  <div class="role"><strong>Recover</strong><span>Handle failures and revise unsuccessful ideas.</span><small>Long-running work</small></div>
-  <div class="role"><strong>Deliver</strong><span>Retain a valid model and the evidence behind it.</span><small>Verifiable progress</small></div>
+<div class="research-task-lead">Given a dataset and a scoring metric, an agent must build a model and improve it through repeated experiments.</div>
+
+<div class="research-loop" aria-label="The ML engineer iteration loop">
+  <div class="research-loop-stages">
+    <div class="research-loop-stage stage-blue">
+      <span class="research-loop-number mono">01</span>
+      <strong>Read the problem</strong>
+      <span>What should the model predict?</span>
+    </div>
+    <div class="research-loop-stage stage-orange">
+      <span class="research-loop-number mono">02</span>
+      <strong>Inspect data</strong>
+      <span>What patterns does the data contain?</span>
+    </div>
+    <div class="research-loop-stage stage-purple">
+      <span class="research-loop-number mono">03</span>
+      <strong>Engineer features</strong>
+      <span>Turn raw data into useful model inputs</span>
+    </div>
+    <div class="research-loop-stage stage-rose">
+      <span class="research-loop-number mono">04</span>
+      <strong>Train + tune</strong>
+      <span>Fit a model and adjust its settings</span>
+    </div>
+    <div class="research-loop-stage stage-green">
+      <span class="research-loop-number mono">05</span>
+      <strong>Evaluate</strong>
+      <span>Check performance on validation data</span>
+    </div>
+  </div>
+  <div class="research-loop-reflect">
+    <span class="research-loop-reflect-label mono">REFLECT + REVISE</span>
+    <span>The agent uses the results to choose what to change, revises the code, and runs the next experiment.</span>
+  </div>
+</div>
+
+<div class="research-task-bottom">
+  <div class="research-task-why">
+    <span class="research-task-label mono">THE AGENT'S JOB</span>
+    <p><strong>Write the code and run the full loop autonomously.</strong> This includes building the pipeline and deciding which experiments to try next.</p>
+  </div>
+  <div class="research-task-brief">
+    <span class="research-task-label mono">THE CHALLENGE GOAL</span>
+    <p><strong>Reproduce, then improve on the organizer's baseline.</strong> Develop with training data and public validation. The organizer scores the final submission on a hidden test set.</p>
+  </div>
 </div>
 
 <!--
-Open with the research job. The benchmark makes that job concrete; broader task generality remains unproven.
+The five stages describe the ML engineer's familiar iteration loop. Code-generating LLMs make automation plausible because feature engineering and training largely happen in code. The challenge requires the agent to reproduce the organizer's reported baseline validation score, then demonstrate sustained improvement. Individual experiments may regress. The agent selects a final submission for one hidden-test evaluation and never accesses the hidden test during development. Our test case is short-video recommendation on KuaiRand-Pure. Prior systems and detailed recommender metrics belong in later context or evidence slides rather than this task introduction.
 [Sources]
+- User-supplied challenge brief — sections 2.1 Background and 2.2 Problem Statement
 - ../README.md — introduction and TikTok TechJam 2026 result
 - ../competitions/kuairand/task.md — challenge target and optimization objective
 -->
@@ -374,20 +418,24 @@ This page frames resource usage as supporting evidence, not as a claim that cost
 
 # The run taught us more than the final score.
 
-<div class="insight-lede">One durable lesson from the experiments.</div>
+<div class="insight-lede">Two ways to widen the search without losing evidence.</div>
 
-<div class="insight-grid insight-grid-single">
+<div class="insight-grid">
   <div class="insight-item">
     <span class="insight-index blue">01</span>
-    <div><strong>Diversity is a prior.</strong><p>Keep <span class="mono">gemini-3.7-flash</span> as META while Scientist rotates across <span class="mono">gpt-5.6-sol</span>, <span class="mono">gemini-3.7-flash</span>, and <span class="mono">gpt-5.6-luna</span>. This widens priors; it does not prove the gain.</p></div>
+    <div><strong>Different agents search differently.</strong><p>Recorded runs took different routes: local refinement, mechanism pivots, and broader search. Heterogeneous Scientists turn those search styles into a diversity prior. Diversity is a research resource, not a guarantee.</p></div>
+  </div>
+  <div class="insight-item">
+    <span class="insight-index orange">02</span>
+    <div><strong>Parallel search + review can produce a stronger candidate.</strong><p>Independent Scientists explore without a shared live context. Review selects a branch, then a fresh Scientist synthesizes the evidence. One observed run moved from ≈0.6015 to 0.6055536 Primary. The run shows a promising pattern, but it does not isolate parallelism as the cause.</p></div>
   </div>
 </div>
 
 <!--
-This section synthesizes the model-diversity, scientific-validity, recovery, parallel-search, and selective-persistence observations from the final report. The Parallel/Synthesis score is an observed public-validation result, not part of the canonical E001–E013 frontier.
+This section distills two process observations from the final report: heterogeneous agents bring different search styles, and independent Parallel search followed by review can produce a stronger candidate. The Parallel/Synthesis score is an observed public-validation result, not part of the canonical E001–E013 frontier. Its improvement followed concrete modeling changes, so the run does not isolate parallelism as the cause.
 [Sources]
-- ../docs/FINAL_REPORT.md — sections 3.4–3.5, 4.2, 5.4–5.5, 6.1–6.3, and 7.1–7.2
-- ../competition_archive/kuairand-pure/analysis/scientific-validity-failure.md — audit findings
+- ../docs/FINAL_REPORT.md — sections 3.4–3.5, 4.2, 5.5, and 7.1–7.2
+- ../docs/trajectories/parallel-synthesis.md — independent search, review, synthesis, and observed Primary 0.6055536270
 -->
 
 ---
