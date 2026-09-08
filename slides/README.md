@@ -80,6 +80,6 @@ npm run poster:variants
 
 ## Evaluation 卡片试版
 
-`npm run dev` 的第 6 页为 Evaluation 卡片页。点击卡片后，图表、数据和正文直接呈现在展开的卡片内，长内容在卡片内部滚动。五张卡片分别承载结果与直接对照、实验轨迹、自主性与资源、输出校验与局限、留存证据与 Insights / 附录。`BACK TO HAND` 或 Esc 返回卡片组。
+`npm run dev` 的第 6 页为 Evaluation 卡片页。点击卡片后，图表、数据和正文直接呈现在展开的卡片内，长内容在卡片内部滚动。五张卡片依次承载模型结果、持续搜索、失败恢复、Codex 对照，以及 P10 的自主性与资源账本。`BACK TO HAND` 或 Esc 返回卡片组。
 
 原来的顺序页面继续保留。卡片内容在 `components/EvaluationCardBody.vue`，卡片交互在 `components/EvaluationClaimCards.vue`；修改数据时需与 `slides.md` 保持一致。

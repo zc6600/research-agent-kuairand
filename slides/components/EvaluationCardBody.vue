@@ -13,15 +13,7 @@ defineProps<{ card: string }>()
       </div>
       <table><thead><tr><th>Metric</th><th>Official FM</th><th>Our agent</th></tr></thead><tbody><tr><td>GAUC</td><td>0.6674000</td><td>0.6728421</td></tr><tr><td>nDCG@5</td><td>0.5357000</td><td>0.5390304</td></tr><tr><td>Primary</td><td>0.6016000</td><td><b>0.6059363</b></td></tr></tbody></table>
       <p class="boundary">Primary = mean(GAUC, nDCG@5). Public validation only; hidden-test scoring is organizer-controlled.</p>
-      <section><h3>Direct-agent comparison</h3><p>Compare the score with the token investment and the strength of the retained evidence.</p>
-        <table><thead><tr><th>Run</th><th>Total LLM tokens</th><th>Primary</th><th>Evidence</th></tr></thead><tbody>
-          <tr><td>AGY · gemini-3.7-flash</td><td>8.565M</td><td>0.6045803</td><td>Artifact-backed</td></tr>
-          <tr><td>gpt-5.6-luna · direct</td><td>28.070M</td><td>≈0.6046</td><td>Provisional</td></tr>
-          <tr><td>Heterogeneous run</td><td>39.607M</td><td>≈0.6047</td><td>gemini-3.7-flash</td></tr>
-          <tr><td>RA-only · Cycle 2 · E008</td><td>45.044–51.174M</td><td>0.6052</td><td>gemini-3.7-flash-only</td></tr>
-          <tr><td>Research Agent submission</td><td>48.240M</td><td><b>0.605936</b></td><td>Verified</td></tr>
-        </tbody></table><p class="boundary">Input + output including cache-read input, across the recorded agent system. Runs differ in model, budget, and evidence quality; this is not a controlled causal comparison.</p>
-      </section>
+      <section><h3>Retained checkpoint</h3><p>E013 kept the strongest valid recipe after seven Full evaluations: a 46-field FM ensemble across eight seeds, evaluated by the unchanged organizer evaluator.</p><div class="two-columns"><div><h4>GAUC</h4><p>0.6728421</p></div><div><h4>nDCG@5</h4><p>0.5390304</p></div></div></section>
     </template>
 
     <template v-else-if="card === 'trajectory'">
@@ -29,29 +21,25 @@ defineProps<{ card: string }>()
       <section><h3>What the search retained</h3><p>Thirteen named experiments included seven Full public-validation evaluations. Medium screens and diagnostics informed the four cycles without replacing the Full evaluator.</p><p>The final checkpoint, E013, retained an 8-seed ensemble with 46 leak-free fields and the unchanged evaluator. The remaining named experiments record the alternatives considered along the way.</p></section>
     </template>
 
-    <template v-else-if="card === 'autonomy'">
+    <template v-else-if="card === 'robustness'">
+      <div class="recovery-hero"><span class="eyeline">CYCLE 1 / RECOVERY EVENT</span><strong>Evidence writing failed after evaluation.</strong><p>Training and evaluation had completed, but the evidence writer could not serialize organizer metrics returned as <code>numpy.float32</code>.</p></div>
+      <div class="recovery-steps"><div><b>01</b><strong>Preserve</strong><p>Printed measurements stayed in the session output.</p></div><div><b>02</b><strong>Repair</strong><p>The Scientist converted NumPy scalars before JSON serialization.</p></div><div><b>03</b><strong>Rerun</strong><p>The experiment completed again and kept auditable evidence.</p></div></div>
+      <section><h3>Where META fits</h3><p>The Scientist owned the code repair. META's role is to audit the report against the artifacts, then crystallize a coherent repaired implementation into recoverable State for the next trajectory.</p><p>No human selected the repair or edited the code. The run recovered its evidence instead of terminating.</p></section>
+      <p class="boundary">This is the documented cycle-1 recovery event in <code>research_record/reports/cycle-1.md</code> and <code>docs/FINAL_REPORT.md</code> §4.2.</p>
+    </template>
+
+    <template v-else-if="card === 'comparison'">
+      <div class="comparison-hero"><span class="eyeline">PUBLIC VALIDATION / DIRECT CODEX GOAL CONTROL</span><div class="comparison-scores"><div><small>DIRECT CODEX</small><strong>0.6044533</strong><span>provisional control</span></div><i>→</i><div><small>RESEARCH AGENT</small><strong>0.6059363</strong><span>verified retained result</span></div></div><p><b>+0.0014830 Primary</b> above the recorded direct Codex control.</p></div>
+      <table><thead><tr><th>Metric</th><th>Direct Codex</th><th>Research Agent</th></tr></thead><tbody><tr><td>GAUC</td><td>0.6712471</td><td>0.6728421</td></tr><tr><td>nDCG@5</td><td>0.5376595</td><td>0.5390304</td></tr><tr><td>Primary</td><td>0.6044533</td><td><b>0.6059363</b></td></tr></tbody></table>
+      <section><h3>Read the comparison carefully</h3><p>Both results use public validation only. The Codex record is marked provisional because its process audit lists unresolved launcher, provenance, and pair-construction concerns. This is a recorded control comparison, not a causal proof of architecture superiority.</p></section>
+    </template>
+
+    <template v-else-if="card === 'tokenmaxxing'">
+      <div class="token-hero"><span class="eyeline">P10 / AUTONOMY AND AUDITABILITY</span><strong>48.240M</strong><p>total input + output tokens, including cache-read input</p></div>
       <div class="metric-row"><div><strong>4</strong><span>autonomous cycles</span><small>Within a 50-iteration cap</small></div><div><strong>13</strong><span>named experiments</span><small>E001–E013 · 7 Full evaluations</small></div><div><strong>0</strong><span>manual scientific interventions</span><small>After launch in the retained run</small></div></div>
-      <p>Humans built the framework and set up the benchmark. After launch, the agent controlled the scientific decisions and kept an audit trail from experiments to the delivered output.</p>
-      <section><h3>Resource use</h3><div class="resource-line"><strong>48.24M</strong><span>LLM tokens including cache reads<br><small>4.02M excluding cache reads</small></span><strong>0</strong><span>GPU-hours<br><small>CPU / NumPy training</small></span></div></section>
-      <section><h3>~$10 across the project</h3><p>Estimated subscription-equivalent usage from the first line of code to the final result: coding, debugging, agent runs, and all experiments.</p><div class="two-columns"><div><h4>One GPT Plus + one Gemini Pro</h4><p>Two consumer subscriptions over seven days covered the research loop.</p></div><div><h4>One MacBook M2</h4><p>All development and experiments ran on a single consumer laptop.</p></div></div><p class="boundary">The ~$10 figure is a project-level estimate, not a per-experiment cost. Run telemetry is reported separately; zero GPU-hours does not mean zero LLM cost.</p></section>
-    </template>
-
-    <template v-else-if="card === 'validity'">
-      <div class="validation-result"><span class="eyeline">UNCHANGED STARTER KIT ALIGNMENT CHECKER</span><strong class="hero-number">170,588</strong><p>prediction rows aligned and passed</p></div>
-      <p>The delivered predictions passed the original submission checker. The reported model gains are on public validation; hidden-test scoring remains organizer-controlled.</p>
-      <section><h3>A score is not a claim</h3><p>Audits found leakage and sampling mismatches in competing experiments. META can scope the evidence, but it is not a formal verifier.</p></section>
-      <section><h3>Limits and next experiments</h3><dl><dt>External validity</dt><dd>One task does not establish generality. Evaluate broader tasks; KuaiRand-1K / 27K bonus benchmarks were not attempted.</dd><dt>Causal attribution</dt><dd>META, State, and reset have not been isolated. Targeted ablations are needed.</dd><dt>Memory quality</dt><dd>Summaries can omit context and anchor future work. Investigate less repeated execution and better retained evidence.</dd></dl><p class="boundary">These are open questions and proposed experiments, not completed features or a committed roadmap.</p></section>
-    </template>
-
-    <template v-else-if="card === 'evidence'">
-      <div class="record-line"><span>Experiment</span><i>→</i><span>Report</span><i>→</i><span>Retained State</span></div>
-      <div class="two-columns lessons"><div><h4>Diversity is a prior</h4><p>META stays on gemini-3.7-flash while Scientist rotates across gpt-5.6-sol, gemini-3.7-flash, and gpt-5.6-luna. This widens priors; it does not prove the gain.</p></div><div><h4>Failure can be evidence</h4><p>After evaluation, NumPy <code>float32</code> values broke serialization. The Scientist fixed the writer, reran, and kept the measurements.</p></div><div><h4>A score is not a claim</h4><p>Leakage and sampling mismatches in competing experiments showed why claims need an audit. META scopes evidence; it is not a formal verifier.</p></div><div><h4>Reset ≠ no anchor</h4><p>Fresh cognition reopens search, but shared summaries can still omit context or anchor future work. Share evidence later than cognition.</p></div></div>
-      <p class="boundary">Observed, not proven: Parallel/Synthesis reached Primary 0.6055536 on public validation; the canonical E001–E013 frontier remains 0.6059363.</p>
-      <section><h3>Engineering practice</h3><div class="two-columns"><div><h4>Give every agent a branch</h4><p>Keep parallel changes isolated, then review and merge. Conflicts stay local and the main branch stays clean.</p></div><div><h4>Leave the next move in GitHub</h4><p>Issue / prompt → GitHub Action → commit. An agent can work while you are offline; review the change before merging.</p></div></div><p class="boundary">Proposed workflow guidance; GitHub continuation is not a benchmarked system feature.</p></section>
-      <section><h3>Open-world research</h3><p>Research needs an open-world coding agent: use existing capabilities, recover when they fail, and add what is missing.</p><dl><dt>Open action space</dt><dd>Shell · files · browser · Git</dd><dt>Self-recovery</dt><dd>Read errors · inspect docs and source · install packages</dd><dt>Runtime extension</dt><dd>MCP · skills · CLI · packages</dd></dl><p>A predefined graph can stop when an API fails and no recovery tool exists. A coding-agent harness can inspect, learn, modify its environment, and retry.</p><p>LangGraph makes a known workflow explicit as nodes and edges. When a capability is missing, leave the graph, inspect, extend, and retry.</p></section>
-      <section><h3>Five people. One autonomous research loop.</h3><table><thead><tr><th>Team</th><th>Responsibility</th></tr></thead><tbody><tr><td>Chen Zhu</td><td>Team lead / system · direction, architecture, integration</td></tr><tr><td>Zhou Ziyu</td><td>Modeling / experiments · features, ensembles, evidence review</td></tr><tr><td>Shilin Xu</td><td>Data / metrics · data workflow, contracts, alignment</td></tr><tr><td>GE GAO</td><td>Runtime / reliability · execution, testing, integration support</td></tr><tr><td>Jiran Li</td><td>Evidence / reproducibility · telemetry, documentation, packaging</td></tr></tbody></table></section>
-      <section><h3>Keep the experience. Reopen the search.</h3><p>From the configured repository, run one autonomous cycle:</p><pre>./scripts/research-agent step --cli codex \
-    --target /absolute/path/to/project --allow-edits</pre><p class="boundary">Requires Git, uv, the Python environment, and an installed, authenticated agent CLI. Replace the target with a real research project path.</p><p class="repo-address">github.com/zc6600/research-agent-kuairand<br><small>Code · Technical report · Experiment ledger · Checked output</small></p></section>
+      <section><h3>Resource use</h3><div class="resource-line"><strong>4.020M</strong><span>non-cache input + output<br><small>48.240M including cache reads</small></span><strong>0</strong><span>GPU-hours<br><small>CPU / NumPy training</small></span></div></section>
+      <table><thead><tr><th>Recorded system</th><th>Total tokens</th><th>Primary</th><th>Evidence</th></tr></thead><tbody><tr><td>AGY direct</td><td>8.565M</td><td>0.6045803</td><td>Artifact-backed</td></tr><tr><td>Codex direct</td><td>11.221M</td><td>0.6044533</td><td>Provisional</td></tr><tr><td>Research Agent</td><td>48.240M</td><td><b>0.6059363</b></td><td>Verified</td></tr></tbody></table>
+      <p class="boundary">The controls used fewer tokens, and their protocols differ. The defensible claim is a verified retained result with an audit trail, not a token-efficiency frontier or “more tokens means better.”</p>
     </template>
   </div>
 </template>
@@ -70,6 +58,20 @@ defineProps<{ card: string }>()
 .card-body th, .card-body td { text-align: left; padding: 9px 10px; border-bottom: 1px solid #e6e6e8; }
 .card-body th { color: #7d7d82; font-size: 11px; font-weight: 650; }
 .card-body .boundary { padding-left: 12px; border-left: 2px solid var(--accent); color: #727981; font-size: 12px; line-height: 1.5; margin-top: 16px; }
+.recovery-hero strong, .token-hero strong { display: block; margin-top: 8px; color: var(--accent); font-size: 30px; line-height: 1.08; letter-spacing: -.8px; }
+.recovery-hero p, .token-hero p { max-width: 650px; }
+.recovery-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 24px; }
+.recovery-steps > div { padding-top: 12px; border-top: 2px solid color-mix(in srgb, var(--accent) 46%, #e6e6e8); }
+.recovery-steps b { display: block; color: var(--accent); font-size: 12px; letter-spacing: 1px; }
+.recovery-steps strong { display: block; margin-top: 6px; color: var(--ink); font-size: 16px; }
+.recovery-steps p { color: #727981; font-size: 12px; line-height: 1.4; }
+.comparison-scores { display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 18px; margin-top: 14px; }
+.comparison-scores div { padding-top: 10px; border-top: 2px solid color-mix(in srgb, var(--accent) 44%, #e6e6e8); }
+.comparison-scores small, .comparison-scores span { display: block; color: #7d7d82; font-size: 10px; letter-spacing: .75px; }
+.comparison-scores strong { display: block; color: var(--accent); font-size: 34px; line-height: 1.05; letter-spacing: -1px; }
+.comparison-scores i { padding-bottom: 16px; color: #b8bec4; font-size: 24px; font-style: normal; }
+.token-hero { padding-bottom: 5px; }
+.token-hero strong { font-size: 48px; letter-spacing: -1.8px; }
 .metric-row { display: grid; grid-template-columns: 1fr 1fr 1.3fr; gap: 25px; margin-bottom: 22px; }
 .metric-row strong { display: block; font-size: 52px; line-height: 1.1; color: var(--accent); }
 .metric-row span, .metric-row small { display: block; }
