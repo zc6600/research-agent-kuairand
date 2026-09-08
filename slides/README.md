@@ -41,7 +41,9 @@ npm run export
 ## 编辑
 
 - `slides.md`：内容、顺序与讲者备注。
-- `styles/theme.css`：颜色、字体与版式。
+- `styles/index.css`：样式入口。
+- `styles/foundation/`：设计 token、基础排版与少量通用工具类。
+- `styles/theme.css`：历史主样式，下一阶段会逐步把页面专属段落迁入组件或 scene stylesheet。
 - `slide-top.vue`：统一页脚和页码。
 
 使用本地系统字体，不依赖在线字体服务。尊重系统减少动态效果设置。
