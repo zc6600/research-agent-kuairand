@@ -14,10 +14,7 @@ const oldInsight = `<div class="insight-item">
     <div><strong>Different agents search differently.</strong><p>Recorded runs took different routes: local refinement, mechanism pivots, and broader search. Heterogeneous Scientists turn those search styles into a broader exploration prior.</p></div>
   </div>`
 
-const newInsight = `<div class="insight-item">
-    <span class="insight-index blue">01</span>
-    <div><strong>Reset the context. Rotate the prior.</strong><p>Gemini-only SciOdyssey already reached 0.6052 Primary. The best retained run reached 0.6059363 while rotating GPT and Gemini across fresh Scientist trajectories. The architecture works with one model; model diversity may broaden the search further.</p></div>
-  </div>`
+const newInsight = `<ModelRotationInsight />`
 
 const source = await readFile(sourcePath, 'utf8')
 const insert = (await readFile(insertPath, 'utf8')).trim()
