@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile } from 'node:fs/promises'
+import { readFile, writeFile } from 'node:fs/promises'
 
 const sourcePath = 'slides.md'
 const insertPath = 'snippets/evaluation-claim-verdict.md'

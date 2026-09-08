@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, nextTick, ref } from 'vue'
+import EvaluationCardBody from './EvaluationCardBody.vue'
 
 type Card = {
   id: string
@@ -22,18 +23,38 @@ const selectedId = ref<string | null>(null)
 const cards: Card[] = [
   { id: 'validity', no: '04', kicker: 'VALID OUTPUT', claim: 'The artifact passed validation.', accent: 'var(--orange)', rotate: -15, x: 0, y: 72, scale: .96, z: 1, title: 'The delivered file passed the unchanged Starter Kit alignment checker.', detail: 'The final predictions were checked against the original evaluator boundary: 170,588 prediction rows aligned and passed the submission checker.', meta: '170,588 checked predictions · unchanged checker · organizer-controlled hidden test' },
   { id: 'trajectory', no: '02', kicker: 'SUSTAINED SEARCH', claim: 'The search kept going.', accent: 'var(--blue)', rotate: -7, x: 112, y: 38, scale: 1, z: 3, title: 'The score came from a trajectory, not a single lucky edit.', detail: 'Seven Full public-validation evaluations were retained across four autonomous cycles, from a validated baseline to a 46-field, 8-seed FM ensemble.', meta: '4 cycles · 13 named experiments · E003–E013 retained frontier' },
-  { id: 'result', no: '01', kicker: 'MEASURED RESULT', claim: 'The model got better.', accent: 'var(--green)', rotate: 0, x: 226, y: 8, scale: 1.1, z: 8, title: 'A retained checkpoint beat the official FM reference.', detail: 'The final E013 checkpoint reached 0.6059363 Primary on public validation, an absolute improvement of +0.0043363 over the official five-field FM reference.', meta: '0.6016000 → 0.6059363 · GAUC 0.6728421 · nDCG@5 0.5390304' },
+  { id: 'result', no: '01', kicker: 'MEASURED RESULT', claim: 'The model got better.', accent: 'var(--green)', rotate: 0, x: 226, y: 64, scale: 1.1, z: 8, title: 'A retained checkpoint beat the official FM reference.', detail: 'The final E013 checkpoint reached 0.6059363 Primary on public validation, an absolute improvement of +0.0043363 over the official five-field FM reference.', meta: '0.6016000 → 0.6059363 · GAUC 0.6728421 · nDCG@5 0.5390304' },
   { id: 'autonomy', no: '03', kicker: 'AUTONOMOUS SCIENCE', claim: 'The agent made the scientific moves.', accent: 'var(--purple)', rotate: 7, x: 340, y: 39, scale: 1, z: 4, title: 'After launch, the research loop kept control of the scientific moves.', detail: 'The retained run completed four autonomous cycles with zero manual scientific interventions after launch. Humans built the framework; the run carried the research decisions.', meta: '0 manual scientific interventions · 0 GPU-hours · CPU / NumPy training' },
   { id: 'evidence', no: '05', kicker: 'TRACEABLE EVIDENCE', claim: 'The work stayed traceable.', accent: 'var(--rose)', rotate: 15, x: 452, y: 73, scale: .96, z: 2, title: 'The final answer remained tied to experiments, reports, and retained state.', detail: 'SciOdyssey did not only return a score. It left a research record: named experiments, cycle reports, retained implementation state, and scoped claims.', meta: 'experiment → report → retained State · claim ↔ evidence audit' },
 ]
 
 const selected = computed(() => cards.find(card => card.id === selectedId.value) ?? null)
-const openCard = (id: string) => { selectedId.value = id }
-const closeCard = () => { selectedId.value = null }
+const dialog = ref<HTMLElement | null>(null)
+let trigger: HTMLElement | null = null
+const openCard = async (id: string) => {
+  trigger = document.activeElement as HTMLElement
+  selectedId.value = id
+  await nextTick()
+  dialog.value?.focus()
+}
+const closeCard = () => {
+  selectedId.value = null
+  trigger?.focus()
+}
+const handleKey = (event: KeyboardEvent) => {
+  event.stopPropagation()
+  if (event.key === 'Escape') { event.preventDefault(); closeCard() }
+  if (event.key === 'Tab') {
+    const controls = Array.from(dialog.value?.querySelectorAll<HTMLElement>('button:not(:disabled), [tabindex="0"], a[href]') ?? [])
+    const first = controls[0], last = controls.at(-1)
+    if (event.shiftKey && (document.activeElement === first || document.activeElement === dialog.value)) { event.preventDefault(); last?.focus() }
+    else if (!event.shiftKey && (document.activeElement === last || document.activeElement === dialog.value)) { event.preventDefault(); first?.focus() }
+  }
+}
 </script>
 
 <template>
-  <section class="eval-claim-cards" aria-label="Evaluation evidence cards">
+  <section class="eval-claim-cards" :class="{ 'has-inspection': selected }" aria-label="Evaluation evidence cards">
     <header class="claim-header" :class="{ dimmed: selected }">
       <div class="section-kicker mono">04 / EVALUATION</div>
       <div class="claim-label mono">CLAIM</div>
@@ -59,13 +80,16 @@ const closeCard = () => { selectedId.value = null }
       </button>
     </div>
 
-    <div v-if="selected" class="inspection-layer" @click.self="closeCard">
+    <div v-if="selected" ref="dialog" class="inspection-layer" role="dialog" aria-modal="true" :aria-label="selected.claim" tabindex="-1" @keydown="handleKey" @click.stop @click.self="closeCard">
       <article class="inspection-card" :style="{ '--accent': selected.accent }">
-        <button class="inspection-close mono" type="button" @click.stop="closeCard">BACK TO HAND</button>
-        <div class="inspection-kicker mono">{{ selected.no }} / {{ selected.kicker }}</div>
-        <h2>{{ selected.claim }}</h2>
-        <p>{{ selected.title }}</p>
-        <div class="inspection-copy">{{ selected.detail }}</div>
+        <header class="inspection-heading">
+          <button class="inspection-close mono" type="button" @click.stop="closeCard">BACK TO HAND ×</button>
+          <div class="inspection-kicker mono">{{ selected.no }} / {{ selected.kicker }}</div>
+          <h2>{{ selected.claim }}</h2>
+        </header>
+        <div class="inspection-content" tabindex="0" aria-label="Card contents" @wheel.stop @touchmove.stop>
+          <EvaluationCardBody :card="selected.id" />
+        </div>
         <div class="inspection-meta mono">{{ selected.meta }}</div>
       </article>
     </div>
@@ -202,14 +226,6 @@ const closeCard = () => { selectedId.value = null }
   outline: none;
   z-index: 30;
 }
-.card-result {
-  background: #fff;
-  box-shadow: 0 34px 84px rgba(27, 39, 52, .23), 0 0 0 1px rgba(255,255,255,.98) inset;
-}
-.card-result::before {
-  border-color: color-mix(in srgb, var(--green) 44%, #dce3e8);
-}
-
 .card-meta { display: flex; align-items: center; justify-content: space-between; gap: 7px; }
 .card-no { color: var(--accent); }
 .card-kicker { color: #9aa0a6; font-size: 7.4px; letter-spacing: .78px; text-align: right; }
@@ -247,97 +263,32 @@ const closeCard = () => { selectedId.value = null }
 .inspection-layer {
   position: absolute;
   z-index: 20;
-  inset: 0;
+  inset: -42px -56px auto;
+  height: 551.25px;
   display: grid;
   place-items: center;
   background: rgba(255,255,255,.62);
   backdrop-filter: blur(6px);
 }
-.inspection-card {
-  position: relative;
-  width: 705px;
-  height: 466px;
-  border-radius: 30px;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,.98), rgba(250,251,252,.95)),
-    radial-gradient(circle at 74% 26%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 38%);
-  box-shadow: 0 34px 90px rgba(24, 35, 47, .18);
-  padding: 34px 38px;
-  overflow: hidden;
+ .inspection-card {
+  position: relative; width: 900px; height: 515px; display: flex; flex-direction: column;
+  border-radius: 26px; background: #fff; border: 1px solid color-mix(in srgb, var(--accent) 35%, #e6e6e8);
+  box-shadow: 0 30px 90px rgba(24,35,47,.18); overflow: hidden;
   animation: inspectIn .28s cubic-bezier(.22,1,.36,1) both;
 }
-.inspection-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  border: 1px solid color-mix(in srgb, var(--accent) 34%, var(--line));
-  pointer-events: none;
-}
-@keyframes inspectIn {
-  from { opacity: 0; transform: translateY(18px) scale(.965) rotate(-1.5deg); }
-  to { opacity: 1; transform: translateY(0) scale(1) rotate(0); }
-}
-.inspection-close {
-  position: absolute;
-  right: 30px;
-  top: 25px;
-  border: 0;
-  background: transparent;
-  color: #8b939a;
-  font-size: 9px;
-  letter-spacing: 1px;
-  cursor: pointer;
-}
+@keyframes inspectIn { from { opacity: 0; transform: translateY(18px) scale(.965); } to { opacity: 1; transform: none; } }
+.inspection-heading { flex-shrink: 0; padding: 24px 32px 18px; border-bottom: 1px solid #eef0f2; }
 .inspection-kicker { color: var(--accent); }
-.inspection-card h2 {
-  margin: 18px 0 0;
-  width: 390px;
-  font-size: 39px;
-  line-height: 1.02;
-  letter-spacing: -1.75px;
-  font-weight: 790;
-}
-.inspection-card p {
-  margin: 18px 0 0;
-  width: 410px;
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.45;
-}
-.inspection-copy {
-  position: absolute;
-  left: 38px;
-  right: 330px;
-  bottom: 78px;
-  color: #6f7780;
-  font-size: 14px;
-  line-height: 1.45;
-}
-.inspection-meta {
-  position: absolute;
-  left: 38px;
-  right: 38px;
-  bottom: 33px;
-  padding-top: 13px;
-  border-top: 1px solid color-mix(in srgb, var(--accent) 22%, var(--line));
-  color: #89919a;
-  font-size: 9px;
-  letter-spacing: .8px;
-}
-.claim-foot {
-  position: absolute;
-  left: 48px;
-  bottom: 17px;
-  color: #a0a5aa;
-  font-size: 8.5px;
-  letter-spacing: .82px;
-}
-
+.inspection-heading h2 { margin: 10px 0 0; width: auto; color: var(--ink); font-size: 30px; line-height: 1.1; letter-spacing: -.8px; font-weight: 790; }
+.inspection-close { position: absolute; top: 24px; right: 30px; color: #7d7d82; font-size: 10px; cursor: pointer; }
+.inspection-content { min-height: 0; flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 22px 32px 28px; scrollbar-width: thin; scrollbar-color: #b9c1c8 transparent; }
+.inspection-meta { flex-shrink: 0; padding: 12px 32px; border-top: 1px solid #eef0f2; color: #7d7d82; font-size: 9px; letter-spacing: .5px; }
+.claim-foot { position: absolute; left: 48px; bottom: 17px; color: #a0a5aa; font-size: 8.5px; letter-spacing: .82px; }
+.eval-claim-cards.has-inspection { overflow: visible; }
+.inspection-layer:focus { outline: none; }
+.inspection-close:focus-visible, .inspection-content:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; }
 @media (prefers-reduced-motion: reduce) {
-  .claim-header,
-  .evidence-hand,
-  .evidence-card { transition: none; }
+  .claim-header, .evidence-hand, .evidence-card { transition: none; }
   .inspection-card { animation: none; }
 }
 </style>

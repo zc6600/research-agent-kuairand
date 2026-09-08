@@ -44,6 +44,9 @@ const expansion = computed(() => {
 })
 const isOutro = computed(() => elapsed.value >= outroStart)
 const isBrand = computed(() => !staticView.value && (elapsed.value < introDuration || isOutro.value))
+const sceneOpacity = computed(() => reduced.value || staticView.value ? 1
+  : easeInOut(time.value / 750) * (1 - easeInOut((time.value - operationDurations[act.value] + 500) / 500)))
+const sceneNames = ['Research brief', 'One research cycle', 'Continuous research', 'Parallel exploration', 'Retained evidence', 'Your coding agent']
 const brandTime = computed(() => isOutro.value ? elapsed.value - outroStart : elapsed.value)
 const revealBrand = (start: number) => easeInOut((brandTime.value - start) / 800)
 const skillDock = computed(() => easeInOut((time.value - 500) / 1800))
@@ -59,6 +62,8 @@ const shellStyle = computed(() => {
   const p = expansion.value
   return {
     transform: `translate(${245 * (1 - p)}px, ${225 * (1 - p)}px) scale(${.5 + .5 * p})`,
+    borderRadius: `${28 * (1 - p)}px`,
+    boxShadow: `0 ${24 * (1 - p)}px ${80 * (1 - p)}px rgba(35, 53, 76, ${.12 * (1 - p)})`,
   }
 })
 const labels = ['Edit the brief', 'step', 'run', 'parallel', 'dashboard', 'skill']
@@ -92,15 +97,15 @@ const progress = (start: number, duration: number) => Math.max(0, Math.min(1, (t
 // Each move has a hold on either side so the audience can read the operation.
 const cameraTracks = [
   // Keynote rhythm: enter on one readable subject, hold, then return to a composed wide view.
-  [[0, 434, 150, 1], [1700, 434, 150, 1], [2700, 434, 165, 1.08], [6500, 434, 165, 1.08], [8200, 434, 178, 1.08], [12600, 434, 178, 1.08], [14500, 434, 150, 1]],
-  [[0, 434, 85, 1.02], [2300, 434, 85, 1.02], [3700, 434, 155, 1.04], [9300, 434, 155, 1.04], [11200, 434, 145, 1]],
-  [[0, 434, 85, 1.02], [2300, 434, 85, 1.02], [3700, 434, 155, 1.04], [10900, 434, 155, 1.04], [12800, 434, 145, 1]],
-  [[0, 434, 85, 1.02], [2300, 434, 85, 1.02], [4000, 434, 175, 1.04], [11500, 434, 175, 1.04], [14000, 434, 155, 1]],
-  [[0, 434, 140, 1], [2200, 434, 140, 1], [3600, 434, 160, 1.04], [13000, 434, 160, 1.04], [15000, 434, 140, 1]],
-  [[0, 434, 150, 1], [14000, 434, 150, 1]],
+  [[0, 434, 175, 1], [1700, 434, 175, 1], [3000, 434, 175, 1.035], [6500, 434, 175, 1.035], [8500, 434, 180, 1.035], [12600, 434, 180, 1.035], [14500, 434, 175, 1]],
+  [[0, 434, 125, 1.02], [2300, 434, 125, 1.02], [4000, 434, 188, .98], [10000, 434, 188, .98], [11200, 434, 185, .98]],
+  [[0, 434, 125, 1.02], [2300, 434, 125, 1.02], [4000, 434, 188, .98], [12000, 434, 188, .98], [13200, 434, 185, .98]],
+  [[0, 434, 125, 1.02], [2300, 434, 125, 1.02], [4200, 434, 185, .98], [14000, 434, 185, .98], [15000, 434, 185, .98]],
+  [[0, 434, 175, 1], [2200, 434, 175, 1], [4400, 434, 180, 1.015], [13000, 434, 180, 1.015], [15000, 434, 180, 1]],
+  [[0, 434, 180, .985], [2600, 434, 180, 1], [14000, 434, 180, 1]],
 ]
 const camera = computed(() => {
-  if (reduced.value || staticView.value) return { transform: 'translate(56px, 34px)' }
+  if (reduced.value || staticView.value) return { transform: 'translate(56px, 15px)' }
   const track = cameraTracks[act.value]
   const next = track.findIndex(pose => pose[0] > time.value)
   const a = track[next < 0 ? track.length - 1 : Math.max(0, next - 1)]
@@ -161,6 +166,7 @@ onUnmounted(() => {
     </div>
     <div class="terminal-shell" :style="shellStyle">
     <div v-if="isBrand" class="brand-scene">
+      <div class="brand-rule" :style="{ transform: `scaleX(${revealBrand(250)})`, opacity: revealBrand(250) }" aria-hidden="true" />
       <div class="brand-copy" :style="{ opacity: revealBrand(100), transform: `translateY(${(1 - revealBrand(100)) * 16}px)` }">
         <h1>SciOdyssey</h1>
         <p :style="{ opacity: revealBrand(850), transform: `translateY(${(1 - revealBrand(850)) * 12}px)` }">A research layer over your agent harness.</p>
@@ -172,14 +178,17 @@ onUnmounted(() => {
           <span>{{ harness.name }}</span>
         </div>
       </div>
-      <div class="brand-caption" :style="{ opacity: revealBrand(3200) }">Your agent. One persistent research world.</div>
+      <div class="brand-caption" :style="{ opacity: revealBrand(3200) * expansion }">Your agent. One persistent research world.</div>
     </div>
-    <div v-else class="journey-stage">
+    <template v-else>
+    <div v-if="!showingPurpose" class="scene-heading" :style="{ opacity: sceneOpacity }"><span class="scene-heading-index">{{ String(act + 1).padStart(2, '0') }}</span><span>{{ purposes[act].title }}</span><small>{{ sceneNames[act] }}</small></div>
+    <div class="journey-stage">
       <div v-if="showingPurpose" class="purpose-scene" :style="purposeStyle">
+        <div class="purpose-index">{{ String(act + 1).padStart(2, '0') }} <span>/</span> {{ sceneNames[act] }}</div>
         <h2>{{ purposes[act].title }}</h2>
         <p :style="{ opacity: easeInOut((actTime - 650) / 800) }">{{ purposes[act].detail }}</p>
       </div>
-      <div v-else class="camera-world" :style="camera">
+      <div v-else class="camera-world" :style="{ ...camera, opacity: sceneOpacity }">
       <Transition name="scene" mode="out-in">
         <div v-if="act === 0" key="editor" class="editors">
           <div class="vim-editor">
@@ -190,18 +199,18 @@ onUnmounted(() => {
             </div>
             <div class="vim-buffer">
               <div class="vim-gutter"><span v-for="(_, index) in vimLines" :key="index">{{ String(index + 1).padStart(2, ' ') }}</span></div>
-              <pre><code><span v-for="(line, index) in vimLines" :key="`${vimFile}-${index}`" class="vim-line"><span>{{ line }}</span><span v-if="index === vimLines.length - 1 && time < (vimFile === 'task.md' ? 6500 : 12700)" class="vim-cursor">▎</span></span></code></pre>
+              <pre><code><span v-for="(line, index) in vimLines" :key="`${vimFile}-${index}`" class="vim-line" :class="{ 'vim-heading': line.startsWith('#'), 'vim-current': index === vimLines.length - 1 }"><span>{{ line }}</span><span v-if="index === vimLines.length - 1 && time < (vimFile === 'task.md' ? 6500 : 12700)" class="vim-cursor">▎</span></span></code></pre>
             </div>
             <div class="vim-statusline"><span>{{ vimStatusMode }}</span><span>{{ vimFile }} · utf-8 · md</span></div>
             <div class="vim-commandline"><span>{{ vimMode === ':w' ? ':w' : '' }}</span><span class="vim-hint">{{ time < 7400 ? 'i  insert' : time < 13300 ? ':w  save' : 'brief ready' }}</span></div>
           </div>
-          <div class="brief-ready" :style="{ opacity: progress(13500, 600) }">Both files saved · ready for the agent</div>
+          <div class="brief-ready" :style="{ opacity: progress(13500, 600) }"><span>✓</span> Both files saved <i /> ready for the agent</div>
         </div>
 
         <div v-else-if="act > 0 && act < 4" :key="act" class="execution">
           <div class="command-terminal">
-            <div class="terminal-dots" aria-hidden="true"><i /><i /><i /></div>
-            <div class="command-line"><span class="prompt">❯</span><code>{{ typed(command, 450, 38) }}<span v-if="time > 1700"> \</span></code><span v-if="time < 1700" class="cursor">▎</span></div>
+            <div class="terminal-dots" aria-hidden="true"><i /><i /><i /><span>Terminal</span><small>~/sci-odyssey</small></div>
+            <div class="command-line"><span class="prompt">❯</span><code><span class="command-path">{{ typed(command, 450, 38).slice(0, 25) }}</span><span class="command-verb">{{ typed(command, 450, 38).slice(25) }}</span><span v-if="time > 1700"> \</span></code><span v-if="time < 1700" class="cursor">▎</span></div>
             <div class="command-options">{{ typed(options, 1700, 12) }}</div>
           </div>
           <ExecutionDiagram :act="act" :time="time" />
@@ -222,8 +231,10 @@ onUnmounted(() => {
             </div>
             <img src="/assets/dashboard-result.png" class="dash-img" alt="Dashboard: retained checkpoint S004, Primary 0.605936" />
           </div>
-          <div class="dash-callout" :style="{ opacity: progress(9000, 700) }">
-            <span class="dash-callout-check">✓</span> Retained checkpoint <strong>S004</strong> · Primary <strong class="dash-score">0.605936</strong> · evidence on record
+          <div class="dash-callout" :style="{ opacity: progress(9000, 700), transform: `translateY(${(1 - easeInOut(progress(9000, 700))) * 8}px)` }">
+            <div><small>RETAINED STATE</small><strong>S004</strong></div>
+            <div><small>PRIMARY</small><strong class="dash-score">0.605936</strong></div>
+            <div class="dash-proof"><span class="dash-callout-check">✓</span><span>Evidence on record</span></div>
           </div>
         </div>
         <div v-else key="skill" class="skill-scene">
@@ -242,6 +253,7 @@ onUnmounted(() => {
       </Transition>
       </div>
     </div>
+    </template>
     </div>
     <!-- Act jump controls — outside terminal-shell so they're always visible -->
     <nav class="journey-controls" aria-label="Demonstration playback" @keydown.stop>
@@ -262,6 +274,7 @@ onUnmounted(() => {
       <button class="playback" :aria-label="playing ? 'Pause demonstration' : 'Play demonstration'" @click="toggle">{{ playing ? 'Ⅱ' : '▶' }}</button>
       <button class="playback" aria-label="Replay demonstration" @click="replay">↺</button>
     </nav>
+    <div class="film-progress" aria-hidden="true"><span :style="{ transform: `scaleX(${elapsed / total})` }" /></div>
     <div v-if="isOutro" class="chapter-exit" :style="{ opacity: 1 - expansion }">
       <button @click="replay">↺ Replay UX</button>
       <button class="continue-button" @click="$nav.nextSlide()">Evaluation <span>→</span></button>
@@ -270,108 +283,126 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-.experience-journey { position: absolute; inset: 0; color: #111217; overflow: hidden; background: radial-gradient(ellipse at 15% 5%, #e0edff, transparent 65%), radial-gradient(ellipse at 95% 90%, #fff4d1, transparent 65%), #fff; }
-.experience-journey::before { content: ''; position: absolute; inset: 0; background: #fcfdff; opacity: var(--immersion); }
+.experience-journey { --ux-ink: #20242b; --ux-muted: #7b828d; --ux-blue: #298bb6; --ux-line: #e5e9ee; --ux-font: 'Avenir Next', 'Helvetica Neue', Arial, sans-serif; position: absolute; inset: 0; color: var(--ux-ink); overflow: hidden; font-family: var(--ux-font); font-weight: 400; -webkit-font-smoothing: antialiased; background: radial-gradient(ellipse at 12% 0%, #e4effb, transparent 66%), radial-gradient(ellipse at 100% 100%, #fcf4e5, transparent 60%), #fafbfd; }
+.experience-journey *, .experience-journey *::before, .experience-journey *::after { box-sizing: border-box; }
+.experience-journey::before { content: ''; position: absolute; inset: 0; background: #fcfdfe; opacity: var(--immersion); }
 .chapter-card { position: absolute; top: 40px; left: 56px; right: 56px; text-align: center; }
-.chapter-label { color: #ff873f; font-size: 15px; font-weight: 800; letter-spacing: 3px; }
-.chapter-card h1 { margin: 14px 0 8px !important; font-size: 36px; line-height: 1.25; letter-spacing: -.8px; }
-.chapter-card h1 span { color: #77808d; }
-.brand-scene { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; padding-top: 43px; background: radial-gradient(ellipse at 50% 70%, #eaf2ff99, transparent 65%), #fcfdff; }
-.brand-copy { text-align: center; margin-top: 100px; }
-.brand-copy h1 { font-size: 66px; font-weight: 800; letter-spacing: -3px; line-height: 1.1; margin: 0 !important; }
-.brand-copy p { font-size: 23px; color: #77808d; margin: 19px 0 0; letter-spacing: -.4px; }
-.harness-row { position: absolute; top: 330px; display: flex; align-items: center; gap: 24px; }
-.harness-label { font-size: 12px; color: #98a0ad; margin-right: 2px; }
-.harness { display: flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 600; color: #68717e; }
-.harness-icon { width: 19px; height: 19px; display: grid; place-items: center; }
-.harness-icon img { width: 19px; height: 19px; object-fit: contain; }
-.brand-caption { position: absolute; top: 400px; color: #98a0ad; font-size: 12px; letter-spacing: .6px; }
-.skill-scene { margin: 0 12px; height: 374px; border: 1px solid #e7e9ec; border-radius: 13px; background: white; overflow: hidden; box-shadow: 0 10px 30px #23354c06; font-family: 'Nunito', sans-serif; }
-.agent-bar { height: 30px; border-bottom: 1px solid #eff0f2; background: #fcfcfd; display: flex; align-items: center; justify-content: space-between; padding: 0 17px; color: #a6aab0; font-size: 11px; }
-.agent-bar small { font-size: 8px; letter-spacing: 1px; }
-.agent-dots { display: flex; gap: 5px; width: 90px; }
-.agent-dots i { width: 6px; height: 6px; border: 1px solid #d8dce1; border-radius: 50%; }
-.agent-body { position: relative; padding: 26px 42px; }
-.skill-file { display: flex; align-items: center; gap: 13px; transform-origin: left top; }
-.skill-file strong { font-size: 20px; font-weight: 600; }
-.skill-file small { display: block; font-size: 11px; color: #a1a5ac; margin-top: 2px; }
-.skill-prompt { margin-top: 32px; min-height: 34px; font-size: 25px; letter-spacing: -.6px; }
-.skill-request { margin-top: 8px; font-size: 25px; letter-spacing: -.7px; white-space: nowrap; }
-.skill-response { display: flex; gap: 15px; margin-top: 34px; font-size: 20px; }
-.skill-response > span { color: #5595af; font-size: 25px; }
-.skill-response small { display: block; margin-top: 7px; color: #a1a5ac; font-size: 14px; }
-.skill-files { display: flex; align-items: center; gap: 14px; margin: 18px 0 0 37px; color: #9ca7b1; font: 9px ui-monospace, monospace; }
-.skill-files i { width: 3px; height: 3px; background: #b8c6ce; border-radius: 50%; }
-.gui-terminal { padding: 10px 16px 12px; }
-.gui-terminal .terminal-dots { align-items: center; margin-bottom: 4px; }
-.gui-terminal .terminal-dots span { margin-left: 8px; font-size: 9px; color: #9aa4b2; }
-.is-outro .journey-controls { right: 50%; transform: translateX(50%); }
-.terminal-shell { position: absolute; top: 0; left: 0; width: 980px; height: 551.25px; transform-origin: 0 0; overflow: hidden; will-change: transform; }
-.journey-stage { position: absolute; top: 45px; left: 0; right: 0; height: 450px; overflow: hidden; mask-image: linear-gradient(to bottom, transparent, black 3%, black 97%, transparent); }
-.purpose-scene { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 56px 25px; }
-.purpose-scene h2 { margin: 0 !important; font-size: 55px; font-weight: 700; line-height: 1.15; letter-spacing: -1.8px; }
-.purpose-scene p { margin: 23px 0 0; max-width: 720px; color: #8b929c; font-size: 21px; line-height: 1.5; letter-spacing: -.3px; }
-.camera-world { position: absolute; top: 0; left: 0; width: 868px; min-height: 300px; transform-origin: 0 0; will-change: transform; }
-.editors { padding: 7px 72px 0; }
-.vim-editor { height: 308px; background: #fbfcfe; color: #3d4755; font: 14px/1.8 ui-monospace, SFMono-Regular, Menlo, monospace; box-shadow: 0 20px 45px #23354c0d; }
-.vim-tabline { height: 31px; display: flex; align-items: center; gap: 18px; padding: 0 16px; background: #eef2f7; border-bottom: 1px solid #dfe5ed; color: #95a0ae; font-size: 11px; }
-.vim-tabline span { padding: 4px 8px 5px; }
-.vim-tabline span.active { color: #111217; background: #fbfcfe; }
-.vim-tabline small { margin-left: auto; color: #a0a9b6; font-size: 10px; }
-.vim-buffer { display: grid; grid-template-columns: 52px 1fr; height: 219px; overflow: hidden; }
-.vim-gutter { padding: 15px 12px 0 0; text-align: right; color: #a1aab6; user-select: none; border-right: 1px solid #edf0f4; }
+.chapter-label { color: #be814c; font-size: 11px; font-weight: 600; letter-spacing: 2.6px; }
+.chapter-card h1 { margin: 20px 0 8px !important; font-size: 34px; font-weight: 550; line-height: 1.24; letter-spacing: -1px; }
+.chapter-card h1 span { color: #8a9099; }
+.terminal-shell { position: absolute; top: 0; left: 0; width: 980px; height: 551.25px; transform-origin: 0 0; overflow: hidden; will-change: transform; background: #fcfdfe; }
+.brand-scene { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; background: radial-gradient(ellipse at 50% 45%, #edf5fb65, transparent 60%), #fcfdfe; }
+.brand-rule { position: absolute; top: 118px; width: 34px; height: 2px; border-radius: 2px; background: #7cbbd6; }
+.brand-copy { text-align: center; margin-top: 151px; }
+.brand-copy h1 { color: #20242b; font-size: 67px; font-weight: 600; letter-spacing: -3.4px; line-height: 1.1; margin: 0 !important; }
+.brand-copy p { font-size: 22px; font-weight: 400; color: #7c838d; margin: 19px 0 0; letter-spacing: -.55px; }
+.harness-row { position: absolute; top: 334px; display: flex; align-items: center; gap: 23px; padding-top: 20px; border-top: 1px solid #e8edf2; }
+.harness-label { font-size: 11px; color: #8a929d; margin-right: 3px; }
+.harness { display: flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 500; color: #69727e; }
+.harness-icon, .harness-icon img { width: 17px; height: 17px; }
+.harness-icon { display: grid; place-items: center; }
+.harness-icon img { object-fit: contain; }
+.brand-caption { position: absolute; top: 433px; color: #89929e; font-size: 11px; letter-spacing: .15px; }
+.scene-heading { position: absolute; top: 31px; left: 56px; right: 56px; display: flex; align-items: center; gap: 11px; font-size: 16px; font-weight: 500; letter-spacing: -.3px; }
+.scene-heading-index { font: 10px ui-monospace, monospace; color: var(--ux-blue); }
+.scene-heading small { margin-left: auto; font-size: 10px; font-weight: 400; letter-spacing: .3px; color: #8e97a3; }
+.journey-stage { position: absolute; top: 76px; left: 0; right: 0; height: 420px; overflow: hidden; }
+.purpose-scene { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 56px 51px; }
+.purpose-index { margin-bottom: 24px; font-size: 10px; font-weight: 500; letter-spacing: 1.4px; text-transform: uppercase; color: #668fa6; }
+.purpose-index span { margin: 0 10px; color: #c9d3dc; }
+.purpose-scene h2 { margin: 0 !important; font-size: 53px; font-weight: 550; line-height: 1.15; letter-spacing: -2.3px; }
+.purpose-scene p { margin: 22px 0 0; max-width: 640px; color: #818994; font-size: 20px; font-weight: 400; line-height: 1.55; letter-spacing: -.4px; }
+.camera-world { position: absolute; top: 0; left: 0; width: 868px; min-height: 300px; transform-origin: 0 0; will-change: transform, opacity; }
+.editors { padding: 7px 66px 0; }
+.vim-editor { height: 315px; border: 1px solid #dfe5eb; border-radius: 12px; overflow: hidden; background: #fff; color: #465260; font: 14px/1.8 ui-monospace, SFMono-Regular, Menlo, monospace; box-shadow: 0 12px 36px #23354c0a, 0 2px 4px #23354c03; }
+.vim-tabline { height: 36px; display: flex; align-items: center; gap: 12px; padding: 0 16px; background: #f7f9fb; border-bottom: 1px solid #e6ebf0; color: #8c99a8; font-size: 11px; }
+.vim-tabline span { padding: 9px 9px 8px; border-bottom: 2px solid transparent; }
+.vim-tabline span.active { color: #317f9f; border-color: #65afcd; background: #fff; }
+.vim-tabline small { margin-left: auto; color: #99a3af; font-size: 9px; }
+.vim-buffer { display: grid; grid-template-columns: 48px 1fr; height: 222px; overflow: hidden; }
+.vim-gutter { padding: 15px 12px 0 0; text-align: right; color: #b2bdc8; user-select: none; border-right: 1px solid #f0f3f6; }
 .vim-gutter span, .vim-line { display: block; min-height: 25px; }
-.vim-buffer pre { margin: 0; padding: 15px 20px; white-space: pre-wrap; background: transparent !important; overflow: hidden; }
+.vim-buffer pre { margin: 0; padding: 15px 18px; white-space: pre-wrap; background: transparent !important; overflow: hidden; font: inherit; }
 .vim-buffer code { background: none; font: inherit; }
 .vim-line { white-space: pre; }
-.vim-cursor { color: #38bdf8; animation: caret .8s steps(1) infinite; }
-.vim-statusline { height: 27px; display: flex; align-items: center; justify-content: space-between; padding: 0 14px; background: #394655; color: #fff; font-size: 10px; }
-.vim-commandline { height: 31px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; color: #566273; font-size: 11px; }
-.vim-hint { color: #9aa4b2; }
-.cursor { color: #38bdf8; animation: caret .8s steps(1) infinite; }
-.brief-ready { text-align: center; font: 11px ui-monospace, monospace; color: #87909d; margin-top: 18px; }
-.command-terminal { padding: 15px 23px 17px; border: 1px solid #c3ccd8; border-radius: 11px; background: #fff; box-shadow: 0 10px 30px #23354c0a; }
-.terminal-dots { display: flex; gap: 6px; margin-bottom: 10px; }
-.terminal-dots i { width: 7px; height: 7px; border-radius: 50%; background: #ff6058; }
-.terminal-dots i:nth-child(2) { background: #ffbd2e; }
-.terminal-dots i:nth-child(3) { background: #28c840; }
-.command-line { display: flex; align-items: center; gap: 13px; min-height: 45px; }
-.command-line code { font: 25px ui-monospace, monospace; letter-spacing: -.8px; color: #111217; background: none; }
-.prompt { color: #38bdf8; font-size: 30px; }
-.command-options { min-height: 20px; font: 11px/1.7 ui-monospace, monospace; color: #7d8590; padding-left: 29px; white-space: nowrap; }
-.journey-controls { position: absolute; bottom: 18px; right: 24px; display: flex; align-items: center; gap: 8px; opacity: 0.55; transition: opacity .2s; z-index: 10; }
+.vim-heading { color: #42839e; }
+.vim-current { background: #f5f9fc; }
+.vim-cursor { color: #428fad; animation: caret 1s steps(1) infinite; }
+.vim-statusline { height: 27px; display: flex; align-items: center; justify-content: space-between; padding: 0 14px; background: #edf3f7; color: #6b8496; font-size: 9px; border-top: 1px solid #e3eaf0; }
+.vim-commandline { height: 28px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; color: #566273; font-size: 10px; }
+.vim-hint { color: #96a2af; }
+.experience-journey .cursor { display: inline-block; color: #428fad; animation: caret 1s steps(1) infinite; }
+.brief-ready { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 11px; color: #7b8997; margin-top: 18px; }
+.brief-ready > span { color: #359e89; }
+.brief-ready i { width: 3px; height: 3px; background: #c2cdd6; border-radius: 50%; }
+.command-terminal { padding: 0 23px 17px; border: 1px solid #dce3ea; border-radius: 12px; background: #fff; box-shadow: 0 10px 30px #23354c08, 0 2px 3px #23354c03; }
+.terminal-dots { display: flex; align-items: center; gap: 6px; height: 33px; margin: 0 -23px 9px; padding: 0 16px; background: #f8fafb; border-bottom: 1px solid #e9edf2; border-radius: 12px 12px 0 0; }
+.terminal-dots i { width: 6px; height: 6px; border: 1px solid #c3cdd7; border-radius: 50%; background: transparent; }
+.terminal-dots span { margin-left: 9px; color: #7e8b99; font-size: 10px; }
+.terminal-dots small { margin-left: auto; color: #9aa5b1; font: 9px ui-monospace, monospace; }
+.command-line { display: flex; align-items: center; gap: 13px; min-height: 37px; }
+.command-line code { font: 24px ui-monospace, monospace; letter-spacing: -.8px; color: #8f9ba8; background: none; }
+.command-path { color: #465260; }
+.command-verb { color: #2887ac; font-weight: 600; }
+.prompt { color: #549dbc; font-size: 26px; }
+.command-options { min-height: 20px; font: 11px/1.7 ui-monospace, monospace; color: #83909e; padding-left: 29px; white-space: nowrap; }
+.dashboard-journey { padding: 0 38px; display: flex; flex-direction: column; gap: 12px; }
+.gui-terminal { padding: 0 16px 11px; }
+.gui-terminal .terminal-dots { margin: 0 -16px 7px; }
+.dash-command { display: flex; align-items: baseline; gap: 10px; font: 17px ui-monospace, monospace; color: #465260; }
+.dash-command code { color: inherit; background: none; font: inherit; letter-spacing: -.5px; }
+.dash-cmd-opts { font-size: 12px; color: #8794a2; }
+.dash-window { border: 1px solid #dce4ea; border-radius: 11px; overflow: hidden; box-shadow: 0 12px 32px #23354c08; background: #fff; will-change: opacity, transform; }
+.dash-bar { height: 29px; display: flex; align-items: center; gap: 8px; padding: 0 14px; background: #f8fafb; border-bottom: 1px solid #e8edf1; }
+.dash-dot { width: 5px; height: 5px; border-radius: 50%; background: #47a58d; }
+.dash-bar-title { font-size: 10px; color: #778592; flex: 1; }
+.dash-bar-live { font: 9px ui-monospace, monospace; color: #67a591; }
+.dash-img { display: block; width: 100%; height: 215px; object-fit: cover; object-position: center top; }
+.dash-callout { display: flex; align-items: center; gap: 28px; padding: 4px 5px 0; color: #708677; }
+.dash-callout > div:not(.dash-proof) { display: flex; flex-direction: column; gap: 4px; }
+.dash-callout small { font-size: 8px; letter-spacing: 1.2px; color: #8a97a2; }
+.dash-callout strong { font-size: 18px; font-weight: 500; color: #516475; letter-spacing: -.5px; }
+.dash-callout .dash-score { color: #2f987d; }
+.dash-proof { display: flex; gap: 7px; align-items: center; margin-left: auto; font-size: 11px; }
+.dash-callout-check { color: #349e84; font-size: 13px; }
+.skill-scene { margin: 0 12px; height: 374px; border: 1px solid #dfe5eb; border-radius: 12px; background: white; overflow: hidden; box-shadow: 0 12px 36px #23354c08; }
+.agent-bar { height: 31px; border-bottom: 1px solid #e9edf2; background: #f8fafb; display: flex; align-items: center; justify-content: space-between; padding: 0 17px; color: #8793a0; font-size: 10px; }
+.agent-bar small { font-size: 8px; letter-spacing: 1px; }
+.agent-dots { display: flex; gap: 6px; width: 90px; }
+.agent-dots i { width: 6px; height: 6px; border: 1px solid #c3cdd7; border-radius: 50%; }
+.agent-body { position: relative; padding: 25px 42px; }
+.skill-file { display: flex; align-items: center; gap: 13px; transform-origin: left top; }
+.skill-file strong { font-size: 20px; font-weight: 500; letter-spacing: -.4px; }
+.skill-file small { display: block; font-size: 11px; color: #929da9; margin-top: 3px; }
+.skill-prompt { margin-top: 31px; min-height: 34px; font-size: 25px; letter-spacing: -.7px; }
+.skill-request { margin-top: 8px; font-size: 25px; letter-spacing: -.8px; white-space: nowrap; }
+.skill-response { display: flex; gap: 15px; margin-top: 32px; font-size: 20px; letter-spacing: -.4px; }
+.skill-response > span { color: #5595af; font-size: 25px; }
+.skill-response small { display: block; margin-top: 8px; color: #87939f; font-size: 14px; letter-spacing: -.15px; }
+.skill-files { display: flex; align-items: center; gap: 15px; margin: 19px 0 0 37px; color: #94a0ac; font: 9px ui-monospace, monospace; }
+.skill-files i { width: 32px; height: 1px; background: #c4dce7; }
+.journey-controls { position: absolute; bottom: 17px; right: 28px; display: flex; align-items: center; gap: 10px; opacity: .25; transition: opacity .2s; z-index: 10; }
 .journey-controls:hover, .journey-controls:focus-within, .paused .journey-controls { opacity: 1; }
-.journey-controls button { border: 0; padding: 5px; font: 16px 'Nunito', sans-serif; color: #87909c; background: transparent; cursor: pointer; }
-.journey-controls button:focus-visible, .chapter-exit button:focus-visible { outline: 2px solid #38bdf8; outline-offset: 3px; }
-.act-dots { display: flex; align-items: center; gap: 7px; }
-.journey-controls .act-dot { width: 8px; height: 8px; border-radius: 50%; background: #c8d0da; border: 0; padding: 0; cursor: pointer; transition: background .2s, transform .15s; flex-shrink: 0; }
-.journey-controls .act-dot:hover { background: #8a96a8; transform: scale(1.3); }
-.journey-controls .act-dot.active { background: #38bdf8; transform: scale(1.25); }
-.controls-divider { width: 1px; height: 14px; background: #d4dae2; margin: 0 2px; }
-.chapter-exit { position: absolute; bottom: 23px; left: 56px; right: 56px; display: flex; justify-content: space-between; }
-.chapter-exit button { border: 0; background: none; font: 12px 'Nunito', sans-serif; color: #788596; cursor: pointer; padding: 7px 0; }
-.chapter-exit .continue-button { font-weight: 800; color: #111217; }
-.continue-button span { margin-left: 14px; color: #ff873f; }
+.journey-controls button { border: 0; padding: 5px; font: 14px var(--ux-font); color: #8c98a5; background: transparent; cursor: pointer; }
+.journey-controls button:focus-visible, .chapter-exit button:focus-visible { outline: 2px solid #65afcd; outline-offset: 4px; }
+.act-dots { display: flex; align-items: center; gap: 9px; }
+.journey-controls .act-dot { position: relative; width: 6px; height: 6px; border-radius: 9px; background: #bdc8d2; padding: 0; transition: width .25s, background .2s; }
+.journey-controls .act-dot::before { content: ''; position: absolute; inset: -7px -4px; }
+.journey-controls .act-dot:hover { background: #728a9d; }
+.journey-controls .act-dot.active { width: 20px; background: #69abc7; }
+.controls-divider { width: 1px; height: 12px; background: #dce3e9; margin: 0 2px; }
+.chapter-exit { position: absolute; bottom: 21px; left: 56px; right: 56px; display: flex; justify-content: space-between; }
+.chapter-exit button { border: 0; background: none; font: 11px var(--ux-font); color: #7c8a98; cursor: pointer; padding: 7px 0; }
+.chapter-exit .continue-button { font-weight: 600; color: #3f4e5c; }
+.continue-button span { margin-left: 12px; color: #be814c; }
+.is-outro .journey-controls { right: 50%; transform: translateX(50%); }
+.film-progress { position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: #e9eff4; }
+.film-progress span { display: block; width: 100%; height: 100%; transform-origin: left; background: #8cbbcf; }
 .scene-enter-active, .scene-leave-active { transition: opacity .4s, transform .4s cubic-bezier(.2,.7,.2,1); }
-.scene-enter-from { opacity: 0; transform: translateY(18px) scale(.98); }
-.scene-leave-to { opacity: 0; transform: translateY(-12px) scale(1.015); }
+.scene-enter-from { opacity: 0; transform: translateY(10px); }
+.scene-leave-to { opacity: 0; transform: translateY(-6px); }
 @keyframes caret { 50% { opacity: 0; } }
-.paused .cursor { animation-play-state: paused; }
+.paused .cursor, .paused .vim-cursor { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
-@media print { .journey-controls { display: none; } }
-/* Act 4 – dashboard journey */
-.dashboard-journey { padding: 10px 56px 0; display: flex; flex-direction: column; gap: 10px; }
-.dash-command { display: flex; align-items: baseline; gap: 10px; font: 18px ui-monospace, monospace; color: #111217; will-change: opacity; }
-.dash-command code { color: #111217; background: none; font: inherit; letter-spacing: -.5px; }
-.dash-cmd-opts { font-size: 13px; color: #7d8590; }
-.dash-window { border: 1px solid #dce2ea; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 32px #23354c10; background: #fff; will-change: opacity, transform; }
-.dash-bar { height: 32px; display: flex; align-items: center; gap: 9px; padding: 0 14px; background: #f4f6f9; border-bottom: 1px solid #e4e8ef; }
-.dash-dot { width: 8px; height: 8px; border-radius: 50%; background: #20b68d; flex-shrink: 0; }
-.dash-bar-title { font: 11px 'Nunito', sans-serif; color: #3d4755; flex: 1; }
-.dash-bar-live { font: 10px ui-monospace, monospace; color: #20b68d; border: 1px solid #20b68d44; border-radius: 4px; padding: 2px 6px; }
-.dash-img { display: block; width: 100%; height: 225px; object-fit: cover; object-position: center top; }
-.dash-callout { font: 12px 'Nunito', sans-serif; color: #698075; display: flex; align-items: center; gap: 6px; }
-.dash-callout-check { color: #20b68d; font-size: 14px; font-weight: 800; }
-.dash-callout strong { color: #3d4755; }
-.dash-score { color: #269b7d !important; }
+@media print { .journey-controls, .film-progress { display: none; } }
 </style>
