@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  --slidev-theme-primary: #38bdf8;
+  --ink: #111217;
+  --body: #33343a;
+  --muted: #7d7d82;
+  --line: #e6e6e8;
+  --blue: #38bdf8;
+  --orange: #ff873f;
+  --rose: #ff5c78;
+  --purple: #a66cff;
+  --green: #16803b;
+  --aqua: #20d9a0;
+}
