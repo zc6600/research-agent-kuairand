@@ -5,8 +5,8 @@
 ## 1. 内容基准与输出方向
 
 - 以当前本地最新版主线 PPT 为准：`slides.md`、`scripts/prepare-main-deck.mjs` 及其引用组件。主线为 8 页 + 2 页附录；不能只读取 Markdown 而漏掉 Evaluation 卡片内页和 Problem 翻面内容。
-- 推荐沿用已有 A0 竖版 Voyage 海报的象牙白、深蓝、赭石与航海插画，更新叙事和信息结构。执行基底默认 `posters/05-voyage/poster.html` 与 `poster.css`；这是版式建议，并非用户已指定的版本。
-- 创建 `posters/06-main-deck-update/` 独立版本，保留现有海报供对照。正文英文；说明文档可中文。
+- 推荐沿用已有 A0 竖版 Voyage 海报的象牙白、深蓝、赭石与航海插画，更新叙事和信息结构。执行基底默认 `posters/html/voyage/poster.html` 与 `poster.css`；这是版式建议，并非用户已指定的版本。
+- 创建 `posters/html/main-deck-update/` 独立版本，保留现有海报供对照。正文英文；说明文档可中文。
 - 核心叙事：研究为什么难以持续 → 系统怎样持续研究 → 五条证据 → 如何开始。
 - 让读者能在海报上直接看到图、数字和恢复案例。所有核心内容静态展开，无悬停、翻面、滚动和链接替代正文。
 

@@ -36,7 +36,11 @@ npm run build
 npm run export
 ```
 
-静态站点生成在 `dist/`；主稿 PDF 输出为 `SciOdyssey-main.pdf`。首次导出若缺少 Chromium，运行 `npx playwright install chromium`。
+静态站点生成在 `dist/`；主稿 PDF 输出为 `exports/current/SciOdyssey-main.pdf`。首次导出若缺少 Chromium，运行 `npx playwright install chromium`。
+
+当前交付 PDF 统一放在 `exports/current/`；历史探索稿放在
+`exports/archive/main-explorations/`。本地构建产物 `dist/`、`node_modules/` 和
+`.generated-slides.md` 不纳入版本控制。
 
 ## 编辑
 
@@ -50,11 +54,11 @@ npm run export
 
 ## PPT 演示版本
 
-- `slides.md`：原版主线演示 PPT（现代简洁科技风），配套 `SciOdyssey-main.pdf`。
-- `slides-voyage.md`：**新版本 Voyage 航海典藏风格 PPT**，继承海报 `05-voyage` 的象牙质感纸张底纹（Ivory Paper）、复古衬线大标题（Times New Roman）、海洋深蓝与赤陶赭石撞色（Blue & Rust）、以及手绘风主视觉封面。
+- `slides.md`：原版主线演示 PPT（现代简洁科技风），配套 `exports/current/SciOdyssey-main.pdf`。
+- `slides-voyage.md`：**新版本 Voyage 航海典藏风格 PPT**，继承 HTML 海报 `posters/html/voyage` 的象牙质感纸张底纹（Ivory Paper）、复古衬线大标题（Times New Roman）、海洋深蓝与赤陶赭石撞色（Blue & Rust）、以及手绘风主视觉封面。
   - 本地预览：`npm run voyage:dev`（访问 http://localhost:3032 ）
-  - 导出 PDF：`npm run voyage:export`（生成 `SciOdyssey-voyage.pdf`）
-- `slides-3d.md`：**新版本 3D 空间交互风格 PPT（Spatial 3D Edition）**，在深空暗色科技底色上，全方位引入交互式 WebGL/Three.js 3D 场景与 CSS 3D 景深架构，配套 `SciOdyssey-3d.pdf`。
+  - 导出 PDF：`npm run voyage:export`（生成 `exports/current/SciOdyssey-voyage.pdf`）
+- `slides-3d.md`：**新版本 3D 空间交互风格 PPT（Spatial 3D Edition）**，在深空暗色科技底色上，全方位引入交互式 WebGL/Three.js 3D 场景与 CSS 3D 景深架构，配套 `exports/current/SciOdyssey-3d.pdf`。
   - 核心 3D 视觉元素：
     - `<SpatialGlobe3D />`：3D 全息研究世界粒子天球与多层轨道环
     - `<Landscape3D />`：3D 动态假说地势曲面，直观展示局部陷阱与自主多盆地跃迁轨迹
@@ -63,14 +67,23 @@ npm run export
     - `<PrismChart3D />`：3D 发光立体棱镜对比柱状图（KuaiRand AUC / GAUC / 冷启动）
     - `<Card3D />`：支持鼠标悬停 3D 倾斜、景深视差（Parallax）与动态光斑的科技卡片
   - 本地预览：`npm run 3d:dev`（访问 http://localhost:3033 ）
-  - 导出 PDF：`npm run 3d:export`（生成 `SciOdyssey-3d.pdf`）
+  - 导出 PDF：`npm run 3d:export`（生成 `exports/current/SciOdyssey-3d.pdf`）
 
 ## Poster 版本
 
-- `poster.md`：原版，保留不变。
-- `poster-editorial.md`：方法结构优先，强化研究世界、角色和交接关系。
-- `poster-evidence.md`：证据优先，强化验证图表、分数表和实验记录。
-- `poster-type.md`：字体实验版，标题使用本地衬线字体，标签与命令使用本地等宽字体。
+- `posters/slidev/poster.md`：原版，保留不变。
+- `posters/slidev/poster-editorial.md`：方法结构优先，强化研究世界、角色和交接关系。
+- `posters/slidev/poster-evidence.md`：证据优先，强化验证图表、分数表和实验记录。
+- `posters/slidev/poster-type.md`：字体实验版，标题使用本地衬线字体，标签与命令使用本地等宽字体。
+
+独立 HTML 海报项目位于 `posters/html/`：
+
+- `posters/html/voyage/`：航海典藏风格海报。
+- `posters/html/main-deck-update/`：主 deck 证据更新版海报。
+
+可分别运行 `npm run poster:html:voyage` 和
+`npm run poster:html:main-deck`；它们的 PDF 和本地 QA 产物保留在各自项目目录内。
+完整的海报目录和命令说明见 [`posters/README.md`](posters/README.md)。
 
 导出 3 个新版本：
 
@@ -78,7 +91,9 @@ npm run export
 npm run poster:variants
 ```
 
-输出分别为 `SciOdyssey-poster-editorial.pdf`、`SciOdyssey-poster-evidence.pdf` 和 `SciOdyssey-poster-type.pdf`。
+输出分别为 `exports/current/SciOdyssey-poster-editorial.pdf`、
+`exports/current/SciOdyssey-poster-evidence.pdf` 和
+`exports/current/SciOdyssey-poster-type.pdf`。
 
 框架用法参考 [Slidev 官方文档](https://sli.dev/guide/)；构建和导出参数参考 [CLI 文档](https://sli.dev/builtin/cli)。
 

@@ -15,7 +15,7 @@ mdc: true
 ---
 <div class="poster-shell">
   <header class="p-header">
-    <img class="p-art" src="/assets/research-world-cover.png" alt="" aria-hidden="true" />
+    <img class="p-art" src="../../public/assets/research-world-cover.png" alt="" aria-hidden="true" />
     <div class="p-kicker">AUTONOMOUS ML RESEARCH / TECHJAM 2026</div>
     <h1>SciOdyssey<span>.</span></h1>
     <div class="p-subtitle">Autonomous ML Research Agent</div>
@@ -172,17 +172,17 @@ mdc: true
   </footer>
 </div>
 <style>
-@import './styles/poster.css';
+@import '../../styles/poster.css';
 </style>
 <!--
 [Sources]
-- ../video/out/films/sciodyssey-keynote-film.mp4 (terminal and coding-agent sequences), ../video/src/compositions/keynote/scenes/AgentJourney.tsx, and ../video/src/compositions/keynote/keynote.css — restrained light window, input prompt and blue caret. Prompt is an interaction example, not a captured session, executed command or vendor-specific API.
-- ./slides.md, "One Agent. Any ML Task. End to End." — task.md (objectives, constraints, evaluation), PERSONAL.md (preferences, research style, priorities); autonomous by default and supervisable by design. General-purpose intent is not a cross-task validation claim.
-- ./slides.md — main presentation and insights/recovery appendices; motivation, entry contracts, open-world actions, memory, serial and parallel handoff, results, audit trail, limitations.
-- ../docs/ARCHITECTURE.md — responsibility boundaries, memory layers, optional State, fresh Scientist, META audits and deterministic runtime.
-- ../docs/FINAL_REPORT.md §5.3 — AGY 8,564,976 / 0.6045803; three-hour Codex Luna 28,069,574 / approximately 0.6046 (provisional); heterogeneous 39,607,277 / approximately 0.6047; Gemini-only Cycle 2 45,043,916–51,173,911 / 0.6052; retained submission 48,240,128 / 0.6059363.
-- ../competition_archive/kuairand-pure/reports/gpt-5.6-luna-3h-goal-baseline.md — three-hour run, not earlier shorter control.
-- ../docs/FINAL_REPORT.md Submission Snapshot and §5.1 — Primary 0.6059363 (+0.0043363); GAUC 0.6728421 (+0.0054421); nDCG@5 0.5390304 (+0.0033304). Retained eight-seed, 46-field FM; 4 cycles, 13 named experiments, 7 Full evaluations, 0 post-launch manual scientific interventions, 0 GPU-hours, 170,588 checked rows.
-- ../docs/FINAL_REPORT.md §§3.4, 4.2, 5.4–5.5 — parallel capability, serialization recovery, validity audits. Parallel breadth is not presented as the established cause of canonical performance.
+- ../../../video/out/films/sciodyssey-keynote-film.mp4 (terminal and coding-agent sequences), ../../../video/src/compositions/keynote/scenes/AgentJourney.tsx, and ../../../video/src/compositions/keynote/keynote.css — restrained light window, input prompt and blue caret. Prompt is an interaction example, not a captured session, executed command or vendor-specific API.
+- ../../slides.md, "One Agent. Any ML Task. End to End." — task.md (objectives, constraints, evaluation), PERSONAL.md (preferences, research style, priorities); autonomous by default and supervisable by design. General-purpose intent is not a cross-task validation claim.
+- ../../slides.md — main presentation and insights/recovery appendices; motivation, entry contracts, open-world actions, memory, serial and parallel handoff, results, audit trail, limitations.
+- ../../../docs/ARCHITECTURE.md — responsibility boundaries, memory layers, optional State, fresh Scientist, META audits and deterministic runtime.
+- ../../../docs/FINAL_REPORT.md §5.3 — AGY 8,564,976 / 0.6045803; three-hour Codex Luna 28,069,574 / approximately 0.6046 (provisional); heterogeneous 39,607,277 / approximately 0.6047; Gemini-only Cycle 2 45,043,916–51,173,911 / 0.6052; retained submission 48,240,128 / 0.6059363.
+- ../../../competition_archive/kuairand-pure/reports/gpt-5.6-luna-3h-goal-baseline.md — three-hour run, not earlier shorter control.
+- ../../../docs/FINAL_REPORT.md Submission Snapshot and §5.1 — Primary 0.6059363 (+0.0043363); GAUC 0.6728421 (+0.0054421); nDCG@5 0.5390304 (+0.0033304). Retained eight-seed, 46-field FM; 4 cycles, 13 named experiments, 7 Full evaluations, 0 post-launch manual scientific interventions, 0 GPU-hours, 170,588 checked rows.
+- ../../../docs/FINAL_REPORT.md §§3.4, 4.2, 5.4–5.5 — parallel capability, serialization recovery, validity audits. Parallel breadth is not presented as the established cause of canonical performance.
 The Gemini-only interval is accounting uncertainty, not statistical uncertainty; its point is the interval midpoint. All scores are public validation. Raw reports remain available; curated memory is fallible.
 -->

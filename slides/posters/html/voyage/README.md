@@ -8,7 +8,7 @@ Independent A0 portrait poster following the supplied WeChat reference: warm ivo
 - Rebuild from this directory with `node export.mjs` after installing the existing dependencies in `slides/`.
 - `preview.png` and `layout-check.json` are local QA outputs, ignored by Git.
 
-Content and data: `../../poster.md`, `../../../docs/ARCHITECTURE.md` and `../../../docs/FINAL_REPORT.md` §§3–5. The comparison chart preserves the measured token counts, score qualifiers and accounting interval from the existing poster. It does not imply causality or statistical significance.
+Content and data: `../../slidev/poster.md`, `../../../../docs/ARCHITECTURE.md` and `../../../../docs/FINAL_REPORT.md` §§3–5. The comparison chart preserves the measured token counts, score qualifiers and accounting interval from the existing poster. It does not imply causality or statistical significance.
 
 Typography: Times New Roman for the narrow editorial headings, Arial for the wordmark, Arial Narrow for compact body copy and labels, SignPainter for the handwritten signature, and Menlo for the example input. PDF text and the comparison chart remain vector content.
 

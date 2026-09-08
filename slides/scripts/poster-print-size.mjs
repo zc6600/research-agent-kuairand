@@ -1,9 +1,12 @@
 // Slidev exports CSS pixels. Set the delivered PDF to physical A0 without rasterizing it.
 import { readFile, writeFile } from 'node:fs/promises';
+import { isAbsolute, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { PDFDocument } from 'pdf-lib';
 
-const outputName = process.argv[2] ?? 'SciOdyssey-poster.pdf';
-const file = new URL(`../${outputName}`, import.meta.url);
+const outputName = process.argv[2] ?? 'exports/current/SciOdyssey-poster.pdf';
+const slidesRoot = fileURLToPath(new URL('../', import.meta.url));
+const file = isAbsolute(outputName) ? outputName : resolve(slidesRoot, outputName);
 const pdf = await PDFDocument.load(await readFile(file));
 if (pdf.getPageCount() !== 1) throw new Error('The poster must contain exactly one page.');
 const page = pdf.getPage(0);
