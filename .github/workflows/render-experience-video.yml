@@ -1,0 +1,172 @@
+name: Render ExperienceJourney video
+
+on:
+  push:
+    branches: [render-experience-video]
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: slides/package-lock.json
+      - name: Install FFmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - name: Install slide dependencies and Chromium
+        working-directory: slides
+        run: |
+          npm ci
+          npx playwright install chromium --with-deps
+      - name: Start Slidev
+        working-directory: slides
+        run: |
+          nohup npm run dev -- --host 127.0.0.1 > /tmp/slidev.log 2>&1 &
+          for i in {1..90}; do
+            if curl -fsS http://127.0.0.1:3030/5 >/dev/null; then exit 0; fi
+            sleep 2
+          done
+          cat /tmp/slidev.log
+          exit 1
+      - name: Record ExperienceJourney and resolve Clear voice audio
+        working-directory: slides
+        env:
+          CLEAR_AUDIO_PAGE: https://www.aidocmaker.com/g0/audio?name=d1740c00b70a45dd93616c4150529f95
+        run: |
+          cat > /tmp/render.mjs <<'NODE'
+          import { chromium } from 'playwright-chromium';
+          import fs from 'node:fs';
+          import path from 'node:path';
+
+          const browser = await chromium.launch({headless: true});
+          const context = await browser.newContext({
+            viewport: {width: 1920, height: 1080},
+            recordVideo: {dir: 'recordings', size: {width: 1920, height: 1080}},
+          });
+          const page = await context.newPage();
+          await page.goto('http://127.0.0.1:3030/5', {waitUntil: 'networkidle'});
+          await page.waitForTimeout(129000);
+          await context.close();
+          await browser.close();
+
+          const b2 = await chromium.launch({headless: true});
+          const p2 = await b2.newPage();
+          const audioCandidates = [];
+          p2.on('response', async (r) => {
+            const ct = (await r.allHeaders())['content-type'] || '';
+            if (ct.startsWith('audio/') || /\.mp3($|\?)/i.test(r.url())) audioCandidates.push(r.url());
+          });
+          await p2.goto(process.env.CLEAR_AUDIO_PAGE, {waitUntil: 'domcontentloaded'});
+          await p2.waitForTimeout(5000);
+          const domSrc = await p2.evaluate(() => {
+            const a = document.querySelector('audio');
+            const s = document.querySelector('audio source');
+            return a?.currentSrc || a?.src || s?.src || null;
+          });
+          if (domSrc) audioCandidates.push(domSrc);
+          console.log('Audio candidates:', audioCandidates);
+          const src = audioCandidates.find(Boolean);
+          if (!src) throw new Error('Could not resolve hosted Clear voice audio URL');
+          const resp = await fetch(src);
+          if (!resp.ok) throw new Error(`Audio fetch failed: ${resp.status}`);
+          fs.writeFileSync('clear-full-audio.bin', Buffer.from(await resp.arrayBuffer()));
+          fs.writeFileSync('resolved-audio-url.txt', src + '\n');
+          await b2.close();
+          NODE
+          node /tmp/render.mjs
+          ls -lh recordings clear-full-audio.bin
+          file clear-full-audio.bin
+      - name: Align Clear narration to the 19 subtitle cues and mux
+        working-directory: slides
+        run: |
+          cat > /tmp/align.py <<'PY'
+          import json, os, re, subprocess, math
+          cues = [
+            (0.8,8.5,'SciOdyssey. A research layer over your agent harness. Your tools. One persistent research world.'),
+            (9.4,12.2,'Start with your research question.'),
+            (13.7,19.8,'Define the objective and how success will be measured.'),
+            (20.7,27.8,'Then set your working preferences: the environment, experiment budget, and boundaries.'),
+            (29.2,32.2,'One step. Then, review.'),
+            (33.3,43.7,'Run one research cycle with step. The Scientist investigates. Evidence is recorded. And control returns to you.'),
+            (45.0,48.0,'Or, let it run.'),
+            (49.1,61.5,'Set a cycle budget. A fresh Scientist continues the work each round, while the project carries the task, memory, and evidence forward.'),
+            (62.8,65.6,'Now, explore wider.'),
+            (66.9,73.2,'Use parallel to explore different directions in independent worktrees.'),
+            (74.0,81.3,'A Reviewer compares the evidence. Choosing a branch to adopt remains an explicit decision.'),
+            (82.6,85.5,'See what stays.'),
+            (86.7,91.0,'Open the dashboard to inspect the retained result.'),
+            (91.7,101.0,'See the score, the implementation state, and the evidence behind it. Then decide what comes next.'),
+            (102.4,105.4,'Already in your workflow.'),
+            (106.5,109.8,'Use the research-agent skill.'),
+            (110.1,114.0,'Explore in parallel. Let me review what to keep.'),
+            (114.5,119.2,'Research workflow, connected. Task, memory, and evidence stay with the project.'),
+            (120.3,126.0,'SciOdyssey. Let research run. Start your journey.'),
+          ]
+          def probe(path):
+            return float(subprocess.check_output(['ffprobe','-v','error','-show_entries','format=duration','-of','default=nk=1:nw=1',path]).decode())
+          # Normalize hosted audio into wav first.
+          subprocess.run(['ffmpeg','-y','-i','clear-full-audio.bin','-ar','48000','-ac','1','clear-full.wav'],check=True)
+          dur=probe('clear-full.wav')
+          print('Clear full duration',dur)
+          # Use weighted text length to predict sentence boundaries; snap to nearby silence when available.
+          weights=[]
+          for _,_,t in cues:
+            words=len(re.findall(r"[A-Za-z0-9'-]+",t))
+            punct=t.count('.')*0.75+t.count(',')*0.35+t.count(':')*0.35
+            weights.append(words+punct)
+          total=sum(weights)
+          predicted=[0.0]
+          acc=0
+          for w in weights[:-1]:
+            acc+=w
+            predicted.append(dur*acc/total)
+          predicted.append(dur)
+          p=subprocess.run(['ffmpeg','-hide_banner','-i','clear-full.wav','-af','silencedetect=noise=-38dB:d=0.12','-f','null','-'],stderr=subprocess.PIPE,text=True)
+          sil=[]
+          starts=[]
+          for line in p.stderr.splitlines():
+            m=re.search(r'silence_end: ([0-9.]+)',line)
+            if m: sil.append(float(m.group(1)))
+          bounds=[0.0]
+          for target in predicted[1:-1]:
+            near=[s for s in sil if abs(s-target)<=1.25 and s>bounds[-1]+0.25]
+            bounds.append(min(near,key=lambda s:abs(s-target)) if near else target)
+          bounds.append(dur)
+          print('bounds',bounds)
+          fc=[]; labels=[]
+          for i,(st,en,_) in enumerate(cues):
+            a,b=bounds[i],bounds[i+1]
+            seg=max(.05,b-a); slot=en-st
+            chain=f'[0:a]atrim=start={a:.4f}:end={b:.4f},asetpts=PTS-STARTPTS'
+            ratio=seg/slot
+            # if generated sentence exceeds its subtitle window, speed it up just enough.
+            if ratio>1.0:
+              r=ratio
+              factors=[]
+              while r>2.0: factors.append(2.0); r/=2.0
+              factors.append(r)
+              chain += ',' + ','.join(f'atempo={x:.5f}' for x in factors)
+            chain += f',adelay={int(st*1000)}|{int(st*1000)}[a{i}]'
+            fc.append(chain); labels.append(f'[a{i}]')
+          fc.append(''.join(labels)+f'amix=inputs={len(labels)}:duration=longest:normalize=0,apad=pad_dur=127.2,atrim=0:127.2,loudnorm=I=-17:TP=-1.5:LRA=8[out]')
+          subprocess.run(['ffmpeg','-y','-i','clear-full.wav','-filter_complex',';'.join(fc),'-map','[out]','-ar','48000','aligned-clear.wav'],check=True)
+          PY
+          python /tmp/align.py
+          VIDEO=$(find recordings -type f \( -name '*.webm' -o -name '*.mp4' \) | head -1)
+          ffmpeg -y -i "$VIDEO" -i aligned-clear.wav -filter_complex "[1:a]volume=1.0[a]" -map 0:v -map '[a]' -c:v libx264 -preset medium -crf 20 -pix_fmt yuv420p -r 30 -c:a aac -b:a 192k -ar 48000 -t 127.2 -movflags +faststart SciOdyssey_ExperienceJourney_Clear_Voice.mp4
+          ffprobe -v error -show_entries format=duration,size -show_entries stream=codec_name,width,height,sample_rate,channels -of default=noprint_wrappers=1 SciOdyssey_ExperienceJourney_Clear_Voice.mp4
+      - uses: actions/upload-artifact@v4
+        with:
+          name: SciOdyssey-ExperienceJourney-Clear-Voice
+          path: |
+            slides/SciOdyssey_ExperienceJourney_Clear_Voice.mp4
+            slides/aligned-clear.wav
+            slides/resolved-audio-url.txt
+          retention-days: 7
