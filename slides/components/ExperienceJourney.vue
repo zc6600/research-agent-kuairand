@@ -204,7 +204,6 @@ onUnmounted(() => {
           <span>{{ harness.name }}</span>
         </div>
       </div>
-      <div class="brand-caption" :style="{ opacity: revealBrand(3200) * expansion }">Your agent. One persistent research world.</div>
     </div>
     <template v-else>
     <div v-if="!showingPurpose" class="scene-heading" :style="{ opacity: sceneOpacity }"><span class="scene-heading-index">{{ String(act + 1).padStart(2, '0') }}</span><span>{{ purposes[act].title }}</span><small>{{ sceneNames[act] }}</small></div>

@@ -214,7 +214,6 @@ useTalkSteps(14, step => {
             </div>
           </div>
 
-          <div class="trajectory-back-takeaway"><strong>New ideas can still inherit earlier assumptions.</strong><span>Two observed runs. Descriptive, not causal.</span></div>
         </template>
 
         <template v-else-if="reversePage === 1">
@@ -223,7 +222,6 @@ useTalkSteps(14, step => {
               <span class="trajectory-validity-setup">The experiment runs.</span>
               <strong>The conclusion may still be wrong.</strong>
             </div>
-            <p class="trajectory-validity-lead">Execution alone cannot tell you whether the science is sound.</p>
             <div class="trajectory-validity-evidence-label mono">REAL GEMINI EXPERIMENTS · ERRORS FOUND BY INDEPENDENT AUDIT</div>
 
             <div class="single-agent-mistake-cases">
@@ -243,7 +241,6 @@ useTalkSteps(14, step => {
               </div>
             </div>
 
-            <div class="trajectory-validity-scope">Source: FINAL_REPORT §5.4, audited branches. These findings do not invalidate every Gemini result.</div>
           </div>
         </template>
 

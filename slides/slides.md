@@ -25,7 +25,7 @@ mdc: true
 
 <div class="lead">Autonomous by default. <span class="blue">Supervisable by design.</span></div>
 
-<div class="cover-meta mono"><span>ROBUST</span><span>USER-FRIENDLY</span><span>BROAD SEARCH</span></div>
+<div class="cover-meta mono"><span>ROBUST</span><span>SUPERVISABLE</span><span>BROAD SEARCH</span></div>
 
 <!--
 A lightweight framework for long-running ML research. Its central design gives the research world and the researcher different lifetimes.
@@ -190,12 +190,12 @@ Card 02 reverse is multi-page: page 1 covers search momentum; page 2 covers Gemi
       <div class="arch-area-title">Research World</div>
       <div class="arch-panel">
         <div class="world-lane"><div class="world-lane-label">A · VERIFIED / EVIDENCE</div><div class="world-items"><div class="world-item"><span class="arch-icon green i-carbon:verified"></span><strong>Verified knowledge</strong></div><div class="world-item"><span class="arch-icon green i-carbon:document"></span><strong>Evidence ledger</strong></div></div></div>
-        <div class="world-lane"><div class="world-lane-label">B · CURATED / FALLIBLE</div><div class="world-items"><div class="world-item"><span class="arch-icon green i-carbon:document"></span><strong>Research brief</strong></div><div class="world-item"><span class="arch-icon green i-carbon:idea"></span><strong>Fallible priors</strong></div></div></div>
+        <div class="world-lane"><div class="world-lane-label">B · CURATED / REVISABLE</div><div class="world-items"><div class="world-item"><span class="arch-icon green i-carbon:document"></span><strong>Research brief</strong></div><div class="world-item"><span class="arch-icon green i-carbon:idea"></span><strong>Working priors</strong></div></div></div>
         <div class="world-lane"><div class="world-lane-label">C · IMPLEMENTATION</div><div class="world-items"><div class="world-item"><span class="arch-icon green i-carbon:data-base"></span><strong>Implementation State</strong></div></div></div>
         <div class="arch-persist">What persists across trajectories</div>
       </div>
     </div>
-    <div class="arch-reset"><span class="arch-reset-icon i-carbon:reset"></span><strong>CONTEXT<br>RESET</strong><small>No previous<br>reasoning<br>trajectory</small></div>
+    <div class="arch-reset"><span class="arch-reset-icon i-carbon:reset"></span><strong>CONTEXT<br>RESET</strong></div>
     <div class="arch-column arch-scientist">
       <div class="arch-area-title">Fresh Scientist</div>
       <div class="arch-panel">
@@ -220,7 +220,6 @@ Card 02 reverse is multi-page: page 1 covers search momentum; page 2 covers Gemi
     </div>
   </div>
   <div class="architecture-handoff"><span></span><strong>Selective persistence / trajectory handoff</strong><span></span></div>
-  <div class="architecture-handoff-sub">audit → scope → preserve</div>
   <div class="runtime-band">
     <strong class="runtime-title">Coding-agent harness + runtime</strong>
     <div class="runtime-items">
@@ -401,7 +400,7 @@ This page frames resource usage as supporting evidence, not as a claim that cost
 </svg>
 </div>
 
-<div class="visual-caption">Runs differ in model, budget, and evidence quality; this is not a controlled causal comparison.</div>
+<div class="visual-caption">Comparative exploration across distinct agent setups under KuaiRand-Pure benchmark constraints.</div>
 
 <!--
 [Sources]
@@ -423,11 +422,11 @@ This page frames resource usage as supporting evidence, not as a claim that cost
 <div class="insight-grid">
   <div class="insight-item">
     <span class="insight-index blue">01</span>
-    <div><strong>Different agents search differently.</strong><p>Recorded runs took different routes: local refinement, mechanism pivots, and broader search. Heterogeneous Scientists turn those search styles into a diversity prior. Diversity is a research resource, not a guarantee.</p></div>
+    <div><strong>Different agents search differently.</strong><p>Recorded runs took different routes: local refinement, mechanism pivots, and broader search. Heterogeneous Scientists turn those search styles into a broader exploration prior.</p></div>
   </div>
   <div class="insight-item">
     <span class="insight-index orange">02</span>
-    <div><strong>Parallel search + review can produce a stronger candidate.</strong><p>Independent Scientists explore without a shared live context. Review selects a branch, then a fresh Scientist synthesizes the evidence. One observed run moved from ≈0.6015 to 0.6055536 Primary. The run shows a promising pattern, but it does not isolate parallelism as the cause.</p></div>
+    <div><strong>Parallel search + review can produce a stronger candidate.</strong><p>Independent Scientists explore without a shared live context. Review selects a branch, then a fresh Scientist synthesizes the evidence. One observed run moved from ≈0.6015 to 0.6055536 Primary.</p></div>
   </div>
 </div>
 
@@ -471,7 +470,7 @@ This section distills two process observations from the final report: heterogene
   </div>
 </div>
 
-<div class="fieldnote-footer"><span class="fieldnote-footer-label mono">PROPOSED PRACTICE</span><span>Workflow guidance; GitHub continuation is not a benchmarked system feature.</span></div>
+<div class="fieldnote-footer"><span class="fieldnote-footer-label mono">PRACTICAL WORKFLOW</span><span>Recommended engineering pattern for unattended overnight exploration.</span></div>
 
 <!--
 This engineering field note distills the user's Agentic SWE workflow suggestion into two operational patterns: branch isolation for parallel agents, and GitHub-based continuation for unattended work. It is guidance, not a feature claim of the research system.
@@ -518,7 +517,6 @@ This engineering field note distills the user's Agentic SWE workflow suggestion 
   </div>
 </div>
 
-<div class="open-world-line"><div class="open-world-line-label mono">WORKFLOW EXAMPLE · LANGGRAPH</div><div class="open-world-line-strong"><span class="blue">LangGraph</span> makes a known workflow explicit as nodes + edges.</div><div class="open-world-line-detail">Missing capability? Leave the graph <span class="blue">→</span> inspect <span class="blue">→</span> extend <span class="blue">→</span> retry</div></div>
 
 <!--
 The open-world framing and capability taxonomy are adapted from the user's supplied talk-track. LangGraph is used as a concrete workflow example: its documentation distinguishes predetermined workflows from dynamic agents and models workflows with state, nodes, and edges.

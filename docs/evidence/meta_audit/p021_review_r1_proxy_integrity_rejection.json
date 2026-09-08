@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "parallel_id": "P95e584dd",
+  "round": 1,
+  "selected_branches": [
+    "r1b1"
+  ],
+  "rejected": [],
+  "summary": "Selected r1b1 as the sole retained research world for meaningful uncertainty reduction and bottleneck clarification. Its D003 evidence is consistent with the inspected source: medium mode samples complete train-user groups but scores unfiltered validation, so unsampled validation users use train-fitted UNK user features; the temporary aligned view reverses the BCE/BPR ordering, falsifying the proxy's predictive use in this run. E003 is a valid full public-validation comparison using the curated development files and evaluator-equivalent metrics: BPR primary 0.6029116 versus BCE 0.6014688, with BPR +0.0014429 over BCE. This is one-seed evidence, below epsilon=0.002, and does not establish a robust frontier or State improvement. The candidate commit is exactly the S001 base commit, system_state_dirty is false, and no hidden-test access or leakage is evidenced. The standalone D003/E003 log paths referenced by memory are absent from the audit snapshot; their claims are therefore treated as transcript/memory evidence rather than stronger durable receipts. No branch is rejected, but no State adoption or promotion is warranted from this review.",
+  "next_action": "inspect",
+  "status": "completed",
+  "exit_code": 0,
+  "observed_at": "2026-08-30T06:24:41.272570+00:00"
+}

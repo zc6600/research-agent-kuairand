@@ -2,7 +2,7 @@
 // Order matches table: GAUC, nDCG@5, Primary
 const data = [
   { name: 'GAUC', base: '0.6674', ours: '0.6728', delta: '+0.0054', hBase: 78, hOurs: 94 },
-  { name: 'nDCG@5', base: '0.5282', ours: '0.5390', delta: '+0.0108', hBase: 44, hOurs: 60 },
+  { name: 'nDCG@5', base: '0.5357', ours: '0.5390', delta: '+0.0033', hBase: 50, hOurs: 60 },
   { name: 'Primary', base: '0.6016', ours: '0.6059', delta: '+0.0043', hBase: 62, hOurs: 78 }
 ]
 const groundY = 115

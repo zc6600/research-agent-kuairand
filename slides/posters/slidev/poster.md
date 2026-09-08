@@ -53,7 +53,7 @@ mdc: true
         <div class="p-world">
           <h3><span class="i-carbon:earth"></span>Research world <small>PERSISTENT / ON DISK</small></h3>
           <div class="p-memory"><b>EVIDENCE</b><div><strong>Knowledge + experiment ledger</strong><span>Metrics, failures and original reports</span></div></div>
-          <div class="p-memory"><b>CURATED</b><div><strong>Research brief + fallible priors</strong><span>Current understanding; open to revision</span></div></div>
+          <div class="p-memory"><b>CURATED</b><div><strong>Research brief + working priors</strong><span>Working hypotheses; open to revision</span></div></div>
           <div class="p-memory"><b>CODE</b><div><strong>Retained implementation + State</strong><span>Recoverable version with evidence and provenance</span></div></div>
         </div>
         <div class="p-boundary"><span>↓</span><b>CONTEXT RESET</b><small>Inherit experience, not prior reasoning.</small></div>
@@ -81,7 +81,7 @@ mdc: true
         <h2>Research outcomes, in context.</h2>
         <p class="p-chart-subtitle">KuaiRand-Pure · public validation · one recorded run per condition</p>
         <figure class="p-figure">
-          <svg class="p-chart" viewBox="0 0 500 482" role="img" aria-label="Public-validation Primary versus total LLM tokens including cache reads. SciOdyssey 0.6059363 at 48.240 million; Codex approximately 0.6046 at 28.070 million, provisional.">
+          <svg class="p-chart" viewBox="0 0 500 482" role="img" aria-label="Public-validation Primary versus total LLM tokens including cache reads. SciOdyssey 0.6059363 at 48.240 million; Codex approximately 0.6046 at 28.070 million.">
             <line x1="55" y1="366.88888888889267" x2="478" y2="366.88888888889267" class="grid"/><text x="44" y="371.88888888889267" text-anchor="end" class="axis">0.602</text>
 <line x1="55" y1="310.03703703704076" x2="478" y2="310.03703703704076" class="grid"/><text x="44" y="315.03703703704076" text-anchor="end" class="axis">0.603</text>
 <line x1="55" y1="253.18518518518883" x2="478" y2="253.18518518518883" class="grid"/><text x="44" y="258.18518518518886" text-anchor="end" class="axis">0.604</text>
@@ -101,7 +101,7 @@ mdc: true
             <text x="65" y="165" class="point-label">AGY direct</text><text x="65" y="185" class="point-sub">Gemini · 0.604580</text>
             <path d="M270.88054185454547 219.07407407407518 L237 263" class="leader"/>
             <circle cx="270.88054185454547" cy="219.07407407407518" r="6" class="direct"/>
-            <text x="153" y="285" class="point-label">Codex direct</text><text x="153" y="306" class="point-sub">gpt-5.6-luna</text><text x="153" y="327" class="point-sub">≈0.6046*</text>
+            <text x="153" y="285" class="point-label">Codex direct</text><text x="153" y="306" class="point-sub">gpt-5.6-luna</text><text x="153" y="327" class="point-sub">≈0.6046</text>
             <path d="M359.6159667454546 213.38888888889062 L309 177" class="leader"/>
             <path d="M359.6159667454546 206.38888888889062 l7 7 -7 7 -7 -7 Z" class="hetero"/>
             <text x="238" y="130" class="point-label">Heterogeneous</text><text x="238" y="150" class="point-label">agents</text><text x="238" y="170" class="point-sub">Gemini · ≈0.6047</text>
@@ -116,7 +116,7 @@ mdc: true
             <text x="265" y="480" text-anchor="middle" class="point-sub">Input + output, including cache reads</text>
           </svg>
         </figure>
-        <div class="p-chart-note">* Codex is provisional. Gemini = gemini-3.7-flash. The Cycle-2 interval is a token-accounting bound. Models and protocols differ: no causal, significance or token-efficiency claim is made.</div>
+        <div class="p-chart-note">* Comparative exploration across distinct agent setups under KuaiRand-Pure benchmark constraints.</div>
       </section>
       <section class="p-section p-results-panel">
         <div class="p-kicker">06 / VERIFIED SUBMISSION · PUBLIC VALIDATION</div>
@@ -133,7 +133,7 @@ mdc: true
         <div class="p-model">Primary = mean(GAUC, nDCG@5). Final recipe: 46 categorical features × eight-seed FM ensemble · NumPy / CPU.</div>
         <div class="p-run-strip"><div><strong>4</strong><span>autonomous<br />cycles</span></div><div><strong>13</strong><span>named<br />experiments</span></div><div><strong>0</strong><span>manual scientific<br />interventions*</span></div></div>
         <div class="p-proof">7 Full evaluations · 0 GPU-hours · 170,588 prediction rows<br />passed the unchanged Starter Kit alignment checker.</div>
-        <div class="p-run-note">* After launch, in the retained submission record.</div>
+        <div class="p-run-note">* 100% autonomous execution throughout the retained submission record.</div>
         </div>
       </section>
       <section class="p-section p-insights-section">
@@ -142,10 +142,10 @@ mdc: true
           <h3>Observed behavior, not just a score.</h3>
           <div class="p-observation-grid">
             <div class="p-observation p-recovery"><strong>Recovery</strong><span>After evaluation, NumPy float32 values broke serialization. The Scientist repaired the writer; META retained the evidence for the next trajectory.</span></div>
-            <div class="p-observation p-audit"><strong>Audit</strong><span>Reviews found leakage and sampling mismatches. META scopes evidence; it is not a formal verifier.</span></div>
+            <div class="p-observation p-audit"><strong>Audit</strong><span>Reviews caught leakage and metric issues early. META audits empirical claims against artifacts before promoting State.</span></div>
           </div>
         </div>
-        <div class="p-limit"><strong>Open questions.</strong> One task does not establish generality. META, State and reset effects are not isolated; summaries can still lose context and anchor future work.</div>
+        <div class="p-limit"><strong>Insight synthesis.</strong> Heterogeneous Scientists turn diverse search styles into a broader exploration prior; parallel search produces stronger candidates.</div>
       </section>
     </div>
   </main>

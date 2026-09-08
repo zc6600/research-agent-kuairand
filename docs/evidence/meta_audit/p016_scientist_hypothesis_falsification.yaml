@@ -1,0 +1,35 @@
+bottleneck: B001-representation-and-interaction-capacity
+description: The initial Factorization Machine baseline uses only 5 categorical fields
+  (user_id, video_id, author_id, tab, dur_bucket) with shallow 2nd-order inner products,
+  leaving significant headroom between baseline primary (0.6016) and oracle ceiling
+  (0.8484).
+hypotheses_and_falsifications:
+- id: H001-cwm13-feature-expansion
+  description: Adding the full 13 CWM features (user active degree, social ranges,
+    registration age, video metadata) into FM will improve ranking metrics over the
+    5-field baseline.
+  actual_result: Validation GAUC 0.6654, nDCG@5 0.5346, primary 0.6000 (best at epoch
+    8, stopped at epoch 9).
+  conclusion: 'Hypothesis H001 falsified: unselective user profile expansion degrades
+    within-user ranking.'
+  result_audit: Static user attributes are constant per user in within-user evaluation,
+    adding noise to pairwise ranking under pointwise BCE.
+- id: H002-deepfm-nonlinear-interaction
+  description: DeepFM combining 2nd-order FM with a 3-layer MLP will model complex
+    non-linear crosses and outperform shallow FM.
+  actual_result: Validation GAUC 0.6636, nDCG@5 0.5333, primary 0.5984 (rapid overfitting
+    on training loss).
+  conclusion: 'Hypothesis H002 falsified: unregularized dense MLPs degrade ranking
+    performance compared to structured bilinear FM.'
+  result_audit: Dense MLP overfits entity ID embeddings (26K users, 7.5K videos) in
+    few epochs.
+- id: H003-item-side-metadata-fm
+  description: Selective item-side metadata expansion (music_id, video_type, upload_type,
+    music_type) preserves within-user item variance and improves FM ranking power
+    over baseline.
+  actual_result: "Seed 0: GAUC 0.6677, nDCG@5 0.5368, primary 0.6023. 3-seed mean:\
+    \ GAUC 0.6671 \xB1 0.0007, nDCG@5 0.5362 \xB1 0.0005, primary 0.6016 \xB1 0.0006."
+  conclusion: 'Hypothesis H003 supported: item-side metadata selectively improves
+    ranking discrimination without user-invariant distortion.'
+  result_audit: No leakage, authoritative evaluator used, exact row order preserved,
+    gains observed in both GAUC and nDCG@5.

@@ -485,18 +485,34 @@ Manual scientific interventions after launch: **0**.
 
 Human actions before launch—providing the task, provisioning the allowed dataset, selecting the agent CLI, and defining the budget—are setup, not autonomous research decisions. The local dashboard and `step` command provide observability and pause boundaries without asking the human to choose the science.
 
-### 6.2 Evidence robustness
+### 6.2 Robustness: Execution self-healing and epistemic gatekeeping
 
-Research Agent asks a question that ordinary execution success does not answer:
-did the evaluation procedure and retained artifact actually support the
-scientific claim?
+Research Agent separates operational runtime resilience from epistemic validity governance. Robust research requires both: (1) recovering autonomously from runtime execution crashes, and (2) preventing flawed evaluation pipelines or false breakthroughs from corrupting durable State.
 
-META audits the boundary between an experiment that produced a number and a
-finding that should enter shared research memory. It can reject confounded
-measurements, preserve scoped negative results, and keep unverified code out of
-a retained State without duplicating every line of the Scientist's work. This
-is an evidence-governance layer, not a guarantee of line-by-line program
-correctness; unresolved protocol findings remain explicitly provisional.
+#### 6.2.1 Operational execution self-healing (Scientist)
+
+In autonomous long-horizon runs, unhandled runtime exceptions often terminate the entire pipeline prematurely. In Cycle 1 (experiment E003), training and public validation had successfully completed, but evidence serialization threw an unhandled exception because evaluation metric tensors returned by the organizer's evaluator contained `numpy.float32` scalars that standard `json.dump` could not serialize.
+
+Rather than aborting the run, the Scientist parsed the Python traceback, preserved the printed measurements from session output, patched the evidence serializer to explicitly cast NumPy scalars to Python floats, and reran the step to clean completion ([telemetry details in Section 4.2](#42-concrete-recovery-event)). Zero human intervention was required, and the verified checkpoint formed the foundation for subsequent cycles.
+
+#### 6.2.2 Epistemic gatekeeping & proxy integrity auditing (META / Reviewer)
+
+Ordinary execution success answers only whether code ran to exit code 0. It does not answer whether the empirical claim was epistemically sound, leak-free, or statistically meaningful. Research Agent's Reviewer / META role enforces an evidence-governance boundary by auditing changed source code, sampling distributions, and metric boundaries before allowing state promotion.
+
+Concrete empirical receipts of this mechanism in action on KuaiRand-Pure are preserved in [`docs/evidence/meta_audit/`](evidence/meta_audit/):
+
+1. **Catching proxy distribution shifts and metric inversion (`p021` receipt)**:
+   In run [`p021-kuairand-pure`](evidence/meta_audit/p021_review_r1_proxy_integrity_rejection.json), the Scientist tested pairwise BPR against pointwise BCE on a "medium" proxy and claimed positive validation gains (+0.00144). Rather than accepting the reported metric delta, the Reviewer (`gpt-5.6-luna`) audited the data-loading implementation in `system/data.py` line by line. The audit identified that the Scientist sampled complete user clusters for training, but evaluated on the unfiltered validation split:
+   > *"Its D003 evidence is consistent with the inspected source: **medium mode samples complete train-user groups but scores unfiltered validation, so unsampled validation users use train-fitted UNK user features; the temporary aligned view reverses the BCE/BPR ordering, falsifying the proxy's predictive use in this run.** E003 is a valid full public-validation comparison... below epsilon=0.002, and does not establish a robust frontier or State improvement... **no State adoption or promotion is warranted from this review.**"* ([transcript excerpt](evidence/meta_audit/p021_reviewer_audit_transcript_excerpt.md)).
+   
+   Because unsampled users mapped to `UNK` tokens, the proxy metric ordering had inverted. Furthermore, the Full evaluation gain fell below the $\varepsilon=0.002$ significance threshold. META blocked State adoption, preserving the baseline from premature promotion.
+
+2. **Enforcing strict implementation and dirty-state boundaries (`p006` receipt)**:
+   In run [`p006-kuairand-pure`](evidence/meta_audit/p006_review_r1_boundary_rejection.json), branch `r1b1` produced an empirical metric, but the Reviewer audited Git working tree state and discovered dirty uncommitted implementation artifacts outside the `system/**` boundary. The Reviewer formally rejected `r1b1` (`"rejected": [{"branch_id": "r1b1", "reason": "manifest marks its implementation dirty..."}]`) and accepted only branch `r1b2`, which proved complete containment within `system/**`, train-only vocabularies, and zero test-set exposure.
+
+3. **Cognitive falsification of user profiles (`p016` receipt)**:
+   In run [`p016-kuairand-pure`](evidence/meta_audit/p016_scientist_hypothesis_falsification.yaml), the Scientist explicitly tested whether adding 13 CWM user profile features (active degree, social ranges, registration age) improved within-user ranking (H001). When validation primary degraded from 0.6022 to 0.6000, the Scientist recorded the underlying mechanism: user-invariant static profiles provide zero variance within a user's impression list and dilute within-user ranking gradients under pointwise BCE, formally falsifying the hypothesis and preventing wasted capacity in future cycles.
+
 
 ### 6.3 Resource accounting
 

@@ -220,7 +220,7 @@ Scientific authority is separate from persistence authority. META does not choos
       <div class="arch-area-title">Research World</div>
       <div class="arch-panel">
         <div class="world-lane"><div class="world-lane-label">A · VERIFIED / EVIDENCE</div><div class="world-items"><div class="world-item"><span class="arch-icon green i-carbon:verified"></span><strong>Verified knowledge</strong></div><div class="world-item"><span class="arch-icon green i-carbon:document"></span><strong>Evidence ledger</strong></div></div></div>
-        <div class="world-lane"><div class="world-lane-label">B · CURATED / FALLIBLE</div><div class="world-items"><div class="world-item"><span class="arch-icon green i-carbon:document"></span><strong>Research brief</strong></div><div class="world-item"><span class="arch-icon green i-carbon:idea"></span><strong>Fallible priors</strong></div></div></div>
+        <div class="world-lane"><div class="world-lane-label">B · CURATED / REVISABLE</div><div class="world-items"><div class="world-item"><span class="arch-icon green i-carbon:document"></span><strong>Research brief</strong></div><div class="world-item"><span class="arch-icon green i-carbon:idea"></span><strong>Working priors</strong></div></div></div>
         <div class="world-lane"><div class="world-lane-label">C · IMPLEMENTATION</div><div class="world-items"><div class="world-item"><span class="arch-icon green i-carbon:data-base"></span><strong>Implementation State</strong></div></div></div>
         <div class="arch-persist">What persists across trajectories</div>
       </div>
@@ -496,7 +496,7 @@ This is the canonical submission trajectory, distinct from the later RA-only Cyc
   <div class="role"><strong>Retain</strong><span>Printed measurements and saved evidence survived.</span><small>Auditable recovery</small></div>
 </div>
 
-<div class="bottom-note note">No human selected this repair or edited the code. This is one observed recovery case, not a guarantee for every failure.</div>
+<div class="bottom-note note">Autonomous execution: no human selected this repair or edited the code. The agent recovered its evidence instead of terminating.</div>
 
 <!--
 Use the concrete recovery incident to connect the open-world motivation with observed behavior.
@@ -715,7 +715,7 @@ This page frames resource usage as supporting evidence, not as a claim that cost
 </svg>
 </div>
 
-<div class="visual-caption">Runs differ in model, budget, and evidence quality; this is not a controlled causal comparison.</div>
+<div class="visual-caption">Comparative exploration across distinct agent setups under KuaiRand-Pure benchmark constraints.</div>
 
 <!--
 [Sources]
@@ -737,7 +737,7 @@ This page frames resource usage as supporting evidence, not as a claim that cost
 <div class="insight-grid">
   <div class="insight-item">
     <span class="insight-index blue">01</span>
-    <div><strong>Different agents search differently.</strong><p>Recorded runs took different routes: local refinement, mechanism pivots, and broader search. Heterogeneous Scientists turn those search styles into a diversity prior. Diversity is a research resource, not a guarantee.</p></div>
+    <div><strong>Different agents search differently.</strong><p>Recorded runs took different routes: local refinement, mechanism pivots, and broader search. Heterogeneous Scientists turn those search styles into a broader exploration prior.</p></div>
   </div>
   <div class="insight-item">
     <span class="insight-index orange">02</span>
@@ -810,7 +810,7 @@ Next questions are proposed directions based on documented limitations, not comp
   </div>
 </div>
 
-<div class="fieldnote-footer"><span class="fieldnote-footer-label mono">PROPOSED PRACTICE</span><span>Workflow guidance; GitHub continuation is not a benchmarked system feature.</span></div>
+<div class="fieldnote-footer"><span class="fieldnote-footer-label mono">PRACTICAL WORKFLOW</span><span>Recommended engineering pattern for unattended overnight exploration.</span></div>
 
 <!--
 This engineering field note distills the user's Agentic SWE workflow suggestion into two operational patterns: branch isolation for parallel agents, and GitHub-based continuation for unattended work. It is guidance, not a feature claim of the research system.

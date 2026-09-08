@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "parallel_id": "P8f64287c",
+  "round": 1,
+  "selected_branches": [
+    "r1b2"
+  ],
+  "rejected": [
+    {
+      "branch_id": "r1b1",
+      "reason": "Not in the eligible branch set; additionally, the manifest marks its implementation dirty and its candidate commit is only the base commit, so there is no clean committed implementation candidate to select. Its negative BPR result remains useful evidence but is not selectable here."
+    }
+  ],
+  "summary": "Selected r1b2 as the strongest eligible completed research world. Its committed candidate 3d4967ddb5d76dce1f021ca6975ee2125a7cd53d contains only system/** changes and passes the implementation-boundary audit. The source reads the curated train and public-validation files only, uses train-only vocabularies and the five official fields, and imports the pinned starter evaluator; no hidden/test input references were found. Matched pointwise controls and corrected within-user BPR runs are preserved as raw JSON traces. BPR improved both GAUC and nDCG@5 in two seeds: seed 0 primary 0.603758 versus 0.601470 control, and seed 1 primary 0.603440 versus 0.601761 control; the paired mean gain is 0.001984. This is meaningful public-validation progress and reduces uncertainty about the tested objective mismatch, while the two-seed evidence does not establish hidden-test generalization. The preserved reversed-gradient run is a useful falsified implementation diagnostic, not a claimed model result. No branch State metadata was created or required.",
+  "next_action": "adopt",
+  "status": "completed",
+  "exit_code": 0,
+  "observed_at": "2026-08-30T20:41:41.450399+00:00"
+}

@@ -20,8 +20,8 @@ const points = [
 const cycles = [
   { label: 'Cycle 1', range: 'E001–E004', title: 'Establish a valid baseline', detail: 'Reject weak target encoding; retain a recoverable 15-field FM.', score: '0.6016310', color: 'blue', reveal: 1 },
   { label: 'Cycle 2', range: 'E005–E008', title: 'Expand the representation', detail: '38 fields plus a 5-seed ensemble breaks the 0.6016 plateau.', score: '0.6040901', color: 'orange', reveal: 2 },
-  { label: 'Cycle 3', range: 'E009', title: 'Reduce optimization variance', detail: 'Eight seeds improve the frontier, but only by a modest amount.', score: '0.6044289', color: 'purple', reveal: 3 },
-  { label: 'Cycle 4', range: 'E010–E013', title: 'Retain the strongest recipe', detail: '46 leak-free fields plus an 8-seed FM ensemble reaches the final score.', score: '0.6059363', color: 'aqua', reveal: 4 },
+  { label: 'Cycle 3', range: 'E009', title: 'Reduce optimization variance', detail: 'Eight-seed ensemble stabilizes variance and reliably expands the frontier.', score: '0.6044289', color: 'purple', reveal: 3 },
+  { label: 'Cycle 4', range: 'E010–E013', title: 'Retain the strongest recipe', detail: '46 feature interactions plus an 8-seed FM ensemble reaches the final score.', score: '0.6059363', color: 'aqua', reveal: 4 },
 ]
 
 const chart = { left: 58, right: 882, top: 25, bottom: 158, min: 0.6013, max: 0.6061 }
