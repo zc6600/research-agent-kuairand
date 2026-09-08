@@ -3505,6 +3505,10 @@ html.print .slidev-layout.parallel-breadth-slide .parallel-world-ring {
   row-gap: 0;
 }
 
+.slidev-layout:has(.insight-grid) .insight-grid-single {
+  grid-template-columns: 1fr;
+}
+
 .slidev-layout:has(.insight-grid) .insight-item {
   align-items: start;
   border-top: 1px solid var(--line);

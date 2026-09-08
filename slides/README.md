@@ -1,6 +1,6 @@
 # Research Agent · Slidev
 
-SciOdyssey 全英文技术演示（含英文讲者备注）：16 页主线 + 3 页附录，白底、彩色重点，16:9。内容以仓库 README、技术报告及架构文档为依据，讲者备注保留来源及证据口径。
+SciOdyssey 全英文技术演示（含英文讲者备注）：9 页主线 + 3 页附录，白底、彩色重点，16:9。内容以仓库 README、技术报告及架构文档为依据，讲者备注保留来源及证据口径。
 
 ## 叙事顺序
 
@@ -9,10 +9,10 @@ SciOdyssey 全英文技术演示（含英文讲者备注）：16 页主线 + 3 �
 | 封面 | 1 | 项目与叙事路线 |
 | Problem | 2–3 | 研究任务与长期自主研究的障碍 |
 | System | 4 | Insight 汇聚成架构 |
-| Experience | 5–8 | 输入任务、实验轨迹、故障恢复、查看留存结果 |
-| Evaluation | 9–12 | 验证分数、自主性、资源、直接 agent 对照 |
-| Insights | 13–16 | 经验、局限、工程实践、收束 |
-| 附录 | 17–19 | 开放能力、团队与补充能力对比 |
+| Experience | 5 | 输入任务与研究工作流 |
+| Evaluation | 6 | 结果、轨迹、恢复与审计证据卡片 |
+| Insights | 7–9 | 经验、工程实践、收束 |
+| 附录 | 10–12 | 开放能力、团队与补充能力对比 |
 
 ## 本地演示
 
@@ -84,4 +84,4 @@ npm run poster:variants
 
 `npm run dev` 的第 6 页为 Evaluation 卡片页。点击卡片后，图表、数据和正文直接呈现在展开的卡片内，长内容在卡片内部滚动。五张卡片依次承载模型结果、持续搜索、失败恢复、Codex 对照，以及 P10 的自主性与资源账本。`BACK TO HAND` 或 Esc 返回卡片组。
 
-原来的顺序页面继续保留。卡片内容在 `components/EvaluationCardBody.vue`，卡片交互在 `components/EvaluationClaimCards.vue`；修改数据时需与 `slides.md` 保持一致。
+原来的结果、轨迹和审计顺序页面已从主线移除。卡片内容在 `components/EvaluationCardBody.vue`，卡片交互在 `components/EvaluationClaimCards.vue`；修改数据时需与 `slides.md` 保持一致。

@@ -3,7 +3,7 @@ import { readFile, writeFile } from 'node:fs/promises'
 const sourcePath = 'slides.md'
 const insertPath = 'snippets/evaluation-claim-verdict.md'
 const outputPath = '.generated-slides.md'
-const marker = '<div class="visual-kicker orange">04 / EVALUATION · PUBLIC-VALIDATION RESULT</div>'
+const insertAfter = '<ExperienceJourney />'
 const retiredSlideMarkers = [
   '<div class="visual-kicker orange resources-page-kicker">04 / EVALUATION · RESOURCE ACCOUNTING</div>',
   '<div class="visual-kicker orange">04 / EVALUATION · DIRECT-AGENT COMPARISON</div>',
@@ -12,8 +12,8 @@ const retiredSlideMarkers = [
 const source = await readFile(sourcePath, 'utf8')
 const insert = (await readFile(insertPath, 'utf8')).trim()
 
-if (!source.includes(marker)) {
-  throw new Error(`Could not find insertion marker: ${marker}`)
+if (!source.includes(insertAfter)) {
+  throw new Error(`Could not find insertion anchor: ${insertAfter}`)
 }
 
 function removeSlideByMarker(deck, slideMarker) {
@@ -32,7 +32,7 @@ function removeSlideByMarker(deck, slideMarker) {
   return `${deck.slice(0, slideStart)}${deck.slice(slideEnd)}`
 }
 
-let output = source.replace(marker, `${insert}\n\n---\n\n${marker}`)
+let output = source.replace(insertAfter, `${insertAfter}\n\n---\n\n${insert}`)
 for (const slideMarker of retiredSlideMarkers) {
   output = removeSlideByMarker(output, slideMarker)
 }

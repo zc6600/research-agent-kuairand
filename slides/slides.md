@@ -175,7 +175,7 @@ Playback is an illustrative walkthrough rendered with native Vue/HTML/SVG elemen
 Only command entry has a Terminal frame; execution uses animated research diagrams.
 Theme wording: ../terminal/deck.mjs and slides-voyage.md.
 Each act first explains its purpose with a Keynote-style headline, then demonstrates
-the operation: Make it yours / One step / Let it run / Now, explore wider /
+the operation: Start your journey / One step / Let it run / Now, explore wider /
 See what stays / Already in your workflow.
 The approximately 127-second sequence opens embedded in the chapter card, expands,
 then closes on the same product introduction before retracting into the card.
@@ -185,80 +185,6 @@ Command semantics and working constraints: ../README.md, ../PERSONAL.md.
 Motion reference: ../video/src/compositions/keynote/scenes/TerminalJourney.tsx.
 Skill scene reference: ../video/src/compositions/keynote/scenes/AgentJourney.tsx.
 Parallel review does not automatically adopt a branch; adoption requires parallel-promote.
--->
-
----
-
-<div class="visual-kicker orange">04 / EVALUATION · PUBLIC-VALIDATION RESULT</div>
-
-# Autonomous research. Measured gains.
-
-<div class="score score-trio">
-  <div>
-    <div class="mono muted" style="font-size: 13px">PRIMARY / RESEARCH AGENT</div>
-    <div class="big-number">0.6059363</div>
-    <div class="delta"><span class="green">+0.0043363</span> <span class="muted">absolute improvement</span></div>
-  </div>
-  <EvaluationScoreBars />
-  <div>
-    <table>
-      <thead>
-        <tr><th>METRIC</th><th>Official FM</th><th>Ours</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>GAUC</td><td>0.6674000</td><td class="green">0.6728421</td></tr>
-        <tr><td>nDCG@5</td><td>0.5357000</td><td class="green">0.5390304</td></tr>
-        <tr><td>Primary</td><td>0.6016000</td><td class="green">0.6059363</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<div class="bottom-note note">Primary = mean(GAUC, nDCG@5). Public validation only; hidden-test scoring is organizer-controlled.<br>Final recipe: 46 categorical features × 8-seed FM ensemble · NumPy / CPU</div>
-
-<!--
-These are validation scores, not hidden-test results or a competition placement. The official reference is a five-field FM. The final model uses rank k=16.
-[Sources]
-- ../README.md — TikTok TechJam 2026 result
-- ../docs/FINAL_REPORT.md — Submission Snapshot and section 2
--->
-
----
-
-<div class="visual-kicker green">04 / EVALUATION · THE RETAINED TRAJECTORY</div>
-
-# The score was the end of a trajectory.
-
-<EvaluationTrajectory />
-
-<!--
-E003–E013 plot the seven Full public-validation evaluations; the remaining named experiments are Medium screens or diagnostics and are grouped in the cycle cards.
-The final checkpoint is E013: an 8-seed, 46-field FM ensemble with 46 leak-free fields, the unchanged evaluator, and a 0.6059363 Primary score.
-[Sources]
-- ../submission/research-agent-kuairand/research_record/RESEARCH_RECORD.yaml — E001–E013 ledger
-- ../docs/FINAL_REPORT.md — section 4.1 and Submission Snapshot
-- ../submission/research-agent-kuairand/research_record/reports/cycle-4.md — E013 final run
--->
-
----
-
-<div class="visual-kicker blue">04 / EVALUATION · AUTONOMY AND AUDITABILITY</div>
-
-# An audit trail from experiment to output.
-
-<div class="stats">
-  <div class="rule"><strong>4</strong><p>Autonomous cycles</p><small>Within a 50-iteration cap</small></div>
-  <div class="rule"><strong>13</strong><p>Named experiments</p><small>E001–E013 · 7 Full evaluations</small></div>
-  <div class="rule"><strong>0</strong><p>Manual scientific interventions</p><small>After launch · 0 GPU-hours</small></div>
-</div>
-
-<div class="bottom-note note">170,588 prediction rows passed the unchanged Starter Kit alignment checker.<br>LLM tokens: 48.24M including cache reads; 4.02M excluding cache reads.</div>
-
-<!--
-Zero manual scientific interventions applies after launch in the retained run, not to building the framework or setting up the benchmark. Total tokens: 48,240,128; excluding cache reads: 4,020,880. Zero GPU-hours does not mean zero LLM cost.
-[Sources]
-- ../docs/FINAL_REPORT.md — Submission Snapshot
-- ../submission/research-agent-kuairand/final/submit-check.txt
 -->
 
 ---
@@ -409,30 +335,13 @@ This page frames resource usage as supporting evidence, not as a claim that cost
 
 # The run taught us more than the final score.
 
-<div class="insight-lede">What survived the experiments — and what remains unsettled.</div>
+<div class="insight-lede">One durable lesson from the experiments.</div>
 
-<div class="insight-grid">
+<div class="insight-grid insight-grid-single">
   <div class="insight-item">
     <span class="insight-index blue">01</span>
     <div><strong>Diversity is a prior.</strong><p>Keep <span class="mono">gemini-3.7-flash</span> as META while Scientist rotates across <span class="mono">gpt-5.6-sol</span>, <span class="mono">gemini-3.7-flash</span>, and <span class="mono">gpt-5.6-luna</span>. This widens priors; it does not prove the gain.</p></div>
   </div>
-  <div class="insight-item">
-    <span class="insight-index orange">02</span>
-    <div><strong>A score is not a claim.</strong><p>Audits found leakage and sampling mismatches in competing experiments. META can scope evidence; it is not a formal verifier.</p></div>
-  </div>
-  <div class="insight-item">
-    <span class="insight-index rose">03</span>
-    <div><strong>Failure can be evidence.</strong><p>After evaluation, NumPy <span class="mono">float32</span> values broke serialization. The Scientist fixed the writer, reran, and kept the measurements.</p></div>
-  </div>
-  <div class="insight-item">
-    <span class="insight-index purple">04</span>
-    <div><strong>Reset ≠ no anchor.</strong><p>Fresh cognition reopens the search, but shared summaries can still omit context or anchor future work. Share evidence later than cognition.</p></div>
-  </div>
-</div>
-
-<div class="insight-bottom">
-  <div class="insight-boundary"><div class="insight-boundary-label mono">OBSERVED, NOT PROVEN</div><div class="insight-boundary-copy">Parallel/Synthesis reached public-validation Primary <strong>0.6055536</strong>; the canonical E001–E013 frontier remains <strong>0.6059363</strong>.</div></div>
-  <div class="insight-stats"><div class="insight-stat"><strong class="blue">4</strong><small>cycles</small></div><div class="insight-stat"><strong class="orange">0</strong><small>post-launch interventions</small></div><div class="insight-stat"><strong class="rose">0</strong><small>GPU-hours</small></div></div>
 </div>
 
 <!--
@@ -440,26 +349,6 @@ This section synthesizes the model-diversity, scientific-validity, recovery, par
 [Sources]
 - ../docs/FINAL_REPORT.md — sections 3.4–3.5, 4.2, 5.4–5.5, 6.1–6.3, and 7.1–7.2
 - ../competition_archive/kuairand-pure/analysis/scientific-validity-failure.md — audit findings
--->
-
----
-
-<div class="visual-kicker purple">05 / INSIGHTS · LIMITS AND NEXT EXPERIMENTS</div>
-
-# Reproducible evidence. Open questions.
-
-<div class="roles">
-  <div class="role"><strong class="green">01</strong><span>One task does not establish generality.</span><small>External validity</small></div>
-  <div class="role"><strong class="green">02</strong><span>META, State, and reset are not isolated.</span><small>Causal attribution</small></div>
-  <div class="role"><strong class="green">03</strong><span>Summaries can lose context and anchor.</span><small>Memory quality</small></div>
-</div>
-
-<div class="bottom-note note">Next questions: broader tasks, targeted ablations, and less repeated execution.</div>
-
-<!--
-Next questions are proposed directions based on documented limitations, not completed features or a committed roadmap. KuaiRand-1K / 27K bonus benchmarks were not attempted.
-[Sources]
-- ../README.md — Limitations
 -->
 
 ---
