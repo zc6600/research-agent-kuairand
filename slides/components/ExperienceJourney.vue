@@ -255,12 +255,7 @@ onUnmounted(() => {
             <div class="dash-bar">
               <span class="dash-dot" /><span class="dash-bar-title">Research Agent Dashboard</span><span class="dash-bar-live">read-only</span>
             </div>
-            <img src="/assets/dashboard-result.png" class="dash-img" alt="Dashboard: retained checkpoint S004, Primary 0.605936" />
-          </div>
-          <div class="dash-callout" :style="{ opacity: progress(9000, 700), transform: `translateY(${(1 - easeInOut(progress(9000, 700))) * 8}px)` }">
-            <div><small>RETAINED STATE</small><strong>S004</strong></div>
-            <div><small>PRIMARY</small><strong class="dash-score">0.605936</strong></div>
-            <div class="dash-proof"><span class="dash-callout-check">✓</span><span>Evidence on record</span></div>
+            <img src="/assets/dashboard-result.png" class="dash-img" alt="Dashboard: retained validation result" />
           </div>
         </div>
         <div v-else key="skill" class="skill-scene">
@@ -387,13 +382,6 @@ onUnmounted(() => {
 .dash-bar-title { font-size: 10px; color: #778592; flex: 1; }
 .dash-bar-live { font: 9px ui-monospace, monospace; color: #67a591; }
 .dash-img { display: block; width: 100%; height: 215px; object-fit: cover; object-position: center top; }
-.dash-callout { display: flex; align-items: center; gap: 28px; padding: 4px 5px 0; color: #708677; }
-.dash-callout > div:not(.dash-proof) { display: flex; flex-direction: column; gap: 4px; }
-.dash-callout small { font-size: 8px; letter-spacing: 1.2px; color: #8a97a2; }
-.dash-callout strong { font-size: 18px; font-weight: 500; color: #516475; letter-spacing: -.5px; }
-.dash-callout .dash-score { color: #2f987d; }
-.dash-proof { display: flex; gap: 7px; align-items: center; margin-left: auto; font-size: 11px; }
-.dash-callout-check { color: #349e84; font-size: 13px; }
 .skill-scene { margin: 0 12px; height: 374px; border: 1px solid #dfe5eb; border-radius: 12px; background: white; overflow: hidden; box-shadow: 0 12px 36px #23354c08; }
 .agent-bar { height: 31px; border-bottom: 1px solid #e9edf2; background: #f8fafb; display: flex; align-items: center; justify-content: space-between; padding: 0 17px; color: #8793a0; font-size: 10px; }
 .agent-bar small { font-size: 8px; letter-spacing: 1px; }
