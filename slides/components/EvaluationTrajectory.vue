@@ -130,7 +130,7 @@ onBeforeUnmount(clearTimers)
 </template>
 
 <style scoped>
-.evaluation-trajectory { position: relative; margin-top: 8px; color: #33343a; }
+.evaluation-trajectory { position: relative; margin-top: 0; color: #33343a; }
 .trajectory-topline { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; }
 .trajectory-kicker { color: #7d7d82; font-size: 10px; letter-spacing: 1.25px; }
 .trajectory-topline p { margin: 5px 0 0; color: #7d7d82; font-size: 13px; }
@@ -173,7 +173,7 @@ onBeforeUnmount(clearTimers)
 .trajectory-cycle-score span { color: #9aa5ab; font-size: 8px; letter-spacing: .8px; }
 .trajectory-cycle-score b { color: #3d4755; font-size: 12px; }
 .trajectory-cycle.is-aqua .trajectory-cycle-score b { color: #16803b; }
-.trajectory-foot { display: flex; align-items: center; gap: 18px; border-top: 1px solid #e6e6e8; margin-top: 9px; padding-top: 6px; color: #8a949a; font-size: 10px; }
+.trajectory-foot { display: flex; align-items: center; gap: 18px; border-top: 1px solid #e6e6e8; margin-top: 4px; padding-top: 5px; color: #8a949a; font-size: 10px; }
 .trajectory-foot code { color: #536d78; font-family: 'Fira Code', monospace; font-size: 9px; }
 .trajectory-foot span:nth-child(2) { margin-left: auto; }
 .trajectory-replay { border: 0; background: transparent; color: #7d7d82; cursor: pointer; font: inherit; padding: 0 2px; }
