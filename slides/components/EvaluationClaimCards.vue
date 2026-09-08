@@ -21,11 +21,11 @@ type Card = {
 const selectedId = ref<string | null>(null)
 
 const cards: Card[] = [
-  { id: 'result', no: '01', kicker: 'MEASURED RESULT', claim: 'The model got better.', accent: 'var(--green)', rotate: -15, x: 0, y: 72, scale: .96, z: 1, title: 'A retained checkpoint beat the official FM reference.', detail: 'The final E013 checkpoint reached 0.6059363 Primary on public validation, an absolute improvement of +0.0043363 over the official five-field FM reference.', meta: '0.6016000 → 0.6059363 · GAUC 0.6728421 · nDCG@5 0.5390304' },
-  { id: 'trajectory', no: '02', kicker: 'SUSTAINED SEARCH', claim: 'The search kept going.', accent: 'var(--blue)', rotate: -7, x: 112, y: 38, scale: 1, z: 2, title: 'The score came from a trajectory, not a single lucky edit.', detail: 'Seven Full public-validation evaluations were retained across four autonomous cycles, from a validated baseline to a 46-field, 8-seed FM ensemble.', meta: '4 cycles · 13 named experiments · E003–E013 retained frontier' },
-  { id: 'robustness', no: '03', kicker: 'RECOVERY UNDER FAILURE', claim: 'Our agent is robust.', accent: 'var(--rose)', rotate: 0, x: 226, y: 64, scale: 1.1, z: 3, title: 'The research loop recovered when evidence serialization failed.', detail: 'The Scientist repaired the NumPy scalar writer, reran the experiment, and kept the measurements. META then governs what becomes durable State.', meta: 'Cycle 1 · numpy.float32 repair · rerun succeeded · no human intervention' },
-  { id: 'comparison', no: '04', kicker: 'DIRECT CODEX CONTROL', claim: 'Our agent outperforms Codex.', accent: 'var(--purple)', rotate: 7, x: 340, y: 39, scale: 1, z: 4, title: 'The retained result is above the recorded direct Codex control.', detail: 'Research Agent reached 0.6059363 Primary; the direct Codex Goal control reached 0.6044533 on public validation. The original comparison figure is now embedded in this evidence card.', meta: '0.6044533 → 0.6059363 · +0.0014830 Primary · public validation' },
-  { id: 'tokenmaxxing', no: '05', kicker: 'RESOURCE ACCOUNTING', claim: 'We are not tokenmaxxing.', accent: 'var(--orange)', rotate: 15, x: 452, y: 73, scale: .96, z: 5, title: 'Resource use is part of the evidence, not the thesis.', detail: 'The project-level resource story now lives here: ~US$10 subscription-equivalent usage, 48.24M recorded total tokens, 4.02M non-cache input + output, and zero GPU-hours.', meta: '~US$10 project estimate · 48.240M total · 4.020M non-cache · 0 GPU-hours' },
+  { id: 'result', no: '01', kicker: 'MEASURED RESULT', claim: 'The model got better.', accent: 'var(--green)', rotate: -15, x: 0, y: 72, scale: .92, z: 1, title: 'A retained checkpoint beat the official FM reference.', detail: 'The final E013 checkpoint reached 0.6059363 Primary on public validation, an absolute improvement of +0.0043363 over the official five-field FM reference.', meta: '0.6016000 → 0.6059363 · GAUC 0.6728421 · nDCG@5 0.5390304' },
+  { id: 'trajectory', no: '02', kicker: 'SUSTAINED SEARCH', claim: 'The search kept going.', accent: 'var(--blue)', rotate: -7, x: 128, y: 38, scale: .96, z: 2, title: 'The score came from a trajectory, not a single lucky edit.', detail: 'Seven Full public-validation evaluations were retained across four autonomous cycles, from a validated baseline to a 46-field, 8-seed FM ensemble.', meta: '4 cycles · 13 named experiments · E003–E013 retained frontier' },
+  { id: 'robustness', no: '03', kicker: 'RECOVERY UNDER FAILURE', claim: 'Our agent is robust.', accent: 'var(--rose)', rotate: 0, x: 256, y: 64, scale: 1.04, z: 3, title: 'The research loop recovered when evidence serialization failed.', detail: 'The Scientist repaired the NumPy scalar writer, reran the experiment, and kept the measurements. META then governs what becomes durable State.', meta: 'Cycle 1 · numpy.float32 repair · rerun succeeded · no human intervention' },
+  { id: 'comparison', no: '04', kicker: 'DIRECT CODEX CONTROL', claim: 'Our agent outperforms Codex.', accent: 'var(--purple)', rotate: 7, x: 384, y: 39, scale: .96, z: 4, title: 'The retained result is above the recorded direct Codex control.', detail: 'Research Agent reached 0.6059363 Primary; the direct Codex Goal control reached 0.6044533 on public validation. The original comparison figure is now embedded in this evidence card.', meta: '0.6044533 → 0.6059363 · +0.0014830 Primary · public validation' },
+  { id: 'tokenmaxxing', no: '05', kicker: 'RESOURCE ACCOUNTING', claim: 'We are not tokenmaxxing.', accent: 'var(--orange)', rotate: 15, x: 512, y: 73, scale: .92, z: 5, title: 'Resource use is part of the evidence, not the thesis.', detail: 'The project-level resource story now lives here: ~US$10 subscription-equivalent usage, 48.24M recorded total tokens, 4.02M non-cache input + output, and zero GPU-hours.', meta: '~US$10 project estimate · 48.240M total · 4.020M non-cache · 0 GPU-hours' },
 ]
 
 const selected = computed(() => cards.find(card => card.id === selectedId.value) ?? null)
@@ -195,10 +195,10 @@ const handleKey = (event: KeyboardEvent) => {
   z-index: var(--z);
   left: var(--x);
   top: var(--y);
-  width: 174px;
-  height: 378px;
+  width: 152px;
+  height: 338px;
   border: 0;
-  border-radius: 22px;
+  border-radius: 20px;
   background:
     linear-gradient(180deg, rgba(255,255,255,1), rgba(250,251,252,.99)),
     radial-gradient(circle at 72% 18%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 45%);
@@ -207,7 +207,7 @@ const handleKey = (event: KeyboardEvent) => {
   transform-origin: 50% 116%;
   color: var(--ink);
   text-align: left;
-  padding: 22px 18px 18px;
+  padding: 18px 15px 15px;
   cursor: pointer;
   transition: transform .42s cubic-bezier(.22,1,.36,1), box-shadow .42s ease, opacity .35s ease, filter .35s ease;
 }
@@ -226,24 +226,24 @@ const handleKey = (event: KeyboardEvent) => {
   outline: none;
   z-index: 30;
 }
-.card-meta { display: flex; align-items: center; justify-content: space-between; gap: 7px; }
+.card-meta { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
 .card-no { color: var(--accent); }
-.card-kicker { color: #9aa0a6; font-size: 7.4px; letter-spacing: .78px; text-align: right; }
+.card-kicker { color: #9aa0a6; font-size: 6.8px; letter-spacing: .68px; text-align: right; }
 .evidence-card strong {
   display: block;
-  margin-top: 48px;
-  width: 132px;
-  font-size: 24px;
+  margin-top: 38px;
+  width: 118px;
+  font-size: 21px;
   line-height: 1.04;
   letter-spacing: -.85px;
   font-weight: 790;
 }
-.card-result strong { font-size: 26px; }
+.card-result strong { font-size: 22px; }
 .card-rule {
   position: absolute;
-  left: 18px;
-  right: 18px;
-  bottom: 56px;
+  left: 15px;
+  right: 15px;
+  bottom: 50px;
   height: 2px;
   border-radius: 99px;
   background: linear-gradient(90deg, var(--accent), transparent);
@@ -251,11 +251,11 @@ const handleKey = (event: KeyboardEvent) => {
 }
 .card-footer {
   position: absolute;
-  left: 18px;
-  bottom: 24px;
+  left: 15px;
+  bottom: 20px;
   color: color-mix(in srgb, var(--accent) 64%, #8f969b);
-  font-size: 8px;
-  letter-spacing: .9px;
+  font-size: 7.4px;
+  letter-spacing: .8px;
 }
 
 :deep(.slidev-vclick-hidden) { opacity: 0; transform: translateY(46px) rotate(var(--rotate)) scale(.88); }
