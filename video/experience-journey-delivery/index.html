@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SciOdyssey · Experience Journey</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f9fc;
+      --ink: #20242b;
+      --muted: #7b828d;
+      --blue: #298bb6;
+      --line: #dfe6ed;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background:
+        radial-gradient(ellipse at 12% 0%, #e4effb, transparent 60%),
+        radial-gradient(ellipse at 100% 100%, #fcf4e5, transparent 55%),
+        var(--bg);
+      color: var(--ink);
+      font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+    }
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 28px;
+    }
+    .shell { width: min(1280px, 100%); }
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #be814c;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    h1 {
+      margin: 0 0 8px;
+      text-align: center;
+      font-size: clamp(28px, 4vw, 48px);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      font-weight: 650;
+    }
+    .sub {
+      text-align: center;
+      color: var(--muted);
+      margin: 0 0 22px;
+      font-size: 15px;
+    }
+    .stage {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 24px 70px rgba(35, 53, 76, .12);
+    }
+    video {
+      width: 100%;
+      display: block;
+      background: #000;
+      aspect-ratio: 16 / 9;
+    }
+    .overlay {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(180deg, rgba(20,26,34,.08), rgba(20,26,34,.18));
+      cursor: pointer;
+      transition: opacity .2s ease;
+    }
+    .overlay.hidden { opacity: 0; pointer-events: none; }
+    .play {
+      width: 92px;
+      height: 92px;
+      border: none;
+      border-radius: 999px;
+      background: rgba(255,255,255,.94);
+      box-shadow: 0 12px 35px rgba(0,0,0,.18);
+      color: var(--blue);
+      font-size: 34px;
+      cursor: pointer;
+    }
+    .note {
+      margin: 14px 2px 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .links {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+    .links a {
+      text-decoration: none;
+      color: var(--blue);
+      border: 1px solid #cfe1ea;
+      background: rgba(255,255,255,.8);
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <div class="eyebrow">SciOdyssey · User Experience</div>
+    <h1>Experience Journey</h1>
+    <p class="sub">HTML animation video with synchronized English voice-over</p>
+
+    <section class="stage">
+      <video id="video" controls playsinline preload="metadata">
+        <source src="SciOdyssey_ExperienceJourney_HTML_Gwyneth_Final_1080p.mp4" type="video/mp4" />
+        Your browser does not support HTML5 video.
+      </video>
+      <div class="overlay" id="overlay" aria-label="Play video with audio">
+        <button class="play" id="playButton" aria-label="Play with audio">▶</button>
+      </div>
+    </section>
+
+    <p class="note">
+      Click the play button once to start with sound. Modern browsers block autoplay with audio until the user interacts with the page.
+    </p>
+
+    <div class="links">
+      <a href="SciOdyssey_ExperienceJourney_HTML_Gwyneth_Final_1080p.mp4" download>Download MP4</a>
+      <a href="#" id="fullscreen">Full screen</a>
+    </div>
+  </main>
+
+  <script>
+    const video = document.getElementById('video');
+    const overlay = document.getElementById('overlay');
+    const playButton = document.getElementById('playButton');
+    const fullscreen = document.getElementById('fullscreen');
+
+    async function startPlayback() {
+      try {
+        video.muted = false;
+        video.volume = 1;
+        await video.play();
+        overlay.classList.add('hidden');
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    overlay.addEventListener('click', startPlayback);
+    playButton.addEventListener('click', (e) => {
+      e.stopPropagation();
+      startPlayback();
+    });
+
+    video.addEventListener('play', () => overlay.classList.add('hidden'));
+    video.addEventListener('pause', () => {
+      if (video.currentTime < video.duration) overlay.classList.remove('hidden');
+    });
+    video.addEventListener('ended', () => overlay.classList.remove('hidden'));
+
+    fullscreen.addEventListener('click', async (e) => {
+      e.preventDefault();
+      if (video.requestFullscreen) await video.requestFullscreen();
+      else if (video.webkitEnterFullscreen) video.webkitEnterFullscreen();
+    });
+  </script>
+</body>
+</html>
