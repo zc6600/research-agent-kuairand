@@ -413,7 +413,7 @@ onUnmounted(() => {
 .chapter-exit .continue-button { font-weight: 600; color: #3f4e5c; }
 .continue-button span { margin-left: 12px; color: #be814c; }
 .is-outro .journey-controls { right: 50%; transform: translateX(50%); }
-.journey-subtitle { position: absolute; z-index: 11; left: 50%; bottom: 40px; width: min(780px, calc(100% - 112px)); margin: 0; padding: 9px 20px; border: 1px solid rgba(190, 204, 214, .84); border-radius: 9px; background: rgba(255, 255, 255, .94); box-shadow: 0 8px 22px rgba(35, 53, 76, .08); color: #111217; text-align: center; font-size: 17px; line-height: 1.35; letter-spacing: -.15px; white-space: normal; overflow-wrap: anywhere; transform: translateX(-50%); pointer-events: none; }
+.journey-subtitle { position: absolute; z-index: 11; left: 50%; bottom: 40px; width: min(780px, calc(100% - 112px)); margin: 0; padding: 9px 20px; border: 0; border-radius: 9px; background: transparent; box-shadow: none; color: #000; text-align: center; font-size: 17px; font-weight: 700; line-height: 1.35; letter-spacing: -.15px; white-space: normal; overflow-wrap: anywhere; transform: translateX(-50%); pointer-events: none; }
 .subtitle-fade-enter-active, .subtitle-fade-leave-active { transition: opacity .18s ease, transform .18s ease; }
 .subtitle-fade-enter-from, .subtitle-fade-leave-to { opacity: 0; transform: translateX(-50%) translateY(5px); }
 .film-progress { position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: #e9eff4; }

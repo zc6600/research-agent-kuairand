@@ -176,18 +176,6 @@ const handleKey = (event: KeyboardEvent) => {
   perspective: 1400px;
   transition: opacity .42s ease, transform .42s cubic-bezier(.22,1,.36,1);
 }
-.evidence-hand::after {
-  content: "";
-  position: absolute;
-  left: 36px;
-  right: 22px;
-  bottom: 4px;
-  height: 74px;
-  border-radius: 999px;
-  background: radial-gradient(ellipse at center, rgba(34, 47, 61, .15), transparent 68%);
-  transform: rotate(-1deg);
-  pointer-events: none;
-}
 .evidence-hand.inspecting { opacity: .18; transform: translateX(18px) scale(.95); pointer-events: none; }
 
 .evidence-card {
