@@ -23,11 +23,9 @@ mdc: true
 
 <div class="hero cover-title"><span>SciOdyssey:</span><span>Long-Horizon Autonomous</span><span>ML Research Agent</span></div>
 
-<div class="lead">Autonomous ML discovery through <span class="blue">pure evidence.</span></div>
+<div class="lead">Autonomous by default. <span class="blue">Supervisable by design.</span></div>
 
-<div class="cover-meta mono"><span>PERSISTENT WORLD</span><span>FRESH SCIENTIST</span><span>EVIDENCE FIRST</span></div>
-
-<div class="narrative-route">Problem → System → Experience → Evaluation → Insights</div>
+<div class="cover-meta mono"><span>ROBUST</span><span>USER-FRIENDLY</span><span>BROAD SEARCH</span></div>
 
 <!--
 A lightweight framework for long-running ML research. Its central design gives the research world and the researcher different lifetimes.
