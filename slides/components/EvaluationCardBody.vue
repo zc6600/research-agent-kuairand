@@ -61,44 +61,36 @@ defineProps<{ card: string }>()
     <template v-else-if="card === 'comparison'">
       <div class="comparison-intro">
         <span class="eyeline">PUBLIC VALIDATION / DIRECT AGENT BENCHMARKS</span>
-        <h3>Meta-Scientist beats direct single agents.</h3>
-        <p>Single coding agents without cognitive resets anchor in local parameter tuning; SciOdyssey breaks through to SOTA via persistent world memory.</p>
+        <p>Direct agents improved locally; the meta-scientist layer retained the stronger trajectory and climbed above both controls.</p>
       </div>
 
       <div class="comparison-scoreboard">
         <div class="scoreboard-card">
           <span class="sb-label">DIRECT CODEX</span>
-          <strong class="sb-model">Codex (gpt-5.6-luna)</strong>
+          <strong class="sb-model">Codex · gpt-5.6-luna</strong>
           <div class="sb-score">0.6044533</div>
-          <div class="sb-details">
-            <span>GAUC: 0.6712</span><i>·</i><span>nDCG@5: 0.5377</span>
-          </div>
-          <div class="sb-tag warning">Local tuning limit (22 runs)</div>
+          <div class="sb-tag warning">22-run local tuning limit</div>
         </div>
 
         <div class="scoreboard-card">
           <span class="sb-label">DIRECT ANTIGRAVITY</span>
-          <strong class="sb-model">Antigravity (gemini-3.7-flash)</strong>
+          <strong class="sb-model">Antigravity · gemini-3.7-flash</strong>
           <div class="sb-score">0.6045803</div>
-          <div class="sb-details">
-            <span>GAUC: 0.6714</span><i>·</i><span>nDCG@5: 0.5377</span>
-          </div>
-          <div class="sb-tag warning">Single-agent 2h run (8.56M tokens)</div>
+          <div class="sb-tag warning">single-agent 2h run</div>
         </div>
 
         <div class="scoreboard-card winner">
           <span class="sb-label">OUR AGENT</span>
-          <strong class="sb-model">SciOdyssey (Research Agent)</strong>
+          <strong class="sb-model">SciOdyssey research layer</strong>
           <div class="sb-score winner-score">0.6059363</div>
-          <div class="sb-details">
-            <span>GAUC: 0.6728</span><i>·</i><span>nDCG@5: 0.5390</span>
-          </div>
-          <div class="sb-tag success">+0.00148 vs Codex · +0.00136 vs AGY</div>
+          <div class="sb-tag success">+0.00136–0.00148</div>
         </div>
       </div>
 
-      <EvaluationTokenScoreChart />
-      <p class="boundary">All evaluations run on KuaiRand-Pure official validation split (124,909 rows, 22,377 users) using identical starter_kit/evaluate.py metrics.</p>
+      <div class="comparison-chart-shell">
+        <EvaluationTokenScoreChart />
+      </div>
+      <p class="boundary comparison-boundary">Same KuaiRand-Pure public-validation split and starter-kit evaluator. The chart shows score against recorded LLM-token investment.</p>
     </template>
 
     <template v-else-if="card === 'tokenmaxxing'">
@@ -158,13 +150,9 @@ defineProps<{ card: string }>()
 .card-body th, .card-body td { text-align: left; padding: 6px 10px; border-bottom: 1px solid #e6e6e8; }
 .card-body th { color: #7d7d82; font-size: 11px; font-weight: 650; }
 .card-body .boundary { padding-left: 12px; border-left: 2px solid var(--accent); color: #727981; font-size: 11.5px; line-height: 1.42; margin-top: 10px; }
+
 .recovery-hero strong, .token-hero strong { display: block; margin-top: 6px; color: var(--accent); font-size: 25px; line-height: 1.08; letter-spacing: -.7px; }
 .recovery-hero p, .token-hero p { max-width: 650px; }
-.recovery-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 14px; }
-.recovery-steps > div { padding-top: 10px; border-top: 2px solid color-mix(in srgb, var(--accent) 46%, #e6e6e8); }
-.recovery-steps b { display: block; color: var(--accent); font-size: 11px; letter-spacing: 1px; }
-.recovery-steps strong { display: block; margin-top: 5px; color: var(--ink); font-size: 14.5px; }
-.recovery-steps p { color: #727981; font-size: 11.5px; line-height: 1.35; }
 .two-tier-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px; }
 .tier-card { padding: 12px 14px; border: 1px solid #e6e6e8; border-radius: 12px; background: #fbfcfd; display: flex; flex-direction: column; justify-content: space-between; }
 .tier-badge { font-size: 9.5px; font-weight: 800; letter-spacing: 0.8px; color: var(--accent); }
@@ -176,22 +164,45 @@ defineProps<{ card: string }>()
 .audit-quote { padding: 6px 10px; border-left: 2px solid var(--accent); background: #f3f5f7; border-radius: 0 6px 6px 0; margin: 6px 0 8px; }
 .audit-quote em { font-size: 10px; color: #434a52; font-style: italic; line-height: 1.3; display: block; }
 .tier-meta { font-size: 9.5px; color: #7d7d82; margin-top: auto; padding-top: 6px; border-top: 1px dashed #e6e6e8; }
+
 .comparison-intro { margin-bottom: 8px; }
-.comparison-intro h3 { margin: 2px 0 4px; font-size: 16px; color: var(--ink); font-weight: 750; }
-.comparison-intro p { margin: 0 0 10px; color: #646c74; font-size: 12px; }
-.comparison-scoreboard { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 12px; }
-.scoreboard-card { padding: 9px 12px; border: 1px solid #e6e6e8; border-radius: 10px; background: #fbfcfd; text-align: left; }
-.scoreboard-card.winner { border-color: color-mix(in srgb, var(--accent) 55%, #e6e6e8); background: #fbfdfe; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
-.sb-label { display: block; font-size: 9px; font-weight: 800; letter-spacing: 0.8px; color: #7d7d82; }
+.comparison-intro p {
+  margin: 3px 0 8px;
+  max-width: 850px;
+  color: #646c74;
+  font-size: 12.2px;
+  line-height: 1.32;
+}
+.comparison-scoreboard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 9px;
+}
+.scoreboard-card {
+  min-height: 86px;
+  padding: 9px 12px 8px;
+  border: 1px solid #e6e6e8;
+  border-radius: 10px;
+  background: #fbfcfd;
+  text-align: left;
+}
+.scoreboard-card.winner {
+  border-color: color-mix(in srgb, var(--accent) 55%, #e6e6e8);
+  background: #fbfdfe;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.sb-label { display: block; font-size: 8.7px; font-weight: 800; letter-spacing: 0.8px; color: #7d7d82; }
 .scoreboard-card.winner .sb-label { color: var(--accent); }
-.sb-model { display: block; font-size: 11px; color: var(--ink); margin-top: 2px; }
-.sb-score { font-size: 20px; font-weight: 800; letter-spacing: -0.6px; color: #434a52; margin: 3px 0 2px; }
-.sb-score.winner-score { color: var(--accent); font-size: 21px; }
-.sb-details { font-size: 10px; color: #7d7d82; display: flex; gap: 4px; align-items: center; }
-.sb-details i { font-style: normal; color: #d0d2d6; }
-.sb-tag { margin-top: 5px; font-size: 9px; padding: 2px 6px; border-radius: 4px; display: inline-block; font-weight: 650; }
+.sb-model { display: block; font-size: 10.7px; color: var(--ink); margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sb-score { font-size: 24px; font-weight: 820; letter-spacing: -0.8px; color: #434a52; margin: 3px 0 2px; }
+.sb-score.winner-score { color: var(--accent); font-size: 25px; }
+.sb-tag { margin-top: 3px; font-size: 9px; padding: 2px 6px; border-radius: 4px; display: inline-block; font-weight: 650; }
 .sb-tag.warning { background: #f3f4f6; color: #5a626a; }
 .sb-tag.success { background: #e8f7ed; color: #16803b; }
+.comparison-chart-shell { margin-top: 2px; }
+.comparison-boundary { margin-top: 7px !important; font-size: 10.8px !important; line-height: 1.28 !important; }
+
 .token-hero { padding-bottom: 0; }
 .token-hero-box {
   display: flex;
@@ -203,66 +214,15 @@ defineProps<{ card: string }>()
   border: 1px solid color-mix(in srgb, var(--accent) 24%, #e6e6e8);
   border-radius: 14px;
 }
-.token-hero-left {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  flex-shrink: 0;
-}
-.token-amount {
-  font-size: 42px;
-  line-height: 1;
-  color: var(--accent);
-  letter-spacing: -1.4px;
-  font-weight: 800;
-}
-.token-caption {
-  font-size: 10px;
-  font-weight: 750;
-  color: #7d7d82;
-  letter-spacing: .6px;
-  margin-top: 4px;
-  text-transform: uppercase;
-}
-.token-hero-right {
-  flex: 1;
-  border-left: 1px solid color-mix(in srgb, var(--accent) 20%, #e6e6e8);
-  padding-left: 22px;
-}
-.token-thesis {
-  margin: 0 !important;
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--ink);
-  line-height: 1.35;
-}
-.token-tags {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  margin-top: 6px;
-  font-size: 11px;
-  color: #6b7280;
-  font-family: var(--mono, monospace);
-}
-.token-tags i {
-  font-style: normal;
-  color: #c4c7cc;
-}
-.resource-cards.three-cards {
-  display: grid;
-  grid-template-columns: 1.15fr 1fr 1fr;
-  gap: 14px;
-  margin-top: 16px;
-}
-.resource-cards > div {
-  padding: 15px 16px 13px;
-  border: 1px solid #e6e6e8;
-  border-radius: 14px;
-  background: #fbfcfd;
-  display: flex;
-  flex-direction: column;
-}
+.token-hero-left { display: flex; flex-direction: column; align-items: flex-start; flex-shrink: 0; }
+.token-amount { font-size: 42px; line-height: 1; color: var(--accent); letter-spacing: -1.4px; font-weight: 800; }
+.token-caption { font-size: 10px; font-weight: 750; color: #7d7d82; letter-spacing: .6px; margin-top: 4px; text-transform: uppercase; }
+.token-hero-right { flex: 1; border-left: 1px solid color-mix(in srgb, var(--accent) 20%, #e6e6e8); padding-left: 22px; }
+.token-thesis { margin: 0 !important; font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.35; }
+.token-tags { display: flex; align-items: center; gap: 7px; margin-top: 6px; font-size: 11px; color: #6b7280; font-family: var(--mono, monospace); }
+.token-tags i { font-style: normal; color: #c4c7cc; }
+.resource-cards.three-cards { display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 14px; margin-top: 16px; }
+.resource-cards > div { padding: 15px 16px 13px; border: 1px solid #e6e6e8; border-radius: 14px; background: #fbfcfd; display: flex; flex-direction: column; }
 .resource-label { display: block; color: var(--accent); font-size: 9.5px; font-weight: 800; letter-spacing: 1.1px; }
 .resource-cards strong { display: block; margin-top: 5px; color: var(--ink); font-size: 14px; line-height: 1.25; font-weight: 750; }
 .resource-cards p { margin: 6px 0 0; color: #727981; font-size: 11.5px; line-height: 1.35; }
