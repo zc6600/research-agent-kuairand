@@ -184,7 +184,7 @@
         </div>
 
         <div class="system-principle-box">
-          <p class="system-principle">The next Scientist inherits <b>verified experience</b>, not <b>prior reasoning inertia</b>.</p>
+          <p class="system-principle">The next Scientist inherits <b>verified experience</b>, not <b>prior reasoning momentum</b>.</p>
           <div class="principle-pillars">
             <span>Decoupled Memory</span><i>·</i>
             <span>Audited Persistence</span><i>·</i>
@@ -297,8 +297,8 @@
             <div class="two-tier-blocks">
               <div class="tier-block tier-1">
                 <div class="tier-header">
-                  <span class="tier-badge">TIER 1 · CRASH AUTO-RECOVERY</span>
-                  <span class="tier-receipt">0 human bugfixes</span>
+                  <span class="tier-badge">TIER 1 · RUNTIME SELF-HEALING</span>
+                  <span class="tier-subhead">Crash auto-recovery</span>
                 </div>
                 <div class="tier-flow-mini">
                   <div class="tf-row"><span class="tf-lbl">Failure</span><span>Cycle 1 <code>numpy.float32</code> serialization crash</span></div>
@@ -309,7 +309,7 @@
               <div class="tier-block tier-2">
                 <div class="tier-header">
                   <span class="tier-badge">TIER 2 · META GATEKEEPING</span>
-                  <span class="tier-receipt">Promotion blocked</span>
+                  <span class="tier-subhead">Spurious state rejection</span>
                 </div>
                 <div class="tier-flow-mini">
                   <div class="tf-row"><span class="tf-lbl">False Claim</span><span>Scientist claimed BPR gain on medium proxy</span></div>
@@ -318,54 +318,60 @@
                 </div>
               </div>
             </div>
-            <p class="card-annotation"><b>Empirical receipts preserved:</b> runtime self-healing telemetry and independent code-level proxy audits defend valid state convergence.</p>
+            <p class="card-annotation"><b>Empirical receipts preserved:</b> runtime self-healing telemetry and independent code-level proxy audits.</p>
           </article>
 
-          <!-- Card 04: Resource Accounting (Compact Card in Position 4) -->
-          <article class="evidence-card resource-card compact-resource">
+          <!-- Card 04: Architecture Ablation (Synced with Slide Claim 04) -->
+          <article class="evidence-card control-card compact-ablation">
             <div class="card-head">
               <span class="card-idx">04</span>
-              <span class="card-kicker">RESOURCE ACCOUNTING</span>
+              <span class="card-kicker">ARCHITECTURE ABLATION</span>
             </div>
-            <h3>We are not tokenmaxxing.</h3>
-            <div class="mini-kpi-grid">
-              <div class="m-kpi">
-                <span class="m-kpi-tag">PROJECT COST</span>
-                <span class="m-kpi-num cost-num">~$10</span>
-                <span class="m-kpi-sub">First code to final result</span>
+            <h3>Meta-scientist beats direct agents.</h3>
+            <div class="ablation-steps">
+              <div class="abl-step">
+                <span class="abl-idx">01 · DIRECT</span>
+                <span class="abl-name">Antigravity</span>
+                <b class="abl-score">0.60458</b>
+                <small>Single 2h run</small>
               </div>
-              <div class="m-kpi">
-                <span class="m-kpi-tag">HARDWARE</span>
-                <span class="m-kpi-val">1 × M2</span>
-                <span class="m-kpi-sub">1 consumer laptop</span>
+              <span class="abl-arrow">→</span>
+              <div class="abl-step">
+                <span class="abl-idx">02 · SUBAGENTS</span>
+                <span class="abl-name">+ Subagents</span>
+                <b class="abl-score">0.60472</b>
+                <small>Delegated swarm</small>
               </div>
-              <div class="m-kpi">
-                <span class="m-kpi-tag">COMPUTE</span>
-                <span class="m-kpi-val">0 GPU-hr</span>
-                <span class="m-kpi-sub">100% CPU / NumPy only</span>
-              </div>
-              <div class="m-kpi">
-                <span class="m-kpi-tag">AGENT RUNTIME</span>
-                <span class="m-kpi-val">1h 55m</span>
-                <span class="m-kpi-sub">Wall-clock across 4 cycles</span>
+              <span class="abl-arrow">→</span>
+              <div class="abl-step abl-winner">
+                <span class="abl-idx">03 · META-SCIENTIST</span>
+                <span class="abl-name">Persistent World</span>
+                <b class="abl-score">0.60520</b>
+                <small>+ fresh Scientist</small>
               </div>
             </div>
-            <p class="card-annotation">Performance came from the autonomous research loop, not an expensive compute budget. Full discovery executed on consumer hardware without GPU clusters.</p>
+            <div class="gain-badge purple-badge">+0.00062 organization gain (Gemini 3.7 Flash)</div>
+            <p class="card-annotation">Keep Gemini 3.7 Flash fixed and change only research organization: <b>direct agent (0.6046) → subagents (0.6047) → Meta-Scientist (0.6052)</b>.</p>
           </article>
 
-          <!-- Card 05: Direct Agent Benchmark (Full-Width Bottom Card with Chart) -->
+          <!-- Card 05: Resource Accounting & Benchmark Chart (Claim 05) -->
           <article class="evidence-card benchmark-chart-card">
             <div class="chart-card-header">
               <div class="bch-left">
                 <div class="card-head">
                   <span class="card-idx">05</span>
-                  <span class="card-kicker">DIRECT AGENT BENCHMARK</span>
+                  <span class="card-kicker">RESOURCE ACCOUNTING</span>
                 </div>
-                <h3>Score versus measured LLM-token investment.</h3>
+                <h3>We are not tokenmaxxing. Score vs token investment.</h3>
               </div>
               <div class="bch-right">
-                <span class="chart-tag">KuaiRand-Pure Public Validation</span>
-                <span class="chart-tag-sub">Input + output including cache-read · Whole recorded agent system</span>
+                <div class="chart-resource-pills">
+                  <span class="cr-pill"><b>~$10</b> cost</span>
+                  <span class="cr-pill"><b>1 × M2</b></span>
+                  <span class="cr-pill"><b>0</b> GPU-hr</span>
+                  <span class="cr-pill"><b>1h 55m</b></span>
+                </div>
+                <span class="chart-tag-sub">KuaiRand-Pure · Public validation · Inclusive input+output tokens</span>
               </div>
             </div>
             <div class="token-chart-wrapper">

@@ -544,7 +544,7 @@ function applySystemPolish() {
   const principle = panel.querySelector('.system-principle-box');
   if (principle) {
     principle.innerHTML = `
-      <p class="system-principle">The next Scientist inherits <b>verified experience</b> — not <b>prior reasoning inertia</b>.</p>
+      <p class="system-principle">The next Scientist inherits <b>verified experience</b> — not <b>prior reasoning momentum</b>.</p>
       <div class="principle-pillars"><span>Decoupled Memory</span><i>·</i><span>Audited Persistence</span><i>·</i><span>Fresh Scientific Judgment</span></div>
     `;
   }
