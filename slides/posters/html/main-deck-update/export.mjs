@@ -54,7 +54,7 @@ const problemPolishCss = String.raw`
   opacity: .86;
 }
 .problem .failure-item.failure-inertia::before { border-top-color: var(--rust); }
-.problem .failure-item.failure-context::before { border-top-color: var(--green); }
+.problem .failure-item.failure-context::before { border-top-color: var(--navy); }
 .problem .failure-idx {
   grid-column: 1;
   grid-row: 1;
@@ -71,7 +71,7 @@ const problemPolishCss = String.raw`
   font-size: 10px;
 }
 .problem .failure-inertia .failure-idx { color: var(--rust); border-color: #d4aa93; }
-.problem .failure-context .failure-idx { color: var(--green); border-color: #a6c4b6; }
+.problem .failure-context .failure-idx { color: var(--navy); border-color: #a5c5dc; }
 .problem .failure-text {
   grid-column: 2;
   grid-row: 1;
@@ -295,27 +295,27 @@ const systemPolishCss = String.raw`
   align-items: center;
   gap: 10px;
   min-height: 34px;
-  border-left: 3px solid var(--green);
+  border-left: 3px solid var(--navy);
   border-radius: 0 8px 8px 0;
   padding: 7px 10px;
-  background: #eaf3ed;
+  background: #eaf2f8;
 }
 .system .persistence-return b {
-  color: var(--green);
+  color: var(--navy);
   font-family: var(--mono);
   font-size: 9.2px;
   letter-spacing: .9px;
   flex-shrink: 0;
 }
 .system .persistence-return span {
-  color: #375747;
+  color: #27455c;
   font-size: 10.8px;
   line-height: 1.18;
 }
 .system .world-node {
-  border: 1px solid #c5d9ce;
+  border: 1px solid #c2d6e5;
   border-radius: 10px;
-  background: linear-gradient(180deg, #f9fbf7, #eef6f1);
+  background: linear-gradient(180deg, #f8fbfd, #edf4f9);
   padding: 11px 12px 12px;
 }
 .system .world-head {
@@ -325,13 +325,13 @@ const systemPolishCss = String.raw`
   gap: 12px;
 }
 .system .world-head b {
-  color: var(--green);
+  color: var(--navy);
   font-family: var(--mono);
   font-size: 10px;
   letter-spacing: 1.3px;
 }
 .system .world-head span {
-  color: #5c7468;
+  color: #50697d;
   font-size: 10px;
 }
 .system .world-strata {
@@ -342,7 +342,7 @@ const systemPolishCss = String.raw`
 }
 .system .world-stratum {
   min-height: 92px;
-  border: 1px solid #d7e3d9;
+  border: 1px solid #c8d9e6;
   border-radius: 7px;
   padding: 9px 9px 8px;
   background: rgba(255,255,255,.66);
@@ -358,7 +358,7 @@ const systemPolishCss = String.raw`
   border-radius: 3px;
   padding: 2px 5px;
 }
-.system .world-stratum:nth-child(1) span { color: var(--green); background: #e5f1e9; }
+.system .world-stratum:nth-child(1) span { color: var(--navy); background: #e1edf6; }
 .system .world-stratum:nth-child(2) span { color: var(--amber); background: #f6ead7; }
 .system .world-stratum strong {
   display: block;
