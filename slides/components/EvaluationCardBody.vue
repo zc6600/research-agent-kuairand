@@ -46,21 +46,59 @@ defineProps<{ card: string }>()
           <div>
             <span class="tier-badge">TIER 2 · META EPISTEMIC GATEKEEPING</span>
             <h4>Audit Proxy Integrity & Reject Spurious State</h4>
-            <p class="tier-desc">In run <code>p021</code>, the Scientist claimed BPR beat BCE on a medium proxy. META audited <code>system/data.py</code> line-by-line, caught that train-user sampling with unfiltered validation created <code>UNK</code> user feature distortion and inverted ranking, and blocked State promotion.</p>
+            <p class="tier-desc">In one experiment, the Scientist claimed BPR beat BCE on a medium proxy. META audited <code>system/data.py</code> line-by-line, caught that train-user sampling with unfiltered validation created <code>UNK</code> user feature distortion and inverted ranking, and blocked State promotion.</p>
             <div class="audit-quote">
               <em>"medium mode samples complete train-user groups but scores unfiltered validation... falsifying proxy use... no State adoption or promotion is warranted."</em>
             </div>
           </div>
-          <small class="tier-meta">p021 audit receipt · review-r1.normalized.json · State boundary guarded</small>
+          <small class="tier-meta">Experiment audit receipt · State boundary guarded</small>
         </div>
       </div>
 
-      <p class="boundary">Empirical receipts archived under <code>docs/evidence/meta_audit/</code> (p021 proxy audit & p006 boundary enforcement).</p>
+      <p class="boundary">Empirical receipts archived under <code>docs/evidence/meta_audit/</code> (proxy integrity audit & boundary enforcement).</p>
     </template>
 
     <template v-else-if="card === 'comparison'">
-      <div class="comparison-intro"><span class="eyeline">PUBLIC VALIDATION / RECORDED DIRECT-AGENT CONTROLS</span><p>The retained run demonstrates sustained improvement over the recorded direct Codex control under identical benchmark constraints.</p></div>
+      <div class="comparison-intro">
+        <span class="eyeline">PUBLIC VALIDATION / DIRECT AGENT BENCHMARKS</span>
+        <h3>Meta-Scientist beats direct single agents.</h3>
+        <p>Single coding agents without cognitive resets anchor in local parameter tuning; SciOdyssey breaks through to SOTA via persistent world memory.</p>
+      </div>
+
+      <div class="comparison-scoreboard">
+        <div class="scoreboard-card">
+          <span class="sb-label">DIRECT CODEX</span>
+          <strong class="sb-model">Codex (gpt-5.6-luna)</strong>
+          <div class="sb-score">0.6044533</div>
+          <div class="sb-details">
+            <span>GAUC: 0.6712</span><i>·</i><span>nDCG@5: 0.5377</span>
+          </div>
+          <div class="sb-tag warning">Local tuning limit (22 runs)</div>
+        </div>
+
+        <div class="scoreboard-card">
+          <span class="sb-label">DIRECT ANTIGRAVITY</span>
+          <strong class="sb-model">Antigravity (gemini-3.7-flash)</strong>
+          <div class="sb-score">0.6045803</div>
+          <div class="sb-details">
+            <span>GAUC: 0.6714</span><i>·</i><span>nDCG@5: 0.5377</span>
+          </div>
+          <div class="sb-tag warning">Single-agent 2h run (8.56M tokens)</div>
+        </div>
+
+        <div class="scoreboard-card winner">
+          <span class="sb-label">OUR AGENT</span>
+          <strong class="sb-model">SciOdyssey (Research Agent)</strong>
+          <div class="sb-score winner-score">0.6059363</div>
+          <div class="sb-details">
+            <span>GAUC: 0.6728</span><i>·</i><span>nDCG@5: 0.5390</span>
+          </div>
+          <div class="sb-tag success">+0.00148 vs Codex · +0.00136 vs AGY</div>
+        </div>
+      </div>
+
       <EvaluationTokenScoreChart />
+      <p class="boundary">All evaluations run on KuaiRand-Pure official validation split (124,909 rows, 22,377 users) using identical starter_kit/evaluate.py metrics.</p>
     </template>
 
     <template v-else-if="card === 'tokenmaxxing'">
@@ -108,8 +146,22 @@ defineProps<{ card: string }>()
 .audit-quote { padding: 6px 10px; border-left: 2px solid var(--accent); background: #f3f5f7; border-radius: 0 6px 6px 0; margin: 6px 0 8px; }
 .audit-quote em { font-size: 10px; color: #434a52; font-style: italic; line-height: 1.3; display: block; }
 .tier-meta { font-size: 9.5px; color: #7d7d82; margin-top: auto; padding-top: 6px; border-top: 1px dashed #e6e6e8; }
-.comparison-intro { margin-bottom: 1px; }
-.comparison-intro p { margin: 0; color: #646c74; font-size: 12px; }
+.comparison-intro { margin-bottom: 8px; }
+.comparison-intro h3 { margin: 2px 0 4px; font-size: 16px; color: var(--ink); font-weight: 750; }
+.comparison-intro p { margin: 0 0 10px; color: #646c74; font-size: 12px; }
+.comparison-scoreboard { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 12px; }
+.scoreboard-card { padding: 9px 12px; border: 1px solid #e6e6e8; border-radius: 10px; background: #fbfcfd; text-align: left; }
+.scoreboard-card.winner { border-color: color-mix(in srgb, var(--accent) 55%, #e6e6e8); background: #fbfdfe; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+.sb-label { display: block; font-size: 9px; font-weight: 800; letter-spacing: 0.8px; color: #7d7d82; }
+.scoreboard-card.winner .sb-label { color: var(--accent); }
+.sb-model { display: block; font-size: 11px; color: var(--ink); margin-top: 2px; }
+.sb-score { font-size: 20px; font-weight: 800; letter-spacing: -0.6px; color: #434a52; margin: 3px 0 2px; }
+.sb-score.winner-score { color: var(--accent); font-size: 21px; }
+.sb-details { font-size: 10px; color: #7d7d82; display: flex; gap: 4px; align-items: center; }
+.sb-details i { font-style: normal; color: #d0d2d6; }
+.sb-tag { margin-top: 5px; font-size: 9px; padding: 2px 6px; border-radius: 4px; display: inline-block; font-weight: 650; }
+.sb-tag.warning { background: #f3f4f6; color: #5a626a; }
+.sb-tag.success { background: #e8f7ed; color: #16803b; }
 .token-hero { padding-bottom: 0; }
 .token-hero strong { font-size: 40px; letter-spacing: -1.4px; margin-top: 6px; }
 .token-hero p { margin: 8px 0 0; font-size: 13.5px; }
