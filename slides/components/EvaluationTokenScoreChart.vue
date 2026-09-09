@@ -1,7 +1,7 @@
 <template>
   <div class="embedded-token-chart" aria-label="Architecture comparison with aligned Gemini model family">
     <svg class="token-chart" viewBox="0 0 1150 280" role="img" aria-label="Architecture ablation bar chart" aria-describedby="embedded-token-chart-desc">
-      <desc id="embedded-token-chart-desc">Bar chart comparing Direct Antigravity at 0.6045803, Antigravity with delegated subagents at 0.6047213, and Meta-Scientist over Antigravity at 0.6052000.</desc>
+      <desc id="embedded-token-chart-desc">Bar chart comparing Direct Antigravity at 0.6046, Antigravity with delegated subagents at 0.6047, and Meta-Scientist over Antigravity at 0.6052.</desc>
       <rect class="chart-paper" x="0" y="0" width="1150" height="280" rx="18" />
 
       <rect class="chart-plot" x="96" y="36" width="958" height="240" rx="5" />
@@ -14,11 +14,11 @@
       </g>
 
       <g class="chart-y-labels">
-        <text x="88" y="254" text-anchor="end">0.6045000</text>
-        <text x="88" y="201" text-anchor="end">0.6047000</text>
-        <text x="88" y="147" text-anchor="end">0.6049000</text>
-        <text x="88" y="94" text-anchor="end">0.6051000</text>
-        <text x="88" y="40" text-anchor="end">0.6053000</text>
+        <text x="88" y="254" text-anchor="end">0.6045</text>
+        <text x="88" y="201" text-anchor="end">0.6047</text>
+        <text x="88" y="147" text-anchor="end">0.6049</text>
+        <text x="88" y="94" text-anchor="end">0.6051</text>
+        <text x="88" y="40" text-anchor="end">0.6053</text>
       </g>
 
       <g class="bars">
@@ -29,13 +29,13 @@
 
       <g class="bar-labels">
         <text class="label-main" x="246" y="126" text-anchor="middle">Direct Antigravity</text>
-        <text class="label-score" x="246" y="159" text-anchor="middle">0.6045803</text>
+        <text class="label-score" x="246" y="159" text-anchor="middle">0.6046</text>
 
         <text class="label-main" x="575" y="92" text-anchor="middle">Antigravity + subagents</text>
-        <text class="label-score" x="575" y="126" text-anchor="middle">0.6047213</text>
+        <text class="label-score" x="575" y="126" text-anchor="middle">0.6047</text>
 
         <text class="label-main label-retained" x="904" y="19" text-anchor="middle">Meta-Scientist + Antigravity</text>
-        <text class="label-score label-retained" x="904" y="52" text-anchor="middle">0.6052000</text>
+        <text class="label-score label-retained" x="904" y="52" text-anchor="middle">0.6052</text>
       </g>
 
       <g class="axis-labels">

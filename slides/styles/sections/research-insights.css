@@ -69,6 +69,57 @@
 .research-insight-page .relay-memory { border-top:1px solid #c8c0dc; margin-top:7px; padding-top:6px; font-size:16px; color:#686f79; text-align:center; }
 .research-insight-page .relay-memory > span { color:#9960e3; font-size:20px; vertical-align:-1px; margin-right:5px; }
 
+/* Model-diversity page: keep the search-style contrast compact, so the retained
+   sequence and score comparison carry the visual emphasis. */
+.research-insight-page:has(.model-choice-result) h1 { font-size:31px; margin:11px 0 5px; }
+.research-insight-page:has(.model-choice-result) .insight-deck { font-size:15px; }
+.research-insight-page:has(.model-choice-result) .search-pair { gap:24px; margin-top:10px; }
+.research-insight-page:has(.model-choice-result) .search-study { padding:7px 12px 8px; }
+.research-insight-page:has(.model-choice-result) h2 { font-size:17px; }
+.research-insight-page:has(.model-choice-result) .study-heading span { font-size:10px; }
+.research-insight-page:has(.model-choice-result) .search-study svg { height:65px; margin:4px 0 2px; }
+.research-insight-page:has(.model-choice-result) .search-study p { font-size:11.5px; line-height:1.23; }
+.research-insight-page:has(.model-choice-result) .model-choice-result { min-height:145px; padding-top:24px; }
+.research-insight-page:has(.model-choice-result) .model-choice-copy strong { font-size:24px; }
+.research-insight-page:has(.model-choice-result) .scientist-relay { margin-top:13px; width:500px; }
+.research-insight-page:has(.model-choice-result) .relay-models { font-size:27px; }
+.research-insight-page:has(.model-choice-result) .relay-memory { margin-top:9px; padding-top:8px; font-size:18px; }
+.research-insight-page:has(.model-choice-result) .relay-memory > span { font-size:23px; }
+.research-insight-page:has(.model-choice-result) .comparison-metric { font-size:17px; }
+.research-insight-page:has(.model-choice-result) .model-choice-score > span { font-size:17px; }
+.research-insight-page:has(.model-choice-result) .model-choice-score strong { font-size:49px; }
+
+/* Model diversity is a two-act story: a compact role comparison above, then
+   the retained research sequence and measured outcome as the main composition. */
+.research-insight-page.model-diversity-page h1 { font-size:32px; margin:12px 0 4px; }
+.research-insight-page.model-diversity-page .insight-deck { font-size:15px; }
+.model-diversity-page .model-search-summary { display:grid; grid-template-columns:.72fr 1fr 1fr; gap:16px; align-items:stretch; margin-top:13px; padding:0; }
+.model-diversity-page .search-summary-intro { align-self:center; padding-right:16px; }
+.model-diversity-page .search-summary-intro span,.model-diversity-page .model-outcome-intro > span { color:var(--purple); font-family:var(--deck-mono); font-size:9px; font-weight:700; letter-spacing:1px; }
+.model-diversity-page .search-summary-intro p { margin:5px 0 0; color:#737a84; font-size:12px; line-height:1.3; }
+.model-diversity-page .model-search-study { --study-color:#279fdb; --study-light:#d3e9f4; min-width:0; padding:9px 12px 8px; border:1px solid #dfe4e8; border-top:3px solid var(--study-color); border-radius:12px; background:rgba(255,255,255,.96); box-shadow:0 6px 16px rgba(61,75,91,.04); }
+.model-diversity-page .breadth-study { --study-color:#9960e3; --study-light:#e4d7f5; }
+.model-diversity-page .model-study-heading { display:grid; grid-template-columns:auto 1fr auto; align-items:baseline; gap:7px; }
+.model-diversity-page .model-study-heading > span { color:var(--study-color); font-family:var(--deck-mono); font-size:8px; font-weight:700; letter-spacing:.75px; }
+.model-diversity-page .model-study-heading h2 { margin:0; color:var(--ink); font-size:15px; font-weight:700; letter-spacing:-.25px; }
+.model-diversity-page .model-study-heading em { color:#7b828b; font-size:10px; font-style:normal; white-space:nowrap; }
+.model-diversity-page .model-search-study svg { display:block; width:100%; height:54px; margin-top:5px; }
+.model-diversity-page .model-outcome { min-height:0; flex:1; display:flex; flex-direction:column; justify-content:space-between; margin-top:18px; padding:16px 22px 17px; border:1px solid #dfe4e8; border-top:3px solid var(--green); border-radius:15px; background:rgba(255,255,255,.96); box-shadow:0 8px 20px rgba(61,75,91,.055); }
+.model-diversity-page .model-outcome-intro { display:flex; align-items:baseline; justify-content:space-between; gap:24px; }
+.model-diversity-page .model-outcome-intro h2 { margin:0; max-width:620px; color:var(--ink); font-size:19px; font-weight:700; letter-spacing:-.45px; line-height:1.15; }
+.model-diversity-page .model-outcome-main { display:grid; grid-template-columns:1.08fr .92fr; gap:38px; align-items:end; margin-top:14px; }
+.model-diversity-page .model-sequence { padding-bottom:7px; }
+.model-diversity-page .scientist-relay { width:auto; margin:0; }
+.model-diversity-page .relay-models { font-size:24px; }
+.model-diversity-page .relay-memory { margin-top:9px; padding-top:7px; font-size:14px; }
+.model-diversity-page .relay-memory > span { font-size:18px; }
+.model-diversity-page .model-score-comparison { display:grid; grid-template-columns:1fr 1.24fr; gap:7px 20px; }
+.model-diversity-page .comparison-metric { grid-column:1/-1; color:#707882; font-size:12px; }
+.model-diversity-page .model-choice-score { min-width:0; padding-top:7px; border-top:1px solid #dfe4e8; text-align:left; }
+.model-diversity-page .model-choice-score > span { display:block; margin:0 0 4px; color:#6e7680; font-size:12px; }
+.model-diversity-page .model-choice-score strong { display:block; color:var(--green); font-size:35px; font-weight:700; letter-spacing:-1.15px; line-height:1; }
+.model-diversity-page .model-choice-score.single-model strong { color:#7b838d; }
+
 /* Insights uses purple as its chapter marker. Blue remains reserved for the
    operational path, so the engineering field note reads as one section. */
 .slidev-layout:has(.fieldnote-grid) .fieldnote-card:not(.fieldnote-remote) {

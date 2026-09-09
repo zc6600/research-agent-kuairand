@@ -20,7 +20,7 @@
     scientist: {
       kicker: 'SCIENTIST / ONE TRAJECTORY',
       title: 'Fresh reasoning is a feature, not a reset button.',
-      body: 'The Scientist decides what scientific question matters, how to implement the experiment, and whether to continue or pivot. Its context is intentionally local; its evidence is handed back to the world.',
+      body: 'The Scientist decides what scientific question matters, how to implement the experiment, and whether to continue or pivot. Its context is local; its evidence returns to the world.',
       mark: '01',
     },
     meta: {
@@ -120,18 +120,15 @@
       button.setAttribute('aria-selected', String(isActive));
     });
     cycleId.textContent = cycle.id;
-    cycleModel.innerHTML = `<i class="model-dot ${cycle.modelClass}"></i> Scientist: <b>${cycle.model}</b><em> · META: gemini-3.7-flash</em>`;
+    cycleModel.innerHTML = '<i class="model-dot ' + cycle.modelClass + '"></i> Scientist: <b>' + cycle.model + '</b><em> · META: gemini-3.7-flash</em>';
     cycleTitle.textContent = cycle.title;
-    cycleDescription.innerHTML = cycle.description.replace(cycle.result.replace('Full primary ', ''), `<strong>${cycle.result.replace('Full primary ', '')}</strong>`);
+    cycleDescription.textContent = cycle.description;
     cycleOutput.textContent = cycle.output;
     cycleResult.textContent = cycle.result;
-    cycleProgress.style.width = `${Number(cycleNumber) * 25}%`;
+    cycleProgress.style.width = String(Number(cycleNumber) * 25) + '%';
   };
 
   cycleButtons.forEach((button) => {
     button.addEventListener('click', () => updateCycle(button.dataset.cycleButton));
   });
-
-  const year = document.querySelector('#year');
-  if (year) year.textContent = String(new Date().getFullYear());
 })();

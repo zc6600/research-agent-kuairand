@@ -246,6 +246,22 @@ The transition is a design explanation, not experimental proof of causal attribu
 
 ---
 
+<div class="visual-kicker orange">02 / SYSTEM · RESEARCH PHILOSOPHY</div>
+
+# Principles of autonomous science
+
+<ResearchPhilosophy />
+
+<!--
+[Sources]
+- ../assets/project-template/research_record/RESEARCH_METHOD.md — Ground the world before depending on it; cheap faithful evidence; shared memory roles.
+- ../assets/project-template/research_record/schema/ENGINEERING.md — Reusable engineering facts, runtime budgets, and diagnostic entrypoints.
+- ../competitions/kuairand/OPTIMIZE.md — Protecting Full evaluations, faithful hypothesis gates, and fail-fast heuristics.
+- ../docs/FINAL_REPORT.md — Operational self-healing, cognitive falsification, and selective persistence across Scientist resets.
+-->
+
+---
+
 <ExperienceJourney />
 
 <!--

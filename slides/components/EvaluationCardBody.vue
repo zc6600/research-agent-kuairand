@@ -1,11 +1,15 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed } from 'vue'
 import EvaluationScoreBars from './EvaluationScoreBars.vue'
 import EvaluationTrajectory from './EvaluationTrajectory.vue'
 import EvaluationTokenScoreChart from './EvaluationTokenScoreChart.vue'
 
-defineProps<{ card: string }>()
-const comparisonPage = ref(0)
+const props = withDefaults(defineProps<{ card: string; comparisonPage?: 0 | 1 }>(), { comparisonPage: 0 })
+const emit = defineEmits<{ 'update:comparisonPage': [page: 0 | 1] }>()
+const comparisonPage = computed(() => props.comparisonPage)
+const selectComparisonPage = (page: 0 | 1) => {
+  emit('update:comparisonPage', page)
+}
 </script>
 
 <template>
@@ -100,7 +104,7 @@ const comparisonPage = ref(0)
             :class="{ active: comparisonPage === 0 }"
             role="tab"
             :aria-selected="comparisonPage === 0"
-            @click="comparisonPage = 0"
+            @click="selectComparisonPage(0)"
           >
             <span>01</span> ABLATION BENCHMARK
           </button>
@@ -110,9 +114,9 @@ const comparisonPage = ref(0)
             :class="{ active: comparisonPage === 1 }"
             role="tab"
             :aria-selected="comparisonPage === 1"
-            @click="comparisonPage = 1"
+            @click="selectComparisonPage(1)"
           >
-            <span>02</span> TRAJECTORY DIVERGENCE · 01 vs 03
+            <span>02</span> TRAJECTORY DIVERGENCE
           </button>
         </div>
         <span class="comparison-tab-hint mono">
@@ -155,150 +159,94 @@ const comparisonPage = ref(0)
 
       <template v-else>
         <div class="comp-story-container">
-          <!-- TWO-COLUMN FACTUAL TRAJECTORY BREAKDOWN -->
-          <div class="factual-h2h-grid">
-            <!-- 01 DIRECT FACTUAL TRAJECTORY -->
-            <div class="factual-card direct-card">
-              <div class="factual-card-header">
-                <div>
-                  <span class="factual-badge blue mono">01 · DIRECT AGENT TRAJECTORY</span>
-                  <h4>Horizontal Paradigm Hopping</h4>
-                </div>
-                <div class="factual-score-box">
-                  <strong class="mono">0.6045803</strong>
-                  <small class="mono">2h UNBROKEN RUN</small>
-                </div>
-              </div>
+          <div class="trajectory-deck-grid">
+            <!-- LEFT COLUMN: 01 DIRECT AGENT -->
+            <div class="trajectory-col direct-col">
+              <div class="trajectory-col-kicker mono">01 · DIRECT AGENT (2h UNBROKEN RUN)</div>
+              <h3>Mechanism pivots</h3>
+              <div class="trajectory-visual direct-visual">
+                <svg class="deck-connections" viewBox="0 0 390 170" preserveAspectRatio="none" aria-hidden="true">
+                  <defs>
+                    <marker id="deck-arrow-blue" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="userSpaceOnUse">
+                      <path d="M0,1 L5,3 L0,5 Z" fill="#60a5fa" />
+                    </marker>
+                  </defs>
+                  <!-- Bouncing / hopping zigzag lines with arrows -->
+                  <line x1="66" y1="106" x2="86" y2="44" stroke="#93c5fd" stroke-width="1.6" stroke-dasharray="3 3" marker-end="url(#deck-arrow-blue)"></line>
+                  <line x1="146" y1="44" x2="166" y2="106" stroke="#93c5fd" stroke-width="1.6" stroke-dasharray="3 3" marker-end="url(#deck-arrow-blue)"></line>
+                  <line x1="220" y1="106" x2="242" y2="44" stroke="#93c5fd" stroke-width="1.6" stroke-dasharray="3 3" marker-end="url(#deck-arrow-blue)"></line>
+                  <line x1="298" y1="44" x2="318" y2="106" stroke="#93c5fd" stroke-width="1.6" stroke-dasharray="3 3" marker-end="url(#deck-arrow-blue)"></line>
+                </svg>
 
-              <div class="factual-steps">
-                <div class="step-row">
-                  <span class="step-idx mono">01</span>
-                  <div class="step-info">
-                    <strong>FM Baseline</strong>
-                    <span>5-field tabular reference baseline</span>
-                  </div>
-                  <span class="step-metric mono">0.6016000</span>
-                </div>
-                <div class="step-row">
-                  <span class="step-idx mono">02</span>
-                  <div class="step-info">
-                    <strong>8-Field Interaction</strong>
-                    <span>Cross-features added; gains quickly plateaued</span>
-                  </div>
-                  <span class="step-metric mono">0.6038000</span>
-                </div>
-                <div class="step-row pivot">
-                  <span class="step-idx mono">03</span>
-                  <div class="step-info">
-                    <strong>BPR Pairwise Ranking</strong>
-                    <span>Plateaued → abandoned FM entirely; pivoted to ranking</span>
-                  </div>
-                  <span class="step-metric drop mono">0.6021000</span>
-                </div>
-                <div class="step-row pivot">
-                  <span class="step-idx mono">04</span>
-                  <div class="step-info">
-                    <strong>DeepFM Neural Net</strong>
-                    <span>BPR dropped → abandoned ranking; pivoted to MLP/neural</span>
-                  </div>
-                  <span class="step-metric mono">0.6045803</span>
-                </div>
-                <div class="step-row pivot">
-                  <span class="step-idx mono">05</span>
-                  <div class="step-info">
-                    <strong>Multi-Task DeepFM</strong>
-                    <span>DeepFM plateaued → added multi-task heads; regressed</span>
-                  </div>
-                  <span class="step-metric drop mono">0.6043000</span>
-                </div>
-              </div>
+                <div class="deck-node direct-node node-d1">FM<small>0.6016</small></div>
+                <div class="deck-node direct-node node-d2">8-field<br>Poly<small>0.6038</small></div>
+                <div class="deck-node direct-node node-d3 drop">BPR<br>loss<small>0.6021</small></div>
+                <div class="deck-node direct-node node-d4">DeepFM<small>0.60458</small></div>
+                <div class="deck-node direct-node node-d5 drop">MT-DeepFM<small>0.6043</small></div>
 
-              <div class="factual-card-footer blue">
-                <span class="foot-tag mono">FACT</span>
-                <span>Pivoted across 5 disjoint model classes in 2h. Zero hyperparameter or learning rate tuning.</span>
+                <div class="deck-visual-label mono">HORIZONTAL HOPPING · 5 PARADIGMS · NEVER GOES DEEP</div>
               </div>
+              <p class="trajectory-copy">Switches model classes when gains stall; confuses variety with exploration.</p>
             </div>
 
-            <!-- 03 META-SCIENTIST FACTUAL TRAJECTORY -->
-            <div class="factual-card meta-card">
-              <div class="factual-card-header">
-                <div>
-                  <span class="factual-badge purple mono">03 · META-SCIENTIST TRAJECTORY</span>
-                  <h4>Vertical DIN Deep-Dive</h4>
-                </div>
-                <div class="factual-score-box">
-                  <strong class="mono purple">0.6052000</strong>
-                  <small class="mono purple">2 CYCLES · RESET</small>
-                </div>
-              </div>
+            <!-- RIGHT COLUMN: 03 META-SCIENTIST -->
+            <div class="trajectory-col meta-col">
+              <div class="trajectory-col-kicker mono">03 · META-SCIENTIST (2 CYCLES · WINNER)</div>
+              <h3>Pivot, then vertical deep-dive</h3>
+              <div class="trajectory-visual meta-visual">
+                <svg class="deck-connections" viewBox="0 0 390 170" preserveAspectRatio="none" aria-hidden="true">
+                  <defs>
+                    <marker id="deck-arrow-purple" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="userSpaceOnUse">
+                      <path d="M0,1 L5,3 L0,5 Z" fill="#a855f7" />
+                    </marker>
+                    <marker id="deck-arrow-dive" markerWidth="7" markerHeight="7" refX="3.5" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+                      <path d="M1,0 L3.5,5 L6,0 Z" fill="#a855f7" />
+                    </marker>
+                  </defs>
+                  <!-- 1. Horizontal direction pivot arrow -->
+                  <line x1="118" y1="36" x2="138" y2="36" stroke="#c084fc" stroke-width="2" marker-end="url(#deck-arrow-purple)"></line>
 
-              <div class="factual-steps">
-                <div class="step-row">
-                  <span class="step-idx purple mono">C1</span>
-                  <div class="step-info">
-                    <strong>Sequence Signal Confirmed</strong>
-                    <span>User watch sequence proven dominant driver</span>
-                  </div>
-                  <span class="step-metric purple mono">SIGNAL</span>
-                </div>
-                <div class="step-row handoff">
-                  <span class="step-idx purple mono">↻</span>
-                  <div class="step-info">
-                    <strong>Meta Handoff + Fresh Reset</strong>
-                    <span>Insight saved in <code>State.md</code>; fresh Scientist</span>
-                  </div>
-                  <span class="step-metric purple mono">RESET</span>
-                </div>
-                <div class="step-row">
-                  <span class="step-idx purple mono">E7</span>
-                  <div class="step-info">
-                    <strong>Multi-Facet DIN</strong>
-                    <span>Target Attention over video, author & tags</span>
-                  </div>
-                  <span class="step-metric purple mono">0.6048100</span>
-                </div>
-                <div class="step-row peak">
-                  <span class="step-idx purple mono">E8</span>
-                  <div class="step-info">
-                    <strong>Item DIN + Cosine Anneal</strong>
-                    <span>Item sequence pooling & LR decay (Peak)</span>
-                  </div>
-                  <span class="step-metric peak mono">0.6052000</span>
-                </div>
-                <div class="step-row">
-                  <span class="step-idx purple mono">E9</span>
-                  <div class="step-info">
-                    <strong>DualSeq Attention</strong>
-                    <span>Decoupled short vs long-term sequence</span>
-                  </div>
-                  <span class="step-metric purple mono">GAUC 0.6725</span>
-                </div>
-              </div>
+                  <!-- 2. Vertical dive into mechanism depth -->
+                  <line x1="197" y1="58" x2="197" y2="90" stroke="#a855f7" stroke-width="2.5" marker-end="url(#deck-arrow-dive)"></line>
 
-              <div class="factual-card-footer purple">
-                <span class="foot-tag purple mono">FACT</span>
-                <span>Locked onto 1 proven hypothesis. 4 disciplined iterations pushing Target Attention from coarse to fine.</span>
+                  <!-- 3. Drive forward to global peak -->
+                  <line x1="256" y1="117" x2="274" y2="117" stroke="#a855f7" stroke-width="2" marker-end="url(#deck-arrow-purple)"></line>
+                </svg>
+
+                <div class="deck-node meta-node node-m1">
+                  <strong>Cycle 1 Explore</strong>
+                  <small>FM Baseline · 0.6030</small>
+                </div>
+
+                <div class="deck-node meta-node node-m2 pivot-node">
+                  <span class="pivot-kicker mono">1. PIVOT</span>
+                  <strong>↻ State Handoff</strong>
+                  <small>Prunes Noise · Locks DIN</small>
+                </div>
+
+                <div class="dive-pill mono">▼ 2. DIVE IN</div>
+
+                <div class="deck-node meta-node node-m3">
+                  <strong>E007 Multi-Facet</strong>
+                  <small>DIN Architecture · 0.6048</small>
+                </div>
+
+                <div class="deck-node meta-node node-m4 winner">
+                  <strong class="winner-title mono">E008 ★ WINNER</strong>
+                  <span class="winner-name">DIN + Cosine Target</span>
+                  <div class="winner-score mono">0.6052000</div>
+                </div>
+
+                <div class="deck-visual-label purple mono">PIVOT TO DIN THESIS → DIVE IN TO 0.6052 PEAK</div>
               </div>
+              <p class="trajectory-copy">Pivots away from dead ends in Cycle 1, then dives deep into Target Attention to unlock the global optimum.</p>
             </div>
           </div>
 
-          <!-- SUMMARY BAR: WHY HISTORY SHAPES SEARCH -->
-          <div class="factual-summary-box">
-            <div class="summary-head mono">
-              <span class="summary-label">SUMMARY</span>
-              <strong>HOW HISTORY SHAPES SEARCH</strong>
-            </div>
-            <div class="summary-body">
-              <div class="summary-side">
-                <span class="side-pill blue mono">01 DIRECT AGENT</span>
-                <p><b>Context as Cognitive Baggage:</b> In an unbroken thread, past failure traces create cognitive inertia. Stalled gains prompt frantic jumps to new model classes rather than diagnosing bottlenecks.</p>
-              </div>
-              <div class="summary-divider"></div>
-              <div class="summary-side">
-                <span class="side-pill purple mono">03 META-SCIENTIST</span>
-                <p><b>Context as Scientific Leverage:</b> Externalizing memory into <code>State.md</code> frees the fresh Scientist from historical code debt, enabling focused, vertical refinement to peak score.</p>
-              </div>
-            </div>
+          <!-- BOTTOM TAKEAWAY BAR -->
+          <div class="trajectory-takeaway-bar">
+            <span class="takeaway-badge mono">CORE TAKEAWAY</span>
+            <p>Same model family (Gemini 3.7 Flash). In an unbroken context, history triggers reactive pivots; in a Meta-Scientist loop, history provides scientific leverage.</p>
           </div>
         </div>
       </template>
@@ -423,270 +371,231 @@ const comparisonPage = ref(0)
 .comp-story-container {
   display: flex;
   flex-direction: column;
-  gap: 7px;
-}
-.factual-h2h-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 10px;
+  height: 100%;
+}
+.trajectory-deck-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
   align-items: stretch;
-  width: 100%;
-  box-sizing: border-box;
 }
-.factual-card {
-  padding: 8px 11px 7px;
-  border: 1px solid #e6e6e8;
+.trajectory-col {
+  display: flex;
+  flex-direction: column;
   border-radius: 12px;
+  border: 1px solid #e6e8eb;
   background: #fbfcfd;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-width: 0;
+  padding: 10px 14px 9px;
   box-sizing: border-box;
 }
-.factual-card.direct-card {
-  border-color: #dbe4f0;
+.trajectory-col.direct-col {
+  border-top: 3.5px solid #5d7fbd;
 }
-.factual-card.meta-card {
-  border-color: color-mix(in srgb, var(--accent) 45%, #e6e6e8);
-  background: linear-gradient(180deg, #ffffff, #fcfaff);
-  box-shadow: 0 2px 10px rgba(166,108,255,.05);
+.trajectory-col.meta-col {
+  border-top: 3.5px solid var(--accent);
+  background: linear-gradient(180deg, #ffffff, #faf7fe);
+  box-shadow: 0 4px 18px rgba(166, 108, 255, 0.06);
 }
-.factual-card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 4px;
-  padding-bottom: 4px;
-  border-bottom: 1px solid #eef1f4;
-}
-.factual-badge {
-  font-size: 8px;
-  font-weight: 800;
-  letter-spacing: .5px;
-  display: block;
-}
-.factual-badge.blue {
-  color: #5d7fbd;
-}
-.factual-badge.purple {
-  color: var(--accent);
-}
-.factual-card-header h4 {
-  margin: 1px 0 0;
-  font-size: 11.5px;
-  font-weight: 750;
-  color: var(--ink);
-}
-.factual-score-box {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-.factual-score-box strong {
-  font-size: 16px;
-  font-weight: 800;
-  color: #434a52;
-  letter-spacing: -.5px;
-  line-height: 1.1;
-}
-.factual-score-box strong.purple {
-  color: var(--accent);
-}
-.factual-score-box small {
-  font-size: 7.5px;
-  font-weight: 750;
-  color: #9aa0a6;
-  letter-spacing: .4px;
-}
-.factual-score-box small.purple {
-  color: color-mix(in srgb, var(--accent) 70%, #9aa0a6);
-}
-.factual-steps {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  margin: 2px 0 4px;
-}
-.step-row {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding: 3px 6px;
-  background: #f4f6f8;
-  border-radius: 6px;
-}
-.direct-card .step-row {
-  border-left: 2px solid #5d7fbd;
-}
-.direct-card .step-row.pivot {
-  border-left-color: #e98238;
-}
-.meta-card .step-row {
-  background: #f7f3fd;
-  border-left: 2px solid color-mix(in srgb, var(--accent) 60%, transparent);
-}
-.meta-card .step-row.handoff {
-  background: #f1eafe;
-  border-left-color: var(--accent);
-}
-.meta-card .step-row.peak {
-  background: #eedeff;
-  border-left: 2.5px solid var(--accent);
-  box-shadow: 0 1px 4px rgba(166,108,255,.12);
-}
-.step-idx {
-  font-size: 7.5px;
-  font-weight: 800;
-  color: #5d7fbd;
-  width: 14px;
-  flex-shrink: 0;
-  text-align: center;
-}
-.step-idx.purple {
-  color: var(--accent);
-}
-.step-info {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  align-items: baseline;
-  gap: 5px;
-}
-.step-info strong {
-  font-size: 9.6px;
-  font-weight: 750;
-  color: var(--ink);
-  white-space: nowrap;
-}
-.step-info span {
+.trajectory-col-kicker {
   font-size: 8.5px;
-  color: #727981;
-  white-space: nowrap;
+  font-weight: 800;
+  letter-spacing: .7px;
+  color: #7d7d82;
+  margin-bottom: 2px;
+}
+.direct-col .trajectory-col-kicker {
+  color: #4a6fa5;
+}
+.meta-col .trajectory-col-kicker {
+  color: var(--accent);
+}
+.trajectory-col h3 {
+  margin: 0 0 7px;
+  font-size: 15px;
+  font-weight: 750;
+  color: var(--ink);
+  letter-spacing: -.3px;
+  line-height: 1.2;
+}
+.trajectory-visual {
+  position: relative;
+  height: 170px;
+  background: #ffffff;
+  border: 1px solid #eef1f5;
+  border-radius: 9px;
   overflow: hidden;
-  text-overflow: ellipsis;
 }
-.step-info code {
-  font-size: 8px;
-  background: rgba(0,0,0,.04);
-  padding: 0 2px;
-  border-radius: 2px;
+.meta-col .trajectory-visual {
+  background: #ffffff;
+  border-color: #ede6fa;
 }
-.step-metric {
-  font-size: 8.5px;
-  font-weight: 750;
-  color: #4a5159;
-  flex-shrink: 0;
+.deck-connections {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
 }
-.step-metric.drop {
-  color: #d9534f;
-}
-.step-metric.purple {
-  color: #6e40b8;
-}
-.step-metric.peak {
+.deck-node {
+  position: absolute;
+  z-index: 2;
+  background: #ffffff;
+  border: 1px solid #d0d7de;
+  border-radius: 7px;
+  padding: 4px 6px;
+  text-align: center;
   font-size: 9.5px;
-  font-weight: 800;
-  color: var(--accent);
-}
-.factual-card-footer {
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--ink);
+  box-shadow: 0 2px 5px rgba(27, 31, 36, 0.04);
   display: flex;
-  align-items: baseline;
-  gap: 5px;
-  padding: 3px 6px;
-  border-radius: 5px;
-  font-size: 8.4px;
-  line-height: 1.25;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
-.factual-card-footer.blue {
-  background: #ebf1fa;
-  color: #3b5a88;
+.deck-node small {
+  display: block;
+  font-size: 8px;
+  font-weight: 600;
+  color: #656d76;
+  margin-top: 2px;
+  font-family: var(--deck-mono);
 }
-.factual-card-footer.purple {
-  background: #f3ecfe;
-  color: #563391;
+.deck-node.direct-node {
+  border-color: #cbd5e1;
 }
-.foot-tag {
+.deck-node.direct-node.drop {
+  border-color: #fca5a5;
+  background: #fff8f8;
+}
+.deck-node.direct-node.drop small {
+  color: #dc2626;
+}
+.deck-node.meta-node {
+  border-color: #ddd6fe;
+}
+.deck-node.meta-node.pivot-node {
+  border-color: #c084fc;
+  background: #fcfaff;
+}
+.pivot-kicker {
   font-size: 7px;
   font-weight: 800;
+  letter-spacing: .5px;
+  color: var(--accent);
+  background: rgba(166, 108, 255, 0.12);
   padding: 1px 4px;
   border-radius: 3px;
-  background: #5d7fbd;
-  color: #fff;
-  flex-shrink: 0;
+  margin-bottom: 2px;
+  display: inline-block;
 }
-.foot-tag.purple {
-  background: var(--accent);
+.deck-node.meta-node.winner {
+  border: 1.5px solid var(--accent);
+  background: linear-gradient(135deg, #ffffff, #f5edff);
+  box-shadow: 0 3px 10px rgba(166, 108, 255, 0.16);
+  padding: 3px 5px;
+  z-index: 3;
 }
-.factual-summary-box {
-  padding: 7px 12px;
-  border-radius: 10px;
-  background: #fbf9fe;
-  border: 1px solid color-mix(in srgb, var(--accent) 24%, #e6e6e8);
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.summary-head {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-.summary-label {
-  font-size: 7px;
-  font-weight: 800;
-  color: #fff;
-  background: var(--accent);
-  padding: 1px 5px;
-  border-radius: 3px;
-  letter-spacing: .5px;
-}
-.summary-head strong {
+.deck-node.meta-node.winner .winner-title {
   font-size: 8.5px;
   font-weight: 800;
   color: var(--accent);
-  letter-spacing: .6px;
+  line-height: 1.1;
 }
-.summary-body {
-  display: grid;
-  grid-template-columns: 1fr 1px 1fr;
-  align-items: center;
-  gap: 12px;
+.deck-node.meta-node.winner .winner-name {
+  font-size: 7.8px;
+  font-weight: 650;
+  color: var(--ink);
+  line-height: 1.15;
+  white-space: nowrap;
 }
-.summary-divider {
-  height: 100%;
-  background: color-mix(in srgb, var(--accent) 18%, #e6e6e8);
-}
-.summary-side {
-  display: flex;
-  align-items: flex-start;
-  gap: 7px;
-}
-.side-pill {
-  font-size: 7px;
+.winner-score {
+  font-size: 8.5px;
   font-weight: 800;
-  padding: 1.5px 5px;
+  color: var(--accent);
+  margin-top: 1.5px;
+  background: rgba(166, 108, 255, 0.14);
+  padding: 1px 5px;
   border-radius: 3px;
-  flex-shrink: 0;
-  letter-spacing: .4px;
-  margin-top: 1px;
+  line-height: 1.1;
 }
-.side-pill.blue {
-  background: #ebf1fa;
-  color: #4d6ea6;
+.dive-pill {
+  position: absolute;
+  z-index: 3;
+  left: 50.6%;
+  top: 67px;
+  font-size: 7.5px;
+  font-weight: 800;
+  letter-spacing: .5px;
+  background: #a855f7;
+  color: #ffffff;
+  padding: 1.5px 5px;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(168, 85, 247, 0.2);
+  transform: translateX(-50%);
 }
-.side-pill.purple {
-  background: #f1e9fe;
+
+.node-d1 { left: 3%; top: 100px; width: 56px; height: 40px; }
+.node-d2 { left: 21%; top: 14px; width: 68px; height: 42px; }
+.node-d3 { left: 41%; top: 100px; width: 62px; height: 42px; }
+.node-d4 { left: 61%; top: 14px; width: 66px; height: 40px; }
+.node-d5 { left: 79%; top: 100px; width: 74px; height: 42px; }
+
+.node-m1 { left: 3.5%; top: 14px; width: 104px; height: 44px; }
+.node-m2 { left: 36%; top: 14px; width: 114px; height: 44px; }
+.node-m3 { left: 36%; top: 94px; width: 114px; height: 46px; }
+.node-m4 { left: 71%; top: 94px; width: 98px; height: 46px; }
+
+.deck-visual-label {
+  position: absolute;
+  bottom: 6px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .8px;
+  color: #8c959f;
+  z-index: 2;
+  line-height: 1;
+}
+.deck-visual-label.purple {
   color: var(--accent);
 }
-.summary-side p {
-  margin: 0 !important;
-  font-size: 9.3px;
-  color: #4a5159;
-  line-height: 1.3;
+.trajectory-copy {
+  margin: 6px 0 0 !important;
+  font-size: 10.5px;
+  line-height: 1.32;
+  color: #57606a;
 }
-.summary-side b {
-  color: var(--ink);
+.trajectory-takeaway-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  background: #fdfcff;
+  border: 1px solid color-mix(in srgb, var(--accent) 24%, #e6e8eb);
+  border-radius: 9px;
+}
+.takeaway-badge {
+  font-size: 7.5px;
+  font-weight: 800;
+  letter-spacing: .5px;
+  color: #ffffff;
+  background: var(--accent);
+  padding: 2.5px 6px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.trajectory-takeaway-bar p {
+  margin: 0 !important;
+  font-size: 10.5px;
+  line-height: 1.32;
+  color: #424a53;
 }
 .token-hero-box { display: flex; align-items: center; gap: 26px; margin-top: 8px; padding: 14px 22px; background: #fdfaf6; border: 1px solid color-mix(in srgb, var(--accent) 24%, #e6e6e8); border-radius: 14px; }
 .token-hero-left { display: flex; flex-direction: column; align-items: flex-start; flex-shrink: 0; }
