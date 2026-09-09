@@ -54,8 +54,8 @@
           <div class="failure-item">
             <span class="failure-idx">02</span>
             <div class="failure-text">
-              <strong>Single-trajectory inertia</strong>
-              <p>Accumulating context history anchors the agent to past reasoning, <b>trapping search in local basins</b> (e.g., standard single-agent baselines <b>stall at 0.6044</b> while endlessly fine-tuning hyperparameters).</p>
+              <strong>Trajectory momentum</strong>
+              <p>A single long-running trajectory keeps moving in the same direction, <b>trapping search in local basins</b> (e.g., standard single-agent baselines <b>stall at 0.6044</b> while endlessly fine-tuning hyperparameters).</p>
             </div>
           </div>
           <div class="failure-item">
@@ -297,25 +297,28 @@
             <div class="two-tier-blocks">
               <div class="tier-block tier-1">
                 <div class="tier-header">
-                  <span class="tier-badge">TIER 1 · SCIENTIST SELF-HEALING</span>
-                  <span class="tier-receipt">Cycle 1 runtime</span>
+                  <span class="tier-badge">TIER 1 · CRASH AUTO-RECOVERY</span>
+                  <span class="tier-receipt">0 human bugfixes</span>
                 </div>
-                <p><b>Traceback auto-repaired:</b> <code>numpy.float32</code> broke JSON serialization. Scientist diagnosed traceback, patched scalar serialization helper, and reran cleanly.</p>
+                <div class="tier-flow-mini">
+                  <div class="tf-row"><span class="tf-lbl">Failure</span><span>Cycle 1 <code>numpy.float32</code> serialization crash</span></div>
+                  <div class="tf-row"><span class="tf-lbl">Action</span><span>Scientist parsed traceback, auto-patched scalar helper</span></div>
+                  <div class="tf-row tf-out"><span class="tf-lbl">Outcome</span><span><b>0 human bugfixes</b> · Unattended rerun succeeded</span></div>
+                </div>
               </div>
               <div class="tier-block tier-2">
                 <div class="tier-header">
                   <span class="tier-badge">TIER 2 · META GATEKEEPING</span>
-                  <span class="tier-receipt">Proxy audit receipt</span>
+                  <span class="tier-receipt">Promotion blocked</span>
                 </div>
-                <p><b>Spurious proxy rejected:</b> Scientist claimed false gain; Meta audited <code>system/data.py</code>, caught <code>UNK</code> user sampling distortion, and blocked State promotion.</p>
+                <div class="tier-flow-mini">
+                  <div class="tf-row"><span class="tf-lbl">False Claim</span><span>Scientist claimed BPR gain on medium proxy</span></div>
+                  <div class="tf-row"><span class="tf-lbl">Action</span><span>META audited <code>system/data.py</code>, caught <code>UNK</code> leak</span></div>
+                  <div class="tf-row tf-out"><span class="tf-lbl">Outcome</span><span><b>Promotion blocked</b> · Zero contaminated state</span></div>
+                </div>
               </div>
             </div>
-            <div class="recovery-guardrails">
-              <span class="guard-pill"><b>Self-Healing:</b> 0 human bugfixes</span>
-              <span class="guard-pill"><b>META Gate:</b> Spurious proxy killed</span>
-              <span class="guard-pill"><b>Audit:</b> 170,588 rows aligned</span>
-            </div>
-            <p class="card-annotation">Robust research requires both <b>execution-level crash recovery</b> and <b>epistemic defense</b> against false breakthroughs. <b>Zero human debugging interventions across 7 days.</b></p>
+            <p class="card-annotation"><b>Empirical receipts preserved:</b> runtime self-healing telemetry and independent code-level proxy audits defend valid state convergence.</p>
           </article>
 
           <!-- Card 04: Resource Accounting (Compact Card in Position 4) -->

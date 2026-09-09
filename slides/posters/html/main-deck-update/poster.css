@@ -952,45 +952,55 @@ b, strong { font-weight: 700; color: var(--ink); }
   color: var(--muted);
 }
 
-.tier-block p {
-  margin: 0;
-  color: var(--body);
-  font-size: 8.5px;
-  line-height: 1.18;
-}
-
 .tier-block code {
   color: var(--navy);
   font-family: var(--mono);
-  font-size: 8px;
+  font-size: 7.5px;
 }
 
-.recovery-guardrails {
+.tier-flow-mini {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 2px;
+}
+
+.tf-row {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  align-items: baseline;
   gap: 4px;
-  margin-top: 4px;
+  font-size: 7.5px;
+  line-height: 1.18;
+  color: var(--body);
+}
+
+.tf-row.tf-out {
+  background: rgba(36, 115, 70, 0.09);
+  border: 1px solid rgba(36, 115, 70, 0.2);
+  border-radius: 3px;
+  padding: 1px 4px;
+  color: #1a4f30;
+}
+
+.tf-lbl {
+  font-family: var(--mono);
+  font-size: 6.8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.35px;
+  color: var(--muted);
+}
+
+.tf-row.tf-out .tf-lbl {
+  color: #247346;
 }
 
 .recovery-card .card-annotation {
   margin-top: 4px;
-  font-size: 9px;
+  font-size: 8.5px;
   line-height: 1.18;
 }
-
-.guard-pill {
-  flex: 1;
-  border: 1px solid #e2dcd0;
-  border-radius: 4px;
-  padding: 2px 4px;
-  background: var(--paper-card-sub);
-  font-size: 8px;
-  color: var(--body);
-  line-height: 1.15;
-}
-
-.guard-pill b { display: block; color: var(--rust); font-size: 7.5px; font-family: var(--mono); }
 
 /* Compact Contrast Table (Card 02) */
 .codex-contrast-table.compact-contrast {

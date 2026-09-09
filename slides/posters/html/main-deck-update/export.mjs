@@ -449,8 +449,8 @@ function applyProblemPolish() {
     },
     {
       cls: 'failure-inertia',
-      title: 'Single-trajectory inertia',
-      claim: 'Long-lived reasoning carries yesterday’s momentum into today’s search.',
+      title: 'Trajectory momentum',
+      claim: 'A single long-running trajectory keeps moving in the same direction.',
       receipt: 'Direct Codex control reached <b>~0.6046</b> after extended local refinement',
     },
     {

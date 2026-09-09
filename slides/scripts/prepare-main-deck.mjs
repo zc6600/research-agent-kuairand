@@ -6,7 +6,7 @@ const outputPath = '.generated-slides.md'
 const sourceExperienceSlide = '<ExperienceJourney />'
 const experienceSlide = '<ExperienceJourneyAudio />'
 const evaluationAnchor = '<ModelRotationInsight />'
-const finaleAnchor = '<!-- class: open-world-slide -->'
+const finaleAnchor = '<!-- class: agentic-swe-fieldnote-slide -->'
 const retiredSlideMarkers = [
   '<div class="visual-kicker orange resources-page-kicker">04 / EVALUATION · RESOURCE ACCOUNTING</div>',
   '<div class="visual-kicker orange">04 / EVALUATION · DIRECT-AGENT COMPARISON</div>',
@@ -129,7 +129,7 @@ output = replaceRequired(output, sourceExperienceSlide, experienceSlide, 'experi
 
 const extracted = extractSlideByMarker(output, experienceSlide)
 output = extracted.deck
-let userExperienceSlide = extracted.slide
+let userExperienceSlide = extracted.slide.replace(/^\n*---\n*/, '').replace(/\n*---\n*$/, '').trim()
 userExperienceSlide = userExperienceSlide
   .replace('03 / UX opens with', '05 / UX finale opens with')
   .replace('Six acts autoplay:', 'Six acts play after clicking the frame:')
