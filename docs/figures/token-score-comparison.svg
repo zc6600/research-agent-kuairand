@@ -49,12 +49,12 @@
     <line x1="874" y1="214" x2="874" y2="226" stroke="#7a56a7" stroke-width="2"/>
     <path d="M 827 210 l 10 18 h -20 z" fill="#ffffff" stroke="#7a56a7" stroke-width="3"/>
     <line x1="827" y1="230" x2="827" y2="342" stroke="#778196"/>
-    <text x="875" y="360" text-anchor="end" font-size="13" font-weight="600" fill="#172033">gemini-3.7-flash-only RA · Cycle 2</text>
+    <text x="875" y="360" text-anchor="end" font-size="13" font-weight="600" fill="#172033">SciOdyssey with Antigravity</text>
     <text x="875" y="378" text-anchor="end" font-size="12" fill="#586174">45.044–51.174M total · 0.6052 · E008</text>
 
     <circle cx="829" cy="163" r="10" fill="#2b8a67" stroke="#ffffff" stroke-width="2"/>
     <line x1="820" y1="157" x2="756" y2="126" stroke="#778196"/>
-    <text x="750" y="110" text-anchor="end" font-size="13" font-weight="600" fill="#172033">Research Agent submission</text>
+    <text x="750" y="110" text-anchor="end" font-size="13" font-weight="600" fill="#172033">SciOdyssey submission</text>
     <text x="750" y="128" text-anchor="end" font-size="12" fill="#586174">48.240M total · 0.605936 · verified</text>
   </g>
 

@@ -230,7 +230,7 @@ export const slides = [
       },
       { kind: "text", text: "Four autonomous cycles. Medium screens ideas; Full evaluations support retained score claims.", tone: "muted" },
     ],
-    note: "This is the canonical submission trajectory, distinct from the later RA-only Cycle-2 E008 DIN experiment. Source: docs/FINAL_REPORT.md section 4.1 and the E001–E013 ledger.",
+    note: "This is the canonical submission trajectory, distinct from the later SciOdyssey with Antigravity (E008 DIN) experiment. Source: docs/FINAL_REPORT.md section 4.1 and the E001–E013 ledger.",
   },
   {
     chapter: "04 / EXPERIENCE",
@@ -328,7 +328,7 @@ export const slides = [
     title: "Compare scores alongside their evidence",
     accent: "orange",
     blocks: [
-      { kind: "table", headers: ["RUN", "PRIMARY", "TOKENS"], rows: [["Official reference", "0.6016000", "—"], ["AGY direct", "0.6045803", "8.565M"], ["Luna direct", "≈0.6046", "28.070M"], ["Heterogeneous", "≈0.6047", "39.607M"], ["RA-only / C2", "0.6052", "45–51M"], ["RA submission", "0.6059363", "48.240M"]], tone: "green" },
+      { kind: "table", headers: ["RUN", "PRIMARY", "TOKENS"], rows: [["Official reference", "0.6016000", "—"], ["AGY direct", "0.6045803", "8.565M"], ["Luna direct", "≈0.6046", "28.070M"], ["Heterogeneous", "≈0.6047", "39.607M"], ["SciOdyssey w/ AGY", "0.6052", "45–51M"], ["SciOdyssey submission", "0.6059363", "48.240M"]], tone: "green" },
       { kind: "text", text: "One recorded run per condition; model, budget, and evidence quality differ. This is not a controlled causal comparison.", tone: "muted" },
     ],
     note: "The comparison uses measured total input + output tokens including cache-read input. Source: docs/FINAL_REPORT.md section 5.3 and the archived control reports.",

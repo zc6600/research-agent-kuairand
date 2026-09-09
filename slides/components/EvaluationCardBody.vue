@@ -102,14 +102,44 @@ defineProps<{ card: string }>()
     </template>
 
     <template v-else-if="card === 'tokenmaxxing'">
-      <div class="token-hero"><span class="eyeline">PROJECT-LEVEL RESOURCE ACCOUNTING</span><strong>~$10</strong><p>subscription-equivalent usage from first line of code to final result</p><small>coding · debugging · agent runs · all experiments</small></div>
-
-      <div class="resource-cards">
-        <div><span class="resource-label">MODEL</span><strong>One GPT Plus + One Gemini Pro for 7 days</strong><p>Two consumer subscriptions covered the entire research loop.</p></div>
-        <div><span class="resource-label">COMPUTE</span><strong>1 × MacBook M2</strong><p>Development and experiments ran on one consumer laptop.</p></div>
+      <div class="token-hero">
+        <span class="eyeline">PROJECT-LEVEL RESOURCE ACCOUNTING</span>
+        <div class="token-hero-box">
+          <div class="token-hero-left">
+            <strong class="token-amount">~$10</strong>
+            <span class="token-caption">Total project cost</span>
+          </div>
+          <div class="token-hero-right">
+            <p class="token-thesis">Subscription-equivalent usage from first line of code to final result.</p>
+            <div class="token-tags">
+              <span>coding</span><i>·</i>
+              <span>debugging</span><i>·</i>
+              <span>agent loops</span><i>·</i>
+              <span>all 11 experiments</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <section class="run-telemetry"><h3>Retained-run telemetry</h3><div class="metric-row"><div><strong>48.240M</strong><span>total tokens</span><small>including cache-read input</small></div><div><strong>4.020M</strong><span>non-cache</span><small>input + output</small></div><div><strong>0</strong><span>GPU-hours</span><small>CPU / NumPy training</small></div></div></section>
+      <div class="resource-cards three-cards">
+        <div>
+          <span class="resource-label">MODEL</span>
+          <strong>One GPT Plus + One Gemini Pro for 7 days</strong>
+          <p>Two consumer subscriptions covered the entire autonomous research loop.</p>
+        </div>
+        <div>
+          <span class="resource-label">HARDWARE</span>
+          <strong>1 × MacBook M2</strong>
+          <p>All development, feature engineering, and validation ran on one consumer laptop.</p>
+        </div>
+        <div>
+          <span class="resource-label">COMPUTE</span>
+          <strong>0 GPU-hours</strong>
+          <p>100% CPU NumPy training and inference; zero cloud GPU clusters required.</p>
+        </div>
+      </div>
+
+      <p class="boundary">Performance came from the autonomous research loop, not an expensive compute budget. Full discovery executed on consumer hardware without GPU clusters.</p>
     </template>
   </div>
 </template>
@@ -163,18 +193,79 @@ defineProps<{ card: string }>()
 .sb-tag.warning { background: #f3f4f6; color: #5a626a; }
 .sb-tag.success { background: #e8f7ed; color: #16803b; }
 .token-hero { padding-bottom: 0; }
-.token-hero strong { font-size: 40px; letter-spacing: -1.4px; margin-top: 6px; }
-.token-hero p { margin: 8px 0 0; font-size: 13.5px; }
-.resource-cards { display: grid; grid-template-columns: 1.25fr .75fr; gap: 18px; margin-top: 16px; }
-.resource-cards > div { padding: 14px 16px 12px; border: 1px solid #e6e6e8; border-radius: 14px; background: #fbfcfd; }
-.resource-label { display: block; color: var(--accent); font-size: 10px; font-weight: 800; letter-spacing: 1.1px; }
-.resource-cards strong { display: block; margin-top: 6px; color: var(--ink); font-size: 15px; line-height: 1.25; }
-.resource-cards p { margin: 6px 0 0; color: #727981; font-size: 12px; line-height: 1.35; }
-.run-telemetry { margin-top: 16px !important; padding-top: 14px !important; }
-.metric-row { display: grid; grid-template-columns: 1.15fr 1fr .8fr; gap: 18px; margin-bottom: 4px; }
-.metric-row strong { display: block; font-size: 28px; line-height: 1.05; color: var(--accent); letter-spacing: -.9px; }
-.metric-row span, .metric-row small { display: block; }
-.metric-row span { margin-top: 5px; font-weight: 750; }
+.token-hero-box {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  margin-top: 8px;
+  padding: 14px 22px;
+  background: #fdfaf6;
+  border: 1px solid color-mix(in srgb, var(--accent) 24%, #e6e6e8);
+  border-radius: 14px;
+}
+.token-hero-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.token-amount {
+  font-size: 42px;
+  line-height: 1;
+  color: var(--accent);
+  letter-spacing: -1.4px;
+  font-weight: 800;
+}
+.token-caption {
+  font-size: 10px;
+  font-weight: 750;
+  color: #7d7d82;
+  letter-spacing: .6px;
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+.token-hero-right {
+  flex: 1;
+  border-left: 1px solid color-mix(in srgb, var(--accent) 20%, #e6e6e8);
+  padding-left: 22px;
+}
+.token-thesis {
+  margin: 0 !important;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.35;
+}
+.token-tags {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 6px;
+  font-size: 11px;
+  color: #6b7280;
+  font-family: var(--mono, monospace);
+}
+.token-tags i {
+  font-style: normal;
+  color: #c4c7cc;
+}
+.resource-cards.three-cards {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr 1fr;
+  gap: 14px;
+  margin-top: 16px;
+}
+.resource-cards > div {
+  padding: 15px 16px 13px;
+  border: 1px solid #e6e6e8;
+  border-radius: 14px;
+  background: #fbfcfd;
+  display: flex;
+  flex-direction: column;
+}
+.resource-label { display: block; color: var(--accent); font-size: 9.5px; font-weight: 800; letter-spacing: 1.1px; }
+.resource-cards strong { display: block; margin-top: 5px; color: var(--ink); font-size: 14px; line-height: 1.25; font-weight: 750; }
+.resource-cards p { margin: 6px 0 0; color: #727981; font-size: 11.5px; line-height: 1.35; }
 .record-line { display: flex; gap: 20px; align-items: center; margin-bottom: 22px; font-size: 22px; font-weight: 700; color: var(--accent); }
 .record-line i { font-style: normal; color: #b4bac1; }
 .card-body dl { display: grid; grid-template-columns: 145px 1fr; gap: 14px 18px; }

@@ -12,7 +12,7 @@
   <header class="hero">
     <img class="hero-art" src="assets/research-voyage-v2.png" alt="Editorial illustration of an expedition boat passing through translucent planes at sea.">
     <div class="hero-copy">
-      <p class="eyebrow">AUTONOMOUS ML RESEARCH / TECHJAM 2026</p>
+      <p class="eyebrow">TEAM GOOD4AI · AUTONOMOUS ML RESEARCH / TECHJAM 2026</p>
       <h1>SciOdyssey<span class="hero-dot" aria-hidden="true"></span></h1>
       <p class="subtitle">A research layer over your agent harness.</p>
       <h2>Our agent can carry<br>a research task to <em>completion.</em></h2>
@@ -49,21 +49,21 @@
             <span class="failure-idx">01</span>
             <div class="failure-text">
               <strong>Closed-world fragility</strong>
-              <p>Rigid predefined pipelines shatter as soon as unexpected runtime errors emerge. In Cycle 1, a float32 JSON serialization bug halted logging; without autonomous self-healing, exploration dies permanently.</p>
+              <p>Rigid predefined pipelines shatter as soon as unexpected runtime errors emerge. In Cycle 1, a <b>float32 JSON serialization bug</b> halted logging; <b>without autonomous self-healing, exploration dies permanently</b>.</p>
             </div>
           </div>
           <div class="failure-item">
             <span class="failure-idx">02</span>
             <div class="failure-text">
               <strong>Single-trajectory inertia</strong>
-              <p>Accumulating context history anchors the agent to past reasoning, trapping search in local basins (e.g., standard single-agent baselines stall at 0.6044 while endlessly fine-tuning hyperparameters).</p>
+              <p>Accumulating context history anchors the agent to past reasoning, <b>trapping search in local basins</b> (e.g., standard single-agent baselines <b>stall at 0.6044</b> while endlessly fine-tuning hyperparameters).</p>
             </div>
           </div>
           <div class="failure-item">
             <span class="failure-idx">03</span>
             <div class="failure-text">
               <strong>Context inflation cost</strong>
-              <p>Continually rereading deep conversational context costs 8× more tokens than the actual code edits, exhausting context windows and causing severe reasoning dilution.</p>
+              <p>Continually rereading deep conversational context <b>costs 8× more tokens</b> than the actual code edits, exhausting context windows and causing <b>severe reasoning dilution</b>.</p>
             </div>
           </div>
         </div>
@@ -139,7 +139,7 @@
 
           <div class="handoff-bar">
             <strong>Trajectory Handoff Loop:</strong>
-            <span>Fresh Scientist reset per cycle; only audited empirical findings enter durable disk memory.</span>
+            <span><b>Fresh Scientist reset per cycle;</b> only <b>audited empirical findings</b> enter durable disk memory.</span>
           </div>
         </div>
 
@@ -153,17 +153,17 @@
             <div class="strata-card">
               <div class="strata-pill pill-evidence">A · VERIFIED EVIDENCE</div>
               <strong>Knowledge + Ledger</strong>
-              <p>Complete metric trajectories, traceback failure logs, and full report artifacts stored in <code>ledger.jsonl</code>.</p>
+              <p>Complete metric trajectories, traceback failure logs, and full report artifacts stored in <b><code>ledger.jsonl</code></b>.</p>
             </div>
             <div class="strata-card">
               <div class="strata-pill pill-priors">B · WORKING PRIORS</div>
               <strong>Brief + Hypotheses</strong>
-              <p>Current conceptual understanding, domain beliefs, and exploration leads in <code>brief.md</code>, open to active revision.</p>
+              <p>Current conceptual understanding, domain beliefs, and exploration leads in <b><code>brief.md</code></b>, open to active revision.</p>
             </div>
             <div class="strata-card">
               <div class="strata-pill pill-state">C · REPRODUCIBLE STATE</div>
               <strong>Retained Code + State</strong>
-              <p>Tested pipeline versions, serialized model weights, starter kit checkers, and full git commit provenance.</p>
+              <p>Tested pipeline versions, serialized model weights, starter kit checkers, and full <b>git commit provenance</b>.</p>
             </div>
           </div>
         </div>
@@ -185,7 +185,7 @@
         </div>
 
         <div class="system-principle-box">
-          <p class="system-principle">The next Scientist inherits verified experience, not prior reasoning inertia.</p>
+          <p class="system-principle">The next Scientist inherits <b>verified experience</b>, not <b>prior reasoning inertia</b>.</p>
           <div class="principle-pillars">
             <span>Decoupled Memory</span><i>·</i>
             <span>Audited Persistence</span><i>·</i>
@@ -233,163 +233,228 @@
               <span><b>Feature Engine:</b> 46 categorical cross-interactions + log1p transforms</span>
               <span><b>Architecture:</b> 8-seed Factorization Machine ensemble (NumPy / CPU)</span>
             </div>
-            <p class="card-annotation">Monotonic gain from baseline (0.6016) → feature engineering (0.6041) → seed ensembling (0.6059); 100% CPU inference without GPU clusters.</p>
+            <p class="card-annotation"><b>Monotonic gain</b> from baseline (0.6016) → feature engineering (0.6041) → seed ensembling (0.6059); <b>100% CPU inference</b> without GPU clusters.</p>
           </article>
 
-          <!-- Card 02: Direct Benchmark Control -->
-          <article class="evidence-card control-card">
-            <div class="card-head">
-              <span class="card-idx">02</span>
-              <span class="card-kicker">DIRECT BENCHMARK CONTROL</span>
-            </div>
-            <h3>Beat Codex on this task.</h3>
-            <div class="compare-row">
-              <div class="score-box baseline">
-                <span class="score-val">0.6044533</span>
-                <span class="score-lbl">Direct Codex Goal control</span>
-              </div>
-              <span class="score-arrow">→</span>
-              <div class="score-box winner">
-                <span class="score-val">0.6059363</span>
-                <span class="score-lbl">SciOdyssey retained</span>
-              </div>
-            </div>
-            <div class="gain-badge purple-badge">+0.0014830 Primary advantage</div>
-            <div class="codex-contrast-table">
-              <div class="contrast-row">
-                <span class="c-dim">Search Mode</span>
-                <span class="c-bad">Local parameter tuning (22 runs)</span>
-                <span class="c-good">Structural feature discovery</span>
-              </div>
-              <div class="contrast-row">
-                <span class="c-dim">Search Outcome</span>
-                <span class="c-bad">Stalled at 0.6044 (Local basin)</span>
-                <span class="c-good">SOTA 0.6059363 (Novel features)</span>
-              </div>
-            </div>
-            <p class="card-annotation">Single-agent baselines anchored in hyperparameter loops across 22 runs; SciOdyssey broke into superior feature representations via fresh world resets.</p>
-          </article>
-
-          <!-- Card 03: Sustained Search -->
+          <!-- Card 02: Sustained Search (Synced with Slide 02) -->
           <article class="evidence-card trajectory-card">
             <div class="card-head">
-              <span class="card-idx">03</span>
+              <span class="card-idx">02</span>
               <span class="card-kicker">SUSTAINED SEARCH</span>
             </div>
-            <h3>Systematic multi-cycle progress.</h3>
+            <h3>The search stayed productive.</h3>
             <div class="trajectory-timeline">
               <div class="t-step">
                 <span class="t-dot"></span>
-                <b>0.6016310</b>
-                <small>C1: Valid baseline</small>
+                <b>0.60163</b>
+                <small>C1: Valid Base</small>
               </div>
               <span class="t-line"></span>
               <div class="t-step">
                 <span class="t-dot"></span>
-                <b>0.6040901</b>
-                <small>C2: Feature expansion</small>
+                <b>0.60409</b>
+                <small>C2: Features</small>
               </div>
               <span class="t-line"></span>
               <div class="t-step">
                 <span class="t-dot"></span>
-                <b>0.6044289</b>
-                <small>C3: Variance reduction</small>
+                <b>0.60443</b>
+                <small>C3: Var. Red.</small>
               </div>
               <span class="t-line"></span>
               <div class="t-step t-final">
                 <span class="t-dot"></span>
-                <b>0.6059363</b>
-                <small>C4: 8-seed FM recipe</small>
+                <b>0.60594</b>
+                <small>C4: 8-Seed FM</small>
               </div>
             </div>
-            <div class="trajectory-breakdown">
-              <span><b>C1</b> Baseline Repaired</span><i>·</i>
-              <span><b>C2</b> +0.00246 Features</span><i>·</i>
-              <span><b>C3</b> +0.00034 Variance Red.</span><i>·</i>
-              <span><b>C4</b> +0.00151 Ensemble</span>
+            <div class="codex-contrast-table compact-contrast">
+              <div class="contrast-row">
+                <span class="c-dim">SciOdyssey</span>
+                <span class="c-good">0.6059363</span>
+                <span class="c-good">Climbed across 4 cycles (7 Full evals)</span>
+              </div>
+              <div class="contrast-row">
+                <span class="c-dim">Codex Goal</span>
+                <span class="c-bad">0.6044533</span>
+                <span class="c-bad">Peaked at C8; stalled & dropped in 22 runs</span>
+              </div>
             </div>
             <div class="trajectory-summary">
               <span><b>4</b> autonomous cycles</span><i>·</i>
-              <span><b>13</b> named experiments</span><i>·</i>
-              <span><b>7</b> full evaluations</span>
+              <span><b>7</b> Full evaluations</span><i>·</i>
+              <span><b>+0.00148</b> over Codex</span>
             </div>
-            <p class="card-annotation">Monotonic validation progression across distinct cycles; breakthroughs driven by mechanism changes rather than a single lucky edit.</p>
+            <p class="card-annotation"><b>7 Full public-validation evaluations</b> retained across 4 cycles. Trajectory climbed via <b>structural feature expansion</b> rather than single lucky edits.</p>
           </article>
 
-          <!-- Card 04: Autonomous Recovery -->
+          <!-- Card 03: Self-Healing & Gatekeeping -->
           <article class="evidence-card recovery-card">
             <div class="card-head">
-              <span class="card-idx">04</span>
-              <span class="card-kicker">AUTONOMOUS RECOVERY</span>
+              <span class="card-idx">03</span>
+              <span class="card-kicker">SELF-HEALING &amp; GATEKEEPING</span>
             </div>
-            <h3>Our agent is robust.</h3>
-            <div class="recovery-steps">
-              <div class="r-step">
-                <span class="r-idx">01 · PRESERVE</span>
-                <p>NumPy float32 broke JSON serialization in Cycle 1; logs stayed intact.</p>
+            <h3>The agent recovered from failure.</h3>
+            <div class="two-tier-blocks">
+              <div class="tier-block tier-1">
+                <div class="tier-header">
+                  <span class="tier-badge">TIER 1 · SCIENTIST SELF-HEALING</span>
+                  <span class="tier-receipt">Cycle 1 runtime</span>
+                </div>
+                <p><b>Traceback auto-repaired:</b> <code>numpy.float32</code> broke JSON serialization. Scientist diagnosed traceback, patched scalar serialization helper, and reran cleanly.</p>
               </div>
-              <span class="r-arrow">→</span>
-              <div class="r-step">
-                <span class="r-idx">02 · REPAIR</span>
-                <p>Scientist diagnosed traceback and patched scalar serialization helper.</p>
-              </div>
-              <span class="r-arrow">→</span>
-              <div class="r-step">
-                <span class="r-idx">03 · RETAIN</span>
-                <p>Rerun succeeded; META validated proxy fidelity & preserved State.</p>
+              <div class="tier-block tier-2">
+                <div class="tier-header">
+                  <span class="tier-badge">TIER 2 · META GATEKEEPING</span>
+                  <span class="tier-receipt">Proxy audit receipt</span>
+                </div>
+                <p><b>Spurious proxy rejected:</b> Scientist claimed false gain; Meta audited <code>system/data.py</code>, caught <code>UNK</code> user sampling distortion, and blocked State promotion.</p>
               </div>
             </div>
             <div class="recovery-guardrails">
-              <span class="guard-pill"><b>Self-Healing:</b> Traceback auto-repaired</span>
-              <span class="guard-pill"><b>META Gate:</b> Spurious proxy rejected</span>
+              <span class="guard-pill"><b>Self-Healing:</b> 0 human bugfixes</span>
+              <span class="guard-pill"><b>META Gate:</b> Spurious proxy killed</span>
               <span class="guard-pill"><b>Audit:</b> 170,588 rows aligned</span>
             </div>
-            <p class="card-annotation">Zero human debugging intervention across 7 days; autonomous traceback self-healing in Cycle 1. META audits proxy fidelity and rejects spurious state promotions.</p>
+            <p class="card-annotation">Robust research requires both <b>execution-level crash recovery</b> and <b>epistemic defense</b> against false breakthroughs. <b>Zero human debugging interventions across 7 days.</b></p>
           </article>
 
-          <!-- Card 05: Resource Accounting (Full Width) -->
-          <article class="evidence-card resource-card">
+          <!-- Card 04: Resource Accounting (Compact Card in Position 4) -->
+          <article class="evidence-card resource-card compact-resource">
             <div class="card-head">
-              <span class="card-idx">05</span>
+              <span class="card-idx">04</span>
               <span class="card-kicker">RESOURCE ACCOUNTING</span>
             </div>
             <h3>We are not tokenmaxxing.</h3>
-            <div class="resource-grid">
-              <div class="res-kpi">
-                <span class="kpi-tag">TOTAL PROJECT USAGE</span>
-                <span class="kpi-num cost-num">~$10</span>
-                <span class="kpi-sub">subscription-equivalent estimate</span>
+            <div class="mini-kpi-grid">
+              <div class="m-kpi">
+                <span class="m-kpi-tag">PROJECT COST</span>
+                <span class="m-kpi-num cost-num">~$10</span>
+                <span class="m-kpi-sub">First code to final result</span>
               </div>
-              <div class="res-kpi">
-                <span class="kpi-tag">HARDWARE</span>
-                <span class="kpi-val">1 × MacBook M2</span>
-                <span class="kpi-sub">All training on 1 laptop · 0 GPU-hours</span>
+              <div class="m-kpi">
+                <span class="m-kpi-tag">HARDWARE</span>
+                <span class="m-kpi-val">1 × M2</span>
+                <span class="m-kpi-sub">1 consumer laptop</span>
               </div>
-              <div class="res-kpi">
-                <span class="kpi-tag">SUBSCRIPTIONS</span>
-                <span class="kpi-val">GPT Plus + Gemini Pro</span>
-                <span class="kpi-sub">7 days continuous exploration</span>
+              <div class="m-kpi">
+                <span class="m-kpi-tag">COMPUTE</span>
+                <span class="m-kpi-val">0 GPU-hr</span>
+                <span class="m-kpi-sub">100% CPU / NumPy only</span>
               </div>
-              <div class="res-kpi">
-                <span class="kpi-tag">TOTAL LLM TOKENS</span>
-                <span class="kpi-val">48.24M</span>
-                <span class="kpi-sub">4.02M non-cache · 8.5× token reduction</span>
+              <div class="m-kpi">
+                <span class="m-kpi-tag">AGENT RUNTIME</span>
+                <span class="m-kpi-val">1h 55m</span>
+                <span class="m-kpi-sub">Wall-clock across 4 cycles</span>
               </div>
             </div>
-            <div class="token-efficiency-strip">
-              <span><b>Context Caching:</b> 44.22M cached tokens (91.7% hit rate via prompt stabilization)</span>
-              <span><b>Cost / Cycle:</b> ~$2.50 avg per autonomous research cycle</span>
-              <span><b>Engine:</b> 100% CPU vectorization · Zero GPU cluster dependencies</span>
+            <p class="card-annotation">Performance came from the autonomous research loop, not an expensive compute budget. Full discovery executed on consumer hardware without GPU clusters.</p>
+          </article>
+
+          <!-- Card 05: Direct Agent Benchmark (Full-Width Bottom Card with Chart) -->
+          <article class="evidence-card benchmark-chart-card">
+            <div class="chart-card-header">
+              <div class="bch-left">
+                <div class="card-head">
+                  <span class="card-idx">05</span>
+                  <span class="card-kicker">DIRECT AGENT BENCHMARK</span>
+                </div>
+                <h3>Score versus measured LLM-token investment.</h3>
+              </div>
+              <div class="bch-right">
+                <span class="chart-tag">KuaiRand-Pure Public Validation</span>
+                <span class="chart-tag-sub">Input + output including cache-read · Whole recorded agent system</span>
+              </div>
             </div>
-            <div class="resource-footer-row">
-              <span><b>100%</b> Autonomous execution (0 manual code interventions)</span>
-              <span><b>170,588</b> rows checked by Starter Kit alignment checker</span>
-              <span><b>0</b> GPU-hours (NumPy / CPU training)</span>
+            <div class="token-chart-wrapper">
+              <svg class="embedded-token-chart-svg" viewBox="0 0 1150 435" role="img" aria-label="Public-validation Primary score versus measured total LLM tokens">
+                <rect class="chart-paper" fill="#f2ebdd" x="0" y="0" width="1150" height="435" rx="8" />
+                <rect class="chart-plot" fill="#faf6ed" stroke="#e5dcce" stroke-width="1" x="106" y="25" width="966" height="325" rx="4" />
+                <g class="chart-grid">
+                  <line x1="106" y1="321" x2="1072" y2="321" />
+                  <line x1="106" y1="262" x2="1072" y2="262" />
+                  <line x1="106" y1="203" x2="1072" y2="203" />
+                  <line x1="106" y1="144" x2="1072" y2="144" />
+                  <line x1="106" y1="84" x2="1072" y2="84" />
+                  <line x1="106" y1="25" x2="1072" y2="25" />
+                  <line x1="106" y1="25" x2="106" y2="350" />
+                  <line x1="282" y1="25" x2="282" y2="350" />
+                  <line x1="457" y1="25" x2="457" y2="350" />
+                  <line x1="633" y1="25" x2="633" y2="350" />
+                  <line x1="808" y1="25" x2="808" y2="350" />
+                  <line x1="984" y1="25" x2="984" y2="350" />
+                  <line x1="1072" y1="25" x2="1072" y2="350" />
+                </g>
+                <g class="chart-y-labels">
+                  <text x="76" y="325">0.602</text>
+                  <text x="76" y="266">0.603</text>
+                  <text x="76" y="207">0.604</text>
+                  <text x="76" y="148">0.605</text>
+                  <text x="76" y="88">0.606</text>
+                </g>
+                <line class="chart-reference" x1="106" y1="344" x2="1072" y2="344" />
+                <text class="chart-reference-label" x="136" y="338">Official reference 0.601600</text>
+                <g class="chart-leaders">
+                  <line x1="256" y1="177" x2="256" y2="214" />
+                  <line x1="599" y1="167" x2="587" y2="129" />
+                  <line x1="802" y1="158" x2="909" y2="102" />
+                  <line x1="951" y1="132" x2="1035" y2="162" />
+                  <line x1="953" y1="88" x2="978" y2="58" />
+                </g>
+                <g class="chart-series">
+                  <circle class="chart-point chart-point-blue" cx="256" cy="169" r="8" />
+                  <circle class="chart-point chart-point-blue" cx="599" cy="167" r="8" />
+                  <polygon class="chart-point chart-point-orange" points="802,150 813,158 802,166 790,158" />
+                  <line class="chart-range" x1="897" y1="132" x2="1005" y2="132" />
+                  <line class="chart-range" x1="897" y1="125" x2="897" y2="138" />
+                  <line class="chart-range" x1="1005" y1="125" x2="1005" y2="138" />
+                  <polygon class="chart-point chart-point-purple" points="951,123 965,140 937,140" />
+                  <circle class="chart-point chart-point-green" cx="953" cy="88" r="9" />
+                </g>
+                <g class="chart-point-labels">
+                  <text class="chart-label-main" x="160" y="232">Antigravity (AGY)</text>
+                  <text class="chart-label-sub" x="160" y="250">gemini-3.7-flash · direct</text>
+                  <text class="chart-label-meta" x="160" y="267">8.565M · 0.6045803 · artifact-backed</text>
+
+                  <text class="chart-label-main chart-label-right" x="587" y="114">Codex (gpt-5.6-luna)</text>
+                  <text class="chart-label-sub chart-label-right" x="587" y="134">28.070M · 0.6044533 (provisional ≈0.6046)</text>
+
+                  <text class="chart-label-main chart-label-right" x="909" y="83">heterogeneous run</text>
+                  <text class="chart-label-sub chart-label-right" x="909" y="103">gemini-3.7-flash · 39.607M · ≈0.6047</text>
+
+                  <text class="chart-label-main chart-label-right" x="1064" y="177">SciOdyssey with Antigravity</text>
+                  <text class="chart-label-sub chart-label-right" x="1064" y="197">gemini-3.7-flash · 45.04–51.17M · 0.6052 · E008</text>
+
+                  <text class="chart-label-main chart-label-right chart-label-retained" x="1064" y="44">SciOdyssey submission</text>
+                  <text class="chart-label-sub chart-label-right chart-label-retained" x="1064" y="64">48.240M · 0.605936 · verified</text>
+                </g>
+                <g class="chart-axis-labels">
+                  <text x="106" y="368">0</text>
+                  <text x="274" y="368">10</text>
+                  <text x="448" y="368">20</text>
+                  <text x="624" y="368">30</text>
+                  <text x="800" y="368">40</text>
+                  <text x="976" y="368">50</text>
+                  <text x="1056" y="368">55M</text>
+                  <text class="chart-axis-title" x="589" y="388">Total LLM tokens (millions)</text>
+                  <text class="chart-axis-title chart-axis-y" x="20" y="190" transform="rotate(-90 20 190)">Primary score</text>
+                </g>
+                <g class="chart-legend">
+                  <circle class="chart-point chart-point-blue" cx="74" cy="414" r="6" />
+                  <text x="88" y="419">direct run (AGY / Codex)</text>
+                  <polygon class="chart-point chart-point-orange" points="310,408 318,414 310,420 302,414" />
+                  <text x="326" y="419">heterogeneous run</text>
+                  <polygon class="chart-point chart-point-purple" points="500,407 509,417 491,417" />
+                  <text x="516" y="419">SciOdyssey with Antigravity</text>
+                  <circle class="chart-point chart-point-green" cx="762" cy="414" r="6" />
+                  <text x="776" y="419">retained verified result (0.605936)</text>
+                </g>
+              </svg>
             </div>
           </article>
         </div>
 
-        <div class="evaluation-footer-note">All results verified on KuaiRand-Pure official validation split with complete reproducible artifacts.</div>
+        <div class="evaluation-footer-note">All results <b>verified on KuaiRand-Pure official validation split</b> with <b>complete reproducible artifacts</b>.</div>
       </section>
 
       <!-- 04 / INSIGHTS (Supplemented from latest slides) -->
@@ -400,20 +465,14 @@
           <div class="insight-item">
             <span class="insight-kicker">01 · MODEL DIVERSITY</span>
             <strong>Depth + Breadth Synergy.</strong>
-            <p>GPT 5.6 Luna (depth: refine ideas) + Gemini 3.7 Flash (breadth: open new directions) in one shared world pushed score from 0.6052 (Gemini-only) to 0.6059363 (GPT+Gemini).</p>
+            <p><b>GPT 5.6 Luna</b> (depth: refine ideas) + <b>Gemini 3.7 Flash</b> (breadth: open new directions) in one shared world pushed score from <b>0.6052</b> (Gemini-only) to <b>0.6059363</b> (GPT+Gemini).</p>
             <div class="insight-mini-stat"><span>Gemini-only <b>0.6052</b></span><i>→</i><span>GPT+Gemini <b>0.6059363</b></span></div>
           </div>
           <div class="insight-item">
             <span class="insight-kicker">02 · PARALLEL SYNTHESIS</span>
             <strong>Cross-Branch Idea Transfer.</strong>
-            <p>Reviewer synthesized winning Branch B (0.6048) with modeling ideas from lower-scoring Branch C (0.6039) for pairwise ranking and rank normalization, yielding 0.6055536.</p>
+            <p>Reviewer synthesized <b>winning Branch B (0.6048)</b> with modeling ideas from lower-scoring Branch C (0.6039) for pairwise ranking and rank normalization, <b>yielding 0.6055536</b>.</p>
             <div class="insight-mini-stat"><span>Branch B+C Ideas</span><i>→</i><span>Synthesis <b>0.6055536</b></span></div>
-          </div>
-          <div class="insight-item">
-            <span class="insight-kicker">03 · UNATTENDED EXECUTION</span>
-            <strong>Branch Isolation on Actions.</strong>
-            <p>Git worktrees isolate state to prevent collisions; GitHub Actions runs, codes, and commits overnight without human intervention, enabling continuous unattended progress.</p>
-            <div class="insight-mini-stat"><span>Git Worktree Isolation</span><i>·</i><span>CI/CD Automation</span></div>
           </div>
         </div>
       </section>
@@ -440,12 +499,20 @@
           <div class="contract-card">
             <code>task.md</code>
             <strong>What to solve</strong>
-            <p>Formal task contract: research objectives, dataset inputs, compute constraints, and official evaluation metric protocol.</p>
+            <p><b>Formal task contract:</b> research objectives, dataset inputs, compute constraints, and official evaluation protocol.</p>
+            <div class="contract-bullets">
+              <span>• Dataset paths & split integrity</span>
+              <span>• Official sandbox evaluator</span>
+            </div>
           </div>
           <div class="contract-card">
             <code>PERSONAL.md</code>
             <strong>How to work</strong>
-            <p>User research preferences, model guidance, exploration style, tool permissions, and supervisory checkpoints.</p>
+            <p><b>User research preferences</b>, model guidance, exploration style, tool permissions, and supervisory checkpoints.</p>
+            <div class="contract-bullets">
+              <span>• Model rotation (GPT / Gemini)</span>
+              <span>• Supervision & budget thresholds</span>
+            </div>
           </div>
         </div>
         
@@ -472,36 +539,120 @@
 
         <div class="journey-mandate">
           <span class="mandate-tag">DECLARATIVE PROTOCOL</span>
-          <p>Human defines boundary and preferences (task.md + PERSONAL.md); SciOdyssey autonomously iterates, heals, and crystallizes verified evidence.</p>
+          <p><b>Human defines boundary and preferences</b> (task.md + PERSONAL.md); <b>SciOdyssey autonomously iterates, heals, and crystallizes verified evidence.</b></p>
         </div>
       </div>
 
-      <!-- Right: Minimalist Terminal Window -->
+      <!-- Right: Research Agent Studio (Harness Integration & Operations) -->
       <div class="journey-terminal">
         <div class="terminal-bar">
-          <span class="terminal-dots"><i></i><i></i><i></i></span>
-          <span class="terminal-title">Coding agent harness · Execution session</span>
-          <span class="terminal-tag">NATURAL LANGUAGE ENTRY</span>
+          <div class="terminal-dots-wrap">
+            <span class="terminal-dots"><i></i><i></i><i></i></span>
+            <span class="terminal-title">Coding agent harness · Execution studio</span>
+          </div>
+          <div class="harness-compat">
+            <span class="compat-label">Works with:</span>
+            <span class="compat-pill">Codex</span>
+            <span class="compat-pill">Claude Code</span>
+            <span class="compat-pill">Antigravity</span>
+            <span class="compat-pill">OpenCode</span>
+            <span class="compat-pill">Trae</span>
+          </div>
         </div>
-        <div class="terminal-code">
-          <div class="code-line input-line">
-            <span class="code-caret">›</span>
-            <code>Use the research-agent skill. Follow task.md and PERSONAL.md. Run autonomously.</code>
+
+        <div class="harness-prompt-bar">
+          <span class="code-caret">›</span>
+          <span class="skill-pill">SKILL.md</span>
+          <code class="prompt-phrase">"Use the research-agent skill. Explore in parallel; let me review what to keep."</code>
+        </div>
+
+        <div class="harness-ops-grid">
+          <!-- Op 1: step -->
+          <div class="hop-card">
+            <div class="hop-head">
+              <div class="hop-title-group">
+                <span class="hop-badge hop-step">STEP</span>
+                <code>research-agent step</code>
+              </div>
+              <span class="hop-mode">1 CYCLE</span>
+            </div>
+            <div class="hop-flow">
+              <span class="hop-pill">META</span>
+              <span class="hop-arr">→</span>
+              <span class="hop-pill">Scientist</span>
+              <span class="hop-arr">→</span>
+              <span class="hop-pill">Evidence</span>
+              <span class="hop-arr">→</span>
+              <span class="hop-pill highlight">Your turn</span>
+            </div>
+            <p class="hop-desc">Single bounded cycle. Evidence recorded; control returns to human.</p>
           </div>
-          <div class="terminal-output">
-            <p><span class="out-ok">✔ [Environment]</span> Loaded KuaiRand-Pure dataset (170,588 rows) · Verified official evaluator</p>
-            <p><span class="out-ok">✔ [Cycle 1 · GPT-5.6]</span> Baseline verified: Primary 0.6016310 · Self-healed float32 JSON serialization</p>
-            <p><span class="out-ok">✔ [Cycle 2 · Gemini]</span> Feature expansion: 46 user-video interaction features · Primary 0.6040901</p>
-            <p><span class="out-ok">✔ [Cycle 3 · GPT-5.6]</span> Variance reduction & seed averaging · Primary 0.6044289</p>
-            <p><span class="out-ok">✔ [Cycle 4 · Gemini]</span> 8-seed Factorization Machine ensemble · Primary 0.6059363 (+0.0043363)</p>
-            <p><span class="out-ok">✔ [META Review]</span> Verified claims ↔ telemetry; crystallized reproducible State to durable disk</p>
+
+          <!-- Op 2: run -->
+          <div class="hop-card">
+            <div class="hop-head">
+              <div class="hop-title-group">
+                <span class="hop-badge hop-run">RUN</span>
+                <code>research-agent run --max-cycles 4</code>
+              </div>
+              <span class="hop-mode">AUTONOMOUS</span>
+            </div>
+            <div class="hop-flow">
+              <span class="hop-pill">C1 ↺</span>
+              <span class="hop-arr">→</span>
+              <span class="hop-pill">C2 ↺</span>
+              <span class="hop-arr">→</span>
+              <span class="hop-pill">C3 ↺</span>
+              <span class="hop-arr">→</span>
+              <span class="hop-pill highlight">C4 0.6059</span>
+            </div>
+            <p class="hop-desc">Fresh Scientist each round; persistent world carries memory across cycles.</p>
           </div>
-          <div class="terminal-status-bar">
-            <span><b>Status:</b> Completed</span>
-            <span><b>Duration:</b> 7 days unattended</span>
-            <span><b>Compute:</b> 1x MacBook M2 (0 GPU-hr)</span>
-            <span><b>Tokens:</b> 48.24M</span>
+
+          <!-- Op 3: parallel -->
+          <div class="hop-card">
+            <div class="hop-head">
+              <div class="hop-title-group">
+                <span class="hop-badge hop-parallel">PARALLEL</span>
+                <code>research-agent parallel --branches 3</code>
+              </div>
+              <span class="hop-mode">BRANCHES</span>
+            </div>
+            <div class="hop-flow">
+              <span class="hop-pill">Branch A·B·C</span>
+              <span class="hop-arr">→</span>
+              <span class="hop-pill highlight">Reviewer Synthesis</span>
+              <span class="hop-arr">→</span>
+              <span class="hop-gain">+0.00148</span>
+            </div>
+            <p class="hop-desc">Isolated git worktrees explore diverse directions; Reviewer synthesizes ideas.</p>
           </div>
+
+          <!-- Op 4: dashboard -->
+          <div class="hop-card">
+            <div class="hop-head">
+              <div class="hop-title-group">
+                <span class="hop-badge hop-gui">DASHBOARD</span>
+                <code>research-agent gui</code>
+              </div>
+              <span class="hop-mode">INSPECTION</span>
+            </div>
+            <div class="hop-flow">
+              <span class="hop-pill">Telemetry</span>
+              <span class="hop-arr">·</span>
+              <span class="hop-pill">Loss Curves</span>
+              <span class="hop-arr">·</span>
+              <span class="hop-pill highlight">S004 Checkpoint</span>
+            </div>
+            <p class="hop-desc">Inspect verified checkpoints, validation metrics, and reproducible submission artifacts.</p>
+          </div>
+        </div>
+
+        <div class="terminal-status-bar">
+          <span><b>Status:</b> SOTA Verified (0.6059363)</span>
+          <span><b>Harness:</b> 100% Autonomous</span>
+          <span><b>Hardware:</b> 1× MacBook M2 (0 GPU-hr)</span>
+          <span><b>Scope:</b> 170,588 rows evaluated</span>
         </div>
       </div>
     </div>
@@ -511,12 +662,22 @@
   <footer>
     <div class="footer-left">
       <a href="https://github.com/zc6600/research-agent-kuairand" target="_blank" rel="noreferrer">github.com/zc6600/research-agent-kuairand ↗</a>
-      <p class="team">Chen Zhu · Zhou Ziyu · Shilin Xu · GE GAO · Jiran Li</p>
+      <p class="team"><b style="color: var(--navy);">Team Good4AI:</b> Chen Zhu · Zhou Ziyu · Shilin Xu · GE GAO · Jiran Li</p>
       <p class="source">Sources: slides/slides.md · docs/ARCHITECTURE.md · docs/FINAL_REPORT.md · KuaiRand-Pure submission ledger</p>
     </div>
-    <div class="footer-right">
-      <p class="footer-note">ROBUST · SUPERVISABLE · BROAD SEARCH</p>
+    <div class="footer-center">
+      <p class="footer-note">TEAM GOOD4AI · ROBUST · SUPERVISABLE · BROAD SEARCH</p>
       <p class="footer-sub">A Persistent Research World for Autonomous Science</p>
+    </div>
+    <div class="footer-right">
+      <div class="qr-meta">
+        <span class="qr-kicker">PROJECT WIKI &amp; DEMO</span>
+        <a class="qr-url" href="https://sciodyssey.zc6600.wiki/" target="_blank" rel="noreferrer">sciodyssey.zc6600.wiki ↗</a>
+        <p class="qr-sub">Scan for live report &amp; artifacts</p>
+      </div>
+      <a class="qr-box" href="https://sciodyssey.zc6600.wiki/" target="_blank" rel="noreferrer" title="Open SciOdyssey Wiki (https://sciodyssey.zc6600.wiki/)">
+        <img class="qr-img" src="assets/sciodyssey_qr.svg" alt="QR code pointing to https://sciodyssey.zc6600.wiki/" width="42" height="42">
+      </a>
     </div>
   </footer>
 </article>

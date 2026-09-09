@@ -49,16 +49,16 @@
         <circle class="chart-point chart-point-green" cx="953" cy="126" r="9" />
       </g>
       <g class="chart-point-labels">
-        <text class="chart-label-main" x="174" y="187">AGY</text>
+        <text class="chart-label-main" x="174" y="187">Antigravity (AGY)</text>
         <text class="chart-label-sub" x="174" y="207">gemini-3.7-flash · direct</text>
         <text class="chart-label-meta" x="174" y="224">8.565M · 0.6045803 · artifact-backed</text>
-        <text class="chart-label-main chart-label-right" x="587" y="152">gpt-5.6-luna · direct</text>
-        <text class="chart-label-sub chart-label-right" x="587" y="172">28.070M · ≈0.6046 · provisional</text>
+        <text class="chart-label-main chart-label-right" x="587" y="152">Codex (gpt-5.6-luna)</text>
+        <text class="chart-label-sub chart-label-right" x="587" y="172">28.070M · 0.6044533 (provisional ≈0.6046)</text>
         <text class="chart-label-main chart-label-right" x="909" y="121">heterogeneous run</text>
         <text class="chart-label-sub chart-label-right" x="909" y="141">gemini-3.7-flash · 39.607M · ≈0.6047</text>
-        <text class="chart-label-main chart-label-right" x="1064" y="215">RA-only · Cycle 2</text>
+        <text class="chart-label-main chart-label-right" x="1064" y="215">SciOdyssey with Antigravity</text>
         <text class="chart-label-sub chart-label-right" x="1064" y="235">gemini-3.7-flash-only · 45.044–51.174M · 0.6052 · E008</text>
-        <text class="chart-label-main chart-label-right chart-label-retained" x="1064" y="82">Research Agent submission</text>
+        <text class="chart-label-main chart-label-right chart-label-retained" x="1064" y="82">SciOdyssey submission</text>
         <text class="chart-label-sub chart-label-right chart-label-retained" x="1064" y="102">48.240M · 0.605936 · verified</text>
       </g>
       <g class="chart-axis-labels">
@@ -73,14 +73,14 @@
         <text class="chart-axis-title chart-axis-y" x="20" y="229" transform="rotate(-90 20 229)">Primary score</text>
       </g>
       <g class="chart-legend">
-        <circle class="chart-point chart-point-blue" cx="127" cy="454" r="7" />
-        <text x="148" y="459">direct model run</text>
-        <polygon class="chart-point chart-point-orange" points="367,446 376,452 367,458 358,452" />
-        <text x="390" y="459">heterogeneous run</text>
-        <polygon class="chart-point chart-point-purple" points="619,447 628,457 610,457" />
-        <text x="643" y="459">RA-only sweep</text>
-        <circle class="chart-point chart-point-green" cx="854" cy="454" r="7" />
-        <text x="875" y="459">retained verified result</text>
+        <circle class="chart-point chart-point-blue" cx="74" cy="454" r="7" />
+        <text x="88" y="459">direct run (AGY / Codex)</text>
+        <polygon class="chart-point chart-point-orange" points="310,448 318,454 310,460 302,454" />
+        <text x="326" y="459">heterogeneous run</text>
+        <polygon class="chart-point chart-point-purple" points="500,447 509,457 491,457" />
+        <text x="516" y="459">SciOdyssey with Antigravity</text>
+        <circle class="chart-point chart-point-green" cx="762" cy="454" r="7" />
+        <text x="776" y="459">retained verified result (0.605936)</text>
       </g>
     </svg>
   </div>

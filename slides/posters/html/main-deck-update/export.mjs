@@ -35,8 +35,8 @@ try {
   if (pdf.getPageCount() !== 1) throw new Error('Expected one poster page');
   const sheet = pdf.getPage(0);
   sheet.scale((841 * 72 / 25.4) / sheet.getWidth(), (1189 * 72 / 25.4) / sheet.getHeight());
-  pdf.setTitle('SciOdyssey · Main deck evidence poster');
-  pdf.setAuthor('SciOdyssey Team');
+  pdf.setTitle('SciOdyssey · Main deck evidence poster · Team Good4AI');
+  pdf.setAuthor('Team Good4AI (Chen Zhu, Zhou Ziyu, Shilin Xu, GE GAO, Jiran Li)');
   const output = new URL('SciOdyssey-poster-main-deck.pdf', root);
   await writeFile(output, await pdf.save());
   console.log('Exported ' + fileURLToPath(output) + ' (one A0 page, 841 × 1189 mm)');

@@ -372,9 +372,9 @@ This page frames resource usage as supporting evidence, not as a claim that cost
 <text class="chart-label-sub chart-label-right" x="510" y="212">28.070M · ≈0.6046 · provisional</text>
 <text class="chart-label-main chart-label-right" x="790" y="156">heterogeneous run</text>
 <text class="chart-label-sub chart-label-right" x="790" y="172">gemini-3.7-flash · 39.607M · ≈0.6047</text>
-<text class="chart-label-main chart-label-right" x="925" y="274">RA-only · Cycle 2</text>
+<text class="chart-label-main chart-label-right" x="925" y="274">SciOdyssey with Antigravity</text>
 <text class="chart-label-sub chart-label-right" x="925" y="290">gemini-3.7-flash-only · 45.044–51.174M · 0.6052 · E008</text>
-<text class="chart-label-main chart-label-right chart-label-retained" x="925" y="108">Research Agent submission</text>
+<text class="chart-label-main chart-label-right chart-label-retained" x="925" y="108">SciOdyssey submission</text>
 <text class="chart-label-sub chart-label-right chart-label-retained" x="925" y="124">48.240M · 0.605936 · verified</text>
 </g>
 <g class="chart-axis-labels">
@@ -389,14 +389,14 @@ This page frames resource usage as supporting evidence, not as a claim that cost
 <text class="chart-axis-title chart-axis-y" x="22" y="296" transform="rotate(-90 22 296)">Primary score</text>
 </g>
 <g class="chart-legend">
-<circle class="chart-point chart-point-blue" cx="110" cy="584" r="6" />
-<text x="124" y="589">direct model run</text>
-<polygon class="chart-point chart-point-orange" points="267,578 274,584 267,590 260,584" />
-<text x="282" y="589">heterogeneous run</text>
-<polygon class="chart-point chart-point-purple" points="431,577 439,591 423,591" />
-<text x="447" y="589">RA-only sweep</text>
-<circle class="chart-point chart-point-green" cx="584" cy="584" r="6" />
-<text x="598" y="589">retained verified result</text>
+<circle class="chart-point chart-point-blue" cx="70" cy="584" r="6" />
+<text x="84" y="589">direct model run</text>
+<polygon class="chart-point chart-point-orange" points="230,578 237,584 230,590 223,584" />
+<text x="244" y="589">heterogeneous run</text>
+<polygon class="chart-point chart-point-purple" points="405,577 413,591 397,591" />
+<text x="421" y="589">SciOdyssey with Antigravity</text>
+<circle class="chart-point chart-point-green" cx="660" cy="584" r="6" />
+<text x="674" y="589">retained verified result</text>
 </g>
 </svg>
 </div>
