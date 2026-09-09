@@ -4,10 +4,268 @@ import { writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 
 const root = new URL('./', import.meta.url);
+
+const problemPolishCss = String.raw`
+.problem {
+  padding: 19px 22px 18px;
+}
+.problem h2 {
+  max-width: 455px;
+  font-size: 32px;
+  letter-spacing: -1.35px;
+}
+.problem-lead {
+  margin-top: 5px;
+  max-width: 490px;
+  color: #536579;
+  font-size: 13.6px;
+}
+.problem .world-art {
+  top: 17px;
+  right: 20px;
+  width: 78px;
+  height: 78px;
+  opacity: .38;
+}
+.problem .failure-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+.problem .failure-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  grid-template-rows: auto 1fr;
+  column-gap: 8px;
+  row-gap: 7px;
+  min-height: 205px;
+  padding: 11px 11px 10px;
+  overflow: hidden;
+  border: 1px solid #e2d5c1;
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(255,255,255,.32), rgba(255,255,255,.06)), #f1e8d8;
+}
+.problem .failure-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-top: 3px solid var(--navy);
+  opacity: .86;
+}
+.problem .failure-item.failure-inertia::before { border-top-color: var(--rust); }
+.problem .failure-item.failure-context::before { border-top-color: var(--green); }
+.problem .failure-idx {
+  grid-column: 1;
+  grid-row: 1;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  border-radius: 50%;
+  border: 1px solid #b7c7d1;
+  background: #f9f6ed;
+  color: var(--navy);
+  font-size: 10px;
+}
+.problem .failure-inertia .failure-idx { color: var(--rust); border-color: #d4aa93; }
+.problem .failure-context .failure-idx { color: var(--green); border-color: #a6c4b6; }
+.problem .failure-text {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  position: relative;
+  min-width: 0;
+}
+.problem .failure-text strong {
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.02;
+  letter-spacing: -.55px;
+}
+.problem .failure-text p {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+  font-size: 0;
+  line-height: 1.2;
+}
+.problem .failure-claim {
+  color: #2f3e4a;
+  font-size: 12px;
+  line-height: 1.23;
+}
+.problem .failure-receipt {
+  margin-top: 1px;
+  padding-top: 7px;
+  border-top: 1px dashed #d4c6b2;
+  color: #65717b;
+  font-family: var(--mono);
+  font-size: 8.7px;
+  font-weight: 600;
+  letter-spacing: -.15px;
+  line-height: 1.22;
+}
+.problem .failure-receipt b {
+  color: var(--rust);
+  font-family: var(--mono);
+}
+.problem .failure-receipt code {
+  color: var(--navy);
+  font-family: var(--mono);
+  font-size: 8.3px;
+}
+.problem .failure-visual {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  align-self: end;
+  position: relative;
+  height: 54px;
+  margin-top: 2px;
+  opacity: .95;
+}
+.problem .failure-flow {
+  display: grid;
+  grid-template-columns: 1fr 14px 1fr 14px 30px;
+  align-items: center;
+  gap: 3px;
+  font-family: var(--mono);
+  font-size: 6.8px;
+  font-weight: 800;
+  letter-spacing: .45px;
+  color: #315873;
+}
+.problem .failure-flow span:not(.flow-break) {
+  display: grid;
+  place-items: center;
+  height: 24px;
+  border: 1px solid #b9ccd6;
+  border-radius: 4px;
+  background: #f8fbfc;
+}
+.problem .failure-flow i {
+  height: 1px;
+  background: #a9c0cd;
+}
+.problem .failure-flow .flow-break {
+  display: grid;
+  place-items: center;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  border: 1px solid #c77b63;
+  background: #fff4ef;
+  color: var(--rust);
+  font-size: 19px;
+  font-family: Arial, sans-serif;
+  line-height: 1;
+}
+.problem .failure-basin svg,
+.problem .failure-bars svg {
+  display: block;
+  width: 100%;
+  height: 54px;
+}
+.problem .basin-track { fill: none; stroke: #c06f54; stroke-width: 3; stroke-linecap: round; }
+.problem .basin-ghost { fill: none; stroke: #dec9b7; stroke-width: 2; stroke-linecap: round; }
+.problem .basin-dot { fill: var(--rust); }
+.problem .basin-label { fill: #7d5d4e; font-family: var(--mono); font-size: 8px; font-weight: 700; }
+.problem .bar-read { fill: #a9c9d7; }
+.problem .bar-write { fill: #dfb08e; }
+.problem .bar-label { fill: #2e4656; font-family: var(--mono); font-size: 7.4px; font-weight: 700; }
+.problem .bar-num { fill: var(--ink); font-family: var(--mono); font-size: 9px; font-weight: 800; }
+.problem .bar-ratio { fill: var(--green); font-family: var(--mono); font-size: 13px; font-weight: 800; }
+.problem .architecture-contrast {
+  display: none;
+}
+.problem .problem-solution-bar {
+  margin-top: 12px;
+  min-height: 43px;
+  align-items: center;
+  border: 1px solid #ddb8a5;
+  border-left: 4px solid var(--rust);
+  border-radius: 8px;
+  padding: 8px 12px;
+  background: linear-gradient(90deg, #f9ece5, #f5eadb);
+  color: #803017;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.48);
+}
+.problem .bar-tag {
+  padding: 3px 7px;
+  font-size: 8.8px;
+  letter-spacing: 1px;
+}
+.problem .bar-desc {
+  color: #71331e;
+  font-size: 13.6px;
+  font-family: var(--serif);
+  font-weight: 700;
+  letter-spacing: -.25px;
+}
+.problem .bar-desc strong {
+  color: #71331e;
+}
+`;
+
+function applyProblemPolish() {
+  const panel = document.querySelector('.problem');
+  if (!panel) return;
+
+  panel.querySelector('.problem-lead').textContent = 'Sustained autonomous research breaks in three different ways.';
+
+  const failures = [...panel.querySelectorAll('.failure-item')];
+  const entries = [
+    {
+      cls: 'failure-fragility',
+      title: 'Closed-world fragility',
+      claim: 'Unexpected runtime failures can halt an unattended workflow.',
+      receipt: 'Cycle 1 · <code>numpy.float32</code> serialization error · autonomously repaired',
+      visual: '<div class="failure-visual failure-flow" aria-hidden="true"><span>OBSERVE</span><i></i><span>CODE</span><i></i><span class="flow-break">×</span></div>',
+    },
+    {
+      cls: 'failure-inertia',
+      title: 'Single-trajectory inertia',
+      claim: 'Long-lived reasoning carries yesterday’s momentum into today’s search.',
+      receipt: 'Direct Codex control reached <b>~0.6046</b> after extended local refinement',
+      visual: '<div class="failure-visual failure-basin" aria-hidden="true"><svg viewBox="0 0 150 54"><path class="basin-ghost" d="M16 15 C42 9, 53 15, 66 25"/><path class="basin-track" d="M16 15 C44 20, 63 40, 90 34 C105 31, 104 22, 93 24 C82 26, 80 38, 96 39 C113 40, 126 32, 132 24"/><circle class="basin-dot" cx="96" cy="39" r="4"/><text class="basin-label" x="83" y="51">LOCAL BASIN</text></svg></div>',
+    },
+    {
+      cls: 'failure-context',
+      title: 'Context inflation cost',
+      claim: 'Reconstructing project context can cost far more than the edit itself.',
+      receipt: 'Project-shaped replication · 340,087 vs 42,377 inclusive tokens · <b>8.03×</b>',
+      visual: '<div class="failure-visual failure-bars" aria-hidden="true"><svg viewBox="0 0 150 54"><text class="bar-label" x="0" y="12">READ</text><rect class="bar-read" x="34" y="4" width="102" height="11" rx="3"/><text class="bar-num" x="141" y="13" text-anchor="end">340k</text><text class="bar-label" x="0" y="32">EDIT</text><rect class="bar-write" x="34" y="24" width="13" height="11" rx="3"/><text class="bar-num" x="60" y="33">42k</text><text class="bar-ratio" x="141" y="49" text-anchor="end">8.03×</text></svg></div>',
+    },
+  ];
+
+  failures.forEach((item, index) => {
+    const entry = entries[index];
+    if (!entry) return;
+    item.classList.add(entry.cls);
+    const title = item.querySelector('.failure-text strong');
+    const body = item.querySelector('.failure-text p');
+    if (title) title.textContent = entry.title;
+    if (body) body.innerHTML = `<span class="failure-claim">${entry.claim}</span><span class="failure-receipt">${entry.receipt}</span>`;
+    item.querySelector('.failure-visual')?.remove();
+    item.insertAdjacentHTML('beforeend', entry.visual);
+  });
+
+  panel.querySelector('.architecture-contrast')?.remove();
+  const bar = panel.querySelector('.problem-solution-bar');
+  if (bar) {
+    bar.innerHTML = '<span class="bar-tag">DESIGN RESPONSE</span><span class="bar-desc"><strong>Keep the world.</strong> Reset the trajectory.</span>';
+  }
+}
+
 const browser = await chromium.launch({ headless: true });
 try {
   const page = await browser.newPage({ viewport: { width: 1440, height: 2036 }, deviceScaleFactor: 2 });
   await page.goto(new URL('poster.html', root).href, { waitUntil: 'networkidle' });
+  await page.addStyleTag({ content: problemPolishCss });
+  await page.evaluate(applyProblemPolish);
   await page.evaluate(() => document.fonts.ready);
   await page.evaluate(async () => {
     await Promise.all([...document.images].map(img => img.decode()));
