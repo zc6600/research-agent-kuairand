@@ -74,9 +74,6 @@
       </div>
     </div>
 
-    <p class="finding-boundary">
-      Finding, not isolated causality: the run suggests model rotation can widen the search when the research world stays shared.
-    </p>
   </section>
 </template>
 
@@ -228,5 +225,4 @@
 .winner-score strong { color: var(--green, #16803b); font-size: 26px; font-weight: 800; }
 .winner-score small { color: #15803d; }
 
-.finding-boundary { color: #7b838d; font-size: 11px; line-height: 1.35; margin: 9px 0 0; }
 </style>
