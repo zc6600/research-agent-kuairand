@@ -17,6 +17,7 @@
     "poster:type": "slidev export posters/slidev/poster-type.md --wait 1800 --output exports/current/SciOdyssey-poster-type.pdf && node scripts/poster-print-size.mjs exports/current/SciOdyssey-poster-type.pdf",
     "poster:html:voyage": "node posters/html/voyage/export.mjs",
     "poster:html:main-deck": "node posters/html/main-deck-update/export.mjs",
+    "poster:site:build": "node scripts/build-poster-site.mjs",
     "poster:variants": "npm run poster:editorial && npm run poster:evidence && npm run poster:type",
     "poster:png": "npm run poster:export && gs -q -dSAFER -dBATCH -dNOPAUSE -dTextAlphaBits=4 -dGraphicsAlphaBits=4 -sDEVICE=png16m -r96 -sOutputFile=exports/current/SciOdyssey-poster.png exports/current/SciOdyssey-poster.pdf"
   },
