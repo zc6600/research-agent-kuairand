@@ -318,6 +318,47 @@
 .slidev-layout .toc-step-orange { --toc-accent: var(--orange); }
 .slidev-layout .toc-step-purple { --toc-accent: var(--purple); }
 .slidev-layout .toc-step-green { --toc-accent: #16803b; }
+.slidev-layout .toc-step-rose { --toc-accent: var(--rose); }
+
+.slidev-layout .toc-track.toc-track-five {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(5, 1fr);
+  margin-top: 56px;
+  position: relative;
+}
+
+.slidev-layout .toc-track.toc-track-five .toc-track-line {
+  right: calc((100% - 4 * 16px) / 5 - 4px);
+}
+
+.slidev-layout .toc-track.toc-track-five .toc-step {
+  min-height: 220px;
+  padding-top: 78px;
+}
+
+.slidev-layout .toc-track.toc-track-five .toc-step-number {
+  font-size: 36px;
+}
+
+.slidev-layout .toc-track.toc-track-five .toc-step-label {
+  font-size: 11px;
+  letter-spacing: 1.1px;
+  margin-bottom: 12px;
+}
+
+.slidev-layout .toc-track.toc-track-five .toc-step strong {
+  font-size: 17.5px;
+  max-width: 165px;
+  line-height: 1.2;
+}
+
+.slidev-layout .toc-track.toc-track-five .toc-step > span:last-child {
+  font-size: 12.5px;
+  max-width: 165px;
+  line-height: 1.4;
+  margin-top: 12px;
+}
 
 .slidev-layout .toc-step-marker {
   height: 70px;

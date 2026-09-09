@@ -4,7 +4,7 @@
 
 - 可编辑源文件：`poster.html`、`poster.css`
 - 导出脚本：`node export.mjs`
-- A0 PDF：`SciOdyssey-poster-main-deck.pdf`
+- A1 PDF：`SciOdyssey-poster-main-deck.pdf`
 - QA 结果：`layout-check.json`
 - 预览图：`preview.png`
 
