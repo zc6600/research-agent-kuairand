@@ -78,7 +78,12 @@ async function reveal() {
   if (thisRun === run) finish()
 }
 
-onSlideEnter((_to, from) => { if (from === 3) reveal() })
+onSlideEnter((to, from) => {
+  if (insightSynthesis.triggeredByBuild || from === to - 1 || from === 5 || from === 4 || from === 3) {
+    insightSynthesis.triggeredByBuild = false
+    reveal()
+  }
+})
 onSlideLeave(finish)
 onBeforeUnmount(finish)
 </script>

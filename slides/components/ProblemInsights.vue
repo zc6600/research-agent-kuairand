@@ -22,6 +22,7 @@ function captureOrigins() {
 
 function buildSystem() {
   captureOrigins()
+  insightSynthesis.triggeredByBuild = true
   nextSlide()
 }
 

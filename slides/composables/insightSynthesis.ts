@@ -10,4 +10,5 @@ export const insightDefinitions = [
 export const insightSynthesis = reactive({
   learned: { workflow: false, single: false, tree: false },
   origins: [] as Array<{ x: number; y: number; width: number; height: number }>,
+  triggeredByBuild: false,
 })
