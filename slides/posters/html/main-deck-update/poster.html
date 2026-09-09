@@ -101,13 +101,13 @@
             <div class="flow-node env">
               <span class="node-num">01</span>
               <strong>Environment</strong>
-              <p>Task contract, data inputs, official evaluator & compute budget</p>
+              <p>Task contract, data inputs, official evaluator & compute budget. Read-only ground truth.</p>
             </div>
             <span class="flow-arrow">→</span>
             <div class="flow-node world">
               <span class="node-num">02</span>
               <strong>Research World</strong>
-              <p>Verified ledger, working priors, and reproducible code</p>
+              <p>Verified ledger, working priors, and reproducible code. Git worktree per branch.</p>
             </div>
             <div class="reset-indicator">
               <span class="reset-icon">↺</span>
@@ -116,13 +116,13 @@
             <div class="flow-node scientist">
               <span class="node-num">03</span>
               <strong>Fresh Scientist</strong>
-              <p>GPT ↔ Gemini rotation: clean hypotheses, code & experiments</p>
+              <p>GPT ↔ Gemini rotation: clean hypotheses, code & experiments. Ephemeral reasoning.</p>
             </div>
             <span class="flow-arrow">→</span>
             <div class="flow-node meta">
               <span class="node-num">04</span>
               <strong>META Review</strong>
-              <p>Audit claims ↔ telemetry evidence; crystallize verified State</p>
+              <p>Audit claims ↔ telemetry evidence; crystallize verified State. Strict promotion gate.</p>
             </div>
           </div>
           
@@ -168,19 +168,31 @@
           </div>
         </div>
 
-        <!-- Runtime Infrastructure & Parallel Breadth Footer -->
+        <!-- Runtime Infrastructure & Synthesis Footer (3 Columns) -->
         <div class="system-footer-grid">
           <div class="footer-block">
-            <span class="footer-kicker">CODING HARNESS & RUNTIME</span>
-            <p>Physical Git worktree isolation · Sandbox evaluator · Structured JSON telemetry · Automated artifact capture</p>
+            <span class="footer-kicker">WORKTREE ISOLATION</span>
+            <p>Physical Git worktrees isolate state per branch; prevents concurrent file collisions; automated CI/CD artifact capture.</p>
           </div>
           <div class="footer-block">
-            <span class="footer-kicker">PARALLEL EXPLORATION</span>
-            <p>Independent branches explore in parallel → Post-hoc META review against validation split → Explicit state merge</p>
+            <span class="footer-kicker">AUTONOMOUS SELF-HEALING</span>
+            <p>Runtime traceback interception → Automated patch generation → Targeted regression testing → Safe state rollback.</p>
+          </div>
+          <div class="footer-block">
+            <span class="footer-kicker">MULTI-MODEL SYNTHESIS</span>
+            <p>Reviewer synthesizes cross-branch findings; merges complementary features & model architectures post-hoc.</p>
           </div>
         </div>
 
-        <p class="system-principle">The next Scientist inherits verified experience, not prior reasoning inertia.</p>
+        <div class="system-principle-box">
+          <p class="system-principle">The next Scientist inherits verified experience, not prior reasoning inertia.</p>
+          <div class="principle-pillars">
+            <span>Decoupled Memory</span><i>·</i>
+            <span>Audited Persistence</span><i>·</i>
+            <span>Autonomous Self-Healing</span><i>·</i>
+            <span>Zero Context Pollution</span>
+          </div>
+        </div>
       </section>
     </div>
 
@@ -217,7 +229,11 @@
               <span>nDCG@5 <b>0.5390304</b> (+0.0033)</span>
               <span>LogLoss <b>0.38102</b> (-0.0032)</span>
             </div>
-            <p class="card-annotation">46 categorical interaction features · 8-seed Factorization Machine ensemble · 100% CPU / NumPy training.</p>
+            <div class="card-feature-list">
+              <span><b>Feature Engine:</b> 46 categorical cross-interactions + log1p transforms</span>
+              <span><b>Architecture:</b> 8-seed Factorization Machine ensemble (NumPy / CPU)</span>
+            </div>
+            <p class="card-annotation">Monotonic gain from baseline (0.6016) → feature engineering (0.6041) → seed ensembling (0.6059); 100% CPU inference without GPU clusters.</p>
           </article>
 
           <!-- Card 02: Direct Benchmark Control -->
@@ -239,7 +255,19 @@
               </div>
             </div>
             <div class="gain-badge purple-badge">+0.0014830 Primary advantage</div>
-            <p class="card-annotation">Direct single-agent baselines anchored in local parameter tuning across 22 experiments; SciOdyssey broke out into superior feature space via world resets.</p>
+            <div class="codex-contrast-table">
+              <div class="contrast-row">
+                <span class="c-dim">Search Mode</span>
+                <span class="c-bad">Local parameter tuning (22 runs)</span>
+                <span class="c-good">Structural feature discovery</span>
+              </div>
+              <div class="contrast-row">
+                <span class="c-dim">Search Outcome</span>
+                <span class="c-bad">Stalled at 0.6044 (Local basin)</span>
+                <span class="c-good">SOTA 0.6059363 (Novel features)</span>
+              </div>
+            </div>
+            <p class="card-annotation">Single-agent baselines anchored in hyperparameter loops across 22 runs; SciOdyssey broke into superior feature representations via fresh world resets.</p>
           </article>
 
           <!-- Card 03: Sustained Search -->
@@ -274,6 +302,12 @@
                 <small>C4: 8-seed FM recipe</small>
               </div>
             </div>
+            <div class="trajectory-breakdown">
+              <span><b>C1</b> Baseline Repaired</span><i>·</i>
+              <span><b>C2</b> +0.00246 Features</span><i>·</i>
+              <span><b>C3</b> +0.00034 Variance Red.</span><i>·</i>
+              <span><b>C4</b> +0.00151 Ensemble</span>
+            </div>
             <div class="trajectory-summary">
               <span><b>4</b> autonomous cycles</span><i>·</i>
               <span><b>13</b> named experiments</span><i>·</i>
@@ -305,7 +339,12 @@
                 <p>Rerun succeeded; META validated proxy fidelity & preserved State.</p>
               </div>
             </div>
-            <p class="card-annotation">Zero human debugging intervention; autonomous traceback self-healing in Cycle 1. META audits proxy fidelity and rejects spurious state promotions.</p>
+            <div class="recovery-guardrails">
+              <span class="guard-pill"><b>Self-Healing:</b> Traceback auto-repaired</span>
+              <span class="guard-pill"><b>META Gate:</b> Spurious proxy rejected</span>
+              <span class="guard-pill"><b>Audit:</b> 170,588 rows aligned</span>
+            </div>
+            <p class="card-annotation">Zero human debugging intervention across 7 days; autonomous traceback self-healing in Cycle 1. META audits proxy fidelity and rejects spurious state promotions.</p>
           </article>
 
           <!-- Card 05: Resource Accounting (Full Width) -->
@@ -336,6 +375,11 @@
                 <span class="kpi-val">48.24M</span>
                 <span class="kpi-sub">4.02M non-cache · 8.5× token reduction</span>
               </div>
+            </div>
+            <div class="token-efficiency-strip">
+              <span><b>Context Caching:</b> 44.22M cached tokens (91.7% hit rate via prompt stabilization)</span>
+              <span><b>Cost / Cycle:</b> ~$2.50 avg per autonomous research cycle</span>
+              <span><b>Engine:</b> 100% CPU vectorization · Zero GPU cluster dependencies</span>
             </div>
             <div class="resource-footer-row">
               <span><b>100%</b> Autonomous execution (0 manual code interventions)</span>
