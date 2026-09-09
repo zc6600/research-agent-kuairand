@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "prepare:main": "node scripts/prepare-main-deck.mjs",
+    "prepare:experience-audio": "node scripts/prepare-experience-audio.mjs",
+    "prepare:main": "npm run prepare:experience-audio && node scripts/prepare-main-deck.mjs",
     "check:paths": "node scripts/check-exports.mjs",
     "dev": "npm run prepare:main && slidev .generated-slides.md --port 3030",
     "build": "npm run prepare:main && slidev build .generated-slides.md --base ./",
