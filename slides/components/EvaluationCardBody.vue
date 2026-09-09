@@ -60,37 +60,45 @@ defineProps<{ card: string }>()
 
     <template v-else-if="card === 'comparison'">
       <div class="comparison-intro">
-        <span class="eyeline">PUBLIC VALIDATION / DIRECT AGENT BENCHMARKS</span>
-        <p>Direct agents improved locally; the meta-scientist layer retained the stronger trajectory and climbed above both controls.</p>
+        <span class="eyeline">ARCHITECTURE ABLATION / SAME MODEL FAMILY</span>
+        <p>Keep Gemini 3.7 Flash in the comparison and change the research organization: direct agent → delegated subagents → Meta-Scientist over Antigravity.</p>
       </div>
 
-      <div class="comparison-scoreboard">
-        <div class="scoreboard-card">
-          <span class="sb-label">DIRECT CODEX</span>
-          <strong class="sb-model">Codex · gpt-5.6-luna</strong>
-          <div class="sb-score">0.6044533</div>
-          <div class="sb-tag warning">22-run local tuning limit</div>
+      <div class="architecture-progress">
+        <div class="arch-step">
+          <span class="arch-label">01 · DIRECT AGY</span>
+          <strong>Antigravity</strong>
+          <div class="arch-score">0.6045803</div>
+          <p>Single-agent 2h run.</p>
         </div>
+        <span class="arch-arrow">→</span>
+        <div class="arch-step">
+          <span class="arch-label">02 · SUBAGENTS</span>
+          <strong>AGY + delegated subagents</strong>
+          <div class="arch-score">≈0.6047</div>
+          <p>Broader delegation, no persistent Meta layer.</p>
+        </div>
+        <span class="arch-arrow">→</span>
+        <div class="arch-step winner">
+          <span class="arch-label">03 · META-SCIENTIST</span>
+          <strong>Meta-Scientist + AGY</strong>
+          <div class="arch-score">0.6052</div>
+          <p>Persistent world memory + fresh Scientist reset.</p>
+        </div>
+      </div>
 
-        <div class="scoreboard-card">
-          <span class="sb-label">DIRECT ANTIGRAVITY</span>
-          <strong class="sb-model">Antigravity · gemini-3.7-flash</strong>
-          <div class="sb-score">0.6045803</div>
-          <div class="sb-tag warning">single-agent 2h run</div>
+      <div class="best-run-note">
+        <div>
+          <span class="best-label">BEST OBSERVED FULL SYSTEM</span>
+          <strong>0.6059363</strong>
         </div>
-
-        <div class="scoreboard-card winner">
-          <span class="sb-label">OUR AGENT</span>
-          <strong class="sb-model">SciOdyssey research layer</strong>
-          <div class="sb-score winner-score">0.6059363</div>
-          <div class="sb-tag success">+0.00136–0.00148</div>
-        </div>
+        <p>The highest retained score used mixed GPT/Gemini rotation; this page uses the Gemini-family comparison to isolate architecture signal.</p>
       </div>
 
       <div class="comparison-chart-shell">
         <EvaluationTokenScoreChart />
       </div>
-      <p class="boundary comparison-boundary">Same KuaiRand-Pure public-validation split and starter-kit evaluator. The chart shows score against recorded LLM-token investment.</p>
+      <p class="boundary comparison-boundary">Same public-validation split and starter-kit evaluator; architecture comparison keeps the model family aligned where possible.</p>
     </template>
 
     <template v-else-if="card === 'tokenmaxxing'">
@@ -166,54 +174,26 @@ defineProps<{ card: string }>()
 .tier-meta { font-size: 9.5px; color: #7d7d82; margin-top: auto; padding-top: 6px; border-top: 1px dashed #e6e6e8; }
 
 .comparison-intro { margin-bottom: 8px; }
-.comparison-intro p {
-  margin: 3px 0 8px;
-  max-width: 850px;
-  color: #646c74;
-  font-size: 12.2px;
-  line-height: 1.32;
-}
-.comparison-scoreboard {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin-bottom: 9px;
-}
-.scoreboard-card {
-  min-height: 86px;
-  padding: 9px 12px 8px;
-  border: 1px solid #e6e6e8;
-  border-radius: 10px;
-  background: #fbfcfd;
-  text-align: left;
-}
-.scoreboard-card.winner {
-  border-color: color-mix(in srgb, var(--accent) 55%, #e6e6e8);
-  background: #fbfdfe;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-}
-.sb-label { display: block; font-size: 8.7px; font-weight: 800; letter-spacing: 0.8px; color: #7d7d82; }
-.scoreboard-card.winner .sb-label { color: var(--accent); }
-.sb-model { display: block; font-size: 10.7px; color: var(--ink); margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.sb-score { font-size: 24px; font-weight: 820; letter-spacing: -0.8px; color: #434a52; margin: 3px 0 2px; }
-.sb-score.winner-score { color: var(--accent); font-size: 25px; }
-.sb-tag { margin-top: 3px; font-size: 9px; padding: 2px 6px; border-radius: 4px; display: inline-block; font-weight: 650; }
-.sb-tag.warning { background: #f3f4f6; color: #5a626a; }
-.sb-tag.success { background: #e8f7ed; color: #16803b; }
-.comparison-chart-shell { margin-top: 2px; }
-.comparison-boundary { margin-top: 7px !important; font-size: 10.8px !important; line-height: 1.28 !important; }
+.comparison-intro p { margin: 3px 0 8px; max-width: 880px; color: #646c74; font-size: 12.2px; line-height: 1.32; }
+.architecture-progress { display: grid; grid-template-columns: 1fr 34px 1fr 34px 1.05fr; gap: 8px; align-items: stretch; margin: 8px 0 9px; }
+.arch-step { min-height: 90px; padding: 10px 12px; border: 1px solid #e6e6e8; border-radius: 12px; background: #fbfcfd; }
+.arch-step.winner { border-color: color-mix(in srgb, var(--accent) 55%, #e6e6e8); background: linear-gradient(180deg, #ffffff, #fbf9ff); box-shadow: 0 2px 10px rgba(0,0,0,.035); }
+.arch-label { display: block; font-size: 8.5px; font-weight: 850; letter-spacing: .85px; color: #7d7d82; }
+.arch-step.winner .arch-label { color: var(--accent); }
+.arch-step strong { display: block; margin-top: 4px; color: var(--ink); font-size: 12px; line-height: 1.15; }
+.arch-score { margin: 3px 0 2px; color: #434a52; font-size: 24px; line-height: 1; font-weight: 820; letter-spacing: -.85px; }
+.arch-step.winner .arch-score { color: var(--accent); font-size: 26px; }
+.arch-step p { margin: 0; color: #6b727a; font-size: 9.6px; line-height: 1.22; }
+.arch-arrow { display: grid; place-items: center; color: #c6cbd0; font-size: 21px; font-weight: 750; }
+.best-run-note { display: grid; grid-template-columns: 220px 1fr; gap: 14px; align-items: center; margin: 2px 0 8px; padding: 8px 12px; border-radius: 12px; background: #f6f1ff; border: 1px solid color-mix(in srgb, var(--accent) 28%, #e6e6e8); }
+.best-label { display: block; color: var(--accent); font-size: 8px; font-weight: 850; letter-spacing: .85px; }
+.best-run-note strong { display: block; color: var(--accent); font-size: 23px; line-height: 1.05; letter-spacing: -.8px; }
+.best-run-note p { margin: 0; color: #626b74; font-size: 10.4px; line-height: 1.28; }
+.comparison-chart-shell { margin-top: 0; }
+.comparison-boundary { margin-top: 7px !important; font-size: 10.5px !important; line-height: 1.28 !important; }
 
 .token-hero { padding-bottom: 0; }
-.token-hero-box {
-  display: flex;
-  align-items: center;
-  gap: 26px;
-  margin-top: 8px;
-  padding: 14px 22px;
-  background: #fdfaf6;
-  border: 1px solid color-mix(in srgb, var(--accent) 24%, #e6e6e8);
-  border-radius: 14px;
-}
+.token-hero-box { display: flex; align-items: center; gap: 26px; margin-top: 8px; padding: 14px 22px; background: #fdfaf6; border: 1px solid color-mix(in srgb, var(--accent) 24%, #e6e6e8); border-radius: 14px; }
 .token-hero-left { display: flex; flex-direction: column; align-items: flex-start; flex-shrink: 0; }
 .token-amount { font-size: 42px; line-height: 1; color: var(--accent); letter-spacing: -1.4px; font-weight: 800; }
 .token-caption { font-size: 10px; font-weight: 750; color: #7d7d82; letter-spacing: .6px; margin-top: 4px; text-transform: uppercase; }
