@@ -15,7 +15,6 @@
       <p class="eyebrow">TEAM GOOD4AI · AUTONOMOUS ML RESEARCH / TECHJAM 2026</p>
       <h1>SciOdyssey<span class="hero-dot" aria-hidden="true"></span></h1>
       <p class="subtitle">A research layer over your agent harness.</p>
-      <h2>Our agent can carry<br>a research task to <em>completion.</em></h2>
       <div class="hero-meta-row">
         <p class="hero-note">PRESERVE THE RESEARCH WORLD · RESET THE RESEARCHER</p>
         <div class="hero-badges">
@@ -544,7 +543,7 @@
       </div>
 
       <!-- Right: Research Agent Studio (Harness Integration & Operations) -->
-      <div class="journey-terminal">
+       <div class="journey-terminal">
         <div class="terminal-bar">
           <div class="terminal-dots-wrap">
             <span class="terminal-dots"><i></i><i></i><i></i></span>
@@ -566,85 +565,69 @@
           <code class="prompt-phrase">"Use the research-agent skill. Explore in parallel; let me review what to keep."</code>
         </div>
 
-        <div class="harness-ops-grid">
-          <!-- Op 1: step -->
-          <div class="hop-card">
-            <div class="hop-head">
-              <div class="hop-title-group">
-                <span class="hop-badge hop-step">STEP</span>
-                <code>research-agent step</code>
-              </div>
-              <span class="hop-mode">1 CYCLE</span>
+        <div class="shell-session">
+          <div class="sh-group">
+            <div class="sh-row">
+              <span class="sh-prompt">$</span>
+              <span class="sh-cmd">research-agent <span class="sh-kw">step</span></span>
+              <span class="sh-comment"># one cycle · human reviews</span>
             </div>
-            <div class="hop-flow">
-              <span class="hop-pill">META</span>
-              <span class="hop-arr">→</span>
-              <span class="hop-pill">Scientist</span>
-              <span class="hop-arr">→</span>
-              <span class="hop-pill">Evidence</span>
-              <span class="hop-arr">→</span>
-              <span class="hop-pill highlight">Your turn</span>
+            <div class="sh-out">
+              <span class="sh-tag sh-tag-blue">META</span>
+              <span class="sh-arr">→</span>
+              <span class="sh-tag sh-tag-blue">Scientist</span>
+              <span class="sh-arr">→</span>
+              <span class="sh-tag sh-tag-blue">Evidence</span>
+              <span class="sh-arr">→</span>
+              <span class="sh-tag sh-tag-hl">Your turn ✓</span>
             </div>
-            <p class="hop-desc">Single bounded cycle. Evidence recorded; control returns to human.</p>
           </div>
 
-          <!-- Op 2: run -->
-          <div class="hop-card">
-            <div class="hop-head">
-              <div class="hop-title-group">
-                <span class="hop-badge hop-run">RUN</span>
-                <code>research-agent run --max-cycles 4</code>
-              </div>
-              <span class="hop-mode">AUTONOMOUS</span>
+          <div class="sh-group">
+            <div class="sh-row">
+              <span class="sh-prompt">$</span>
+              <span class="sh-cmd">research-agent <span class="sh-kw">run</span> --max-cycles 4</span>
+              <span class="sh-comment"># autonomous · fresh scientist each round</span>
             </div>
-            <div class="hop-flow">
-              <span class="hop-pill">C1 ↺</span>
-              <span class="hop-arr">→</span>
-              <span class="hop-pill">C2 ↺</span>
-              <span class="hop-arr">→</span>
-              <span class="hop-pill">C3 ↺</span>
-              <span class="hop-arr">→</span>
-              <span class="hop-pill highlight">C4 0.6059</span>
+            <div class="sh-out">
+              <span class="sh-tag">C1 ↺</span>
+              <span class="sh-arr">→</span>
+              <span class="sh-tag">C2 ↺</span>
+              <span class="sh-arr">→</span>
+              <span class="sh-tag">C3 ↺</span>
+              <span class="sh-arr">→</span>
+              <span class="sh-tag sh-tag-hl">C4 · NDCG 0.6059 ✓</span>
             </div>
-            <p class="hop-desc">Fresh Scientist each round; persistent world carries memory across cycles.</p>
           </div>
 
-          <!-- Op 3: parallel -->
-          <div class="hop-card">
-            <div class="hop-head">
-              <div class="hop-title-group">
-                <span class="hop-badge hop-parallel">PARALLEL</span>
-                <code>research-agent parallel --branches 3</code>
-              </div>
-              <span class="hop-mode">BRANCHES</span>
+          <div class="sh-group">
+            <div class="sh-row">
+              <span class="sh-prompt">$</span>
+              <span class="sh-cmd">research-agent <span class="sh-kw">parallel</span> --branches 3</span>
+              <span class="sh-comment"># isolated worktrees · reviewer synthesises</span>
             </div>
-            <div class="hop-flow">
-              <span class="hop-pill">Branch A·B·C</span>
-              <span class="hop-arr">→</span>
-              <span class="hop-pill highlight">Reviewer Synthesis</span>
-              <span class="hop-arr">→</span>
-              <span class="hop-gain">+0.00148</span>
+            <div class="sh-out">
+              <span class="sh-tag">Branch A·B·C</span>
+              <span class="sh-arr">→</span>
+              <span class="sh-tag sh-tag-hl">Reviewer Synthesis</span>
+              <span class="sh-arr">→</span>
+              <span class="sh-gain">+0.00148</span>
             </div>
-            <p class="hop-desc">Isolated git worktrees explore diverse directions; Reviewer synthesizes ideas.</p>
           </div>
 
-          <!-- Op 4: dashboard -->
-          <div class="hop-card">
-            <div class="hop-head">
-              <div class="hop-title-group">
-                <span class="hop-badge hop-gui">DASHBOARD</span>
-                <code>research-agent gui</code>
-              </div>
-              <span class="hop-mode">INSPECTION</span>
+          <div class="sh-group">
+            <div class="sh-row">
+              <span class="sh-prompt">$</span>
+              <span class="sh-cmd">research-agent <span class="sh-kw">gui</span></span>
+              <span class="sh-comment"># dashboard · telemetry &amp; checkpoints</span>
             </div>
-            <div class="hop-flow">
-              <span class="hop-pill">Telemetry</span>
-              <span class="hop-arr">·</span>
-              <span class="hop-pill">Loss Curves</span>
-              <span class="hop-arr">·</span>
-              <span class="hop-pill highlight">S004 Checkpoint</span>
+            <div class="sh-out">
+              <span class="sh-tag">Telemetry</span>
+              <span class="sh-arr">·</span>
+              <span class="sh-tag">Loss Curves</span>
+              <span class="sh-arr">·</span>
+              <span class="sh-tag sh-tag-hl">S004 Checkpoint ✓</span>
             </div>
-            <p class="hop-desc">Inspect verified checkpoints, validation metrics, and reproducible submission artifacts.</p>
           </div>
         </div>
 
