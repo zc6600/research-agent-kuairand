@@ -1,9 +1,9 @@
 <template>
   <div class="embedded-token-chart" aria-label="Public-validation Primary score versus measured total LLM tokens">
-    <svg class="token-chart" viewBox="0 0 1150 480" role="img" aria-labelledby="embedded-token-chart-title embedded-token-chart-desc">
+    <svg class="token-chart" viewBox="0 0 1150 430" role="img" aria-labelledby="embedded-token-chart-title embedded-token-chart-desc">
       <title id="embedded-token-chart-title">Public-validation Primary score versus measured total LLM tokens</title>
       <desc id="embedded-token-chart-desc">The retained Research Agent result reaches a Primary score of 0.605936 at 48.240 million total LLM tokens, alongside direct-agent controls with different models, budgets, and evidence quality.</desc>
-      <rect class="chart-paper" x="0" y="0" width="1150" height="480" rx="18" />
+      <rect class="chart-paper" x="0" y="0" width="1150" height="430" rx="18" />
       <text class="chart-inline-title" x="106" y="30">Score versus measured LLM-token investment</text>
       <text class="chart-inline-subtitle" x="106" y="48">Public validation; input + output including cache-read; whole recorded agent system</text>
       <rect class="chart-plot" x="106" y="63" width="966" height="325" rx="4" />
@@ -69,18 +69,8 @@
         <text x="800" y="406">40</text>
         <text x="976" y="406">50</text>
         <text x="1056" y="406">55M</text>
-        <text class="chart-axis-title" x="589" y="430">Total LLM tokens (millions)</text>
+        <text class="chart-axis-title" x="589" y="422">Total LLM tokens (millions)</text>
         <text class="chart-axis-title chart-axis-y" x="20" y="229" transform="rotate(-90 20 229)">Primary score</text>
-      </g>
-      <g class="chart-legend">
-        <circle class="chart-point chart-point-blue" cx="74" cy="454" r="7" />
-        <text x="88" y="459">direct run (AGY / Codex)</text>
-        <polygon class="chart-point chart-point-orange" points="310,448 318,454 310,460 302,454" />
-        <text x="326" y="459">heterogeneous run</text>
-        <polygon class="chart-point chart-point-purple" points="500,447 509,457 491,457" />
-        <text x="516" y="459">SciOdyssey with Antigravity</text>
-        <circle class="chart-point chart-point-green" cx="762" cy="454" r="7" />
-        <text x="776" y="459">retained verified result (0.605936)</text>
       </g>
     </svg>
   </div>
@@ -102,7 +92,7 @@
 .chart-inline-title, .chart-label-main, .chart-axis-title { fill: #171b20; }
 .chart-inline-title { font-size: 23px; font-weight: 700; }
 .chart-inline-subtitle { fill: #7d858d; font-size: 15px; }
-.chart-y-labels text, .chart-axis-labels > text:not(.chart-axis-title), .chart-legend text { fill: #7d858d; font-size: 16px; }
+.chart-y-labels text, .chart-axis-labels > text:not(.chart-axis-title) { fill: #7d858d; font-size: 16px; }
 .chart-axis-title { font-size: 16px; font-weight: 700; text-anchor: middle; }
 .chart-reference { stroke: #b9c1ca; stroke-dasharray: 7 6; stroke-width: 1.5; }
 .chart-reference-label { fill: #8a929b; font-size: 15px; }
@@ -118,5 +108,4 @@
 .chart-label-meta { fill: #7d858d; font-size: 13px; }
 .chart-label-right { text-anchor: end; }
 .chart-label-retained { fill: #16803b; }
-.chart-legend .chart-point { stroke-width: 2; }
 </style>
