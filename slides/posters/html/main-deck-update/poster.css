@@ -252,10 +252,10 @@ b, strong { font-weight: 700; color: var(--ink); }
 /* -------------------------------------------------------------
    01 / PROBLEM (Height: 382px)
 ------------------------------------------------------------- */
-.problem { padding: 18px 20px; position: relative; }
+.problem { padding: 14px 20px 10px; position: relative; }
 .world-art {
   position: absolute;
-  top: 16px;
+  top: 14px;
   right: 18px;
   width: 86px;
   height: 86px;
@@ -266,13 +266,13 @@ b, strong { font-weight: 700; color: var(--ink); }
   box-shadow: 0 0 14px rgba(11, 69, 107, 0.12);
   pointer-events: none;
 }
-.problem-lead { margin-top: 4px; color: var(--muted); font-size: 13px; font-weight: 500; }
+.problem-lead { margin-top: 3px; color: var(--muted); font-size: 13px; font-weight: 500; }
 
 .failure-list {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-top: 9px;
+  gap: 5px;
+  margin-top: 7px;
 }
 
 .failure-item {
@@ -346,10 +346,10 @@ b, strong { font-weight: 700; color: var(--ink); }
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-top: 9px;
+  margin-top: 7px;
   border: 1px solid #e8ccbd;
   border-radius: 6px;
-  padding: 7px 11px;
+  padding: 5px 11px;
   background: var(--rust-soft);
   color: #8c3217;
   font-size: 11px;
@@ -1647,6 +1647,7 @@ b, strong { font-weight: 700; color: var(--ink); }
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-left: auto;
 }
 
 .sh-out {
