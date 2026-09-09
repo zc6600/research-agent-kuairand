@@ -37,11 +37,10 @@ const problemPolishCss = String.raw`
   position: relative;
   display: grid;
   grid-template-columns: 24px 1fr;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto;
   column-gap: 8px;
-  row-gap: 7px;
-  min-height: 205px;
-  padding: 11px 11px 10px;
+  min-height: 164px;
+  padding: 11px 11px 12px;
   overflow: hidden;
   border: 1px solid #e2d5c1;
   border-radius: 8px;
@@ -75,7 +74,7 @@ const problemPolishCss = String.raw`
 .problem .failure-context .failure-idx { color: var(--green); border-color: #a6c4b6; }
 .problem .failure-text {
   grid-column: 2;
-  grid-row: 1 / span 2;
+  grid-row: 1;
   position: relative;
   min-width: 0;
 }
@@ -88,26 +87,26 @@ const problemPolishCss = String.raw`
 .problem .failure-text p {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 7px;
   margin-top: 8px;
   font-size: 0;
   line-height: 1.2;
 }
 .problem .failure-claim {
   color: #2f3e4a;
-  font-size: 12px;
-  line-height: 1.23;
+  font-size: 12.2px;
+  line-height: 1.25;
 }
 .problem .failure-receipt {
-  margin-top: 1px;
-  padding-top: 7px;
+  margin-top: 2px;
+  padding-top: 8px;
   border-top: 1px dashed #d4c6b2;
   color: #65717b;
   font-family: var(--mono);
-  font-size: 8.7px;
+  font-size: 8.9px;
   font-weight: 600;
   letter-spacing: -.15px;
-  line-height: 1.22;
+  line-height: 1.25;
 }
 .problem .failure-receipt b {
   color: var(--rust);
@@ -116,68 +115,8 @@ const problemPolishCss = String.raw`
 .problem .failure-receipt code {
   color: var(--navy);
   font-family: var(--mono);
-  font-size: 8.3px;
+  font-size: 8.5px;
 }
-.problem .failure-visual {
-  grid-column: 1 / -1;
-  grid-row: 2;
-  align-self: end;
-  position: relative;
-  height: 54px;
-  margin-top: 2px;
-  opacity: .95;
-}
-.problem .failure-flow {
-  display: grid;
-  grid-template-columns: 1fr 14px 1fr 14px 30px;
-  align-items: center;
-  gap: 3px;
-  font-family: var(--mono);
-  font-size: 6.8px;
-  font-weight: 800;
-  letter-spacing: .45px;
-  color: #315873;
-}
-.problem .failure-flow span:not(.flow-break) {
-  display: grid;
-  place-items: center;
-  height: 24px;
-  border: 1px solid #b9ccd6;
-  border-radius: 4px;
-  background: #f8fbfc;
-}
-.problem .failure-flow i {
-  height: 1px;
-  background: #a9c0cd;
-}
-.problem .failure-flow .flow-break {
-  display: grid;
-  place-items: center;
-  width: 27px;
-  height: 27px;
-  border-radius: 50%;
-  border: 1px solid #c77b63;
-  background: #fff4ef;
-  color: var(--rust);
-  font-size: 19px;
-  font-family: Arial, sans-serif;
-  line-height: 1;
-}
-.problem .failure-basin svg,
-.problem .failure-bars svg {
-  display: block;
-  width: 100%;
-  height: 54px;
-}
-.problem .basin-track { fill: none; stroke: #c06f54; stroke-width: 3; stroke-linecap: round; }
-.problem .basin-ghost { fill: none; stroke: #dec9b7; stroke-width: 2; stroke-linecap: round; }
-.problem .basin-dot { fill: var(--rust); }
-.problem .basin-label { fill: #7d5d4e; font-family: var(--mono); font-size: 8px; font-weight: 700; }
-.problem .bar-read { fill: #a9c9d7; }
-.problem .bar-write { fill: #dfb08e; }
-.problem .bar-label { fill: #2e4656; font-family: var(--mono); font-size: 7.4px; font-weight: 700; }
-.problem .bar-num { fill: var(--ink); font-family: var(--mono); font-size: 9px; font-weight: 800; }
-.problem .bar-ratio { fill: var(--green); font-family: var(--mono); font-size: 13px; font-weight: 800; }
 .problem .architecture-contrast {
   display: none;
 }
@@ -223,21 +162,18 @@ function applyProblemPolish() {
       title: 'Closed-world fragility',
       claim: 'Unexpected runtime failures can halt an unattended workflow.',
       receipt: 'Cycle 1 · <code>numpy.float32</code> serialization error · autonomously repaired',
-      visual: '<div class="failure-visual failure-flow" aria-hidden="true"><span>OBSERVE</span><i></i><span>CODE</span><i></i><span class="flow-break">×</span></div>',
     },
     {
       cls: 'failure-inertia',
       title: 'Single-trajectory inertia',
       claim: 'Long-lived reasoning carries yesterday’s momentum into today’s search.',
       receipt: 'Direct Codex control reached <b>~0.6046</b> after extended local refinement',
-      visual: '<div class="failure-visual failure-basin" aria-hidden="true"><svg viewBox="0 0 150 54"><path class="basin-ghost" d="M16 15 C42 9, 53 15, 66 25"/><path class="basin-track" d="M16 15 C44 20, 63 40, 90 34 C105 31, 104 22, 93 24 C82 26, 80 38, 96 39 C113 40, 126 32, 132 24"/><circle class="basin-dot" cx="96" cy="39" r="4"/><text class="basin-label" x="83" y="51">LOCAL BASIN</text></svg></div>',
     },
     {
       cls: 'failure-context',
       title: 'Context inflation cost',
       claim: 'Reconstructing project context can cost far more than the edit itself.',
       receipt: 'Project-shaped replication · 340,087 vs 42,377 inclusive tokens · <b>8.03×</b>',
-      visual: '<div class="failure-visual failure-bars" aria-hidden="true"><svg viewBox="0 0 150 54"><text class="bar-label" x="0" y="12">READ</text><rect class="bar-read" x="34" y="4" width="102" height="11" rx="3"/><text class="bar-num" x="141" y="13" text-anchor="end">340k</text><text class="bar-label" x="0" y="32">EDIT</text><rect class="bar-write" x="34" y="24" width="13" height="11" rx="3"/><text class="bar-num" x="60" y="33">42k</text><text class="bar-ratio" x="141" y="49" text-anchor="end">8.03×</text></svg></div>',
     },
   ];
 
@@ -250,7 +186,6 @@ function applyProblemPolish() {
     if (title) title.textContent = entry.title;
     if (body) body.innerHTML = `<span class="failure-claim">${entry.claim}</span><span class="failure-receipt">${entry.receipt}</span>`;
     item.querySelector('.failure-visual')?.remove();
-    item.insertAdjacentHTML('beforeend', entry.visual);
   });
 
   panel.querySelector('.architecture-contrast')?.remove();
