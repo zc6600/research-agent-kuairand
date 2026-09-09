@@ -85,7 +85,7 @@ const handleKey = (event: KeyboardEvent) => {
     </div>
 
     <div v-if="selected" ref="dialog" class="inspection-layer" role="dialog" aria-modal="true" :aria-label="selected.claim" tabindex="-1" @keydown="handleKey" @click.stop @click.self="closeCard">
-      <article class="inspection-card" :style="{ '--accent': selected.accent }">
+      <article class="inspection-card" :class="`inspect-${selected.id}`" :style="{ '--accent': selected.accent }">
         <header class="inspection-heading">
           <button class="inspection-close mono" type="button" @click.stop="closeCard">BACK TO HAND ×</button>
           <div class="inspection-kicker mono">{{ selected.no }} / {{ selected.kicker }}</div>
@@ -94,7 +94,7 @@ const handleKey = (event: KeyboardEvent) => {
         <div class="inspection-content" tabindex="0" aria-label="Card contents" @wheel.stop @touchmove.stop>
           <EvaluationCardBody :card="selected.id" />
         </div>
-        <div class="inspection-meta mono">{{ selected.meta }}</div>
+        <div v-if="selected.id !== 'comparison'" class="inspection-meta mono">{{ selected.meta }}</div>
       </article>
     </div>
 
@@ -275,6 +275,7 @@ const handleKey = (event: KeyboardEvent) => {
 .inspection-heading h2 { margin: 8px 0 0; width: auto; color: var(--ink); font-size: 26px; line-height: 1.1; letter-spacing: -.8px; font-weight: 790; }
 .inspection-close { position: absolute; top: 20px; right: 30px; color: #7d7d82; font-size: 10px; cursor: pointer; }
 .inspection-content { min-height: 0; flex: 1; overflow: hidden; padding: 11px 32px 9px; }
+.inspection-card.inspect-comparison .inspection-content { padding-bottom: 16px; }
 .inspection-meta { flex-shrink: 0; padding: 9px 32px; border-top: 1px solid #eef0f2; color: #7d7d82; font-size: 9px; letter-spacing: .5px; }
 .claim-foot { position: absolute; left: 48px; bottom: 17px; color: #a0a5aa; font-size: 8.5px; letter-spacing: .82px; }
 .eval-claim-cards.has-inspection { overflow: visible; }
