@@ -9,10 +9,18 @@ defineProps<{ card: string }>()
   <div class="card-body">
     <template v-if="card === 'result'">
       <div class="result-summary">
-        <div><span class="eyeline">PUBLIC-VALIDATION PRIMARY</span><strong class="hero-number">0.6059363</strong><p><b>+0.0043363</b> over the official five-field FM</p><small>46 categorical feature interactions · 8-seed FM · rank 16 · NumPy / CPU</small></div>
+        <div>
+          <span class="eyeline">PUBLIC-VALIDATION PRIMARY</span>
+          <strong class="hero-number">0.6059363</strong>
+          <p><b>+0.0043363</b> over the official five-field FM</p>
+          <small>46 categorical feature interactions · 8-seed FM · rank 16 · NumPy / CPU</small>
+        </div>
         <EvaluationScoreBars />
       </div>
-      <table><thead><tr><th>Metric</th><th>Official FM</th><th>Our agent</th></tr></thead><tbody><tr><td>GAUC</td><td>0.6674000</td><td>0.6728421</td></tr><tr><td>nDCG@5</td><td>0.5357000</td><td>0.5390304</td></tr><tr><td>Primary</td><td>0.6016000</td><td><b>0.6059363</b></td></tr></tbody></table>
+      <table>
+        <thead><tr><th>Metric</th><th>Official FM</th><th>Our agent</th></tr></thead>
+        <tbody><tr><td>GAUC</td><td>0.6674000</td><td>0.6728421</td></tr><tr><td>nDCG@5</td><td>0.5357000</td><td>0.5390304</td></tr><tr><td>Primary</td><td>0.6016000</td><td><b>0.6059363</b></td></tr></tbody>
+      </table>
       <p class="boundary">Primary = mean(GAUC, nDCG@5). Verified on the official validation split following challenge protocol.</p>
     </template>
 
@@ -26,42 +34,33 @@ defineProps<{ card: string }>()
         <strong>Runtime self-healing & code-level Meta gatekeeping.</strong>
         <p>Robust research requires both execution-level crash recovery and epistemic defense against false breakthroughs.</p>
       </div>
-
       <div class="two-tier-grid">
         <div class="tier-card">
           <div>
             <span class="tier-badge">TIER 1 · SCIENTIST SELF-HEALING</span>
             <h4>Runtime Traceback Auto-Recovery</h4>
             <p class="tier-desc">During Cycle 1, evidence writing failed on <code>numpy.float32</code> metrics. The Scientist parsed the traceback, patched scalar serialization, and completed the rerun without human intervention.</p>
-            <div class="recovery-steps-mini">
-              <div><b>01</b><span>Preserve</span></div>
-              <div><b>02</b><span>Patch</span></div>
-              <div><b>03</b><span>Rerun</span></div>
-            </div>
+            <div class="recovery-steps-mini"><div><b>01</b><span>Preserve</span></div><div><b>02</b><span>Patch</span></div><div><b>03</b><span>Rerun</span></div></div>
           </div>
           <small class="tier-meta">Cycle 1 telemetry · Zero human intervention · Retained submission</small>
         </div>
-
         <div class="tier-card">
           <div>
             <span class="tier-badge">TIER 2 · META EPISTEMIC GATEKEEPING</span>
             <h4>Audit Proxy Integrity & Reject Spurious State</h4>
-            <p class="tier-desc">In one experiment, the Scientist claimed BPR beat BCE on a medium proxy. META audited <code>system/data.py</code> line-by-line, caught that train-user sampling with unfiltered validation created <code>UNK</code> user feature distortion and inverted ranking, and blocked State promotion.</p>
-            <div class="audit-quote">
-              <em>"medium mode samples complete train-user groups but scores unfiltered validation... falsifying proxy use... no State adoption or promotion is warranted."</em>
-            </div>
+            <p class="tier-desc">In one experiment, the Scientist claimed BPR beat BCE on a medium proxy. META audited <code>system/data.py</code> line-by-line, caught <code>UNK</code> user feature distortion, and blocked State promotion.</p>
+            <div class="audit-quote"><em>“medium mode samples complete train-user groups but scores unfiltered validation... no State adoption or promotion is warranted.”</em></div>
           </div>
           <small class="tier-meta">Experiment audit receipt · State boundary guarded</small>
         </div>
       </div>
-
       <p class="boundary">Empirical receipts archived under <code>docs/evidence/meta_audit/</code> (proxy integrity audit & boundary enforcement).</p>
     </template>
 
     <template v-else-if="card === 'comparison'">
       <div class="comparison-intro">
         <span class="eyeline">ARCHITECTURE ABLATION / SAME MODEL FAMILY</span>
-        <p>Keep Gemini 3.7 Flash in the comparison and change the research organization: direct agent → delegated subagents → Meta-Scientist over Antigravity.</p>
+        <p>Keep Gemini 3.7 Flash in the comparison and change only the research organization: direct agent → delegated subagents → Meta-Scientist over Antigravity.</p>
       </div>
 
       <div class="architecture-progress">
@@ -75,71 +74,38 @@ defineProps<{ card: string }>()
         <div class="arch-step">
           <span class="arch-label">02 · SUBAGENTS</span>
           <strong>AGY + delegated subagents</strong>
-          <div class="arch-score">≈0.6047</div>
+          <div class="arch-score">≈0.6047000</div>
           <p>Broader delegation, no persistent Meta layer.</p>
         </div>
         <span class="arch-arrow">→</span>
         <div class="arch-step winner">
           <span class="arch-label">03 · META-SCIENTIST</span>
           <strong>Meta-Scientist + AGY</strong>
-          <div class="arch-score">0.6052</div>
+          <div class="arch-score">0.6052000</div>
           <p>Persistent world memory + fresh Scientist reset.</p>
         </div>
-      </div>
-
-      <div class="best-run-note">
-        <div>
-          <span class="best-label">BEST OBSERVED FULL SYSTEM</span>
-          <strong>0.6059363</strong>
-        </div>
-        <p>The highest retained score used mixed GPT/Gemini rotation; this page uses the Gemini-family comparison to isolate architecture signal.</p>
       </div>
 
       <div class="comparison-chart-shell">
         <EvaluationTokenScoreChart />
       </div>
-      <p class="boundary comparison-boundary">Same public-validation split and starter-kit evaluator; architecture comparison keeps the model family aligned where possible.</p>
+      <p class="boundary comparison-boundary">Same public-validation split and starter-kit evaluator; the y-axis is intentionally zoomed because the relevant deltas are small.</p>
     </template>
 
     <template v-else-if="card === 'tokenmaxxing'">
       <div class="token-hero">
         <span class="eyeline">PROJECT-LEVEL RESOURCE ACCOUNTING</span>
         <div class="token-hero-box">
-          <div class="token-hero-left">
-            <strong class="token-amount">~$10</strong>
-            <span class="token-caption">Total project cost</span>
-          </div>
-          <div class="token-hero-right">
-            <p class="token-thesis">Subscription-equivalent usage from first line of code to final result.</p>
-            <div class="token-tags">
-              <span>coding</span><i>·</i>
-              <span>debugging</span><i>·</i>
-              <span>agent loops</span><i>·</i>
-              <span>all 11 experiments</span>
-            </div>
-          </div>
+          <div class="token-hero-left"><strong class="token-amount">~$10</strong><span class="token-caption">Total project cost</span></div>
+          <div class="token-hero-right"><p class="token-thesis">Subscription-equivalent usage from first line of code to final result.</p><div class="token-tags"><span>coding</span><i>·</i><span>debugging</span><i>·</i><span>agent loops</span><i>·</i><span>all 11 experiments</span></div></div>
         </div>
       </div>
-
       <div class="resource-cards three-cards">
-        <div>
-          <span class="resource-label">MODEL</span>
-          <strong>One GPT Plus + One Gemini Pro for 7 days</strong>
-          <p>Two consumer subscriptions covered the entire autonomous research loop.</p>
-        </div>
-        <div>
-          <span class="resource-label">HARDWARE</span>
-          <strong>1 × MacBook M2</strong>
-          <p>All development, feature engineering, and validation ran on one consumer laptop.</p>
-        </div>
-        <div>
-          <span class="resource-label">COMPUTE</span>
-          <strong>0 GPU-hours</strong>
-          <p>100% CPU NumPy training and inference; zero cloud GPU clusters required.</p>
-        </div>
+        <div><span class="resource-label">MODEL</span><strong>One GPT Plus + One Gemini Pro for 7 days</strong><p>Two consumer subscriptions covered the entire autonomous research loop.</p></div>
+        <div><span class="resource-label">HARDWARE</span><strong>1 × MacBook M2</strong><p>All development, feature engineering, and validation ran on one consumer laptop.</p></div>
+        <div><span class="resource-label">COMPUTE</span><strong>0 GPU-hours</strong><p>100% CPU NumPy training and inference; zero cloud GPU clusters required.</p></div>
       </div>
-
-      <p class="boundary">Performance came from the autonomous research loop, not an expensive compute budget. Full discovery executed on consumer hardware without GPU clusters.</p>
+      <p class="boundary">Performance came from the autonomous research loop, not an expensive compute budget.</p>
     </template>
   </div>
 </template>
@@ -147,8 +113,6 @@ defineProps<{ card: string }>()
 <style scoped>
 .card-body { color: #434a52; font-size: 13px; line-height: 1.42; }
 .card-body p { margin: 7px 0; }
-.card-body section { margin-top: 16px; padding-top: 13px; border-top: 1px solid #e6e6e8; }
-.card-body h3 { margin: 0 0 8px; color: var(--ink); font-size: 18px; font-weight: 750; }
 .card-body h4 { margin: 0 0 5px; color: var(--ink); font-size: 14px; font-weight: 750; }
 .card-body small { color: #7d7d82; font-size: 10.5px; }
 .eyeline { font-size: 10px; letter-spacing: 1px; color: #7d7d82; }
@@ -158,7 +122,6 @@ defineProps<{ card: string }>()
 .card-body th, .card-body td { text-align: left; padding: 6px 10px; border-bottom: 1px solid #e6e6e8; }
 .card-body th { color: #7d7d82; font-size: 11px; font-weight: 650; }
 .card-body .boundary { padding-left: 12px; border-left: 2px solid var(--accent); color: #727981; font-size: 11.5px; line-height: 1.42; margin-top: 10px; }
-
 .recovery-hero strong, .token-hero strong { display: block; margin-top: 6px; color: var(--accent); font-size: 25px; line-height: 1.08; letter-spacing: -.7px; }
 .recovery-hero p, .token-hero p { max-width: 650px; }
 .two-tier-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px; }
@@ -172,27 +135,20 @@ defineProps<{ card: string }>()
 .audit-quote { padding: 6px 10px; border-left: 2px solid var(--accent); background: #f3f5f7; border-radius: 0 6px 6px 0; margin: 6px 0 8px; }
 .audit-quote em { font-size: 10px; color: #434a52; font-style: italic; line-height: 1.3; display: block; }
 .tier-meta { font-size: 9.5px; color: #7d7d82; margin-top: auto; padding-top: 6px; border-top: 1px dashed #e6e6e8; }
-
-.comparison-intro { margin-bottom: 8px; }
-.comparison-intro p { margin: 3px 0 8px; max-width: 880px; color: #646c74; font-size: 12.2px; line-height: 1.32; }
-.architecture-progress { display: grid; grid-template-columns: 1fr 34px 1fr 34px 1.05fr; gap: 8px; align-items: stretch; margin: 8px 0 9px; }
-.arch-step { min-height: 90px; padding: 10px 12px; border: 1px solid #e6e6e8; border-radius: 12px; background: #fbfcfd; }
+.comparison-intro { margin-bottom: 10px; }
+.comparison-intro p { margin: 3px 0 8px; max-width: 900px; color: #646c74; font-size: 12.2px; line-height: 1.32; }
+.architecture-progress { display: grid; grid-template-columns: 1fr 34px 1fr 34px 1.05fr; gap: 8px; align-items: stretch; margin: 8px 0 14px; }
+.arch-step { min-height: 94px; padding: 10px 12px; border: 1px solid #e6e6e8; border-radius: 12px; background: #fbfcfd; }
 .arch-step.winner { border-color: color-mix(in srgb, var(--accent) 55%, #e6e6e8); background: linear-gradient(180deg, #ffffff, #fbf9ff); box-shadow: 0 2px 10px rgba(0,0,0,.035); }
 .arch-label { display: block; font-size: 8.5px; font-weight: 850; letter-spacing: .85px; color: #7d7d82; }
 .arch-step.winner .arch-label { color: var(--accent); }
 .arch-step strong { display: block; margin-top: 4px; color: var(--ink); font-size: 12px; line-height: 1.15; }
 .arch-score { margin: 3px 0 2px; color: #434a52; font-size: 24px; line-height: 1; font-weight: 820; letter-spacing: -.85px; }
-.arch-step.winner .arch-score { color: var(--accent); font-size: 26px; }
+.arch-step.winner .arch-score { color: var(--accent); font-size: 25px; }
 .arch-step p { margin: 0; color: #6b727a; font-size: 9.6px; line-height: 1.22; }
 .arch-arrow { display: grid; place-items: center; color: #c6cbd0; font-size: 21px; font-weight: 750; }
-.best-run-note { display: grid; grid-template-columns: 220px 1fr; gap: 14px; align-items: center; margin: 2px 0 8px; padding: 8px 12px; border-radius: 12px; background: #f6f1ff; border: 1px solid color-mix(in srgb, var(--accent) 28%, #e6e6e8); }
-.best-label { display: block; color: var(--accent); font-size: 8px; font-weight: 850; letter-spacing: .85px; }
-.best-run-note strong { display: block; color: var(--accent); font-size: 23px; line-height: 1.05; letter-spacing: -.8px; }
-.best-run-note p { margin: 0; color: #626b74; font-size: 10.4px; line-height: 1.28; }
 .comparison-chart-shell { margin-top: 0; }
 .comparison-boundary { margin-top: 7px !important; font-size: 10.5px !important; line-height: 1.28 !important; }
-
-.token-hero { padding-bottom: 0; }
 .token-hero-box { display: flex; align-items: center; gap: 26px; margin-top: 8px; padding: 14px 22px; background: #fdfaf6; border: 1px solid color-mix(in srgb, var(--accent) 24%, #e6e6e8); border-radius: 14px; }
 .token-hero-left { display: flex; flex-direction: column; align-items: flex-start; flex-shrink: 0; }
 .token-amount { font-size: 42px; line-height: 1; color: var(--accent); letter-spacing: -1.4px; font-weight: 800; }
@@ -206,11 +162,4 @@ defineProps<{ card: string }>()
 .resource-label { display: block; color: var(--accent); font-size: 9.5px; font-weight: 800; letter-spacing: 1.1px; }
 .resource-cards strong { display: block; margin-top: 5px; color: var(--ink); font-size: 14px; line-height: 1.25; font-weight: 750; }
 .resource-cards p { margin: 6px 0 0; color: #727981; font-size: 11.5px; line-height: 1.35; }
-.record-line { display: flex; gap: 20px; align-items: center; margin-bottom: 22px; font-size: 22px; font-weight: 700; color: var(--accent); }
-.record-line i { font-style: normal; color: #b4bac1; }
-.card-body dl { display: grid; grid-template-columns: 145px 1fr; gap: 14px 18px; }
-.card-body dt { font-weight: 750; color: var(--ink); }
-.card-body dd { margin: 0; }
-.card-body pre { padding: 16px; background: #f5f7f9; border-radius: 10px; font-size: 12px; white-space: pre-wrap; }
-.repo-address { font-weight: 700; }
 </style>
