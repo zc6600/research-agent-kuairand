@@ -7,6 +7,10 @@ artifacts.
   the scripts in `../package.json`.
 - `archive/` contains superseded exports kept for design-history and review.
 
+The retired 3D and Voyage slide decks are stored under
+`archive/editions/{3d,voyage}/`; only the main deck and current poster exports
+remain in `current/`.
+
 Variant PDFs remain inside their self-contained directories under `../variants/`.
 Independent HTML poster PDFs remain beside their sources under
 `../posters/html/`.

@@ -10,10 +10,6 @@
     "build": "npm run prepare:main && slidev build .generated-slides.md --base ./",
     "postbuild": "rm -f dist/_redirects",
     "export": "npm run prepare:main && slidev export .generated-slides.md --wait 3500 --output exports/current/SciOdyssey-main.pdf",
-    "voyage:dev": "slidev slides-voyage.md --port 3032",
-    "voyage:export": "slidev export slides-voyage.md --wait 3500 --output exports/current/SciOdyssey-voyage.pdf",
-    "3d:dev": "slidev slides-3d.md --port 3033",
-    "3d:export": "slidev export slides-3d.md --wait 4000 --output exports/current/SciOdyssey-3d.pdf",
     "poster:dev": "slidev posters/slidev/poster.md --port 3031",
     "poster:export": "slidev export posters/slidev/poster.md --wait 1800 --output exports/current/SciOdyssey-poster.pdf && node scripts/poster-print-size.mjs exports/current/SciOdyssey-poster.pdf",
     "poster:editorial": "slidev export posters/slidev/poster-editorial.md --wait 1800 --output exports/current/SciOdyssey-poster-editorial.pdf && node scripts/poster-print-size.mjs exports/current/SciOdyssey-poster-editorial.pdf",
@@ -28,8 +24,5 @@
     "@slidev/cli": "^52.19.1",
     "@slidev/theme-default": "^0.25.0",
     "playwright-chromium": "^1.55.0"
-  },
-  "dependencies": {
-    "three": "^0.185.1"
   }
 }

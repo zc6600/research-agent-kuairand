@@ -3,4 +3,6 @@ dist/
 poster-previews/
 .slidev/
 .generated-slides.md
+components/ExperienceJourneyAudio.vue
+public/media/experience-journey-voice.wav
 research-agent.pdf

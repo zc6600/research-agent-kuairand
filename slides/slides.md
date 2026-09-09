@@ -255,7 +255,8 @@ OpenCode, Antigravity, and Trae as supported agents; the outer card has no icons
 Six acts autoplay: edit task.md and PERSONAL.md, step, run, parallel, dashboard, skill.
 Playback is an illustrative walkthrough rendered with native Vue/HTML/SVG elements.
 Only command entry has a Terminal frame; execution uses animated research diagrams.
-Theme wording: ../terminal/deck.mjs and slides-voyage.md.
+Theme wording: ../terminal/deck.mjs and the archived Voyage edition at
+`archive/editions/voyage/slides.md`.
 Each act first explains its purpose with a Keynote-style headline, then demonstrates
 the operation: Start your journey / One step / Let it run / Now, explore wider /
 See what stays / Already in your workflow.
