@@ -108,9 +108,9 @@ function retitleToc(deck) {
   </div>
   <div class="toc-step toc-step-purple">
     <div class="toc-step-marker"><span class="toc-step-number mono">04</span><span class="toc-step-dot"></span></div>
-    <div class="toc-step-label mono">INSIGHTS</div>
+    <div class="toc-step-label mono">FINDINGS</div>
     <strong>What the run taught us</strong>
-    <span>Depth, breadth, recovery, and review.</span>
+    <span>Model diversity and branch handoff.</span>
   </div>
   <div class="toc-step toc-step-rose">
     <div class="toc-step-marker"><span class="toc-step-number mono">05</span><span class="toc-step-dot"></span></div>
