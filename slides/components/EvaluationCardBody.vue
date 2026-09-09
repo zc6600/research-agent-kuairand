@@ -6,7 +6,7 @@ defineProps<{ card: string }>()
 </script>
 
 <template>
-  <div class="card-body">
+  <div class="card-body" :class="`card-body-${card}`">
     <template v-if="card === 'result'">
       <div class="result-summary">
         <div>
@@ -155,11 +155,23 @@ defineProps<{ card: string }>()
 .token-caption { font-size: 10px; font-weight: 750; color: #7d7d82; letter-spacing: .6px; margin-top: 4px; text-transform: uppercase; }
 .token-hero-right { flex: 1; border-left: 1px solid color-mix(in srgb, var(--accent) 20%, #e6e6e8); padding-left: 22px; }
 .token-thesis { margin: 0 !important; font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.35; }
-.token-tags { display: flex; align-items: center; gap: 7px; margin-top: 6px; font-size: 11px; color: #6b7280; font-family: var(--mono, monospace); }
+.token-tags { display: flex; align-items: center; gap: 7px; margin-top: 6px; font-size: 11px; color: #6b7280; font-family: var(--deck-mono); }
 .token-tags i { font-style: normal; color: #c4c7cc; }
 .resource-cards.three-cards { display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 14px; margin-top: 16px; }
 .resource-cards > div { padding: 15px 16px 13px; border: 1px solid #e6e6e8; border-radius: 14px; background: #fbfcfd; display: flex; flex-direction: column; }
 .resource-label { display: block; color: var(--accent); font-size: 9.5px; font-weight: 800; letter-spacing: 1.1px; }
 .resource-cards strong { display: block; margin-top: 5px; color: var(--ink); font-size: 14px; line-height: 1.25; font-weight: 750; }
 .resource-cards p { margin: 6px 0 0; color: #727981; font-size: 11.5px; line-height: 1.35; }
+.card-body-tokenmaxxing { height: 100%; display: flex; flex-direction: column; }
+.card-body-tokenmaxxing .token-hero-box { min-height: 104px; }
+.card-body-tokenmaxxing .resource-cards.three-cards { flex: 1; min-height: 158px; }
+.card-body-tokenmaxxing .resource-cards > div { justify-content: center; padding: 19px 16px 17px; }
+.card-body-tokenmaxxing .boundary { margin-top: auto; padding-top: 14px; }
+.record-line { display: flex; gap: 20px; align-items: center; margin-bottom: 22px; font-size: 22px; font-weight: 700; color: var(--accent); }
+.record-line i { font-style: normal; color: #b4bac1; }
+.card-body dl { display: grid; grid-template-columns: 145px 1fr; gap: 14px 18px; }
+.card-body dt { font-weight: 750; color: var(--ink); }
+.card-body dd { margin: 0; }
+.card-body pre { padding: 16px; background: #f5f7f9; border-radius: 10px; font-size: 12px; white-space: pre-wrap; }
+.repo-address { font-weight: 700; }
 </style>
