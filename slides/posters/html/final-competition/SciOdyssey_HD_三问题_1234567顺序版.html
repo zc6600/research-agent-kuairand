@@ -268,8 +268,16 @@ footer { display:grid; grid-template-columns:1.3fr 1.6fr .5fr; gap:26px; margin-
 .system-detail p { font-size:9px; line-height:1.4; margin:4px 0 0; }
 .resource-line { grid-column:1/-1; border:0!important; padding:5px 0 0!important; font-size:8px; line-height:1.4; }
 .system-caption { font-size:11px; line-height:1.4; margin:4px 0 12px; }
-.recovery-sequence { margin:5px 0!important; color:#7143df!important; font-weight:700; }
-.footer-v2 { grid-template-columns:1.5fr 1fr; }
+.footer-v2 { grid-template-columns:1.2fr 0.95fr 1.15fr; gap:16px; align-items:start; }
+.footer-v2 .footer-qr-col { display:flex; align-items:center; gap:10px; }
+.footer-v2 .qr-link { display:inline-flex; flex-shrink:0; border:1px solid #c8d5e2; border-radius:6px; padding:3px; background:#fff; box-shadow:0 2px 6px rgb(20 37 63 / 8%); text-decoration:none; transition:border-color .15s ease,box-shadow .15s ease; }
+.footer-v2 .qr-link:hover { border-color:#0877ed; box-shadow:0 3px 8px rgb(8 119 237 / 18%); }
+.footer-v2 .qr-img { display:block; width:52px; height:52px; border-radius:3px; }
+.footer-v2 .qr-meta { display:flex; flex-direction:column; justify-content:center; gap:2px; }
+.footer-v2 .qr-meta b { color:#13274e; font-size:10px; font-weight:700; line-height:1.2; }
+.footer-v2 .qr-meta a { color:#0877ed; font-size:10px; font-weight:700; text-decoration:none; line-height:1.25; }
+.footer-v2 .qr-meta a:hover { text-decoration:underline; }
+.footer-v2 .qr-meta p { margin:2px 0 0; color:#58687e; font-size:8px; line-height:1.35; }
 /* Five chapters aligned to the current slides. */
 .v2 .problem-v3 { height:auto; background:#fff; padding-bottom:15px; }
 .v2 .problem-v3::before { display:none; }
@@ -766,7 +774,17 @@ footer { display:grid; grid-template-columns:1.3fr 1.6fr .5fr; gap:26px; margin-
 </div>
 <div>
 <b>Contact Information</b>
-<p>SciOdyssey Team<br/>github.com/zc6600/research-agent-kuairand</p>
+<p>SciOdyssey Team<br/><a href="https://github.com/zc6600/research-agent-kuairand" target="_blank" rel="noreferrer">github.com/zc6600/research-agent-kuairand ↗</a></p>
+</div>
+<div class="footer-qr-col">
+<a class="qr-link" href="https://sciodyssey.zc6600.wiki/" target="_blank" rel="noreferrer" title="Open SciOdyssey Wiki (https://sciodyssey.zc6600.wiki/)">
+<img class="qr-img" src="sciodyssey_qr.svg" alt="QR Code pointing to https://sciodyssey.zc6600.wiki/" width="52" height="52"/>
+</a>
+<div class="qr-meta">
+<b>Project Website &amp; Demo</b>
+<a href="https://sciodyssey.zc6600.wiki/" target="_blank" rel="noreferrer">sciodyssey.zc6600.wiki ↗</a>
+<p>Scan to explore the live wiki, interactive report &amp; artifacts</p>
+</div>
 </div>
 <div class="resource-line">Resources: ~$10 project subscription-equivalent estimate · GPT Plus + Gemini Pro, 7 days · 1 MacBook M2 · 0 GPU-hours. Includes development and experiments, not per-run cost.</div>
 </footer>
