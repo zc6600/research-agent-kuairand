@@ -60,7 +60,7 @@ const handleKey = (event: KeyboardEvent) => {
 <template>
   <section class="eval-claim-cards" :class="{ 'has-inspection': selected }" aria-label="Evaluation evidence cards">
     <header class="claim-header" :class="{ dimmed: selected }">
-      <div class="section-kicker mono">04 / EVALUATION</div>
+      <div class="section-kicker mono">03 / EVALUATION</div>
       <div class="claim-label mono">CLAIM</div>
       <h1>Our agent can carry a research task to completion.</h1>
       <div class="claim-boundary mono"><span>KUAIRAND-PURE</span><span>FIXED EVALUATOR</span><span>PUBLIC VALIDATION</span></div>

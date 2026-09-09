@@ -111,7 +111,7 @@ function closeCard() {
 <template>
   <section class="claim-verdict-eval" aria-label="Evaluation claim and evidence cards">
     <header class="claim-header" :class="{ dimmed: selected }">
-      <div class="claim-section-kicker mono">04 / EVALUATION</div>
+      <div class="claim-section-kicker mono">03 / EVALUATION</div>
       <div class="claim-label mono">CLAIM</div>
       <h1>Can an agent carry a research task to completion?</h1>
       <div class="claim-boundary mono"><span>KUAIRAND-PURE</span><span>FIXED EVALUATOR</span><span>PUBLIC VALIDATION</span></div>

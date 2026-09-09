@@ -187,7 +187,7 @@ onUnmounted(() => {
 <template>
   <section class="experience-journey" :class="{ paused: !playing, reduced, 'is-outro': isOutro, 'is-immersive': expansion > .99 }" :style="{ '--immersion': expansion }" aria-label="SciOdyssey product and research demonstration" @click.stop>
     <div class="chapter-card" :style="{ opacity: 1 - expansion, transform: `translateY(${-24 * expansion}px)` }" :aria-hidden="expansion > .99">
-      <div class="chapter-label">03 / USER EXPERIENCE</div>
+      <div class="chapter-label">05 / USER EXPERIENCE</div>
       <h1>Autonomous by default.<br><span>Supervisable by design.</span></h1>
     </div>
     <div class="terminal-shell" :style="shellStyle">

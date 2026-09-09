@@ -1,6 +1,6 @@
 <template>
 <section class="research-insight-page">
-<div class="visual-kicker orange">05 / INSIGHTS · PARALLEL RESEARCH</div>
+<div class="visual-kicker orange">04 / INSIGHTS · PARALLEL RESEARCH</div>
 <h1>Explore in parallel. Build on the findings.</h1>
 <p class="insight-deck">One branch continues. Another contributes a useful perspective.</p>
 <div class="handoff-study">

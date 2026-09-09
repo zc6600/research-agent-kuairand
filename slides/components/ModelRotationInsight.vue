@@ -1,6 +1,6 @@
 <template>
 <section class="research-insight-page">
-<div class="visual-kicker orange">05 / INSIGHTS · MODEL DIVERSITY</div>
+<div class="visual-kicker orange">04 / INSIGHTS · MODEL DIVERSITY</div>
 <h1>Model diversity improves the result.</h1>
 <p class="insight-deck">Cycling GPT and Gemini brings different search styles into one research world.</p>
 <div class="search-pair">

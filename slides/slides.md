@@ -249,7 +249,7 @@ The transition is a design explanation, not experimental proof of causal attribu
 <ExperienceJourney />
 
 <!--
-03 / UX opens with “SciOdyssey — A research layer over your agent harness.”
+05 / UX opens with "SciOdyssey — A research layer over your agent harness."”
 After expansion, a compact “Works with” row identifies Codex, Claude Code,
 OpenCode, Antigravity, and Trae as supported agents; the outer card has no icons.
 Six acts autoplay: edit task.md and PERSONAL.md, step, run, parallel, dashboard, skill.
@@ -441,7 +441,7 @@ This section distills two process observations from the final report: heterogene
 
 <!-- class: agentic-swe-fieldnote-slide -->
 
-<div class="visual-kicker orange">05 / INSIGHTS · ENGINEERING PRACTICE</div>
+<div class="visual-kicker orange">04 / INSIGHTS · ENGINEERING PRACTICE</div>
 
 <div class="fieldnote-title-row"><h1>A clean repo. A continuous agent.</h1><span class="fieldnote-stamp mono">FIELD NOTE / 01</span></div>
 
