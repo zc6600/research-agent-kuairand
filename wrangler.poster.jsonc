@@ -1,0 +1,13 @@
+{
+  "name": "sciodyssey-poster",
+  "compatibility_date": "2026-09-09",
+  "assets": {
+    "directory": "./slides/posters/dist"
+  },
+  "routes": [
+    {
+      "pattern": "poster.sciodyssey.zc6600.wiki",
+      "custom_domain": true
+    }
+  ]
+}
