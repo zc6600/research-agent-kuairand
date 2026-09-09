@@ -55,15 +55,22 @@ source = replaceRequired(
 source = replaceRequired(
   source,
   `<section class="experience-journey" :class="{ paused: !playing, reduced, 'is-outro': isOutro, 'is-immersive': expansion > .99 }" :style="{ '--immersion': expansion }" aria-label="SciOdyssey product and research demonstration" @click.stop>`,
-  `<section class="experience-journey" :class="{ paused: !playing, reduced, 'awaiting-start': awaitingStart, 'is-outro': isOutro, 'is-immersive': expansion > .99 }" :style="{ '--immersion': expansion }" aria-label="SciOdyssey product and research demonstration" @click.stop>\n    <audio ref="narration" src="/media/experience-journey-voice.wav" preload="auto" @error="markAudioUnavailable" />\n    <button v-if="awaitingStart && !staticView && !reduced" class="journey-start" type="button" @click.stop="replay">\n      <span>▶</span>\n      <strong>Start Experience</strong>\n      <small>{{ audioAvailable ? 'plays synchronized narration' : 'audio unavailable · silent preview' }}</small>\n    </button>`,
+  `<section class="experience-journey" :class="{ paused: !playing, reduced, 'awaiting-start': awaitingStart, 'is-outro': isOutro, 'is-immersive': expansion > .99 }" :style="{ '--immersion': expansion }" aria-label="SciOdyssey product and research demonstration" @click.stop>\n    <audio ref="narration" src="/media/experience-journey-voice.wav" preload="auto" @error="markAudioUnavailable" />`,
   'template root section',
 )
 
 source = replaceRequired(
   source,
+  `    <!-- Act jump controls — outside terminal-shell so they're always visible -->`,
+  `    <button v-if="awaitingStart && !staticView && !reduced" class="journey-start-frame" type="button" aria-label="Play narrated experience" :title="audioAvailable ? 'Play with sound' : 'Audio unavailable · silent preview'" @click.stop="replay">\n      <span aria-hidden="true">▶</span>\n    </button>\n    <!-- Act jump controls — outside terminal-shell so they're always visible -->`,
+  'frame start control',
+)
+
+source = replaceRequired(
+  source,
   `@keyframes caret { 50% { opacity: 0; } }`,
-  `.journey-start { position: absolute; inset: 0; z-index: 40; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; border: 0; background: radial-gradient(ellipse at 50% 42%, rgba(255,255,255,.82), rgba(252,253,254,.94) 58%, rgba(252,253,254,.98)); color: var(--ux-ink); cursor: pointer; font-family: var(--ux-font); }\n.journey-start span { display: grid; place-items: center; width: 74px; height: 74px; border: 1px solid #d9e5ec; border-radius: 999px; background: rgba(255,255,255,.92); box-shadow: 0 18px 48px rgba(35, 53, 76, .13); color: var(--ux-blue); font-size: 28px; padding-left: 4px; }\n.journey-start strong { display: block; font-size: 27px; font-weight: 550; letter-spacing: -.8px; }\n.journey-start small { color: #89929e; font-size: 12px; letter-spacing: .25px; }\n.awaiting-start .journey-controls { opacity: 1; }\n@keyframes caret { 50% { opacity: 0; } }`,
-  'start overlay styles',
+  `.journey-start-frame { position: absolute; left: 245px; top: 225px; z-index: 39; width: 490px; height: 276px; display: grid; place-items: center; border: 0; border-radius: 14px; background: transparent; color: var(--ux-blue); cursor: pointer; font-family: var(--ux-font); }\n.journey-start-frame::before { content: ''; position: absolute; inset: 0; border-radius: inherit; border: 1px solid rgba(124, 187, 214, .26); background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.12)); opacity: 0; transition: opacity .18s ease; }\n.journey-start-frame span { display: grid; place-items: center; width: 54px; height: 54px; padding-left: 4px; border: 1px solid #d9e5ec; border-radius: 999px; background: rgba(255,255,255,.92); box-shadow: 0 18px 46px rgba(35, 53, 76, .13); font-size: 22px; transform: translateY(2px); transition: transform .18s ease, box-shadow .18s ease; }\n.journey-start-frame:hover::before, .journey-start-frame:focus-visible::before { opacity: 1; }\n.journey-start-frame:hover span, .journey-start-frame:focus-visible span { transform: translateY(0) scale(1.04); box-shadow: 0 24px 54px rgba(35, 53, 76, .17); }\n.journey-start-frame:focus-visible { outline: 2px solid #65afcd; outline-offset: 4px; }\n.awaiting-start .journey-controls { opacity: 1; }\n@keyframes caret { 50% { opacity: 0; } }`,
+  'start frame styles',
 )
 
 await mkdir(new URL('../public/media/', import.meta.url), { recursive: true })
