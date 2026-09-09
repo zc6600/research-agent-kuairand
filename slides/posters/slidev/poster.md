@@ -15,7 +15,7 @@ mdc: true
 ---
 <div class="poster-shell">
   <header class="p-header">
-    <div class="p-kicker">AUTONOMOUS ML RESEARCH / TECHJAM 2026</div>
+    <div class="p-kicker">AUTONOMOUS ML RESEARCH / TECHJAM 2026 · TECHNICAL HANDOUT</div>
     <h1>SciOdyssey<span>.</span></h1>
     <div class="p-subtitle">Autonomous ML Research Agent</div>
     <div class="p-thesis">Preserve the <span>research world.</span> Reset the researcher.</div>
@@ -48,19 +48,19 @@ mdc: true
         </div>
         <div class="failure-bridge"><b>DESIGN RESPONSE</b><span>Research is open-world, non-linear, and exploratory.</span><i>ADAPT</i><i>DIVERSIFY</i><i>LEARN</i></div>
       </section>
-      <section class="p-section p-motivation">
-        <div class="p-kicker">02 / MOTIVATION</div>
-        <div class="p-world">
-          <h3><span class="i-carbon:earth"></span>Research world <small>PERSISTENT / ON DISK</small></h3>
-          <div class="p-memory"><b>EVIDENCE</b><div><strong>Knowledge + experiment ledger</strong><span>Metrics, failures and original reports</span></div></div>
-          <div class="p-memory"><b>CURATED</b><div><strong>Research brief + working priors</strong><span>Working hypotheses; open to revision</span></div></div>
-          <div class="p-memory"><b>CODE</b><div><strong>Retained implementation + State</strong><span>Recoverable version with evidence and provenance</span></div></div>
+
+      <section class="p-section p-system p-design-section">
+        <div class="p-kicker">02 / DESIGN · PERSISTENCE + RESET</div>
+        <h2>One persistent world. Fresh scientific trajectories.</h2>
+        <div class="p-design-core">
+          <div class="p-world">
+            <h3><span class="i-carbon:earth"></span>Research world <small>PERSISTENT / ON DISK</small></h3>
+            <div class="p-memory"><b>EVIDENCE</b><div><strong>Knowledge + experiment ledger</strong><span>Metrics, failures and original reports</span></div></div>
+            <div class="p-memory"><b>CURATED</b><div><strong>Research brief + working priors</strong><span>Working hypotheses; open to revision</span></div></div>
+            <div class="p-memory"><b>CODE</b><div><strong>Retained implementation + State</strong><span>Recoverable version with evidence and provenance</span></div></div>
+          </div>
+          <div class="p-boundary"><span>↓</span><b>CONTEXT RESET</b><small>Inherit experience, not prior reasoning.</small></div>
         </div>
-        <div class="p-boundary"><span>↓</span><b>CONTEXT RESET</b><small>Inherit experience, not prior reasoning.</small></div>
-      </section>
-      <section class="p-section p-system">
-        <div class="p-kicker">03 / SYSTEM</div>
-        <h2>One world. Two scientific roles.</h2>
         <div class="architecture-mini">
           <div class="architecture-node environment"><b>ENVIRONMENT</b><span>Task contract<br />Curated data + evaluation<br />Starter baseline<br />Budget + permissions</span></div>
           <i aria-hidden="true">→</i>
@@ -75,10 +75,15 @@ mdc: true
         <div class="p-parallel-line"><b>PARALLEL BREADTH</b><span>isolated branches</span><i>→</i><span>post-hoc review</span><i>→</i><strong>explicit adoption</strong></div>
       </section>
     </div>
+
     <div class="p-right">
       <section class="p-section p-comparison p-evaluation">
-        <div class="p-kicker">05 / EVALUATION</div>
-        <h2>Research outcomes, in context.</h2>
+        <div class="p-kicker">03 / EVALUATION · OUTCOME IN CONTEXT</div>
+        <h2>Best retained run: public validation.</h2>
+        <div class="p-eval-anchor">
+          <strong>0.6059363</strong>
+          <div><b>Primary score</b><span>+0.0043363 over the official FM reference</span></div>
+        </div>
         <p class="p-chart-subtitle">KuaiRand-Pure · public validation · one recorded run per condition</p>
         <figure class="p-figure">
           <svg class="p-chart" viewBox="0 0 500 482" role="img" aria-label="Public-validation Primary versus total LLM tokens including cache reads. SciOdyssey 0.6059363 at 48.240 million; Codex approximately 0.6046 at 28.070 million.">
@@ -118,10 +123,11 @@ mdc: true
         </figure>
         <div class="p-chart-note">* Comparative exploration across distinct agent setups under KuaiRand-Pure benchmark constraints.</div>
       </section>
+
       <section class="p-section p-results-panel">
-        <div class="p-kicker">06 / VERIFIED SUBMISSION · PUBLIC VALIDATION</div>
+        <div class="p-kicker">SCORE BREAKDOWN · VERIFIED SUBMISSION</div>
         <div class="p-results">
-        <h3>Verified submission · public validation</h3>
+        <h3>What survived the run.</h3>
         <table class="p-score-table">
           <thead><tr><th>Metric</th><th>Official FM</th><th>SciOdyssey</th><th>Absolute Δ</th></tr></thead>
           <tbody>
@@ -136,21 +142,24 @@ mdc: true
         <div class="p-run-note">* 100% autonomous execution throughout the retained submission record.</div>
         </div>
       </section>
+
       <section class="p-section p-insights-section">
-        <div class="p-kicker">07 / INSIGHTS</div>
+        <div class="p-kicker">04 / RUN OBSERVATIONS</div>
         <div class="p-insights">
           <h3>Observed behavior, not just a score.</h3>
           <div class="p-observation-grid">
             <div class="p-observation p-recovery"><strong>Recovery</strong><span>After evaluation, NumPy float32 values broke serialization. The Scientist repaired the writer; META retained the evidence for the next trajectory.</span></div>
             <div class="p-observation p-audit"><strong>Audit</strong><span>Reviews caught leakage and metric issues early. META audits empirical claims against artifacts before promoting State.</span></div>
+            <div class="p-observation p-rotation"><strong>Reset the context. Rotate the prior.</strong><span>Gemini-only SciOdyssey already reached 0.6052. The best retained run reached 0.6059363 while rotating GPT and Gemini across fresh Scientist trajectories.</span></div>
           </div>
         </div>
-        <div class="p-limit"><strong>Insight synthesis.</strong> Heterogeneous Scientists turn diverse search styles into a broader exploration prior; parallel search produces stronger candidates.</div>
+        <div class="p-limit"><strong>Evidence boundary.</strong> The architecture worked with one model; model diversity was part of the best observed run, not an isolated ablation.</div>
       </section>
     </div>
   </main>
+
   <section class="p-section p-entry p-experience" aria-label="End-to-end research workflow">
-    <div class="p-entry-heading"><div><div class="p-kicker">04 / EXPERIENCE</div><h2>Start your journey.</h2></div><span>Autonomous by default. Supervisable by design.</span></div>
+    <div class="p-entry-heading"><div><div class="p-kicker">05 / HOW TO USE IT</div><h2>Start your journey.</h2></div><span>Paper shows the evidence. The website shows the experience.</span></div>
     <div class="p-entry-grid">
       <div class="p-entry-context">
         <div class="p-entry-files">
@@ -173,6 +182,18 @@ mdc: true
 </div>
 <style>
 @import '../../styles/poster.css';
+.poster-page .p-design-section { margin-top: 25px; }
+.poster-page .p-design-section h2 { margin-bottom: 15px; }
+.poster-page .p-design-core { margin-bottom: 15px; }
+.poster-page .p-design-core .p-boundary { margin-bottom: 12px; }
+.poster-page .p-eval-anchor { display: grid; grid-template-columns: 210px 1fr; gap: 18px; align-items: center; margin: 14px 0 8px; padding: 13px 15px; background: #f4faf8; border: 1px solid #d7e9e1; border-left: 5px solid #20aa85; }
+.poster-page .p-eval-anchor strong { color: #178c6d; font-size: 43px; line-height: 1; font-weight: 500; letter-spacing: -1.5px; }
+.poster-page .p-eval-anchor b { display: block; color: var(--p-ink); font-size: 18px; line-height: 1.35; font-weight: 600; }
+.poster-page .p-eval-anchor span { display: block; margin-top: 3px; color: var(--p-muted); font-size: 15px; line-height: 1.35; }
+.poster-page .p-insights-section .p-observation-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+.poster-page .p-observation.p-rotation { grid-column: 1 / -1; border-color: var(--p-blue); display: grid; grid-template-columns: 235px 1fr; gap: 14px; align-items: start; }
+.poster-page .p-observation.p-rotation strong { color: #248aac; }
+.poster-page .p-observation.p-rotation span { margin-top: 0; }
 </style>
 <!--
 [Sources]
