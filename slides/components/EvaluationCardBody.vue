@@ -83,8 +83,6 @@ const comparisonPage = ref(0)
           </div>
         </div>
       </div>
-
-      <p class="boundary">Audited empirical receipts archived under <code>docs/evidence/meta_audit/</code>.</p>
     </template>
 
     <template v-else-if="card === 'comparison'">
@@ -108,11 +106,11 @@ const comparisonPage = ref(0)
             :aria-selected="comparisonPage === 1"
             @click="comparisonPage = 1"
           >
-            <span>02</span> WHY IT WON · 01 vs 03 STORY
+            <span>02</span> TRAJECTORY DIVERGENCE · 01 vs 03
           </button>
         </div>
         <span class="comparison-tab-hint mono">
-          {{ comparisonPage === 0 ? 'GEMINI 3.7 FLASH ABLATION' : 'HISTORY SHAPES SEARCH · CASE STUDY' }}
+          {{ comparisonPage === 0 ? 'GEMINI 3.7 FLASH ABLATION' : 'HISTORY SHAPES SEARCH · TRAJECTORY COMPARISON' }}
         </span>
       </div>
 
@@ -151,176 +149,150 @@ const comparisonPage = ref(0)
 
       <template v-else>
         <div class="comp-story-container">
-          <!-- TOP HERO COMPARISON -->
-          <div class="story-h2h-grid">
-            <div class="h2h-card h2h-direct">
-              <div class="h2h-card-top">
-                <span class="h2h-badge mono">01 · DIRECT AGENT (SINGLE TRAJECTORY)</span>
-                <span class="h2h-duration mono">2h UNBROKEN RUN</span>
+          <!-- TWO-COLUMN FACTUAL TRAJECTORY BREAKDOWN -->
+          <div class="factual-h2h-grid">
+            <!-- 01 DIRECT FACTUAL TRAJECTORY -->
+            <div class="factual-card direct-card">
+              <div class="factual-card-header">
+                <div>
+                  <span class="factual-badge blue mono">01 · DIRECT AGENT TRAJECTORY</span>
+                  <h4>Horizontal Paradigm Hopping</h4>
+                </div>
+                <div class="factual-score-box">
+                  <strong class="mono">0.6045803</strong>
+                  <small class="mono">2h UNBROKEN RUN</small>
+                </div>
               </div>
-              <div class="h2h-score-row">
-                <strong class="h2h-score">0.6045803</strong>
-                <span class="h2h-regime-pill blue mono">HORIZONTAL HOPPING</span>
+
+              <div class="factual-steps">
+                <div class="step-row">
+                  <span class="step-idx mono">01</span>
+                  <div class="step-info">
+                    <strong>FM Baseline</strong>
+                    <span>5-field tabular reference baseline</span>
+                  </div>
+                  <span class="step-metric mono">0.6016000</span>
+                </div>
+                <div class="step-row">
+                  <span class="step-idx mono">02</span>
+                  <div class="step-info">
+                    <strong>8-Field Interaction</strong>
+                    <span>Cross-features added; gains quickly plateaued</span>
+                  </div>
+                  <span class="step-metric mono">0.6038000</span>
+                </div>
+                <div class="step-row pivot">
+                  <span class="step-idx mono">03</span>
+                  <div class="step-info">
+                    <strong>BPR Pairwise Ranking</strong>
+                    <span>Plateaued → abandoned FM entirely; pivoted to ranking</span>
+                  </div>
+                  <span class="step-metric drop mono">0.6021000</span>
+                </div>
+                <div class="step-row pivot">
+                  <span class="step-idx mono">04</span>
+                  <div class="step-info">
+                    <strong>DeepFM Neural Net</strong>
+                    <span>BPR dropped → abandoned ranking; pivoted to MLP/neural</span>
+                  </div>
+                  <span class="step-metric mono">0.6045803</span>
+                </div>
+                <div class="step-row pivot">
+                  <span class="step-idx mono">05</span>
+                  <div class="step-info">
+                    <strong>Multi-Task DeepFM</strong>
+                    <span>DeepFM plateaued → added multi-task heads; regressed</span>
+                  </div>
+                  <span class="step-metric drop mono">0.6043000</span>
+                </div>
               </div>
-              <div class="h2h-pipeline mono">
-                <span>FM</span>
-                <i>→</i>
-                <span>8-Field</span>
-                <i>→</i>
-                <span>BPR</span>
-                <i>→</i>
-                <span>DeepFM</span>
-                <i>→</i>
-                <span>MT-DeepFM</span>
+
+              <div class="factual-card-footer blue">
+                <span class="foot-tag mono">FACT</span>
+                <span>Pivoted across 5 disjoint model classes in 2h. Zero hyperparameter or learning rate tuning.</span>
               </div>
             </div>
 
-            <div class="story-vs-divider">
-              <span class="mono">VS</span>
-              <small class="mono">+0.00062</small>
-            </div>
+            <!-- 03 META-SCIENTIST FACTUAL TRAJECTORY -->
+            <div class="factual-card meta-card">
+              <div class="factual-card-header">
+                <div>
+                  <span class="factual-badge purple mono">03 · META-SCIENTIST TRAJECTORY</span>
+                  <h4>Vertical DIN Deep-Dive</h4>
+                </div>
+                <div class="factual-score-box">
+                  <strong class="mono purple">0.6052000</strong>
+                  <small class="mono purple">2 CYCLES · RESET</small>
+                </div>
+              </div>
 
-            <div class="h2h-card h2h-meta">
-              <div class="h2h-card-top">
-                <span class="h2h-badge purple mono">03 · META-SCIENTIST (PERSISTENT LOOP)</span>
-                <span class="h2h-duration purple mono">2-CYCLE HANDOFF · RESET</span>
+              <div class="factual-steps">
+                <div class="step-row">
+                  <span class="step-idx purple mono">C1</span>
+                  <div class="step-info">
+                    <strong>Sequence Signal Confirmed</strong>
+                    <span>User watch sequence proven dominant driver</span>
+                  </div>
+                  <span class="step-metric purple mono">SIGNAL</span>
+                </div>
+                <div class="step-row handoff">
+                  <span class="step-idx purple mono">↻</span>
+                  <div class="step-info">
+                    <strong>Meta Handoff + Fresh Reset</strong>
+                    <span>Insight saved in <code>State.md</code>; fresh Scientist</span>
+                  </div>
+                  <span class="step-metric purple mono">RESET</span>
+                </div>
+                <div class="step-row">
+                  <span class="step-idx purple mono">E7</span>
+                  <div class="step-info">
+                    <strong>Multi-Facet DIN</strong>
+                    <span>Target Attention over video, author & tags</span>
+                  </div>
+                  <span class="step-metric purple mono">0.6048100</span>
+                </div>
+                <div class="step-row peak">
+                  <span class="step-idx purple mono">E8</span>
+                  <div class="step-info">
+                    <strong>Item DIN + Cosine Anneal</strong>
+                    <span>Item sequence pooling & LR decay (Peak)</span>
+                  </div>
+                  <span class="step-metric peak mono">0.6052000</span>
+                </div>
+                <div class="step-row">
+                  <span class="step-idx purple mono">E9</span>
+                  <div class="step-info">
+                    <strong>DualSeq Attention</strong>
+                    <span>Decoupled short vs long-term sequence</span>
+                  </div>
+                  <span class="step-metric purple mono">GAUC 0.6725</span>
+                </div>
               </div>
-              <div class="h2h-score-row">
-                <strong class="h2h-score purple">0.6052000</strong>
-                <span class="h2h-regime-pill purple mono">VERTICAL DEEP-DIVE</span>
-                <span class="h2h-gauc-badge mono">GAUC 0.6725</span>
-              </div>
-              <div class="h2h-pipeline mono purple-flow">
-                <span>Cycle 1 Seq Thesis</span>
-                <i>→</i>
-                <span>E007 Multi-Facet</span>
-                <i>→</i>
-                <span class="peak-exp">E008 Item DIN (Peak)</span>
-                <i>→</i>
-                <span>E009 DualSeq</span>
-              </div>
-            </div>
-          </div>
 
-          <!-- 3 DETAILED AT-A-GLANCE COLUMNS -->
-          <div class="story-pillars-grid">
-            <!-- PILLAR 1: SEARCH & HYPOTHESIS -->
-            <div class="story-pillar">
-              <div class="pillar-header">
-                <span class="pillar-num mono">01 / TRAJECTORY</span>
-                <h5>Search & Hypothesis Depth</h5>
-              </div>
-              <div class="pillar-body">
-                <div class="contrast-row direct">
-                  <span class="row-label mono">01 DIRECT</span>
-                  <div class="fact-list">
-                    <div class="fact-item">
-                      <span class="fact-tag">Pattern</span>
-                      <span><b>Horizontal Hopping:</b> Abandoned model after 1 trial if gains stalled</span>
-                    </div>
-                    <div class="fact-item">
-                      <span class="fact-tag">Depth</span>
-                      <span>5 disjoint architectures, superficial hyperparameter tuning</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="contrast-row meta">
-                  <span class="row-label mono">03 META</span>
-                  <div class="fact-list">
-                    <div class="fact-item">
-                      <span class="fact-tag">Pattern</span>
-                      <span><b>Vertical DIN Tuning:</b> Grounded in verified sequence dynamics</span>
-                    </div>
-                    <div class="fact-item">
-                      <span class="fact-tag">Receipt</span>
-                      <span><b>E007</b> (Facets) → <b>E008</b> (Cosine Annealing) → <b>E009</b> (DualSeq)</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- PILLAR 2: CODE INTEGRITY & AUDIT -->
-            <div class="story-pillar">
-              <div class="pillar-header">
-                <span class="pillar-num mono">02 / CODE AUDIT</span>
-                <h5>Technical Debt & Verification</h5>
-              </div>
-              <div class="pillar-body">
-                <div class="contrast-row direct">
-                  <span class="row-label mono">01 DIRECT</span>
-                  <div class="fact-list">
-                    <div class="fact-item">
-                      <span class="fact-tag bug">Bug #1</span>
-                      <span><b>Cross-user BPR:</b> Paired pos/neg items across different users</span>
-                    </div>
-                    <div class="fact-item">
-                      <span class="fact-tag bug">Bug #2</span>
-                      <span><b>Target Leakage:</b> Global mean stats computed across full split</span>
-                    </div>
-                    <div class="fact-item">
-                      <span class="fact-tag bug">Bug #3</span>
-                      <span><b>Modulo Weekday:</b> Distorted cyclical time representation</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="contrast-row meta">
-                  <span class="row-label mono">03 META</span>
-                  <div class="fact-list">
-                    <div class="fact-item">
-                      <span class="fact-tag verified">Clean Reset</span>
-                      <span>Fresh Scientist wrote leak-free, mathematically verified layers</span>
-                    </div>
-                    <div class="fact-item">
-                      <span class="fact-tag verified">Gatekeeping</span>
-                      <span>Meta audited proxy data flow; blocked spurious state promotion</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- PILLAR 3: HISTORY MECHANISM -->
-            <div class="story-pillar">
-              <div class="pillar-header">
-                <span class="pillar-num mono">03 / MECHANISM</span>
-                <h5>History Shapes Search</h5>
-              </div>
-              <div class="pillar-body">
-                <div class="contrast-row direct">
-                  <span class="row-label mono">01 DIRECT</span>
-                  <div class="fact-list">
-                    <div class="fact-item">
-                      <span class="fact-tag">Nature</span>
-                      <span><b>Context as Baggage:</b> Dirty scripts & failed traces clog attention</span>
-                    </div>
-                    <div class="fact-item">
-                      <span class="fact-tag">Effect</span>
-                      <span>Anchoring inertia: Model trapped in repetitive local patching</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="contrast-row meta">
-                  <span class="row-label mono">03 META</span>
-                  <div class="fact-list">
-                    <div class="fact-item">
-                      <span class="fact-tag">Nature</span>
-                      <span><b>Context as Leverage:</b> <em>“Inherit evidence, not momentum”</em></span>
-                    </div>
-                    <div class="fact-item">
-                      <span class="fact-tag">Effect</span>
-                      <span>Durable State preserved externally; fresh context explores boldly</span>
-                    </div>
-                  </div>
-                </div>
+              <div class="factual-card-footer purple">
+                <span class="foot-tag purple mono">FACT</span>
+                <span>Locked onto 1 proven hypothesis. 4 disciplined iterations pushing Target Attention from coarse to fine.</span>
               </div>
             </div>
           </div>
 
-          <!-- FULL-WIDTH BOTTOM TAKEAWAY -->
-          <div class="story-takeaway-full">
-            <span class="takeaway-pill mono">CORE TAKEAWAY</span>
-            <p>Same model family (Gemini 3.7 Flash). In an unbroken context, history acts as cognitive baggage; in a Meta-Scientist loop, history is externalized scientific leverage.</p>
+          <!-- SUMMARY BAR: WHY HISTORY SHAPES SEARCH -->
+          <div class="factual-summary-box">
+            <div class="summary-head mono">
+              <span class="summary-label">SUMMARY</span>
+              <strong>HOW HISTORY SHAPES SEARCH</strong>
+            </div>
+            <div class="summary-body">
+              <div class="summary-side">
+                <span class="side-pill blue mono">01 DIRECT AGENT</span>
+                <p><b>Context as Cognitive Baggage:</b> In an unbroken thread, past failure traces create cognitive inertia. Stalled gains prompt frantic jumps to new model classes rather than diagnosing bottlenecks.</p>
+              </div>
+              <div class="summary-divider"></div>
+              <div class="summary-side">
+                <span class="side-pill purple mono">03 META-SCIENTIST</span>
+                <p><b>Context as Scientific Leverage:</b> Externalizing memory into <code>State.md</code> frees the fresh Scientist from historical code debt, enabling focused, vertical refinement to peak score.</p>
+              </div>
+            </div>
           </div>
         </div>
       </template>
@@ -361,7 +333,7 @@ const comparisonPage = ref(0)
 
 .robustness-intro { margin: 0 0 14px; color: #5a646e; font-size: 13.5px; line-height: 1.38; max-width: 860px; }
 .robustness-intro b { color: var(--ink); font-weight: 700; }
-.two-tier-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 10px; }
+.two-tier-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 0; }
 .tier-card { padding: 13px 15px; border: 1px solid #e4e7eb; border-radius: 12px; background: #fbfcfd; display: flex; flex-direction: column; gap: 10px; }
 .tier-head { border-bottom: 1px solid #edf0f3; padding-bottom: 7px; }
 .tier-badge { font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: 0.8px; color: var(--accent); }
@@ -438,252 +410,270 @@ const comparisonPage = ref(0)
 .comp-story-container {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 7px;
 }
-.story-h2h-grid {
+.factual-h2h-grid {
   display: grid;
-  grid-template-columns: 1fr 34px 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px;
   align-items: stretch;
-  gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
 }
-.h2h-card {
-  padding: 8px 11px;
+.factual-card {
+  padding: 8px 11px 7px;
   border: 1px solid #e6e6e8;
   border-radius: 12px;
   background: #fbfcfd;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  justify-content: space-between;
+  min-width: 0;
+  box-sizing: border-box;
 }
-.h2h-card.h2h-meta {
-  border-color: color-mix(in srgb, var(--accent) 55%, #e6e6e8);
-  background: linear-gradient(180deg, #ffffff, #fbf9ff);
+.factual-card.direct-card {
+  border-color: #dbe4f0;
+}
+.factual-card.meta-card {
+  border-color: color-mix(in srgb, var(--accent) 45%, #e6e6e8);
+  background: linear-gradient(180deg, #ffffff, #fcfaff);
   box-shadow: 0 2px 10px rgba(166,108,255,.05);
 }
-.h2h-card-top {
+.factual-card-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  margin-bottom: 4px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #eef1f4;
 }
-.h2h-badge {
-  font-size: 8.5px;
-  font-weight: 750;
-  color: #5d7fbd;
+.factual-badge {
+  font-size: 8px;
+  font-weight: 800;
   letter-spacing: .5px;
+  display: block;
 }
-.h2h-badge.purple {
+.factual-badge.blue {
+  color: #5d7fbd;
+}
+.factual-badge.purple {
   color: var(--accent);
 }
-.h2h-duration {
-  font-size: 8px;
+.factual-card-header h4 {
+  margin: 1px 0 0;
+  font-size: 11.5px;
+  font-weight: 750;
+  color: var(--ink);
+}
+.factual-score-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.factual-score-box strong {
+  font-size: 16px;
+  font-weight: 800;
+  color: #434a52;
+  letter-spacing: -.5px;
+  line-height: 1.1;
+}
+.factual-score-box strong.purple {
+  color: var(--accent);
+}
+.factual-score-box small {
+  font-size: 7.5px;
+  font-weight: 750;
   color: #9aa0a6;
   letter-spacing: .4px;
 }
-.h2h-duration.purple {
+.factual-score-box small.purple {
   color: color-mix(in srgb, var(--accent) 70%, #9aa0a6);
 }
-.h2h-score-row {
+.factual-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin: 2px 0 4px;
+}
+.step-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 3px 6px;
+  background: #f4f6f8;
+  border-radius: 6px;
+}
+.direct-card .step-row {
+  border-left: 2px solid #5d7fbd;
+}
+.direct-card .step-row.pivot {
+  border-left-color: #e98238;
+}
+.meta-card .step-row {
+  background: #f7f3fd;
+  border-left: 2px solid color-mix(in srgb, var(--accent) 60%, transparent);
+}
+.meta-card .step-row.handoff {
+  background: #f1eafe;
+  border-left-color: var(--accent);
+}
+.meta-card .step-row.peak {
+  background: #eedeff;
+  border-left: 2.5px solid var(--accent);
+  box-shadow: 0 1px 4px rgba(166,108,255,.12);
+}
+.step-idx {
+  font-size: 7.5px;
+  font-weight: 800;
+  color: #5d7fbd;
+  width: 14px;
+  flex-shrink: 0;
+  text-align: center;
+}
+.step-idx.purple {
+  color: var(--accent);
+}
+.step-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+}
+.step-info strong {
+  font-size: 9.6px;
+  font-weight: 750;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.step-info span {
+  font-size: 8.5px;
+  color: #727981;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.step-info code {
+  font-size: 8px;
+  background: rgba(0,0,0,.04);
+  padding: 0 2px;
+  border-radius: 2px;
+}
+.step-metric {
+  font-size: 8.5px;
+  font-weight: 750;
+  color: #4a5159;
+  flex-shrink: 0;
+}
+.step-metric.drop {
+  color: #d9534f;
+}
+.step-metric.purple {
+  color: #6e40b8;
+}
+.step-metric.peak {
+  font-size: 9.5px;
+  font-weight: 800;
+  color: var(--accent);
+}
+.factual-card-footer {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  padding: 3px 6px;
+  border-radius: 5px;
+  font-size: 8.4px;
+  line-height: 1.25;
+}
+.factual-card-footer.blue {
+  background: #ebf1fa;
+  color: #3b5a88;
+}
+.factual-card-footer.purple {
+  background: #f3ecfe;
+  color: #563391;
+}
+.foot-tag {
+  font-size: 7px;
+  font-weight: 800;
+  padding: 1px 4px;
+  border-radius: 3px;
+  background: #5d7fbd;
+  color: #fff;
+  flex-shrink: 0;
+}
+.foot-tag.purple {
+  background: var(--accent);
+}
+.factual-summary-box {
+  padding: 7px 12px;
+  border-radius: 10px;
+  background: #fbf9fe;
+  border: 1px solid color-mix(in srgb, var(--accent) 24%, #e6e6e8);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.summary-head {
   display: flex;
   align-items: center;
   gap: 7px;
 }
-.h2h-score {
-  font-size: 21px;
-  font-weight: 800;
-  color: #434a52;
-  letter-spacing: -.7px;
-  line-height: 1;
-}
-.h2h-score.purple {
-  color: var(--accent);
-}
-.h2h-regime-pill {
-  font-size: 7.8px;
-  font-weight: 800;
-  padding: 2px 6px;
-  border-radius: 4px;
-  letter-spacing: .4px;
-}
-.h2h-regime-pill.blue {
-  background: #ebf1fa;
-  color: #4d6ea6;
-}
-.h2h-regime-pill.purple {
-  background: #f1e9fe;
-  color: var(--accent);
-}
-.h2h-gauc-badge {
-  font-size: 8px;
-  font-weight: 750;
-  color: #7d848e;
-  margin-left: auto;
-}
-.h2h-pipeline {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 8.5px;
-  color: #555d66;
-  background: #f4f6f9;
-  padding: 3px 7px;
-  border-radius: 6px;
-  overflow: hidden;
-  white-space: nowrap;
-}
-.h2h-pipeline i {
-  font-style: normal;
-  color: #b0b8c0;
-}
-.h2h-pipeline.purple-flow {
-  background: #f7f3fd;
-  color: #4f3b78;
-}
-.h2h-pipeline .peak-exp {
-  font-weight: 800;
-  color: var(--accent);
-  background: rgba(166,108,255,.14);
-  padding: 1px 4px;
-  border-radius: 3px;
-}
-.story-vs-divider {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: #b0b8c0;
-}
-.story-vs-divider span {
-  font-size: 11px;
-  font-weight: 800;
-}
-.story-vs-divider small {
-  font-size: 7.5px;
-  color: var(--accent);
-  font-weight: 750;
-}
-.story-pillars-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-}
-.story-pillar {
-  padding: 7px 9px;
-  border: 1px solid #eef0f3;
-  border-radius: 10px;
-  background: #fbfcfd;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-.pillar-header {
-  display: flex;
-  flex-direction: column;
-}
-.pillar-num {
-  font-size: 7.5px;
-  font-weight: 800;
-  letter-spacing: .6px;
-  color: #8c949c;
-}
-.story-pillar h5 {
-  margin: 1px 0 0;
-  font-size: 10.5px;
-  font-weight: 750;
-  color: var(--ink);
-  line-height: 1.2;
-}
-.pillar-body {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.contrast-row {
-  padding: 4px 6px;
-  border-radius: 6px;
-  background: #f4f6f8;
-}
-.contrast-row.direct {
-  border-left: 2px solid #5d7fbd;
-}
-.contrast-row.meta {
-  background: #f7f3fd;
-  border-left: 2px solid var(--accent);
-}
-.row-label {
-  display: block;
-  font-size: 7.5px;
-  font-weight: 800;
-  margin-bottom: 2px;
-}
-.contrast-row.direct .row-label {
-  color: #5d7fbd;
-}
-.contrast-row.meta .row-label {
-  color: var(--accent);
-}
-.fact-list {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5px;
-}
-.fact-item {
-  font-size: 9.1px;
-  color: #4a5159;
-  line-height: 1.22;
-  display: flex;
-  align-items: baseline;
-  gap: 4px;
-}
-.fact-item b {
-  color: var(--ink);
-}
-.fact-tag {
-  font-size: 6.8px;
-  font-weight: 800;
-  text-transform: uppercase;
-  padding: 0px 3px;
-  border-radius: 2px;
-  background: #e2e6eb;
-  color: #5a626a;
-  flex-shrink: 0;
-  line-height: 1.3;
-}
-.contrast-row.meta .fact-tag {
-  background: #ebdffd;
-  color: #6a3ab2;
-}
-.fact-tag.bug {
-  background: #fee2e2;
-  color: #b91c1c;
-}
-.fact-tag.verified {
-  background: #dcfce7;
-  color: #15803d;
-}
-.story-takeaway-full {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  padding: 6px 12px;
-  border-radius: 8px;
-  background: #fbf9fe;
-  border: 1px solid color-mix(in srgb, var(--accent) 22%, #e6e6e8);
-}
-.takeaway-pill {
-  font-size: 7.5px;
+.summary-label {
+  font-size: 7px;
   font-weight: 800;
   color: #fff;
   background: var(--accent);
-  padding: 2px 6px;
-  border-radius: 4px;
+  padding: 1px 5px;
+  border-radius: 3px;
   letter-spacing: .5px;
-  flex-shrink: 0;
 }
-.story-takeaway-full p {
+.summary-head strong {
+  font-size: 8.5px;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: .6px;
+}
+.summary-body {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  align-items: center;
+  gap: 12px;
+}
+.summary-divider {
+  height: 100%;
+  background: color-mix(in srgb, var(--accent) 18%, #e6e6e8);
+}
+.summary-side {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+}
+.side-pill {
+  font-size: 7px;
+  font-weight: 800;
+  padding: 1.5px 5px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  letter-spacing: .4px;
+  margin-top: 1px;
+}
+.side-pill.blue {
+  background: #ebf1fa;
+  color: #4d6ea6;
+}
+.side-pill.purple {
+  background: #f1e9fe;
+  color: var(--accent);
+}
+.summary-side p {
   margin: 0 !important;
-  font-size: 9.6px;
+  font-size: 9.3px;
   color: #4a5159;
   line-height: 1.3;
+}
+.summary-side b {
+  color: var(--ink);
 }
 .token-hero-box { display: flex; align-items: center; gap: 26px; margin-top: 8px; padding: 14px 22px; background: #fdfaf6; border: 1px solid color-mix(in srgb, var(--accent) 24%, #e6e6e8); border-radius: 14px; }
 .token-hero-left { display: flex; flex-direction: column; align-items: flex-start; flex-shrink: 0; }
