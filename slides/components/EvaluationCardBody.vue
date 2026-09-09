@@ -58,6 +58,8 @@ const comparisonPage = ref(0)
               <p><b>0 human bugfixes</b> · Unattended rerun succeeded · Telemetry preserved.</p>
             </div>
           </div>
+
+          <div class="tier-foot mono">Cycle 1 telemetry · Zero human intervention · Retained submission</div>
         </div>
 
         <div class="tier-card">
@@ -81,8 +83,12 @@ const comparisonPage = ref(0)
               <p><b>Promotion blocked</b> · Filtered validation guarded · Zero contaminated state.</p>
             </div>
           </div>
+
+          <div class="tier-foot mono">Experiment audit receipt · State boundary guarded · UNK leak blocked</div>
         </div>
       </div>
+
+      <p class="boundary">Empirical receipts preserved: runtime self-healing telemetry and independent code-level proxy audits.</p>
     </template>
 
     <template v-else-if="card === 'comparison'">
@@ -123,21 +129,21 @@ const comparisonPage = ref(0)
           <div class="arch-step">
             <span class="arch-label">01 · DIRECT Antigravity</span>
             <strong>Antigravity</strong>
-            <div class="arch-score">0.6045803</div>
+          <div class="arch-score">0.6046</div>
             <p>Single-agent 2h run.</p>
           </div>
           <span class="arch-arrow">→</span>
           <div class="arch-step">
             <span class="arch-label">02 · SUBAGENTS</span>
             <strong>Antigravity + delegated subagents</strong>
-            <div class="arch-score">0.6047213</div>
+          <div class="arch-score">0.6047</div>
             <p>Broader delegation, no persistent Meta layer.</p>
           </div>
           <span class="arch-arrow">→</span>
           <div class="arch-step winner">
             <span class="arch-label">03 · META-SCIENTIST</span>
             <strong>Meta-Scientist + Antigravity</strong>
-            <div class="arch-score">0.6052000</div>
+          <div class="arch-score">0.6052</div>
             <p>Persistent world memory + fresh Scientist reset.</p>
           </div>
         </div>
@@ -331,22 +337,29 @@ const comparisonPage = ref(0)
 .token-hero strong { display: block; margin-top: 6px; color: var(--accent); font-size: 25px; line-height: 1.08; letter-spacing: -.7px; }
 .token-hero p { max-width: 650px; }
 
-.robustness-intro { margin: 0 0 14px; color: #5a646e; font-size: 13.5px; line-height: 1.38; max-width: 860px; }
+.card-body-robustness {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.robustness-intro { margin: 0 0 11px; color: #5a646e; font-size: 13.5px; line-height: 1.38; max-width: 860px; }
 .robustness-intro b { color: var(--ink); font-weight: 700; }
-.two-tier-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 0; }
-.tier-card { padding: 13px 15px; border: 1px solid #e4e7eb; border-radius: 12px; background: #fbfcfd; display: flex; flex-direction: column; gap: 10px; }
+.card-body-robustness .two-tier-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; flex: 1; margin-bottom: 8px; }
+.card-body-robustness .tier-card { padding: 14px 17px 12px; border: 1px solid #e4e7eb; border-radius: 14px; background: #fbfcfd; display: flex; flex-direction: column; justify-content: space-between; }
 .tier-head { border-bottom: 1px solid #edf0f3; padding-bottom: 7px; }
 .tier-badge { font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: 0.8px; color: var(--accent); }
-.tier-card h4 { margin: 2px 0 1px; font-size: 14.5px; color: var(--ink); font-weight: 750; letter-spacing: -0.2px; }
+.tier-card h4 { margin: 3px 0 1px; font-size: 15px; color: var(--ink); font-weight: 750; letter-spacing: -0.2px; }
 .tier-subhead { display: block; font-size: 10.5px; color: #838c96; }
-.tier-flow { display: flex; flex-direction: column; gap: 7px; }
-.flow-item { display: grid; grid-template-columns: 78px 1fr; align-items: baseline; gap: 8px; font-size: 11.5px; line-height: 1.32; padding: 6px 9px; border-radius: 6px; background: #f5f7f9; }
+.tier-flow { display: flex; flex-direction: column; gap: 7px; margin: 6px 0; }
+.flow-item { display: grid; grid-template-columns: 82px 1fr; align-items: baseline; gap: 8px; font-size: 11.5px; line-height: 1.32; padding: 6px 9px; border-radius: 6px; background: #f5f7f9; }
 .flow-item.result { background: #edf6f0; border: 1px solid #d0e8d7; }
 .flow-label { font-family: var(--mono); font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: #6a7480; }
 .flow-item.result .flow-label { color: #247346; }
 .flow-item p { margin: 0; color: #434c56; }
 .flow-item.result p { color: #1a4f30; }
 .flow-item code { font-family: var(--mono); font-size: 10.5px; padding: 1px 4px; background: rgba(0,0,0,0.05); border-radius: 3px; }
+.tier-foot { font-size: 8.8px; color: #8c949e; letter-spacing: 0.35px; padding-top: 7px; border-top: 1px dashed #e6e9ed; }
+.card-body-robustness .boundary { margin-top: auto; padding-top: 8px; }
 .comparison-intro { margin-bottom: 10px; }
 .comparison-intro p { margin: 0 0 8px; max-width: 900px; color: #7f878f; font-size: 12.2px; line-height: 1.32; }
 .architecture-progress { display: grid; grid-template-columns: 1fr 34px 1fr 34px 1.05fr; gap: 8px; align-items: stretch; margin: 8px 0 14px; }
