@@ -101,13 +101,16 @@ b, strong { font-weight: 700; color: var(--ink); }
 
 .subtitle {
   position: absolute;
-  top: 132px;
-  color: #5c524c;
-  font-size: 39px;
-  font-weight: 600;
-  letter-spacing: -1.1px;
-  line-height: 1.08;
+  top: 150px;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 52px;
+  font-weight: 700;
+  letter-spacing: -2.6px;
+  line-height: .96;
 }
+
+.subtitle em { color: var(--rust); font-style: normal; }
 
 .hero h2 {
   position: absolute;
@@ -123,7 +126,7 @@ b, strong { font-weight: 700; color: var(--ink); }
 
 .hero-meta-row {
   position: absolute;
-  top: 224px;
+  top: 272px;
   left: 0;
   display: flex;
   align-items: center;
