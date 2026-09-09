@@ -116,7 +116,7 @@ Cursor click, short reverse swell, then the sound of the room opening up. No upb
 
 **Implementation note**
 
-Do not imply that Codex, Claude Code, Gemini, or AGY are incapable of persistence in every context. The point is the difference between a direct session and an explicit research workflow.
+Do not imply that Codex, Claude Code, Gemini, or Antigravity are incapable of persistence in every context. The point is the difference between a direct session and an explicit research workflow.
 
 ### 00:31–00:47 — PRODUCT REVEAL / SCIODYSSEY
 
@@ -254,13 +254,13 @@ This is the model comparison, but it is a moving systems comparison rather than 
 **Visual and camera**
 
 1. **01:59–02:04 — two worlds.** The screen divides in depth, not with a flat vertical split. On the left, `DIRECT SESSION` runs `PROMPT → ANSWER → CLOSE`. On the right, `SCIODYSSEY` runs `QUESTION → CYCLE → STATE → REVIEW → RESUME`.
-2. **02:04–02:10 — runtime swap.** The camera circles the persistent right-hand world. Four agent plates pass through the same runtime port: `CODEX`, `CLAUDE CODE`, `GEMINI CLI`, `AGY`. The project files and evidence remain locked to the world, while the active runtime changes.
+2. **02:04–02:10 — runtime swap.** The camera circles the persistent right-hand world. Four agent plates pass through the same runtime port: `CODEX`, `CLAUDE CODE`, `GEMINI CLI`, `Antigravity`. The project files and evidence remain locked to the world, while the active runtime changes.
 3. **02:10–02:14 — no ranking.** A small line of copy follows the orbit: `WORKFLOW COMPARISON / NOT A MODEL LEADERBOARD`. The agents do not receive numerical scores.
 4. **02:14–02:18 — handoff.** The selected runtime sends a result back into the same `research_record/`. The camera continues forward into the proof section.
 
 **Voiceover — English draft**
 
-> Use the agent you already trust. Codex. Claude Code. Gemini CLI. AGY. The runtime can change. The research world does not.
+> Use the agent you already trust. Codex. Claude Code. Gemini CLI. Antigravity. The runtime can change. The research world does not.
 
 **On-screen copy**
 

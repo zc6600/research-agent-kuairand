@@ -18,7 +18,7 @@ npm run render:product
 | 00:46–01:08 | You bring the question | Start, choose depth, review |
 | 01:08–01:38 | Keynote cut | Terminal, evidence, human review, agent handoff |
 | 01:38–01:54 | See the run | State, artifacts, and validation |
-| 01:54–02:10 | Use the model you trust | Codex, Claude Code, Gemini CLI, and AGY as replaceable runtimes |
+| 01:54–02:10 | Use the model you trust | Codex, Claude Code, Gemini CLI, and Antigravity as replaceable runtimes |
 | 02:10–02:27 | Open the search | Parallel branches with explicit promotion |
 | 02:27–02:42 | Evidence, not promises | Recorded KuaiRand-Pure result |
 | 02:42–03:00 | Reopen the search | Closing product CTA |

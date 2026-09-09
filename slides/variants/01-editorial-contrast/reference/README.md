@@ -137,7 +137,7 @@ Requirements:
 
 - Git and [`uv`](https://docs.astral.sh/uv/).
 - At least one supported agent CLI installed and authenticated: Codex, Gemini,
-  Claude, AGY, or OpenCode.
+  Claude, Antigravity, or OpenCode.
 
 For example, install Codex using the
 [official Codex CLI instructions](https://developers.openai.com/codex/cli),

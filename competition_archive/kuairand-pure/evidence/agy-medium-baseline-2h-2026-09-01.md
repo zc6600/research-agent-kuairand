@@ -1,4 +1,4 @@
-# AGY 2h baseline evidence snapshot
+# Antigravity 2h baseline evidence snapshot
 
 This is the compact evidence snapshot for the corrected `p0_baseline_antigravity_2h`
 direct Goal run. It supersedes the older one-hour direct `gemini-3.7-flash`
@@ -7,7 +7,7 @@ control in the comparison table.
 | Field | Recorded value |
 |---|---|
 | Run ID | `a2723fa527c948eca931b9ac4dc9f784` |
-| Runner / model | AGY 1.1.22 / `gemini-3.7-flash` |
+| Runner / model | Antigravity 1.1.22 / `gemini-3.7-flash` |
 | Effort | `medium` |
 | Budget | 2h maximum |
 | Actual wall-clock | 4,059.946s (67m39.9s) |
@@ -23,7 +23,7 @@ control in the comparison table.
 
 The final result is the independently re-scored five-model blend from the
 target's `outputs/summary_metrics.json`, evaluated with the unchanged Starter
-Kit evaluator. The earlier `89fdbbf6...` attempt is excluded because AGY used a
+Kit evaluator. The earlier `89fdbbf6...` attempt is excluded because Antigravity used a
 global scratch workspace rather than the requested target. Workspace binding,
 the corrected run metadata, and the full experiment narrative are documented
 in [`agy-medium-baseline-2h-2026-09-01.md`](../../../docs/trajectories/agy-medium-baseline-2h-2026-09-01.md).

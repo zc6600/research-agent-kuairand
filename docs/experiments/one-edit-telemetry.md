@@ -9,11 +9,11 @@ optimization trajectory.
 
 ## Protocol
 
-Two fresh AGY sessions used the same toy ranking fixture, model, effort, and
+Two fresh Antigravity sessions used the same toy ranking fixture, model, effort, and
 accept-edits mode:
 
 - Model: `gemini-3.7-flash`, medium effort
-- AGY CLI: `1.1.27`
+- Antigravity CLI: `1.1.27`
 - Workspace: a disposable `/tmp` project with `README.md`, `task.md`,
   `src/ranker.py`, and `tests/test_ranker.py`
 - Read arm: inspect the four files with `view_file`, make no mutation, then
@@ -28,7 +28,7 @@ fixture; its prompt supplied the exact target line.
 
 ## Measured usage
 
-AGY reports `total_tokens` as input plus output and reports `cache_read_tokens`
+Antigravity reports `total_tokens` as input plus output and reports `cache_read_tokens`
 separately. The inclusive column below is `input + output + cache_read`.
 Reasoning tokens are a subset of output and are shown for auditability, not
 added a second time.
@@ -52,12 +52,12 @@ If cache-read input is excluded, the ratio is:
 
 ## Project-shaped replication
 
-To check that the effect was not only a toy-fixture artifact, two fresh AGY
+To check that the effect was not only a toy-fixture artifact, two fresh Antigravity
 sessions used a disposable copy of the real KuaiRand-Pure project context. The
 source files came from the archived `p0_baseline_antigravity_2h` project; no
 competition data was copied or evaluated.
 
-- Model: `gemini-3.7-flash`, medium effort; AGY CLI `1.1.27`
+- Model: `gemini-3.7-flash`, medium effort; Antigravity CLI `1.1.27`
 - Read arm: ten `view_file` calls over `task.md`, `PERSONAL.md`, the starter-kit
   README/data/evaluator/baseline, the system README/CLI/API, and the data manifest
 - Write arm: one `replace_file_content` call in `system/baseline_api.py`, changing

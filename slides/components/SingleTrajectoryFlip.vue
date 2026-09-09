@@ -268,9 +268,31 @@ useTalkSteps(14, step => {
                 <path class="cycle-path-progress cycle-path-purple" :class="{ 'trajectory-handoff-progress-visible': handoffClick >= 3 }" d="M674 146 C760 146 790 58 872 58" fill="none" stroke="#a66cff" stroke-width="3" pathLength="1" marker-end="url(#trajectory-cycle-arrow-purple)" />
                 <path class="cycle-path-progress cycle-path-rose" :class="{ 'trajectory-handoff-progress-visible': handoffClick >= 4 }" d="M904 93 C956 120 930 222 720 236 C470 250 185 234 128 174" fill="none" stroke="#ff5c78" stroke-width="3" pathLength="1" marker-end="url(#trajectory-cycle-arrow-rose)" />
               </svg>
-              <div class="cycle-node cycle-world-node">
-                <div class="cycle-node-visual cycle-world-visual" aria-hidden="true"><span class="cycle-world-ring world-ring-outer"></span><span class="cycle-world-ring world-ring-middle"></span><span class="cycle-world-ring world-ring-inner"></span><span class="cycle-world-core"></span><i class="cycle-particle particle-blue"></i><i class="cycle-particle particle-orange"></i><i class="cycle-particle particle-purple"></i></div>
-                <strong>Research world</strong><small>Preserved evidence &amp; code</small>
+              <div class="cycle-node cycle-world-node" :class="{ 'is-loop-returned': handoffClick >= 4 }">
+                <div class="cycle-world-visual-stage" aria-hidden="true">
+                  <div class="cycle-node-visual cycle-task-visual" :class="{ 'cycle-stage-hidden': handoffClick >= 4 }">
+                    <span class="cycle-node-icon blue i-carbon:document"></span>
+                  </div>
+                  <div class="cycle-node-visual cycle-world-visual" :class="{ 'cycle-stage-hidden': handoffClick < 4 }">
+                    <span class="cycle-world-ring world-ring-outer"></span>
+                    <span class="cycle-world-ring world-ring-middle"></span>
+                    <span class="cycle-world-ring world-ring-inner"></span>
+                    <span class="cycle-world-core"></span>
+                    <i class="cycle-particle particle-blue"></i>
+                    <i class="cycle-particle particle-orange"></i>
+                    <i class="cycle-particle particle-purple"></i>
+                  </div>
+                </div>
+                <div class="cycle-node-text-stage">
+                  <div class="cycle-node-text-inner cycle-task-text" :class="{ 'cycle-stage-hidden': handoffClick >= 4 }">
+                    <strong class="cycle-task-title mono">Task.md</strong>
+                    <small>Initial problem &amp; constraints</small>
+                  </div>
+                  <div class="cycle-node-text-inner cycle-world-text" :class="{ 'cycle-stage-hidden': handoffClick < 4 }">
+                    <strong>Research world</strong>
+                    <small>Preserved evidence &amp; code</small>
+                  </div>
+                </div>
               </div>
               <div class="cycle-node cycle-scientist-node" :class="{ 'trajectory-handoff-vclick-hidden': handoffClick < 1 }">
                 <div class="cycle-node-visual cycle-scientist-visual"><span class="cycle-node-icon purple i-carbon:chemistry"></span></div>
@@ -419,7 +441,7 @@ useTalkSteps(14, step => {
 
 .trajectory-mini-star small {
   color: var(--muted);
-  font-family: 'Fira Code', 'SFMono-Regular', Consolas, monospace;
+  font-family: var(--deck-mono);
   font-size: 9px;
   letter-spacing: .15px;
   margin-left: 3px;
@@ -453,7 +475,7 @@ useTalkSteps(14, step => {
   align-items: center;
   color: var(--muted);
   display: flex;
-  font-family: 'Fira Code', monospace;
+  font-family: var(--deck-mono);
   font-size: 10px;
   justify-content: space-between;
 }
@@ -603,20 +625,23 @@ useTalkSteps(14, step => {
   min-height: 0;
 }
 
-.trajectory-validity-claim {
+.trajectory-validity-claim,
+.trajectory-handoff-claim,
+.trajectory-back-claim {
   color: var(--ink);
   display: flex;
   flex-direction: column;
-  font-size: 31px;
-  font-weight: 400;
-  letter-spacing: -1px;
+  font-family: var(--deck-sans);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -1.1px;
   line-height: 1.08;
-  margin: 22px 0 7px;
+  margin-top: 24px;
 }
 
 .trajectory-validity-claim strong {
   color: var(--blue);
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .trajectory-validity-claim span + span {
@@ -633,20 +658,9 @@ useTalkSteps(14, step => {
   min-height: 0;
 }
 
-.trajectory-handoff-claim {
-  color: var(--ink);
-  display: flex;
-  flex-direction: column;
-  font-size: 31px;
-  font-weight: 400;
-  letter-spacing: -1px;
-  line-height: 1.08;
-  margin: 22px 0 7px;
-}
-
 .trajectory-handoff-claim strong {
   color: var(--blue);
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .trajectory-handoff-claim span + span {
@@ -664,7 +678,7 @@ useTalkSteps(14, step => {
 .trajectory-handoff-page .trajectory-handoff-claim strong { color: #167aa9; }
 .trajectory-handoff-page .trajectory-handoff-claim .handoff-review-title { color: #7542be; }
 
-.trajectory-handoff-page .cycle-node > strong {
+.trajectory-handoff-page .cycle-node strong {
   color: #20232b;
   font-family: inherit;
   font-size: 16px;
@@ -672,13 +686,71 @@ useTalkSteps(14, step => {
   letter-spacing: -.2px;
 }
 
-.trajectory-handoff-page .cycle-node > small {
+.trajectory-handoff-page .cycle-node small {
   color: #454b55;
   font-size: 13px;
   font-weight: 500;
   line-height: 1.35;
   margin-top: 6px;
   white-space: normal;
+}
+
+.trajectory-handoff-page .cycle-world-visual-stage {
+  height: 70px;
+  margin: 0 auto 9px;
+  position: relative;
+  width: 70px;
+}
+
+.trajectory-handoff-page .cycle-world-visual-stage .cycle-node-visual {
+  height: 70px;
+  inset: 0;
+  margin: 0;
+  position: absolute;
+  transition: opacity .45s ease, transform .45s cubic-bezier(.22, 1, .36, 1);
+  width: 70px;
+}
+
+.trajectory-handoff-page .cycle-task-visual {
+  background: #f0f7ff;
+  border: 1px solid #bae0fd;
+  border-radius: 50%;
+  box-shadow: 0 4px 14px rgba(56, 189, 248, .12);
+}
+
+.trajectory-handoff-page .cycle-task-visual .cycle-node-icon {
+  color: #167aa9;
+  font-size: 34px;
+}
+
+.trajectory-handoff-page .cycle-node-text-stage {
+  height: 48px;
+  position: relative;
+  width: 100%;
+}
+
+.trajectory-handoff-page .cycle-node-text-inner {
+  inset: 0;
+  position: absolute;
+  transition: opacity .45s ease, transform .45s cubic-bezier(.22, 1, .36, 1);
+}
+
+.trajectory-handoff-page .cycle-task-title {
+  color: #167aa9;
+  font-family: var(--deck-mono, monospace);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -.3px;
+}
+
+.trajectory-handoff-page .cycle-stage-hidden {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: scale(.88) translateY(4px);
+}
+
+.trajectory-handoff-page .cycle-node.is-loop-returned .cycle-world-visual {
+  filter: drop-shadow(0 0 10px rgba(255, 92, 120, .28));
 }
 
 .trajectory-handoff-page .evidence-line {
@@ -793,18 +865,7 @@ useTalkSteps(14, step => {
 .trajectory-reset-btn:hover { background: #f1f5f9; color: var(--ink); }
 .trajectory-condense-btn:hover { background: #eff6ff; border-color: var(--blue); color: var(--blue); }
 
-.trajectory-back-claim {
-  color: var(--ink);
-  display: flex;
-  flex-direction: column;
-  font-size: 29px;
-  font-weight: 400;
-  letter-spacing: -1px;
-  line-height: 1.1;
-  margin-top: 24px;
-}
-
-.trajectory-back-claim strong { color: var(--blue); font-weight: 500; }
+.trajectory-back-claim strong { color: var(--blue); font-weight: 700; }
 .trajectory-back-claim-shift { color: var(--muted); font-size: 18px; letter-spacing: -.25px; margin-top: 7px; }
 
 .trajectory-back-grid {
@@ -897,7 +958,7 @@ useTalkSteps(14, step => {
 
 .back-codex-node small {
   color: var(--muted);
-  font-family: 'Fira Code', monospace;
+  font-family: var(--deck-mono);
   font-size: 9px;
 }
 

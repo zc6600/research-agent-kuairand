@@ -110,6 +110,13 @@ Shared `--model` and `--effort` apply to both roles unless overridden. Supported
 low | medium | high | max
 ```
 
+TraeCode CLI is selected with `--cli traecli`. It requires the `traecli`
+executable to be installed and authenticated. The adapter runs its headless
+`traecli exec` command, sends the launcher prompt through stdin, and maps edit
+permission to Trae's `workspace-write`/`bypass_permissions` modes. TraeCode
+CLI token telemetry is currently reported as unavailable because this project
+does not yet have a verified local telemetry backend for it.
+
 ## Output and permissions
 
 Automated research paths require explicit `--allow-edits`.

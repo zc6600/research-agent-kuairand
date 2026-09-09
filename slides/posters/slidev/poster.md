@@ -103,7 +103,7 @@ mdc: true
             <text x="476" y="380.62962962963087" text-anchor="end" class="axis">Official FM · 0.6016</text>
             <path d="M120.87245178181817 220.19405555556048 L103 191" class="leader"/>
             <circle cx="120.87245178181817" cy="220.19405555556048" r="6" class="direct"/>
-            <text x="65" y="165" class="point-label">AGY direct</text><text x="65" y="185" class="point-sub">Gemini · 0.604580</text>
+            <text x="65" y="165" class="point-label">Antigravity direct</text><text x="65" y="185" class="point-sub">Gemini · 0.604580</text>
             <path d="M270.88054185454547 219.07407407407518 L237 263" class="leader"/>
             <circle cx="270.88054185454547" cy="219.07407407407518" r="6" class="direct"/>
             <text x="153" y="285" class="point-label">Codex direct</text><text x="153" y="306" class="point-sub">gpt-5.6-luna</text><text x="153" y="327" class="point-sub">≈0.6046</text>
@@ -201,7 +201,7 @@ mdc: true
 - ../../slides.md, "One Agent. Any ML Task. End to End." — task.md (objectives, constraints, evaluation), PERSONAL.md (preferences, research style, priorities); autonomous by default and supervisable by design. General-purpose intent is not a cross-task validation claim.
 - ../../slides.md — main presentation and insights/recovery appendices; motivation, entry contracts, open-world actions, memory, serial and parallel handoff, results, audit trail, limitations.
 - ../../../docs/ARCHITECTURE.md — responsibility boundaries, memory layers, optional State, fresh Scientist, META audits and deterministic runtime.
-- ../../../docs/FINAL_REPORT.md §5.3 — AGY 8,564,976 / 0.6045803; three-hour Codex Luna 28,069,574 / approximately 0.6046 (provisional); heterogeneous 39,607,277 / approximately 0.6047; Gemini-only Cycle 2 45,043,916–51,173,911 / 0.6052; retained submission 48,240,128 / 0.6059363.
+- ../../../docs/FINAL_REPORT.md §5.3 — Antigravity 8,564,976 / 0.6045803; three-hour Codex Luna 28,069,574 / approximately 0.6046 (provisional); heterogeneous 39,607,277 / approximately 0.6047; Gemini-only Cycle 2 45,043,916–51,173,911 / 0.6052; retained submission 48,240,128 / 0.6059363.
 - ../../../competition_archive/kuairand-pure/reports/gpt-5.6-luna-3h-goal-baseline.md — three-hour run, not earlier shorter control.
 - ../../../docs/FINAL_REPORT.md Submission Snapshot and §5.1 — Primary 0.6059363 (+0.0043363); GAUC 0.6728421 (+0.0054421); nDCG@5 0.5390304 (+0.0033304). Retained eight-seed, 46-field FM; 4 cycles, 13 named experiments, 7 Full evaluations, 0 post-launch manual scientific interventions, 0 GPU-hours, 170,588 checked rows.
 - ../../../docs/FINAL_REPORT.md §§3.4, 4.2, 5.4–5.5 — parallel capability, serialization recovery, validity audits. Parallel breadth is not presented as the established cause of canonical performance.

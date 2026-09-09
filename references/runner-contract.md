@@ -18,6 +18,11 @@ Git is the State version store, not the research ledger. Runner adapters must no
 
 Every adapter implements one role-neutral `invoke()` operation. META and Scientist use the same runner transport; only role prompts and environment assignment differ. For non-interactive calls, the launcher sends the prompt through stdin rather than putting the injected context in `argv`; this keeps large context out of process listings and argument-size limits. Interactive Goal mode keeps its PTY input separate.
 
+The TraeCode CLI adapter uses `traecli exec -` for non-interactive calls. It
+passes the configured model with `--model` and maps editable invocations to
+Trae's `workspace-write` sandbox and `bypass_permissions` permission mode;
+read-only invocations use `read-only` and `plan`.
+
 The optional reasoning-effort levels are `low`, `medium`, `high`, and `max`. Runner-specific flags express transport, model choice, native autonomy, or permission behavior; they must not create a different research-agent architecture for one runner.
 
 ## META launch

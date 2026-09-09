@@ -88,7 +88,7 @@ Across the four retained E001–E013 cycle runs:
 - combined agent wall-clock: 1h 55m 29s;
 - training/evaluation GPU use: 0 GPU-hours.
 
-AGY reports cache-read input separately from `input`, while Codex includes it
+Antigravity reports cache-read input separately from `input`, while Codex includes it
 inside `input`; the totals above normalize those runner-specific semantics
 without double-counting cache-read tokens. The telemetry `model` fields use the normalized agent-model labels
 `gemini-3.7-flash`, `gpt-5.6-sol`, and `gpt-5.6-luna`. The low-level `cli` and

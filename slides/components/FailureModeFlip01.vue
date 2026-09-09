@@ -186,14 +186,15 @@ useTalkSteps(14, step => {
 <style scoped>
 .workflow-reverse-title {
   color: var(--ink);
+  font-family: var(--deck-sans);
   font-size: 32px;
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: -1px;
   line-height: 1.1;
   margin: 24px 0 18px;
 }
 
-.workflow-reverse-title strong { color: var(--orange); font-weight: 500; }
+.workflow-reverse-title strong { color: var(--orange); font-weight: 700; }
 
 .card-back-inner .compare-grid { flex: 1; min-height: 0; }
 .card-back-inner .compare-side { display: flex; flex-direction: column; }
@@ -347,7 +348,7 @@ useTalkSteps(14, step => {
   justify-content: space-between;
   font-size: 11.5px;
   color: var(--muted);
-  font-family: "Fira Code", monospace;
+  font-family: var(--deck-mono);
 }
 
 .condensed-flow b {

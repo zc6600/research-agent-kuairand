@@ -27,7 +27,7 @@ export const ProductCompareScene: React.FC = () => {
       <div className="product-compare-copy">
         <div style={reveal(frame, 16, 22, 18)}><Kicker color={COLORS.blue}>A WORKFLOW LAYER</Kicker></div>
         <Hero>Use the model<br /><span className="product-muted">you already trust.</span></Hero>
-        <Caption>SciOdyssey does not compete with Codex,<br />Claude Code, Gemini, or AGY. It gives them<br />a longer-lived research job to do.</Caption>
+        <Caption>SciOdyssey does not compete with Codex,<br />Claude Code, Gemini, or Antigravity. It gives them<br />a longer-lived research job to do.</Caption>
         <div className="product-compare-runtime" style={reveal(frame, 150, 22, 12)}><span className="product-blue-dot" /> one research protocol · many agent runtimes</div>
       </div>
       <div className="product-compare-stage">
@@ -36,7 +36,7 @@ export const ProductCompareScene: React.FC = () => {
           <AgentBadge name="Codex" color={COLORS.blue} start={30} />
           <AgentBadge name="Claude Code" color={COLORS.orange} start={50} />
           <AgentBadge name="Gemini CLI" color={COLORS.purple} start={70} />
-          <AgentBadge name="AGY" color={COLORS.rose} start={90} />
+          <AgentBadge name="Antigravity" color={COLORS.rose} start={90} />
         </div>
         <svg className="product-compare-flow" viewBox="0 0 780 650" aria-hidden="true">
           <DrawnPath d="M112 170 C248 170 285 250 438 250" color={COLORS.blue} start={38} duration={65} width={2} />

@@ -328,7 +328,7 @@ export const slides = [
     title: "Compare scores alongside their evidence",
     accent: "orange",
     blocks: [
-      { kind: "table", headers: ["RUN", "PRIMARY", "TOKENS"], rows: [["Official reference", "0.6016000", "—"], ["AGY direct", "0.6045803", "8.565M"], ["Luna direct", "≈0.6046", "28.070M"], ["Heterogeneous", "≈0.6047", "39.607M"], ["SciOdyssey w/ AGY", "0.6052", "45–51M"], ["SciOdyssey submission", "0.6059363", "48.240M"]], tone: "green" },
+      { kind: "table", headers: ["RUN", "PRIMARY", "TOKENS"], rows: [["Official reference", "0.6016000", "—"], ["Antigravity direct", "0.6045803", "8.565M"], ["Luna direct", "≈0.6046", "28.070M"], ["Heterogeneous", "≈0.6047", "39.607M"], ["SciOdyssey w/ Antigravity", "0.6052", "45–51M"], ["SciOdyssey submission", "0.6059363", "48.240M"]], tone: "green" },
       { kind: "text", text: "One recorded run per condition; model, budget, and evidence quality differ. This is not a controlled causal comparison.", tone: "muted" },
     ],
     note: "The comparison uses measured total input + output tokens including cache-read input. Source: docs/FINAL_REPORT.md section 5.3 and the archived control reports.",

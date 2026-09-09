@@ -201,6 +201,8 @@ def collect_runner(runner: str, roots: Iterable[Path], session: str | None = Non
         return collect_opencode(normalized_roots, session)
     if runner == "agy":
         return _unavailable("agy", "agy does not expose a verified local token telemetry backend")
+    if runner == "traecli":
+        return _unavailable("traecli", "TraeCode CLI does not expose a verified local token telemetry backend")
     return _unavailable(runner, f"Unsupported telemetry runner: {runner}")
 
 

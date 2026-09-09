@@ -12,7 +12,7 @@ submission remains [`submission/research-agent-kuairand/`](../../submission/rese
 | `gemini-3.7-flash-only-cycle2-e008` | `gemini-3.7-flash-only cycle-2 research world` | `gemini-3.7-flash`-only comparison through Cycle 2 | E008 Primary 0.6052 |
 | `gpt-5.6-luna-3h-goal-baseline` | `gpt-5.6-luna` direct control | Headline direct `gpt-5.6-luna` 3h baseline | Best public-validation Primary approximately 0.6046 |
 | `direct-codex-goal-baseline` | `direct Codex control` | Earlier direct Codex control; superseded by the `gpt-5.6-luna` 3h run | Best Primary 0.6044533 |
-| `agy-medium-baseline-2h-2026-09-01` | `p0_baseline_antigravity_2h` | Headline corrected AGY `gemini-3.7-flash` 2h direct control | Primary 0.6045803 |
+| `agy-medium-baseline-2h-2026-09-01` | `p0_baseline_antigravity_2h` | Headline corrected Antigravity `gemini-3.7-flash` 2h direct control | Primary 0.6045803 |
 | `gemini-3.7-flash-heterogeneous-subagents-baseline` | `heterogeneous gemini-3.7-flash control` | Delegated heterogeneous `gemini-3.7-flash` control | Best artifact-backed Primary approximately 0.6047 |
 
 The `gemini-3.7-flash`-only research-world snapshot also contains later cycles. The Final Report
@@ -39,7 +39,7 @@ by the linked reports. Local Git metadata, virtual environments, caches, and
 - [`analysis/model-search-behavior.md`](analysis/model-search-behavior.md)
 
 The `gpt-5.6-luna-3h-goal-baseline` report remains the headline direct
-`gpt-5.6-luna` control. The corrected AGY 2h run is now the direct
+`gpt-5.6-luna` control. The corrected Antigravity 2h run is now the direct
 `gemini-3.7-flash` control used in the Final Report; the older one-hour direct
 `gemini-3.7-flash` report remains in the archive only as superseded history.
 The earlier `direct-codex-goal-baseline` also remains for audit history only.

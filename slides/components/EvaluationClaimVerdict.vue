@@ -218,7 +218,6 @@ function closeCard() {
 }
 .claim-header.dimmed { opacity: .16; transform: translateY(-4px); }
 
-.claim-section-kicker,
 .claim-label,
 .card-number,
 .card-kicker,
@@ -230,7 +229,7 @@ function closeCard() {
   font-weight: 850;
   text-transform: uppercase;
 }
-.claim-section-kicker { color: var(--green); }
+.claim-section-kicker { color: var(--green); font-family: var(--deck-sans); font-size: 14px; font-weight: 700; letter-spacing: 1.5px; line-height: 1.2; text-transform: uppercase; }
 .claim-label { margin-top: 20px; color: var(--orange); }
 .claim-header h1 {
   margin: 9px 0 0;

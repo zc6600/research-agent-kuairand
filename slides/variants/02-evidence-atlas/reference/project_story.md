@@ -90,7 +90,7 @@ used for development or model selection, and the final prediction file passed
 the official alignment checker.
 
 The development stack was Python 3.12, NumPy, `uv`, and Git, with Research
-Agent orchestrating authenticated AGY, Codex, and Gemini coding-agent CLIs. The
+Agent orchestrating authenticated Antigravity, Codex, and Gemini coding-agent CLIs. The
 only training data was the organizer-provided KuaiRand-Pure split; no external
 training data or pretrained weights trained on benchmark test labels were used.
 No application API was integrated directly; LLM access was mediated by those
@@ -150,7 +150,7 @@ benchmark result.
 
 > Research Agent achieved the highest verified public-validation score in our
 > recorded comparison, outperforming the direct use of general-purpose coding
-> agents such as Codex and AGY/Gemini.
+> agents such as Codex and Antigravity/Gemini.
 
 The retained trajectory reached this result through four autonomous
 META–Scientist cycles and 13 named experiments, with zero post-launch manual

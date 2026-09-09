@@ -4,6 +4,7 @@ from research_agent.runners.claude import ClaudeAdapter
 from research_agent.runners.codex import CodexAdapter
 from research_agent.runners.gemini import GeminiAdapter
 from research_agent.runners.opencode import OpenCodeAdapter
+from research_agent.runners.traecli import TraeCliAdapter
 
 _ADAPTERS: dict[str, RunnerAdapter] = {
     "codex": CodexAdapter(),
@@ -11,6 +12,7 @@ _ADAPTERS: dict[str, RunnerAdapter] = {
     "gemini": GeminiAdapter(),
     "opencode": OpenCodeAdapter(),
     "agy": AgyAdapter(),
+    "traecli": TraeCliAdapter(),
 }
 
 

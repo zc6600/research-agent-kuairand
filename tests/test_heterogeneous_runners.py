@@ -45,6 +45,38 @@ class HeterogeneousRunnerTests(unittest.TestCase):
     def test_gemini_is_a_supported_runner(self) -> None:
         self.assertIn("gemini", supported_runners())
 
+    def test_traecli_is_a_supported_runner(self) -> None:
+        self.assertIn("traecli", supported_runners())
+
+    def test_traecli_editable_invocation_uses_headless_exec_and_workspace_sandbox(self) -> None:
+        invocation = get_adapter("traecli").invoke(
+            target=self.target,
+            prompt="Run one Scientist iteration.",
+            allow_edits=True,
+            model="doubao-seed-1-6",
+        )
+        self.assertEqual(invocation.cwd, self.target)
+        self.assertEqual(invocation.argv[0:2], ("traecli", "exec"))
+        self.assertEqual(invocation.argv[invocation.argv.index("--sandbox") + 1], "workspace-write")
+        self.assertEqual(
+            invocation.argv[invocation.argv.index("--permission-mode") + 1],
+            "bypass_permissions",
+        )
+        self.assertEqual(invocation.stdin_text, "Run one Scientist iteration.")
+        self.assertNotIn("Run one Scientist iteration.", invocation.argv)
+        model_index = invocation.argv.index("--model")
+        self.assertEqual(invocation.argv[model_index + 1], "doubao-seed-1-6")
+
+    def test_traecli_read_only_invocation_uses_plan_and_read_only_modes(self) -> None:
+        invocation = get_adapter("traecli").invoke(
+            target=self.target,
+            prompt="Inspect only.",
+            allow_edits=False,
+            model=None,
+        )
+        self.assertEqual(invocation.argv[invocation.argv.index("--sandbox") + 1], "read-only")
+        self.assertEqual(invocation.argv[invocation.argv.index("--permission-mode") + 1], "plan")
+
     def test_gemini_editable_invocation_is_headless_and_noninteractive(self) -> None:
         invocation = get_adapter("gemini").invoke(
             target=self.target,

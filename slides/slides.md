@@ -160,7 +160,7 @@ This is a synthesis of the design pressures observed in the project, not a unive
 - ../competition_archive/kuairand-pure/reports/direct-codex-goal-baseline.md — local refinement trajectory
 - ../competition_archive/kuairand-pure/reports/direct-gemini-3.7-flash-goal-baseline.md — mechanism-pivot trajectory
 
-The Tree Search card opens an embedded reverse page using the project-shaped one-edit AGY replication recorded in `../docs/experiments/one-edit-telemetry.md`: a read-only arm used 340,087 inclusive tokens and a write-only arm used 42,377, an 8.03:1 ratio. The reverse page's TOKEN ABLATION projects eight children from those measured arms: rereading for every child costs 3,059,712 inclusive tokens, while reading once and repeating only the edits costs 679,103, a 4.51:1 ratio. The read arm made ten `view_file` calls over selected KuaiRand project context; the write arm made one line mutation with the exact target supplied in its prompt. The two arms were separate sessions with the same model and effort. Inclusive totals add AGY's separately reported cache-read input. The eight-child comparison is arithmetic based on the measured arms, not another delegated run or a main-agent proxy.
+The Tree Search card opens an embedded reverse page using the project-shaped one-edit Antigravity replication recorded in `../docs/experiments/one-edit-telemetry.md`: a read-only arm used 340,087 inclusive tokens and a write-only arm used 42,377, an 8.03:1 ratio. The reverse page's TOKEN ABLATION projects eight children from those measured arms: rereading for every child costs 3,059,712 inclusive tokens, while reading once and repeating only the edits costs 679,103, a 4.51:1 ratio. The read arm made ten `view_file` calls over selected KuaiRand project context; the write arm made one line mutation with the exact target supplied in its prompt. The two arms were separate sessions with the same model and effort. Inclusive totals add Antigravity's separately reported cache-read input. The eight-child comparison is arithmetic based on the measured arms, not another delegated run or a main-agent proxy.
 Card 02 is a qualitative, descriptive comparison of two recorded single-agent trajectories. Its back face shows how a previous pattern can shape the next experiment.
 Card 02 reverse is multi-page: page 1 covers search momentum; page 2 covers Gemini's audited scientific-validity failures; page 3 follows 02 / SYSTEM · THE HANDOFF LOOP with four click-reveal steps. The findings are branch-level and do not invalidate every final Gemini result.
 - ../competition_archive/kuairand-pure/reports/baseline-protocol-audit.md — sections 5 and 6, Gemini target-statistics leakage and cross-user BPR
@@ -365,7 +365,7 @@ This page frames resource usage as supporting evidence, not as a claim that cost
 <circle class="chart-point chart-point-green" cx="829" cy="163" r="9" />
 </g>
 <g class="chart-point-labels">
-<text class="chart-label-main" x="151" y="242">AGY</text>
+<text class="chart-label-main" x="151" y="242">Antigravity</text>
 <text class="chart-label-sub" x="151" y="258">gemini-3.7-flash · direct</text>
 <text class="chart-label-meta" x="151" y="274">8.565M · 0.6045803 · artifact-backed</text>
 <text class="chart-label-main chart-label-right" x="510" y="196">gpt-5.6-luna · direct</text>

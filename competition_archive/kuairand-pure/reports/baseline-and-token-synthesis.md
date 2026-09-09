@@ -13,14 +13,14 @@ between a metric observation and a scientific claim.
 
 The comparison uses measured **total input + output tokens including
 cache-read input**, matching the challenge's resource-reporting language.
-Runner-specific telemetry is normalized without double counting: AGY reports
+Runner-specific telemetry is normalized without double counting: Antigravity reports
 cache-read separately from `input`, while Codex includes it inside `input`.
 
 ![Primary score versus measured total LLM tokens including cache-read input](../../../docs/figures/token-score-comparison.svg)
 
 | Agent system | Total input + output, including cache-read | Best public-validation Primary | Evidence qualification |
 |---|---:|---:|---|
-| **AGY `gemini-3.7-flash` 2h direct Goal baseline** | **8,564,976** | **0.6045803** | Artifact-backed corrected rerun; target binding and independent re-score documented |
+| **Antigravity `gemini-3.7-flash` 2h direct Goal baseline** | **8,564,976** | **0.6045803** | Artifact-backed corrected rerun; target binding and independent re-score documented |
 | **`gpt-5.6-luna` 3h direct Goal baseline** | **28,069,574** | **approximately 0.6046** | Provisional: report/README score with measured Codex telemetry; terminal closed after `task_complete` |
 | `gemini-3.7-flash` heterogeneous subagents | 39,607,277 | approximately 0.6047 | Artifact-backed separate run; not the submitted result |
 | `gemini-3.7-flash`-only Research Agent trajectory, through Cycle 2 | 45,043,916–51,173,911* | 0.6052 | Artifact-backed; online-history semantics noted |
@@ -42,7 +42,7 @@ or a causal architecture ablation.
 
 The direct agents are strong controls, not straw men. `gpt-5.6-luna` reached approximately
 `0.6046` through a six-field FM with positive-class weighting and a `tab×hour`
-context field, while the corrected AGY `gemini-3.7-flash` run searched deep interaction,
+context field, while the corrected Antigravity `gemini-3.7-flash` run searched deep interaction,
 auxiliary-task, and ensemble variants and reached `0.6045803`. The heterogeneous
 `gemini-3.7-flash` run searched more broadly again and reached approximately `0.6047`.
 
@@ -55,7 +55,7 @@ This supports two useful conclusions:
 
 The token plot therefore should not be presented as a conventional efficiency
 frontier. It is an outcome-versus-investment view with evidence qualification.
-The corrected AGY run is the lowest-total-token strong optimizer and reaches
+The corrected Antigravity run is the lowest-total-token strong optimizer and reaches
 `0.6045803` with a complete target-bound rerun; the
 `gemini-3.7-flash`-only Research Agent reaches a strong `0.6052` by Cycle 2; the
 Research Agent submission is the highest-scoring verified research result;

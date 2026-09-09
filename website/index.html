@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7fbff" />
+    <meta
+      name="description"
+      content="SciOdyssey is a long-horizon autonomous ML research agent that preserves evidence while resetting the researcher."
+    />
+    <meta property="og:title" content="SciOdyssey — Autonomous ML Research Agent" />
+    <meta
+      property="og:description"
+      content="Preserve the research world. Reset the researcher. Explore the system, result, and evidence behind Research Agent."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="./assets/poster.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>SciOdyssey — Long-Horizon Autonomous ML Research Agent</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-noise" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#top" aria-label="SciOdyssey home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span class="brand-name">SciOdyssey<span class="brand-dot">.</span></span>
+        </a>
+
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+          <a href="#idea">The idea</a>
+          <a href="#system">The system</a>
+          <a href="#evidence">Evidence</a>
+          <a href="#journey">Journey</a>
+        </nav>
+
+        <div class="header-actions">
+          <a
+            class="text-link header-github"
+            href="https://github.com/zc6600/research-agent-kuairand"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GitHub <span aria-hidden="true">↗</span>
+          </a>
+          <button class="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false">
+            <span class="sr-only">Open navigation</span>
+            <span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero container" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <div class="eyebrow eyebrow-blue">Autonomous ML research / TechJam 2026</div>
+          <h1 id="hero-title">
+            Preserve the <span class="ink-blue">research world.</span><br />
+            Reset the researcher.
+          </h1>
+          <p class="hero-lede">
+            SciOdyssey is a lightweight framework for long-running, evidence-driven machine-learning research. It keeps facts, failures, implementation state, and scientific intuition durable—while giving every new Scientist a fresh trajectory.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#system">Explore the system <span aria-hidden="true">↓</span></a>
+            <a class="button button-quiet" href="https://github.com/zc6600/research-agent-kuairand" target="_blank" rel="noreferrer">
+              View the repository <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <div class="hero-proof">
+            <span class="proof-label mono">GUIDING PRINCIPLE</span>
+            <span class="proof-quote">“The new Scientist inherits the experience, not the momentum.”</span>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="A visual summary of the Research Agent handoff">
+          <div class="visual-orbit orbit-one" aria-hidden="true"></div>
+          <div class="visual-orbit orbit-two" aria-hidden="true"></div>
+          <div class="visual-spark spark-one" aria-hidden="true"></div>
+          <div class="visual-spark spark-two" aria-hidden="true"></div>
+          <div class="hero-panel">
+            <div class="panel-topline">
+              <span class="mono">RESEARCH WORLD / HANDOFF 04</span>
+              <span class="status-dot"><span></span> retained</span>
+            </div>
+            <div class="hero-panel-title">A durable world.<br /><em>A new point of view.</em></div>
+            <div class="hero-flow" aria-hidden="true">
+              <div class="flow-node flow-node-world">
+                <span class="node-glyph">◈</span>
+                <strong>Research<br />world</strong>
+              </div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-node flow-node-scientist">
+                <span class="node-glyph">✦</span>
+                <strong>Fresh<br />Scientist</strong>
+              </div>
+              <div class="flow-arrow flow-arrow-meta">→</div>
+              <div class="flow-node flow-node-meta">
+                <span class="node-glyph">✓</span>
+                <strong>META<br />review</strong>
+              </div>
+            </div>
+            <div class="hero-panel-note">
+              <span class="note-line"></span>
+              <span>audit → scope → preserve</span>
+              <span class="note-line"></span>
+            </div>
+            <div class="hero-score-row">
+              <div>
+                <span class="mono score-caption">PUBLIC VALIDATION / PRIMARY</span>
+                <strong>0.6059363</strong>
+              </div>
+              <div class="score-delta"><span>+0.0043363</span><small>vs official FM</small></div>
+            </div>
+          </div>
+          <div class="hero-stamp mono">SCIENTIFIC<br />JUDGMENT<br />RESET</div>
+        </div>
+
+        <div class="hero-stats" aria-label="Project at a glance">
+          <div class="hero-stat"><strong>4</strong><span>autonomous<br />cycles</span></div>
+          <div class="hero-stat"><strong>13</strong><span>named<br />experiments</span></div>
+          <div class="hero-stat"><strong>0</strong><span>GPU-hours<br />used</span></div>
+          <div class="hero-stat"><strong>170,588</strong><span>prediction rows<br />checker-passed</span></div>
+        </div>
+      </section>
+
+      <section class="section section-idea" id="idea" aria-labelledby="idea-title">
+        <div class="container">
+          <div class="section-heading split-heading">
+            <div>
+              <div class="eyebrow eyebrow-orange">01 / The problem</div>
+              <h2 id="idea-title">A trajectory can get better at the wrong kind of better.</h2>
+            </div>
+            <p>
+              Long-running agents accumulate useful knowledge—and also unfinished hypotheses, debugging detours, and local commitments. They can keep refining one basin after a different question deserves attention.
+            </p>
+          </div>
+
+          <div class="problem-grid">
+            <article class="problem-card problem-card-momentum">
+              <div class="card-kicker mono">ONE PERSISTENT AGENT</div>
+              <h3>Memory without a reset</h3>
+              <p>Every new experiment is informed by the last one, but the search becomes increasingly local to the current incumbent.</p>
+              <svg class="momentum-map" viewBox="0 0 560 230" role="img" aria-labelledby="momentum-title momentum-desc">
+                <title id="momentum-title">A research trajectory narrowing around one basin</title>
+                <desc id="momentum-desc">Several experiment paths begin broadly and then converge into a narrow local path.</desc>
+                <defs>
+                  <linearGradient id="momentumGradient" x1="0" x2="1">
+                    <stop offset="0" stop-color="#38bdf8" stop-opacity=".15" />
+                    <stop offset="1" stop-color="#a66cff" stop-opacity=".72" />
+                  </linearGradient>
+                </defs>
+                <path class="map-axis" d="M28 202H532M28 202V24" />
+                <path class="map-grid" d="M28 158H532M28 112H532M28 66H532M154 24V202M280 24V202M406 24V202" />
+                <path class="map-line map-line-faint" d="M30 184 C112 178 88 124 178 112 S310 113 372 87 S476 73 528 57" />
+                <path class="map-line map-line-faint" d="M30 174 C84 130 128 155 192 126 S276 74 336 94 S438 57 528 50" />
+                <path class="map-line map-line-faint" d="M30 192 C116 188 134 144 206 149 S304 108 362 80 S452 74 528 58" />
+                <path class="map-line map-line-main" d="M30 186 C116 177 125 132 206 137 S288 119 350 104 S434 84 528 62" />
+                <circle class="map-point map-point-start" cx="30" cy="186" r="6" />
+                <circle class="map-point map-point-end" cx="528" cy="62" r="9" />
+                <text x="29" y="221">start</text>
+                <text x="464" y="40">local basin</text>
+              </svg>
+              <div class="problem-card-foot"><span class="foot-marker marker-purple"></span> Path dependence compounds over time.</div>
+            </article>
+
+            <article class="problem-card problem-card-reset">
+              <div class="card-kicker mono">NAIVE RESTART</div>
+              <h3>Fresh cognition, empty hands</h3>
+              <p>Starting from zero breaks the momentum, but throws away evaluator facts, failed experiments, and the implementation that already works.</p>
+              <div class="restart-stack" aria-label="What a naive restart loses">
+                <div class="lost-layer lost-layer-top"><span class="layer-icon">⌁</span><span><strong>Failed experiments</strong><small>negative evidence</small></span><b>lost</b></div>
+                <div class="lost-layer lost-layer-mid"><span class="layer-icon">▤</span><span><strong>Research intuition</strong><small>fallible process lessons</small></span><b>lost</b></div>
+                <div class="lost-layer lost-layer-bottom"><span class="layer-icon">◈</span><span><strong>Retained implementation</strong><small>recoverable State</small></span><b>lost</b></div>
+              </div>
+              <div class="problem-card-foot"><span class="foot-marker marker-orange"></span> Independence without continuity is expensive.</div>
+            </article>
+          </div>
+
+          <div class="idea-callout">
+            <span class="callout-icon">↻</span>
+            <div><strong>Research Agent changes the unit of durability.</strong><span>The reasoning trajectory ends; the research world remains available to the next Scientist.</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-system" id="system" aria-labelledby="system-title">
+        <div class="container">
+          <div class="section-heading section-heading-centered">
+            <div class="eyebrow eyebrow-purple">02 / The system</div>
+            <h2 id="system-title">Different lifetimes. Shared evidence.</h2>
+            <p>Three responsibilities, one deliberate boundary: Scientist owns the science, META owns what survives, and Runtime owns what must be deterministic.</p>
+          </div>
+
+          <div class="architecture" aria-label="Research Agent architecture">
+            <div class="architecture-column architecture-environment">
+              <div class="arch-label arch-label-blue mono">01 / INPUT</div>
+              <div class="arch-panel">
+                <div class="arch-panel-head"><span class="arch-panel-icon icon-blue">⌘</span><div><strong>Research environment</strong><small>the task contract</small></div></div>
+                <ul class="arch-list">
+                  <li>Task contract</li>
+                  <li>Curated data + evaluator</li>
+                  <li>Starter baseline</li>
+                  <li>Budget + permissions</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="architecture-connector connector-blue" aria-hidden="true">→</div>
+
+            <div class="architecture-column architecture-world">
+              <div class="arch-label arch-label-green mono">02 / PERSISTENT</div>
+              <div class="arch-panel">
+                <div class="arch-panel-head"><span class="arch-panel-icon icon-green">◈</span><div><strong>Research world</strong><small>what persists across trajectories</small></div></div>
+                <div class="world-layers">
+                  <div class="world-layer"><span class="layer-tag mono">A / EVIDENCE</span><strong>Knowledge + experiment ledger</strong><small>metrics, failures, reports, provenance</small></div>
+                  <div class="world-layer"><span class="layer-tag mono">B / CURATED</span><strong>Research brief + fallible priors</strong><small>current understanding, open questions</small></div>
+                  <div class="world-layer"><span class="layer-tag mono">C / CODE</span><strong>Retained implementation + State</strong><small>recoverable version with evidence identity</small></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="architecture-connector connector-reset" aria-hidden="true"><span>context<br />reset</span>↘</div>
+
+            <div class="architecture-column architecture-scientist">
+              <div class="arch-label arch-label-purple mono">03 / TEMPORARY</div>
+              <div class="arch-panel role-panel">
+                <div class="role-symbol role-symbol-purple">✦</div>
+                <div class="role-name">Scientist</div>
+                <small class="role-caption">owns scientific judgment</small>
+                <ul class="arch-list role-list-purple">
+                  <li>Reads the research world</li>
+                  <li>Forms hypotheses</li>
+                  <li>Runs experiments</li>
+                  <li>Interprets evidence</li>
+                  <li>Writes a report</li>
+                </ul>
+                <div class="role-callout callout-purple">inherits experience,<br />not momentum</div>
+              </div>
+            </div>
+
+            <div class="architecture-connector connector-rose" aria-hidden="true">→</div>
+
+            <div class="architecture-column architecture-meta">
+              <div class="arch-label arch-label-rose mono">04 / REVIEW</div>
+              <div class="arch-panel role-panel">
+                <div class="role-symbol role-symbol-rose">✓</div>
+                <div class="role-name">META</div>
+                <small class="role-caption">owns what survives</small>
+                <ul class="arch-list role-list-rose">
+                  <li>Audits claim ↔ evidence validity</li>
+                  <li>Scopes conclusions</li>
+                  <li>Maintains shared memory</li>
+                  <li>Crystallizes retained State</li>
+                </ul>
+                <div class="role-callout callout-rose">selective persistence<br />across trajectories</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="runtime-band">
+            <div class="runtime-title"><span class="arch-label arch-label-orange mono">RUNTIME / DETERMINISTIC MECHANICS</span><strong>The harness keeps the boundary real.</strong></div>
+            <div class="runtime-items">
+              <span><i>□</i> Workspace<br />isolation</span>
+              <span><i>▷</i> Runner +<br />evaluator</span>
+              <span><i>≡</i> Logging</span>
+              <span><i>▱</i> Artifact<br />capture</span>
+              <span><i>◈</i> State<br />operations</span>
+            </div>
+          </div>
+
+          <div class="role-explainer">
+            <div class="role-tabs" role="tablist" aria-label="Architecture role details">
+              <button class="role-tab is-active" type="button" role="tab" aria-selected="true" data-role-button="scientist">Scientist</button>
+              <button class="role-tab" type="button" role="tab" aria-selected="false" data-role-button="meta">META</button>
+              <button class="role-tab" type="button" role="tab" aria-selected="false" data-role-button="runtime">Runtime</button>
+            </div>
+            <div class="role-detail" id="role-detail" role="tabpanel">
+              <span class="mono role-detail-kicker">SCIENTIST / ONE TRAJECTORY</span>
+              <h3>Fresh reasoning is a feature, not a reset button.</h3>
+              <p>The Scientist decides what scientific question matters, how to implement the experiment, and whether to continue or pivot. Its context is intentionally local; its evidence is handed back to the world.</p>
+            </div>
+            <div class="role-detail-mark" aria-hidden="true">01</div>
+          </div>
+
+          <figure class="architecture-reference">
+            <img src="./assets/system.png" alt="Research Agent architecture showing the research environment, persistent research world, fresh Scientist, META review, and runtime." loading="lazy" />
+            <figcaption>Architecture reference from the technical report. <a href="https://github.com/zc6600/research-agent-kuairand/blob/main/docs/ARCHITECTURE.md" target="_blank" rel="noreferrer">Read the implementation contract ↗</a></figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section section-evidence" id="evidence" aria-labelledby="evidence-title">
+        <div class="container">
+          <div class="section-heading split-heading evidence-heading">
+            <div>
+              <div class="eyebrow eyebrow-green">03 / The evidence</div>
+              <h2 id="evidence-title">The result is only useful if the evidence survives.</h2>
+            </div>
+            <p>On KuaiRand-Pure, the retained implementation beat the official validation reference with an eight-seed, 46-field Factorization Machine ensemble trained on CPU NumPy.</p>
+          </div>
+
+          <div class="evidence-hero-grid">
+            <article class="primary-card">
+              <div class="card-kicker mono">VERIFIED RETAINED SUBMISSION</div>
+              <div class="primary-number">0.6059363</div>
+              <div class="primary-label">public-validation primary</div>
+              <div class="primary-delta"><strong>+0.0043363</strong><span>absolute improvement vs official five-field FM</span></div>
+              <div class="primary-meta"><span>GAUC <b>0.6728421</b></span><span>nDCG@5 <b>0.5390304</b></span></div>
+              <div class="verified-badge"><span>✓</span> Starter Kit alignment checker passed</div>
+            </article>
+
+            <article class="score-card">
+              <div class="score-card-head"><div><div class="card-kicker mono">PUBLIC VALIDATION / FRONTIER</div><h3>Official reference → retained checkpoint</h3></div><span class="score-arrow" aria-hidden="true">↗</span></div>
+              <div class="score-rows">
+                <div class="score-row">
+                  <div class="score-row-label"><span>Primary</span><span class="mono">0.6016000 → 0.6059363</span></div>
+                  <div class="score-rail"><span class="rail-official" style="width: 68%"></span><span class="rail-final" style="width: 91%"></span></div>
+                </div>
+                <div class="score-row">
+                  <div class="score-row-label"><span>GAUC</span><span class="mono">0.6674000 → 0.6728421</span></div>
+                  <div class="score-rail"><span class="rail-official" style="width: 72%"></span><span class="rail-final" style="width: 94%"></span></div>
+                </div>
+                <div class="score-row">
+                  <div class="score-row-label"><span>nDCG@5</span><span class="mono">0.5357000 → 0.5390304</span></div>
+                  <div class="score-rail"><span class="rail-official" style="width: 70%"></span><span class="rail-final" style="width: 88%"></span></div>
+                </div>
+              </div>
+              <div class="score-legend"><span><i class="legend-dot legend-dot-official"></i> official FM</span><span><i class="legend-dot legend-dot-final"></i> SciOdyssey submission</span></div>
+            </article>
+          </div>
+
+          <div class="evidence-table-wrap">
+            <table class="evidence-table">
+              <caption>Verified public-validation metrics</caption>
+              <thead><tr><th scope="col">Metric</th><th scope="col">Official FM</th><th scope="col">SciOdyssey</th><th scope="col">Absolute Δ</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Primary</th><td>0.6016000</td><td class="table-strong">0.6059363</td><td class="table-positive">+0.0043363</td></tr>
+                <tr><th scope="row">GAUC</th><td>0.6674000</td><td class="table-strong">0.6728421</td><td class="table-positive">+0.0054421</td></tr>
+                <tr><th scope="row">nDCG@5</th><td>0.5357000</td><td class="table-strong">0.5390304</td><td class="table-positive">+0.0033304</td></tr>
+              </tbody>
+            </table>
+            <div class="evidence-note"><span class="note-symbol">i</span><p><strong>Evidence boundary.</strong> The canonical claim is frozen at E001–E013. Development used public validation only; hidden-test labels were not used for selection or convergence.</p></div>
+          </div>
+
+          <div class="evidence-facts">
+            <div class="fact-card"><span class="fact-number fact-blue">46</span><div><strong>categorical fields</strong><small>38 baseline fields + 8 leakage-safe historical preference and context features</small></div></div>
+            <div class="fact-card"><span class="fact-number fact-purple">8×</span><div><strong>Factorization Machines</strong><small>rank k=16, averaged across seeds 0–7</small></div></div>
+            <div class="fact-card"><span class="fact-number fact-orange">764.74s</span><div><strong>final model runtime</strong><small>CPU NumPy training and evaluation; no GPU framework required</small></div></div>
+            <div class="fact-card"><span class="fact-number fact-green">3/3</span><div><strong>convergence boundary</strong><small>three consecutive Full evaluations without an ε=0.002 improvement</small></div></div>
+          </div>
+
+          <div class="evidence-links">
+            <a class="resource-link" href="https://github.com/zc6600/research-agent-kuairand/blob/main/docs/FINAL_REPORT.md" target="_blank" rel="noreferrer"><span class="resource-icon icon-green">▤</span><span><strong>Read the final technical report</strong><small>Problem, protocol, trajectory, results, limitations</small></span><b>↗</b></a>
+            <a class="resource-link" href="https://github.com/zc6600/research-agent-kuairand/tree/main/submission/research-agent-kuairand" target="_blank" rel="noreferrer"><span class="resource-icon icon-blue">◈</span><span><strong>Inspect the evidence package</strong><small>Code, ledger, reports, telemetry, checker result</small></span><b>↗</b></a>
+            <a class="resource-link" href="https://slides.sciodyssey.zc6600.wiki" target="_blank" rel="noreferrer"><span class="resource-icon icon-purple">▱</span><span><strong>Open the slide deck</strong><small>SciOdyssey narrative / live presentation</small></span><b>↗</b></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-journey" id="journey" aria-labelledby="journey-title">
+        <div class="container">
+          <div class="section-heading split-heading journey-heading">
+            <div>
+              <div class="eyebrow eyebrow-purple">04 / The journey</div>
+              <h2 id="journey-title">A fresh Scientist, four cycles, one retained State.</h2>
+            </div>
+            <p>The run stopped at the convergence rule after 13 named experiments. Each cycle inherited the research world, but not the previous Scientist’s hidden trajectory.</p>
+          </div>
+
+          <div class="cycle-interface">
+            <div class="cycle-tabs" role="tablist" aria-label="Retained Research Agent cycles">
+              <button class="cycle-tab is-active" type="button" role="tab" aria-selected="true" data-cycle-button="1"><span class="mono">01</span><strong>Baseline</strong><small>reproduce</small></button>
+              <button class="cycle-tab" type="button" role="tab" aria-selected="false" data-cycle-button="2"><span class="mono">02</span><strong>Representation</strong><small>go richer</small></button>
+              <button class="cycle-tab" type="button" role="tab" aria-selected="false" data-cycle-button="3"><span class="mono">03</span><strong>Ensemble</strong><small>reduce variance</small></button>
+              <button class="cycle-tab" type="button" role="tab" aria-selected="false" data-cycle-button="4"><span class="mono">04</span><strong>Final State</strong><small>converge</small></button>
+            </div>
+            <div class="cycle-progress" aria-hidden="true"><span></span></div>
+
+            <div class="cycle-detail" id="cycle-detail" role="tabpanel">
+              <div class="cycle-detail-top"><span class="cycle-id mono">CYCLE 01 / E001–E003</span><span class="cycle-model"><i class="model-dot model-dot-sol"></i> Scientist: <b>gpt-5.6-sol</b><em> · META: gemini-3.7-flash</em></span></div>
+              <div class="cycle-detail-grid">
+                <div><h3>Establish a valid starting point.</h3><p>The first Scientist read the task contract, tested leakage-safe historical encodings, and built a richer Factorization Machine. E003 reached a valid Full primary of <strong>0.6016310</strong>, creating the first recoverable State.</p></div>
+                <div class="cycle-result"><span class="mono">RETAINED OUTPUT</span><strong>15-field FM</strong><small>Full primary 0.6016310</small></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="journey-proof-row">
+            <div class="journey-proof"><span class="journey-proof-icon proof-icon-purple">↻</span><div><strong>0 manual scientific interventions</strong><span>after launch in the retained research record</span></div></div>
+            <div class="journey-proof"><span class="journey-proof-icon proof-icon-orange">⌁</span><div><strong>48,240,128 measured tokens</strong><span>input + output, including cache-read input</span></div></div>
+            <div class="journey-proof"><span class="journey-proof-icon proof-icon-green">✓</span><div><strong>1h 55m 29s wall clock</strong><span>across the four retained cycle runs</span></div></div>
+          </div>
+
+          <div class="handoff-quote"><span class="quote-mark">“</span><p>Evidence is permanent; private reasoning is not.</p><span class="quote-mark quote-mark-end">”</span></div>
+        </div>
+      </section>
+
+      <section class="section section-workflow" id="workflow" aria-labelledby="workflow-title">
+        <div class="container">
+          <div class="workflow-layout">
+            <div class="workflow-copy">
+              <div class="eyebrow eyebrow-orange">05 / Your research workflow</div>
+              <h2 id="workflow-title">One agent. Any ML task. End to end.</h2>
+              <p>Define the task, let the Scientist choose the research, and keep a readable trail of what happened. The control surface stays small so observability does not become another scientific bottleneck.</p>
+              <div class="workflow-files">
+                <div class="workflow-file"><span class="file-dot file-dot-blue"></span><div><strong>task.md</strong><small>what to solve · objective · constraints · evaluation</small></div></div>
+                <div class="workflow-file"><span class="file-dot file-dot-purple"></span><div><strong>PERSONAL.md</strong><small>how you want it solved · preferences · priorities</small></div></div>
+              </div>
+              <div class="workflow-steps"><span>Define the task</span><i>→</i><span>Delegate research</span><i>→</i><span>Review evidence</span></div>
+            </div>
+            <div class="terminal-card">
+              <div class="terminal-top"><span class="terminal-lights"><i></i><i></i><i></i></span><span>Coding agent / example input</span><span class="mono">SKILL.md</span></div>
+              <div class="terminal-body"><span class="terminal-prompt">›</span><div><span>Use the research-agent skill for <b>task.md</b>.</span><span>Follow <b>PERSONAL.md</b>. Run autonomously.</span><span>Let me review the results and evidence.<b class="cursor" aria-hidden="true"></b></span></div></div>
+              <div class="terminal-caption"><span class="terminal-check">✓</span> A visible control point, not a manual science decision.</div>
+            </div>
+          </div>
+
+          <div class="start-card">
+            <div><span class="card-kicker mono">START A RUN</span><h3>Bring the protocol into your own research world.</h3><p>The repository includes the reusable Skill, runtime, competition wrapper, reports, tests, and reproducible submission snapshot.</p></div>
+            <div class="start-actions"><a class="button button-primary" href="https://github.com/zc6600/research-agent-kuairand#quick-start" target="_blank" rel="noreferrer">Read the quick start <span aria-hidden="true">↗</span></a><a class="button button-quiet" href="https://github.com/zc6600/research-agent-kuairand/blob/main/SKILL.md" target="_blank" rel="noreferrer">Inspect SKILL.md <span aria-hidden="true">↗</span></a></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-open" aria-labelledby="open-title">
+        <div class="container">
+          <div class="open-grid">
+            <div class="open-copy"><div class="eyebrow eyebrow-blue">06 / What remains open</div><h2 id="open-title">A strong result is not the end of the question.</h2><p>The benchmark validates a complete autonomous loop, not every causal contribution of reset, META, or selective persistence. The next step is to measure when the architecture helps—and when memory itself becomes an anchor.</p></div>
+            <div class="open-list">
+              <div class="open-item"><span>01</span><div><strong>Model switching</strong><small>Does rotating Scientist model families reliably explore different research basins?</small></div></div>
+              <div class="open-item"><span>02</span><div><strong>Parallel breadth</strong><small>When is an independent branch worth its budget, and what makes evidence complementary?</small></div></div>
+              <div class="open-item"><span>03</span><div><strong>Handoff quality</strong><small>Which intuitions survive compression, and which become new forms of momentum?</small></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-cta" aria-labelledby="cta-title">
+        <div class="container cta-card">
+          <div class="cta-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div class="eyebrow eyebrow-green">Continue the odyssey</div>
+          <h2 id="cta-title">Preserve what the research learned.<br /><span>Reset the cognition that learned it.</span></h2>
+          <div class="cta-actions"><a class="button button-dark" href="https://github.com/zc6600/research-agent-kuairand" target="_blank" rel="noreferrer">Open GitHub <span aria-hidden="true">↗</span></a><a class="button button-light" href="https://slides.sciodyssey.zc6600.wiki" target="_blank" rel="noreferrer">View the slides <span aria-hidden="true">↗</span></a></div>
+          <p class="cta-source">Research Agent · TikTok TechJam 2026 · KuaiRand-Pure · public evidence package</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div><a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span class="brand-name">SciOdyssey<span class="brand-dot">.</span></span></a><p>Autonomous by default. Supervisable by design.</p></div>
+        <div class="footer-links"><a href="https://github.com/zc6600/research-agent-kuairand/blob/main/docs/FINAL_REPORT.md" target="_blank" rel="noreferrer">Final report ↗</a><a href="https://github.com/zc6600/research-agent-kuairand/tree/main/competition_archive/kuairand-pure" target="_blank" rel="noreferrer">Evidence archive ↗</a><a href="https://github.com/zc6600/research-agent-kuairand/blob/main/docs/ARCHITECTURE.md" target="_blank" rel="noreferrer">Architecture ↗</a></div>
+        <div class="footer-meta mono">© <span id="year">2026</span> / Research Agent</div>
+      </div>
+    </footer>
+
+    <script src="./script.js" defer></script>
+  </body>
+</html>

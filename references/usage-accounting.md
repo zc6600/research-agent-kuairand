@@ -48,9 +48,9 @@ converted to a measured zero.
 invocations are captured separately and the dashboard groups measured usage by
 role, runner, and configured or runner-reported model.
 
-Gemini and AGY expose structured headless session metrics, so their META,
+Gemini and Antigravity expose structured headless session metrics, so their META,
 Scientist, and baseline invocations are measured directly from the output of
-each CLI process. AGY maps its official `usage` object as follows:
+each CLI process. Antigravity maps its official `usage` object as follows:
 
 - `input_tokens` -> `input`;
 - `output_tokens` -> `output`;
@@ -58,11 +58,11 @@ each CLI process. AGY maps its official `usage` object as follows:
 - `cache_read_tokens` -> `cache_read`;
 - `total_tokens` -> `total`.
 
-AGY does not currently report cache-write tokens in that envelope, so the field
+Antigravity does not currently report cache-write tokens in that envelope, so the field
 is omitted rather than invented as zero. When an explicit `--model` is used,
-the session usage is attributed to that configured model. If AGY internally
+the session usage is attributed to that configured model. If Antigravity internally
 uses other models but does not expose a per-model split, the report remains a
-session-level measurement for the configured AGY model rather than guessing an
+session-level measurement for the configured Antigravity model rather than guessing an
 internal breakdown.
 
 For runners without direct per-process structured metrics, the launcher may
@@ -130,6 +130,7 @@ actually consumed tokens during the run.
 | Claude | assistant usage entries in `~/.claude/projects/**/*.jsonl` | sums matching target sessions |
 | OpenCode | cumulative token columns in the local `session` table | sums matching target sessions |
 | Gemini | headless JSON session stats | direct per-invocation model metrics |
+| TraeCode CLI (`traecli`) | no verified local token telemetry backend | explicitly unavailable |
 | agy | headless JSON `usage` envelope | direct per-invocation input/output/thinking/cache-read/total metrics; cumulative manual collector remains unavailable |
 
 Telemetry formats are version-sensitive. A schema mismatch must degrade to an
@@ -152,6 +153,6 @@ scope in a manual query. The command prints JSON and exits 1 for unavailable
 telemetry so automation can distinguish it from a measured report.
 
 The manual `research-agent usage --cli agy` command still has no cumulative
-AGY backend. AGY measurement is instead captured automatically around the
+Antigravity backend. Antigravity measurement is instead captured automatically around the
 actual Research Agent or blank-control invocation, where the CLI's own JSON
 usage envelope is authoritative.

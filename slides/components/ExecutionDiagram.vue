@@ -100,7 +100,7 @@ svg .run-flow-note { font-size: 11px; fill: #8794a2; }
 .dashboard-bar { height: 34px; display: flex; align-items: center; gap: 10px; padding: 0 14px; background: #f4f6f9; border-bottom: 1px solid #e4e8ef; }
 .dashboard-dot { width: 8px; height: 8px; border-radius: 50%; background: #20b68d; flex-shrink: 0; }
 .dashboard-title { font: 11px var(--deck-sans); color: #3d4755; flex: 1; }
-.dashboard-live { font: 10px ui-monospace, monospace; color: #20b68d; border: 1px solid #20b68d44; border-radius: 4px; padding: 2px 6px; }
+.dashboard-live { font: 10px var(--deck-mono); color: #20b68d; border: 1px solid #20b68d44; border-radius: 4px; padding: 2px 6px; }
 .dashboard-img { display: block; width: 100%; height: 190px; object-fit: cover; object-position: center top; }
 .dashboard-caption { font: 12px var(--deck-sans); color: #698075; display: flex; align-items: center; gap: 6px; }
 .dashboard-check { color: #20b68d; font-weight: 800; }

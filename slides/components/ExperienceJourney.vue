@@ -327,7 +327,7 @@ onUnmounted(() => {
 .harness-icon img { object-fit: contain; }
 .brand-caption { position: absolute; top: 433px; color: #89929e; font-size: 11px; letter-spacing: .15px; }
 .scene-heading { position: absolute; top: 31px; left: 56px; right: 56px; display: flex; align-items: center; gap: 11px; font-size: 16px; font-weight: 500; letter-spacing: -.3px; }
-.scene-heading-index { font: 10px ui-monospace, monospace; color: var(--ux-blue); }
+.scene-heading-index { font: 10px var(--deck-mono); color: var(--ux-blue); }
 .scene-heading small { margin-left: auto; font-size: 10px; font-weight: 400; letter-spacing: .3px; color: #8e97a3; }
 .journey-stage { position: absolute; top: 76px; left: 0; right: 0; height: 420px; overflow: hidden; }
 .purpose-scene { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 56px 51px; }
@@ -337,7 +337,7 @@ onUnmounted(() => {
 .purpose-scene p { margin: 22px 0 0; max-width: 640px; color: #818994; font-size: 20px; font-weight: 400; line-height: 1.55; letter-spacing: -.4px; }
 .camera-world { position: absolute; top: 0; left: 0; width: 868px; min-height: 300px; transform-origin: 0 0; will-change: transform, opacity; }
 .editors { padding: 7px 66px 0; }
-.vim-editor { height: 315px; border: 1px solid #dfe5eb; border-radius: 12px; overflow: hidden; background: #fff; color: #465260; font: 14px/1.8 ui-monospace, SFMono-Regular, Menlo, monospace; box-shadow: 0 12px 36px #23354c0a, 0 2px 4px #23354c03; }
+.vim-editor { height: 315px; border: 1px solid #dfe5eb; border-radius: 12px; overflow: hidden; background: #fff; color: #465260; font: 14px/1.8 var(--deck-mono); box-shadow: 0 12px 36px #23354c0a, 0 2px 4px #23354c03; }
 .vim-tabline { height: 36px; display: flex; align-items: center; gap: 12px; padding: 0 16px; background: #f7f9fb; border-bottom: 1px solid #e6ebf0; color: #8c99a8; font-size: 11px; }
 .vim-tabline span { padding: 9px 9px 8px; border-bottom: 2px solid transparent; }
 .vim-tabline span.active { color: #317f9f; border-color: #65afcd; background: #fff; }
@@ -362,24 +362,24 @@ onUnmounted(() => {
 .terminal-dots { display: flex; align-items: center; gap: 6px; height: 33px; margin: 0 -23px 9px; padding: 0 16px; background: #f8fafb; border-bottom: 1px solid #e9edf2; border-radius: 12px 12px 0 0; }
 .terminal-dots i { width: 6px; height: 6px; border: 1px solid #c3cdd7; border-radius: 50%; background: transparent; }
 .terminal-dots span { margin-left: 9px; color: #7e8b99; font-size: 10px; }
-.terminal-dots small { margin-left: auto; color: #9aa5b1; font: 9px ui-monospace, monospace; }
+.terminal-dots small { margin-left: auto; color: #9aa5b1; font: 9px var(--deck-mono); }
 .command-line { display: flex; align-items: center; gap: 13px; min-height: 37px; }
-.command-line code { font: 24px ui-monospace, monospace; letter-spacing: -.8px; color: #8f9ba8; background: none; }
+.command-line code { font: 24px var(--deck-mono); letter-spacing: -.8px; color: #8f9ba8; background: none; }
 .command-path { color: #465260; }
 .command-verb { color: #2887ac; font-weight: 600; }
 .prompt { color: #549dbc; font-size: 26px; }
-.command-options { min-height: 20px; font: 11px/1.7 ui-monospace, monospace; color: #83909e; padding-left: 29px; white-space: nowrap; }
+.command-options { min-height: 20px; font: 11px/1.7 var(--deck-mono); color: #83909e; padding-left: 29px; white-space: nowrap; }
 .dashboard-journey { padding: 0 38px; display: flex; flex-direction: column; gap: 12px; }
 .gui-terminal { padding: 0 16px 11px; }
 .gui-terminal .terminal-dots { margin: 0 -16px 7px; }
-.dash-command { display: flex; align-items: baseline; gap: 10px; font: 17px ui-monospace, monospace; color: #465260; }
+.dash-command { display: flex; align-items: baseline; gap: 10px; font: 17px var(--deck-mono); color: #465260; }
 .dash-command code { color: inherit; background: none; font: inherit; letter-spacing: -.5px; }
 .dash-cmd-opts { font-size: 12px; color: #8794a2; }
 .dash-window { border: 1px solid #dce4ea; border-radius: 11px; overflow: hidden; box-shadow: 0 12px 32px #23354c08; background: #fff; will-change: opacity, transform; }
 .dash-bar { height: 29px; display: flex; align-items: center; gap: 8px; padding: 0 14px; background: #f8fafb; border-bottom: 1px solid #e8edf1; }
 .dash-dot { width: 5px; height: 5px; border-radius: 50%; background: #47a58d; }
 .dash-bar-title { font-size: 10px; color: #778592; flex: 1; }
-.dash-bar-live { font: 9px ui-monospace, monospace; color: #67a591; }
+.dash-bar-live { font: 9px var(--deck-mono); color: #67a591; }
 .dash-img { display: block; width: 100%; height: 215px; object-fit: cover; object-position: center top; }
 .skill-scene { margin: 0 12px; height: 374px; border: 1px solid #dfe5eb; border-radius: 12px; background: white; overflow: hidden; box-shadow: 0 12px 36px #23354c08; }
 .agent-bar { height: 31px; border-bottom: 1px solid #e9edf2; background: #f8fafb; display: flex; align-items: center; justify-content: space-between; padding: 0 17px; color: #8793a0; font-size: 10px; }
@@ -395,7 +395,7 @@ onUnmounted(() => {
 .skill-response { display: flex; gap: 15px; margin-top: 32px; font-size: 20px; letter-spacing: -.4px; }
 .skill-response > span { color: #5595af; font-size: 25px; }
 .skill-response small { display: block; margin-top: 8px; color: #87939f; font-size: 14px; letter-spacing: -.15px; }
-.skill-files { display: flex; align-items: center; gap: 15px; margin: 19px 0 0 37px; color: #94a0ac; font: 9px ui-monospace, monospace; }
+.skill-files { display: flex; align-items: center; gap: 15px; margin: 19px 0 0 37px; color: #94a0ac; font: 9px var(--deck-mono); }
 .skill-files i { width: 32px; height: 1px; background: #c4dce7; }
 .journey-controls { position: absolute; bottom: 17px; right: 28px; display: flex; align-items: center; gap: 10px; opacity: .25; transition: opacity .2s; z-index: 10; }
 .journey-controls:hover, .journey-controls:focus-within, .paused .journey-controls { opacity: 1; }

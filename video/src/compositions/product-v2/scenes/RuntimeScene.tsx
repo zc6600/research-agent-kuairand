@@ -39,7 +39,7 @@ export const V2RuntimeScene: React.FC = () => {
         <RuntimeChip className="v2-runtime-chip-1" name="Codex" color={V2C.blue} start={82} active={active === 0} />
         <RuntimeChip className="v2-runtime-chip-2" name="Claude Code" color={V2C.violet} start={112} active={active === 1} />
         <RuntimeChip className="v2-runtime-chip-3" name="Gemini CLI" color={V2C.orange} start={142} active={active === 2} />
-        <RuntimeChip className="v2-runtime-chip-4" name="AGY" color={V2C.green} start={172} active={active === 3} />
+        <RuntimeChip className="v2-runtime-chip-4" name="Antigravity" color={V2C.green} start={172} active={active === 3} />
         <div className="v2-runtime-caption" style={{opacity: swap}}><span>WORKFLOW COMPARISON</span><b> / NOT A MODEL LEADERBOARD</b></div>
         <div className="v2-runtime-bottom" style={{opacity: p(frame, 275, 314)}}><Dot color={V2C.green} size={7} glow /> <span>THE RUNTIME CAN CHANGE.</span><strong>THE WORLD DOES NOT.</strong></div>
       </AbsoluteFill>

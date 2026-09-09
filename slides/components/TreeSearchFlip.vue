@@ -289,39 +289,40 @@ useTalkSteps(14, step => {
 <style scoped>
 /* ── Tab navigation ── */
 .ts-reverse-tabs {
-  display: flex;
-  gap: 4px;
   align-items: center;
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+  margin-right: 14px;
 }
 
 .ts-reverse-tab {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
+  align-items: baseline;
   background: transparent;
-  border: 1px solid var(--line);
-  border-radius: 7px;
+  border: 0;
+  border-bottom: 1px solid transparent;
   color: var(--muted);
   cursor: pointer;
+  display: inline-flex;
+  font-family: inherit;
   font-size: 10px;
-  letter-spacing: 0.5px;
-  padding: 3px 9px;
-  transition: all 0.15s ease;
+  gap: 5px;
+  letter-spacing: .5px;
+  padding: 4px 2px 5px;
+  transition: color .15s ease, border-color .15s ease;
 }
 
-.ts-reverse-tab span { color: #cbd5e1; }
-.ts-reverse-tab b { font-weight: 700; }
+.ts-reverse-tab span { color: #b4b7bd; }
+.ts-reverse-tab b { font-weight: 500; }
 
+.ts-reverse-tab:hover,
 .ts-reverse-tab.is-active {
-  background: rgba(255, 92, 120, 0.07);
-  border-color: rgba(255, 92, 120, 0.35);
+  border-bottom-color: var(--rose);
   color: var(--rose);
 }
 
-.ts-reverse-tab:not(.is-active):hover {
-  background: #f8fafc;
-  border-color: #cbd5e1;
-  color: var(--ink);
+.ts-reverse-tab.is-active span {
+  color: var(--rose);
 }
 
 /* ── Page container ── */
@@ -346,20 +347,24 @@ useTalkSteps(14, step => {
   min-height: 0;
   gap: 14px;
 }
+.tree-search-back-claim,
 .ts-parallel-claim {
-  font-size: 26px;
-  font-weight: 500;
   color: var(--ink);
-  letter-spacing: -0.5px;
-  line-height: 1.15;
-  margin: 26px 0 0;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--deck-sans);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -1.1px;
+  line-height: 1.08;
+  margin-top: 24px;
 }
-.ts-parallel-claim strong { color: var(--blue); font-weight: 500; }
+.ts-parallel-claim strong { color: var(--blue); font-weight: 700; }
 .ts-parallel-svg-wrap { flex: 1; min-height: 0; position: relative; }
 .ts-parallel-svg-wrap svg { display: block; position: absolute; inset: 0; width: 100%; height: 100%; }
 .ts-stage-label {
   fill: #788694;
-  font-family: 'Fira Code', monospace;
+  font-family: var(--deck-mono);
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 1.3px;
@@ -391,7 +396,7 @@ useTalkSteps(14, step => {
 .ts-card-name { fill: var(--ink); font-size: 21px; font-weight: 600; }
 .ts-card-detail { fill: #788694; font-size: 13px; }
 .ts-branch-badge { fill: var(--branch-tint); }
-.ts-card-branch { fill: var(--branch-color); font-family: 'Fira Code', monospace; font-size: 15px; font-weight: 500; }
+.ts-card-branch { fill: var(--branch-color); font-family: var(--deck-mono); font-size: 15px; font-weight: 500; }
 .ts-merge-rail {
   fill: none;
   stroke-linecap: round;
@@ -754,20 +759,9 @@ useTalkSteps(14, step => {
   color: var(--rose);
 }
 
-.tree-search-back-claim {
-  color: var(--ink);
-  display: flex;
-  flex-direction: column;
-  font-size: 32px;
-  font-weight: 500;
-  letter-spacing: -1.1px;
-  line-height: 1.08;
-  margin-top: 24px;
-}
-
 .tree-search-back-claim strong {
   color: var(--rose);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .tree-search-back-claim-shift {
@@ -884,7 +878,7 @@ useTalkSteps(14, step => {
 
 .tree-search-ablation-callout strong {
   color: var(--rose);
-  font-family: 'Fira Code', monospace;
+  font-family: var(--deck-mono);
   font-size: 27px;
   font-weight: 500;
 }

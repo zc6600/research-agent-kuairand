@@ -513,7 +513,7 @@ This page frames resource usage as supporting evidence, not as a claim that cost
 <circle class="chart-point chart-point-green" cx="829" cy="163" r="9" />
 </g>
 <g class="chart-point-labels">
-<text class="chart-label-main" x="151" y="242">AGY</text>
+<text class="chart-label-main" x="151" y="242">Antigravity</text>
 <text class="chart-label-sub" x="151" y="258">gemini-3.7-flash · direct</text>
 <text class="chart-label-meta" x="151" y="274">8.565M · 0.6045803 · artifact-backed</text>
 <text class="chart-label-main chart-label-right" x="510" y="196">gpt-5.6-luna · direct</text>

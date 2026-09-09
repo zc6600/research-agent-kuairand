@@ -1,7 +1,9 @@
 /* Two self-contained studies, with one closing point per slide. */
 .slidev-layout:has(.research-insight-page) { padding:40px 56px 36px; overflow:hidden; }
 .research-insight-page { height:475px; color:var(--ink); display:flex; flex-direction:column; }
-.research-insight-page h1 { font-size:34px; font-weight:850; letter-spacing:-1.1px; line-height:1.13; margin:15px 0 8px; }
+.slidev-layout:has(.research-insight-page) .visual-kicker,
+.slidev-layout:has(.fieldnote-grid) .visual-kicker { color:var(--purple); }
+.research-insight-page h1 { font-size:34px; font-weight:700; letter-spacing:-1.1px; line-height:1.13; margin:15px 0 8px; }
 .research-insight-page .insight-deck { font-size:17px; line-height:1.4; color:#626975; margin:0; }
 .research-insight-page .search-pair { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:15px; }
 .research-insight-page .search-study { --study-color:#279fdb; --study-light:#d3e9f4; border:1px solid #dfe2e6; border-top:3px solid var(--study-color); border-radius:14px; background:#fff; padding:9px 12px 10px; font-family:var(--demo-sans); }
@@ -66,3 +68,19 @@
 .research-insight-page .relay-models b { color:#969eaa; font-weight:400; }
 .research-insight-page .relay-memory { border-top:1px solid #c8c0dc; margin-top:7px; padding-top:6px; font-size:16px; color:#686f79; text-align:center; }
 .research-insight-page .relay-memory > span { color:#9960e3; font-size:20px; vertical-align:-1px; margin-right:5px; }
+
+/* Insights uses purple as its chapter marker. Blue remains reserved for the
+   operational path, so the engineering field note reads as one section. */
+.slidev-layout:has(.fieldnote-grid) .fieldnote-card:not(.fieldnote-remote) {
+  border-top-color:var(--purple);
+}
+.slidev-layout:has(.fieldnote-grid) .fieldnote-number,
+.slidev-layout:has(.fieldnote-grid) .fieldnote-branch-source strong,
+.slidev-layout:has(.fieldnote-grid) .fieldnote-footer-label {
+  color:var(--purple);
+}
+.slidev-layout:has(.fieldnote-grid) .fieldnote-branch-list span {
+  background:#fbf9ff;
+  border-color:#dfd1ff;
+}
+.slidev-layout:has(.fieldnote-grid) .fieldnote-branch-list i { background:var(--purple); }

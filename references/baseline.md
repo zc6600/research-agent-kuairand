@@ -13,7 +13,7 @@ it can find.
 
 When `--cli codex`, `--cli agy`, or `--cli claude` is selected, the baseline launches
 the runner in Goal mode (`/goal`). For Codex, the launcher submits the fixed baseline
-prompt as `/goal` over a pseudo-terminal; for AGY and Claude, it submits `/goal` with
+prompt as `/goal` over a pseudo-terminal; for Antigravity and Claude, it submits `/goal` with
 autonomous permissions and waits for the Goal session to finish. This control represents the
 long-running single-agent condition rather than a single short turn. The run still
 has one agent process, no META/Scientist machinery, and the same workspace and
@@ -43,7 +43,7 @@ research-agent baseline \
   --allow-edits
 ```
 
-Example with AGY:
+Example with Antigravity:
 
 ```bash
 research-agent baseline \
@@ -65,7 +65,7 @@ research-agent baseline \
 
 Control-run metadata, raw runner output, and model-level token accounting are
 kept under `.git/research-agent-baseline/<run-id>/`. The run metadata records
-`mode: goal` for runners with Goal mode (such as Codex, AGY, and Claude) and
+`mode: goal` for runners with Goal mode (such as Codex, Antigravity, and Claude) and
 `mode: single-turn` for other runners. Keeping this operational
 
 measurement state under `.git/` avoids adding Research Agent files to the
@@ -85,4 +85,4 @@ Detailed baseline execution reports and complete trajectory ledgers:
 - [Headline Luna Max 3h Codex Goal Baseline (`gpt-5.6-luna`, max)](../competition_archive/kuairand-pure/reports/gpt-5.6-luna-3h-goal-baseline.md)
 - [Earlier Codex Goal control (historical)](../competition_archive/kuairand-pure/reports/direct-codex-goal-baseline.md)
 - [Gemini 3.7 Flash Goal Baseline (`gemini-3.7-flash`)](../competition_archive/kuairand-pure/reports/direct-gemini-3.7-flash-goal-baseline.md)
-- [Codex / AGY process and implementation audit](../competition_archive/kuairand-pure/reports/baseline-protocol-audit.md)
+- [Codex / Antigravity process and implementation audit](../competition_archive/kuairand-pure/reports/baseline-protocol-audit.md)

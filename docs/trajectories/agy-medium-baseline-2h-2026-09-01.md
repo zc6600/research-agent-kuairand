@@ -1,9 +1,9 @@
-# AGY `medium` Goal Baseline — 2h Maximum — 2026-09-01
+# Antigravity `medium` Goal Baseline — 2h Maximum — 2026-09-01
 
 ## Summary
 
-This is the corrected AGY baseline run requested as a two-hour maximum. It
-used `mode=goal`, AGY CLI 1.1.22, model `gemini-3.7-flash`, and reasoning
+This is the corrected Antigravity baseline run requested as a two-hour maximum. It
+used `mode=goal`, Antigravity CLI 1.1.22, model `gemini-3.7-flash`, and reasoning
 effort `medium` in the isolated target project
 `projects/p0_baseline_antigravity_2h/`.
 
@@ -15,12 +15,12 @@ result is **GAUC 0.6714473, nDCG@5 0.5377133, primary 0.6045803**.
 ## Why the earlier 2h attempt was excluded
 
 An earlier 2h attempt (`89fdbbf6e7ca4d44bfe2a37c26ac5632`) also returned
-normally, but AGY had silently used its global `default-cli-project` scratch
-workspace because the target was not registered as an AGY project. Its
+normally, but Antigravity had silently used its global `default-cli-project` scratch
+workspace because the target was not registered as an Antigravity project. Its
 reported `0.6031` therefore was not attributable to the requested target
 workspace and is excluded from the baseline result.
 
-The runner was corrected to invoke AGY with `--new-project`, which binds the
+The runner was corrected to invoke Antigravity with `--new-project`, which binds the
 session workspace to the invocation directory. A no-op probe confirmed the
 target path before the formal rerun. The corrected run's raw log and generated
 files are all under the target project's `.git/` and working tree.
@@ -38,7 +38,7 @@ files are all under the target project's `.git/` and working tree.
   KuaiRand-Pure `long_view` ranker, retaining the strongest verified result;
   use no hidden/test rows, subagents, parent/sibling workspaces, or
   `research_record`.
-- AGY request timeout: 105 minutes
+- Antigravity request timeout: 105 minutes
 - Outer runner hard limit: 6,900 seconds (115 minutes), leaving cleanup time
   within the requested 2h ceiling
 - Output: non-streaming JSON, because the hard timeout and streaming mode are

@@ -337,7 +337,7 @@ protocols or that the score differences are statistically significant.*
 
 | Agent system | Total input + output, including cache-read | Best public-validation Primary | Delta vs 0.6016 | Evidence status | Main search direction |
 |---|---:|---:|---:|---|---|
-| **AGY `gemini-3.7-flash` 2h direct Goal baseline** | **8,564,976** | **0.6045803** | **+0.0029803** | Artifact-backed corrected rerun | AutoCrossNet, unified neural models, and five-model blend |
+| **Antigravity `gemini-3.7-flash` 2h direct Goal baseline** | **8,564,976** | **0.6045803** | **+0.0029803** | Artifact-backed corrected rerun | AutoCrossNet, unified neural models, and five-model blend |
 | **`gpt-5.6-luna` 3h direct Goal baseline** | **28,069,574** | **approximately 0.6046** | **approximately +0.0030** | Provisional; measured telemetry, report/README score, terminal closed after `task_complete` | Six-field FM, positive weighting, and `tab×hour` |
 | `gemini-3.7-flash` heterogeneous subagents | 39,607,277 | approximately 0.6047 | approximately +0.0031 | Artifact-backed separate run | Parallel heterogeneous architecture search |
 | `gemini-3.7-flash`-only Research Agent trajectory, through Cycle 2 | 45,043,916–51,173,911* | 0.6052 | +0.0036 | Artifact-backed; online-history semantics noted | Seed-42 item-sequence DIN |
@@ -348,16 +348,16 @@ protocols or that the score differences are statistically significant.*
 the entire unsplittable Cycles 2–4 META aggregate, including its cache-read
 input, to the Cycle-2 boundary.
 
-Runner telemetry does not expose identical field semantics. AGY reports
+Runner telemetry does not expose identical field semantics. Antigravity reports
 cache-read input separately from `input`, so total consumption adds it; Codex
 reports cache-read as a subset of `input`, so adding it again would double
 count. Applying that normalization gives the totals above. For reference, the
-corresponding non-cache values are 1,117,370 for the AGY direct run, 404,934
+corresponding non-cache values are 1,117,370 for the Antigravity direct run, 404,934
 for the Luna direct run, 7,726,649 for the heterogeneous run,
 2,070,960–2,898,630 for the Gemini-only Cycle-2 boundary, and 4,020,880 for the
 submitted Research Agent trajectory.
 
-The corrected AGY direct run is the lowest-total-token strong optimizer in this
+The corrected Antigravity direct run is the lowest-total-token strong optimizer in this
 comparison. The `gemini-3.7-flash`-only Research Agent trajectory reached `0.6052` by Cycle 2
 with a bounded cumulative cost of 45.044M–51.174M total tokens, while the submitted Research Agent implementation remains the
 highest-scoring verified result. The heterogeneous delegated search used fewer
@@ -368,7 +368,7 @@ and the direct controls retain unresolved audit qualifications.
 
 The defensible quantitative statement is narrow. The submitted Research Agent implementation is approximately
 `+0.00134` above the `gpt-5.6-luna` 3h direct baseline, `+0.001356` above the
-corrected AGY 2h `gemini-3.7-flash` baseline, and `+0.0007363` above the
+corrected Antigravity 2h `gemini-3.7-flash` baseline, and `+0.0007363` above the
 Cycle-2 `gemini-3.7-flash`-only trajectory score,
 and approximately `+0.00124` above the heterogeneous-subagent
 `gemini-3.7-flash` result on the
@@ -516,7 +516,7 @@ Concrete empirical receipts of this mechanism in action on KuaiRand-Pure are pre
 
 ### 6.3 Resource accounting
 
-The four retained Research Agent runs that produced cycles 1–4 and experiments E001–E013 recorded measured per-role model usage. The table normalizes runner semantics: AGY reports cache-read separately from `input`, while Codex includes cache-read inside `input`.
+The four retained Research Agent runs that produced cycles 1–4 and experiments E001–E013 recorded measured per-role model usage. The table normalizes runner semantics: Antigravity reports cache-read separately from `input`, while Codex includes cache-read inside `input`.
 
 | Role | Non-cache input | Cache-read input | Output | Total input + output including cache-read |
 |---|---:|---:|---:|---:|
