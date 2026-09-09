@@ -4,6 +4,7 @@ const sourcePath = 'slides.md'
 const insertPath = 'snippets/evaluation-claim-verdict.md'
 const outputPath = '.generated-slides.md'
 const insertAfter = '<ExperienceJourney />'
+const experienceSlide = '<ExperienceJourneyAudio />'
 const retiredSlideMarkers = [
   '<div class="visual-kicker orange resources-page-kicker">04 / EVALUATION · RESOURCE ACCOUNTING</div>',
   '<div class="visual-kicker orange">04 / EVALUATION · DIRECT-AGENT COMPARISON</div>',
@@ -32,7 +33,7 @@ function removeSlideByMarker(deck, slideMarker) {
   return `${deck.slice(0, slideStart)}${deck.slice(slideEnd)}`
 }
 
-let output = source.replace(insertAfter, `${insertAfter}\n\n---\n\n${insert}`)
+let output = source.replace(insertAfter, `${experienceSlide}\n\n---\n\n${insert}`)
 for (const slideMarker of retiredSlideMarkers) {
   output = removeSlideByMarker(output, slideMarker)
 }
