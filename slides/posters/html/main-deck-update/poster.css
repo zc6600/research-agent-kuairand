@@ -908,6 +908,71 @@ b, strong { font-weight: 700; color: var(--ink); }
 
 .card-feature-list b { color: var(--navy); }
 
+/* Result card custom telemetry & typography */
+.result-card {
+  padding: 8.5px 12px 7.5px;
+}
+
+.result-card .compare-row {
+  margin-top: 4px;
+}
+
+.result-card .gain-badge {
+  margin-top: 4px;
+}
+
+.result-card .metric-tags {
+  margin-top: 4px;
+  padding-top: 3px;
+}
+
+.result-card .card-feature-list {
+  margin-top: 4px;
+  padding-top: 3px;
+  gap: 2px;
+  font-size: 8.8px;
+}
+
+.result-telemetry-row {
+  margin-top: 5px;
+  padding-top: 4px;
+  border-top: 1px dashed var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 8.2px;
+  font-family: var(--mono);
+}
+
+.telemetry-badge-auto {
+  font-weight: 700;
+  background: #e6eff5;
+  color: var(--navy);
+  padding: 1.5px 5.5px;
+  border-radius: 3px;
+  border: 1px solid #c2d7e5;
+  letter-spacing: 0.3px;
+}
+
+.result-telemetry-item {
+  color: #2e4354;
+}
+
+.result-telemetry-item b {
+  color: var(--ink);
+}
+
+.result-telemetry-item.is-dim {
+  color: #556775;
+}
+
+.result-card .card-annotation {
+  margin-top: 4px;
+  font-size: 8.2px;
+  line-height: 1.25;
+  color: #4e5f6e;
+}
+
 .codex-contrast-table {
   margin-top: 5px;
   border: 1px solid var(--border-light);
