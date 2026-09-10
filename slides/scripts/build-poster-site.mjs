@@ -8,6 +8,22 @@ const distRoot = path.join(postersRoot, 'dist')
 const mainDeckRoot = path.join(postersRoot, 'html', 'main-deck-update')
 const voyageRoot = path.join(postersRoot, 'html', 'voyage')
 
+const journeySpacingCss = String.raw`
+.journey .journey-steps {
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 5px 6px;
+  font-size: 9.5px;
+}
+.journey .journey-steps .step-item {
+  white-space: nowrap;
+}
+.journey .journey-steps .step-sep {
+  flex: 0 0 auto;
+  opacity: .78;
+}
+`
+
 await rm(distRoot, { recursive: true, force: true })
 await mkdir(distRoot, { recursive: true })
 
@@ -48,7 +64,8 @@ async function copyAssets(sourceRoot, targetRoot) {
 async function buildLatestPoster() {
   let html = await readFile(path.join(mainDeckRoot, 'poster.html'), 'utf8')
   const exportSource = await readFile(path.join(mainDeckRoot, 'export.mjs'), 'utf8')
-  const polishCss = extractPolishCss(exportSource)
+  const exportPolishCss = extractPolishCss(exportSource)
+  const polishCss = [exportPolishCss, journeySpacingCss.trim()].filter(Boolean).join('\n\n')
   const polishFunctions = extractPolishFunctions(exportSource)
 
   if (polishCss) {
