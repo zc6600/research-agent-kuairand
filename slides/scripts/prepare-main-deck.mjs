@@ -67,7 +67,7 @@ function retitleToc(deck) {
   <div class="toc-step toc-step-blue">
     <div class="toc-step-marker"><span class="toc-step-number mono">01</span><span class="toc-step-dot"></span></div>
     <div class="toc-step-label mono">PROBLEM</div>
-    <strong>Why current agents fail</strong>
+    <strong>Limits of common research approaches</strong>
     <span>Set the task and its failure modes.</span>
   </div>
   <div class="toc-step toc-step-orange">
@@ -95,7 +95,7 @@ function retitleToc(deck) {
   <div class="toc-step toc-step-blue">
     <div class="toc-step-marker"><span class="toc-step-number mono">01</span><span class="toc-step-dot"></span></div>
     <div class="toc-step-label mono">PROBLEM</div>
-    <strong>Why current agents fail</strong>
+    <strong>Limits of common research approaches</strong>
     <span>Set the task and its failure modes.</span>
   </div>
   <div class="toc-step toc-step-orange">

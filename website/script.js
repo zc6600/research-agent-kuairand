@@ -314,6 +314,135 @@ $("#journey-next").addEventListener("click", () =>
 );
 showJourney($("#journey-tab-0"));
 
+// Experience View Switcher (Video Demo vs Interactive Walkthrough)
+const videoTab = $("#view-tab-video");
+const walkthroughTab = $("#view-tab-walkthrough");
+const videoView = $("#experience-video-view");
+const walkthroughView = $("#experience-walkthrough-view");
+
+function setExperienceView(mode) {
+  const isVideo = mode === "video";
+  videoTab.classList.toggle("active", isVideo);
+  videoTab.setAttribute("aria-selected", String(isVideo));
+  videoTab.tabIndex = isVideo ? 0 : -1;
+
+  walkthroughTab.classList.toggle("active", !isVideo);
+  walkthroughTab.setAttribute("aria-selected", String(!isVideo));
+  walkthroughTab.tabIndex = !isVideo ? 0 : -1;
+
+  videoView.hidden = !isVideo;
+  walkthroughView.hidden = isVideo;
+
+  if (isVideo) {
+    animateContent(videoView);
+  } else {
+    animateContent(walkthroughView);
+    showJourney($(`[data-step="${journeyIndex}"]`));
+  }
+}
+
+videoTab.addEventListener("click", () => setExperienceView("video"));
+walkthroughTab.addEventListener("click", () => setExperienceView("walkthrough"));
+videoTab.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+    e.preventDefault();
+    setExperienceView("walkthrough");
+    walkthroughTab.focus();
+  }
+});
+walkthroughTab.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+    e.preventDefault();
+    setExperienceView("video");
+    videoTab.focus();
+  }
+});
+
+// Demo Video Player & Narration Sync
+const expVideo = $("#experience-video");
+const videoOverlay = $("#video-overlay");
+const videoPlayBtn = $("#video-play-btn");
+const videoFsBtn = $("#video-fs-btn");
+const chapterPills = $$(".chapter-pill");
+const liveCaption = $("#live-caption-text");
+
+const demoCues = [
+  { start: 0.8, end: 8.5, text: "SciOdyssey. A research layer over your agent harness. Your tools. One persistent research world." },
+  { start: 9.4, end: 12.2, text: "Start with your research question." },
+  { start: 13.7, end: 19.8, text: "Define the objective and how success will be measured." },
+  { start: 20.7, end: 27.8, text: "Then set your working preferences: the environment, experiment budget, and boundaries." },
+  { start: 29.2, end: 32.2, text: "One step. Then, review." },
+  { start: 33.3, end: 43.7, text: "Run one research cycle with step. The Scientist investigates. Evidence is recorded. And control returns to you." },
+  { start: 45.0, end: 48.0, text: "Or, let it run." },
+  { start: 49.1, end: 61.5, text: "Set a cycle budget. A fresh Scientist continues the work each round, while the project carries the task, memory, and evidence forward." },
+  { start: 62.8, end: 65.6, text: "Now, explore wider." },
+  { start: 66.9, end: 73.2, text: "Use parallel to explore different directions in independent worktrees." },
+  { start: 74.0, end: 81.3, text: "A Reviewer compares the evidence. Choosing a branch to adopt remains an explicit decision." },
+  { start: 82.6, end: 85.5, text: "See what stays." },
+  { start: 86.7, end: 91.0, text: "Open the dashboard to inspect the retained result." },
+  { start: 91.7, end: 101.0, text: "See the score, the implementation state, and the evidence behind it. Then decide what comes next." },
+  { start: 102.4, end: 105.4, text: "Already in your workflow." },
+  { start: 106.5, end: 109.8, text: "Use the research-agent skill." },
+  { start: 110.1, end: 114.0, text: "Explore in parallel. Let me review what to keep." },
+  { start: 114.5, end: 119.2, text: "Research workflow, connected. Task, memory, and evidence stay with the project." },
+  { start: 120.3, end: 126.0, text: "SciOdyssey. Let research run. Start your journey." }
+];
+
+const chapterStarts = [0.8, 29.2, 45.0, 62.8, 82.6, 102.4];
+
+async function playExpVideo() {
+  try {
+    expVideo.muted = false;
+    await expVideo.play();
+    videoOverlay.classList.add("hidden");
+  } catch {
+    expVideo.muted = true;
+    await expVideo.play();
+    videoOverlay.classList.add("hidden");
+  }
+}
+
+videoOverlay.addEventListener("click", playExpVideo);
+videoPlayBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  playExpVideo();
+});
+
+expVideo.addEventListener("play", () => videoOverlay.classList.add("hidden"));
+expVideo.addEventListener("pause", () => {
+  if (expVideo.currentTime < expVideo.duration) videoOverlay.classList.remove("hidden");
+});
+expVideo.addEventListener("ended", () => videoOverlay.classList.remove("hidden"));
+
+videoFsBtn.addEventListener("click", async () => {
+  if (expVideo.requestFullscreen) await expVideo.requestFullscreen();
+  else if (expVideo.webkitEnterFullscreen) expVideo.webkitEnterFullscreen();
+});
+
+chapterPills.forEach((pill) => {
+  pill.addEventListener("click", () => {
+    const time = parseFloat(pill.dataset.time);
+    expVideo.currentTime = time;
+    playExpVideo();
+    chapterPills.forEach((p) => p.classList.toggle("active", p === pill));
+  });
+});
+
+expVideo.addEventListener("timeupdate", () => {
+  const current = expVideo.currentTime;
+  const cue = demoCues.find((c) => current >= c.start && current < c.end);
+  if (cue && liveCaption.textContent !== cue.text) {
+    liveCaption.textContent = cue.text;
+  }
+  let activeChapterIdx = 0;
+  for (let i = 0; i < chapterStarts.length; i++) {
+    if (current >= chapterStarts[i]) activeChapterIdx = i;
+  }
+  chapterPills.forEach((pill, idx) => {
+    pill.classList.toggle("active", idx === activeChapterIdx);
+  });
+});
+
 wireTabs("[data-evidence]", (tab) => {
   $$("[data-evidence]").forEach((button) => {
     $(`#evidence-${button.dataset.evidence}`).hidden = button !== tab;

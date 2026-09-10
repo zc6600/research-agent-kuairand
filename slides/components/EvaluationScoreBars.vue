@@ -5,7 +5,7 @@ const data = [
   { name: 'nDCG@5', base: '0.5357', ours: '0.5390', delta: '+0.0033', hBase: 50, hOurs: 60 },
   { name: 'Primary', base: '0.6016', ours: '0.6059', delta: '+0.0043', hBase: 62, hOurs: 78 }
 ]
-const groundY = 115
+const groundY = 118
 </script>
 
 <template>
@@ -14,22 +14,22 @@ const groundY = 115
       <span class="legend-chip"><i class="chip-dot dot-gray" /> Official</span>
       <span class="legend-chip"><i class="chip-dot dot-blue" /> Ours</span>
     </div>
-    <svg viewBox="0 0 255 138" class="bars-svg" role="img" aria-label="Metric comparison">
+    <svg viewBox="0 0 255 142" class="bars-svg" role="img" aria-label="Metric comparison">
       <!-- Ground line -->
-      <line x1="8" :y1="groundY" x2="248" :y2="groundY" stroke="#e6e6e8" stroke-width="1" />
+      <line x1="8" :y1="groundY" x2="246" :y2="groundY" stroke="#e6e6e8" stroke-width="1" />
 
       <g v-for="(item, idx) in data" :key="item.name" :transform="`translate(${14 + idx * 80}, 0)`">
         <!-- Baseline bar -->
         <rect
           x="0"
           :y="groundY - item.hBase"
-          width="18"
+          width="17"
           :height="item.hBase"
           rx="3"
           fill="#e2e8f0"
         />
         <text
-          x="9"
+          x="8.5"
           :y="groundY - item.hBase - 4"
           text-anchor="middle"
           class="txt-base"
@@ -37,17 +37,17 @@ const groundY = 115
           {{ item.base }}
         </text>
 
-        <!-- Ours bar -->
+        <!-- Ours bar (gap widened from 5px to 14px to eliminate text collision) -->
         <rect
-          x="23"
+          x="31"
           :y="groundY - item.hOurs"
-          width="18"
+          width="17"
           :height="item.hOurs"
           rx="3"
           fill="#38bdf8"
         />
         <text
-          x="32"
+          x="39.5"
           :y="groundY - item.hOurs - 4"
           text-anchor="middle"
           class="txt-ours"
@@ -57,7 +57,7 @@ const groundY = 115
 
         <!-- Delta -->
         <text
-          x="32"
+          x="39.5"
           :y="groundY - item.hOurs - 14"
           text-anchor="middle"
           class="txt-delta"
@@ -67,7 +67,7 @@ const groundY = 115
 
         <!-- Label -->
         <text
-          x="20"
+          x="24"
           :y="groundY + 16"
           text-anchor="middle"
           class="txt-name"
@@ -85,16 +85,17 @@ const groundY = 115
   flex-direction: column;
   align-items: center;
   width: 100%;
+  padding-top: 2px;
 }
 
 .bars-legend {
   display: flex;
   justify-content: center;
-  gap: 14px;
+  gap: 16px;
   font-size: 11px;
   font-family: var(--deck-sans);
   color: var(--muted, #7d7d82);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   width: 100%;
 }
 
@@ -112,7 +113,7 @@ const groundY = 115
 }
 
 .dot-gray {
-  background: #e2e8f0;
+  background: #cbd5e1;
 }
 
 .dot-blue {
@@ -129,29 +130,32 @@ const groundY = 115
 
 .txt-base {
   font-family: var(--deck-mono);
-  font-size: 8.5px;
-  fill: #8e95a0;
+  font-size: 8px;
+  fill: #64748b;
   font-weight: 500;
+  letter-spacing: -0.2px;
 }
 
 .txt-ours {
   font-family: var(--deck-mono);
-  font-size: 9px;
+  font-size: 8.5px;
   fill: #0284c7;
-  font-weight: 700;
+  font-weight: 600;
+  letter-spacing: -0.2px;
 }
 
 .txt-delta {
   font-family: var(--deck-mono);
-  font-size: 8px;
+  font-size: 7.5px;
   fill: #16803b;
-  font-weight: 700;
+  font-weight: 600;
+  letter-spacing: -0.1px;
 }
 
 .txt-name {
   font-family: var(--deck-sans);
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 600;
   fill: var(--ink, #111217);
 }
 </style>

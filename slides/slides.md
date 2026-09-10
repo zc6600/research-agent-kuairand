@@ -37,7 +37,7 @@ A lightweight framework for long-running ML research. Its central design gives t
 
 <!-- class: toc-slide -->
 
-<div class="visual-kicker orange">ROADMAP / TALK ORDER</div>
+<div class="visual-kicker orange">ROADMAP</div>
 
 <div class="toc-heading">
   <div>
@@ -51,7 +51,7 @@ A lightweight framework for long-running ML research. Its central design gives t
   <div class="toc-step toc-step-blue">
     <div class="toc-step-marker"><span class="toc-step-number mono">01</span><span class="toc-step-dot"></span></div>
     <div class="toc-step-label mono">PROBLEM</div>
-    <strong>Why current agents fail</strong>
+    <strong>Limits of common research approaches</strong>
     <span>Set the task and its failure modes.</span>
   </div>
   <div class="toc-step toc-step-orange">
@@ -147,7 +147,7 @@ The five stages describe the ML engineer's familiar iteration loop. Code-generat
 
 <div class="visual-kicker orange failure-modes-kicker">01 / PROBLEM · FAILURE MODES</div>
 
-# Why current agents fail
+# Limits of common research approaches
 
 <ProblemInsights />
 
@@ -175,63 +175,7 @@ Card 02 reverse is multi-page: page 1 covers search momentum; page 2 covers Gemi
 # A system for sustained research
 
 <InsightArchitecture>
-<div class="architecture-diagram" aria-label="Research Agent system architecture">
-  <div class="architecture-main">
-    <div class="arch-column arch-environment">
-      <div class="arch-area-title">Environment</div>
-      <div class="arch-panel">
-        <div class="arch-card"><span class="arch-icon blue i-carbon:document"></span><div><strong>Task contract</strong></div></div>
-        <div class="arch-card"><span class="arch-icon blue i-carbon:data-base"></span><div><strong>Curated data + evaluator</strong></div></div>
-        <div class="arch-card"><span class="arch-icon blue i-carbon:code"></span><div><strong>Starter baseline</strong></div></div>
-        <div class="arch-card"><span class="arch-icon blue i-carbon:locked"></span><div><strong>Budget + permissions</strong></div></div>
-      </div>
-    </div>
-    <div class="arch-arrow blue">→</div>
-    <div class="arch-column arch-world">
-      <div class="arch-area-title">Research World</div>
-      <div class="arch-panel">
-        <div class="world-lane"><div class="world-lane-label">A · VERIFIED / EVIDENCE</div><div class="world-items"><div class="world-item"><span class="arch-icon green i-carbon:verified"></span><strong>Verified knowledge</strong></div><div class="world-item"><span class="arch-icon green i-carbon:document"></span><strong>Evidence ledger</strong></div></div></div>
-        <div class="world-lane"><div class="world-lane-label">B · CURATED / REVISABLE</div><div class="world-items"><div class="world-item"><span class="arch-icon green i-carbon:document"></span><strong>Research brief</strong></div><div class="world-item"><span class="arch-icon green i-carbon:idea"></span><strong>Working priors</strong></div></div></div>
-        <div class="world-lane"><div class="world-lane-label">C · IMPLEMENTATION</div><div class="world-items"><div class="world-item"><span class="arch-icon green i-carbon:data-base"></span><strong>Implementation State</strong></div></div></div>
-        <div class="arch-persist">What persists across trajectories</div>
-      </div>
-    </div>
-    <div class="arch-reset"><span class="arch-reset-icon i-carbon:reset"></span><strong>CONTEXT<br>RESET</strong></div>
-    <div class="arch-column arch-scientist">
-      <div class="arch-area-title">Fresh Scientist</div>
-      <div class="arch-panel">
-        <span class="arch-hero-icon purple i-carbon:chemistry"></span>
-        <strong class="arch-hero-title">Scientist</strong>
-        <small class="arch-hero-subtitle">owns scientific judgment</small>
-        <div class="arch-divider"></div>
-        <ul class="arch-list purple-list"><li>reads the research world</li><li>forms hypotheses</li><li>runs experiments</li><li>interprets evidence</li><li>writes a report</li></ul>
-        <div class="arch-callout purple-callout">inherits experience,<br>not momentum</div>
-      </div>
-    </div>
-    <div class="arch-arrow rose">→</div>
-    <div class="arch-column arch-meta">
-      <div class="arch-area-title">META Review</div>
-      <div class="arch-panel">
-        <span class="arch-hero-icon rose i-carbon:security"></span>
-        <strong class="arch-hero-title">META</strong>
-        <small class="arch-hero-subtitle">owns what survives</small>
-        <div class="arch-divider"></div>
-        <ul class="arch-list rose-list"><li>audits claim ↔ evidence validity</li><li>scopes conclusions</li><li>maintains shared research memory</li><li>crystallizes retained implementation into State</li></ul>
-      </div>
-    </div>
-  </div>
-  <div class="architecture-handoff"><span></span><strong>Selective persistence / trajectory handoff</strong><span></span></div>
-  <div class="runtime-band">
-    <strong class="runtime-title">Coding-agent harness + runtime</strong>
-    <div class="runtime-items">
-      <div><span class="runtime-icon orange i-carbon:workspace"></span><span>Workspace<br>isolation</span></div>
-      <div><span class="runtime-icon orange i-carbon:play"></span><span>Runner +<br>evaluator</span></div>
-      <div><span class="runtime-icon orange i-carbon:document"></span><span>Logging</span></div>
-      <div><span class="runtime-icon orange i-carbon:folder"></span><span>Artifact<br>capture</span></div>
-      <div><span class="runtime-icon orange i-carbon:data-base"></span><span>State<br>operations</span></div>
-    </div>
-  </div>
-</div>
+  <ResearchSystemDiagram />
 </InsightArchitecture>
 <!--
 [Sources]
@@ -576,57 +520,4 @@ The open-world framing and capability taxonomy are adapted from the user's suppl
 [Sources]
 - https://docs.langchain.com/oss/python/langgraph/workflows-agents — workflows vs. agents
 - https://docs.langchain.com/oss/python/langgraph/graph-api — state, nodes, and edges
--->
-
----
-
-<div class="visual-kicker orange team-page-kicker">APPENDIX / THE TEAM</div>
-
-# Five people. One autonomous research loop.
-
-<div class="team-intro"><span class="team-intro-line"></span><span class="team-intro-text mono">OVERLAPPING RESPONSIBILITIES / SHARED WORLD</span><span class="team-intro-line"></span></div>
-
-<div class="team-stage">
-  <div class="team-thread" aria-hidden="true"></div>
-  <div class="team-row">
-    <div class="team-member team-member-1">
-      <div class="team-avatar" style="--team-accent: var(--orange)" aria-label="Chen Zhu"><span>CZ</span></div>
-      <div class="team-name">Chen Zhu</div>
-      <div class="team-role mono">TEAM LEAD / SYSTEM</div>
-      <div class="team-contribution">Direction · architecture · integration</div>
-    </div>
-    <div class="team-member team-member-2">
-      <div class="team-avatar" style="--team-accent: var(--blue)" aria-label="Zhou Ziyu"><span>ZZ</span></div>
-      <div class="team-name">Zhou Ziyu</div>
-      <div class="team-role mono">MODELING / EXPERIMENTS</div>
-      <div class="team-contribution">Features · ensembles · evidence review</div>
-    </div>
-    <div class="team-member team-member-3">
-      <div class="team-avatar" style="--team-accent: #16803b" aria-label="Shilin Xu"><span>SX</span></div>
-      <div class="team-name">Shilin Xu</div>
-      <div class="team-role mono">DATA / METRICS</div>
-      <div class="team-contribution">Data workflow · contracts · alignment</div>
-    </div>
-    <div class="team-member team-member-4">
-      <div class="team-avatar" style="--team-accent: var(--purple)" aria-label="GE GAO"><span>GG</span></div>
-      <div class="team-name">GE GAO</div>
-      <div class="team-role mono">RUNTIME / RELIABILITY</div>
-      <div class="team-contribution">Execution · testing · integration support</div>
-    </div>
-    <div class="team-member team-member-5">
-      <div class="team-avatar" style="--team-accent: var(--rose)" aria-label="Jiran Li"><span>JL</span></div>
-      <div class="team-name">Jiran Li</div>
-      <div class="team-role mono">EVIDENCE / REPRODUCIBILITY</div>
-      <div class="team-contribution">Telemetry · documentation · packaging</div>
-    </div>
-  </div>
-</div>
-
-<div class="team-footer"><span class="team-footer-label mono">SCIODYSSEY TEAM</span><span>Every handoff kept the research world moving.</span></div>
-
-<!--
-Team names and responsibilities are drawn from the repository's documented team contributions.
-[Sources]
-- ../README.md — Team contributions
-- ../docs/FINAL_REPORT.md — section 6.4, Team contributions
 -->

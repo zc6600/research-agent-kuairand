@@ -50,7 +50,7 @@
       </button>
       <nav id="navigation" aria-label="Main navigation">
         <a href="#idea">The idea</a><a href="#system">The system</a
-        ><a href="#experience">Experience</a><a href="#evidence">Evidence</a>
+        ><a href="#experience">Demo & Experience</a><a href="#evidence">Evidence</a>
         <a
           class="nav-cta"
           href="https://github.com/zc6600/research-agent-kuairand"
@@ -434,7 +434,7 @@
         <div class="container">
           <div class="section-heading">
             <p class="eyebrow">
-              <span class="section-index">03</span> THE EXPERIENCE
+              <span class="section-index">03</span> DEMO & EXPERIENCE
             </p>
             <div class="heading-row">
               <h2 id="experience-heading">
@@ -443,142 +443,231 @@
                 >
               </h2>
               <p>
-                Start with a task. Follow the evidence.<br />Stay in control of
-                the research boundary.
+                Watch the complete autonomous research loop in action, or step
+                through each act of the developer workflow.
               </p>
             </div>
           </div>
-          <div
-            class="journey-tabs"
-            role="tablist"
-            aria-label="Research walkthrough"
-          >
+
+          <div class="experience-view-switcher" role="tablist" aria-label="Experience view mode">
             <button
-              id="journey-tab-0"
+              id="view-tab-video"
+              class="view-tab active"
               role="tab"
               aria-selected="true"
-              aria-controls="journey-panel"
-              data-step="0"
+              aria-controls="experience-video-view"
             >
-              <span>01</span> Define</button
-            ><button
-              id="journey-tab-1"
+              <span class="view-tab-icon" aria-hidden="true">▶</span> Watch Full Demo <span class="view-tab-badge">127s · 1080p</span>
+            </button>
+            <button
+              id="view-tab-walkthrough"
+              class="view-tab"
               role="tab"
               aria-selected="false"
-              aria-controls="journey-panel"
+              aria-controls="experience-walkthrough-view"
               tabindex="-1"
-              data-step="1"
             >
-              <span>02</span> Step</button
-            ><button
-              id="journey-tab-2"
-              role="tab"
-              aria-selected="false"
-              aria-controls="journey-panel"
-              tabindex="-1"
-              data-step="2"
-            >
-              <span>03</span> Run</button
-            ><button
-              id="journey-tab-3"
-              role="tab"
-              aria-selected="false"
-              aria-controls="journey-panel"
-              tabindex="-1"
-              data-step="3"
-            >
-              <span>04</span> Parallel</button
-            ><button
-              id="journey-tab-4"
-              role="tab"
-              aria-selected="false"
-              aria-controls="journey-panel"
-              tabindex="-1"
-              data-step="4"
-            >
-              <span>05</span> Dashboard</button
-            ><button
-              id="journey-tab-5"
-              role="tab"
-              aria-selected="false"
-              aria-controls="journey-panel"
-              tabindex="-1"
-              data-step="5"
-            >
-              <span>06</span> Skill
+              <span class="view-tab-icon" aria-hidden="true">⌨</span> Interactive Walkthrough
             </button>
           </div>
+
+          <!-- View 1: Video Demo View -->
           <div
-            id="journey-panel"
-            class="journey-panel"
+            id="experience-video-view"
+            class="experience-view-panel"
             role="tabpanel"
-            aria-labelledby="journey-tab-0"
-            tabindex="0"
+            aria-labelledby="view-tab-video"
           >
-            <div class="journey-copy">
-              <p class="tiny-label" id="journey-kicker">START WITH INTENT</p>
-              <h3 id="journey-title">Give the research<br />a direction.</h3>
-              <p id="journey-description">
-                Describe the task, the evaluation metric, and the boundaries.
-                Your Scientist decides which experiments to try.
-              </p>
-              <div class="journey-pagination">
-                <span id="journey-count">01 / 06</span
-                ><button id="journey-next" aria-label="Next walkthrough step">
-                  →
-                </button>
+            <div class="demo-video-stage">
+              <div class="video-container">
+                <video
+                  id="experience-video"
+                  playsinline
+                  controls
+                  preload="metadata"
+                  poster="assets/dashboard-result.png"
+                  aria-label="SciOdyssey Experience Journey walkthrough demonstration video"
+                >
+                  <source src="assets/experience-journey-demo.mp4" type="video/mp4" />
+                  <track kind="subtitles" src="assets/subtitles.vtt" srclang="en" label="English" default />
+                  Your browser does not support HTML5 video.
+                </video>
+                <div class="video-overlay" id="video-overlay" aria-label="Play demonstration video with narration">
+                  <button class="video-play-btn" id="video-play-btn" aria-label="Play demo video">
+                    <svg viewBox="0 0 24 24" width="34" height="34" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                  </button>
+                  <span class="video-overlay-title">SciOdyssey · Experience Journey</span>
+                  <span class="video-overlay-sub">Click to play 127s demonstration with narration</span>
+                </div>
               </div>
-            </div>
-            <div class="demo-window">
-              <div class="window-bar">
-                <span class="window-dots" aria-hidden="true"
-                  ><i></i><i></i><i></i></span
-                ><span id="demo-filename">task.md</span
-                ><span class="tiny-label">ILLUSTRATIVE WALKTHROUGH</span>
+
+              <div class="video-chapter-bar" role="navigation" aria-label="Jump to demo chapter">
+                <span class="chapter-bar-label">CHAPTERS:</span>
+                <div class="chapter-pills">
+                  <button class="chapter-pill active" data-time="0.8">01 Brief <small>0:00</small></button>
+                  <button class="chapter-pill" data-time="29.2">02 Step <small>0:29</small></button>
+                  <button class="chapter-pill" data-time="45.0">03 Run <small>0:45</small></button>
+                  <button class="chapter-pill" data-time="62.8">04 Parallel <small>1:02</small></button>
+                  <button class="chapter-pill" data-time="82.6">05 Dashboard <small>1:22</small></button>
+                  <button class="chapter-pill" data-time="102.4">06 Skill <small>1:42</small></button>
+                </div>
               </div>
-              <div id="demo-content" class="demo-content">
-                <div class="editor-line">
-                  <span>01</span><b># Research objective</b>
-                </div>
-                <div class="editor-line"><span>02</span></div>
-                <div class="editor-line">
-                  <span>03</span>Improve short-video recommendation
-                </div>
-                <div class="editor-line">
-                  <span>04</span>on the KuaiRand-Pure benchmark.
-                </div>
-                <div class="editor-line"><span>05</span></div>
-                <div class="editor-line">
-                  <span>06</span><b>## Evaluation</b>
-                </div>
-                <div class="editor-line">
-                  <span>07</span>Primary = mean(GAUC, nDCG@5)
-                </div>
-                <div class="editor-line">
-                  <span>08</span>Use the official validation split.
-                </div>
-                <div class="editor-line"><span>09</span></div>
-                <div class="editor-line">
-                  <span>10</span><b>## Boundaries</b>
-                </div>
-                <div class="editor-line">
-                  <span>11</span>Respect the budget. Preserve evidence.
-                </div>
-                <span class="editor-cursor" aria-hidden="true"></span>
+
+              <div class="video-live-caption" id="video-live-caption" aria-live="polite">
+                <span class="caption-lead">VOICEOVER:</span>
+                <span id="live-caption-text">SciOdyssey. A research layer over your agent harness. Your tools. One persistent research world.</span>
               </div>
-              <div class="window-footer">
-                <span class="status-dot"></span
-                ><span id="demo-status">Task contract ready</span
-                ><span id="demo-footer-label">YOU SET THE BOUNDARY</span>
+
+              <div class="video-footer-meta">
+                <span>Narrated walkthrough · 1920×1080 30fps · H.264 / AAC</span>
+                <div class="video-actions">
+                  <button id="video-fs-btn" class="video-action-btn">Full screen ⛶</button>
+                  <a href="assets/experience-journey-demo.mp4" download class="video-action-btn">Download MP4 ⤓</a>
+                </div>
               </div>
             </div>
           </div>
-          <div class="experience-note">
-            <span>Autonomy, with a clear handoff.</span>
-            <p>
-              Independent branches are reviewed after completion. Adoption is
-              explicit through <code>parallel-promote</code>.
-            </p>
+
+          <!-- View 2: Interactive Walkthrough View -->
+          <div
+            id="experience-walkthrough-view"
+            class="experience-view-panel"
+            role="tabpanel"
+            aria-labelledby="view-tab-walkthrough"
+            hidden
+          >
+            <div
+              class="journey-tabs"
+              role="tablist"
+              aria-label="Research walkthrough"
+            >
+              <button
+                id="journey-tab-0"
+                role="tab"
+                aria-selected="true"
+                aria-controls="journey-panel"
+                data-step="0"
+              >
+                <span>01</span> Define</button
+              ><button
+                id="journey-tab-1"
+                role="tab"
+                aria-selected="false"
+                aria-controls="journey-panel"
+                tabindex="-1"
+                data-step="1"
+              >
+                <span>02</span> Step</button
+              ><button
+                id="journey-tab-2"
+                role="tab"
+                aria-selected="false"
+                aria-controls="journey-panel"
+                tabindex="-1"
+                data-step="2"
+              >
+                <span>03</span> Run</button
+              ><button
+                id="journey-tab-3"
+                role="tab"
+                aria-selected="false"
+                aria-controls="journey-panel"
+                tabindex="-1"
+                data-step="3"
+              >
+                <span>04</span> Parallel</button
+              ><button
+                id="journey-tab-4"
+                role="tab"
+                aria-selected="false"
+                aria-controls="journey-panel"
+                tabindex="-1"
+                data-step="4"
+              >
+                <span>05</span> Dashboard</button
+              ><button
+                id="journey-tab-5"
+                role="tab"
+                aria-selected="false"
+                aria-controls="journey-panel"
+                tabindex="-1"
+                data-step="5"
+              >
+                <span>06</span> Skill
+              </button>
+            </div>
+            <div
+              id="journey-panel"
+              class="journey-panel"
+              role="tabpanel"
+              aria-labelledby="journey-tab-0"
+              tabindex="0"
+            >
+              <div class="journey-copy">
+                <p class="tiny-label" id="journey-kicker">START WITH INTENT</p>
+                <h3 id="journey-title">Give the research<br />a direction.</h3>
+                <p id="journey-description">
+                  Describe the task, the evaluation metric, and the boundaries.
+                  Your Scientist decides which experiments to try.
+                </p>
+                <div class="journey-pagination">
+                  <span id="journey-count">01 / 06</span
+                  ><button id="journey-next" aria-label="Next walkthrough step">
+                    →
+                  </button>
+                </div>
+              </div>
+              <div class="demo-window">
+                <div class="window-bar">
+                  <span class="window-dots" aria-hidden="true"
+                    ><i></i><i></i><i></i></span
+                  ><span id="demo-filename">task.md</span
+                  ><span class="tiny-label">ILLUSTRATIVE WALKTHROUGH</span>
+                </div>
+                <div id="demo-content" class="demo-content">
+                  <div class="editor-line">
+                    <span>01</span><b># Research objective</b>
+                  </div>
+                  <div class="editor-line"><span>02</span></div>
+                  <div class="editor-line">
+                    <span>03</span>Improve short-video recommendation
+                  </div>
+                  <div class="editor-line">
+                    <span>04</span>on the KuaiRand-Pure benchmark.
+                  </div>
+                  <div class="editor-line"><span>05</span></div>
+                  <div class="editor-line">
+                    <span>06</span><b>## Evaluation</b>
+                  </div>
+                  <div class="editor-line">
+                    <span>07</span>Primary = mean(GAUC, nDCG@5)
+                  </div>
+                  <div class="editor-line">
+                    <span>08</span>Use the official validation split.
+                  </div>
+                  <div class="editor-line"><span>09</span></div>
+                  <div class="editor-line">
+                    <span>10</span><b>## Boundaries</b>
+                  </div>
+                  <div class="editor-line">
+                    <span>11</span>Respect the budget. Preserve evidence.
+                  </div>
+                  <span class="editor-cursor" aria-hidden="true"></span>
+                </div>
+                <div class="window-footer">
+                  <span class="status-dot"></span
+                  ><span id="demo-status">Task contract ready</span
+                  ><span id="demo-footer-label">YOU SET THE BOUNDARY</span>
+                </div>
+              </div>
+            </div>
+            <div class="experience-note">
+              <span>Autonomy, with a clear handoff.</span>
+              <p>
+                Independent branches are reviewed after completion. Adoption is
+                explicit through <code>parallel-promote</code>.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -988,45 +1077,6 @@ uv sync --locked --python 3.12
             <p>Requires Git, uv, and an authenticated agent CLI.</p>
             <span id="copy-status" class="sr-only" role="status"></span>
           </div>
-        </div>
-      </section>
-      <section class="team-section container" aria-labelledby="team-heading">
-        <div class="team-heading">
-          <p class="tiny-label">THE PEOPLE BEHIND THE LOOP</p>
-          <h2 id="team-heading">Five people. One shared world.</h2>
-        </div>
-        <div class="team-list">
-          <a
-            href="https://github.com/zc18202534657"
-            target="_blank"
-            rel="noopener noreferrer"
-            ><span class="team-initials">CZ</span><strong>Chen Zhu ↗</strong
-            ><span>Team lead / system</span></a
-          ><a
-            href="https://github.com/zziyu-4104"
-            target="_blank"
-            rel="noopener noreferrer"
-            ><span class="team-initials">ZZ</span><strong>Zhou Ziyu ↗</strong
-            ><span>Modeling / experiments</span></a
-          ><a
-            href="https://github.com/xushilin37"
-            target="_blank"
-            rel="noopener noreferrer"
-            ><span class="team-initials">SX</span><strong>Shilin Xu ↗</strong
-            ><span>Data / metrics</span></a
-          ><a
-            href="https://github.com/gegao855"
-            target="_blank"
-            rel="noopener noreferrer"
-            ><span class="team-initials">GG</span><strong>GE GAO ↗</strong
-            ><span>Runtime / reliability</span></a
-          ><a
-            href="https://github.com/jiran-li"
-            target="_blank"
-            rel="noopener noreferrer"
-            ><span class="team-initials">JL</span><strong>Jiran Li ↗</strong
-            ><span>Evidence / reproducibility</span></a
-          >
         </div>
       </section>
     </main>

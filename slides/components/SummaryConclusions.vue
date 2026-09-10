@@ -18,10 +18,24 @@ onSlideEnter(async () => {
 <template>
   <section ref="root" class="conclusion-scatter" aria-label="Summary of research evidence and lessons" @click.stop>
     <div class="conclusion-center">
-      <span class="conclusion-brand">SciOdyssey</span>
       <h1>Summary<span>.</span></h1>
-      <p>The system. The evidence.<br><span>What we learned.</span></p>
-      <span class="conclusion-invitation">Click a card to explore.</span>
+      <p class="conclusion-invitation">Click a card to explore.</p>
+
+      <a
+        href="https://sciodyssey.zc6600.wiki/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="summary-qr-badge"
+        title="Open SciOdyssey Wiki (https://sciodyssey.zc6600.wiki/)"
+        @click.stop
+      >
+        <img class="summary-qr-img" src="/assets/sciodyssey_qr.svg" alt="Scan to open the SciOdyssey project wiki">
+        <span class="summary-qr-info">
+          <span class="summary-qr-kicker">Project wiki &amp; demo</span>
+          <span class="summary-qr-url">sciodyssey.zc6600.wiki ↗</span>
+        </span>
+      </a>
+
       <button type="button" class="summary-finish" @click.stop="go('thank-you')" @keydown.enter.stop @keydown.space.stop>Thank You <span aria-hidden="true">→</span></button>
     </div>
 
@@ -68,32 +82,83 @@ onSlideEnter(async () => {
 
 .conclusion-center {
   position: absolute;
-  inset: 218px 278px auto;
+  inset: 220px 278px auto;
   text-align: center;
-}
-
-.conclusion-brand {
-  color: #78818b;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .conclusion-center h1 {
-  margin: 7px 0 12px;
+  margin: 0;
   font-family: var(--deck-sans);
-  font-size: 66px;
-  font-weight: 500;
-  line-height: 1;
+  font-size: 56px;
+  font-weight: 450;
+  line-height: 1.1;
+  padding-bottom: 8px;
   letter-spacing: -2px;
 }
 
 .conclusion-center h1 span { color: var(--orange); }
-.conclusion-center p { margin: 0; font-size: 16px; line-height: 1.5; }
-.conclusion-center p span { color: #1683b4; }
-.conclusion-invitation { display: block; margin-top: 15px; color: #85878d; font-size: 11px; }
-.summary-finish { margin-top: 10px; color: #0284c7; font: 500 11px var(--deck-sans); cursor: pointer; }
+.conclusion-center .conclusion-invitation {
+  margin: 6px 0 0;
+  color: #85878d;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.summary-qr-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 26px;
+  padding: 0;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.summary-qr-badge:hover .summary-qr-url {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.summary-qr-badge:focus-visible {
+  outline: 2px solid #0284c7;
+  outline-offset: 5px;
+}
+
+.summary-qr-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+  display: block;
+}
+
+.summary-qr-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.summary-qr-kicker {
+  font-size: 9px;
+  font-weight: 400;
+  color: #85878d;
+}
+
+.summary-qr-url {
+  font-size: 11px;
+  font-weight: 500;
+  color: #0284c7;
+  margin-top: 3px;
+}
+
+.summary-finish { margin-top: 20px; color: #85878d; font: 400 10px var(--deck-sans); cursor: pointer; }
 .summary-finish span { margin-left: 7px; }
+.summary-finish:hover { color: #0284c7; }
 .summary-finish:focus-visible { outline: 2px solid #0284c7; outline-offset: 4px; }
 
 .conclusion-card {
