@@ -486,22 +486,23 @@ const evaluationPolishCss = String.raw`
   background: #9bb0be;
 }
 .trajectory-svg-container {
-  margin-top: 4px;
+  margin-top: 5px;
   border: 1px solid #dfd4c4;
   border-radius: 6px;
   background: #fbf7ee;
-  padding: 3px 5px 2px;
+  padding: 4px 6px 3px;
 }
 .trajectory-line-chart {
   display: block;
   width: 100%;
-  height: 94px;
+  height: 108px;
 }
 .trajectory-stats-row {
   display: flex;
   align-items: center;
-  gap: 6px;
-  margin-top: 4px;
+  gap: 7px;
+  margin-top: 7px;
+  margin-bottom: 2px;
   font-family: var(--mono);
   font-size: 8.8px;
   color: #556673;
