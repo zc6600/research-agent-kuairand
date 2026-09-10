@@ -433,6 +433,91 @@ const systemPolishCss = String.raw`
 }
 `;
 
+const evaluationPolishCss = String.raw`
+.trajectory-card {
+  padding-bottom: 7px;
+}
+.trajectory-chart-legend {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+  margin-top: 3px;
+  padding: 0 1px;
+}
+.tc-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 8.8px;
+  color: #4b5a67;
+}
+.tc-legend-item.is-sciodyssey {
+  color: var(--navy);
+}
+.tc-legend-item.is-codex {
+  color: #657584;
+}
+.tc-line {
+  display: inline-block;
+  width: 14px;
+  height: 2px;
+  border-radius: 1px;
+}
+.tc-line.is-solid {
+  background: var(--navy);
+}
+.tc-line.is-dashed {
+  height: 0;
+  border-top: 1.5px dashed #9bb0be;
+  background: transparent;
+}
+.tc-dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  margin-left: -2px;
+}
+.is-sciodyssey .tc-dot {
+  background: var(--navy);
+}
+.is-codex .tc-dot {
+  background: #9bb0be;
+}
+.trajectory-svg-container {
+  margin-top: 4px;
+  border: 1px solid #dfd4c4;
+  border-radius: 6px;
+  background: #fbf7ee;
+  padding: 3px 5px 2px;
+}
+.trajectory-line-chart {
+  display: block;
+  width: 100%;
+  height: 94px;
+}
+.trajectory-stats-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  font-family: var(--mono);
+  font-size: 8.8px;
+  color: #556673;
+}
+.trajectory-stats-row b {
+  color: var(--ink);
+}
+.trajectory-stats-row i {
+  font-style: normal;
+  color: #c0b3a3;
+}
+.trajectory-stats-row .t-gain b {
+  color: #16803b;
+}
+`;
+
 function applyProblemPolish() {
   const panel = document.querySelector('.problem');
   if (!panel) return;
@@ -619,6 +704,7 @@ try {
   await page.goto(new URL('poster.html', root).href, { waitUntil: 'networkidle' });
   await page.addStyleTag({ content: problemPolishCss });
   await page.addStyleTag({ content: systemPolishCss });
+  await page.addStyleTag({ content: evaluationPolishCss });
   await page.evaluate(applyProblemPolish);
   await page.evaluate(applySystemPolish);
   await page.evaluate(() => document.fonts.ready);
