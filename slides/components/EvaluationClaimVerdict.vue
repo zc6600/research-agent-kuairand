@@ -113,7 +113,7 @@ function closeCard() {
     <header class="claim-header" :class="{ dimmed: selected }">
       <div class="claim-section-kicker mono">03 / EVALUATION</div>
       <div class="claim-label mono">CLAIM</div>
-      <h1>Our agent can autonomously discover and validate competitive model improvements.</h1>
+      <h1>Our agent can autonomously sustain verified gains.</h1>
       <div class="claim-boundary mono"><span>KUAIRAND-PURE</span><span>FIXED EVALUATOR</span><span>PUBLIC VALIDATION</span></div>
     </header>
 

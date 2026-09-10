@@ -29,7 +29,7 @@ const comparisonPage = ref<0 | 1>(0)
 const cards: Card[] = [
   { id: 'result', no: '01', kicker: 'MEASURED RESULT', claim: 'The model got better.', accent: 'var(--green)', rotate: -15, x: 0, y: 30, scale: .96, z: 1, title: 'A retained checkpoint beat the official FM reference.', detail: 'The final E013 checkpoint reached 0.6059363 Primary on public validation, an absolute improvement of +0.0043053 over the reproduced FM baseline (0.6016310).', meta: '0.6016310 → 0.6059363 · GAUC 0.6728421 · nDCG@5 0.5390304' },
   { id: 'trajectory', no: '02', kicker: 'SUSTAINED SEARCH', claim: 'The search stayed productive.', accent: 'var(--blue)', rotate: -7, x: 140, y: 8, scale: .96, z: 2, title: 'The score came from a trajectory, not a single lucky edit.', detail: 'Seven Full public-validation evaluations were retained across four autonomous cycles, from a validated baseline to a 46-field, 8-seed FM ensemble.', meta: '4 cycles · 7 Full experiments · E003–E013 retained frontier' },
-  { id: 'robustness', no: '03', kicker: 'SELF-HEALING & GATEKEEPING', claim: 'The agent recovered from failure.', accent: 'var(--rose)', rotate: 0, x: 280, y: 0, scale: .96, z: 3, title: 'Autonomous runtime recovery & source-level Meta gatekeeping.', detail: 'The Scientist self-healed serialization crashes in Cycle 1. In one experiment, Meta audited proxy data flow, caught UNK user sampling distortion, and rejected spurious state promotion.', meta: 'Cycle 1 float32 auto-repair · Experiment proxy audit & state rejection · 0 human interventions' },
+  { id: 'robustness', no: '03', kicker: 'RECOVERY & REVIEW', claim: 'The agent recovered from failure.', accent: 'var(--rose)', rotate: 0, x: 280, y: 0, scale: .96, z: 3, title: 'The agent can recover and check its own results.', detail: 'The Scientist fixed a save error in Cycle 1. In one experiment, META checked the test data, found UNK users leaking into the test, and blocked a bad result.', meta: 'Cycle 1 auto-fix · Independent data check · No human help' },
   { id: 'comparison', no: '04', kicker: 'ARCHITECTURE ABLATION', claim: 'Meta-scientist beats direct agents.', accent: 'var(--purple)', rotate: 7, x: 420, y: 8, scale: .96, z: 4, title: 'Same model family, stronger research organization.', detail: 'Direct Antigravity reached 0.6045803. Antigravity with delegated subagents reached 0.6047213. Meta-Scientist over Antigravity reached 0.6052000.', meta: 'Antigravity direct 0.6045803 · Antigravity + subagents 0.6047213 · Meta-Scientist + Antigravity 0.6052000' },
   { id: 'tokenmaxxing', no: '05', kicker: 'RESOURCE ACCOUNTING', claim: 'We are not tokenmaxxing', accent: 'var(--orange)', rotate: 15, x: 560, y: 30, scale: .96, z: 5, title: 'Resource use is part of the evidence, not the thesis.', detail: 'The project-level resource story lives here: ~US$10 subscription-equivalent usage on consumer hardware with zero GPU-hours.', meta: '~US$10 project estimate · 1 × MacBook M2 · 0 GPU-hours · 100% CPU inference' },
 ]
@@ -78,7 +78,7 @@ const handleKey = (event: KeyboardEvent) => {
     <header class="claim-header" :class="{ dimmed: selected }">
       <div class="section-kicker mono">03 / EVALUATION</div>
       <div class="claim-label mono">CLAIM</div>
-      <h1>Our agent can autonomously discover and validate competitive model improvements.</h1>
+      <h1>Our agent can autonomously sustain verified gains.</h1>
       <div class="claim-boundary mono"><span>KUAIRAND-PURE</span><span>FIXED EVALUATOR</span><span>PUBLIC VALIDATION</span></div>
     </header>
 
