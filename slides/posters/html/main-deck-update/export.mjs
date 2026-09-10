@@ -712,7 +712,7 @@ function applyProblemPolish() {
     {
       cls: 'failure-inertia',
       title: 'Trajectory momentum',
-      claim: 'A single context carries past momentum into local basins.',
+      claim: 'A single context carries past momentum.',
       svg: `
         <svg viewBox="0 0 176 46" class="failure-svg" aria-label="Trajectory trapped in local basin missing alternative ideas">
           <path d="M 8 11 Q 60 42 112 19" fill="none" stroke="#d5c8b5" stroke-width="1.5" stroke-dasharray="3 2" />
