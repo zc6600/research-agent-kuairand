@@ -1,14 +1,8 @@
 {
-  "name": "sciodyssey",
-  "compatibility_date": "2026-09-03",
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "sciodyssey-web",
+  "compatibility_date": "2026-09-10",
   "assets": {
-    "directory": "./slides/dist",
-    "not_found_handling": "single-page-application"
-  },
-  "routes": [
-    {
-      "pattern": "slides.sciodyssey.zc6600.wiki",
-      "custom_domain": true
-    }
-  ]
+    "directory": "./website"
+  }
 }
