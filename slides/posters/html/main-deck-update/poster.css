@@ -1742,16 +1742,16 @@ b, strong { font-weight: 700; color: var(--ink); }
   font-size: 7.8px;
   font-weight: 800;
   letter-spacing: .8px;
-  color: #8c3217;
-  background: #f5e4da;
-  padding: 1.5px 5px;
+  color: #0b456b;
+  background: #e2ebf2;
+  padding: 1.5px 5.5px;
   border-radius: 3px;
 }
 
 .sup-sub {
   font-size: 9px;
-  color: #6a7885;
-  font-weight: 500;
+  color: #4a5c6b;
+  font-weight: 600;
 }
 
 .sup-badge {
@@ -1759,8 +1759,8 @@ b, strong { font-weight: 700; color: var(--ink); }
   font-size: 7.5px;
   font-weight: 700;
   letter-spacing: .6px;
-  color: #0b456b;
-  background: #e3edf4;
+  color: #8c3217;
+  background: #f7e8e1;
   padding: 1.5px 4.5px;
   border-radius: 3px;
 }
