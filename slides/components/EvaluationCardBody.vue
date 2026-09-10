@@ -19,14 +19,14 @@ const selectComparisonPage = (page: 0 | 1) => {
         <div>
           <span class="eyeline">PUBLIC-VALIDATION PRIMARY</span>
           <strong class="hero-number">0.6059363</strong>
-          <p><b>+0.0043363</b> over the official five-field FM</p>
+          <p><b>+0.0043053</b> over reproduced FM baseline (0.6016310)</p>
           <small>46 categorical feature interactions · 8-seed FM · rank 16 · NumPy / CPU</small>
         </div>
         <EvaluationScoreBars />
       </div>
       <table>
-        <thead><tr><th>Metric</th><th>Official FM</th><th>Our agent</th></tr></thead>
-        <tbody><tr><td>GAUC</td><td>0.6674000</td><td>0.6728421</td></tr><tr><td>nDCG@5</td><td>0.5357000</td><td>0.5390304</td></tr><tr><td>Primary</td><td>0.6016000</td><td><b>0.6059363</b></td></tr></tbody>
+        <thead><tr><th>Metric</th><th>Reproduced FM</th><th>Our agent</th></tr></thead>
+        <tbody><tr><td>GAUC</td><td>0.6671070</td><td>0.6728421</td></tr><tr><td>nDCG@5</td><td>0.5361550</td><td>0.5390304</td></tr><tr><td>Primary</td><td>0.6016310</td><td><b>0.6059363</b></td></tr></tbody>
       </table>
       <p class="boundary">Primary = mean(GAUC, nDCG@5). Verified on the official validation split following challenge protocol.</p>
     </template>

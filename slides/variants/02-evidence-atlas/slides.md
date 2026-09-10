@@ -405,8 +405,8 @@ Parallel breadth is a framework capability, not the claimed cause of the final b
 # Autonomous research. Measured gains.
 
 <div class="score">
-  <div><div class="mono muted" style="font-size: 13px">PRIMARY / RESEARCH AGENT</div><div class="big-number">0.6059363</div><div class="delta"><span class="green">+0.0043363</span> <span class="muted">absolute improvement</span></div></div>
-  <div><table><thead><tr><th>METRIC</th><th>Official FM</th><th>Ours</th></tr></thead><tbody><tr><td>GAUC</td><td>0.6674000</td><td class="green">0.6728421</td></tr><tr><td>nDCG@5</td><td>0.5357000</td><td class="green">0.5390304</td></tr><tr><td>Primary</td><td>0.6016000</td><td class="green">0.6059363</td></tr></tbody></table></div>
+  <div><div class="mono muted" style="font-size: 13px">PRIMARY / RESEARCH AGENT</div><div class="big-number">0.6059363</div><div class="delta"><span class="green">+0.0043053</span> <span class="muted">absolute improvement</span></div></div>
+  <div><table><thead><tr><th>METRIC</th><th>Reproduced FM</th><th>Ours</th></tr></thead><tbody><tr><td>GAUC</td><td>0.6671070</td><td class="green">0.6728421</td></tr><tr><td>nDCG@5</td><td>0.5361550</td><td class="green">0.5390304</td></tr><tr><td>Primary</td><td>0.6016310</td><td class="green">0.6059363</td></tr></tbody></table></div>
 </div>
 
 <div class="bottom-note note">Primary = mean(GAUC, nDCG@5). Public validation only; hidden-test scoring is organizer-controlled.<br>Final recipe: 46 categorical features × 8-seed FM ensemble · NumPy / CPU</div>

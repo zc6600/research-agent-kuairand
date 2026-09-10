@@ -129,11 +129,11 @@ mdc: true
         <div class="p-results">
         <h3>What survived the run.</h3>
         <table class="p-score-table">
-          <thead><tr><th>Metric</th><th>Official FM</th><th>SciOdyssey</th><th>Absolute Δ</th></tr></thead>
+          <thead><tr><th>Metric</th><th>Reproduced FM</th><th>SciOdyssey</th><th>Absolute Δ</th></tr></thead>
           <tbody>
-            <tr class="p-primary"><th>Primary</th><td>0.6016000</td><td>0.6059363</td><td>+0.0043363</td></tr>
-            <tr><th>GAUC</th><td>0.6674000</td><td>0.6728421</td><td>+0.0054421</td></tr>
-            <tr><th>nDCG@5</th><td>0.5357000</td><td>0.5390304</td><td>+0.0033304</td></tr>
+            <tr class="p-primary"><th>Primary</th><td>0.6016310</td><td>0.6059363</td><td>+0.0043053</td></tr>
+            <tr><th>GAUC</th><td>0.6671070</td><td>0.6728421</td><td>+0.0057351</td></tr>
+            <tr><th>nDCG@5</th><td>0.5361550</td><td>0.5390304</td><td>+0.0028754</td></tr>
           </tbody>
         </table>
         <div class="p-model">Primary = mean(GAUC, nDCG@5). Final recipe: 46 categorical features × eight-seed FM ensemble · NumPy / CPU.</div>

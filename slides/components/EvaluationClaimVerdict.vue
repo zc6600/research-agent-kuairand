@@ -62,8 +62,8 @@ const cards: EvidenceCard[] = [
     scale: 1.07,
     depth: 6,
     detailTitle: 'A retained checkpoint beat the official FM reference.',
-    detailCopy: 'The final E013 checkpoint reached 0.6059363 Primary on public validation, an absolute improvement of +0.0043363 over the official five-field FM reference.',
-    detailMeta: '0.6016000 → 0.6059363 · GAUC 0.6728421 · nDCG@5 0.5390304',
+    detailCopy: 'The final E013 checkpoint reached 0.6059363 Primary on public validation, an absolute improvement of +0.0043053 over the reproduced FM baseline (0.6016310).',
+    detailMeta: '0.6016310 → 0.6059363 · GAUC 0.6728421 · nDCG@5 0.5390304',
   },
   {
     id: 'autonomy',
@@ -150,14 +150,14 @@ function closeCard() {
         <p>{{ selected.detailTitle }}</p>
 
         <div class="inspection-visual inspection-result" v-if="selected.id === 'result'">
-          <div class="score-before"><span class="mono">OFFICIAL FM</span><b>0.6016000</b></div>
+          <div class="score-before"><span class="mono">REPRODUCED FM</span><b>0.6016310</b></div>
           <svg viewBox="0 0 520 180" aria-hidden="true">
             <line x1="28" y1="132" x2="492" y2="132" class="inspect-baseline" />
             <polyline points="32,130 94,130 176,95 250,72 332,62 416,35 488,23" class="inspect-line" />
             <circle cx="488" cy="23" r="9" class="inspect-final" />
             <text x="32" y="158">E003</text><text x="488" y="17" text-anchor="end">E013</text>
           </svg>
-          <div class="score-after"><span class="mono">SCIODYSSEY</span><b>0.6059363</b><small>+0.0043363</small></div>
+          <div class="score-after"><span class="mono">SCIODYSSEY</span><b>0.6059363</b><small>+0.0043053</small></div>
         </div>
 
         <div class="inspection-visual inspection-trajectory" v-else-if="selected.id === 'trajectory'">
