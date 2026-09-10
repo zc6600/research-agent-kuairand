@@ -1417,29 +1417,33 @@ b, strong { font-weight: 700; color: var(--ink); }
 .embedded-token-chart-svg .chart-reference { stroke: #8fa0b0; stroke-dasharray: 5 4; stroke-width: 1.6; }
 .embedded-token-chart-svg .chart-reference-label { fill: #364857; font-size: 13.5px; font-weight: 700; font-family: var(--mono); }
 .embedded-token-chart-svg .chart-leaders line { stroke: #6f8394; stroke-width: 1.4; stroke-dasharray: 2.5 2.5; }
-.embedded-token-chart-svg .chart-point { stroke: #fff; stroke-width: 2.5; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.18)); }
+.embedded-token-chart-svg .chart-point { stroke: #faf6ed; stroke-width: 2.5; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.15)); }
 .embedded-token-chart-svg .chart-point-blue { fill: #1d6199; }
 .embedded-token-chart-svg .chart-point-orange { fill: #c05621; }
 .embedded-token-chart-svg .chart-point-purple { fill: #6b46c1; }
-.embedded-token-chart-svg .chart-point-green { fill: #0b456b; stroke: #fff; stroke-width: 3; }
+.embedded-token-chart-svg .chart-point-green { fill: #0b456b; stroke: #faf6ed; stroke-width: 3; }
 .embedded-token-chart-svg .chart-range { stroke: #6b46c1; stroke-width: 2.2; }
 
-/* Callout badge card styles */
+/* Callout badge card styles - warm archival paper palette (zero white) */
 .chart-badge-card {
-  fill: #ffffff;
-  stroke: var(--border);
-  stroke-width: 1;
-  filter: drop-shadow(0 1px 3px rgba(30, 25, 18, 0.08));
+  fill: #f5efe4;
+  stroke: #ddcfbe;
+  stroke-width: 0.9;
+  filter: drop-shadow(0 1px 2px rgba(40, 30, 20, 0.05));
 }
-.chart-badge-card.is-winner {
-  fill: #edf4f9;
-  stroke: var(--navy);
-  stroke-width: 1.6;
-  filter: drop-shadow(0 2px 5px rgba(11, 69, 107, 0.16));
+.chart-badge-card.is-orange {
+  fill: #fcf1e7;
+  stroke: #ebd0bc;
 }
 .chart-badge-card.is-purple {
-  fill: #fbf9fd;
-  stroke: #cfbfe3;
+  fill: #f5eef9;
+  stroke: #dbcaec;
+}
+.chart-badge-card.is-winner {
+  fill: #eaf2f8;
+  stroke: var(--navy);
+  stroke-width: 1.4;
+  filter: drop-shadow(0 1.5px 3px rgba(11, 69, 107, 0.12));
 }
 
 /* Callout typography */
