@@ -682,28 +682,29 @@ function applyProblemPolish() {
       svg: `
         <svg viewBox="0 0 176 46" class="failure-svg" aria-label="Observe to Code to Error to dead end">
           <g class="f-step">
-            <rect x="2" y="5" width="42" height="17" rx="3" fill="#f8f4eb" stroke="#d5c8b5" stroke-width="1" />
-            <text x="23" y="16.5" font-size="8.2" text-anchor="middle" fill="#2d3d49" font-family="var(--mono)" font-weight="600">Observe</text>
+            <rect x="4" y="4" width="44" height="17" rx="3" fill="#f8f4eb" stroke="#d5c8b5" stroke-width="1" />
+            <text x="26" y="15.5" font-size="8.2" text-anchor="middle" fill="#2d3d49" font-family="var(--mono)" font-weight="600">Observe</text>
           </g>
-          <path d="M 47 13.5 L 53 13.5" stroke="#9bb2c0" stroke-width="1.5" />
-          <polygon points="56,13.5 52,11 52,16" fill="#9bb2c0" />
+          <path d="M 50 12.5 L 56 12.5" stroke="#9bb2c0" stroke-width="1.4" />
+          <polygon points="59,12.5 55,10 55,15" fill="#9bb2c0" />
 
           <g class="f-step">
-            <rect x="58" y="5" width="36" height="17" rx="3" fill="#f8f4eb" stroke="#d5c8b5" stroke-width="1" />
-            <text x="76" y="16.5" font-size="8.2" text-anchor="middle" fill="#2d3d49" font-family="var(--mono)" font-weight="600">Code</text>
+            <rect x="59" y="4" width="38" height="17" rx="3" fill="#f8f4eb" stroke="#d5c8b5" stroke-width="1" />
+            <text x="78" y="15.5" font-size="8.2" text-anchor="middle" fill="#2d3d49" font-family="var(--mono)" font-weight="600">Code</text>
           </g>
-          <path d="M 97 13.5 L 103 13.5" stroke="#9bb2c0" stroke-width="1.5" />
-          <polygon points="106,13.5 102,11 102,16" fill="#9bb2c0" />
+          <path d="M 99 12.5 L 105 12.5" stroke="#9bb2c0" stroke-width="1.4" />
+          <polygon points="108,12.5 104,10 104,15" fill="#9bb2c0" />
 
           <g class="f-step f-err">
-            <rect x="108" y="5" width="65" height="17" rx="3" fill="#fbeee7" stroke="#e0a892" stroke-width="1" />
-            <text x="140.5" y="16.5" font-size="8" font-weight="800" text-anchor="middle" fill="#b94020" font-family="var(--mono)">✖ ERROR</text>
+            <rect x="108" y="4" width="60" height="17" rx="3" fill="#fbeee7" stroke="#e0a892" stroke-width="1" />
+            <text x="138" y="15.5" font-size="8" font-weight="800" text-anchor="middle" fill="#b94020" font-family="var(--mono)">✖ ERROR</text>
           </g>
 
-          <path d="M 140.5 22 L 140.5 29 L 88 29" stroke="#b94020" stroke-width="1.2" stroke-dasharray="2 2" fill="none" />
-          <polygon points="85,29 89,26.5 89,31.5" fill="#b94020" />
-          <rect x="14" y="23" width="68" height="16" rx="3" fill="#faefe9" stroke="#ddb8a5" stroke-width="1" />
-          <text x="48" y="34" font-size="7.6" font-weight="700" text-anchor="middle" fill="#8c3217" font-family="var(--mono)">dead end (halts)</text>
+          <line x1="138" y1="21" x2="138" y2="25" stroke="#b94020" stroke-width="1.3" stroke-dasharray="2 1.5" />
+          <polygon points="138,27.5 135.5,24 140.5,24" fill="#b94020" />
+
+          <rect x="104" y="28" width="68" height="15" rx="3" fill="#faefe9" stroke="#ddb8a5" stroke-width="1" />
+          <text x="138" y="38.5" font-size="7.2" font-weight="700" text-anchor="middle" fill="#8c3217" font-family="var(--mono)">dead end (halts)</text>
         </svg>
       `,
       takeaway: 'Unhandled runtime faults halt unassisted runs',
