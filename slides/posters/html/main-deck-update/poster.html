@@ -776,31 +776,89 @@
             </div>
           </div>
 
-          <div class="journey-levels">
-            <span class="level-tag">SUPERVISION TIERS</span>
-            <div class="level-items">
-              <span><b>Tier 1</b> Unattended Overnight Runs</span><i>·</i>
-              <span><b>Tier 2</b> Checkpoint Review (META)</span><i>·</i>
-              <span><b>Tier 3</b> Steer Working Priors</span>
+          <!-- 5-Stage Stepper: End-to-End Workflow -->
+          <div class="journey-stepper">
+            <div class="stepper-track">
+              <div class="step-node active">
+                <span class="step-num">01</span>
+                <div class="step-text">
+                  <strong>Contract</strong>
+                  <small>task.md</small>
+                </div>
+              </div>
+              <span class="step-connector">→</span>
+              <div class="step-node">
+                <span class="step-num">02</span>
+                <div class="step-text">
+                  <strong>Probe</strong>
+                  <small>step</small>
+                </div>
+              </div>
+              <span class="step-connector">→</span>
+              <div class="step-node">
+                <span class="step-num">03</span>
+                <div class="step-text">
+                  <strong>Search</strong>
+                  <small>run</small>
+                </div>
+              </div>
+              <span class="step-connector">→</span>
+              <div class="step-node">
+                <span class="step-num">04</span>
+                <div class="step-text">
+                  <strong>Branch</strong>
+                  <small>parallel</small>
+                </div>
+              </div>
+              <span class="step-connector">→</span>
+              <div class="step-node">
+                <span class="step-num">05</span>
+                <div class="step-text">
+                  <strong>Audit</strong>
+                  <small>gui</small>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="journey-steps">
-            <span class="step-item">1. Define task.md</span>
-            <span class="step-sep">→</span>
-            <span class="step-item">2. Single-step test</span>
-            <span class="step-sep">→</span>
-            <span class="step-item">3. Autonomous search</span>
-            <span class="step-sep">→</span>
-            <span class="step-item">4. Parallel explore</span>
-            <span class="step-sep">→</span>
-            <span class="step-item">5. Inspect evidence</span>
-          </div>
+          <!-- Unified Supervision & Governance Architecture -->
+          <div class="supervision-card">
+            <div class="supervision-header">
+              <div class="sup-tag-wrap">
+                <span class="sup-tag">SUPERVISION TIERS</span>
+                <span class="sup-sub">Human in the loop · Autonomous on demand</span>
+              </div>
+              <span class="sup-badge">DECLARATIVE PROTOCOL</span>
+            </div>
 
-          <div class="journey-mandate">
-            <span class="mandate-tag">DECLARATIVE PROTOCOL</span>
-            <p><b>Human defines boundary and preferences</b> (task.md + PERSONAL.md); <b>SciOdyssey autonomously
-                iterates, heals, and crystallizes verified evidence.</b></p>
+            <div class="sup-grid">
+              <div class="sup-col">
+                <div class="sup-col-head">
+                  <span class="sup-bullet">1</span>
+                  <strong>Unattended Runs</strong>
+                </div>
+                <p>Overnight budget execution; auto-heals runtime crashes without manual intervention.</p>
+              </div>
+              <div class="sup-col">
+                <div class="sup-col-head">
+                  <span class="sup-bullet">2</span>
+                  <strong>Checkpoint Review</strong>
+                </div>
+                <p>META audits empirical artifacts before durable write-back to the project world.</p>
+              </div>
+              <div class="sup-col">
+                <div class="sup-col-head">
+                  <span class="sup-bullet">3</span>
+                  <strong>Steer Working Priors</strong>
+                </div>
+                <p>Adjust <code>PERSONAL.md</code> or inject domain hypotheses between fresh trajectories.</p>
+              </div>
+            </div>
+
+            <div class="sup-footer">
+              <span class="sup-check">✓</span>
+              <span><strong>Contract boundary:</strong> Human defines objectives &amp; preferences; SciOdyssey autonomously iterates, verifies, and records evidence.</span>
+            </div>
           </div>
         </div>
 

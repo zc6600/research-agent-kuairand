@@ -1649,69 +1649,191 @@ b, strong { font-weight: 700; color: var(--ink); }
   color: var(--muted);
 }
 
-.journey-levels {
+/* 5-Stage Stepper */
+.journey-stepper {
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  background: var(--paper-card);
+  padding: 5px 9px;
+}
+
+.stepper-track {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid var(--border-light);
-  border-radius: 5px;
-  padding: 5px 8px;
-  background: var(--paper-card);
-  font-size: 9.5px;
 }
 
-.level-tag {
+.step-node {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 3.5px;
+  background: #e2ebf2;
+  color: var(--navy);
   font-family: var(--mono);
-  font-weight: 700;
-  color: var(--rust);
-  letter-spacing: .8px;
+  font-size: 8px;
+  font-weight: 800;
 }
 
-.level-items {
+.step-node.active .step-num {
+  background: var(--navy);
+  color: #fff;
+}
+
+.step-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.step-text strong {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -.1px;
+}
+
+.step-text small {
+  font-family: var(--mono);
+  font-size: 7.5px;
+  color: var(--muted);
+}
+
+.step-connector {
+  color: #b2c8d4;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* Supervision & Governance Card */
+.supervision-card {
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  background: #fbf8f1;
+  padding: 7px 10px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.supervision-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sup-tag-wrap {
   display: flex;
   align-items: center;
   gap: 6px;
-  color: var(--body);
 }
 
-.level-items b { color: var(--navy); }
-.level-items i { font-style: normal; color: #b2c3cc; }
-
-.journey-steps {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-top: 1px solid var(--border-light);
-  padding-top: 5px;
-  color: var(--navy);
-  font-size: 10.5px;
-  font-weight: 600;
+.sup-tag {
+  font-family: var(--mono);
+  font-size: 7.8px;
+  font-weight: 800;
+  letter-spacing: .8px;
+  color: #8c3217;
+  background: #f5e4da;
+  padding: 1.5px 5px;
+  border-radius: 3px;
 }
 
-.step-sep { color: #a9cbd6; }
+.sup-sub {
+  font-size: 9px;
+  color: #6a7885;
+  font-weight: 500;
+}
 
-.journey-mandate {
-  display: flex;
-  align-items: center;
+.sup-badge {
+  font-family: var(--mono);
+  font-size: 7.5px;
+  font-weight: 700;
+  letter-spacing: .6px;
+  color: #0b456b;
+  background: #e3edf4;
+  padding: 1.5px 4.5px;
+  border-radius: 3px;
+}
+
+.sup-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
-  border: 1px solid var(--border-light);
-  border-radius: 5px;
-  padding: 5px 8px;
-  background: var(--paper-card-sub);
-  color: var(--body);
-  font-size: 9.5px;
-  line-height: 1.18;
 }
 
-.mandate-tag {
+.sup-col {
+  border-left: 2px solid #d5c3af;
+  padding-left: 6px;
+}
+
+.sup-col:nth-child(1) { border-left-color: #0b456b; }
+.sup-col:nth-child(2) { border-left-color: var(--rust); }
+.sup-col:nth-child(3) { border-left-color: #2e7d5a; }
+
+.sup-col-head {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sup-bullet {
   font-family: var(--mono);
   font-size: 8px;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.sup-col strong {
+  font-family: var(--mono);
+  font-size: 8.8px;
   font-weight: 700;
-  background: var(--navy);
-  color: #fff;
-  padding: 2px 5px;
-  border-radius: 3px;
+  color: var(--ink);
+}
+
+.sup-col p {
+  margin-top: 2px;
+  font-size: 8.4px;
+  line-height: 1.20;
+  color: #53626e;
+}
+
+.sup-footer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-top: 1px dashed #ded3c4;
+  padding-top: 4px;
+  font-size: 8.4px;
+  line-height: 1.2;
+  color: #4b5863;
+}
+
+.sup-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ddeadb;
+  color: #1e7041;
+  font-size: 8px;
+  font-weight: 800;
   flex-shrink: 0;
+}
+
+.sup-footer strong {
+  color: var(--navy);
 }
 
 /* Terminal window */
