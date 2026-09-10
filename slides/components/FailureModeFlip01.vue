@@ -447,7 +447,7 @@ useTalkSteps(14, step => {
   z-index: 100;
   background: rgba(248, 250, 252, 0.98);
   backdrop-filter: blur(12px);
-  padding: 24px 44px 22px;
+  padding: 28px 46px 26px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -588,7 +588,7 @@ useTalkSteps(14, step => {
 
 /* Heading section */
 .workflow-heading {
-  margin: 10px 0 12px;
+  margin: 12px 0 16px;
 }
 
 .workflow-reverse-title {
@@ -618,9 +618,8 @@ useTalkSteps(14, step => {
 .workflow-comparison {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 22px;
-  flex: 1;
-  min-height: 0;
+  gap: 24px;
+  margin-top: 8px;
 }
 
 .workflow-panel {
@@ -629,9 +628,8 @@ useTalkSteps(14, step => {
   background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 12px;
-  padding: 14px 16px;
+  padding: 18px 20px;
   box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03);
-  min-height: 0;
 }
 
 .workflow-fixed {
@@ -643,7 +641,7 @@ useTalkSteps(14, step => {
 }
 
 .workflow-panel-head {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .workflow-panel-label {
@@ -674,9 +672,9 @@ useTalkSteps(14, step => {
 .workflow-panel-body {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  justify-content: space-between;
+  gap: 12px;
   flex: 1;
-  justify-content: center;
 }
 
 /* Card components inside panels */
