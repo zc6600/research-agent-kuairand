@@ -102,62 +102,62 @@ const selectComparisonPage = (page: 0 | 1) => {
 
     <template v-else-if="card === 'robustness'">
       <p class="robustness-intro">
-        Autonomous research requires both <b>execution-level crash recovery</b> and <b>epistemic defense</b> against false breakthroughs.
+        A research agent needs two kinds of protection: <b>recover when code crashes</b> and <b>catch results that look better but are wrong</b>.
       </p>
 
       <div class="two-tier-grid">
         <div class="tier-card">
           <div class="tier-head">
-            <span class="tier-badge">TIER 1 · RUNTIME SELF-HEALING</span>
-            <h4>Crash Auto-Recovery</h4>
-            <span class="tier-subhead">Execution-level resilience</span>
+            <span class="tier-badge">TIER 1 · CODE RECOVERY</span>
+            <h4>Recover from crashes</h4>
+            <span class="tier-subhead">Keep running after errors</span>
           </div>
 
           <div class="tier-flow">
             <div class="flow-item">
               <span class="flow-label">Failure</span>
-              <p>Cycle 1 evidence writing crashed on <code>numpy.float32</code> serialization.</p>
+              <p>Cycle 1 crashed while saving evidence: <code>numpy.float32</code> could not be saved.</p>
             </div>
             <div class="flow-item">
               <span class="flow-label">Action</span>
-              <p>Scientist parsed traceback, auto-patched scalar helper, and reran cleanly.</p>
+              <p>The Scientist read the error, fixed the save function, and ran again.</p>
             </div>
             <div class="flow-item result">
               <span class="flow-label">Outcome</span>
-              <p><b>0 human bugfixes</b> · Unattended rerun succeeded · Telemetry preserved.</p>
+              <p><b>No human fix needed</b> · Rerun worked · Logs kept.</p>
             </div>
           </div>
 
-          <div class="tier-foot mono">Cycle 1 telemetry · Zero human intervention · Retained submission</div>
+          <div class="tier-foot mono">Cycle 1 logs · No human help · Final result kept</div>
         </div>
 
         <div class="tier-card">
           <div class="tier-head">
-            <span class="tier-badge">TIER 2 · META GATEKEEPING</span>
-            <h4>Spurious State Rejection</h4>
-            <span class="tier-subhead">Epistemic validity defense</span>
+            <span class="tier-badge">TIER 2 · RESULT REVIEW</span>
+            <h4>Block a false result</h4>
+            <span class="tier-subhead">Check that results are real</span>
           </div>
 
           <div class="tier-flow">
             <div class="flow-item">
               <span class="flow-label">False Claim</span>
-              <p>Scientist claimed BPR beat baseline on a medium proxy evaluation.</p>
+              <p>The Scientist said BPR beat the baseline on a limited test.</p>
             </div>
             <div class="flow-item">
               <span class="flow-label">Action</span>
-              <p>META audited <code>system/data.py</code> line-by-line, detecting <code>UNK</code> user leakage.</p>
+              <p>META checked <code>system/data.py</code> and found <code>UNK</code> users leaking into the test.</p>
             </div>
             <div class="flow-item result">
               <span class="flow-label">Outcome</span>
-              <p><b>Promotion blocked</b> · Filtered validation guarded · Zero contaminated state.</p>
+              <p><b>Result blocked</b> · Clean test protected · No bad result saved.</p>
             </div>
           </div>
 
-          <div class="tier-foot mono">Experiment audit receipt · State boundary guarded · UNK leak blocked</div>
+          <div class="tier-foot mono">Audit record · Clean test protected · UNK leak blocked</div>
         </div>
       </div>
 
-      <p class="boundary">Empirical receipts preserved: runtime self-healing telemetry and independent code-level proxy audits.</p>
+      <p class="boundary">Evidence kept: recovery logs and an independent code check.</p>
     </template>
 
     <template v-else-if="card === 'comparison'">
@@ -181,11 +181,11 @@ const selectComparisonPage = (page: 0 | 1) => {
             :aria-selected="comparisonPage === 1"
             @click="selectComparisonPage(1)"
           >
-            <span>02</span> TRAJECTORY DIVERGENCE
+            <span>02</span> PIVOT VS DIVE
           </button>
         </div>
         <span class="comparison-tab-hint mono">
-          {{ comparisonPage === 0 ? 'GEMINI 3.7 FLASH ABLATION' : 'HISTORY SHAPES SEARCH · TRAJECTORY COMPARISON' }}
+          {{ comparisonPage === 0 ? 'GEMINI 3.7 FLASH ABLATION' : 'HISTORY SHAPES SEARCH · PIVOT AFTER PIVOT VS DEEP DIVE' }}
         </span>
       </div>
 
@@ -228,7 +228,7 @@ const selectComparisonPage = (page: 0 | 1) => {
             <!-- LEFT COLUMN: 01 DIRECT AGENT -->
             <div class="trajectory-col direct-col">
               <div class="trajectory-col-kicker mono">01 · DIRECT AGENT (2h UNBROKEN RUN)</div>
-              <h3>Mechanism pivots</h3>
+              <h3>Pivot after pivot.</h3>
               <div class="trajectory-visual direct-visual">
                 <svg class="deck-connections" viewBox="0 0 390 170" preserveAspectRatio="none" aria-hidden="true">
                   <defs>
@@ -246,18 +246,18 @@ const selectComparisonPage = (page: 0 | 1) => {
                 <div class="deck-node direct-node node-d1">FM<small>0.6016</small></div>
                 <div class="deck-node direct-node node-d2">8-field<br>Poly<small>0.6038</small></div>
                 <div class="deck-node direct-node node-d3 drop">BPR<br>loss<small>0.6021</small></div>
-                <div class="deck-node direct-node node-d4">DeepFM<small>0.60458</small></div>
-                <div class="deck-node direct-node node-d5 drop">MT-DeepFM<small>0.6043</small></div>
+                <div class="deck-node direct-node node-d4">MT-DeepFM<small>0.6045</small></div>
+                <div class="deck-node direct-node node-d5 blend">5-Model<br>Blend<small>0.60458</small></div>
 
-                <div class="deck-visual-label mono">HORIZONTAL HOPPING · 5 PARADIGMS · NEVER GOES DEEP</div>
+                <div class="deck-visual-label mono">HORIZONTAL PIVOTS · 5 MODEL FAMILIES · SURFACE BLEND</div>
               </div>
-              <p class="trajectory-copy">Switches model classes when gains stall; confuses variety with exploration.</p>
+              <p class="trajectory-copy">Pivots to a new architecture whenever gains stall, accumulating model variants instead of diving deep into the bottleneck.</p>
             </div>
 
             <!-- RIGHT COLUMN: 03 META-SCIENTIST -->
             <div class="trajectory-col meta-col">
               <div class="trajectory-col-kicker mono">03 · META-SCIENTIST (2 CYCLES · WINNER)</div>
-              <h3>Pivot, then vertical deep-dive</h3>
+              <h3>Pivot once. Dive deep.</h3>
               <div class="trajectory-visual meta-visual">
                 <svg class="deck-connections" viewBox="0 0 390 170" preserveAspectRatio="none" aria-hidden="true">
                   <defs>
@@ -268,13 +268,13 @@ const selectComparisonPage = (page: 0 | 1) => {
                       <path d="M1,0 L3.5,5 L6,0 Z" fill="#a855f7" />
                     </marker>
                   </defs>
-                  <!-- 1. Horizontal direction pivot arrow -->
+                  <!-- 1. Explore a new direction -->
                   <line x1="118" y1="36" x2="138" y2="36" stroke="#c084fc" stroke-width="2" marker-end="url(#deck-arrow-purple)"></line>
 
-                  <!-- 2. Vertical dive into mechanism depth -->
+                  <!-- 2. Exploit the strongest direction -->
                   <line x1="197" y1="58" x2="197" y2="90" stroke="#a855f7" stroke-width="2.5" marker-end="url(#deck-arrow-dive)"></line>
 
-                  <!-- 3. Drive forward to global peak -->
+                  <!-- 3. Drive forward to the best score -->
                   <line x1="256" y1="117" x2="274" y2="117" stroke="#a855f7" stroke-width="2" marker-end="url(#deck-arrow-purple)"></line>
                 </svg>
 
@@ -289,7 +289,7 @@ const selectComparisonPage = (page: 0 | 1) => {
                   <small>Prunes Noise · Locks DIN</small>
                 </div>
 
-                <div class="dive-pill mono">▼ 2. DIVE IN</div>
+                <div class="dive-pill mono">▼ 2. DIVE DEEP</div>
 
                 <div class="deck-node meta-node node-m3">
                   <strong>E007 Multi-Facet</strong>
@@ -302,16 +302,16 @@ const selectComparisonPage = (page: 0 | 1) => {
                   <div class="winner-score mono">0.6052000</div>
                 </div>
 
-                <div class="deck-visual-label purple mono">PIVOT TO DIN THESIS → DIVE IN TO 0.6052 PEAK</div>
+                <div class="deck-visual-label purple mono">DECISIVE PIVOT (C1) → VERTICAL DEEP DIVE (C2) → 0.6052 PEAK</div>
               </div>
-              <p class="trajectory-copy">Pivots away from dead ends in Cycle 1, then dives deep into Target Attention to unlock the global optimum.</p>
+              <p class="trajectory-copy">Locks into the DIN thesis at handoff, then dives deep into Target Attention to achieve 0.6052 on a single model.</p>
             </div>
           </div>
 
           <!-- BOTTOM TAKEAWAY BAR -->
           <div class="trajectory-takeaway-bar">
             <span class="takeaway-badge mono">CORE TAKEAWAY</span>
-            <p>Same model family (Gemini 3.7 Flash). In an unbroken context, history triggers reactive pivots; in a Meta-Scientist loop, history provides scientific leverage.</p>
+            <p>Same model family (Gemini 3.7 Flash). In one long run, history keeps the agent pivoting across models; in a Meta-Scientist loop, history guides a decisive deep dive.</p>
           </div>
         </div>
       </template>
@@ -714,6 +714,14 @@ const selectComparisonPage = (page: 0 | 1) => {
 .deck-node.direct-node.drop small {
   color: #dc2626;
 }
+.deck-node.direct-node.blend {
+  border-color: #93c5fd;
+  background: #f0f7ff;
+}
+.deck-node.direct-node.blend small {
+  color: #2563eb;
+  font-weight: 700;
+}
 .deck-node.meta-node {
   border-color: #ddd6fe;
 }
@@ -781,8 +789,8 @@ const selectComparisonPage = (page: 0 | 1) => {
 .node-d1 { left: 3%; top: 100px; width: 56px; height: 40px; }
 .node-d2 { left: 21%; top: 14px; width: 68px; height: 42px; }
 .node-d3 { left: 41%; top: 100px; width: 62px; height: 42px; }
-.node-d4 { left: 61%; top: 14px; width: 66px; height: 40px; }
-.node-d5 { left: 79%; top: 100px; width: 74px; height: 42px; }
+.node-d4 { left: 59.5%; top: 14px; width: 70px; height: 40px; }
+.node-d5 { left: 78%; top: 100px; width: 76px; height: 42px; }
 
 .node-m1 { left: 3.5%; top: 14px; width: 104px; height: 44px; }
 .node-m2 { left: 36%; top: 14px; width: 114px; height: 44px; }
