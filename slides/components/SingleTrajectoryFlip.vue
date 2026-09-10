@@ -88,7 +88,7 @@ useTalkSteps(14, step => {
         <span class="trajectory-flip-icon" title="Click to flip"><i class="i-carbon:rotate-360"></i></span>
       </div>
 
-      <div class="trajectory-mini-visual" aria-label="A single long-running trajectory keeps exploiting or exploring in the same mode">
+      <div class="trajectory-mini-visual" aria-label="A single long-running trajectory keeps diving or pivoting in the same mode">
         <div class="trajectory-mini-track"></div>
         <div class="trajectory-mini-step step-1"></div>
         <div class="trajectory-mini-step step-2"></div>
@@ -115,7 +115,7 @@ useTalkSteps(14, step => {
       </div>
       <div class="trajectory-condensed-visual">
         <div class="trajectory-condensed-line"><span>search momentum</span><i></i><span>fresh search</span></div>
-        <div class="trajectory-condensed-tags"><span>exploitation</span><span>exploration</span></div>
+        <div class="trajectory-condensed-tags"><span>deep dive</span><span>pivoting</span></div>
       </div>
       <p class="failure-mode-explanation">Fresh reasoning. Audited evidence.</p>
       <div class="failure-mode-takeaway trajectory-condensed-takeaway"><span>✓</span><strong>Reset search momentum.</strong></div>
@@ -158,14 +158,14 @@ useTalkSteps(14, step => {
       </div>
 
       <div class="trajectory-reverse-page" :key="reversePage">
-        <section v-if="reversePage === 0" class="trajectory-momentum-page" aria-label="Two observed failure modes: exploitation lock-in and undiagnosed exploration">
+        <section v-if="reversePage === 0" class="trajectory-momentum-page" aria-label="Two observed failure modes: deep-dive lock-in and reactive pivoting">
           <h1 class="trajectory-back-claim">Long trajectories accumulate <strong>search momentum.</strong></h1>
 
           <div class="trajectory-back-grid">
             <div class="trajectory-back-column codex-back-column">
-              <div class="trajectory-back-column-kicker mono">CODEX · EXPLOITATION MOMENTUM</div>
-              <h2>Exploitation momentum</h2>
-              <div class="trajectory-back-visual codex-back-visual" role="img" aria-label="Codex exploits the FM family: pointwise, pairwise, rank, learning rate, sampling and negatives.">
+              <div class="trajectory-back-column-kicker mono">CODEX · DIVE MOMENTUM</div>
+              <h2>Deep dive momentum</h2>
+              <div class="trajectory-back-visual codex-back-visual" role="img" aria-label="Codex dives deep into the FM family: pointwise, pairwise, rank, learning rate, sampling and negatives.">
                 <div class="back-momentum-band"></div>
                 <div class="back-codex-line"></div>
                 <div class="back-codex-node back-node-start">pointwise<small>FM</small></div>
@@ -174,15 +174,15 @@ useTalkSteps(14, step => {
                 <div class="back-codex-node back-node-detail back-node-lr">lr</div>
                 <div class="back-codex-node back-node-detail back-node-sampling">sampling</div>
                 <div class="back-codex-node back-node-detail back-node-negatives">negatives</div>
-                <div class="back-visual-label mono">EXPLOITATION MOMENTUM WITHOUT A REPRESENTATION SHIFT</div>
+                <div class="back-visual-label mono">LOCAL DIVE WITHOUT A REPRESENTATION SHIFT</div>
               </div>
               <p class="trajectory-back-copy">Search momentum locks search into a single paradigm: exhausts FM variations without shifting to neural representations.</p>
             </div>
 
             <div class="trajectory-back-column gemini-back-column">
-              <div class="trajectory-back-column-kicker mono">GEMINI · EXPLORATION MOMENTUM</div>
-              <h2>Exploration momentum</h2>
-              <div class="trajectory-back-visual gemini-back-visual" role="img" aria-label="Gemini explores different mechanisms: FM, an 8-field representation, BPR loss, MT-DeepFM, then 5-Model Blend.">
+              <div class="trajectory-back-column-kicker mono">GEMINI · PIVOT MOMENTUM</div>
+              <h2>Reactive pivot momentum</h2>
+              <div class="trajectory-back-visual gemini-back-visual" role="img" aria-label="Gemini pivots across different mechanisms: FM, an 8-field representation, BPR loss, MT-DeepFM, then 5-Model Blend.">
                 <svg class="gemini-back-connections" viewBox="0 0 420 140" preserveAspectRatio="none" aria-hidden="true">
                   <line x1="65" y1="81" x2="99" y2="52"></line>
                   <line x1="178" y1="52" x2="193" y2="76"></line>
@@ -200,7 +200,7 @@ useTalkSteps(14, step => {
             </div>
           </div>
 
-          <div class="momentum-analogy" aria-label="Exploitation and exploration can both become repetitive without diagnosis">
+          <div class="momentum-analogy" aria-label="Diving and pivoting can both become repetitive without diagnosis">
             <div class="momentum-analogy-levels">
               <div class="momentum-analogy-row">
                 <span class="momentum-analogy-label mono">ACTION LEVEL</span>
@@ -217,11 +217,11 @@ useTalkSteps(14, step => {
               <div class="momentum-analogy-row">
                 <span class="momentum-analogy-label mono">RESEARCH LEVEL</span>
                 <div class="momentum-chain mono research-chain">
-                  <span class="chain-pill chain-tune">exploit → exploit</span>
-                  <span class="chain-gloss">blind exploitation</span>
+                  <span class="chain-pill chain-tune">dive → dive</span>
+                  <span class="chain-gloss">blind micro-tuning</span>
                   <span class="chain-or">or</span>
-                  <span class="chain-pill chain-pivot">explore → explore</span>
-                  <span class="chain-gloss">blind exploration</span>
+                  <span class="chain-pill chain-pivot">pivot → pivot</span>
+                  <span class="chain-gloss">blind pivoting</span>
                 </div>
               </div>
             </div>
@@ -235,7 +235,7 @@ useTalkSteps(14, step => {
           <div class="trajectory-scientist-takeaway">
             <div class="takeaway-icon-wrap"><span class="takeaway-icon i-carbon:idea"></span></div>
             <div class="takeaway-body">
-              <strong class="takeaway-headline">A true scientist will neither blindly exploit nor blindly explore:</strong>
+              <strong class="takeaway-headline">A true scientist will neither blindly dive nor blindly pivot:</strong>
               <span class="takeaway-text">They diagnose the bottleneck from audited evidence first, then choose whether to dive deep or pivot.</span>
             </div>
           </div>
