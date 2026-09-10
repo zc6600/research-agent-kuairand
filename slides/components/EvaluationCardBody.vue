@@ -16,18 +16,83 @@ const selectComparisonPage = (page: 0 | 1) => {
   <div class="card-body" :class="`card-body-${card}`">
     <template v-if="card === 'result'">
       <div class="result-summary">
-        <div>
-          <span class="eyeline">PUBLIC-VALIDATION PRIMARY</span>
-          <strong class="hero-number">0.6059363</strong>
-          <p><b>+0.0043053</b> over reproduced FM baseline (0.6016310)</p>
-          <small>46 categorical feature interactions · 8-seed FM · rank 16 · NumPy / CPU</small>
+        <div class="result-hero-pane">
+          <span class="eyeline mono">PUBLIC-VALIDATION PRIMARY COMPARISON</span>
+          <div class="score-contrast-row">
+            <div class="score-pill baseline-pill">
+              <span class="pill-tag mono">BASELINE</span>
+              <strong class="pill-num mono">0.6016310</strong>
+              <small class="pill-desc">Reproduced FM</small>
+            </div>
+            <div class="score-pill-divider">
+              <span class="pill-arrow" aria-hidden="true">→</span>
+              <span class="pill-gain mono">+0.0043053</span>
+              <span class="pill-pct mono">+0.72%</span>
+            </div>
+            <div class="score-pill ours-pill">
+              <span class="pill-tag mono">OUR AGENT</span>
+              <strong class="pill-num highlight-num mono">0.6059363</strong>
+              <small class="pill-desc">46-field 8-seed FM</small>
+            </div>
+          </div>
+          <div class="model-spec-note">
+            <span>46 feature interactions · 8-seed FM ensemble · Rank 16 · NumPy / CPU</span>
+          </div>
         </div>
         <EvaluationScoreBars />
       </div>
-      <table>
-        <thead><tr><th>Metric</th><th>Reproduced FM</th><th>Our agent</th></tr></thead>
-        <tbody><tr><td>GAUC</td><td>0.6671070</td><td>0.6728421</td></tr><tr><td>nDCG@5</td><td>0.5361550</td><td>0.5390304</td></tr><tr><td>Primary</td><td>0.6016310</td><td><b>0.6059363</b></td></tr></tbody>
+
+      <!-- Metric Comparison Table with explicit Delta column -->
+      <table class="result-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Reproduced FM Baseline</th>
+            <th>Our Agent (SciOdyssey)</th>
+            <th class="col-gain">Absolute Gain (Δ)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="metric-name">GAUC</td>
+            <td class="mono">0.6671070</td>
+            <td class="mono ours-cell">0.6728421</td>
+            <td class="mono gain-cell"><strong>+0.0057351</strong> <span class="gain-pct">(+0.86%)</span></td>
+          </tr>
+          <tr>
+            <td class="metric-name">nDCG@5</td>
+            <td class="mono">0.5361550</td>
+            <td class="mono ours-cell">0.5390304</td>
+            <td class="mono gain-cell"><strong>+0.0028754</strong> <span class="gain-pct">(+0.54%)</span></td>
+          </tr>
+          <tr class="row-primary-win">
+            <td class="metric-name"><strong>Primary</strong></td>
+            <td class="mono">0.6016310</td>
+            <td class="mono ours-cell win-cell"><strong>0.6059363</strong></td>
+            <td class="mono gain-cell win-gain"><strong>+0.0043053</strong> <span class="gain-pct">(+0.72%)</span></td>
+          </tr>
+        </tbody>
       </table>
+
+      <!-- Resource Consumption Strip -->
+      <div class="resource-ledger-strip">
+        <div class="res-strip-item">
+          <span class="res-strip-label mono">COMPUTE</span>
+          <strong class="res-strip-val">0 GPU-hours</strong>
+          <span class="res-strip-detail">100% CPU NumPy on MacBook M2</span>
+        </div>
+        <div class="res-strip-item">
+          <span class="res-strip-label mono">LLM TOKENS</span>
+          <strong class="res-strip-val">48.24M</strong>
+          <span class="res-strip-detail">4.02M non-cache across 4 cycles</span>
+        </div>
+        <div class="res-strip-item">
+          <span class="res-strip-label mono">AUTONOMOUS SEARCH</span>
+          <strong class="res-strip-val">4 cycles · 13 exps</strong>
+          <span class="res-strip-detail">7 Full evaluations · 0 interventions</span>
+        </div>
+      </div>
+
       <p class="boundary">Primary = mean(GAUC, nDCG@5). Verified on the official validation split following challenge protocol.</p>
     </template>
 
@@ -277,11 +342,185 @@ const selectComparisonPage = (page: 0 | 1) => {
 .card-body small { color: #7d7d82; font-size: 10.5px; }
 .eyeline { font-size: 10px; letter-spacing: 1px; color: #7d7d82; }
 .hero-number { display: block; font-size: 40px; line-height: 1.1; letter-spacing: -1.6px; color: var(--accent); }
-.result-summary { display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px; align-items: center; }
+.result-summary { display: grid; grid-template-columns: 1.25fr 1fr; gap: 20px; align-items: center; margin-bottom: 2px; }
+
+/* Result Hero Comparison Pane */
+.result-hero-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.score-contrast-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 3px;
+}
+.score-pill {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+}
+.baseline-pill {
+  border-color: #e2e8f0;
+  background: #f8fafc;
+}
+.ours-pill {
+  border-color: color-mix(in srgb, var(--accent, #16803b) 40%, #cbd5e1);
+  background: color-mix(in srgb, var(--accent, #16803b) 7%, #ffffff);
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--accent, #16803b) 8%, transparent);
+}
+.pill-tag {
+  font-size: 8.5px;
+  letter-spacing: 0.8px;
+  font-weight: 600;
+  color: #7d8590;
+}
+.ours-pill .pill-tag {
+  color: var(--accent, #16803b);
+}
+.pill-num {
+  font-size: 18px;
+  line-height: 1.1;
+  letter-spacing: -0.4px;
+  color: #475569;
+  font-weight: 600;
+}
+.highlight-num {
+  color: var(--accent, #16803b);
+  font-size: 20px;
+  font-weight: 700;
+}
+.pill-desc {
+  font-size: 9px;
+  color: #8c95a0;
+}
+.score-pill-divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+.pill-arrow {
+  font-size: 13px;
+  color: #94a3b8;
+  line-height: 1;
+}
+.pill-gain {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #16803b;
+  background: #edf7ee;
+  border: 1px solid #c9e8cd;
+  padding: 1px 5px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.pill-pct {
+  font-size: 9px;
+  font-weight: 600;
+  color: #16803b;
+}
+.model-spec-note {
+  font-size: 10px;
+  color: #7d8590;
+  margin-top: 1px;
+}
+
+/* Result Table with Explicit Gain */
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 6px 0 6px;
+  font-size: 11.5px;
+}
+.result-table th,
+.result-table td {
+  padding: 4px 8px;
+  text-align: left;
+  border-bottom: 1px solid #e6e6e8;
+}
+.result-table th {
+  color: #7d7d82;
+  font-size: 9.5px;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.result-table .col-gain {
+  color: #16803b;
+}
+.result-table .ours-cell {
+  color: #0369a1;
+}
+.result-table .gain-cell {
+  color: #16803b;
+}
+.result-table .gain-pct {
+  font-size: 9.5px;
+  color: #16803b;
+  opacity: 0.85;
+}
+.row-primary-win {
+  background: color-mix(in srgb, var(--accent, #16803b) 6%, transparent);
+}
+.row-primary-win td {
+  border-bottom: 1.5px solid color-mix(in srgb, var(--accent, #16803b) 35%, #e6e6e8);
+}
+.win-cell {
+  color: var(--accent, #16803b) !important;
+  font-weight: 700;
+}
+.win-gain {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Resource Ledger Strip */
+.resource-ledger-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 7px 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 9px;
+  margin-top: 6px;
+  margin-bottom: 4px;
+}
+.res-strip-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.res-strip-label {
+  font-size: 7.5px;
+  letter-spacing: 0.7px;
+  color: #8c95a0;
+  font-weight: 650;
+}
+.res-strip-val {
+  font-size: 12.5px;
+  line-height: 1.2;
+  color: var(--ink, #111217);
+  font-weight: 700;
+}
+.res-strip-detail {
+  font-size: 9px;
+  color: #64748b;
+  line-height: 1.2;
+}
+
 .card-body table { width: 100%; border-collapse: collapse; margin: 10px 0 0; font-size: 12.5px; }
 .card-body th, .card-body td { text-align: left; padding: 6px 10px; border-bottom: 1px solid #e6e6e8; }
 .card-body th { color: #7d7d82; font-size: 11px; font-weight: 650; }
-.card-body .boundary { padding-left: 12px; border-left: 2px solid var(--accent); color: #727981; font-size: 11.5px; line-height: 1.42; margin-top: 8px; }
+.card-body .boundary { padding-left: 12px; border-left: 2px solid var(--accent); color: #727981; font-size: 11px; line-height: 1.35; margin-top: 6px; }
 .token-hero strong { display: block; margin-top: 6px; color: var(--accent); font-size: 25px; line-height: 1.08; letter-spacing: -.7px; }
 .token-hero p { max-width: 650px; }
 
