@@ -9,18 +9,53 @@ const mainDeckRoot = path.join(postersRoot, 'html', 'main-deck-update')
 const voyageRoot = path.join(postersRoot, 'html', 'voyage')
 
 const journeySpacingCss = String.raw`
-.journey .journey-steps {
-  justify-content: center;
-  gap: 8px;
-  padding: 8px 5px 6px;
-  font-size: 9.5px;
+.journey .journey-contracts {
+  justify-content: flex-start;
+  gap: 10px;
 }
-.journey .journey-steps .step-item {
-  white-space: nowrap;
+.journey .journey-levels {
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 5px;
+  padding: 7px 9px;
+}
+.journey .level-items {
+  width: 100%;
+  justify-content: space-between;
+  gap: 4px;
+  font-size: 8.8px;
+  line-height: 1.15;
+}
+.journey .level-items i {
+  margin: 0 1px;
+  opacity: .72;
+}
+.journey .journey-steps {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 5px;
+  border-top: 0;
+  padding-top: 0;
+  font-size: 9px;
+  line-height: 1.15;
 }
 .journey .journey-steps .step-sep {
-  flex: 0 0 auto;
-  opacity: .78;
+  display: none;
+}
+.journey .journey-steps .step-item {
+  align-items: center;
+  background: var(--navy-soft);
+  border: 1px solid #c8dbe8;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  min-height: 30px;
+  padding: 5px 5px;
+  text-align: center;
+  white-space: normal;
+}
+.journey .journey-mandate {
+  margin-top: auto;
 }
 `
 
