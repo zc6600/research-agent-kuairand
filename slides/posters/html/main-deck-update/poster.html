@@ -544,8 +544,10 @@
                 <svg class="embedded-token-chart-svg" viewBox="0 0 1150 435" role="img"
                   aria-label="Public-validation Primary score versus measured total LLM tokens">
                   <rect class="chart-paper" fill="#f2ebdd" x="0" y="0" width="1150" height="435" rx="8" />
-                  <rect class="chart-plot" fill="#faf6ed" stroke="#e5dcce" stroke-width="1" x="106" y="25" width="966"
+                  <rect class="chart-plot" fill="#faf6ed" stroke="#d5c8b5" stroke-width="1.2" x="106" y="25" width="966"
                     height="325" rx="4" />
+
+                  <!-- Grid Lines -->
                   <g class="chart-grid">
                     <line x1="106" y1="321" x2="1072" y2="321" />
                     <line x1="106" y1="262" x2="1072" y2="262" />
@@ -553,6 +555,7 @@
                     <line x1="106" y1="144" x2="1072" y2="144" />
                     <line x1="106" y1="84" x2="1072" y2="84" />
                     <line x1="106" y1="25" x2="1072" y2="25" />
+
                     <line x1="106" y1="25" x2="106" y2="350" />
                     <line x1="282" y1="25" x2="282" y2="350" />
                     <line x1="457" y1="25" x2="457" y2="350" />
@@ -561,75 +564,116 @@
                     <line x1="984" y1="25" x2="984" y2="350" />
                     <line x1="1072" y1="25" x2="1072" y2="350" />
                   </g>
+
+                  <!-- Y Axis Labels -->
                   <g class="chart-y-labels">
-                    <text x="76" y="325">0.602</text>
-                    <text x="76" y="266">0.603</text>
-                    <text x="76" y="207">0.604</text>
-                    <text x="76" y="148">0.605</text>
-                    <text x="76" y="88">0.606</text>
+                    <text x="76" y="326" text-anchor="end">0.602</text>
+                    <text x="76" y="267" text-anchor="end">0.603</text>
+                    <text x="76" y="208" text-anchor="end">0.604</text>
+                    <text x="76" y="149" text-anchor="end">0.605</text>
+                    <text x="76" y="89" text-anchor="end">0.606</text>
                   </g>
+
+                  <!-- Official Reference Line -->
                   <line class="chart-reference" x1="106" y1="344" x2="1072" y2="344" />
-                  <text class="chart-reference-label" x="136" y="338">Official reference 0.601600</text>
+                  <rect x="116" y="332" width="190" height="16" rx="3" fill="#faf6ed" opacity="0.95" />
+                  <text class="chart-reference-label" x="122" y="344">Official reference 0.601600</text>
+
+                  <!-- Leader Lines -->
                   <g class="chart-leaders">
-                    <line x1="256" y1="177" x2="256" y2="214" />
-                    <line x1="599" y1="167" x2="587" y2="129" />
-                    <line x1="802" y1="158" x2="909" y2="102" />
-                    <line x1="951" y1="132" x2="1035" y2="162" />
-                    <line x1="953" y1="88" x2="978" y2="58" />
+                    <line x1="256" y1="178" x2="256" y2="212" />
+                    <line x1="599" y1="159" x2="535" y2="136" />
+                    <line x1="802" y1="150" x2="802" y2="136" />
+                    <line x1="951" y1="145" x2="951" y2="176" />
+                    <line x1="953" y1="78" x2="953" y2="76" />
                   </g>
+
+                  <!-- Series Data Points -->
                   <g class="chart-series">
+                    <!-- Antigravity direct -->
                     <circle class="chart-point chart-point-blue" cx="256" cy="169" r="8" />
+                    <!-- Codex direct -->
                     <circle class="chart-point chart-point-blue" cx="599" cy="167" r="8" />
+                    <!-- Heterogeneous -->
                     <polygon class="chart-point chart-point-orange" points="802,150 813,158 802,166 790,158" />
+                    <!-- Range bar for SciOdyssey with AGY -->
                     <line class="chart-range" x1="897" y1="132" x2="1005" y2="132" />
-                    <line class="chart-range" x1="897" y1="125" x2="897" y2="138" />
-                    <line class="chart-range" x1="1005" y1="125" x2="1005" y2="138" />
-                    <polygon class="chart-point chart-point-purple" points="951,123 965,140 937,140" />
-                    <circle class="chart-point chart-point-green" cx="953" cy="88" r="9" />
+                    <line class="chart-range" x1="897" y1="124" x2="897" y2="140" />
+                    <line class="chart-range" x1="1005" y1="124" x2="1005" y2="140" />
+                    <!-- SciOdyssey with AGY point -->
+                    <polygon class="chart-point chart-point-purple" points="951,122 966,141 936,141" />
+                    <!-- SciOdyssey submission champion point -->
+                    <circle class="chart-point chart-point-green" cx="953" cy="88" r="10" />
+                    <circle cx="953" cy="88" r="4" fill="#fff" />
                   </g>
-                  <g class="chart-point-labels">
-                    <text class="chart-label-main" x="160" y="232">Antigravity</text>
-                    <text class="chart-label-sub" x="160" y="250">gemini-3.7-flash · direct</text>
-                    <text class="chart-label-meta" x="160" y="267">8.565M · 0.6045803 · artifact-backed</text>
 
-                    <text class="chart-label-main chart-label-right" x="587" y="114">Codex (gpt-5.6-luna)</text>
-                    <text class="chart-label-sub chart-label-right" x="587" y="134">28.070M · 0.6044533 (provisional
-                      ≈0.6046)</text>
-
-                    <text class="chart-label-main chart-label-right" x="909" y="83">heterogeneous run</text>
-                    <text class="chart-label-sub chart-label-right" x="909" y="103">gemini-3.7-flash · 39.607M ·
-                      ≈0.6047</text>
-
-                    <text class="chart-label-main chart-label-right" x="1064" y="177">SciOdyssey with Antigravity</text>
-                    <text class="chart-label-sub chart-label-right" x="1064" y="197">gemini-3.7-flash · 45.04–51.17M ·
-                      0.6052 · E008</text>
-
-                    <text class="chart-label-main chart-label-right chart-label-retained" x="1064" y="44">SciOdyssey
-                      submission</text>
-                    <text class="chart-label-sub chart-label-right chart-label-retained" x="1064" y="64">48.240M ·
-                      0.605936 · verified</text>
+                  <!-- 5 Crisp Callout Cards -->
+                  <!-- Card 1: Antigravity -->
+                  <g transform="translate(166, 212)">
+                    <rect class="chart-badge-card" width="180" height="47" rx="5" />
+                    <text class="badge-title" x="10" y="16">Antigravity</text>
+                    <text class="badge-meta" x="10" y="30">8.565M · 0.6045803</text>
+                    <text class="badge-sub" x="10" y="42">gemini-3.7-flash · direct</text>
                   </g>
+
+                  <!-- Card 2: Codex -->
+                  <g transform="translate(360, 89)">
+                    <rect class="chart-badge-card" width="215" height="47" rx="5" />
+                    <text class="badge-title" x="10" y="16">Codex (gpt-5.6-luna)</text>
+                    <text class="badge-meta" x="10" y="30">28.070M · 0.6044533</text>
+                    <text class="badge-sub" x="10" y="42">direct run · provisional ≈0.6046</text>
+                  </g>
+
+                  <!-- Card 3: Heterogeneous -->
+                  <g transform="translate(696, 89)">
+                    <rect class="chart-badge-card" width="180" height="47" rx="5" />
+                    <text class="badge-title is-orange" x="10" y="16">heterogeneous run</text>
+                    <text class="badge-meta" x="10" y="30">39.607M · ≈0.6047</text>
+                    <text class="badge-sub" x="10" y="42">gemini-3.7-flash multi-branch</text>
+                  </g>
+
+                  <!-- Card 4: SciOdyssey with Antigravity -->
+                  <g transform="translate(850, 176)">
+                    <rect class="chart-badge-card is-purple" width="208" height="47" rx="5" />
+                    <text class="badge-title is-purple" x="10" y="16">SciOdyssey with Antigravity</text>
+                    <text class="badge-meta" x="10" y="30">45.04–51.17M · 0.60520</text>
+                    <text class="badge-sub" x="10" y="42">gemini-3.7-flash-only (E008)</text>
+                  </g>
+
+                  <!-- Card 5: SciOdyssey submission (Winner) -->
+                  <g transform="translate(850, 28)">
+                    <rect class="chart-badge-card is-winner" width="208" height="48" rx="5" />
+                    <text class="badge-title is-winner" x="10" y="16">★ SciOdyssey submission</text>
+                    <text class="badge-meta is-winner" x="10" y="31">48.240M · 0.6059363</text>
+                    <text class="badge-sub" x="10" y="43" style="fill: #0b456b; font-weight: 700;">retained verified submission</text>
+                  </g>
+
+                  <!-- Axis Titles & Numbers -->
                   <g class="chart-axis-labels">
-                    <text x="106" y="368">0</text>
-                    <text x="274" y="368">10</text>
-                    <text x="448" y="368">20</text>
-                    <text x="624" y="368">30</text>
-                    <text x="800" y="368">40</text>
-                    <text x="976" y="368">50</text>
-                    <text x="1056" y="368">55M</text>
-                    <text class="chart-axis-title" x="589" y="388">Total LLM tokens (millions)</text>
-                    <text class="chart-axis-title chart-axis-y" x="20" y="190" transform="rotate(-90 20 190)">Primary
-                      score</text>
+                    <text x="106" y="370">0</text>
+                    <text x="274" y="370">10</text>
+                    <text x="448" y="370">20</text>
+                    <text x="624" y="370">30</text>
+                    <text x="800" y="370">40</text>
+                    <text x="976" y="370">50</text>
+                    <text x="1056" y="370">55M</text>
+                    <text class="chart-axis-title" x="589" y="390">Total LLM tokens (millions)</text>
+                    <text class="chart-axis-title chart-axis-y" x="22" y="190" transform="rotate(-90 22 190)">Primary score</text>
                   </g>
+
+                  <!-- Legend (Balanced spacing, zero collision) -->
                   <g class="chart-legend">
-                    <circle class="chart-point chart-point-blue" cx="80" cy="414" r="6" />
-                    <text x="94" y="419">direct run (AGY / Codex)</text>
-                    <polygon class="chart-point chart-point-orange" points="340,408 348,414 340,420 332,414" />
-                    <text x="356" y="419">heterogeneous run</text>
-                    <polygon class="chart-point chart-point-purple" points="535,407 544,417 526,417" />
-                    <text x="551" y="419">SciOdyssey with Antigravity</text>
-                    <circle class="chart-point chart-point-green" cx="780" cy="414" r="6" />
-                    <text x="794" y="419">retained verified result (0.605936)</text>
+                    <circle class="chart-point chart-point-blue" cx="65" cy="416" r="6.5" />
+                    <text x="80" y="421">direct run (AGY / Codex)</text>
+
+                    <polygon class="chart-point chart-point-orange" points="315,410 324,416 315,422 306,416" />
+                    <text x="332" y="421">heterogeneous run</text>
+
+                    <polygon class="chart-point chart-point-purple" points="530,409 540,419 520,419" />
+                    <text x="548" y="421">SciOdyssey with Antigravity</text>
+
+                    <circle class="chart-point chart-point-green" cx="808" cy="416" r="7" />
+                    <text x="822" y="421">retained verified result (0.605936)</text>
                   </g>
                 </svg>
               </div>
