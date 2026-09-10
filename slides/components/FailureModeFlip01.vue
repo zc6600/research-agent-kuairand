@@ -87,7 +87,7 @@ useTalkSteps(14, step => {
       <p class="failure-mode-explanation">Acquire missing tools at runtime.</p>
       <div class="failure-mode-takeaway condensed-takeaway">
         <span class="takeaway-check">✓</span>
-        <strong>Resume after unexpected errors.</strong>
+        <strong>Building on code agent harness.</strong>
       </div>
       <div class="failure-mode-takeaway condensed-takeaway">
         <span class="takeaway-check">✓</span>

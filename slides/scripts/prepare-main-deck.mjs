@@ -1,10 +1,14 @@
 import { readFile, writeFile } from 'node:fs/promises'
+import { conclusionTargets } from '../composables/conclusions.mjs'
 
 const sourcePath = 'slides.md'
 const insertPath = 'snippets/evaluation-claim-verdict.md'
 const outputPath = '.generated-slides.md'
 const sourceExperienceSlide = '<ExperienceJourney />'
 const experienceSlide = '<ExperienceJourneyAudio />'
+const conclusionSlide = '<SummaryConclusions />'
+const closingSlide = '<ThankYouClosing />'
+const questionsSlide = '<QuestionsAndAnswers />'
 const evaluationAnchor = '<ModelRotationInsight />'
 const finaleAnchor = '<!-- class: agentic-swe-fieldnote-slide -->'
 const retiredSlideMarkers = [
@@ -54,7 +58,7 @@ function retitleToc(deck) {
   deck = replaceRequired(
     deck,
     '    <h1>The run, in four moves</h1>\n    <div class="toc-intro">A single route from the problem to the proof.</div>',
-    '    <h1>The run, in five moves</h1>\n    <div class="toc-intro">A single route from the problem to the proof, then the product experience.</div>',
+    '    <h1>Outline</h1>\n    <div class="toc-intro">Five sections covering failure modes, system architecture, evaluation, and experience.</div>',
     'TOC title',
   )
 
@@ -129,18 +133,32 @@ output = replaceRequired(output, sourceExperienceSlide, experienceSlide, 'experi
 
 const extracted = extractSlideByMarker(output, experienceSlide)
 output = extracted.deck
+const extractedConclusions = extractSlideByMarker(output, conclusionSlide)
+output = extractedConclusions.deck
+const summarySlide = extractedConclusions.slide.replace(/^\n*---\n*/, '').trim()
+const extractedClosing = extractSlideByMarker(output, closingSlide)
+output = extractedClosing.deck
+const thankYouSlide = extractedClosing.slide.replace(/^\n*---\n*/, '').trim()
+const extractedQuestions = extractSlideByMarker(output, questionsSlide)
+output = extractedQuestions.deck
+const qAndASlide = extractedQuestions.slide.replace(/^\n*---\n*/, '').trim()
 let userExperienceSlide = extracted.slide.replace(/^\n*---\n*/, '').replace(/\n*---\n*$/, '').trim()
 userExperienceSlide = userExperienceSlide
   .replace('03 / UX opens with', '05 / UX finale opens with')
   .replace('Six acts autoplay:', 'Six acts play after clicking the frame:')
-  .replace('Hover over the lower right of the demo for pause and replay.\nThe outro holds with an explicit Continue to Evaluation action; re-entry replays the chapter.', 'Click the frame to play, pause, continue, or replay. The sequence is now the main-deck finale.')
+  .replace('Hover over the lower right of the demo for pause and replay.', 'Click the frame to play, pause, continue, or replay. Summary, Thank You and Q&A follow the UX sequence.')
 
 for (const slideMarker of retiredSlideMarkers) {
   output = removeSlideByMarker(output, slideMarker)
 }
 
 output = replaceRequired(output, evaluationAnchor, `${insert}\n\n---\n\n${evaluationAnchor}`, 'evaluation insertion anchor')
-output = replaceRequired(output, finaleAnchor, `${userExperienceSlide}\n\n---\n\n${finaleAnchor}`, 'user-experience finale anchor')
+output = replaceRequired(output, finaleAnchor, `${userExperienceSlide}\n\n---\n\n${summarySlide}\n\n---\n\n${thankYouSlide}\n\n---\n\n${qAndASlide}\n\n---\n\n${finaleAnchor}`, 'user-experience finale anchor')
+
+// Apply aliases after rearranging the deck so frontmatter stays with its slide.
+for (const [alias, marker] of Object.entries(conclusionTargets)) {
+  output = replaceRequired(output, `\n---\n\n${marker}`, `\n---\nrouteAlias: ${alias}\n---\n\n${marker}`, `conclusion destination ${alias}`)
+}
 
 await writeFile(outputPath, output.endsWith('\n') ? output : `${output}\n`)
 console.log(`Prepared ${outputPath}`)

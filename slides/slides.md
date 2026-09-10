@@ -162,6 +162,7 @@ This is a synthesis of the design pressures observed in the project, not a unive
 
 The Tree Search card opens an embedded reverse page using the project-shaped one-edit Antigravity replication recorded in `../docs/experiments/one-edit-telemetry.md`: a read-only arm used 340,087 inclusive tokens and a write-only arm used 42,377, an 8.03:1 ratio. The reverse page's TOKEN ABLATION projects eight children from those measured arms: rereading for every child costs 3,059,712 inclusive tokens, while reading once and repeating only the edits costs 679,103, a 4.51:1 ratio. The read arm made ten `view_file` calls over selected KuaiRand project context; the write arm made one line mutation with the exact target supplied in its prompt. The two arms were separate sessions with the same model and effort. Inclusive totals add Antigravity's separately reported cache-read input. The eight-child comparison is arithmetic based on the measured arms, not another delegated run or a main-agent proxy.
 Card 02 is a qualitative, descriptive comparison of two recorded single-agent trajectories. Its back face shows how a previous pattern can shape the next experiment.
+The Momentum comparison contrasts Codex's repeated refinement within the FM family with Gemini's repeated mechanism pivots. A useful spoken analogy is a tool loop: an agent may retry the same tool after a bug, while a research trajectory may repeatedly tune or pivot without diagnosing the bottleneck. The shared issue is persistence of a search habit at a longer horizon. Audited evidence should determine whether the next experiment needs deeper refinement or a different mechanism.
 Card 02 reverse is multi-page: page 1 covers search momentum; page 2 covers Gemini's audited scientific-validity failures; page 3 follows 02 / SYSTEM · THE HANDOFF LOOP with four click-reveal steps. The findings are branch-level and do not invalidate every final Gemini result.
 - ../competition_archive/kuairand-pure/reports/baseline-protocol-audit.md — sections 5 and 6, Gemini target-statistics leakage and cross-user BPR
 - ../docs/FINAL_REPORT.md — sections 3.1–3.3, serial loop and selective persistence
@@ -246,6 +247,22 @@ The transition is a design explanation, not experimental proof of causal attribu
 
 ---
 
+<div class="visual-kicker orange">02 / SYSTEM · RESEARCH PHILOSOPHY</div>
+
+# Principles of autonomous science
+
+<ResearchPhilosophy />
+
+<!--
+[Sources]
+- ../assets/project-template/research_record/RESEARCH_METHOD.md — Ground the world before depending on it; cheap faithful evidence; shared memory roles.
+- ../assets/project-template/research_record/schema/ENGINEERING.md — Reusable engineering facts, runtime budgets, and diagnostic entrypoints.
+- ../competitions/kuairand/OPTIMIZE.md — Protecting Full evaluations, faithful hypothesis gates, and fail-fast heuristics.
+- ../docs/FINAL_REPORT.md — Operational self-healing, cognitive falsification, and selective persistence across Scientist resets.
+-->
+
+---
+
 <ExperienceJourney />
 
 <!--
@@ -263,11 +280,47 @@ See what stays / Already in your workflow.
 The approximately 127-second sequence opens embedded in the chapter card, expands,
 then closes on the same product introduction before retracting into the card.
 Hover over the lower right of the demo for pause and replay.
-The outro holds with an explicit Continue to Evaluation action; re-entry replays the chapter.
+The outro offers a Summary action to open the conclusion cards; re-entry replays the chapter.
 Command semantics and working constraints: ../README.md, ../PERSONAL.md.
 Motion reference: ../video/src/compositions/keynote/scenes/TerminalJourney.tsx.
 Skill scene reference: ../video/src/compositions/keynote/scenes/AgentJourney.tsx.
 Parallel review does not automatically adopt a branch; adoption requires parallel-promote.
+-->
+
+---
+
+<SummaryConclusions />
+
+<!--
+Summary surrounds the title with images, highlighted findings and key metrics.
+Each card opens the original evidence or discussion slide. Evaluation cards open
+the relevant detail directly. Back to Summary returns to this discussion page.
+Thumbnails reproduce the deck's architecture, task loop, metric chart, trajectory,
+recovery flow, agent comparison, branch workflow and parallel handoff diagrams.
+The resource figure is a project-level subscription-equivalent estimate.
+Model diversity and agent-organization comparisons are observational, not isolated
+causal ablations. Engineering and open-world cards summarize design guidance.
+[Sources]
+- Earlier system, research philosophy, evaluation, findings and appendix slides
+- ../docs/FINAL_REPORT.md — retained results, recovery, comparisons and qualifications
+-->
+
+---
+
+<ThankYouClosing />
+
+<!--
+A standalone Thank You follows the interactive Summary, before Q&A.
+The closing navigation can return to Summary or open the questions page.
+-->
+
+---
+
+<QuestionsAndAnswers />
+
+<!--
+Q&A ends the main talk. Explore the evidence returns to the interactive Summary
+so the presenter can open the original evidence in response to questions.
 -->
 
 ---

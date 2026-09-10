@@ -126,7 +126,7 @@ useTalkSteps(14, step => {
   <div
     v-if="isFlipped"
     class="trajectory-card-back-overlay"
-    :class="{ 'is-closing': isClosing }"
+    :class="{ 'is-closing': isClosing, 'is-momentum': reversePage === 0 }"
     @click="advanceReversePage"
   >
     <div class="trajectory-card-back-inner" :class="{ 'inner-closing': isClosing }">
@@ -158,37 +158,14 @@ useTalkSteps(14, step => {
       </div>
 
       <div class="trajectory-reverse-page" :key="reversePage">
-        <template v-if="reversePage === 0">
-          <div class="trajectory-back-claim">
-            <span>Long trajectories accumulate <strong>trajectory momentum.</strong></span>
-          </div>
-
-          <div class="momentum-analogy" aria-label="Tool-loop analogy for research momentum">
-            <div class="momentum-analogy-row">
-              <span class="momentum-analogy-label mono">ACTION LEVEL</span>
-              <div class="momentum-chain mono"><span>tool</span><b>→</b><span>tool</span><b>→</b><span>tool</span><b>→</b><span>tool</span></div>
-            </div>
-            <div class="momentum-analogy-divider" aria-hidden="true"></div>
-            <div class="momentum-analogy-row">
-              <span class="momentum-analogy-label mono">RESEARCH LEVEL</span>
-              <div class="momentum-chain mono research-chain">
-                <span class="chain-pill chain-tune">tune → tune</span>
-                <span class="chain-or">or</span>
-                <span class="chain-pill chain-pivot">pivot → pivot</span>
-              </div>
-            </div>
-            <div class="momentum-analogy-divider" aria-hidden="true"></div>
-            <div class="momentum-analogy-summary">
-              <span class="summary-tag mono">TRAJECTORY INERTIA</span>
-              <strong>Same momentum, at a longer horizon.</strong>
-            </div>
-          </div>
+        <section v-if="reversePage === 0" class="trajectory-momentum-page" aria-label="Two observed forms of trajectory momentum">
+          <h1 class="trajectory-back-claim">Long trajectories accumulate <strong>trajectory momentum.</strong></h1>
 
           <div class="trajectory-back-grid">
             <div class="trajectory-back-column codex-back-column">
               <div class="trajectory-back-column-kicker mono">CODEX · INERTIAL EXPLOITATION</div>
               <h2>Hyper-tuning momentum</h2>
-              <div class="trajectory-back-visual codex-back-visual">
+              <div class="trajectory-back-visual codex-back-visual" role="img" aria-label="Codex refines the FM family: pointwise, pairwise, rank, learning rate, sampling and negatives.">
                 <div class="back-momentum-band"></div>
                 <div class="back-codex-line"></div>
                 <div class="back-codex-node back-node-start">pointwise<small>FM</small></div>
@@ -199,18 +176,18 @@ useTalkSteps(14, step => {
                 <div class="back-codex-node back-node-detail back-node-negatives">negatives</div>
                 <div class="back-visual-label mono">STUCK IN LOCAL PARAMETER BASIN</div>
               </div>
-              <p class="trajectory-back-copy">Endless parameter tuning without questioning whether the representation has hit an information bottleneck.</p>
+              <p class="trajectory-back-copy">Endless parameter tuning without questioning representation bottlenecks.</p>
             </div>
 
             <div class="trajectory-back-column gemini-back-column">
               <div class="trajectory-back-column-kicker mono">GEMINI · INERTIAL EXPLORATION</div>
               <h2>Pivoting momentum</h2>
-              <div class="trajectory-back-visual gemini-back-visual">
-                <svg class="gemini-back-connections" viewBox="0 0 424 168" preserveAspectRatio="none" aria-hidden="true">
-                  <line x1="55" y1="96" x2="78" y2="58"></line>
-                  <line x1="176" y1="58" x2="174" y2="98"></line>
-                  <line x1="226" y1="98" x2="252" y2="58"></line>
-                  <line x1="317" y1="58" x2="306" y2="98"></line>
+              <div class="trajectory-back-visual gemini-back-visual" role="img" aria-label="Gemini changes mechanisms: FM, an 8-field representation, BPR loss, DeepFM, then MT-DeepFM with EMA.">
+                <svg class="gemini-back-connections" viewBox="0 0 420 140" preserveAspectRatio="none" aria-hidden="true">
+                  <line x1="65" y1="81" x2="99" y2="52"></line>
+                  <line x1="178" y1="52" x2="193" y2="76"></line>
+                  <line x1="238" y1="81" x2="268" y2="52"></line>
+                  <line x1="324" y1="52" x2="335" y2="76"></line>
                 </svg>
                 <div class="back-pivot-node back-pivot-node-1">FM</div>
                 <div class="back-pivot-node back-pivot-node-2">8-field<br>representation</div>
@@ -219,18 +196,50 @@ useTalkSteps(14, step => {
                 <div class="back-pivot-node back-pivot-node-5">MT-DeepFM<br>+ EMA</div>
                 <div class="back-visual-label mono">ERRATIC DRIFT WITHOUT ROOT DIAGNOSIS</div>
               </div>
-              <p class="trajectory-back-copy">Constant mechanism pivots without diagnosis: hopping between architectures is trial-and-error momentum, not scientific discovery.</p>
+              <p class="trajectory-back-copy">Erratic architecture hopping without root-cause diagnosis.</p>
+            </div>
+          </div>
+
+          <div class="momentum-analogy" aria-label="Tool-loop analogy for research momentum">
+            <div class="momentum-analogy-levels">
+              <div class="momentum-analogy-row">
+                <span class="momentum-analogy-label mono">ACTION LEVEL</span>
+                <div class="momentum-chain mono action-chain">
+                  <span class="chain-pill chain-same-tool">same tool</span>
+                  <b>→</b>
+                  <span class="chain-pill chain-same-tool">same tool</span>
+                  <b>→</b>
+                  <span class="chain-pill chain-same-tool">same tool</span>
+                  <span class="chain-context mono">(repeats same tool on bug)</span>
+                </div>
+              </div>
+              <div class="momentum-analogy-row-sep" aria-hidden="true"></div>
+              <div class="momentum-analogy-row">
+                <span class="momentum-analogy-label mono">RESEARCH LEVEL</span>
+                <div class="momentum-chain mono research-chain">
+                  <span class="chain-pill chain-tune">tune → tune</span>
+                  <span class="chain-gloss">hyper-tuning</span>
+                  <span class="chain-or">or</span>
+                  <span class="chain-pill chain-pivot">pivot → pivot</span>
+                  <span class="chain-gloss">blind pivoting</span>
+                </div>
+              </div>
+            </div>
+            <div class="momentum-analogy-divider" aria-hidden="true"></div>
+            <div class="momentum-analogy-summary">
+              <span class="summary-tag mono">TRAJECTORY INERTIA</span>
+              <strong>Same momentum,<br>at a longer horizon.</strong>
             </div>
           </div>
 
           <div class="trajectory-scientist-takeaway">
-            <span class="takeaway-icon i-carbon:idea"></span>
+            <div class="takeaway-icon-wrap"><span class="takeaway-icon i-carbon:idea"></span></div>
             <div class="takeaway-body">
               <strong class="takeaway-headline">A true scientist will neither blindly dive nor blindly pivot:</strong>
               <span class="takeaway-text">They diagnose the bottleneck from audited evidence first, and adapt their research method accordingly.</span>
             </div>
           </div>
-        </template>
+        </section>
 
         <template v-else-if="reversePage === 1">
           <div class="trajectory-validity-page">
@@ -408,66 +417,74 @@ useTalkSteps(14, step => {
 
 .trajectory-reverse-page { animation: trajectoryReversePageIn .22s ease-out both; cursor: pointer; display: flex; flex: 1; flex-direction: column; min-height: 0; }
 @keyframes trajectoryReversePageIn { from { opacity: .35; transform: translateX(8px); } to { opacity: 1; transform: translateX(0); } }
-.trajectory-back-claim { color: var(--ink); display: flex; flex-direction: column; font-family: var(--deck-sans); font-size: 27px; font-weight: 500; letter-spacing: -1px; line-height: 1.1; margin-top: 10px; }
-.trajectory-back-claim strong { color: var(--blue); font-weight: 700; }
 .trajectory-validity-claim, .trajectory-handoff-claim { color: var(--ink); display: flex; flex-direction: column; font-family: var(--deck-sans); font-size: 32px; font-weight: 500; letter-spacing: -1.1px; line-height: 1.08; margin-top: 24px; }
 .trajectory-handoff-claim strong { color: var(--blue); font-weight: 700; }
 .trajectory-handoff-page .trajectory-handoff-claim .handoff-review-title { color: #7542be; }
 
-.momentum-analogy { align-items: center; background: #fff; border: 1px solid #d8ebf8; border-radius: 12px; box-shadow: 0 4px 16px rgba(56, 189, 248, .07); display: flex; justify-content: space-between; margin-top: 10px; padding: 8px 18px; }
-.momentum-analogy-row { align-items: center; display: flex; gap: 10px; }
-.momentum-analogy-label { color: #8a9bab; font-size: 8.5px; font-weight: 800; letter-spacing: .8px; white-space: nowrap; }
-.momentum-chain { align-items: center; color: #4c6474; display: flex; font-size: 10.5px; gap: 5px; min-width: 0; white-space: nowrap; }
-.momentum-chain span { background: #f4f8fb; border: 1px solid #d9e8f2; border-radius: 999px; padding: 2px 7px; }
-.momentum-chain b { color: #9ab8cb; font-size: 9px; }
-.research-chain .chain-tune { background: #fff7ed; border-color: #fed7aa; color: #c2410c; font-weight: 600; }
-.research-chain .chain-pivot { background: #eff6ff; border-color: #bfdbfe; color: #1d4ed8; font-weight: 600; }
-.research-chain .chain-or { background: none; border: none; color: #94a3b8; font-size: 10px; font-style: italic; padding: 0 2px; }
-.momentum-analogy-divider { background: #e2e8f0; height: 26px; width: 1px; }
-.momentum-analogy-summary { display: flex; flex-direction: column; gap: 2px; }
-.momentum-analogy-summary .summary-tag { color: #0284c7; font-size: 8px; font-weight: 800; letter-spacing: .8px; }
-.momentum-analogy-summary strong { color: #167aa9; font-size: 13px; font-weight: 700; letter-spacing: -.2px; white-space: nowrap; }
-
-.trajectory-back-grid { display: grid; gap: 24px; grid-template-columns: 1fr 1fr; margin-top: 12px; }
-.trajectory-back-column { min-width: 0; }
-.codex-back-column { border-top: 2px solid var(--orange); }
-.gemini-back-column { border-top: 2px solid var(--blue); }
-.trajectory-back-column-kicker { font-size: 9.5px; letter-spacing: 1px; margin-top: 8px; }
+/* Preserve the complete Momentum argument with separate, aligned sections. */
+.trajectory-momentum-page { display: flex; flex: 1; flex-direction: column; min-height: 0; }
+.trajectory-momentum-page .trajectory-back-claim { color: var(--ink); font-size: 27px; font-weight: 500; line-height: 1.18; letter-spacing: -.75px; margin: 14px 0 0; }
+.trajectory-back-claim strong { color: var(--blue); font-weight: 600; }
+.trajectory-back-grid { display: grid; gap: 30px; grid-template-columns: 1fr 1fr; margin-top: 17px; }
+.trajectory-back-column { min-width: 0; border-top: 2px solid; }
+.codex-back-column { border-color: var(--orange); }
+.gemini-back-column { border-color: var(--blue); }
+.trajectory-back-column-kicker { font-size: 9.5px; font-weight: 500; letter-spacing: 1px; margin-top: 9px; }
 .codex-back-column .trajectory-back-column-kicker { color: #c15d22; }
 .gemini-back-column .trajectory-back-column-kicker { color: #158ac0; }
-.trajectory-back-column h2 { color: var(--ink); font-size: 21px; font-weight: 600; letter-spacing: -.6px; line-height: 1.1; margin: 4px 0 0; }
-.trajectory-back-visual { height: 152px; margin-top: 8px; overflow: hidden; position: relative; }
-.codex-back-visual { background: rgba(255, 247, 237, .45); border-left: 1px solid rgba(255, 135, 63, .26); border-right: 1px solid rgba(255, 135, 63, .26); }
-.back-momentum-band { border: 1px solid rgba(255, 135, 63, .45); border-radius: 999px; height: 64px; left: 6%; position: absolute; top: 40px; transform: rotate(-4deg); width: 88%; }
-.back-momentum-band::after { border-top: 1px dashed rgba(255, 135, 63, .35); content: ''; left: 34px; position: absolute; right: 34px; top: 31px; }
-.back-codex-line { border-top: 1px solid rgba(255, 135, 63, .55); left: 5%; position: absolute; right: 5%; top: 78px; }
-.back-codex-node { align-items: center; background: rgba(255,255,255,.94); border: 1px solid rgba(255,135,63,.7); border-radius: 50%; box-sizing: border-box; color: #a84e1b; display: flex; flex-direction: column; font-size: 10px; height: 42px; justify-content: center; position: absolute; text-align: center; width: 42px; z-index: 1; }
-.back-codex-node small { color: var(--muted); font-family: var(--deck-mono); font-size: 8.5px; }
-.back-node-start { height: 54px; left: 0; top: 52px; width: 54px; }
-.back-node-core { background: #fff8f1; border-color: var(--orange); box-shadow: 0 0 0 4px rgba(255, 135, 63, .1); height: 58px; left: 19%; top: 47px; width: 58px; }
-.back-node-rank { left: 40%; top: 29px; }
-.back-node-lr { left: 54%; top: 65px; }
-.back-node-sampling { left: 67%; top: 29px; width: 50px; }
-.back-node-negatives { left: 81%; top: 65px; width: 50px; }
-.back-visual-label { bottom: 5px; font-size: 8.5px; left: 0; letter-spacing: .75px; position: absolute; right: 0; text-align: center; }
+.trajectory-back-column h2 { color: var(--ink); font-size: 21px; font-weight: 500; letter-spacing: -.4px; line-height: 1.15; margin: 4px 0 0; }
+.trajectory-back-visual { height: 140px; margin-top: 10px; position: relative; }
+.codex-back-visual { background: rgba(255, 247, 237, .35); }
+.back-momentum-band { border: 1px solid #ffd4ba; border-radius: 999px; height: 60px; left: 6%; position: absolute; top: 32px; transform: rotate(-4deg); width: 88%; }
+.back-momentum-band::after { border-top: 1px dashed #ffdfc8; content: ''; left: 30px; position: absolute; right: 30px; top: 29px; }
+.back-codex-line { border-top: 1px solid #ffd4ba; left: 5%; position: absolute; right: 5%; top: 66px; }
+.back-codex-node { align-items: center; background: #fff; border: 1px solid #ffc39e; border-radius: 50%; box-sizing: border-box; color: #a84e1b; display: flex; flex-direction: column; font-size: 10px; height: 42px; justify-content: center; position: absolute; text-align: center; width: 42px; }
+.back-codex-node small { color: var(--muted); font-family: var(--deck-mono); font-size: 8.5px; margin-top: 2px; }
+.back-node-start { height: 48px; left: 2%; top: 42px; width: 48px; }
+.back-node-core { background: #fff8f1; border-color: var(--orange); box-shadow: 0 0 0 4px rgba(255, 135, 63, .07); height: 54px; left: 20%; top: 38px; width: 54px; }
+.back-node-rank { left: 42%; top: 18px; }
+.back-node-lr { left: 55%; top: 68px; }
+.back-node-sampling { left: 68%; top: 18px; width: 50px; }
+.back-node-negatives { left: 81%; top: 68px; width: 54px; }
+.gemini-back-connections { height: 100%; inset: 0; overflow: visible; pointer-events: none; position: absolute; shape-rendering: geometricPrecision; width: 100%; }
+.gemini-back-connections line { fill: none; stroke: #9cd7ef; stroke-linecap: round; stroke-width: 1.2; vector-effect: non-scaling-stroke; }
+.back-pivot-node { align-items: center; background: #fff; border: 1px solid #98ddfa; border-radius: 8px; box-sizing: border-box; color: #167aa9; display: flex; font-size: 10px; justify-content: center; line-height: 1.2; min-height: 40px; padding: 4px 7px; position: absolute; text-align: center; }
+.back-pivot-node-1 { left: 3%; top: 72px; width: 58px; }
+.back-pivot-node-2 { left: 21%; top: 16px; width: 98px; }
+.back-pivot-node-3 { left: 43%; top: 72px; width: 64px; }
+.back-pivot-node-4 { left: 62%; top: 16px; width: 72px; }
+.back-pivot-node-5 { left: 76%; top: 72px; width: 92px; }
+.back-visual-label { position: absolute; left: 0; right: 0; bottom: 5px; text-align: center; font-size: 8.5px; letter-spacing: .7px; }
 .codex-back-column .back-visual-label { color: #c15d22; }
-.gemini-back-visual { border-left: 1px solid rgba(56, 189, 248, .25); border-right: 1px solid rgba(56, 189, 248, .25); }
-.gemini-back-connections { height: 100%; left: 0; overflow: visible; pointer-events: none; position: absolute; shape-rendering: geometricPrecision; top: 0; width: 100%; z-index: 1; }
-.gemini-back-connections line { fill: none; stroke: rgba(56, 189, 248, .68); stroke-linecap: round; stroke-width: 1; vector-effect: non-scaling-stroke; }
-.back-pivot-node { align-items: center; background: #fff; border: 1px solid rgba(56, 189, 248, .72); border-radius: 8px; box-sizing: border-box; color: #167aa9; display: flex; font-size: 10px; justify-content: center; line-height: 1.1; min-height: 40px; padding: 4px 7px; position: absolute; text-align: center; z-index: 2; }
-.back-pivot-node-1 { left: 2%; top: 88px; width: 58px; }
-.back-pivot-node-2 { left: 18%; top: 19px; width: 98px; }
-.back-pivot-node-3 { left: 41%; top: 88px; width: 66px; }
-.back-pivot-node-4 { left: 59%; top: 19px; width: 68px; }
-.back-pivot-node-5 { left: 72%; top: 88px; width: 92px; }
-.gemini-back-column .back-visual-label { bottom: 4px; color: #158ac0; z-index: 3; }
-.trajectory-back-copy { color: var(--muted); font-size: 13px; line-height: 1.32; margin: 6px 0 0; max-width: 98%; }
+.gemini-back-column .back-visual-label { color: #158ac0; }
+.trajectory-momentum-page .trajectory-back-copy { color: #727983; font-size: 12.5px; line-height: 1.4; margin: 8px 0 0; }
 
-.trajectory-scientist-takeaway { align-items: center; background: linear-gradient(90deg, #f0fdf4 0%, #f8fafc 100%); border: 1px solid #bbf7d0; border-radius: 10px; box-shadow: 0 2px 8px rgba(22, 128, 61, .06); display: flex; gap: 12px; margin-top: 11px; padding: 8px 16px; }
-.trajectory-scientist-takeaway .takeaway-icon { color: #16a34a; flex-shrink: 0; font-size: 18px; }
-.trajectory-scientist-takeaway .takeaway-body { align-items: baseline; display: flex; flex-wrap: wrap; gap: 8px; font-size: 12.5px; line-height: 1.35; }
-.trajectory-scientist-takeaway .takeaway-headline { color: #15803d; font-size: 12.5px; font-weight: 750; letter-spacing: -.2px; }
-.trajectory-scientist-takeaway .takeaway-text { color: #334155; font-weight: 500; }
+.momentum-analogy { align-items: center; background: #fff; border: 1px solid #d8ebf8; border-radius: 10px; display: flex; gap: 18px; margin-top: 15px; padding: 11px 16px; }
+.momentum-analogy-levels { display: flex; flex-direction: column; flex: 1; gap: 8px; min-width: 0; }
+.momentum-analogy-row { align-items: center; display: flex; gap: 10px; }
+.momentum-analogy-row-sep { background: #f1f5f9; height: 1px; width: 100%; }
+.momentum-analogy-label { color: #8192a2; flex-shrink: 0; font-size: 8.5px; font-weight: 600; letter-spacing: .8px; white-space: nowrap; width: 94px; }
+.momentum-chain { align-items: center; color: #4c6474; display: flex; font-size: 10px; gap: 5px; min-width: 0; white-space: nowrap; }
+.momentum-chain .chain-pill { border: 1px solid; border-radius: 999px; padding: 2px 8px; }
+.momentum-chain b { color: #9ab8cb; font-size: 9px; }
+.action-chain .chain-same-tool { background: #fff1f2; border-color: #fecdd3; color: #9f1239; font-weight: 600; }
+.action-chain b { color: #fda4af; }
+.action-chain .chain-context { color: #8292a5; font-size: 9.5px; font-style: italic; margin-left: 4px; }
+.research-chain .chain-tune { background: #fff7ed; border-color: #fed7aa; color: #c2410c; font-weight: 600; }
+.research-chain .chain-pivot { background: #eff6ff; border-color: #bfdbfe; color: #1d4ed8; font-weight: 600; }
+.research-chain .chain-gloss { color: #64748b; font-size: 10px; }
+.research-chain .chain-or { color: #94a3b8; font-size: 10px; font-style: italic; padding: 0 2px; }
+.momentum-analogy-divider { background: #e2e8f0; align-self: stretch; flex-shrink: 0; width: 1px; }
+.momentum-analogy-summary { display: flex; flex-direction: column; flex-shrink: 0; gap: 4px; width: 176px; }
+.momentum-analogy-summary .summary-tag { color: #0284c7; font-size: 8px; font-weight: 600; letter-spacing: .8px; }
+.momentum-analogy-summary strong { color: #167aa9; font-size: 13px; font-weight: 600; line-height: 1.3; }
+
+.trajectory-scientist-takeaway { align-items: center; border-top: 1px solid #dce4ec; display: flex; gap: 12px; margin-top: 15px; padding: 12px 16px 0; }
+.takeaway-icon-wrap { align-items: center; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 7px; display: inline-flex; flex-shrink: 0; height: 26px; justify-content: center; width: 26px; }
+.trajectory-scientist-takeaway .takeaway-icon { color: #0284c7; font-size: 15px; }
+.trajectory-scientist-takeaway .takeaway-body { display: flex; flex-direction: column; gap: 5px; font-size: 12px; line-height: 1.4; }
+.trajectory-scientist-takeaway .takeaway-headline { color: var(--ink); font-size: 12px; font-weight: 600; }
+.trajectory-scientist-takeaway .takeaway-text { color: #475569; font-weight: 500; }
 
 .trajectory-validity-page, .trajectory-handoff-page { display: flex; flex: 1; flex-direction: column; min-height: 0; }
 .trajectory-validity-page .trajectory-validity-claim { gap: 8px; margin-bottom: 0; }

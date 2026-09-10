@@ -272,7 +272,7 @@ const journeys = [
     footer: "READ-ONLY VIEW",
     html:
       command("gui", "--target ./project") +
-      '<div class="dashboard-demo"><span class="tiny-label">S004 / RETAINED PUBLIC-VALIDATION PRIMARY</span><div class="dashboard-score">0.6059363 <span style="font-size:17px;color:#97a3b7">↗</span></div><div class="dashboard-metrics"><span><strong>4</strong>Autonomous cycles</span><span><strong>13</strong>Experiments</span><span><strong>48.24M</strong>Tokens incl. cache</span></div></div>',
+      '<div class="dashboard-demo"><span class="tiny-label">S004 / RETAINED PUBLIC-VALIDATION PRIMARY</span><div class="dashboard-score">0.6059363 <span style="font-size:17px;color:var(--muted)">↗</span></div><div class="dashboard-metrics"><span><strong>4</strong>Autonomous cycles</span><span><strong>13</strong>Experiments</span><span><strong>48.24M</strong>Tokens incl. cache</span></div></div>',
   },
   {
     kicker: "ALREADY IN YOUR WORKFLOW",
@@ -282,7 +282,7 @@ const journeys = [
     filename: "Coding agent / research-agent skill",
     status: "Research workflow connected",
     footer: "YOUR TOOLS. YOUR PROJECT.",
-    html: '<p class="tiny-label" style="color:#8290a8;margin-bottom:20px">SKILL.md / research-agent</p><div class="skill-prompt">Use the research-agent skill.</div><p class="skill-response">“Explore in parallel. Let me review what to keep.”</p><p class="demo-result">S Research workflow, connected.</p><p class="skill-files">task.md &nbsp;·&nbsp; research_record/ &nbsp;·&nbsp; system/</p>',
+    html: '<p class="tiny-label" style="color:var(--muted);margin-bottom:20px">SKILL.md / research-agent</p><div class="skill-prompt">Use the research-agent skill.</div><p class="skill-response">“Explore in parallel. Let me review what to keep.”</p><p class="demo-result">S Research workflow, connected.</p><p class="skill-files">task.md &nbsp;·&nbsp; research_record/ &nbsp;·&nbsp; system/</p>',
   },
 ];
 let journeyIndex = 0;
@@ -366,7 +366,7 @@ const points = experiments.map((e, i) => ({
 }));
 const line = points.map((p) => `${p.x},${p.y}`).join(" ");
 $("#trajectory-chart").innerHTML =
-  `<svg viewBox="0 0 940 268" role="img" aria-labelledby="trajectory-title trajectory-description"><title id="trajectory-title">Retained public-validation Primary across seven Full evaluations</title><desc id="trajectory-description">Official reference: 0.6016; Reproduced baseline (E003): 0.6016310. E003 and E004: 0.6016310. E007: 0.6030889. E008: 0.6040901. E009: 0.6044289. E012: 0.6054846. E013: 0.6059363.</desc><defs><linearGradient id="trajectory-fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#7da6ff" stop-opacity=".19"/><stop offset="1" stop-color="#7da6ff" stop-opacity="0"/></linearGradient></defs><rect id="active-cycle-zone" class="chart-zone" x="673" y="20" width="237" height="205" rx="4"/>${[0.602, 0.603, 0.604, 0.605, 0.606].map((v) => `<line class="chart-grid" x1="55" x2="910" y1="${chartY(v)}" y2="${chartY(v)}"/><text class="chart-label" x="3" y="${chartY(v) + 4}">${v.toFixed(3)}</text>`).join("")}<line class="chart-reference" x1="55" x2="910" y1="${chartY(0.6016)}" y2="${chartY(0.6016)}"/><text class="chart-label" x="430" y="${chartY(0.6016) - 10}">Official reference · 0.6016</text><path class="chart-area" d="M${points[0].x},225 L${line.replaceAll(" ", " L")} L870,225Z"/><polyline class="chart-frontier" points="${line}"/>${points.map((p) => `<circle class="chart-point ${p.cycle === 3 ? "active" : ""}" data-point-cycle="${p.cycle}" cx="${p.x}" cy="${p.y}" r="4.5"><title>${p.id}: ${p.score.toFixed(7)}</title></circle><text class="chart-label" text-anchor="middle" x="${p.x}" y="${p.y - 15}">${p.id}</text>`).join("")}<text class="chart-label" x="65" y="252">FULL PUBLIC-VALIDATION EVALUATIONS</text><text class="chart-label" text-anchor="end" x="870" y="252">E001–E013 / RETAINED RUN</text></svg>`;
+  `<svg viewBox="0 0 940 268" role="img" aria-labelledby="trajectory-title trajectory-description"><title id="trajectory-title">Retained public-validation Primary across seven Full evaluations</title><desc id="trajectory-description">Official reference: 0.6016; Reproduced baseline (E003): 0.6016310. E003 and E004: 0.6016310. E007: 0.6030889. E008: 0.6040901. E009: 0.6044289. E012: 0.6054846. E013: 0.6059363.</desc><defs><linearGradient id="trajectory-fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#38bdf8" stop-opacity=".19"/><stop offset="1" stop-color="#38bdf8" stop-opacity="0"/></linearGradient></defs><rect id="active-cycle-zone" class="chart-zone" x="673" y="20" width="237" height="205" rx="4"/>${[0.602, 0.603, 0.604, 0.605, 0.606].map((v) => `<line class="chart-grid" x1="55" x2="910" y1="${chartY(v)}" y2="${chartY(v)}"/><text class="chart-label" x="3" y="${chartY(v) + 4}">${v.toFixed(3)}</text>`).join("")}<line class="chart-reference" x1="55" x2="910" y1="${chartY(0.6016)}" y2="${chartY(0.6016)}"/><text class="chart-label" x="430" y="${chartY(0.6016) - 10}">Official reference · 0.6016</text><path class="chart-area" d="M${points[0].x},225 L${line.replaceAll(" ", " L")} L870,225Z"/><polyline class="chart-frontier" points="${line}"/>${points.map((p) => `<circle class="chart-point ${p.cycle === 3 ? "active" : ""}" data-point-cycle="${p.cycle}" cx="${p.x}" cy="${p.y}" r="4.5"><title>${p.id}: ${p.score.toFixed(7)}</title></circle><text class="chart-label" text-anchor="middle" x="${p.x}" y="${p.y - 15}">${p.id}</text>`).join("")}<text class="chart-label" x="65" y="252">FULL PUBLIC-VALIDATION EVALUATIONS</text><text class="chart-label" text-anchor="end" x="870" y="252">E001–E013 / RETAINED RUN</text></svg>`;
 const cycleZones = [
   [55, 183],
   [248, 249],
@@ -399,7 +399,7 @@ const setups = [
     label: "Direct Gemini",
     score: 0.6045803,
     tokens: 8.565,
-    color: "#337cbe",
+    color: "#5d7fbd",
     detail:
       "Direct gemini-3.7-flash: 8.565M tokens · Primary 0.6045803 · artifact-backed result.",
   },
@@ -407,7 +407,7 @@ const setups = [
     label: "Direct GPT Luna",
     score: 0.6046,
     tokens: 28.07,
-    color: "#6982a8",
+    color: "#e98238",
     detail:
       "Direct gpt-5.6-luna: 28.070M tokens · Primary ≈0.6046 · provisional. This is a distinct control from the eleven-cycle Codex trajectory.",
   },
@@ -415,7 +415,7 @@ const setups = [
     label: "Heterogeneous",
     score: 0.6047,
     tokens: 39.607,
-    color: "#159eac",
+    color: "#df7328",
     detail:
       "Heterogeneous delegated run with gemini-3.7-flash: 39.607M tokens · Primary ≈0.6047.",
   },
@@ -423,7 +423,7 @@ const setups = [
     label: "SciOdyssey + Antigravity",
     score: 0.6052,
     tokens: (45.044 + 51.174) / 2,
-    color: "#9373d3",
+    color: "#a66cff",
     detail:
       "SciOdyssey with Antigravity, Gemini-only: E008 · Primary 0.6052 · 45.044–51.174M tokens. The horizontal interval represents token-accounting uncertainty.",
   },
@@ -431,7 +431,7 @@ const setups = [
     label: "SciOdyssey submission",
     score: 0.6059363,
     tokens: 48.24,
-    color: "#315bea",
+    color: "#16803b",
     detail:
       "Retained SciOdyssey submission: 48.240M tokens · Primary 0.6059363 · verified. Full-system tokens include input, output, and cache-read input.",
   },
@@ -439,7 +439,7 @@ const setups = [
 const sx = (tokens) => 67 + (tokens / 55) * 795;
 const sy = (score) => 252 - ((score - 0.6015) / 0.0048) * 215;
 $("#comparison-chart").innerHTML =
-  `<svg viewBox="0 0 930 330" role="img" aria-labelledby="comparison-title comparison-desc"><title id="comparison-title">Primary score versus measured LLM-token investment</title><desc id="comparison-desc">Distinct setups rather than a controlled causal ablation. Direct Gemini: 8.565M, 0.6045803. Direct GPT Luna: 28.070M, approximately 0.6046, provisional. Heterogeneous: 39.607M, approximately 0.6047. SciOdyssey Antigravity: 45.044 to 51.174M, 0.6052. Retained SciOdyssey: 48.240M, 0.6059363.</desc>${[0.602, 0.603, 0.604, 0.605, 0.606].map((v) => `<line class="chart-grid" x1="67" x2="862" y1="${sy(v)}" y2="${sy(v)}"/><text class="chart-label" x="12" y="${sy(v) + 4}">${v.toFixed(3)}</text>`).join("")}${[0, 10, 20, 30, 40, 50, 55].map((v) => `<line class="chart-grid" x1="${sx(v)}" x2="${sx(v)}" y1="25" y2="257"/><text class="chart-label" text-anchor="middle" x="${sx(v)}" y="280">${v}</text>`).join("")}<line class="chart-reference" x1="67" x2="862" y1="${sy(0.6016)}" y2="${sy(0.6016)}"/><text class="chart-label" x="85" y="${sy(0.6016) - 8}">Official reference · 0.6016</text><line x1="${sx(45.044)}" x2="${sx(51.174)}" y1="${sy(0.6052)}" y2="${sy(0.6052)}" stroke="#9373d3" stroke-width="2"/>${setups.map((s, i) => `<g><circle class="scatter-dot" data-scatter="${i}" cx="${sx(s.tokens)}" cy="${sy(s.score)}" r="${i === 4 ? 9 : 6}" fill="${s.color}"><title>${s.detail}</title></circle><text class="scatter-label" text-anchor="${i >= 2 ? "end" : "start"}" x="${sx(s.tokens) + (i >= 2 ? -12 : 12)}" y="${sy(s.score) + (i === 2 ? 26 : -13)}">${s.label}</text></g>`).join("")}<text class="chart-label" text-anchor="middle" x="465" y="310">TOTAL LLM TOKENS (MILLIONS) · INCLUDING CACHE-READ</text></svg>`;
+  `<svg viewBox="0 0 930 330" role="img" aria-labelledby="comparison-title comparison-desc"><title id="comparison-title">Primary score versus measured LLM-token investment</title><desc id="comparison-desc">Distinct setups rather than a controlled causal ablation. Direct Gemini: 8.565M, 0.6045803. Direct GPT Luna: 28.070M, approximately 0.6046, provisional. Heterogeneous: 39.607M, approximately 0.6047. SciOdyssey Antigravity: 45.044 to 51.174M, 0.6052. Retained SciOdyssey: 48.240M, 0.6059363.</desc>${[0.602, 0.603, 0.604, 0.605, 0.606].map((v) => `<line class="chart-grid" x1="67" x2="862" y1="${sy(v)}" y2="${sy(v)}"/><text class="chart-label" x="12" y="${sy(v) + 4}">${v.toFixed(3)}</text>`).join("")}${[0, 10, 20, 30, 40, 50, 55].map((v) => `<line class="chart-grid" x1="${sx(v)}" x2="${sx(v)}" y1="25" y2="257"/><text class="chart-label" text-anchor="middle" x="${sx(v)}" y="280">${v}</text>`).join("")}<line class="chart-reference" x1="67" x2="862" y1="${sy(0.6016)}" y2="${sy(0.6016)}"/><text class="chart-label" x="85" y="${sy(0.6016) - 8}">Official reference · 0.6016</text><line x1="${sx(45.044)}" x2="${sx(51.174)}" y1="${sy(0.6052)}" y2="${sy(0.6052)}" stroke="#a66cff" stroke-width="2"/>${setups.map((s, i) => `<g><circle class="scatter-dot" data-scatter="${i}" cx="${sx(s.tokens)}" cy="${sy(s.score)}" r="${i === 4 ? 9 : 6}" fill="${s.color}"><title>${s.detail}</title></circle><text class="scatter-label" text-anchor="${i >= 2 ? "end" : "start"}" x="${sx(s.tokens) + (i >= 2 ? -12 : 12)}" y="${sy(s.score) + (i === 2 ? 26 : -13)}">${s.label}</text></g>`).join("")}<text class="chart-label" text-anchor="middle" x="465" y="310">TOTAL LLM TOKENS (MILLIONS) · INCLUDING CACHE-READ</text></svg>`;
 $(".comparison-options").innerHTML = setups
   .map(
     (s, i) =>
@@ -466,7 +466,7 @@ const modelPatterns = {
   depth: {
     description:
       "Disciplined local refinement: feature cleanup, hyperparameter tuning, and careful exploitation.",
-    color: "#337cbe",
+    color: "#ff873f",
     edges: "M30 40L105 62L180 62L260 62L365 62",
     quiet: "M30 40L105 16 M105 62L180 25 M180 62L260 28",
     points: [
@@ -480,7 +480,7 @@ const modelPatterns = {
   breadth: {
     description:
       "Broad hypothesis exploration: representation changes, mechanism pivots, and candidate screening.",
-    color: "#9373d3",
+    color: "#38bdf8",
     edges:
       "M30 40L125 13L365 13 M30 40L125 34L365 34 M30 40L125 55L365 55 M30 40L125 76L365 76",
     quiet: "",
@@ -503,7 +503,7 @@ function showModel(button) {
     b.setAttribute("aria-pressed", String(b === button)),
   );
   $("#model-pattern").innerHTML =
-    `<svg viewBox="0 0 400 90" role="img" aria-label="Conceptual ${button.dataset.model}-oriented search pattern, not a measured trajectory"><path d="${data.quiet}" stroke="#b5bfd1" stroke-dasharray="3 4" fill="none"/><path d="${data.edges}" stroke="${data.color}" stroke-width="2" fill="none"/>${data.points.map(([x, y]) => `<circle cx="${x}" cy="${y}" r="4" fill="#f5f7fa" stroke="${data.color}" stroke-width="2"/>`).join("")}</svg>`;
+    `<svg viewBox="0 0 400 90" role="img" aria-label="Conceptual ${button.dataset.model}-oriented search pattern, not a measured trajectory"><path d="${data.quiet}" stroke="#e2e8f0" stroke-dasharray="3 4" fill="none"/><path d="${data.edges}" stroke="${data.color}" stroke-width="2" fill="none"/>${data.points.map(([x, y]) => `<circle cx="${x}" cy="${y}" r="4" fill="#ffffff" stroke="${data.color}" stroke-width="2"/>`).join("")}</svg>`;
   setText("#model-observation", data.description);
   animateContent($("#model-pattern"));
 }

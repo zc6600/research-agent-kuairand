@@ -300,7 +300,7 @@ onUnmounted(() => {
     <div class="film-progress" aria-hidden="true"><span :style="{ transform: `scaleX(${elapsed / total})` }" /></div>
     <div v-if="isOutro" class="chapter-exit" :style="{ opacity: 1 - expansion }">
       <button @click="replay">↺ Replay UX</button>
-      <button class="continue-button" @click="$nav.nextSlide()">Evaluation <span>→</span></button>
+      <button class="continue-button" @click.stop="$nav.nextSlide()">Summary <span>→</span></button>
     </div>
   </section>
 </template>

@@ -1,6 +1,6 @@
 # Research Agent · Slidev
 
-SciOdyssey 全英文技术演示（含英文讲者备注）：12 页当前演示，白底、彩色重点，16:9。内容以仓库 README、技术报告及架构文档为依据，讲者备注保留来源及证据口径。
+SciOdyssey 全英文技术演示（含英文讲者备注）：16 页当前演示，白底、彩色重点，16:9。内容以仓库 README、技术报告及架构文档为依据，讲者备注保留来源及证据口径。
 
 ## 叙事顺序
 
@@ -9,11 +9,14 @@ SciOdyssey 全英文技术演示（含英文讲者备注）：12 页当前演示
 | 封面 | 1 | 项目与叙事路线 |
 | Talk order | 2 | 叙事路线 |
 | Problem | 3–4 | 研究任务与长期自主研究的障碍 |
-| System | 5 | Insight 汇聚成架构 |
-| Experience | 6 | 输入任务与研究工作流 |
+| System | 5–6 | Insight 汇聚成架构与研究原则 |
 | Evaluation | 7 | 结果、轨迹、恢复与审计证据卡片 |
-| Insights | 8–10 | 模型轮换、并行研究与工程实践 |
-| 附录 | 11–12 | 开放能力与团队 |
+| Findings | 8–9 | 模型轮换与并行研究 |
+| Experience | 10 | 输入任务与研究工作流 |
+| Summary | 11 | 图片、重点文字与数字组成的错落卡片，点击进入详细内容 |
+| Thank You | 12 | 独立结束页 |
+| Q&A | 13 | 答疑，可返回 Summary 展开证据 |
+| 附录 | 14–16 | 工程实践、开放能力与团队 |
 
 ## 本地演示
 
@@ -28,7 +31,11 @@ npm run dev
 
 第四页翻开并收起卡片时，对应 insight 会在底部点亮。点击 `Build the system` 或按右方向键进入第五页，会播放约四秒的 insight 汇聚与架构展开动画。点击动画区域可直接完成，第五页右上角 `Replay` 可重播。减少动态效果模式和 PDF 导出直接展示完整架构。
 
-第六页 UX 动画默认按英文讲稿时间轴显示底部字幕；静态模式和 PDF 导出会隐藏字幕。
+第十页 UX 动画默认按英文讲稿时间轴显示底部字幕；静态模式和 PDF 导出会隐藏字幕。
+
+第十一页 Summary 以 11 张错落卡片汇总各项结论，用原有图表缩略图、品牌图片、重点文字与数字呈现。点击卡片跳转到对应页面，结果类卡片直接打开证据详情；右下角 `Back to Summary` 返回卡片页。第十二页单独展示 Thank You。可直接打开 http://localhost:3030/summary 或 http://localhost:3030/thank-you 。卡片内容、位置与稳定跳转目标在 `composables/conclusions.mjs`，布局在 `components/SummaryConclusions.vue`，缩略图在 `public/assets/summary/`。
+
+第十三页 Q&A 使用简洁的轻字重标题。Thank You 页可点击 `Q&A` 进入；答疑页的 `Explore the evidence` 返回 Summary。直接入口为 http://localhost:3030/qa ，布局在 `components/QuestionsAndAnswers.vue`。
 
 ## 构建与导出
 
@@ -96,6 +103,6 @@ npm run poster:variants
 
 ## Evaluation 卡片试版
 
-`npm run dev` 的第 6 页为 Evaluation 卡片页。点击卡片后，图表、数据和正文直接呈现在展开的卡片内，长内容在卡片内部滚动。五张卡片依次承载模型结果、持续搜索、失败恢复、Codex 对照，以及 P10 的自主性与资源账本。`BACK TO HAND` 或 Esc 返回卡片组。
+`npm run dev` 的第 7 页为 Evaluation 卡片页。点击卡片后，图表、数据和正文直接呈现在展开的卡片内，长内容在卡片内部滚动。五张卡片依次承载模型结果、持续搜索、失败恢复、Codex 对照，以及 P10 的自主性与资源账本。`BACK TO HAND` 或 Esc 返回卡片组。
 
 原来的结果、轨迹和审计顺序页面已从主线移除。卡片内容在 `components/EvaluationCardBody.vue`，卡片交互在 `components/EvaluationClaimCards.vue`；修改数据时需与 `slides.md` 保持一致。
