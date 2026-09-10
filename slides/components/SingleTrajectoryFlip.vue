@@ -88,7 +88,7 @@ useTalkSteps(14, step => {
         <span class="trajectory-flip-icon" title="Click to flip"><i class="i-carbon:rotate-360"></i></span>
       </div>
 
-      <div class="trajectory-mini-visual" aria-label="A single long-running trajectory keeps moving in the same direction">
+      <div class="trajectory-mini-visual" aria-label="A single long-running trajectory keeps exploiting or exploring in the same mode">
         <div class="trajectory-mini-track"></div>
         <div class="trajectory-mini-step step-1"></div>
         <div class="trajectory-mini-step step-2"></div>
@@ -96,11 +96,11 @@ useTalkSteps(14, step => {
         <div class="trajectory-mini-step step-4"></div>
         <div class="trajectory-mini-arrow">→</div>
         <div class="trajectory-mini-star">★ <small>different idea</small></div>
-        <div class="trajectory-mini-caption mono">trajectory momentum</div>
+        <div class="trajectory-mini-caption mono">search momentum</div>
       </div>
 
       <p class="failure-mode-explanation trajectory-peer-problems">
-        <span>Trajectory momentum</span>
+        <span>Search momentum</span>
         <span>Errors can persist</span>
       </p>
     </template>
@@ -114,11 +114,11 @@ useTalkSteps(14, step => {
         </button>
       </div>
       <div class="trajectory-condensed-visual">
-        <div class="trajectory-condensed-line"><span>momentum</span><i></i><span>fresh search</span></div>
-        <div class="trajectory-condensed-tags"><span>trajectory momentum</span><span>fresh context</span></div>
+        <div class="trajectory-condensed-line"><span>search momentum</span><i></i><span>fresh search</span></div>
+        <div class="trajectory-condensed-tags"><span>exploitation</span><span>exploration</span></div>
       </div>
       <p class="failure-mode-explanation">Fresh reasoning. Audited evidence.</p>
-      <div class="failure-mode-takeaway trajectory-condensed-takeaway"><span>✓</span><strong>Reset momentum.</strong></div>
+      <div class="failure-mode-takeaway trajectory-condensed-takeaway"><span>✓</span><strong>Reset search momentum.</strong></div>
       <div class="failure-mode-takeaway trajectory-condensed-takeaway"><span>✓</span><strong>Check the science.</strong></div>
     </template>
   </div>
@@ -158,14 +158,14 @@ useTalkSteps(14, step => {
       </div>
 
       <div class="trajectory-reverse-page" :key="reversePage">
-        <section v-if="reversePage === 0" class="trajectory-momentum-page" aria-label="Two observed forms of trajectory momentum">
-          <h1 class="trajectory-back-claim">Long trajectories accumulate <strong>trajectory momentum.</strong></h1>
+        <section v-if="reversePage === 0" class="trajectory-momentum-page" aria-label="Two observed failure modes: exploitation lock-in and undiagnosed exploration">
+          <h1 class="trajectory-back-claim">Long trajectories accumulate <strong>search momentum.</strong></h1>
 
           <div class="trajectory-back-grid">
             <div class="trajectory-back-column codex-back-column">
-              <div class="trajectory-back-column-kicker mono">CODEX · INERTIAL EXPLOITATION</div>
-              <h2>Hyper-tuning momentum</h2>
-              <div class="trajectory-back-visual codex-back-visual" role="img" aria-label="Codex refines the FM family: pointwise, pairwise, rank, learning rate, sampling and negatives.">
+              <div class="trajectory-back-column-kicker mono">CODEX · EXPLOITATION MOMENTUM</div>
+              <h2>Exploitation momentum</h2>
+              <div class="trajectory-back-visual codex-back-visual" role="img" aria-label="Codex exploits the FM family: pointwise, pairwise, rank, learning rate, sampling and negatives.">
                 <div class="back-momentum-band"></div>
                 <div class="back-codex-line"></div>
                 <div class="back-codex-node back-node-start">pointwise<small>FM</small></div>
@@ -174,15 +174,15 @@ useTalkSteps(14, step => {
                 <div class="back-codex-node back-node-detail back-node-lr">lr</div>
                 <div class="back-codex-node back-node-detail back-node-sampling">sampling</div>
                 <div class="back-codex-node back-node-detail back-node-negatives">negatives</div>
-                <div class="back-visual-label mono">STUCK IN LOCAL PARAMETER BASIN</div>
+                <div class="back-visual-label mono">EXPLOITATION MOMENTUM WITHOUT A REPRESENTATION SHIFT</div>
               </div>
-              <p class="trajectory-back-copy">Endless parameter tuning without questioning representation bottlenecks.</p>
+              <p class="trajectory-back-copy">Search momentum locks search into a single paradigm: exhausts FM variations without shifting to neural representations.</p>
             </div>
 
             <div class="trajectory-back-column gemini-back-column">
-              <div class="trajectory-back-column-kicker mono">GEMINI · INERTIAL EXPLORATION</div>
-              <h2>Pivoting momentum</h2>
-              <div class="trajectory-back-visual gemini-back-visual" role="img" aria-label="Gemini changes mechanisms: FM, an 8-field representation, BPR loss, DeepFM, then MT-DeepFM with EMA.">
+              <div class="trajectory-back-column-kicker mono">GEMINI · EXPLORATION MOMENTUM</div>
+              <h2>Exploration momentum</h2>
+              <div class="trajectory-back-visual gemini-back-visual" role="img" aria-label="Gemini explores different mechanisms: FM, an 8-field representation, BPR loss, MT-DeepFM, then 5-Model Blend.">
                 <svg class="gemini-back-connections" viewBox="0 0 420 140" preserveAspectRatio="none" aria-hidden="true">
                   <line x1="65" y1="81" x2="99" y2="52"></line>
                   <line x1="178" y1="52" x2="193" y2="76"></line>
@@ -192,15 +192,15 @@ useTalkSteps(14, step => {
                 <div class="back-pivot-node back-pivot-node-1">FM</div>
                 <div class="back-pivot-node back-pivot-node-2">8-field<br>representation</div>
                 <div class="back-pivot-node back-pivot-node-3">BPR<br>loss</div>
-                <div class="back-pivot-node back-pivot-node-4">DeepFM</div>
-                <div class="back-pivot-node back-pivot-node-5">MT-DeepFM<br>+ EMA</div>
-                <div class="back-visual-label mono">ERRATIC DRIFT WITHOUT ROOT DIAGNOSIS</div>
+                <div class="back-pivot-node back-pivot-node-4">MT-DeepFM</div>
+                <div class="back-pivot-node back-pivot-node-5">5-Model<br>Blend</div>
+                <div class="back-visual-label mono">REACTIVE PIVOTS WITHOUT A DEEP DIVE</div>
               </div>
-              <p class="trajectory-back-copy">Erratic architecture hopping without root-cause diagnosis.</p>
+              <p class="trajectory-back-copy">Search momentum keeps pivoting across architectures: accumulates model variants and blends instead of diving deep into the bottleneck.</p>
             </div>
           </div>
 
-          <div class="momentum-analogy" aria-label="Tool-loop analogy for research momentum">
+          <div class="momentum-analogy" aria-label="Exploitation and exploration can both become repetitive without diagnosis">
             <div class="momentum-analogy-levels">
               <div class="momentum-analogy-row">
                 <span class="momentum-analogy-label mono">ACTION LEVEL</span>
@@ -210,33 +210,33 @@ useTalkSteps(14, step => {
                   <span class="chain-pill chain-same-tool">same tool</span>
                   <b>→</b>
                   <span class="chain-pill chain-same-tool">same tool</span>
-                  <span class="chain-context mono">(repeats same tool on bug)</span>
+                  <span class="chain-context mono">(momentum repeats the same tool)</span>
                 </div>
               </div>
               <div class="momentum-analogy-row-sep" aria-hidden="true"></div>
               <div class="momentum-analogy-row">
                 <span class="momentum-analogy-label mono">RESEARCH LEVEL</span>
                 <div class="momentum-chain mono research-chain">
-                  <span class="chain-pill chain-tune">tune → tune</span>
-                  <span class="chain-gloss">hyper-tuning</span>
+                  <span class="chain-pill chain-tune">exploit → exploit</span>
+                  <span class="chain-gloss">blind exploitation</span>
                   <span class="chain-or">or</span>
-                  <span class="chain-pill chain-pivot">pivot → pivot</span>
-                  <span class="chain-gloss">blind pivoting</span>
+                  <span class="chain-pill chain-pivot">explore → explore</span>
+                  <span class="chain-gloss">blind exploration</span>
                 </div>
               </div>
             </div>
             <div class="momentum-analogy-divider" aria-hidden="true"></div>
             <div class="momentum-analogy-summary">
-              <span class="summary-tag mono">TRAJECTORY INERTIA</span>
-              <strong>Same momentum,<br>at a longer horizon.</strong>
+              <span class="summary-tag mono">SEARCH MOMENTUM</span>
+              <strong>Same search momentum,<br>at a longer horizon.</strong>
             </div>
           </div>
 
           <div class="trajectory-scientist-takeaway">
             <div class="takeaway-icon-wrap"><span class="takeaway-icon i-carbon:idea"></span></div>
             <div class="takeaway-body">
-              <strong class="takeaway-headline">A true scientist will neither blindly dive nor blindly pivot:</strong>
-              <span class="takeaway-text">They diagnose the bottleneck from audited evidence first, and adapt their research method accordingly.</span>
+              <strong class="takeaway-headline">A true scientist will neither blindly exploit nor blindly explore:</strong>
+              <span class="takeaway-text">They diagnose the bottleneck from audited evidence first, then choose whether to dive deep or pivot.</span>
             </div>
           </div>
         </section>
@@ -309,7 +309,7 @@ useTalkSteps(14, step => {
 
               <div class="cycle-node cycle-scientist-node" :class="{ 'trajectory-handoff-vclick-hidden': handoffClick < 1 }">
                 <div class="cycle-node-visual cycle-scientist-visual"><span class="cycle-node-icon purple i-carbon:chemistry"></span></div>
-                <strong>Fresh Scientist</strong><small>Break trajectory momentum</small>
+                <strong>Fresh Scientist</strong><small>Break search momentum</small>
               </div>
               <div class="cycle-node cycle-evidence-node" :class="{ 'trajectory-handoff-vclick-hidden': handoffClick < 2 }">
                 <div class="cycle-node-visual cycle-evidence-visual"><span class="evidence-line"><i class="blue-dot"></i>metrics</span><span class="evidence-line"><i class="orange-dot"></i>failures</span><span class="evidence-line"><i class="green-dot"></i>code</span></div>
@@ -320,13 +320,13 @@ useTalkSteps(14, step => {
                 <strong>Independent META</strong><small>Check claims against code</small>
               </div>
               <div class="cycle-loop-label" :class="{ 'trajectory-handoff-vclick-hidden': handoffClick < 4 }">
-                <strong>Preserve experience. Reset momentum.</strong><small>Updated world, fresh Scientist</small>
+                <strong>Preserve experience. Reset search momentum.</strong><small>Updated world, fresh Scientist</small>
               </div>
             </div>
 
             <div class="cycle-explain trajectory-handoff-cycle-explain" :class="{ 'trajectory-handoff-vclick-hidden': handoffClick < 4 }">
               <div class="handoff-response handoff-response-search">
-                <span class="handoff-response-label">01 / TRAJECTORY MOMENTUM</span>
+                <span class="handoff-response-label">01 / SEARCH MOMENTUM</span>
                 <strong>A fresh Scientist reopens the search.</strong>
               </div>
               <div class="handoff-response handoff-response-validity">
@@ -420,6 +420,16 @@ useTalkSteps(14, step => {
 .trajectory-validity-claim, .trajectory-handoff-claim { color: var(--ink); display: flex; flex-direction: column; font-family: var(--deck-sans); font-size: 32px; font-weight: 500; letter-spacing: -1.1px; line-height: 1.08; margin-top: 24px; }
 .trajectory-handoff-claim strong { color: var(--blue); font-weight: 700; }
 .trajectory-handoff-page .trajectory-handoff-claim .handoff-review-title { color: #7542be; }
+
+/* Keep the handoff claim in the same restrained editorial hierarchy as the other reverse pages. */
+.trajectory-handoff-page .trajectory-handoff-claim {
+  font-size: 27px;
+  font-weight: 500;
+  letter-spacing: -.75px;
+  line-height: 1.18;
+  margin-top: 14px;
+}
+.trajectory-handoff-page .trajectory-handoff-claim strong { font-weight: 600; }
 
 /* Preserve the complete Momentum argument with separate, aligned sections. */
 .trajectory-momentum-page { display: flex; flex: 1; flex-direction: column; min-height: 0; }
