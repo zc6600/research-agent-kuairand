@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, ref } from 'vue'
 import EvaluationCardBody from './EvaluationCardBody.vue'
+import EvaluationResourceScatter from './EvaluationResourceScatter.vue'
 import { useTalkSteps } from '../composables/useTalkSteps'
 
 type Card = {
@@ -81,6 +82,8 @@ const handleKey = (event: KeyboardEvent) => {
       <div class="claim-boundary mono"><span>KUAIRAND-PURE</span><span>FIXED EVALUATOR</span><span>PUBLIC VALIDATION</span></div>
     </header>
 
+    <EvaluationResourceScatter class="resource-corner" :class="{ dimmed: selected }" />
+
     <div class="evidence-hand" :class="{ inspecting: selected }">
       <button
         v-for="(card, index) in cards"
@@ -126,13 +129,16 @@ const handleKey = (event: KeyboardEvent) => {
 .eval-claim-cards::before { content: ""; position: absolute; inset: 88px 0 8px 24%; background: radial-gradient(circle at 70% 30%, color-mix(in srgb, var(--green) 9%, transparent), transparent 30%), radial-gradient(circle at 42% 76%, color-mix(in srgb, var(--blue) 6%, transparent), transparent 38%); pointer-events: none; }
 .claim-header { position: absolute; z-index: 8; left: 48px; top: 34px; right: 42px; transition: opacity .42s ease, transform .48s cubic-bezier(.22,1,.36,1); }
 .claim-header.dimmed { opacity: .16; transform: translateY(-4px); }
+.claim-header { right: auto; width: 272px; }
+.resource-corner { position: absolute; z-index: 8; top: 24px; right: 20px; width: 510px; box-sizing: border-box; transition: opacity .3s ease; }
+.resource-corner.dimmed { opacity: .16; }
 .claim-label, .claim-boundary, .card-no, .card-kicker, .card-footer, .inspection-kicker { font-size: 10px; letter-spacing: 1.35px; font-weight: 700; text-transform: uppercase; }
 .section-kicker { color: var(--green); font-family: var(--deck-sans); font-size: 14px; font-weight: 700; letter-spacing: 1.5px; line-height: 1.2; text-transform: uppercase; }
 .claim-label { margin-top: 20px; color: var(--orange); }
-.claim-header h1 { margin: 9px 0 0; max-width: 720px; font-size: 34px; line-height: 1.06; letter-spacing: -1.2px; font-weight: 700; }
-.claim-boundary { display: flex; gap: 15px; margin-top: 13px; color: #9aa0a6; font-size: 8.8px; }
+.claim-header h1 { margin: 10px 0 0; max-width: 272px; font-size: 31px; line-height: 1.09; letter-spacing: -1.1px; font-weight: 700; }
+.claim-boundary { display: flex; flex-wrap: wrap; gap: 5px 8px; margin-top: 15px; max-width: 255px; color: #85929e; font-size: 7px; letter-spacing: .6px; }
 .claim-boundary span + span::before { content: ""; display: inline-block; width: 3px; height: 3px; margin: 0 13px 2px 0; border-radius: 50%; background: color-mix(in srgb, var(--green) 56%, #bac2c8); }
-.evidence-hand { position: absolute; z-index: 4; right: 68px; top: 197px; width: 708px; height: 306px; perspective: 1400px; transition: opacity .42s ease, transform .42s cubic-bezier(.22,1,.36,1); }
+.evidence-hand { position: absolute; z-index: 4; right: 68px; top: 235px; width: 708px; height: 306px; perspective: 1400px; transition: opacity .42s ease, transform .42s cubic-bezier(.22,1,.36,1); }
 .evidence-hand.inspecting { opacity: .18; transform: translateX(18px) scale(.95); pointer-events: none; }
 .evidence-card { position: absolute; z-index: var(--z); left: var(--x); top: var(--y); width: 148px; height: 258px; border: 0; border-radius: 20px; background: linear-gradient(180deg, rgba(255,255,255,1), rgba(250,251,252,.99)), radial-gradient(circle at 72% 18%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 45%); box-shadow: 0 22px 54px rgba(27, 39, 52, .14), 0 1px 0 rgba(255,255,255,.92) inset; transform: translateY(12px) rotate(var(--rotate)) scale(var(--scale)); transform-origin: 50% 116%; color: var(--ink); font-family: var(--deck-sans); text-align: left; padding: 18px 15px 15px; cursor: pointer; transition: transform .42s cubic-bezier(.22,1,.36,1), box-shadow .42s ease, opacity .35s ease, filter .35s ease; }
 .evidence-card::before { content: ""; position: absolute; inset: 0; border-radius: inherit; border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line)); pointer-events: none; }
@@ -141,7 +147,10 @@ const handleKey = (event: KeyboardEvent) => {
 .card-no { color: var(--accent); }
 .card-kicker { color: #9aa0a6; font-size: 6.8px; letter-spacing: .68px; text-align: right; }
 .evidence-card strong { display: block; margin-top: 28px; width: 118px; font-size: 21px; line-height: 1.04; letter-spacing: -.85px; font-weight: 700; }
-.card-result strong { font-size: 22px; }
+.evidence-hand { top: 229px; }
+.evidence-card { height: 200px; }
+.evidence-card strong { margin-top: 18px; font-size: 18px; }
+.card-result strong { font-size: 19px; }
 .card-tokenmaxxing strong { text-align: center; }
 .card-rule { position: absolute; left: 15px; right: 15px; bottom: 40px; height: 2px; border-radius: 99px; background: linear-gradient(90deg, var(--accent), transparent); opacity: .58; }
 .card-footer { position: absolute; left: 15px; bottom: 16px; color: color-mix(in srgb, var(--accent) 64%, #8f969b); font-size: 7.4px; letter-spacing: .8px; }
