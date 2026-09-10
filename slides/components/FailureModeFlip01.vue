@@ -132,78 +132,56 @@ useTalkSteps(14, step => {
         <!-- Left Column: Fixed capabilities / Predefined workflow -->
         <section class="workflow-panel workflow-fixed" aria-label="Predefined workflow stops without a recovery tool">
           <div class="workflow-panel-head">
-            <div class="workflow-panel-label mono">FIXED CAPABILITIES · STATIC GRAPH</div>
+            <div class="workflow-panel-label mono">FIXED CAPABILITIES</div>
             <h3>Predefined workflow</h3>
           </div>
 
           <div class="workflow-panel-body">
-            <!-- Stage 1: Fixed Tool Registry -->
-            <div class="wf-card wf-fixed-tools-card">
+            <!-- Fixed Tool Registry -->
+            <div class="wf-card wf-toolbox">
               <div class="wf-card-header">
                 <span class="wf-card-title">Fixed tool set</span>
                 <span class="wf-card-tag mono">e.g. LangGraph</span>
               </div>
               <div class="wf-tools-grid">
                 <div class="wf-tool-item">
-                  <i class="i-carbon:search"></i>
-                  <div><strong>Tool A</strong><small class="mono">search</small></div>
+                  <i class="i-carbon:tools"></i>
+                  <span>Tool A</span>
                 </div>
                 <div class="wf-tool-item">
-                  <i class="i-carbon:code"></i>
-                  <div><strong>Tool B</strong><small class="mono">execute</small></div>
+                  <i class="i-carbon:tools"></i>
+                  <span>Tool B</span>
                 </div>
                 <div class="wf-tool-item">
-                  <i class="i-carbon:chart-line"></i>
-                  <div><strong>Tool C</strong><small class="mono">evaluate</small></div>
+                  <i class="i-carbon:tools"></i>
+                  <span>Tool C</span>
                 </div>
               </div>
             </div>
 
-            <!-- Connector 1 -->
-            <div class="wf-flow-connector">
-              <span class="wf-connector-line"></span>
-              <span class="wf-connector-badge mono text-rose">UNHANDLED RUNTIME FAILURE</span>
-              <span class="wf-connector-line"></span>
+            <!-- Connector: No fallback path -->
+            <div class="wf-fallback-connector">
+              <span class="wf-fallback-line"></span>
+              <span class="wf-fallback-badge mono">
+                <i class="i-carbon:arrow-down"></i>
+                <span>No fallback path</span>
+              </span>
+              <span class="wf-fallback-line"></span>
             </div>
 
-            <!-- Stage 2: Error & Blocked State -->
+            <!-- Error State -->
             <div class="wf-card wf-error-card">
               <div class="wf-error-content">
                 <div class="wf-error-icon-box">
-                  <i class="i-carbon:warning-alt"></i>
+                  <i class="i-carbon:error-outline"></i>
                 </div>
                 <div class="wf-error-text">
                   <div class="wf-error-title-row">
-                    <strong>API fails / Missing library</strong>
+                    <strong>API fails</strong>
                     <span class="wf-error-badge mono">BLOCKED</span>
                   </div>
-                  <p>No OS access · Cannot install dependencies or write fix scripts</p>
+                  <p>No recovery tool available.</p>
                 </div>
-              </div>
-            </div>
-
-            <!-- Connector 2 -->
-            <div class="wf-flow-connector wf-flow-mini">
-              <span class="wf-connector-line dashed"></span>
-              <span class="wf-connector-badge mono text-rose">NO FALLBACK PATH</span>
-              <span class="wf-connector-line dashed"></span>
-            </div>
-
-            <!-- Stage 3: Broken Process Loop -->
-            <div class="wf-process-track wf-break-track">
-              <div class="wf-step-item">
-                <span class="wf-step-num mono">01</span>
-                <span class="wf-step-name">Error thrown</span>
-              </div>
-              <span class="wf-step-sep">→</span>
-              <div class="wf-step-item">
-                <span class="wf-step-num mono">02</span>
-                <span class="wf-step-name">No recovery tool</span>
-              </div>
-              <span class="wf-step-sep">→</span>
-              <div class="wf-step-item">
-                <span class="wf-step-num mono">03</span>
-                <span class="wf-step-name">Run aborts</span>
               </div>
             </div>
           </div>
@@ -215,7 +193,7 @@ useTalkSteps(14, step => {
             </div>
             <div class="wf-outcome-text">
               <strong>Run stops.</strong>
-              <span>Missing tool cannot be acquired at runtime. Human developer needed.</span>
+              <span>Missing tool. Human help needed.</span>
             </div>
           </div>
         </section>
@@ -223,41 +201,33 @@ useTalkSteps(14, step => {
         <!-- Right Column: Extensible capabilities / Coding-agent harness -->
         <section class="workflow-panel workflow-open" aria-label="Coding agent acquires tools and resumes research">
           <div class="workflow-panel-head">
-            <div class="workflow-panel-label mono">EXTENSIBLE CAPABILITIES · CODING HARNESS</div>
+            <div class="workflow-panel-label mono">EXTENSIBLE CAPABILITIES</div>
             <h3>Coding-agent harness</h3>
           </div>
 
           <div class="workflow-panel-body">
-            <!-- Stage 1: Computer access (OS primitives) -->
+            <!-- Computer access -->
             <div class="wf-card wf-computer-card">
               <div class="wf-card-header">
                 <span class="wf-card-title">Computer access</span>
-                <span class="wf-card-tag mono">OS primitives</span>
               </div>
               <div class="wf-resources-grid">
                 <div class="wf-resource-item">
                   <i class="i-carbon:terminal"></i>
-                  <div><strong>shell</strong><small class="mono">git / uv</small></div>
+                  <div><strong>shell</strong><small>git</small></div>
                 </div>
                 <div class="wf-resource-item">
                   <i class="i-carbon:folder"></i>
-                  <div><strong>files</strong><small class="mono">code / docs</small></div>
+                  <div><strong>files</strong><small>docs</small></div>
                 </div>
                 <div class="wf-resource-item">
                   <i class="i-carbon:earth"></i>
-                  <div><strong>browser</strong><small class="mono">packages</small></div>
+                  <div><strong>browser</strong><small>packages</small></div>
                 </div>
               </div>
             </div>
 
-            <!-- Connector 1 -->
-            <div class="wf-flow-connector">
-              <span class="wf-connector-line"></span>
-              <span class="wf-connector-badge mono text-blue">DYNAMIC RUNTIME EXTENSION</span>
-              <span class="wf-connector-line"></span>
-            </div>
-
-            <!-- Stage 2: Agent Harness + Skills + MCP -->
+            <!-- Agent Harness + Skills + MCP -->
             <div class="wf-card wf-agent-card">
               <div class="wf-agent-layout">
                 <div class="wf-ext-chip">
@@ -280,28 +250,21 @@ useTalkSteps(14, step => {
               </div>
             </div>
 
-            <!-- Connector 2 -->
-            <div class="wf-flow-connector wf-flow-mini">
-              <span class="wf-connector-line"></span>
-              <span class="wf-connector-badge mono text-blue">CLOSED-LOOP SELF-REPAIR</span>
-              <span class="wf-connector-line"></span>
-            </div>
-
-            <!-- Stage 3: Dynamic Recovery Loop -->
-            <div class="wf-process-track wf-recovery-track">
+            <!-- Recovery sequence -->
+            <div class="wf-recovery-track">
               <div class="wf-step-item">
-                <span class="wf-step-num mono">01</span>
-                <span class="wf-step-name">Inspect error</span>
+                <small class="wf-step-num mono">01</small>
+                <span class="wf-step-name">Inspect</span>
               </div>
               <span class="wf-step-sep">→</span>
               <div class="wf-step-item">
-                <span class="wf-step-num mono">02</span>
+                <small class="wf-step-num mono">02</small>
                 <span class="wf-step-name">Acquire tools</span>
               </div>
               <span class="wf-step-sep">→</span>
               <div class="wf-step-item">
-                <span class="wf-step-num mono">03</span>
-                <span class="wf-step-name">Retry task</span>
+                <small class="wf-step-num mono">03</small>
+                <span class="wf-step-name">Retry</span>
               </div>
             </div>
           </div>
@@ -313,7 +276,7 @@ useTalkSteps(14, step => {
             </div>
             <div class="wf-outcome-text">
               <strong>Research resumes.</strong>
-              <span>Acquires missing tools autonomously. Extends what the agent can do.</span>
+              <span>Acquire tools. Extend what the agent can do.</span>
             </div>
           </div>
         </section>
@@ -680,11 +643,11 @@ useTalkSteps(14, step => {
 }
 
 .workflow-panel-head {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .workflow-panel-label {
-  font-size: 9px;
+  font-size: 9.5px;
   font-weight: 700;
   letter-spacing: 0.8px;
   margin-bottom: 2px;
@@ -711,9 +674,9 @@ useTalkSteps(14, step => {
 .workflow-panel-body {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
   flex: 1;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 /* Card components inside panels */
@@ -721,18 +684,18 @@ useTalkSteps(14, step => {
   background: #f8fafc;
   border: 1px solid #e2e8f0;
   border-radius: 8px;
-  padding: 7px 9px;
+  padding: 9px 11px;
 }
 
 .wf-card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
 }
 
 .wf-card-title {
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 700;
   color: #475569;
 }
@@ -753,82 +716,54 @@ useTalkSteps(14, step => {
 .wf-tool-item {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
-  padding: 5px 7px;
+  padding: 8px 4px;
   background: #ffffff;
   border: 1px solid #cbd5e1;
   border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #334155;
 }
 
 .wf-tool-item i {
   color: #64748b;
   font-size: 13px;
-  flex-shrink: 0;
 }
 
-.wf-tool-item div {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
-
-.wf-tool-item strong {
-  font-size: 11px;
-  font-weight: 700;
-  color: #1e293b;
-  line-height: 1.1;
-}
-
-.wf-tool-item small {
-  font-size: 8px;
-  color: #64748b;
-  line-height: 1.1;
-}
-
-/* Connectors */
-.wf-flow-connector {
+/* Fallback connector */
+.wf-fallback-connector {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  height: 15px;
+  height: 20px;
   position: relative;
 }
 
-.wf-flow-mini {
-  height: 12px;
-}
-
-.wf-connector-line {
+.wf-fallback-line {
   flex: 1;
-  border-top: 1px solid #e2e8f0;
-}
-
-.workflow-fixed .wf-connector-line {
-  border-top-color: #fed7aa;
-}
-
-.workflow-fixed .wf-connector-line.dashed {
   border-top: 1px dashed #fca5a5;
 }
 
-.workflow-open .wf-connector-line {
-  border-top-color: #bae6fd;
-}
-
-.wf-connector-badge {
-  font-size: 8px;
+.wf-fallback-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 8.5px;
   font-weight: 700;
-  letter-spacing: 0.5px;
-  white-space: nowrap;
-}
-
-.text-rose {
   color: #e11d48;
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+  border-radius: 999px;
+  padding: 2px 8px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
 }
 
-.text-blue {
-  color: #0284c7;
+.wf-fallback-badge i {
+  font-size: 10px;
 }
 
 /* Error card */
@@ -836,18 +771,18 @@ useTalkSteps(14, step => {
   background: #fff1f2;
   border: 1px solid #fecdd3;
   border-left: 3px solid #e11d48;
-  padding: 7px 10px;
+  padding: 9px 12px;
 }
 
 .wf-error-content {
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 10px;
 }
 
 .wf-error-icon-box {
   color: #e11d48;
-  font-size: 18px;
+  font-size: 20px;
   display: flex;
   align-items: center;
   flex-shrink: 0;
@@ -865,7 +800,7 @@ useTalkSteps(14, step => {
 }
 
 .wf-error-title-row strong {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   color: #9f1239;
 }
@@ -877,13 +812,13 @@ useTalkSteps(14, step => {
   background: #ffe4e6;
   border: 1px solid #fca5a5;
   border-radius: 4px;
-  padding: 1px 4px;
+  padding: 1px 5px;
 }
 
 .wf-error-text p {
-  font-size: 9.5px;
+  font-size: 10px;
   color: #881337;
-  margin: 1px 0 0;
+  margin: 2px 0 0;
   line-height: 1.25;
 }
 
@@ -906,7 +841,7 @@ useTalkSteps(14, step => {
   background: #ffffff;
   border: 1px solid #bae6fd;
   border-radius: 6px;
-  padding: 5px 7px;
+  padding: 6px 8px;
 }
 
 .wf-resource-item i {
@@ -922,14 +857,14 @@ useTalkSteps(14, step => {
 }
 
 .wf-resource-item strong {
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 700;
   color: #0f172a;
   line-height: 1.1;
 }
 
 .wf-resource-item small {
-  font-size: 8px;
+  font-size: 8.5px;
   color: #64748b;
   line-height: 1.1;
 }
@@ -938,7 +873,7 @@ useTalkSteps(14, step => {
 .wf-agent-card {
   background: #ffffff;
   border: 1px solid #cbd5e1;
-  padding: 6px 10px;
+  padding: 7px 10px;
 }
 
 .wf-agent-layout {
@@ -956,7 +891,7 @@ useTalkSteps(14, step => {
   border: 1px solid #cbd5e1;
   border-radius: 6px;
   padding: 4px 8px;
-  font-size: 10px;
+  font-size: 10.5px;
   font-weight: 700;
   color: #334155;
 }
@@ -989,58 +924,36 @@ useTalkSteps(14, step => {
 }
 
 .wf-agent-core strong {
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 700;
   color: #0369a1;
   line-height: 1.1;
 }
 
 .wf-agent-core small {
-  font-size: 8px;
+  font-size: 8.5px;
   color: #64748b;
   display: block;
 }
 
-/* Process and Recovery Tracks */
-.wf-process-track {
+/* Recovery Track */
+.wf-recovery-track {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-radius: 7px;
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: 6px;
   padding: 5px 10px;
 }
 
-.wf-break-track {
-  background: #fff5f6;
-  border: 1px dashed #fca5a5;
+.wf-step-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
-.wf-break-track .wf-step-num {
-  font-size: 8.5px;
-  font-weight: 700;
-  color: #e11d48;
-  background: #ffe4e6;
-  padding: 1px 4px;
-  border-radius: 3px;
-}
-
-.wf-break-track .wf-step-name {
-  font-size: 10px;
-  font-weight: 600;
-  color: #9f1239;
-}
-
-.wf-break-track .wf-step-sep {
-  color: #f87171;
-  font-size: 11px;
-}
-
-.wf-recovery-track {
-  background: #f0f9ff;
-  border: 1px solid #bae6fd;
-}
-
-.wf-recovery-track .wf-step-num {
+.wf-step-num {
   font-size: 8.5px;
   font-weight: 700;
   color: #0284c7;
@@ -1049,21 +962,15 @@ useTalkSteps(14, step => {
   border-radius: 3px;
 }
 
-.wf-recovery-track .wf-step-name {
+.wf-step-name {
   font-size: 10px;
   font-weight: 600;
   color: #0369a1;
 }
 
-.wf-recovery-track .wf-step-sep {
+.wf-step-sep {
   color: #38bdf8;
   font-size: 11px;
-}
-
-.wf-step-item {
-  display: flex;
-  align-items: center;
-  gap: 5px;
 }
 
 /* Outcome rows */
@@ -1071,9 +978,9 @@ useTalkSteps(14, step => {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 8px 10px;
+  padding: 9px 11px;
   border-radius: 8px;
-  margin-top: 6px;
+  margin-top: 8px;
 }
 
 .wf-outcome-fixed {
@@ -1111,21 +1018,21 @@ useTalkSteps(14, step => {
 
 .wf-outcome-fixed strong {
   color: #be123c;
-  font-size: 14px;
+  font-size: 14.5px;
   font-weight: 750;
   line-height: 1.15;
 }
 
 .wf-outcome-open strong {
   color: #0369a1;
-  font-size: 14px;
+  font-size: 14.5px;
   font-weight: 750;
   line-height: 1.15;
 }
 
 .wf-outcome-text span {
   color: #64748b;
-  font-size: 9.5px;
+  font-size: 10px;
   line-height: 1.25;
 }
 </style>
