@@ -252,7 +252,12 @@ b, strong { font-weight: 700; color: var(--ink); }
 /* -------------------------------------------------------------
    01 / PROBLEM (Height: 382px)
 ------------------------------------------------------------- */
-.problem { padding: 14px 20px 10px; position: relative; }
+.problem {
+  display: flex;
+  flex-direction: column;
+  padding: 14px 20px 14px;
+  position: relative;
+}
 .world-art {
   position: absolute;
   top: 14px;
@@ -269,106 +274,205 @@ b, strong { font-weight: 700; color: var(--ink); }
 .problem-lead { margin-top: 3px; color: var(--muted); font-size: 13px; font-weight: 500; }
 
 .failure-list {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin-top: 7px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 10px;
 }
 
 .failure-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  border: 1px solid var(--border-light);
-  border-radius: 6px;
-  padding: 7px 11px;
-  background: var(--paper-card);
+  position: relative;
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  grid-template-rows: auto;
+  column-gap: 8px;
+  min-height: 206px;
+  padding: 11px 11px 10px;
+  overflow: hidden;
+  border: 1px solid #e2d5c1;
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(255,255,255,.32), rgba(255,255,255,.06)), #f1e8d8;
 }
 
+.failure-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-top: 3px solid var(--navy);
+  opacity: .86;
+}
+.failure-item.failure-inertia::before { border-top-color: var(--rust); }
+.failure-item.failure-context::before { border-top-color: var(--navy); }
+
 .failure-idx {
+  grid-column: 1;
+  grid-row: 1;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  border-radius: 50%;
+  border: 1px solid #b7c7d1;
+  background: #f9f6ed;
   color: var(--navy);
-  font-family: var(--mono);
-  font-size: 12.5px;
-  font-weight: 700;
-  margin-top: 2px;
+  font-size: 10px;
+}
+.failure-inertia .failure-idx { color: var(--rust); border-color: #d4aa93; }
+.failure-context .failure-idx { color: var(--navy); border-color: #a5c5dc; }
+
+.failure-text {
+  grid-column: 2;
+  grid-row: 1;
+  position: relative;
+  min-width: 0;
 }
 
 .failure-text strong {
   display: block;
   color: var(--ink);
-  font-size: 13px;
-  line-height: 1.18;
+  font-family: var(--serif);
+  font-size: 16.5px;
+  line-height: 1.05;
+  letter-spacing: -.4px;
 }
 
-.failure-text p {
-  margin-top: 2px;
-  color: var(--body);
-  font-size: 10.5px;
-  line-height: 1.20;
+.failure-claim {
+  display: block;
+  margin-top: 3px;
+  color: #2f3e4a;
+  font-size: 10.8px;
+  line-height: 1.22;
+}
+
+.failure-diagram {
+  margin-top: 6px;
+  border: 1px solid #ded1bd;
+  border-radius: 5px;
+  background: #faf6ed;
+  padding: 5px 6px 4px;
+}
+
+.failure-svg {
+  display: block;
+  width: 100%;
+  height: 48px;
+}
+
+.failure-takeaway {
+  display: block;
+  margin-top: 5px;
+  color: #65717b;
+  font-family: var(--mono);
+  font-size: 8.6px;
+  font-weight: 600;
+  letter-spacing: -.1px;
+  line-height: 1.22;
+}
+.failure-takeaway b {
+  color: var(--rust);
 }
 
 .architecture-contrast {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin-top: 9px;
-}
-
-.contrast-col {
-  border: 1px solid var(--border-light);
-  border-radius: 5px;
-  padding: 6px 9px;
-  background: var(--paper-card);
-}
-
-.contrast-col.bad { border-left: 3px solid #a4b3be; }
-.contrast-col.good { border-left: 3px solid var(--green); background: var(--paper-card); }
-
-.contrast-col b {
-  display: block;
-  font-family: var(--mono);
-  font-size: 8.5px;
-  letter-spacing: .6px;
-}
-
-.contrast-col.bad b { color: #556774; }
-.contrast-col.good b { color: var(--green); }
-
-.contrast-col span {
-  display: block;
-  margin-top: 2px;
-  color: var(--body);
-  font-size: 9.5px;
-  line-height: 1.18;
+  display: none;
 }
 
 .problem-solution-bar {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  margin-top: auto;
+  min-height: 60px;
+  border: 1px solid #ddb8a5;
+  border-left: 4px solid var(--rust);
+  border-radius: 8px;
+  padding: 8px 14px 7px;
+  background: linear-gradient(90deg, #fbf0ea, #f6ede2);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.6);
+}
+
+.bar-top-row {
+  display: flex;
   align-items: center;
-  gap: 10px;
-  margin-top: 7px;
-  border: 1px solid #e8ccbd;
-  border-radius: 6px;
-  padding: 5px 11px;
-  background: var(--rust-soft);
-  color: #8c3217;
-  font-size: 11px;
+  gap: 8px;
 }
 
 .bar-tag {
   font-family: var(--mono);
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 1.2px;
+  font-size: 8.2px;
+  font-weight: 800;
+  letter-spacing: .8px;
   background: var(--rust);
   color: #fff;
-  padding: 2px 5px;
+  padding: 2px 5.5px;
   border-radius: 3px;
-  flex-shrink: 0;
+  white-space: nowrap;
 }
 
-.bar-desc { line-height: 1.2; }
-.bar-desc strong { color: #6b2410; }
+.bar-headline {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  min-width: 0;
+}
+
+.bar-headline strong {
+  font-family: var(--serif);
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: -.25px;
+  color: #6b2612;
+  white-space: nowrap;
+}
+
+.bar-sep {
+  color: #c98e79;
+  font-weight: 400;
+}
+
+.bar-thesis {
+  font-size: 9.6px;
+  color: #7d4837;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.bar-targets {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  border-top: 1px dashed #e2c8ba;
+  padding-top: 5px;
+}
+
+.bar-target {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 8.8px;
+  font-weight: 600;
+  color: #5c3b31;
+  letter-spacing: -.1px;
+  white-space: nowrap;
+}
+
+.target-bullet {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #ecd3c6;
+  color: #8c3217;
+  font-size: 8px;
+  font-style: normal;
+  font-weight: 800;
+  flex-shrink: 0;
+}
 
 /* -------------------------------------------------------------
    02 / SYSTEM (Height: 782px)

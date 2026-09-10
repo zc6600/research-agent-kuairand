@@ -7,7 +7,9 @@ const root = new URL('./', import.meta.url);
 
 const problemPolishCss = String.raw`
 .problem {
-  padding: 19px 22px 18px;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 20px 14px;
 }
 .problem h2 {
   max-width: 455px;
@@ -31,7 +33,7 @@ const problemPolishCss = String.raw`
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
-  margin-top: 12px;
+  margin-top: 10px;
 }
 .problem .failure-item {
   position: relative;
@@ -39,8 +41,8 @@ const problemPolishCss = String.raw`
   grid-template-columns: 24px 1fr;
   grid-template-rows: auto;
   column-gap: 8px;
-  min-height: 180px;
-  padding: 10px 10px 9px;
+  min-height: 206px;
+  padding: 11px 11px 10px;
   overflow: hidden;
   border: 1px solid #e2d5c1;
   border-radius: 8px;
@@ -96,22 +98,22 @@ const problemPolishCss = String.raw`
   border: 1px solid #ded1bd;
   border-radius: 5px;
   background: #faf6ed;
-  padding: 4px 6px 3px;
+  padding: 5px 6px 4px;
 }
 .problem .failure-svg {
   display: block;
   width: 100%;
-  height: 44px;
+  height: 48px;
 }
 .problem .failure-takeaway {
   display: block;
-  margin-top: 4px;
+  margin-top: 5px;
   color: #65717b;
   font-family: var(--mono);
-  font-size: 8.5px;
+  font-size: 8.6px;
   font-weight: 600;
   letter-spacing: -.1px;
-  line-height: 1.2;
+  line-height: 1.22;
 }
 .problem .failure-takeaway b {
   color: var(--rust);
@@ -120,31 +122,90 @@ const problemPolishCss = String.raw`
   display: none;
 }
 .problem .problem-solution-bar {
-  margin-top: 12px;
-  min-height: 43px;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  margin-top: auto;
+  min-height: 60px;
   border: 1px solid #ddb8a5;
   border-left: 4px solid var(--rust);
   border-radius: 8px;
-  padding: 8px 12px;
-  background: linear-gradient(90deg, #f9ece5, #f5eadb);
-  color: #803017;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.48);
+  padding: 8px 14px 7px;
+  background: linear-gradient(90deg, #fbf0ea, #f6ede2);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.6);
+}
+.problem .bar-top-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 .problem .bar-tag {
-  padding: 3px 7px;
-  font-size: 8.8px;
-  letter-spacing: 1px;
+  font-family: var(--mono);
+  font-size: 8.2px;
+  font-weight: 800;
+  letter-spacing: .8px;
+  background: var(--rust);
+  color: #fff;
+  padding: 2px 5.5px;
+  border-radius: 3px;
+  white-space: nowrap;
 }
-.problem .bar-desc {
-  color: #71331e;
-  font-size: 13.6px;
+.problem .bar-headline {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  min-width: 0;
+}
+.problem .bar-headline strong {
   font-family: var(--serif);
+  font-size: 13.5px;
   font-weight: 700;
   letter-spacing: -.25px;
+  color: #6b2612;
+  white-space: nowrap;
 }
-.problem .bar-desc strong {
-  color: #71331e;
+.problem .bar-sep {
+  color: #c98e79;
+  font-weight: 400;
+}
+.problem .bar-thesis {
+  font-size: 9.6px;
+  color: #7d4837;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.problem .bar-targets {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  border-top: 1px dashed #e2c8ba;
+  padding-top: 5px;
+}
+.problem .bar-target {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 8.8px;
+  font-weight: 600;
+  color: #5c3b31;
+  letter-spacing: -.1px;
+  white-space: nowrap;
+}
+.problem .target-bullet {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #ecd3c6;
+  color: #8c3217;
+  font-size: 8px;
+  font-style: normal;
+  font-weight: 800;
+  flex-shrink: 0;
 }
 `;
 
@@ -619,30 +680,30 @@ function applyProblemPolish() {
       title: 'Closed-world fragility',
       claim: 'Fixed workflows shatter on unexpected runtime errors.',
       svg: `
-        <svg viewBox="0 0 176 42" class="failure-svg" aria-label="Observe to Code to Error to dead end">
+        <svg viewBox="0 0 176 46" class="failure-svg" aria-label="Observe to Code to Error to dead end">
           <g class="f-step">
-            <rect x="2" y="4" width="42" height="16" rx="3" fill="#f8f4eb" stroke="#d5c8b5" stroke-width="1" />
-            <text x="23" y="15" font-size="8" text-anchor="middle" fill="#2d3d49" font-family="var(--mono)" font-weight="600">Observe</text>
+            <rect x="2" y="5" width="42" height="17" rx="3" fill="#f8f4eb" stroke="#d5c8b5" stroke-width="1" />
+            <text x="23" y="16.5" font-size="8.2" text-anchor="middle" fill="#2d3d49" font-family="var(--mono)" font-weight="600">Observe</text>
           </g>
-          <path d="M 47 12 L 53 12" stroke="#9bb2c0" stroke-width="1.5" />
-          <polygon points="56,12 52,9.5 52,14.5" fill="#9bb2c0" />
+          <path d="M 47 13.5 L 53 13.5" stroke="#9bb2c0" stroke-width="1.5" />
+          <polygon points="56,13.5 52,11 52,16" fill="#9bb2c0" />
 
           <g class="f-step">
-            <rect x="58" y="4" width="36" height="16" rx="3" fill="#f8f4eb" stroke="#d5c8b5" stroke-width="1" />
-            <text x="76" y="15" font-size="8" text-anchor="middle" fill="#2d3d49" font-family="var(--mono)" font-weight="600">Code</text>
+            <rect x="58" y="5" width="36" height="17" rx="3" fill="#f8f4eb" stroke="#d5c8b5" stroke-width="1" />
+            <text x="76" y="16.5" font-size="8.2" text-anchor="middle" fill="#2d3d49" font-family="var(--mono)" font-weight="600">Code</text>
           </g>
-          <path d="M 97 12 L 103 12" stroke="#9bb2c0" stroke-width="1.5" />
-          <polygon points="106,12 102,9.5 102,14.5" fill="#9bb2c0" />
+          <path d="M 97 13.5 L 103 13.5" stroke="#9bb2c0" stroke-width="1.5" />
+          <polygon points="106,13.5 102,11 102,16" fill="#9bb2c0" />
 
           <g class="f-step f-err">
-            <rect x="108" y="4" width="64" height="16" rx="3" fill="#fbeee7" stroke="#e0a892" stroke-width="1" />
-            <text x="140" y="15" font-size="7.8" font-weight="800" text-anchor="middle" fill="#b94020" font-family="var(--mono)">✖ ERROR</text>
+            <rect x="108" y="5" width="65" height="17" rx="3" fill="#fbeee7" stroke="#e0a892" stroke-width="1" />
+            <text x="140.5" y="16.5" font-size="8" font-weight="800" text-anchor="middle" fill="#b94020" font-family="var(--mono)">✖ ERROR</text>
           </g>
 
-          <path d="M 140 20 L 140 26 L 86 26" stroke="#b94020" stroke-width="1.2" stroke-dasharray="2 2" fill="none" />
-          <polygon points="83,26 87,23.5 87,28.5" fill="#b94020" />
-          <rect x="16" y="21" width="64" height="15" rx="3" fill="#faefe9" stroke="#ddb8a5" stroke-width="1" />
-          <text x="48" y="31.5" font-size="7.5" font-weight="700" text-anchor="middle" fill="#8c3217" font-family="var(--mono)">dead end (halts)</text>
+          <path d="M 140.5 22 L 140.5 29 L 88 29" stroke="#b94020" stroke-width="1.2" stroke-dasharray="2 2" fill="none" />
+          <polygon points="85,29 89,26.5 89,31.5" fill="#b94020" />
+          <rect x="14" y="23" width="68" height="16" rx="3" fill="#faefe9" stroke="#ddb8a5" stroke-width="1" />
+          <text x="48" y="34" font-size="7.6" font-weight="700" text-anchor="middle" fill="#8c3217" font-family="var(--mono)">dead end (halts)</text>
         </svg>
       `,
       takeaway: 'Unhandled runtime faults halt unassisted runs',
@@ -652,21 +713,21 @@ function applyProblemPolish() {
       title: 'Trajectory momentum',
       claim: 'A single context carries past momentum into local basins.',
       svg: `
-        <svg viewBox="0 0 176 42" class="failure-svg" aria-label="Trajectory trapped in local basin missing alternative ideas">
-          <path d="M 8 10 Q 60 40 112 18" fill="none" stroke="#d5c8b5" stroke-width="1.5" stroke-dasharray="3 2" />
-          <circle cx="22" cy="16" r="3" fill="#718290" />
-          <line x1="25" y1="17.5" x2="44" y2="25.5" stroke="#b94020" stroke-width="1.5" />
-          <circle cx="46" cy="26" r="3" fill="#718290" />
-          <line x1="49" y1="27" x2="72" y2="30" stroke="#b94020" stroke-width="1.5" />
-          <circle cx="74" cy="30" r="4" fill="#b94020" stroke="#fff" stroke-width="1" />
-          <path d="M 80 29 C 90 27 92 37 82 38" fill="none" stroke="#b94020" stroke-width="1.2" />
-          <polygon points="79,38 83,36 83,40" fill="#b94020" />
-          <text x="50" y="39" font-size="7" font-weight="700" text-anchor="middle" fill="#b94020" font-family="var(--mono)">local basin ↺</text>
+        <svg viewBox="0 0 176 46" class="failure-svg" aria-label="Trajectory trapped in local basin missing alternative ideas">
+          <path d="M 8 11 Q 60 42 112 19" fill="none" stroke="#d5c8b5" stroke-width="1.5" stroke-dasharray="3 2" />
+          <circle cx="22" cy="18" r="3" fill="#718290" />
+          <line x1="25" y1="19.5" x2="44" y2="27.5" stroke="#b94020" stroke-width="1.5" />
+          <circle cx="46" cy="28" r="3" fill="#718290" />
+          <line x1="49" y1="29" x2="72" y2="32" stroke="#b94020" stroke-width="1.5" />
+          <circle cx="74" cy="32" r="4" fill="#b94020" stroke="#fff" stroke-width="1" />
+          <path d="M 80 31 C 90 29 92 40 82 41" fill="none" stroke="#b94020" stroke-width="1.2" />
+          <polygon points="79,41 83,39 83,43" fill="#b94020" />
+          <text x="50" y="41" font-size="7.2" font-weight="700" text-anchor="middle" fill="#b94020" font-family="var(--mono)">local basin ↺</text>
 
-          <rect x="118" y="4" width="54" height="34" rx="4" fill="#faf6ed" stroke="#ded1bd" stroke-width="1" stroke-dasharray="2 2" />
-          <text x="145" y="16" font-size="10.5" text-anchor="middle" fill="#c06c1e">★</text>
-          <text x="145" y="25" font-size="7" font-weight="700" text-anchor="middle" fill="#364450" font-family="var(--mono)">new idea</text>
-          <text x="145" y="34" font-size="6.5" text-anchor="middle" fill="#8c7a6b" font-family="var(--mono)">(missed)</text>
+          <rect x="116" y="5" width="56" height="36" rx="4" fill="#faf6ed" stroke="#ded1bd" stroke-width="1" stroke-dasharray="2 2" />
+          <text x="144" y="18" font-size="11" text-anchor="middle" fill="#c06c1e">★</text>
+          <text x="144" y="27" font-size="7.5" font-weight="700" text-anchor="middle" fill="#364450" font-family="var(--mono)">new idea</text>
+          <text x="144" y="36.5" font-size="6.8" text-anchor="middle" fill="#8c7a6b" font-family="var(--mono)">(missed)</text>
         </svg>
       `,
       takeaway: '22 runs trapped tweaking parameters in same basin',
@@ -676,17 +737,17 @@ function applyProblemPolish() {
       title: 'Context inflation cost',
       claim: 'Reconstructing context costs far more than the edit itself.',
       svg: `
-        <svg viewBox="0 0 176 42" class="failure-svg" aria-label="Read context 340K versus edit 42K ratio">
-          <text x="2" y="13" font-size="7.5" font-weight="700" fill="#0b456b" font-family="var(--mono)">READ</text>
-          <rect x="28" y="5" width="98" height="11" rx="2.5" fill="#e2ebf2" stroke="#b8cad6" stroke-width="1" />
-          <text x="132" y="14" font-size="8" font-weight="800" fill="#0b456b" font-family="var(--mono)">340K</text>
+        <svg viewBox="0 0 176 46" class="failure-svg" aria-label="Read context 340K versus edit 42K ratio">
+          <text x="2" y="14" font-size="7.8" font-weight="700" fill="#0b456b" font-family="var(--mono)">READ</text>
+          <rect x="28" y="5" width="98" height="13" rx="2.5" fill="#e2ebf2" stroke="#b8cad6" stroke-width="1" />
+          <text x="132" y="15" font-size="8.2" font-weight="800" fill="#0b456b" font-family="var(--mono)">340K</text>
 
-          <text x="2" y="31" font-size="7.5" font-weight="700" fill="#718290" font-family="var(--mono)">EDIT</text>
-          <rect x="28" y="23" width="13" height="11" rx="2.5" fill="#f0e6dc" stroke="#d5c8b5" stroke-width="1" />
-          <text x="45" y="32" font-size="8" font-weight="700" fill="#718290" font-family="var(--mono)">42K</text>
+          <text x="2" y="34" font-size="7.8" font-weight="700" fill="#718290" font-family="var(--mono)">EDIT</text>
+          <rect x="28" y="25" width="14" height="13" rx="2.5" fill="#f0e6dc" stroke="#d5c8b5" stroke-width="1" />
+          <text x="46" y="35" font-size="8" font-weight="700" fill="#718290" font-family="var(--mono)">42K</text>
 
-          <rect x="104" y="21" width="68" height="15" rx="3" fill="#faefe9" stroke="#d39479" stroke-width="1" />
-          <text x="138" y="32" font-size="8" font-weight="800" text-anchor="middle" fill="#b94020" font-family="var(--mono)">8.0× overhead</text>
+          <rect x="102" y="23" width="71" height="17" rx="3" fill="#faefe9" stroke="#d39479" stroke-width="1" />
+          <text x="137.5" y="35" font-size="8.2" font-weight="800" text-anchor="middle" fill="#b94020" font-family="var(--mono)">8.0× overhead</text>
         </svg>
       `,
       takeaway: '10 files read to change 1 line; burns token budget',
@@ -711,7 +772,21 @@ function applyProblemPolish() {
   panel.querySelector('.architecture-contrast')?.remove();
   const bar = panel.querySelector('.problem-solution-bar');
   if (bar) {
-    bar.innerHTML = '<span class="bar-tag">DESIGN RESPONSE</span><span class="bar-desc"><strong>Keep the world.</strong> Reset the trajectory.</span>';
+    bar.innerHTML = `
+      <div class="bar-top-row">
+        <span class="bar-tag">DESIGN RESPONSE</span>
+        <div class="bar-headline">
+          <strong>Keep the world. Reset the trajectory.</strong>
+          <span class="bar-sep">·</span>
+          <span class="bar-thesis">Decouple persistent memory from reasoning</span>
+        </div>
+      </div>
+      <div class="bar-targets">
+        <span class="bar-target"><i class="target-bullet">1</i> Auto-heal runtime faults</span>
+        <span class="bar-target"><i class="target-bullet">2</i> Fresh reasoning each cycle</span>
+        <span class="bar-target"><i class="target-bullet">3</i> Reusable disk state (no token waste)</span>
+      </div>
+    `;
   }
 }
 
