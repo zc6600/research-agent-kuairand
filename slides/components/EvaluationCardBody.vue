@@ -88,8 +88,8 @@ const selectComparisonPage = (page: 0 | 1) => {
         </div>
         <div class="res-strip-item">
           <span class="res-strip-label mono">AUTONOMOUS SEARCH</span>
-          <strong class="res-strip-val">4 cycles · 13 exps</strong>
-          <span class="res-strip-detail">7 Full evaluations · 0 interventions</span>
+          <strong class="res-strip-val">4 cycles · 7 Full evaluations</strong>
+          <span class="res-strip-detail">13 named experiments · 0 interventions</span>
         </div>
       </div>
 
