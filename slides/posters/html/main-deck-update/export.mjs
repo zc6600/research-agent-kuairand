@@ -517,6 +517,93 @@ const evaluationPolishCss = String.raw`
 .trajectory-stats-row .t-gain b {
   color: #16803b;
 }
+
+/* Card 03: Self-Healing & Gatekeeping */
+.recovery-card {
+  padding-bottom: 9px;
+}
+.two-tier-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-top: 6px;
+}
+.tier-block {
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: 6px 9px 5px;
+  background: var(--paper-card-sub);
+}
+.tier-block.tier-1 { border-left: 3.5px solid var(--rust); }
+.tier-block.tier-2 { border-left: 3.5px solid var(--purple); background: var(--paper-card-sub); }
+.tier-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 3.5px;
+}
+.tier-badge {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  font-weight: 800;
+  letter-spacing: .6px;
+}
+.tier-1 .tier-badge { color: var(--rust); }
+.tier-2 .tier-badge { color: var(--purple); }
+.tier-receipt,
+.tier-subhead {
+  font-family: var(--mono);
+  font-size: 7.8px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.tier-block code {
+  color: var(--navy);
+  font-family: var(--mono);
+  font-size: 8.2px;
+  background: rgba(11, 69, 107, 0.06);
+  padding: 1px 3px;
+  border-radius: 3px;
+}
+.tier-flow-mini {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.tf-row {
+  display: grid;
+  grid-template-columns: 66px 1fr;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 8.5px;
+  line-height: 1.25;
+  color: var(--body);
+}
+.tf-row.tf-out {
+  margin-top: 1px;
+  background: rgba(11, 69, 107, 0.07);
+  border: 1px solid rgba(11, 69, 107, 0.18);
+  border-radius: 4px;
+  padding: 2px 5px;
+  color: #0b3d5e;
+}
+.tf-lbl {
+  font-family: var(--mono);
+  font-size: 7.4px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: #71818e;
+}
+.tf-row.tf-out .tf-lbl {
+  color: var(--navy);
+}
+.recovery-card .card-annotation {
+  margin-top: 6px;
+  font-size: 9px;
+  line-height: 1.22;
+}
 `;
 
 function applyProblemPolish() {
