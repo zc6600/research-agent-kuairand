@@ -39,8 +39,8 @@ const problemPolishCss = String.raw`
   grid-template-columns: 24px 1fr;
   grid-template-rows: auto;
   column-gap: 8px;
-  min-height: 164px;
-  padding: 11px 11px 12px;
+  min-height: 180px;
+  padding: 10px 10px 9px;
   overflow: hidden;
   border: 1px solid #e2d5c1;
   border-radius: 8px;
@@ -80,42 +80,41 @@ const problemPolishCss = String.raw`
 }
 .problem .failure-text strong {
   font-family: var(--serif);
-  font-size: 18px;
-  line-height: 1.02;
-  letter-spacing: -.55px;
-}
-.problem .failure-text p {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-  margin-top: 8px;
-  font-size: 0;
-  line-height: 1.2;
+  font-size: 16.5px;
+  line-height: 1.05;
+  letter-spacing: -.4px;
 }
 .problem .failure-claim {
+  display: block;
+  margin-top: 3px;
   color: #2f3e4a;
-  font-size: 12.2px;
-  line-height: 1.25;
+  font-size: 10.8px;
+  line-height: 1.22;
 }
-.problem .failure-receipt {
-  margin-top: 2px;
-  padding-top: 8px;
-  border-top: 1px dashed #d4c6b2;
+.problem .failure-diagram {
+  margin-top: 6px;
+  border: 1px solid #ded1bd;
+  border-radius: 5px;
+  background: #faf6ed;
+  padding: 4px 6px 3px;
+}
+.problem .failure-svg {
+  display: block;
+  width: 100%;
+  height: 44px;
+}
+.problem .failure-takeaway {
+  display: block;
+  margin-top: 4px;
   color: #65717b;
   font-family: var(--mono);
-  font-size: 8.9px;
-  font-weight: 600;
-  letter-spacing: -.15px;
-  line-height: 1.25;
-}
-.problem .failure-receipt b {
-  color: var(--rust);
-  font-family: var(--mono);
-}
-.problem .failure-receipt code {
-  color: var(--navy);
-  font-family: var(--mono);
   font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: -.1px;
+  line-height: 1.2;
+}
+.problem .failure-takeaway b {
+  color: var(--rust);
 }
 .problem .architecture-contrast {
   display: none;
@@ -445,32 +444,95 @@ function applyProblemPolish() {
     {
       cls: 'failure-fragility',
       title: 'Closed-world fragility',
-      claim: 'Unexpected runtime failures can halt an unattended workflow.',
-      receipt: 'Cycle 1 · <code>numpy.float32</code> serialization error · autonomously repaired',
+      claim: 'Fixed workflows shatter on unexpected runtime errors.',
+      svg: `
+        <svg viewBox="0 0 176 42" class="failure-svg" aria-label="Observe to Code to Error to dead end">
+          <g class="f-step">
+            <rect x="2" y="4" width="42" height="16" rx="3" fill="#f8f4eb" stroke="#d5c8b5" stroke-width="1" />
+            <text x="23" y="15" font-size="8" text-anchor="middle" fill="#2d3d49" font-family="var(--mono)" font-weight="600">Observe</text>
+          </g>
+          <path d="M 47 12 L 53 12" stroke="#9bb2c0" stroke-width="1.5" />
+          <polygon points="56,12 52,9.5 52,14.5" fill="#9bb2c0" />
+
+          <g class="f-step">
+            <rect x="58" y="4" width="36" height="16" rx="3" fill="#f8f4eb" stroke="#d5c8b5" stroke-width="1" />
+            <text x="76" y="15" font-size="8" text-anchor="middle" fill="#2d3d49" font-family="var(--mono)" font-weight="600">Code</text>
+          </g>
+          <path d="M 97 12 L 103 12" stroke="#9bb2c0" stroke-width="1.5" />
+          <polygon points="106,12 102,9.5 102,14.5" fill="#9bb2c0" />
+
+          <g class="f-step f-err">
+            <rect x="108" y="4" width="64" height="16" rx="3" fill="#fbeee7" stroke="#e0a892" stroke-width="1" />
+            <text x="140" y="15" font-size="7.8" font-weight="800" text-anchor="middle" fill="#b94020" font-family="var(--mono)">✖ ERROR</text>
+          </g>
+
+          <path d="M 140 20 L 140 26 L 86 26" stroke="#b94020" stroke-width="1.2" stroke-dasharray="2 2" fill="none" />
+          <polygon points="83,26 87,23.5 87,28.5" fill="#b94020" />
+          <rect x="16" y="21" width="64" height="15" rx="3" fill="#faefe9" stroke="#ddb8a5" stroke-width="1" />
+          <text x="48" y="31.5" font-size="7.5" font-weight="700" text-anchor="middle" fill="#8c3217" font-family="var(--mono)">dead end (halts)</text>
+        </svg>
+      `,
+      takeaway: 'Unhandled runtime faults halt unassisted runs',
     },
     {
       cls: 'failure-inertia',
       title: 'Trajectory momentum',
-      claim: 'A single long-running trajectory keeps moving in the same direction.',
-      receipt: 'Direct Codex control reached <b>~0.6046</b> after extended local refinement',
+      claim: 'A single context carries past momentum into local basins.',
+      svg: `
+        <svg viewBox="0 0 176 42" class="failure-svg" aria-label="Trajectory trapped in local basin missing alternative ideas">
+          <path d="M 8 10 Q 60 40 112 18" fill="none" stroke="#d5c8b5" stroke-width="1.5" stroke-dasharray="3 2" />
+          <circle cx="22" cy="16" r="3" fill="#718290" />
+          <line x1="25" y1="17.5" x2="44" y2="25.5" stroke="#b94020" stroke-width="1.5" />
+          <circle cx="46" cy="26" r="3" fill="#718290" />
+          <line x1="49" y1="27" x2="72" y2="30" stroke="#b94020" stroke-width="1.5" />
+          <circle cx="74" cy="30" r="4" fill="#b94020" stroke="#fff" stroke-width="1" />
+          <path d="M 80 29 C 90 27 92 37 82 38" fill="none" stroke="#b94020" stroke-width="1.2" />
+          <polygon points="79,38 83,36 83,40" fill="#b94020" />
+          <text x="50" y="39" font-size="7" font-weight="700" text-anchor="middle" fill="#b94020" font-family="var(--mono)">local basin ↺</text>
+
+          <rect x="118" y="4" width="54" height="34" rx="4" fill="#faf6ed" stroke="#ded1bd" stroke-width="1" stroke-dasharray="2 2" />
+          <text x="145" y="16" font-size="10.5" text-anchor="middle" fill="#c06c1e">★</text>
+          <text x="145" y="25" font-size="7" font-weight="700" text-anchor="middle" fill="#364450" font-family="var(--mono)">new idea</text>
+          <text x="145" y="34" font-size="6.5" text-anchor="middle" fill="#8c7a6b" font-family="var(--mono)">(missed)</text>
+        </svg>
+      `,
+      takeaway: '22 runs trapped tweaking parameters in same basin',
     },
     {
       cls: 'failure-context',
       title: 'Context inflation cost',
-      claim: 'Reconstructing project context can cost far more than the edit itself.',
-      receipt: 'Project-shaped replication · 340,087 vs 42,377 inclusive tokens · <b>8.03×</b>',
+      claim: 'Reconstructing context costs far more than the edit itself.',
+      svg: `
+        <svg viewBox="0 0 176 42" class="failure-svg" aria-label="Read context 340K versus edit 42K ratio">
+          <text x="2" y="13" font-size="7.5" font-weight="700" fill="#0b456b" font-family="var(--mono)">READ</text>
+          <rect x="28" y="5" width="98" height="11" rx="2.5" fill="#e2ebf2" stroke="#b8cad6" stroke-width="1" />
+          <text x="132" y="14" font-size="8" font-weight="800" fill="#0b456b" font-family="var(--mono)">340K</text>
+
+          <text x="2" y="31" font-size="7.5" font-weight="700" fill="#718290" font-family="var(--mono)">EDIT</text>
+          <rect x="28" y="23" width="13" height="11" rx="2.5" fill="#f0e6dc" stroke="#d5c8b5" stroke-width="1" />
+          <text x="45" y="32" font-size="8" font-weight="700" fill="#718290" font-family="var(--mono)">42K</text>
+
+          <rect x="104" y="21" width="68" height="15" rx="3" fill="#faefe9" stroke="#d39479" stroke-width="1" />
+          <text x="138" y="32" font-size="8" font-weight="800" text-anchor="middle" fill="#b94020" font-family="var(--mono)">8.0× overhead</text>
+        </svg>
+      `,
+      takeaway: '10 files read to change 1 line; burns token budget',
     },
   ];
 
   failures.forEach((item, index) => {
     const entry = entries[index];
     if (!entry) return;
-    item.classList.add(entry.cls);
-    const title = item.querySelector('.failure-text strong');
-    const body = item.querySelector('.failure-text p');
-    if (title) title.textContent = entry.title;
-    if (body) body.innerHTML = `<span class="failure-claim">${entry.claim}</span><span class="failure-receipt">${entry.receipt}</span>`;
-    item.querySelector('.failure-visual')?.remove();
+    item.className = `failure-item ${entry.cls}`;
+    item.innerHTML = `
+      <span class="failure-idx">0${index + 1}</span>
+      <div class="failure-text">
+        <strong>${entry.title}</strong>
+        <span class="failure-claim">${entry.claim}</span>
+        <div class="failure-diagram">${entry.svg}</div>
+        <span class="failure-takeaway">${entry.takeaway}</span>
+      </div>
+    `;
   });
 
   panel.querySelector('.architecture-contrast')?.remove();
