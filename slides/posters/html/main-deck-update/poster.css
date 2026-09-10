@@ -2169,17 +2169,18 @@ footer {
   display: inline-flex;
   flex-shrink: 0;
   border: 1px solid var(--border);
-  border-radius: 5px;
-  padding: 2px;
-  background: #fff;
-  box-shadow: 0 1px 4px rgb(20 37 63 / 6%);
+  border-radius: 6px;
+  padding: 2.5px;
+  background: var(--paper);
+  box-shadow: 0 1px 3px rgba(30, 25, 18, 0.08);
   text-decoration: none;
-  transition: border-color .15s ease, box-shadow .15s ease;
+  transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
 }
 
 .footer-right .qr-box:hover {
   border-color: var(--navy);
-  box-shadow: 0 2px 6px rgb(11 69 107 / 18%);
+  box-shadow: 0 2px 6px rgba(11, 69, 107, 0.16);
+  transform: translateY(-1px);
 }
 
 .footer-right .qr-img {
