@@ -127,7 +127,10 @@ useTalkSteps(14, step => {
 
       <div class="compare-grid">
         <div class="compare-side failure-side">
-          <div class="compare-kicker rose">Predefined workflow</div>
+          <div class="compare-kicker rose">
+            <span>Predefined workflow</span>
+            <span class="kicker-pill">e.g. LangGraph</span>
+          </div>
           <div class="static-graph">
             <div class="graph-top"><span class="graph-icon rose i-carbon:flow-data"></span><span>fixed tool set</span></div>
             <div class="graph-arrow">↓</div>
@@ -199,10 +202,28 @@ useTalkSteps(14, step => {
 .card-back-inner .compare-grid { flex: 1; min-height: 0; }
 .card-back-inner .compare-side { display: flex; flex-direction: column; }
 .card-back-inner .compare-kicker {
+  align-items: center;
+  display: flex;
   font-family: inherit;
   font-size: 21px;
   font-weight: 500;
+  gap: 8px;
   letter-spacing: -.3px;
+}
+
+.card-back-inner .compare-kicker .kicker-pill {
+  align-items: center;
+  background: #ffe4e6;
+  border: 1px solid #fecdd3;
+  border-radius: 999px;
+  color: #be123c;
+  display: inline-flex;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  line-height: 1.4;
+  padding: 1px 8px;
+  text-transform: none;
 }
 .card-back-inner .compare-note,
 .card-back-inner .recovery-flow { margin-top: auto; }
