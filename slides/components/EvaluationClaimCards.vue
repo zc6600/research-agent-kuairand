@@ -78,7 +78,7 @@ const handleKey = (event: KeyboardEvent) => {
     <header class="claim-header" :class="{ dimmed: selected }">
       <div class="section-kicker mono">03 / EVALUATION</div>
       <div class="claim-label mono">CLAIM</div>
-      <h1>Our agent can carry a research task to completion.</h1>
+      <h1>Our agent can autonomously discover and validate competitive model improvements.</h1>
       <div class="claim-boundary mono"><span>KUAIRAND-PURE</span><span>FIXED EVALUATOR</span><span>PUBLIC VALIDATION</span></div>
     </header>
 
@@ -129,14 +129,14 @@ const handleKey = (event: KeyboardEvent) => {
 .eval-claim-cards::before { content: ""; position: absolute; inset: 88px 0 8px 24%; background: radial-gradient(circle at 70% 30%, color-mix(in srgb, var(--green) 9%, transparent), transparent 30%), radial-gradient(circle at 42% 76%, color-mix(in srgb, var(--blue) 6%, transparent), transparent 38%); pointer-events: none; }
 .claim-header { position: absolute; z-index: 8; left: 48px; top: 34px; right: 42px; transition: opacity .42s ease, transform .48s cubic-bezier(.22,1,.36,1); }
 .claim-header.dimmed { opacity: .16; transform: translateY(-4px); }
-.claim-header { right: auto; width: 272px; }
+.claim-header { right: auto; width: 285px; }
 .resource-corner { position: absolute; z-index: 8; top: 24px; right: 20px; width: 510px; box-sizing: border-box; transition: opacity .3s ease; }
 .resource-corner.dimmed { opacity: .16; }
 .claim-label, .claim-boundary, .card-no, .card-kicker, .card-footer, .inspection-kicker { font-size: 10px; letter-spacing: 1.35px; font-weight: 700; text-transform: uppercase; }
 .section-kicker { color: var(--green); font-family: var(--deck-sans); font-size: 14px; font-weight: 700; letter-spacing: 1.5px; line-height: 1.2; text-transform: uppercase; }
-.claim-label { margin-top: 20px; color: var(--orange); }
-.claim-header h1 { margin: 10px 0 0; max-width: 272px; font-size: 31px; line-height: 1.09; letter-spacing: -1.1px; font-weight: 700; }
-.claim-boundary { display: flex; flex-wrap: wrap; gap: 5px 8px; margin-top: 15px; max-width: 255px; color: #85929e; font-size: 7px; letter-spacing: .6px; }
+.claim-label { margin-top: 14px; color: var(--orange); }
+.claim-header h1 { margin: 8px 0 0; max-width: 285px; font-size: 26.5px; line-height: 1.12; letter-spacing: -0.8px; font-weight: 700; }
+.claim-boundary { display: flex; flex-wrap: wrap; gap: 5px 8px; margin-top: 12px; max-width: 270px; color: #85929e; font-size: 7.5px; letter-spacing: .6px; }
 .claim-boundary span + span::before { content: ""; display: inline-block; width: 3px; height: 3px; margin: 0 13px 2px 0; border-radius: 50%; background: color-mix(in srgb, var(--green) 56%, #bac2c8); }
 .evidence-hand { position: absolute; z-index: 4; right: 68px; top: 235px; width: 708px; height: 306px; perspective: 1400px; transition: opacity .42s ease, transform .42s cubic-bezier(.22,1,.36,1); }
 .evidence-hand.inspecting { opacity: .18; transform: translateX(18px) scale(.95); pointer-events: none; }
