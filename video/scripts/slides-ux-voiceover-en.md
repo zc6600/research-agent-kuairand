@@ -68,11 +68,11 @@ Already in your workflow.
 
 Use the research-agent skill.
 
-### 01:50.1–01:54.0
+### 01:50.1–01:53.4
 
 Explore in parallel. Let me review what to keep.
 
-### 01:54.5–01:59.2
+### 01:53.4–01:59.2
 
 Research workflow, connected. Task, memory, and evidence stay with the project.
 

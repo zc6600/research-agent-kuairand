@@ -31,7 +31,7 @@ npm run dev
 
 第四页翻开并收起卡片时，对应 insight 会在底部点亮。点击 `Build the system` 或按右方向键进入第五页，会播放约四秒的 insight 汇聚与架构展开动画。点击动画区域可直接完成，第五页右上角 `Replay` 可重播。减少动态效果模式和 PDF 导出直接展示完整架构。
 
-第十页 UX 动画默认按英文讲稿时间轴显示底部字幕；静态模式和 PDF 导出会隐藏字幕。
+第十页 UX 动画点击画面播放或暂停，画面与字幕跟随音频的实际播放位置；切页或切到后台会暂停，返回此页后从头待播。字幕从第一句配音开始显示，静态模式和 PDF 导出会隐藏字幕。音轨和字幕共用 `../video/experience-journey-delivery/subtitle-cues.json`。如需重剪录音，参见该目录 README；正常开发和构建直接使用已修正的 WAV，无需重新生成语音。
 
 第十一页 Summary 以 11 张错落卡片汇总各项结论，用原有图表缩略图、品牌图片、重点文字与数字呈现。点击卡片跳转到对应页面，结果类卡片直接打开证据详情；右下角 `Back to Summary` 返回卡片页。第十二页单独展示 Thank You。可直接打开 http://localhost:3030/summary 或 http://localhost:3030/thank-you 。卡片内容、位置与稳定跳转目标在 `composables/conclusions.mjs`，布局在 `components/SummaryConclusions.vue`，缩略图在 `public/assets/summary/`。
 

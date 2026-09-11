@@ -258,6 +258,34 @@
 
 .slidev-layout.cover > :not(.cover-art) { position: relative; z-index: 1; }
 
+.slidev-layout.cover > .my-auto > .cover-team,
+.slidev-layout.cover > .cover-team {
+  position: absolute;
+  top: 86px;
+  right: 42px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-left: 14px;
+  border-left: 3px solid var(--blue);
+}
+
+.slidev-layout.cover .cover-team span {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 1.2;
+}
+
+.slidev-layout.cover .cover-team strong {
+  color: #0284c7;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -.7px;
+  line-height: 1.1;
+}
+
 .slidev-layout .cover-meta {
   color: var(--muted);
   display: flex;

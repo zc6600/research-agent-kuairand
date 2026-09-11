@@ -21,6 +21,8 @@ mdc: true
 
 <img class="cover-art" src="/assets/research-world-cover.png" alt="" aria-hidden="true">
 
+<div class="cover-team" aria-label="Team Good4AI"><span>TEAM</span><strong>Good4AI</strong></div>
+
 <div class="hero cover-title"><span>SciOdyssey:</span><span>Long-Horizon Autonomous</span><span>ML Research Agent</span></div>
 
 <div class="lead">Autonomous by default. <span class="blue">Supervisable by design.</span></div>
@@ -84,7 +86,7 @@ The directory follows the live talk order. Experience is narrated/played back; t
 
 <div class="visual-kicker orange">01 / PROBLEM · THE RESEARCH TASK</div>
 
-# Automating ML experimentation
+# Running ML experiments
 
 <div class="research-task-lead">Given a dataset and a scoring metric, an agent must build a model and improve it through repeated experiments.</div>
 

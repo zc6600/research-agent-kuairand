@@ -21,7 +21,8 @@
       "fps": 30,
       "video_codec": "H.264",
       "audio_codec": "AAC",
-      "sha256": "2af83d8f8854266ce660107c83600fb97964d054308ddc21e61d36c31e998010"
+      "sha256": "2af83d8f8854266ce660107c83600fb97964d054308ddc21e61d36c31e998010",
+      "note": "Archived render; predates the corrected slide narration and cue 18 timing."
     },
     {
       "file": "SciOdyssey.m4a",
@@ -33,7 +34,7 @@
       "file": "SciOdyssey_ExperienceJourney_aligned_voice.wav",
       "role": "cue_aligned_audio_master",
       "duration_seconds": 127.2,
-      "sha256": "b8d8e1a3567581269b73905c40d072c296bff190b3c799bb8ed5c3567af60844"
+      "sha256": "f310df3c08761eb69a21a498cf2c8ad7fb424cb80d971831b51a329baadb0e86"
     }
   ],
   "quality_policy": "Preserve final video bytes when archiving. Do not transcode merely for upload. For remuxing, use -c:v copy."

@@ -11,9 +11,9 @@ The metadata and timing files in this folder are already committed. Add these ex
    - 98.453333 s
    - SHA-256: `4b4ed4efb6b34fee6814f093a381953902e1e2891204b999d070a1c5e0375f7a`
 3. `SciOdyssey_ExperienceJourney_aligned_voice.wav` (optional but recommended as the editable audio master)
-   - 12,211,278 bytes
+   - 12,211,244 bytes
    - 127.2 s
-   - SHA-256: `b8d8e1a3567581269b73905c40d072c296bff190b3c799bb8ed5c3567af60844`
+   - SHA-256: `f310df3c08761eb69a21a498cf2c8ad7fb424cb80d971831b51a329baadb0e86`
 
 All three files are below GitHub's normal 100 MB Git object limit. Uploading/copying the original files as-is does not reduce video or audio quality.
 

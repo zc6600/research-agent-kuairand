@@ -1,4 +1,5 @@
 import { copyFile, mkdir, readFile, writeFile } from 'node:fs/promises'
+import { createHash } from 'node:crypto'
 import { dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -15,6 +16,7 @@ function replaceRequired(source, from, to, label) {
   return source.replace(from, to)
 }
 
+const audioVersion = createHash('sha256').update(await readFile(sourceAudioPath)).digest('hex').slice(0, 12)
 let source = await readFile(componentPath, 'utf8')
 
 source = replaceRequired(
@@ -27,35 +29,134 @@ source = replaceRequired(
 source = replaceRequired(
   source,
   `const selectAct = (index: number) => {\n  elapsed.value = introDuration + starts[index] + (reduced.value || staticView.value ? durations[index] - 1 : 0)\n  playing.value = !reduced.value && !staticView.value\n}\nconst replay = () => {\n  if (reduced.value || staticView.value) selectAct(0)\n  else { elapsed.value = 0; playing.value = true }\n}\nconst toggle = () => {\n  if (elapsed.value >= total) replay()\n  else playing.value = !playing.value\n}`,
-  `const seekTo = (value: number) => {\n  const clamped = Math.max(0, Math.min(total, value))\n  elapsed.value = clamped\n  if (shouldUseNarration.value && narration.value) {\n    narration.value.currentTime = clamped / 1000\n  }\n}\nconst markAudioUnavailable = () => {\n  audioAvailable.value = false\n}\nconst syncFromNarration = () => {\n  if (!shouldUseNarration.value || !narration.value) return false\n  elapsed.value = Math.max(0, Math.min(total, narration.value.currentTime * 1000))\n  if (elapsed.value >= total) playing.value = false\n  return true\n}\nconst playNarration = async () => {\n  awaitingStart.value = false\n  if (!shouldUseNarration.value || !narration.value) {\n    playing.value = !reduced.value && !staticView.value\n    return\n  }\n  try {\n    narration.value.muted = false\n    narration.value.volume = 1\n    await narration.value.play()\n    playing.value = true\n  } catch (error) {\n    console.warn('Falling back to silent ExperienceJourney playback.', error)\n    audioAvailable.value = false\n    playing.value = !reduced.value && !staticView.value\n  }\n}\nconst pauseNarration = () => {\n  narration.value?.pause()\n  playing.value = false\n}\nconst selectAct = (index: number) => {\n  seekTo(introDuration + starts[index] + (reduced.value || staticView.value ? durations[index] - 1 : 0))\n  if (reduced.value || staticView.value) {\n    playing.value = false\n    return\n  }\n  void playNarration()\n}\nconst replay = () => {\n  if (reduced.value || staticView.value) {\n    selectAct(0)\n    return\n  }\n  seekTo(0)\n  void playNarration()\n}\nconst toggle = () => {\n  if (elapsed.value >= total) {\n    replay()\n    return\n  }\n  if (playing.value) pauseNarration()\n  else void playNarration()\n}\nconst resetToStart = () => {\n  narration.value?.pause()\n  seekTo(0)\n  playing.value = false\n  awaitingStart.value = !reduced.value && !staticView.value\n}\nconst handleNarrationEnded = () => {\n  elapsed.value = total\n  playing.value = false\n}\nconst handleJourneyClick = () => {\n  if (staticView.value || reduced.value) return\n  if (awaitingStart.value || elapsed.value >= total) {\n    replay()\n    return\n  }\n  toggle()\n}`,
+  `let playbackRequest = 0
+let pendingSeek: number | null = null
+const applyPendingSeek = () => {
+  const audio = narration.value
+  if (pendingSeek === null || !audio || audio.readyState === 0) return
+  audio.currentTime = pendingSeek / 1000
+  pendingSeek = null
+}
+const seekTo = (value: number) => {
+  elapsed.value = Math.max(0, Math.min(total, value))
+  pendingSeek = elapsed.value
+  applyPendingSeek()
+}
+const markAudioUnavailable = () => {
+  audioAvailable.value = false
+}
+const syncFromNarration = () => {
+  if (!shouldUseNarration.value || !narration.value) return false
+  applyPendingSeek()
+  if (pendingSeek !== null) return true
+  elapsed.value = Math.max(0, Math.min(total, narration.value.currentTime * 1000))
+  if (elapsed.value >= total) playing.value = false
+  return true
+}
+const playNarration = async () => {
+  if (!active.value || reduced.value || staticView.value) return
+  const request = ++playbackRequest
+  awaitingStart.value = false
+  playing.value = true
+  if (!shouldUseNarration.value || !narration.value) return
+  try {
+    applyPendingSeek()
+    narration.value.muted = false
+    narration.value.volume = 1
+    await narration.value.play()
+    if (request !== playbackRequest) return
+    playing.value = active.value && !reduced.value && !staticView.value
+  } catch (error) {
+    if (request !== playbackRequest) return
+    // Pausing/seeking during play() is cancellation, not a failed audio asset.
+    if (error instanceof DOMException && error.name === 'AbortError') {
+      playing.value = false
+      return
+    }
+    if (error instanceof DOMException && error.name === 'NotAllowedError') {
+      playing.value = false
+      awaitingStart.value = true
+      return
+    }
+    console.warn('Falling back to silent ExperienceJourney playback.', error)
+    markAudioUnavailable()
+  }
+}
+const pauseNarration = () => {
+  playbackRequest++
+  narration.value?.pause()
+  syncFromNarration()
+  playing.value = false
+}
+const selectAct = (index: number) => {
+  pauseNarration()
+  seekTo(introDuration + starts[index] + (reduced.value || staticView.value ? durations[index] - 1 : 0))
+  if (!reduced.value && !staticView.value) void playNarration()
+}
+const replay = () => {
+  if (reduced.value || staticView.value) {
+    selectAct(0)
+    return
+  }
+  pauseNarration()
+  seekTo(0)
+  void playNarration()
+}
+const toggle = () => {
+  if (elapsed.value >= total) replay()
+  else if (playing.value) pauseNarration()
+  else void playNarration()
+}
+const resetToStart = () => {
+  pauseNarration()
+  seekTo(0)
+  awaitingStart.value = !reduced.value && !staticView.value
+}
+const handleNarrationEnded = () => {
+  playbackRequest++
+  elapsed.value = total
+  playing.value = false
+}
+const handleNarrationPause = () => {
+  syncFromNarration()
+  playing.value = false
+}
+const handleVisibilityChange = () => {
+  if (document.hidden) pauseNarration()
+}
+const handleJourneyClick = () => {
+  if (staticView.value || reduced.value) return
+  if (awaitingStart.value || elapsed.value >= total) replay()
+  else toggle()
+}`,
   'playback control block',
 )
 
 source = replaceRequired(
   source,
   `watch(active, (value) => { if (value) replay() })`,
-  `watch(active, (value) => {\n  if (value) resetToStart()\n  else {\n    narration.value?.pause()\n    playing.value = false\n  }\n})`,
+  `watch(active, (value) => {\n  if (value) resetToStart()\n  else pauseNarration()\n})`,
   'active slide watcher',
 )
 
 source = replaceRequired(
   source,
   `  if (staticView.value) selectAct(0)\n  const tick = (now: number) => {\n    if (previous && active.value && playing.value && !document.hidden && !staticView.value) {\n      elapsed.value = Math.min(total, elapsed.value + Math.max(0, Math.min(now - previous, 100)))\n      if (elapsed.value === total) playing.value = false\n    }`,
-  `  if (staticView.value) selectAct(0)\n  narration.value?.addEventListener('ended', handleNarrationEnded)\n  const tick = (now: number) => {\n    if (previous && active.value && playing.value && !document.hidden && !staticView.value) {\n      if (!syncFromNarration()) {\n        elapsed.value = Math.min(total, elapsed.value + Math.max(0, Math.min(now - previous, 100)))\n      }\n      if (elapsed.value === total) playing.value = false\n    }`,
+  `  if (staticView.value) selectAct(0)\n  narration.value?.addEventListener('ended', handleNarrationEnded)\n  document.addEventListener('visibilitychange', handleVisibilityChange)\n  const tick = (now: number) => {\n    if (previous && active.value && playing.value && !document.hidden && !staticView.value) {\n      if (!syncFromNarration()) {\n        elapsed.value = Math.min(total, elapsed.value + Math.max(0, Math.min(now - previous, 100)))\n      }\n      if (elapsed.value === total) playing.value = false\n    }`,
   'animation tick block',
 )
 
 source = replaceRequired(
   source,
   `onUnmounted(() => {\n  cancelAnimationFrame(frame)\n  media?.removeEventListener('change', updateMotion)\n})`,
-  `onUnmounted(() => {\n  cancelAnimationFrame(frame)\n  narration.value?.pause()\n  narration.value?.removeEventListener('ended', handleNarrationEnded)\n  media?.removeEventListener('change', updateMotion)\n})`,
+  `onUnmounted(() => {\n  cancelAnimationFrame(frame)\n  pauseNarration()\n  document.removeEventListener('visibilitychange', handleVisibilityChange)\n  narration.value?.removeEventListener('ended', handleNarrationEnded)\n  media?.removeEventListener('change', updateMotion)\n})`,
   'unmount cleanup block',
 )
 
 source = replaceRequired(
   source,
   `<section class="experience-journey" :class="{ paused: !playing, reduced, 'is-outro': isOutro, 'is-immersive': expansion > .99 }" :style="{ '--immersion': expansion }" aria-label="SciOdyssey product and research demonstration" @click.stop>`,
-  `<section class="experience-journey" :class="{ paused: !playing, reduced, 'awaiting-start': awaitingStart, 'is-outro': isOutro, 'is-immersive': expansion > .99 }" :style="{ '--immersion': expansion }" aria-label="SciOdyssey product and research demonstration" title="Click to play or pause" @click.stop="handleJourneyClick">\n    <audio ref="narration" src="/media/experience-journey-voice.wav" preload="auto" @error="markAudioUnavailable" />`,
+  `<section class="experience-journey" :class="{ paused: !playing, reduced, 'awaiting-start': awaitingStart, 'is-outro': isOutro, 'is-immersive': expansion > .99 }" :style="{ '--immersion': expansion }" aria-label="SciOdyssey product and research demonstration" title="Click to play or pause" @click.stop="handleJourneyClick">\n    <audio ref="narration" src="/media/experience-journey-voice.wav?v=${audioVersion}" preload="auto" @loadedmetadata="applyPendingSeek" @timeupdate="syncFromNarration" @seeked="syncFromNarration" @pause="handleNarrationPause" @error="markAudioUnavailable" />`,
   'template root section',
 )
 

@@ -9,7 +9,7 @@ This folder packages the approved narration setup and the exact subtitle timing 
 - Matching narration script: `video/scripts/slides-ux-voiceover-en.md`
 - Nominal animation duration: **127.2 s**
 
-The narration is aligned to the subtitle cues already embedded in `ExperienceJourney.vue`; no extra black subtitle bar should be added.
+The narration and `ExperienceJourney.vue` share `subtitle-cues.json`; no extra black subtitle bar should be added.
 
 ## Approved voice
 
@@ -35,9 +35,29 @@ The intended media filenames are:
   - SHA-256: `4b4ed4efb6b34fee6814f093a381953902e1e2891204b999d070a1c5e0375f7a`
 - `SciOdyssey_ExperienceJourney_aligned_voice.wav`
   - 127.2 s cue-aligned narration master
-  - SHA-256: `b8d8e1a3567581269b73905c40d072c296bff190b3c799bb8ed5c3567af60844`
+  - SHA-256: `f310df3c08761eb69a21a498cf2c8ad7fb424cb80d971831b51a329baadb0e86`
 
-`subtitle-cues.json` records the 19 exact cue windows and text.
+`subtitle-cues.json` records the 19 cue windows, text, and verified source intervals.
+
+## Rebuild the slide narration
+
+The corrected WAV omits the spoken “Experience Journey Voiceover” slate and
+places complete sentences in their matching cue windows. Speech stays at 1x;
+only the opening sentence's silent pauses are shortened. Cue 18 starts at
+113.4 s so its complete sentence fits before the outro.
+
+From the repository root (FFmpeg required only to regenerate the WAV):
+
+```sh
+node video/scripts/align-slides-voiceover.mjs
+node --test video/scripts/align-slides-voiceover.test.mjs
+npm --prefix slides run prepare:main
+```
+
+The checked-in MP4 is the earlier render and predates this correction. The
+current slide deck uses the corrected WAV. For an updated MP4, render the
+current deck with its updated subtitles and mux this master. Refresh the
+master's checksums here if changing the source intervals again.
 
 ## Quality policy
 

@@ -2,6 +2,7 @@
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useSlideContext } from '@slidev/client'
 import ExecutionDiagram from './ExecutionDiagram.vue'
+import narrationTimeline from '../../video/experience-journey-delivery/subtitle-cues.json'
 
 const { $page, $nav, $renderContext } = useSlideContext()
 const active = computed(() => $page.value === $nav.value.currentSlideNo)
@@ -30,27 +31,9 @@ const purposes = [
   { title: 'Already in your workflow.', detail: 'Use the research-agent skill inside your coding agent.' },
 ]
 type SubtitleCue = { id: string; start: number; end: number; text: string }
-const subtitleCues: SubtitleCue[] = [
-  { id: '01', start: 800, end: 8500, text: 'SciOdyssey. A research layer over your agent harness. Your tools. One persistent research world.' },
-  { id: '02', start: 9400, end: 12200, text: 'Start with your research question.' },
-  { id: '03', start: 13700, end: 19800, text: 'Define the objective and how success will be measured.' },
-  { id: '04', start: 20700, end: 27800, text: 'Then set your working preferences: the environment, experiment budget, and boundaries.' },
-  { id: '05', start: 29200, end: 32200, text: 'One step. Then, review.' },
-  { id: '06', start: 33300, end: 43700, text: 'Run one research cycle with step. The Scientist investigates. Evidence is recorded. And control returns to you.' },
-  { id: '07', start: 45000, end: 48000, text: 'Or, let it run.' },
-  { id: '08', start: 49100, end: 61500, text: 'Set a cycle budget. A fresh Scientist continues the work each round, while the project carries the task, memory, and evidence forward.' },
-  { id: '09', start: 62800, end: 65600, text: 'Now, explore wider.' },
-  { id: '10', start: 66900, end: 73200, text: 'Use parallel to explore different directions in independent worktrees.' },
-  { id: '11', start: 74000, end: 81300, text: 'A Reviewer compares the evidence. Choosing a branch to adopt remains an explicit decision.' },
-  { id: '12', start: 82600, end: 85500, text: 'See what stays.' },
-  { id: '13', start: 86700, end: 91000, text: 'Open the dashboard to inspect the retained result.' },
-  { id: '14', start: 91700, end: 101000, text: 'See the score, the implementation state, and the evidence behind it. Then decide what comes next.' },
-  { id: '15', start: 102400, end: 105400, text: 'Already in your workflow.' },
-  { id: '16', start: 106500, end: 109800, text: 'Use the research-agent skill.' },
-  { id: '17', start: 110100, end: 114000, text: 'Explore in parallel. Let me review what to keep.' },
-  { id: '18', start: 114500, end: 119200, text: 'Research workflow, connected. Task, memory, and evidence stay with the project.' },
-  { id: '19', start: 120300, end: 126000, text: 'SciOdyssey. Let research run. Start your journey.' },
-]
+const subtitleCues: SubtitleCue[] = narrationTimeline.cues.map(cue => ({
+  id: cue.id, start: cue.start * 1000, end: cue.end * 1000, text: cue.text,
+}))
 const showingPurpose = computed(() => !staticView.value && !reduced.value && actTime.value < purposeDuration)
 const purposeStyle = computed(() => ({
   opacity: easeInOut(actTime.value / 700) * (1 - easeInOut((actTime.value - 3100) / 700)),
@@ -65,7 +48,7 @@ const expansion = computed(() => {
   return easeInOut((elapsed.value - 2400) / 1800) * (1 - easeInOut((elapsed.value - outroStart - 4600) / 2100))
 })
 const subtitle = computed(() => {
-  if (staticView.value || reduced.value || elapsed.value < 4200) return null
+  if (staticView.value || reduced.value) return null
   return subtitleCues.find(cue => elapsed.value >= cue.start && elapsed.value < cue.end) ?? null
 })
 const isOutro = computed(() => elapsed.value >= outroStart)
@@ -266,7 +249,7 @@ onUnmounted(() => {
             </div>
             <div class="skill-prompt" :style="skillReveal(2800)">{{ typed('Use the research-agent skill.', 2900, 65) }}</div>
             <div class="skill-request" :style="skillReveal(5400)">Explore in parallel. Let me review what to keep.</div>
-            <div class="skill-response" :style="skillReveal(7900)"><span>✳</span><div>Research workflow, connected.<small>Task, memory and evidence stay with the project.</small></div></div>
+            <div class="skill-response" :style="skillReveal(7500)"><span>✳</span><div>Research workflow, connected.<small>Task, memory and evidence stay with the project.</small></div></div>
             <div class="skill-files" :style="skillReveal(10500)">task.md <i /> research_record/ <i /> system/</div>
           </div>
         </div>
@@ -287,19 +270,19 @@ onUnmounted(() => {
           :title="label"
           role="tab"
           :aria-selected="!isBrand && act === i"
-          @click="selectAct(i)"
+          @click.stop="selectAct(i)"
         />
       </div>
       <div class="controls-divider" aria-hidden="true" />
-      <button class="playback" :aria-label="playing ? 'Pause demonstration' : 'Play demonstration'" @click="toggle">{{ playing ? 'Ⅱ' : '▶' }}</button>
-      <button class="playback" aria-label="Replay demonstration" @click="replay">↺</button>
+      <button class="playback" :aria-label="playing ? 'Pause demonstration' : 'Play demonstration'" @click.stop="toggle">{{ playing ? 'Ⅱ' : '▶' }}</button>
+      <button class="playback" aria-label="Replay demonstration" @click.stop="replay">↺</button>
     </nav>
     <Transition name="subtitle-fade" mode="out-in">
       <div v-if="subtitle" :key="subtitle.id" class="journey-subtitle" aria-live="polite">{{ subtitle.text }}</div>
     </Transition>
     <div class="film-progress" aria-hidden="true"><span :style="{ transform: `scaleX(${elapsed / total})` }" /></div>
     <div v-if="isOutro" class="chapter-exit" :style="{ opacity: 1 - expansion }">
-      <button @click="replay">↺ Replay UX</button>
+      <button @click.stop="replay">↺ Replay UX</button>
       <button class="continue-button" @click.stop="$nav.nextSlide()">Summary <span>→</span></button>
     </div>
   </section>
