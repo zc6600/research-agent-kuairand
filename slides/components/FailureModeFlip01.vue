@@ -123,9 +123,9 @@ useTalkSteps(14, step => {
         </div>
       </div>
 
-      <div class="workflow-heading">
-        <h2 class="workflow-reverse-title">Recovering beyond the <strong>workflow</strong></h2>
-        <p>Give the agent a way to recover when a tool fails.</p>
+      <div class="open-world-claim">
+        <span class="claim-line">Research is an <span class="open-highlight orange-open">open-world</span> task.</span>
+        <span class="claim-line claim-line-shift">We need an <span class="open-highlight blue-open">open-world</span> coding agent.</span>
       </div>
 
       <div class="workflow-comparison">
@@ -586,32 +586,38 @@ useTalkSteps(14, step => {
   color: #ea580c;
 }
 
-/* Heading section */
-.workflow-heading {
-  margin: 12px 0 16px;
-}
-
-.workflow-reverse-title {
+/* Open-world claim heading */
+.open-world-claim {
   color: #0f172a;
   font-family: var(--deck-sans);
   font-size: 26px;
   font-weight: 600;
   letter-spacing: -0.7px;
-  line-height: 1.15;
-  margin: 0;
+  line-height: 1.16;
+  margin: 10px 0 14px;
 }
 
-.workflow-reverse-title strong {
+.claim-line {
+  color: #0f172a;
+  display: block;
+  white-space: nowrap;
+}
+
+.claim-line-shift {
+  margin-left: 24px;
+}
+
+.open-highlight {
+  display: inline-block;
+  font-weight: 700;
+}
+
+.orange-open {
   color: #ea580c;
-  font-weight: inherit;
 }
 
-.workflow-heading p {
-  color: #64748b;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1.35;
-  margin: 4px 0 0;
+.blue-open {
+  color: #0284c7;
 }
 
 /* Main comparison layout */
