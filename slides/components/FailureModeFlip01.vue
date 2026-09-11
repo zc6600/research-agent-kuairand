@@ -125,7 +125,7 @@ useTalkSteps(14, step => {
 
       <h2 class="workflow-claim">
         <span class="workflow-claim-line">Research is an <strong class="claim-fixed">open-world</strong> task.</span>
-        <span class="workflow-claim-line">We need an <strong class="claim-open">open-world</strong> coding agent.</span>
+        <span class="workflow-claim-line claim-shift">We need an <strong class="claim-open">open-world</strong> coding agent.</span>
       </h2>
 
       <div class="workflow-comparison">
@@ -603,6 +603,10 @@ useTalkSteps(14, step => {
   color: var(--ink);
   display: block;
   white-space: nowrap;
+}
+
+.workflow-claim-line.claim-shift {
+  margin-left: 28px;
 }
 
 .workflow-claim strong {
