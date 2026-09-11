@@ -123,10 +123,10 @@ useTalkSteps(14, step => {
         </div>
       </div>
 
-      <div class="open-world-claim">
-        <span class="claim-line">Research is an <span class="open-highlight orange-open">open-world</span> task.</span>
-        <span class="claim-line claim-line-shift">We need an <span class="open-highlight blue-open">open-world</span> coding agent.</span>
-      </div>
+      <h2 class="workflow-claim">
+        <span class="workflow-claim-line">Research is an <strong class="claim-fixed">open-world</strong> task.</span>
+        <span class="workflow-claim-line">We need an <strong class="claim-open">open-world</strong> coding agent.</span>
+      </h2>
 
       <div class="workflow-comparison">
         <!-- Left Column: Fixed capabilities / Predefined workflow -->
@@ -586,37 +586,34 @@ useTalkSteps(14, step => {
   color: #ea580c;
 }
 
-/* Open-world claim heading */
-.open-world-claim {
-  color: #0f172a;
+/* Open-world claim heading: aligned with Card 02 typography and column colors */
+.card-back-inner .workflow-claim {
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
   font-family: var(--deck-sans);
-  font-size: 26px;
-  font-weight: 600;
-  letter-spacing: -0.7px;
-  line-height: 1.16;
+  font-size: 27px;
+  font-weight: 500;
+  letter-spacing: -0.75px;
+  line-height: 1.18;
   margin: 10px 0 14px;
 }
 
-.claim-line {
-  color: #0f172a;
+.workflow-claim-line {
+  color: var(--ink);
   display: block;
   white-space: nowrap;
 }
 
-.claim-line-shift {
-  margin-left: 24px;
+.workflow-claim strong {
+  font-weight: 600;
 }
 
-.open-highlight {
-  display: inline-block;
-  font-weight: 700;
+.workflow-claim .claim-fixed {
+  color: #e11d48;
 }
 
-.orange-open {
-  color: #ea580c;
-}
-
-.blue-open {
+.workflow-claim .claim-open {
   color: #0284c7;
 }
 
